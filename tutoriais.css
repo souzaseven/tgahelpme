@@ -1,0 +1,1156 @@
+/*:root {
+    --font-family: Arial, sans-serif; /* Fonte */
+/*   --font-color: #333333; /* Cor do texto */
+/*   --font-size: 16px; /* Tamanho da fonte */
+/*    --primary-background: #007ced; /* Cor de fundo primária */
+/*    --secondary-background: #f5f5f5; /* Cor de fundo secundária */
+/*    --highlight-background: #ffcc00; /* Cor de fundo para destaque */
+/*}
+
+* {
+    font-family: var(--font-family); /* Aplica a fonte a todos os elementos */
+/*    color: var(--font-color); /* Aplica a cor a todos os elementos */
+/* font-size: var(--font-size); /* Aplica o tamanho da fonte a todos os elementos */
+/*   background-color: var(--primary-background); /* Aplica a cor de fundo primária a todos os elementos */
+/*}
+
+/* Para mudar o fundo de um elemento específico, como um cabeçalho */
+/*header {
+    background-color: var(--secondary-background);
+}
+
+/* Para um elemento com destaque, como um botão */
+/*button {
+/*   background-color: var(--highlight-background);
+}
+
+/* Para a cor de fundo de um footer */
+/*footer {
+    background-color: var(--primary-background);
+}
+
+
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #007ced;
+}
+
+
+/* Títulos principais */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtítulos */
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid #007ced;
+    padding-bottom: 5px;
+    color: #007ced;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+/* Container de busca */
+.search-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.search-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    max-width: 500px; /* Limita a largura em telas grandes */
+}
+
+/* Seções principais */
+section {
+    background-color: #ffffff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+}
+
+/* Carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Garante que apenas 5 itens sejam visíveis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease; /* Suavidade na rolagem manual */
+    width: max-content; /* Ajusta dinamicamente para o conteúdo total */
+}
+
+/* Estilo de cada item de vídeo */
+.video-item {
+    width: 20%; /* Cada item ocupa 20% para caber 5 por vez */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box; /* Inclui padding na largura total */
+    flex-shrink: 0; /* Evita que os itens encolham */
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ddd;
+}
+
+.video-title {
+    text-align: center;
+    padding: 10px;
+    background-color: #007ced;
+    color: #fff;
+    font-weight: bold;
+}
+
+.highlight {
+    border: 2px solid  #007ced ;
+    background-color: #f0f8ff;
+}
+
+/* Botões para navegar no carrossel *//*
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #00ffe1;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background-color 0.3s;
+}*/
+/*
+.carousel-button:hover {
+    transform: scale(1.2);
+    background-color: #00ffe1;
+    color: #007ced;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}*/
+
+/* Botão "Ver Tudo" */
+.view-all a {
+    display: block;
+    padding: 15px;
+    background-color: #007ced;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    text-align: center;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.view-all a:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.view-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-icons a {
+    color: #007ced;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+
+/* Estilo geral do rodapé */
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1px 0 0;
+    font-family: Arial, sans-serif;
+margin: 0; /* Remove espaçamento externo */
+    padding: 0; /* Remove espaçamento interno */
+    line-height: 1; /* Ajusta o espaçamento entre linhas */
+}
+
+/* Estilo para o container principal */
+#footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Estilo para a linha principal */
+#footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Blocos do rodapé */
+#footer .footer-block {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Estilo do bloco 1 (Logo e redes sociais) */
+#footer .logo-block img {
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto 10px;
+}
+
+#footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 0;
+}
+
+#footer .social-icons li a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#footer .social-icons li a:hover {
+    color: #007ced;
+    transform: scale(1.2);
+}
+
+/* Estilo do bloco 2 (Atendimento) */
+#footer .footer-block h6 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #007ced;
+}
+
+#footer .footer-block p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Estilo do bloco 3 (Endereço) */
+#footer .footer-block p {
+    line-height: 1.6;
+}
+
+/* Links de políticas na parte inferior */
+#footer .footer-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+#footer .footer-links a {
+    color: #007ced;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+#footer .footer-links a:hover {
+    color: #00ffe1;
+}
+
+/* Linha divisória */
+#footer hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px auto;
+}
+
+
+
+ /* .download-link {
+        color: white;
+        text-decoration: none; /* Remove sublinhado */
+/*       font-size: 16px;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+/*    }
+
+    .download-link:hover {
+        color: black ; /* Cor ao passar o mouse */
+ /*       text-decoration: underline; /* Adiciona sublinhado no hover */
+ /*   }
+
+    .download-link i {
+        font-size: 18px;
+    }
+*/
+
+.download-link {
+    color: white;
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-link:hover {
+    color: black; /* Cor ao passar o mouse */
+    text-decoration: underline; /* Adiciona sublinhado no hover */
+}
+
+.download-link i {
+    font-size: 18px;
+}
+
+.carousel-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Downloads-item {
+    width: 48%; /* Define a largura dos itens */
+    margin-bottom: 10px; /* Espaçamento entre os itens */
+}
+
+
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .video-item iframe {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin: 15px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .view-all a {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+
+
+
+
+    .carousel-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
+    .video-item iframe {
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .view-all a {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+
+/* Estilo do container principal */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+/* Itens da lista de downloads */
+.Dowloads-item {
+    flex: 1 1 200px; /* Tamanho mínimo de 200px */
+    max-width: 300px;
+    margin: 10px;
+    text-align: center;
+    background-color: #007ced;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Imagens responsivas */
+.responsive-image-Dowloads {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Títulos */
+.Dowloads-title {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Links */
+.download-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.download-link:hover {
+    color:  black;
+    text-decoration: underline;
+}
+
+/* Botões do carrossel */
+.carousel-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.carousel-button:hover {
+    color: black;
+}
+
+
+
+footer #page-version {
+    font-weight: bold;
+    color: #007ced; /* Destaque para a versão */
+}
+
+#page-version {
+background-color: black;
+margin-left: 90%;
+}
+
+/* Estilo do botão de alternância de modo escuro */
+.dark-mode-button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode-button {
+    float: right;
+    margin-right: 20px; /* Ajuste o valor conforme necessário */
+}
+
+
+.dark-mode-button:hover {
+    background-color: #fff;
+    color: #007ced;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #333; /* Fundo escuro */
+    color: #fff; /* Texto claro */
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #fff; /* Alterando cor dos títulos no modo escuro */
+}
+
+body.dark-mode section {
+    background-color: #444; /* Seções com fundo mais escuro */
+    color: #fff; /* Texto claro nas seções */
+}
+
+body.dark-mode .carousel-button {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #007ced;
+}
+
+body.dark-mode .view-all a {
+    background-color: #007ced;
+    color: #fff;
+}
+
+body.dark-mode .carousel-button:hover {
+    background-color: #00ffe1;
+    color: #007ced;
+}
+
+body.dark-mode .view-all a:hover {
+    background-color: #005bb5;
+}
+
+
+
+/*botao de voltar pra cima*/
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Esconde o botão inicialmente */
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+ z-index: 9999; /* Garante que o botão fique sobreposto */
+}
+.scroll-to-top-button:hover {
+    background-color: #005bb5;
+}
+
+
+/* Estilo da barra de navegação */
+.navigation-bar {
+    background-color: #007ced;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navigation-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto; /* Adicionado para rolagem horizontal, caso necessário */
+    white-space: nowrap; /* Evita quebra de linha nos itens */
+}
+
+.navigation-menu li {
+    margin: 0 10px; /* Margem reduzida para telas menores */
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 0.6em; /* Tamanho ajustado para caber melhor */
+    color: white;
+    padding: 8px 10px; /* Espaçamento ajustado */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #007ced;
+}
+
+
+
+.responsive-video {
+
+
+    max-width: 100%; /* Limita a largura máxima ao tamanho da tela */
+    height: auto; /* Ajusta automaticamente a altura mantendo a proporção */
+    display: block; /* Garante que o vídeo se comporte como um bloco */
+    margin: 0 auto; /* Centraliza o vídeo horizontalmente */
+    border-radius: 10px; /* Adiciona bordas arredondadas, opcional */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra suave, opcional */
+}
+
+/**************parte da frase de boas vin******************/
+  .motivational-button {
+    background-color: white;
+    color: #28a745;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+  }
+
+ 
+
+  .motivational-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);  /* Escurece o fundo */
+    color: white;
+    padding: 30px 50px;
+    border-radius: 15px;
+    display: none;
+    z-index: 1000;
+    font-size: 2.5em;  /* Aumenta o tamanho da fonte */
+    text-align: center;
+    max-width: 90%;
+    border: 2px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);  /* Aplica o desfoque no fundo */
+  }
+
+  /* Efeito de desfocagem no fundo */
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Estilo do ícone dentro do botão */
+  .motivational-button i {
+    margin-right: 8px;
+  }
+
+.pdf-button {
+    background-color: #007ced; 
+    color: white;
+    padding: 1px 1px;
+    border-radius: 5px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.pdf-button:hover {
+    background-color: #005fa3;  /* Cor do botão ao passar o mouse */
+}
+
+button {
+    font-size: 1.1em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Downloads-item {
+    position: relative; /* Permite posicionamento relativo dos elementos internos */
+}
+
+.Downloads-item {
+    position: relative; /* Permite posicionamento relativo para elementos internos */
+}
+
+.Downloads-item {
+    position: relative;
+}
+
+.version-label {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcc00;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.Downloads-item:hover .version-label,
+.Downloads-item:focus-within .version-label {
+    opacity: 1;
+}
+
+
+/**************responsividade de telas*****************/
+/* Ajuste para o layout em telas menores */
+/*@media (max-width: 1024px) {
+    .carousel-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .Downloads-item {
+        width: 48%; /* Define a largura para dois itens por linha */
+/*        margin-bottom: 10px; /* Espaçamento entre os itens */
+/*   }
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .Downloads-item {
+        width: 48%; /* Dois itens por linha */
+/*        margin-bottom: 10px; /* Espaçamento entre os itens */
+/*  }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .Downloads-item {
+        width: 100%; /* Um item por linha em telas pequenas */
+/*    margin-bottom: 10px; /* Espaço entre os itens */
+/*  }
+}
+.container {
+/*display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+/* justify-content: space-between; /* Espaça os itens uniformemente */
+/*}
+
+.block {
+  flex: 1 1 45%; /* Ocupa 45% da largura disponível, com crescimento e encolhimento proporcionais */
+/*  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
+/*}
+
+@media (max-width: 768px) {
+/* .block {
+    flex: 1 1 100%; /* Ocupa 100% da largura em telas menores */
+/* }
+}
+*/
+
+.contagem {
+    background-color: #007ced; /* Cor de fundo azul */
+    width: 1px; /* Largura mínima possível */
+    height: 1px; /* Altura mínima possível */
+    margin: 0; /* Remove espaçamentos ao redor */
+    padding: 0; /* Remove preenchimento interno */
+}
+
+/*******************************************************************************************************************/
+/* Estilos gerais */
+.carousel-track {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte */
+    gap: 10px; /* Espaço entre os itens ajustado para reduzir os espaços */
+    justify-content: center; /* Centraliza os itens */
+}
+
+.Dowloads-item {
+    flex: 1 1 calc(15.0% - 10px); /* Largura correta para 6 itens por linha (100% / 6) */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    text-align: center; /* Centraliza o conteúdo do item */
+    max-width: calc(16.6666% - 10px); /* Garante consistência com o flex */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+    .Dowloads-item {
+        flex: 1 1 calc(25% - 10px); /* Mostra quatro itens por linha */
+        max-width: calc(25% - 10px);
+    }
+}
+
+@media (max-width: 992px) {
+    .Dowloads-item {
+        flex: 1 1 calc(33.33% - 10px); /* Mostra três itens por linha */
+        max-width: calc(33.33% - 10px);
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .Dowloads-item {
+        flex: 0 1 calc(40% - 20px); /* Cada item ocupa 50% menos o gap */
+        max-width: calc(40% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .Dowloads-item {
+        flex: 0 1 calc(40% - 20px); /* Mantém dois itens lado a lado */
+        max-width: calc(40% - 20px);
+    }
+}
+
+
+
+
+
+/* Comentários explicativos */
+/* 
+- O "flex: 1 1 calc(16.66% - 20px)" ajusta os itens para ocupar 16.66% da largura disponível para 6 itens por linha.
+- O @media (max-width: 1200px) ajusta para quatro itens por linha.
+- O @media (max-width: 992px) ajusta para três itens por linha.
+- O @media (max-width: 768px) ajusta para dois itens por linha.
+- O @media (max-width: 576px) ajusta para um item por linha.
+*/
+/********aparece o aviso para executar como adm**********/
+ .Downloads-item {
+        text-align: center;
+        margin: 20px;
+    }
+
+    .video-title {
+        margin-top: 10px;
+    }
+
+    .custom-tooltip {
+        position: relative;
+        display: inline-block;
+        color: #007ced;
+        text-decoration: none;
+    }
+
+    .custom-tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .tooltip-text {
+        visibility: hidden;
+        opacity: 0;
+        width: 200px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; /* Exibe acima do link */
+        left: 50%;
+        transform: translateX(-50%);
+        transition: opacity 0.3s;
+        font-size: 14px;
+    }
+
+    .tooltip-text::after {
+        content: '';
+        position: absolute;
+        top: 100%; /* Ponta da dica */
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+    }
+
+/*botao de copiar*/
+ .btncopiar {
+        text-decoration: none; /* Remove o sublinhado */
+        color: white; /* Cor personalizada */
+        font-weight: bold; /* Torna o texto em negrito */
+        cursor: pointer; /* Mostra o cursor de clique */
+    }
+
+    .btncopiar:hover {
+        color: darkblue; /* Altera a cor ao passar o mouse */
+    }
+
+
+/*barra de menu*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+        /* Exibe apenas o ícone das três barrinhas inicialmente */
+        .menu-container {
+            display: block;
+        }
+
+        /* Estilo para o menu toggle */
+        .menu-toggle {
+            font-size: 30px;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: block;
+            /* O ícone das três barrinhas ficará visível */
+            margin-left: 20px;
+        }
+
+        /* Menu fixo na tela */
+        /* Menu fixo na tela */
+        .nav {
+            position: fixed;
+            /* Fixa o menu na tela */
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            /* Largura padrão */
+            background-color: rgba(51, 51, 51, 0.7);
+            /* Fundo preto com transparência (70%) */
+            padding-top: 20px;
+            /* Reduz o espaçamento no topo */
+            z-index: 1000;
+            /* Garante que o menu fique sobre outros conteúdos */
+            overflow-y: auto;
+            /* Permite rolagem para textos longos */
+        }
+
+        .nav ul {
+            list-style-type: none;
+            /* Remove os marcadores da lista */
+            margin: 0;
+            /* Remove o espaçamento externo */
+            padding: 30px 0 0 0;
+        }
+
+        .nav ul li {
+            margin: 5px 0;
+            /* Reduz o espaçamento entre os itens */
+        }
+
+        .nav ul li a {
+            color: white;
+            /* Cor do texto */
+            text-decoration: none;
+            /* Remove o sublinhado */
+            font-size: 14px;
+            /* Reduz o tamanho da fonte */
+            line-height: 0;
+            /* Aumenta o espaçamento vertical entre linhas */
+            padding: 10px 15px;
+            /* Ajusta o espaçamento interno */
+            display: block;
+            /* Garante que o link ocupe toda a largura do item */
+            word-wrap: break-word;
+            /* Quebra palavras grandes */
+            text-align: left;
+            /* Mantém o texto alinhado à esquerda */
+        }
+
+        .nav ul li a:hover {
+            background-color: rgba(87, 87, 87, 0.7);
+            /* Fundo com transparência ao passar o mouse */
+            color: #007ced;
+            /* Altera a cor do texto ao passar o mouse */
+        }
+
+        /* Botão de menu (hambúrguer) */
+        .menu-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+            /* Garante que o botão fique acima do menu */
+        }
+
+        .menu-toggle {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Classe para ocultar o menu */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav {
+                width: 70%;
+                /* Reduz a largura do menu em telas menores */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                width: 100%;
+                /* O menu ocupa toda a tela */
+            }
+
+            .nav ul li a {
+                font-size: 12px;
+                /* Ajusta o tamanho da fonte */
+                padding: 8px;
+                /* Reduz o espaçamento interno */
+            }
+        }
+
+
+/*navegacao ao passar mouse*
+/* Mostra o menu ao passar o mouse no botão do menu */
+.menu-container:hover + .nav,
+.nav:hover {
+    display: block; /* Exibe o menu */
+}
+
+.nav {
+    display: none; /* Oculta o menu por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: rgba(51, 51, 51, 0.7);
+    padding-top: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none; /* Oculta o menu */
+}
+
+
+
+/* Estilos para o botão de expandir */
+.expand-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block; /* Ajuste para o botão ter a largura do conteúdo */
+    text-align: center;
+}
+
+.expand-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para os itens ocultos */
+#moreItems1 {
+    display: none; /* Oculta os itens inicialmente */
+}
+
+/* Itens dentro de .moreItems1 exibidos em flexbox */
+.moreItems1 {
+    display: flex;  /* Usar Flexbox para alinhar os itens horizontalmente */
+    flex-wrap: wrap;  /* Permite que os itens se movam para a linha seguinte se não houver espaço suficiente */
+    
+}
+
+.Dowloads-item {
+
+    margin: 10px;  /* Espaçamento entre os itens */
+    box-sizing: border-box;  /* Garante que a largura e margem sejam corretamente calculadas */
+}
+
+@media (max-width: 768px) {
+    .Dowloads-item {
+        flex: 1 1 calc(50% - 20px);  /* Para telas menores, cada item ocupa 50% da largura */
+    }
+}
+
+@media (max-width: 480px) {
+    .Dowloads-item {
+        flex: 1 1 100%;  /* Para telas ainda menores, os itens ocupam toda a largura da tela */
+    }
+}
+
+
+
+#ajudaprojeto {
+    font-weight: bold;
+    color: #007ced;
+ margin: 5 10px;
+
+}
+
+#ajudaprojeto {
+background-color: black;
+
+}
