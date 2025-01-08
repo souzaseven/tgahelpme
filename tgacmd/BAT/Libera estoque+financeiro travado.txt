@@ -1,0 +1,10 @@
+taskkill /f /im Financeiro.exe
+taskkill /f /im Estoque.exe
+taskkill /f /im "TGA Estoque.exe"
+taskkill /f /im "Estoque (32 bits).exe"
+
+echo Aguardando 2 segundos...
+timeout /t 2 /nobreak
+
+
+start 

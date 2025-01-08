@@ -1,0 +1,3 @@
+@echo off
+echo Desligando o computador...
+shutdown /s /f /t 0

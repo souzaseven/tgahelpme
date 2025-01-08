@@ -1,0 +1,405 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #007ced; /* Fundo azul */
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    font-style: italic; /* Deixa o texto em itálico */
+font-weight: bold; /* Deixa o texto em negrito */
+text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+}
+
+section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+  
+    border-bottom: 2px solid #007ced;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Itens mais largos */
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.video-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 250px; /* Aumenta a altura dos vídeos */
+    border-bottom: 1px solid #ddd;
+}
+
+.video-title {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007ced;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .video-item iframe {
+        height: 200px; /* Reduz a altura para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item iframe {
+        height: 180px; /* Altura menor em telas muito pequenas */
+    }
+}
+h2 {
+    font-size: 3.5em; /* Aumenta o tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #007ced; /* Cor do texto */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra no texto para dar um efeito moderno */
+    letter-spacing: 1px; /* Espaçamento entre as letras para dar um visual mais moderno */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+}
+
+/*
+footer {
+    background-color: #333; /* Cor de fundo escura */
+/*   color: #fff; /* Cor do texto clara */
+ /*   padding: 20px 0; /* Espaçamento vertical */
+ /*   text-align: center; /* Alinha o texto ao centro */
+  /*  font-size: 1rem; /* Tamanho de fonte */
+  /*  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil acima */
+  /*  position: relative;
+ /*   bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #007ced; /* Cor azul para links */
+/*    text-decoration: none; /* Remove o sublinhado */
+ /*   font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline; /* Sublinha o link ao passar o mouse 
+}
+
+footer p {
+    margin: 0; /* Remove margens extras 
+}
+
+footer .social-icons {
+    margin: 15px 0; /* Espaçamento para os ícones sociais *
+}
+
+footer .social-icons a {
+    margin: 0 10px; /* Espaço entre os ícones *
+    font-size: 1.5em; /* Tamanho dos ícones *
+    color: #fff; /* Cor dos ícones *
+}
+
+footer .social-icons a:hover {
+    color: #007ced; /* Cor dos ícones ao passar o mouse *
+}/*
+
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-icons a {
+    color: #007ced;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+
+/* Estilo geral do rodapé */
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1px 0 0;
+    font-family: Arial, sans-serif;
+margin: 0; /* Remove espaçamento externo */
+    padding: 0; /* Remove espaçamento interno */
+    line-height: 1; /* Ajusta o espaçamento entre linhas */
+}
+
+/* Estilo para o container principal */
+#footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Estilo para a linha principal */
+#footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Blocos do rodapé */
+#footer .footer-block {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Estilo do bloco 1 (Logo e redes sociais) */
+#footer .logo-block img {
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto 10px;
+}
+
+#footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 0;
+}
+
+#footer .social-icons li a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#footer .social-icons li a:hover {
+    color: #007ced;
+    transform: scale(1.2);
+}
+
+/* Estilo do bloco 2 (Atendimento) */
+#footer .footer-block h6 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #007ced;
+}
+
+#footer .footer-block p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Estilo do bloco 3 (Endereço) */
+#footer .footer-block p {
+    line-height: 1.6;
+}
+
+/* Links de políticas na parte inferior */
+#footer .footer-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+#footer .footer-links a {
+    color: #007ced;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+#footer .footer-links a:hover {
+    color: #00ffe1;
+}
+
+/* Linha divisória */
+#footer hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #footer .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #footer .footer-block {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .video-item {
+        width: 45%; /* Exibe 2 itens por vez */
+        margin-bottom: 15px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .video-item iframe {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin: 15px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .view-all a {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item {
+        width: 90%; /* Exibe 1 item por vez */
+        margin-bottom: 20px;
+    }
+
+    .carousel-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
+    .video-item iframe {
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .view-all a {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+}
+
+
+
+/*botao do whatsapp*/
+#WAButton { position: fixed; z-index: 9999; bottom: 25px; left: 25px; width: 60px; height: 60px; -webkit-border-radius: 50%; cursor: pointer; background-color: #0ba360; transition: .3s; display: flex; align-items: center; justify-content: center; }
+.whatsapp-plug-icon:hover { background-color: #15cc74; }
+#WAButton::after, #WAButton::before { content: ''; position: absolute; opacity: 0; border: 4px solid #0ba360; left: -10px; top: -10px; right: -10px; bottom: -10px; -webkit-border-radius: 50%; animation: WaveWhatsApp 1.5s ease infinite; }
+#WAButton::after { animation-delay: .5s; }
+#WAButton:hover::after { border: 4px solid #15cc74; }
+#WAButton:hover::before { border: 4px solid #15cc74; }
+@keyframes WaveWhatsApp {
+	0% { transform: scale(0.5); }
+	50% { opacity: 1; }
+	100% { transform: scale(1.2); opacity: 0; }
+}
+.floating-wpp { position: fixed; bottom: 15px; left: 15px; font-size: 14px; transition: bottom .2s; font-family: Arial }
+.floating-wpp .floating-wpp-button { position: relative; border-radius: 50%; box-shadow: 1px 1px 4px rgba(60, 60, 60, .4); transition: box-shadow .2s; cursor: pointer; overflow: hidden; display: none; }
+.floating-wpp .floating-wpp-button img, .floating-wpp .floating-wpp-button svg { position: absolute; width: 100%; height: auto; object-fit: cover; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0) }
+.floating-wpp:hover { bottom: 17px }
+.floating-wpp:hover .floating-wpp-button { box-shadow: 1px 2px 8px rgba(60, 60, 60, .4) }
+.floating-wpp .floating-wpp-popup { border-radius: 6px; background-color: #E5DDD5; position: absolute; overflow: hidden; padding: 0; box-shadow: 1px 2px 8px rgba(60, 60, 60, .25); width: 0; height: 0; bottom: 0; opacity: 0; transition: bottom .1s ease-out, opacity .2s ease-out; transform-origin: bottom }
+.floating-wpp .floating-wpp-popup.active { padding: 0 12px 12px; width: 260px; height: auto; bottom: 82px; opacity: 1 }
+.floating-wpp .floating-wpp-popup .floating-wpp-message { background-color: #fff; padding: 8px; border-radius: 0 5px 5px; box-shadow: 1px 1px 1px rgba(0, 0, 0, .15); opacity: 0; transition: opacity .2s }
+.floating-wpp .floating-wpp-popup.active .floating-wpp-message { opacity: 1; transition-delay: .2s }
+.floating-wpp .floating-wpp-popup .floating-wpp-head { text-align: right; color: #fff; margin: 0 -15px 10px; padding: 6px 12px; display: flex; justify-content: space-between; cursor: pointer }
+.floating-wpp .floating-wpp-input-message { background-color: #fff; margin: 10px -15px -15px; padding: 0 15px; display: flex; align-items: center }
+.floating-wpp .floating-wpp-input-message textarea { border: 1px solid #ccc; border-radius: 4px; box-shadow: none; padding: 8px; margin: 10px 0; width: 100%; max-width: 100%; font-size: 16px; resize: none }
+.floating-wpp .floating-wpp-btn-send { margin-left: 12px; font-size: 0; cursor: pointer }
+
+
+
+/* Container de busca */
+.search-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.search-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    max-width: 500px; /* Limita a largura em telas grandes */
+}
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+  /*  right: 20px;  Distância da lateral direita */
+left: 20px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}

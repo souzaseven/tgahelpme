@@ -1,0 +1,69 @@
+@echo on
+
+:: Configurações de Firewall para Firebird
+netsh advfirewall firewall add rule name= "Firebird Entrada TCP" dir=in protocol=TCP localport=3050 action=allow
+netsh advfirewall firewall add rule name= "Firebird Entrada UDP" dir=in protocol=UDP localport=3050 action=allow
+netsh advfirewall firewall add rule name= "Firebird Saída TCP" dir=out protocol=TCP localport=3050 action=allow
+netsh advfirewall firewall add rule name= "Firebird Saída UDP" dir=out protocol=UDP localport=3050 action=allow
+
+:: Exclusões no Windows Defender
+Set-MpPreference -ExclusionPath "C:\TGA"
+Set-MpPreference -ExclusionPath "C:\Program Files\Firebird"
+Set-MpPreference -ExclusionPath "C:\Program Files (x86)\Firebird"
+Set-MpPreference -ExclusionPath "\\servidor"
+
+:: Regras de firewall para programas do TGA
+netsh advfirewall firewall add rule name="Estoque" dir=in action=allow program="C:\TGA\Estoque.exe" enable=yes
+netsh advfirewall firewall add rule name="Financeiro" dir=in action=allow program="C:\TGA\Financeiro.exe" enable=yes
+netsh advfirewall firewall add rule name="Fiscal" dir=in action=allow program="C:\TGA\Fiscal.exe" enable=yes
+netsh advfirewall firewall add rule name="FBGuard" dir=in action=allow program="C:\Program Files\Firebird\Firebird_2_5\bin\fbguard.exe" enable=yes
+netsh advfirewall firewall add rule name="FBServer" dir=in action=allow program="C:\Program Files\Firebird\Firebird_2_5\bin\fbserver.exe" enable=yes
+netsh advfirewall firewall add rule name="FBGuard" dir=in action=allow program="C:\Program Files (x86)\Firebird_2_5\bin\fbguard.exe" enable=yes
+netsh advfirewall firewall add rule name="FBServer" dir=in action=allow program="C:\Program Files (x86)\Firebird\Firebird_2_5\bin\fbserver.exe" enable=yes
+
+netsh advfirewall firewall add rule name="Estoque" dir=out action=allow program="C:\TGA\Estoque.exe" enable=yes
+netsh advfirewall firewall add rule name="Financeiro" dir=out action=allow program="C:\TGA\Financeiro.exe" enable=yes
+netsh advfirewall firewall add rule name="Fiscal" dir=out action=allow program="C:\TGA\Fiscal.exe" enable=yes
+netsh advfirewall firewall add rule name="FBGuard" dir=out action=allow program="C:\Program Files\Firebird\Firebird_2_5\bin\fbguard.exe" enable=yes
+netsh advfirewall firewall add rule name="FBServer" dir=out action=allow program="C:\Program Files\Firebird\Firebird_2_5\bin\fbserver.exe" enable=yes
+netsh advfirewall firewall add rule name="FBGuard" dir=out action=allow program="C:\Program Files (x86)\Firebird_2_5\bin\fbguard.exe" enable=yes
+netsh advfirewall firewall add rule name="FBServer" dir=out action=allow program="C:\Program Files (x86)\Firebird\Firebird_2_5\bin\fbserver.exe" enable=yes
+
+:: Regras de portas específicas
+netsh advfirewall firewall add rule name="Entrada TCP 20002" dir=in protocol=TCP localport=20002 action=allow
+netsh advfirewall firewall add rule name="Saída TCP 20002" dir=out protocol=TCP localport=20002 action=allow
+netsh advfirewall firewall add rule name="Entrada TCP 2517" dir=in protocol=TCP localport=2517 action=allow
+netsh advfirewall firewall add rule name="Saída TCP 2517" dir=out protocol=TCP localport=2517 action=allow
+netsh advfirewall firewall add rule name="Entrada UDP 2517" dir=in protocol=UDP localport=2517 action=allow
+netsh advfirewall firewall add rule name="Saída UDP 2517" dir=out protocol=UDP localport=2517 action=allow
+netsh advfirewall firewall add rule name="Entrada TCP 2525" dir=in protocol=TCP localport=2525 action=allow
+netsh advfirewall firewall add rule name="Saída TCP 2525" dir=out protocol=TCP localport=2525 action=allow
+netsh advfirewall firewall add rule name="Entrada UDP 2525" dir=in protocol=UDP localport=2525 action=allow
+netsh advfirewall firewall add rule name="Saída UDP 2525" dir=out protocol=UDP localport=2525 action=allow
+netsh advfirewall firewall add rule name="Entrada TCP 3050" dir=in protocol=TCP localport=3050 action=allow
+netsh advfirewall firewall add rule name="Saída TCP 3050" dir=out protocol=TCP localport=3050 action=allow
+
+:: Regras para PDV
+netsh advfirewall firewall add rule name="PDV OFF ENTRADA" dir=in protocol=TCP localport=2517 action=allow
+netsh advfirewall firewall add rule name="PDV OFF SAÍDA" dir=out protocol=TCP localport=2517 action=allow
+netsh advfirewall firewall add rule name="PDV OFF ENTRADA 2" dir=in protocol=TCP localport=2525 action=allow
+netsh advfirewall firewall add rule name="PDV OFF SAÍDA 2" dir=out protocol=TCP localport=2525 action=allow
+netsh advfirewall firewall add rule name="PDV OFF ENTRADA UDP" dir=in protocol=UDP localport=2525 action=allow
+netsh advfirewall firewall add rule name="PDV OFF SAÍDA UDP" dir=out protocol=UDP localport=2525 action=allow
+netsh advfirewall firewall add rule name="PDV OFF ENTRADA UDP 2" dir=in protocol=UDP localport=2517 action=allow
+netsh advfirewall firewall add rule name="PDV OFF SAÍDA UDP 2" dir=out protocol=UDP localport=2517 action=allow
+
+:: Regras para TGA Mobile e TGA ON
+netsh advfirewall firewall add rule name="TGA MOBILE" dir=out protocol=TCP localport=3010 action=allow
+netsh advfirewall firewall add rule name="TGA ON" dir=out protocol=TCP localport=8093 action=allow
+
+:: Regras para Atualizador TGA
+netsh advfirewall firewall add rule name="Atualizador TGA Entrada" dir=in protocol=TCP localport=20002 action=allow
+netsh advfirewall firewall add rule name="Atualizador TGA Saída" dir=out protocol=TCP localport=20002 action=allow
+
+:: Regras para Liberação ERP
+netsh advfirewall firewall add rule name="Liberacao ERP" dir=out protocol=TCP localport=8080 action=allow
+
+@echo off
+echo Regras de firewall configuradas com sucesso!
+exit

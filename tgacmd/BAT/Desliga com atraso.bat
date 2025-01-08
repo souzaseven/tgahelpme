@@ -1,0 +1,3 @@
+@echo off
+                echo O computador será desligado em 5 minutos...
+                shutdown /s /f /t 300
