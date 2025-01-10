@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macros</title>
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10%;
+            padding: 20px;
+            background-color: #f9f9f9;
+
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+        h2 {
+            color: #333;
+            font-size: 1.6em;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #555;
+            font-size: 1.4em;
+        }
+        p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #d3d3d3;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        /* Excel-like table styling */
+        table.excel {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        table.excel td, table.excel th {
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        table.excel td:last-child, table.excel th:last-child {
+            border-right: none;
+        }
+        table.excel th {
+            background-color: #e6e6e6;
+            text-align: center;
+        }
+
+
+/*************responsividade***************/
+/* Responsividade */
+@media (max-width: 1200px) {
+    body {
+        margin: 5%;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+    p {
+        font-size: 13px;
+    }
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 3%;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+    p {
+        font-size: 12px;
+    }
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 11px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin: 2%;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    h3 {
+        font-size: 1em;
+    }
+    p {
+        font-size: 11px;
+    }
+    table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 10px;
+        padding: 5px;
+    }
+}
+
+
+/* Botão voltar ao topo */
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--rounded);
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    z-index: 9999;
+}
+
+.scroll-to-top-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Botão voltar */
+.btn-voltar {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    background-color: #005bb5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.btn-voltar:hover {
+    opacity: 0.8;
+}
+
+a button {
+    padding: 10px 20px;
+    background: #007ced;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+a button:hover {
+    background: #005bb5;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+a button:active {
+    background: #003d8a;
+    transform: translateY(1px);
+}
+
+a button i {
+    margin-right: 8px;
+}
+
+
+
+/*botao de voltar pra cima*/
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Esconde o botão inicialmente */
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+ z-index: 9999; /* Garante que o botão fique sobreposto */
+}
+.scroll-to-top-button:hover {
+    background-color: #005bb5;
+}
+
+    </style>
+</head>
+<body>
+<a href="https://tgameajuda.com/" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+
+ <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i> </button>
+
+    <h1>Macros</h1>
+    <h3>Neste artigo você irá aprender sobre macro e como utilizá-las.</h3>
+
+    <p>A macro é uma importante ferramenta para a automatização de tarefas na abertura ou atendimento de um ticket. Sempre que você tiver uma ação que se repita com certa frequência, considere a criação de uma macro.</p>
+    <p>Macros são templates que podem ser utilizadas pelo agente na resposta ou na abertura de um ticket. Todos os campos do ticket podem ser preenchidos ou alterados pela macro, permitindo criar modelos e padrões de tickets.</p>
+
+    <h2>Quem poderá gerenciar as macros</h2>
+    <p>Podem editar as macros todos os agentes que tiverem no seu perfil de acesso o parâmetro Permitir criar macros pessoais ou Permitir criar macros compartilhadas marcados. As macros compartilhadas possuem três opções: com todas as equipes, com as seguintes equipes e com os seguintes agentes.</p>
+
+    <h2>Como gerenciar suas macros</h2>
+    <p>Na guia Principal do sistema acesse a opção Configurações. No menu da esquerda localize o grupo Automação e em seguida a opção Macros. 
+<br><br>
+
+Através desta tela você poderá editar as macros existentes ou então criar novas macros. Também é possível clonar uma macro existente.</p>
+
+    <h2>Como faço para clonar uma macro</h2>
+    <p>Na listagem de macros basta selecionar a macro que você deseja clonar e em seguida escolher a opção clonar macro selecionado no bloco de opções da listagem.</p>
+
+    <h2>Cadastrando uma macro</h2>
+    <p>O cadastro da macro consiste em dois passos básicos. 
+<br>O primeiro é definir o tipo de compartilhamento da macro e o segundo as ações que essa macro irá executar.</p>
+
+    <h2>Compartilhando uma macro</h2>
+    <p>Existem dois tipos básicos de macros.
+<br> As macros pessoais e as macros compartilhadas.
+<br> Macros pessoais estarão disponíveis somente para o agente que a criou, enquanto macros compartilhadas poderão ser utilizadas por outros agentes.</p>
+
+    <h2>As ações</h2>
+    <p>As ações são as alterações que serão feitas no ticket quando a macro for aplicada pelo agente. 
+<br>Todos os campos de um ticket, com exceção do cliente, poderão ser automatizados através do uso da macro.</p>
+    <p>Uma macro pode executar uma ou mais ações. Veja a relação de ações disponíveis:</p>
+
+    <table class="excel">
+        <thead>
+            <tr>
+                <th>Ação</th>
+                <th>Comentário</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alterar tipo do ticket</td>
+                <td>Muda a definição se o ticket é público ou interno</td>
+            </tr>
+            <tr>
+                <td>Alterar status</td>
+                <td>Altera o status ou justificativa do ticket</td>
+            </tr>
+            <tr>
+                <td>Alterar serviço</td>
+                <td>Altera o serviço do ticket</td>
+            </tr>
+            <tr>
+                <td>Alterar categoria</td>
+                <td>Altera a categoria do ticket</td>
+            </tr>
+            <tr>
+                <td>Alterar urgência</td>
+                <td>Altera a urgência do ticket</td>
+            </tr>
+            <tr>
+                <td>Alterar responsável</td>
+                <td>Altera o responsável pelo ticket</td>
+            </tr>
+            <tr>
+                <td>Definir assunto</td>
+                <td>Altera o assunto do ticket</td>
+            </tr>
+            <tr>
+                <td>Incluir TAGs</td>
+                <td>Adiciona TAGs ao ticket</td>
+            </tr>
+            <tr>
+                <td>Definir TAGs</td>
+                <td>Elimina as TAGs existentes e adiciona novas</td>
+            </tr>
+            <tr>
+                <td>Remover TAGs</td>
+                <td>Remove todas as TAGs do ticket</td>
+            </tr>
+            <tr>
+                <td>Definir texto da ação</td>
+                <td>Insere no conteúdo da ação um texto específico.</td>
+            </tr>
+            <tr>
+                <td>Definir tipo da ação</td>
+                <td>Altera o tipo da ação que está sendo incluída.</td>
+            </tr>
+            <tr>
+                <td>Definir anexos da ação</td>
+                <td>Insere arquivos anexados à ação que está sendo incluída.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Definindo texto da ação</h2>
+    <p>Uma das ações mais importantes da macro é a criação de textos padrões que poderão ser utilizados nos tickets.
+<br> Todas as características do texto podem ser customizadas, desde a formatação da fonte ou da cor até o conteúdo do mesmo.
+<br><br>
+Além de textos, é possível adicionar imagens e vídeos para compor a descrição da ação.
+<br><br>
+⚠️Atenção: Vídeos nas macros devem estar em locais públicos, como YouTube. Caso contrário, ocorrerá um erro.
+</p>
+
+    <h2>As variáveis dinâmicas (Place holders)</h2>
+    <p>Variáveis dinâmicas são expressões regulares que podem ser incluídas na ação. 
+<br>    Na hora da execução da macro, elas são substituídas pelo valor correspondente no ticket. 
+<br>As variáveis dinâmicas podem ser usadas nas ações de Definir assunto e Definir texto da ação.
+<br><br>
+
+Para incluir as variáveis dinâmicas, basta digitar a chave {. Feito isso, o sistema irá exibir a relação com todas as variáveis dinâmicas que estiverem disponíveis.
+</p>
+
+    <table class="excel">
+        <thead>
+            <tr>
+                <th>Variável</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ticket.id</td>
+                <td>Número do ticket</td>
+            </tr>
+            <tr>
+                <td>ticket.type</td>
+                <td>Tipo do ticket (Público/Interno)</td>
+            </tr>
+
+   <tr>
+                <td>ticket.openchannel</td>
+                <td>Canal de abertura do ticket (E-mail, via sistema pelo Cliente, via sistema pelo Agente)</td>
+            </tr>
+ <tr>
+                <td>ticket.receivedin</td>
+                <td>Conta de e-mail na qual o ticket foi recebido</td>
+            </tr>
+   <tr>
+                <td>ticket.status</td>
+                <td>Status do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.statusbase</td>
+                <td>Status base do status do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.justification</td>
+                <td>Justificativa do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.category</td>
+                <td>Categoria do ticket</td>
+            </tr>
+  <tr>
+                <td>ticket.urgency</td>
+                <td>Urgência do ticket</td>
+            </tr>
+  <tr>
+                <td>ticket.url</td>
+                <td>URL para acesso direto ao ticket</td>
+            </tr>
+  <tr>
+                <td>ticket.tags</td>
+                <td>TAGs do ticket</td>
+            </tr>
+  <tr>
+                <td>ticket.subject</td>
+                <td>Assunto do ticket</td>
+            </tr>
+  <tr>
+                <td>ticket.actioncount</td>
+                <td>Quantidade de ações do ticket</td>
+            </tr>
+            <tr>
+                <td>ticket.opendate</td>
+                <td>Data de abertura do ticket</td>
+            </tr>
+            <tr>
+                <td>ticket.closedate</td>
+                <td>Data de conclusão do ticket</td>
+            </tr>
+            <tr>
+                <td>ticket.lastactionregistrationdate</td>
+                <td>Data de registro da última ação do ticket</td>
+            </tr>
+            <tr>
+                <td>ticket.client.name</td>
+                <td>Nome do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.client.hierachical</td>
+                <td>Organização do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.client.profile</td>
+                <td>Se o cliente do ticket é pessoa, empresa ou departamento</td>
+            </tr>
+
+
+
+   <tr>
+                <td>ticket.client.persontype</td>
+                <td>Se o cliente do ticket é agente ou cliente</td>
+            </tr>
+   <tr>
+                <td>ticket.client.accessprofile</td>
+                <td>Perfil de acesso do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.client.country</td>
+                <td>Pais do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.client.city</td>
+                <td>Cidade do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.client.state</td>
+                <td>Estado do cliente do ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.generator.name</td>
+                <td>Nome do usuário que abriu o ticket</td>
+            </tr>
+   <tr>
+                <td>ticket.generator.team</td>
+                <td>Equipe(s) do usuário que abriu o ticket</td>
+            </tr>
+       <tr>
+            <td>ticket.generator.hierachical</td>
+            <td>Organização do usuário que abriu o ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.profile</td>
+            <td>Se o usuário que abriu o ticket é pessoa, empresa ou departamento</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.persontype</td>
+            <td>Se o usuário que abriu o ticket é agente ou cliente</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.accessprofile</td>
+            <td>Perfil de acesso do usuário que abriu o ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.country</td>
+            <td>Pais do usuário que abriu o ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.city</td>
+            <td>Cidade do usuário que abriu o ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.generator.state</td>
+            <td>Estado do usuário que abriu o ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.name</td>
+            <td>Nome do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.team</td>
+            <td>Equipe(s) do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.type</td>
+            <td>Se o responsável pelo ticket é um Agente ou uma Equipe</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.hierachical</td>
+            <td>Organização do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.profile</td>
+            <td>Se o responsável pelo ticket é pessoa, empresa ou departamento</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.persontype</td>
+            <td>Se o responsável pelo ticket é agente ou cliente</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.accessprofile</td>
+            <td>Perfil de acesso do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.country</td>
+            <td>Pais do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.city</td>
+            <td>Cidade do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.owner.state</td>
+            <td>Estado do responsável pelo ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.date</td>
+            <td>Data de inclusão da primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.description</td>
+            <td>Descrição da primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.number</td>
+            <td>Número da primeira ação do ticket. Será sempre 1</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.type</td>
+            <td>Se a primeira ação do ticket é pública ou interna</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.name</td>
+            <td>Nome do gerador da primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.team</td>
+            <td>Equipe do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.hierachical</td>
+            <td>Organização do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.profile</td>
+            <td>Se o usuário que incluiu a primeira ação do ticket é pessoa, empresa ou departamento</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.persontype</td>
+            <td>Se o usuário que incluiu a primeira ação do ticket é agente ou cliente</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.accessprofile</td>
+            <td>Perfil de acesso do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.country</td>
+            <td>Pais do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.city</td>
+            <td>Cidade do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.generator.state</td>
+            <td>Estado do usuário que incluiu a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.attachements</td>
+            <td>Arquivos anexados à primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.firstaction.receivedin</td>
+            <td>Conta de e-mail onde foi recebida a primeira ação do ticket</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.date</td>
+            <td>Data de inclusão da ação que está sendo incluída ou editada</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.description</td>
+            <td>Descrição da ação que está sendo incluída ou editada</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.number</td>
+            <td>Número da ação que está sendo incluída ou editada</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.type</td>
+            <td>Se a ação que está sendo incluída ou editada é pública ou interna</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.name</td>
+            <td>Nome do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.team</td>
+            <td>Equipe(s) do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.hierachical</td>
+            <td>Organização do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.profile</td>
+            <td>Se o usuário que incluiu ou editou a ação é pessoa, empresa ou departamento</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.persontype</td>
+            <td>Se o usuário que incluiu ou editou a ação é agente ou cliente</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.accessprofile</td>
+            <td>Perfil de acesso do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.country</td>
+            <td>Pais do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.city</td>
+            <td>Cidade do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.generator.state</td>
+            <td>Estado do usuário que incluiu ou editou a ação</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.attachements</td>
+            <td>Arquivos anexados à ação que está sendo incluída ou editada</td>
+        </tr>
+        <tr>
+            <td>ticket.lastaction.receivedin</td>
+            <td>Conta de e-mail onde foi recebida a ação que está sendo incluída ou editada</td>
+        </tr>
+        <tr>
+            <td>tenant.name</td>
+            <td>Nome da sua empresa</td>
+        </tr>
+        <tr>
+            <td>tenant.url</td>
+            <td>URL para acesso ao seu Movidesk</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <h2>Utilizando uma macro</h2>
+    <p>
+Após ter feito o cadastramento das suas macros, será possível acessá-las na abertura de um ticket ou na edição de um ticket que já esteja aberto. Para isso, vá até o menu Opções localizado na barra superior azul do ticket. Nesse menu, selecione a opção Aplicar macro.
+<br><br>
+<span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">Após selecionar a opção <strong>Aplicar macro</strong>, será aberta uma nova janela com a relação de todas as macros disponíveis. As macros que você utiliza com frequência poderão ser marcadas como favoritas através do ícone <a title="1.png" href="https://s3.amazonaws.com/movidesk-files/0AF4E774E41178F1B742F7DF37D222F1?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=zYssrD7Yv6p3LjQqHA%2FuCHqFJAo%3D"><img src="https://s3.amazonaws.com/movidesk-files/0AF4E774E41178F1B742F7DF37D222F1?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=zYssrD7Yv6p3LjQqHA%2FuCHqFJAo%3D" alt="1.png" data-src="https://s3.amazonaws.com/movidesk-files/0AF4E774E41178F1B742F7DF37D222F1?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=zYssrD7Yv6p3LjQqHA%2FuCHqFJAo%3D"></a>. Observe que as macros definidas como favoritas são exibidas primeiro na relação de macros. Em seguida vem as macros que não estiverem como favoritas, sempre em ordem alfabética.</span>
+<br><br>
+<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">Se você clicar sobre a macro, serão exibidos em detalhes todas as ações executadas por ela. Para aplicar a macro no ticket você poderá usar o ícone <a title="2.png" href="https://s3.amazonaws.com/movidesk-files/DDAF776FA53904AAD9B905E964EBEC1D?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=67VDg8TDfHk5ErHYehzpv74N4Zg%3D"><img src="https://s3.amazonaws.com/movidesk-files/DDAF776FA53904AAD9B905E964EBEC1D?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=67VDg8TDfHk5ErHYehzpv74N4Zg%3D" alt="2.png" data-src="https://s3.amazonaws.com/movidesk-files/DDAF776FA53904AAD9B905E964EBEC1D?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=67VDg8TDfHk5ErHYehzpv74N4Zg%3D"></a>&nbsp;ao lado do nome da macro ou o&nbsp;botão <a title="3.png" href="https://s3.amazonaws.com/movidesk-files/F70E3308170759386123A4105437496A?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=14brmQU7PZqoyRd8%2Fnch3l644Qw%3D"><img src="https://s3.amazonaws.com/movidesk-files/F70E3308170759386123A4105437496A?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=14brmQU7PZqoyRd8%2Fnch3l644Qw%3D" alt="3.png" data-src="https://s3.amazonaws.com/movidesk-files/F70E3308170759386123A4105437496A?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=14brmQU7PZqoyRd8%2Fnch3l644Qw%3D"></a>&nbsp;no rodapé da página.</span><br><br></p>
+
+</p>
+
+
+
+    <h2>Quando as ações da macro serão salvas no ticket</h2>
+<p>
+Se você estiver abrindo um novo ticket, sempre terá que clicar no botão 4.pngexistente na tela de abertura do ticket. Mesmo tendo aplicado a macro, o ticket só será efetivamente aberto quando você clicar no botão de salvar.
+<br><br>
+<span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">Se a aplicação da macro ocorrer em um ticket que já estiver aberto, as ações serão salvas de forma automática imediatamente após a aplicação da macro, com exceção das ações de <strong>Definir anexos da ação, Definir tipo da ação e Definir texto da ação</strong>. Essas três ações irão preencher os campos da ação, mas ela só será salva quando você clicar no botão <a title="5.png" href="https://s3.amazonaws.com/movidesk-files/1C85DB12C4D9036FA9044BED9D772415?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=JhMgbLoik8kAMO2lk7IVDXnnkxs%3D"><img src="https://s3.amazonaws.com/movidesk-files/1C85DB12C4D9036FA9044BED9D772415?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=JhMgbLoik8kAMO2lk7IVDXnnkxs%3D" alt="5.png" data-src="https://s3.amazonaws.com/movidesk-files/1C85DB12C4D9036FA9044BED9D772415?AWSAccessKeyId=AKIAWSRCTWGBLYKUYEDX&amp;Expires=1735047319&amp;Signature=JhMgbLoik8kAMO2lk7IVDXnnkxs%3D"></a>. Isso ocorre porque é comum precisar complementar o texto da ação antes de enviar ao cliente. Também existe a opção de simplesmente registrar a ação com o conteúdo da macro ou mesmo resolver ou cancelar o ticket.</span>
+</p>
+
+
+<script>
+
+// Obtém o botão
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+// Mostra o botão quando o usuário rola até o final da página
+window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.style.display = "block"; // Exibe o botão
+    } else {
+        scrollToTopBtn.style.display = "none"; // Esconde o botão
+    }
+};
+
+// Função para rolar até o topo da página
+scrollToTopBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Rolagem suave
+    });
+};
+</script>
+</body>
+</html>
