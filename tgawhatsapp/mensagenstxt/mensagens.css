@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+        background: linear-gradient(135deg, #007ced, #121212);
+}
+
+h1,h2,h3 {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    background-color: #007ced;
+    margin: 0;
+    font-size: 24px;
+}
+
+.variable-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.variable {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.variable button {
+    background-color: #007ced;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.variable button:hover {
+    background-color: #45a049;
+}
+
+/* Flex container para deixar os blocos lado a lado */
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    border: 1px solid #ddd; /* Divisão entre os blocos */
+}
+
+.container2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px; /* Reduzido o espaçamento entre os blocos */
+    margin: 20px auto;
+    width: 100%; /* Ajuste para ocupar toda a largura disponível */
+    padding: 10px;
+    background-color: #1e272e; /* Cor de fundo cinza */
+    justify-content: center; /* Centraliza os blocos */
+}
+
+/* Bloco de variáveis */
+.variable-block {
+    width: 18%; /* Ajustado para 18% para que caibam 5 blocos por linha */
+    margin-bottom: 20px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.variable-block p {
+    font-size: 8px; /* Texto menor */
+    color: #555;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+.block-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid #007ced;
+    padding-bottom: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .variable-block {
+        width: 30%; /* 3 blocos por linha em telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    .container2 {
+        flex-direction: column;
+    }
+
+    .variable-block {
+        width: 45%; /* 2 blocos por linha em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .variable-block {
+        width: 100%; /* 1 bloco por linha em telas muito pequenas */
+    }
+}
+
+/* Adiciona um destaque visual nas divisões dos blocos */
+.container1 .variable-block, .container2 .variable-block {
+    border-left: 3px solid #007ced; /* Borda verde destacando o bloco */
+}
+
+.add-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+margin-bottom: 40px;
+}
+
+.add-text input {
+    padding: 8px; /* Menor padding */
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-text button {
+    padding: 8px 15px; /* Botão menor */
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-text button:hover {
+    background-color: #45a049;
+}
+
+/* Bloco de mensagens no Container 2 */
+.message {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%;
+    box-sizing: border-box;
+}
+
+/* Estilo do título das mensagens */
+.message h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Estilo do texto dentro das mensagens */
+.message p {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Estilo do botão de copiar (alterado conforme pedido) */
+.copy-btn {
+    background-color: #007ced; /* Cor de fundo azul */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Padding interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Remove borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em forma de mãozinha */
+    display: flex; /* Flexbox para alinhamento do ícone */
+    align-items: center; /* Alinha ícone e texto */
+    gap: 8px; /* Espaço entre ícone e texto */
+    margin: 0 auto; /* Centraliza o botão */
+    text-align: center;
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+}
+
+.copy-btn:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}
+
+.copy-btn i {
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+
+.add-text-email {
+    display: flex; /* Layout flexível para fácil alinhamento */
+    flex-direction: column; /* Elementos alinhados verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens verticalmente */
+    text-align: center; /* Centraliza o texto dentro do container */
+    margin: 0 auto; /* Centraliza o container horizontalmente */
+    padding: 20px 30px; /* Adiciona espaçamento interno */
+    margin-bottom: 5%; /* Ajusta o espaço inferior */
+    background-color: #f9f9f9; /* Cor de fundo suave */
+    border-radius: 12px; /* Arredonda as bordas */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra mais evidente */
+    max-width: 500px; /* Limita a largura máxima */
+    transition: transform 0.3s, box-shadow 0.3s; /* Adiciona animação ao passar o mouse */
+}
+
+.add-text-email:hover {
+    transform: scale(1.05); /* Aumenta levemente o tamanho ao passar o mouse */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); /* Intensifica a sombra */
+}
+
+.add-text-email img {
+    background-image: url(./emailproh3.gif); /* Define a imagem de fundo */
+    background-size: cover; /* Garante que a imagem cubra todo o elemento */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center; /* Centraliza a imagem */
+    display: block; /* Remove qualquer comportamento inline */
+    width: 100px; /* Largura do elemento */
+    height: 100px; /* Altura do elemento */
+margin-left: 30%;
+    margin-bottom: 10px; /* Espaço entre o ícone e o texto */
+    border-radius: 8px; /* Adiciona bordas arredondadas (opcional) */
+    box-shadow: 10 24px 36px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+}
+
+
+
+.add-text-email a {
+    color: #007ced; /* Cor azul moderna para o link */
+    font-size: 22px; /* Tamanho da fonte mais legível */
+    font-weight: bold; /* Texto em negrito para destaque */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s; /* Animação para a cor do link */
+}
+
+.add-text-email a:hover {
+    color: #0056a3; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+  /*  right: 20px;  Distância da lateral direita */
+left: 20px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}
