@@ -1,0 +1,38 @@
+tgaMobileRT.exe: 00003BF8: 13:52:20 []:>--------------------------------------------------------------<
+tgaMobileRT.exe: 00003BF8: 13:52:20 [TuSM]:Server First Init.
+tgaMobileRT.exe: 00003BF8: 13:52:20 [TuSM]:Start Path = C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\
+tgaMobileRT.exe: 00003BF8: 13:52:20 [TuSM]:Starting HTTP Server on Port: 8080...
+tgaMobileRT.exe: 00003BF8: 13:52:20 [TuSM]:HTTP Server Started on Port: 8080
+tgaMobileRT.exe: 00000E0C: 13:52:21 [Requested Theme File not found:]:C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\css\uni-xtheme-classic.modified.css
+tgaMobileRT.exe: 00000E0C: 13:52:21 []:TUniThemeProps: File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\css\uni-xtheme-classic.modified.css
+tgaMobileRT.exe: 00000E0C: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\css\uni-ext.css
+tgaMobileRT.exe: 000048A4: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\classic\theme-classic\resources\theme-classic-all.css
+tgaMobileRT.exe: 00001194: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\packages\font-awesome-4.7.0\resources\font-awesome-all.css
+tgaMobileRT.exe: 00004720: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\packages\font-awesome\resources\font-awesome-all.css
+tgaMobileRT.exe: 00002F5C: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\sweetalert\sweetalert2.min.css
+tgaMobileRT.exe: 0000330C: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\unimap\leaflet.css
+tgaMobileRT.exe: 00003170: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\unimap\leaflet.draw.css
+tgaMobileRT.exe: 00002190: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\packages\font-pictos\resources\font-pictos-all.css
+tgaMobileRT.exe: 00004794: 13:52:21 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\sweetalert\unisweetalert2.css
+tgaMobileRT.exe: 000047F0: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\js\toasty\dist\toasty.css
+tgaMobileRT.exe: 00002E84: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\js\toasty\assets\toasty-custom-styles.css
+tgaMobileRT.exe: 0000467C: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\js\toasty\assets\style.css
+tgaMobileRT.exe: 0000168C: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\css\uni-xtheme-common.css
+tgaMobileRT.exe: 00004048: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\leaflet-text-icon.css
+tgaMobileRT.exe: 000014A4: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\ext-all.js
+tgaMobileRT.exe: 00003144: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\classic\theme-classic\theme-classic.js
+tgaMobileRT.exe: 00001A0C: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\ext-unicommon-min.js
+tgaMobileRT.exe: 00004310: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\ext-sync-min.js
+tgaMobileRT.exe: 00004438: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\classic\locale\locale-pt_BR.js
+tgaMobileRT.exe: 000024E4: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\jQuery\jquery-1.11.2.min.js
+tgaMobileRT.exe: 000024F0: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\jQuery\MaskedInput\jquery.inputmask.min.js
+tgaMobileRT.exe: 00003E90: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\jQuery\autoNumeric\autoNumeric-1.9.35.js
+tgaMobileRT.exe: 00002B54: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\unimap\leaflet.js
+tgaMobileRT.exe: 000041E0: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\unimap\leaflet.draw.js
+tgaMobileRT.exe: 00003764: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\ext-treenode-plugin.js
+tgaMobileRT.exe: 000043D0: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\ext\build\packages\ux\classic\ux.js
+tgaMobileRT.exe: 00004A48: 13:52:22 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\sweetalert\sweetalert2.min.js
+tgaMobileRT.exe: 000024D4: 13:52:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\unimap\Leaflet.GoogleMutant.js
+tgaMobileRT.exe: 00004B58: 13:52:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\uni\ext-unigui-min.js
+tgaMobileRT.exe: 00003F94: 13:52:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\leaflet-text-icon.js
+tgaMobileRT.exe: 0000367C: 13:52:23 [HandleFileRequest[127.0.0.1]]:File not found: C:\Users\ANDERSON.SOUZA\Desktop\ANDERSON\anderson\Mobile\files\js\toasty\dist\toasty.js
