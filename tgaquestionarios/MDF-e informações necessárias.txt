@@ -1,0 +1,4 @@
+Informações necessárias para homologação do MDF-e:
+Ultima Numeração,
+Série,
+Seguradora (Razão Social, CNPJ, Apólice, RTNRC do emitente)
