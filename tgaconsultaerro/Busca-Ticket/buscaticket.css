@@ -1,0 +1,111 @@
+  body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #007ced, #121212);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .search-area {
+            flex: 2;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .history-area {
+            flex: 1;
+            margin-left: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #007ced;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007ced;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .link-container {
+            margin-top: 20px;
+        }
+        a {
+            color: #00ff7f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .history-area h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .history-item {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #007ced;
+            cursor: pointer;
+        }
+        .history-item:hover {
+            text-decoration: underline;
+        }
+        .clear-history {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .clear-history:hover {
+            background-color: darkred;
+        }
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+  /*  right: 20px;  Distância da lateral direita */
+left: 20px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}
