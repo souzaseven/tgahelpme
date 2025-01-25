@@ -1,0 +1,405 @@
+:root {
+    --primary-color: #007ced;
+    --secondary-color: #ffffff;
+    --text-color: #333;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #007ced; /* Fundo azul */
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    font-style: italic; /* Deixa o texto em itálico */
+font-weight: bold; /* Deixa o texto em negrito */
+text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+}
+
+section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+  
+    border-bottom: 2px solid #007ced;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Exibe 5 itens por linha */
+    gap: 20px; /* Espaçamento entre os itens */
+    max-width: 100%;
+    margin: 0 auto;
+}
+/*Para telas menores que 768px, exibe 2 itens por linha */ 
+@media (max-width: 768px) {
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 itens por linha */
+    }
+}
+
+/* Para telas menores que 480px, exibe 1 item por linha */
+@media (max-width: 480px) {
+    .video-container {
+        grid-template-columns: 1fr; /* 1 item por linha */
+    }
+}
+
+.video-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 250px; /* Aumenta a altura dos vídeos */
+    border-bottom: 1px solid #ddd;
+}
+
+.video-title {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007ced;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .video-item iframe {
+        height: 200px; /* Reduz a altura para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item iframe {
+        height: 180px; /* Altura menor em telas muito pequenas */
+    }
+}
+h2 {
+    font-size: 3.5em; /* Aumenta o tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #007ced; /* Cor do texto */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra no texto para dar um efeito moderno */
+    letter-spacing: 1px; /* Espaçamento entre as letras para dar um visual mais moderno */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .social-icons a {
+    color: #007ced;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+
+/* Estilo geral do rodapé */
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1px 0 0;
+    font-family: Arial, sans-serif;
+margin: 0; /* Remove espaçamento externo */
+    padding: 0; /* Remove espaçamento interno */
+    line-height: 1; /* Ajusta o espaçamento entre linhas */
+}
+
+/* Estilo para o container principal */
+#footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Estilo para a linha principal */
+#footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Blocos do rodapé */
+#footer .footer-block {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Estilo do bloco 1 (Logo e redes sociais) */
+#footer .logo-block img {
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto 10px;
+}
+
+#footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 0;
+}
+
+#footer .social-icons li a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+
+#footer .social-icons li a:hover {
+    color: #007ced;
+    transform: scale(1.2);
+}
+
+/* Estilo do bloco 2 (Atendimento) */
+#footer .footer-block h6 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #007ced;
+}
+
+#footer .footer-block p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+/* Estilo do bloco 3 (Endereço) */
+#footer .footer-block p {
+    line-height: 1.6;
+}
+
+/* Links de políticas na parte inferior */
+#footer .footer-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+#footer .footer-links a {
+    color: #007ced;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+#footer .footer-links a:hover {
+    color: #00ffe1;
+}
+
+/* Linha divisória */
+#footer hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #footer .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #footer .footer-block {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .video-item {
+        width: 45%; /* Exibe 2 itens por vez */
+        margin-bottom: 15px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .video-item iframe {
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin: 15px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+
+    .view-all a {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item {
+        width: 90%; /* Exibe 1 item por vez */
+        margin-bottom: 20px;
+    }
+
+    .carousel-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+
+    .video-item iframe {
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .view-all a {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+}
+/* Container de busca */
+.search-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.search-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    max-width: 500px; /* Limita a largura em telas grandes */
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top:hover {
+    background-color: #005bb5;
+}
+
+/* Imagens responsivas */
+.responsive-image-Dowloads {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.download-link {
+    color: white;
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-link:hover {
+    color: black; /* Cor ao passar o mouse */
+    text-decoration: underline; /* Adiciona sublinhado no hover */
+}
+
+.download-link i {
+    font-size: 18px;
+}
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+  /*  right: 20px;  Distância da lateral direita */
+left: 20px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}
