@@ -1,0 +1,446 @@
+:root {
+    --primary-color: #007ced;
+    --secondary-color: #ffffff;
+    --text-color: #333;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-color); /* Fundo azul */
+}
+
+/* Título principal (H1) */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin: 20px;
+    font-size: 2em;
+    text-transform: uppercase; /* Maiúsculas */
+    font-style: italic;        /* Itálico */
+    font-weight: bold;         /* Negrito */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Seções */
+section {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 95%;
+}
+
+/* Ajuste para subtítulos (H2) */
+section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Ajuste específico para banners ou H2 maiores */
+h2 {
+    font-size: 3.5em;                /* Aumenta o tamanho do subtítulo */
+    font-weight: bold;               /* Negrito */
+    color: var(--primary-color);     /* Cor do texto */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Container principal do grid */
+.video-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 colunas em telas grandes */
+    grid-auto-rows: 200px;                /* Altura fixa de cada bloco em telas grandes */
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Responsividade do grid */
+@media (max-width: 768px) {
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
+        grid-auto-rows: 180px;                /* Altura reduzida */
+    }
+}
+@media (max-width: 480px) {
+    .video-container {
+        grid-template-columns: 1fr;    /* 1 coluna em telas pequenas */
+        grid-auto-rows: 160px;        /* Altura ainda menor */
+    }
+}
+
+/* Itens do grid (Dowloads-item ou Video-item) */
+.video-item, .Dowloads-item {
+    display: flex;
+    flex-direction: column;    /* Empilha conteúdo verticalmente */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.video-item:hover, .Dowloads-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste das imagens dentro do item */
+.video-item img,
+.Dowloads-item img {
+    max-width: 80%;
+  
+    
+    object-fit: contain; /* Não deforma a imagem */
+}
+
+/* Título do bloco (faixa azul) */
+.video-title {
+    width: 100%;
+    margin-top: auto;       /* Empurra o título para a parte de baixo */
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 5px 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+/* Campo de pesquisa */
+.search-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+}
+.search-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    max-width: 500px;
+}
+
+/* Botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.btn-voltar:hover {
+    opacity: 0.8;
+}
+
+/* Efeito zoom nas imagens ao passar o mouse */
+.responsive-image-Dowloads {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+.responsive-image-Dowloads:hover {
+    transform: scale(1.1);
+}
+
+/* Modal para visualização de imagem */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    overflow: auto; /* Caso a imagem seja muito grande em dispositivos menores */
+}
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    margin: 60px auto 0; /* Pequeno espaçamento do topo */
+    display: block;
+    border-radius: 10px;
+}
+.close {
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    cursor: pointer;
+}
+
+/* Rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Ícones Sociais no Footer */
+footer .social-icons a {
+    color: var(--primary-color);
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+/* Configurações adicionais do rodapé */
+#footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1px 0 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1;
+}
+#footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+#footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+#footer .footer-block {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+#footer .logo-block img {
+    max-width: 100px;
+    height: auto;
+    margin: 0 auto 10px;
+}
+#footer .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 0;
+}
+#footer .social-icons li a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s, transform 0.3s;
+}
+#footer .social-icons li a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+#footer .footer-block h6 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+#footer .footer-block p {
+    font-size: 0.9em;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+#footer .footer-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+#footer .footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+#footer .footer-links a:hover {
+    color: #00ffe1;
+}
+#footer hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 10px auto;
+}
+
+/* Botão de scroll-to-top (caso desejado) */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.scroll-to-top:hover {
+    background-color: #005bb5;
+}
+
+/* Ajustes adicionais em telas médias */
+@media (max-width: 768px) {
+    .video-item iframe {
+        height: 200px;
+    }
+    h1 {
+        font-size: 1.8em;
+        margin: 15px;
+    }
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+}
+
+/* Ajustes adicionais em telas pequenas */
+@media (max-width: 480px) {
+    .video-item iframe {
+        height: 180px;
+    }
+    h1 {
+        font-size: 1.6em;
+        margin: 10px;
+    }
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+}
+
+.banner-container img {
+  width: 50%;    /* Ocupa 50% da largura do contêiner */
+  max-width: 600px;  /* Limite máximo de 600px */
+}
+
+.banner-container img {
+  width: 300px;  /* Define a largura fixa de 300px */
+
+}
+
+#image {
+  width: 50%;
+  max-width: 600px;
+ margin-left: 28%;
+}
+
+
+/* Ajuste o contêiner para ter altura controlada pelo grid ou por uma altura fixa. */
+.Dowloads-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Se o grid estiver controlando a altura (grid-auto-rows),
+       não defina height fixa aqui, apenas deixe ele preencher o bloco. */
+}
+
+/* Força a imagem a preencher o bloco completamente */
+.Dowloads-item img {
+    width: 100%;
+    height: 65%;
+  /*  object-fit: cover;  Faz a imagem cobrir todo o bloco, cortando partes se necessário */
+ /*   object-position: center;  Centraliza o corte */
+    display: block; /* Remove comportamento inline */
+}
+
+/* Mantém o título sobre a imagem, posicionado na parte inferior, caso queira */
+.video-title {
+    position: absolute;
+    bottom: 0;  
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgba(0, 124, 237, 0.7); /* Azul com transparência */
+    text-transform: uppercase; 
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+
+/***********************************/
+/* Ajuste o contêiner para ter altura controlada pelo grid ou por uma altura fixa. */
+.smart-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Se o grid estiver controlando a altura (grid-auto-rows),
+       não defina height fixa aqui, apenas deixe ele preencher o bloco. */
+}
+
+/* Força a imagem a preencher o bloco completamente */
+.smart-item img {
+    width: 100%;
+    height: 80%;
+  /*  object-fit: cover;  Faz a imagem cobrir todo o bloco, cortando partes se necessário */
+ /*   object-position: center;  Centraliza o corte */
+    display: block; /* Remove comportamento inline */
+}
+
+
+
+/* Itens do grid (Dowloads-item ou Video-item) */
+.smart-item {
+    display: flex;
+    flex-direction: column;    /* Empilha conteúdo verticalmente */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.smart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste das imagens dentro do item */
+
+.smart-item img {
+    object-fit: contain; /* Não deforma a imagem */
+}
