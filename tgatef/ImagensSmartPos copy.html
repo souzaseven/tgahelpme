@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Imagens Smart POS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens Smart POS</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCYBG5BNL4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-YCYBG5BNL4');
+    </script>
+
+    <!-- Souza system -->
+    <script async 
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="./ImagensSmartPos.css">
+</head>
+
+<body>
+    <h1>Imagens Smart POS</h1>
+    
+    <!-- Botão Voltar -->
+    <a href="https://tgameajuda.com/" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <!-- Campo de Pesquisa -->
+    <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="Pesquisar adquirentes...">
+    </div>
+
+    <!-- Seção de Adquirentes Homologadas -->
+    <section class="banner">
+      <h2>Adquirentes Homologadas</h2>
+      <!-- Container específico para essa imagem -->
+      <div class="banner-container">
+        <img
+          src="./ImagensSMARTPOS/adquirentes_homologadas fundo branco.png"
+          alt="Adquirentes Homologadas"
+          class="responsive-image-Dowloads" 
+          loading="lazy"
+          id="image"
+        >
+      </div>
+    </section>
+
+    <!-- Modal para exibir a imagem em destaque -->
+    <div id="modal" class="modal">
+        <span class="close" id="close">&times;</span>
+        <img class="modal-content" id="expandedImage" alt="Imagem em destaque">
+    </div>
+
+    <br>
+
+    <!-- Seção de Smart POS -->
+    <section>
+        <h2>Smart POS</h2>
+        <div class="video-container">
+            
+            <div class="smart-item"><a href="./ImagensSMARTPOS/sicredi.html">
+                <img 
+                    src="./ImagensSMARTPOS/sicredi png.png" 
+                    alt="Sicredi POS" 
+                    class="" 
+                    loading="lazy">
+                <div class="video-title">SICREDI</div>
+            </div></a>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/stone png624.png" 
+                    alt="Stone POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">STONE</div>
+            </div>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/cielo png.png" 
+                    alt="Cielo POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">CIELO</div>
+            </div>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/sipag png.png" 
+                    alt="Sipag POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">SIPAG</div>
+            </div>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/pagseguro png.png" 
+                    alt="Pagseguro POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">PAGSEGURO</div>
+            </div>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/getnet png.png" 
+                    alt="GetNet POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">GETNET</div>
+            </div>
+
+            <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/safra png.png" 
+                    alt="Safra POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">SAFRA</div>
+            </div>
+
+     <div class="smart-item">
+                <img 
+                    src="./ImagensSMARTPOS/rede png.png" 
+                    alt="Safra POS" 
+                    class="responsive-image-Dowloads" 
+                    loading="lazy">
+                <div class="video-title">REDE</div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Script JS externo (caso necessário) -->
+    <script src="./ImagensSmartPos.js"></script>
+
+    <!-- Script para abrir/fechar o modal da imagem -->
+    <script>
+        const image = document.getElementById('image');
+        const modal = document.getElementById('modal');
+        const expandedImage = document.getElementById('expandedImage');
+        const closeModal = document.getElementById('close');
+
+        // Ao clicar na imagem do banner, exibe-a em destaque (modal)
+        image.addEventListener('click', () => {
+            modal.style.display = 'block';
+            expandedImage.src = image.src; 
+        });
+
+        // Ao clicar no "X", fecha o modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
