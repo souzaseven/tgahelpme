@@ -93,6 +93,7 @@
             letter-spacing: 1px;
         }
 
+
         .faq-item {
             border-bottom: 1px solid #ddd;
             overflow: hidden;
@@ -254,7 +255,8 @@ left: 1px; /* Distância da lateral esquerda */
 }
 
 #scroll-down-btn {
-    bottom: 20px;
+   /* bottom: 20px;*/
+top:20%; /* Define o botão na metade da página */
     display: block; /* Exibido por padrão ao carregar */
 }
 
@@ -310,15 +312,42 @@ button a {
 
 
     <div class="faq-container">
-        <div class="faq-header">Perguntas Frequentes </div>
-<div class="search-container" style="padding: 10px; text-align: center;">
+        <div class="faq-header">Perguntas Frequentes  
+  </div>
+<div class="search-container">
+    <img src="http://127.0.0.1:3000/Git%20Hub/Projetos/Trabalho/Tutoriais/tgamanuais/perguntas-logo.png" 
+        alt="Perguntas Logo" class="search-logo">
     <input 
         type="text" 
         id="searchInput" 
         placeholder="Pesquisar perguntas..." 
- value="contatos da TGA" 
-        style="width: 90%; padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px;">
+        value="contatos da TGA">
 </div>
+
+<style>
+    .search-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* Espaço entre a imagem e o campo de input */
+        padding: 10px;
+        text-align: center;
+    }
+
+    .search-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    #searchInput {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+
 
   <div class="faq-item">
             <div class="faq-question">
@@ -1095,6 +1124,185 @@ Temos também a telefonia pela central da Evolux, chat do movidesk e seu email p
             <div class="faq-answer">
               <p> 
 <a href="https://tgameajuda.com/tgadownloads/arquivos/Busca%20Rapida.exe" target="_blank">Baixar</a>
+</p>
+            </div>
+        </div>
+<!-----Mural de Avisos----->
+<div class="faq-item">
+            <div class="faq-question">
+                Informação sobre a importância de realizar backup diariamente 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Lembrando do nosso compromisso de prezar pela segurança dos dados e buscando sempre um melhor relacionamento com nossos clientes, gostaríamos de lembrá-los da importância de fazer o Backup diariamente em um Armazenamento Externo (Pendrive, HD Externo, ou qualquer outro dispositivo ou armazenamento que esteja fora do seu servidor).
+<br>
+ <br>
+Não há qualquer garantia de cópia de segurança das informações operadas pelo SOFTWARE a serviço da LICENCIADA, cabendo, única e exclusivamente, à própria empresa a responsabilidade de backup e outras cópias de segurança. Por isso é de extrema importância que, caso não esteja realizando backup, entre em contato conosco através do nosso atendimento online, para que seja devidamente configurado, e, em caso de perca de dados (seja por fraude ou queda de energia), consigamos realizar a restauração de forma a sofrer o menor prejuízo possível.
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Como consultar Disponibilidade/Indisponibilidade dos Webservices da Sefaz para NF-e e NFC-e 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Como verificar Disponibilidade/Indisponibilidade dos Webservices da Sefaz para NFC-e e NF-e?
+<br>
+Os serviços da Sefaz podem apresentar instabilidade e/ou ficarem indisponíveis por um tempo. Para tanto, segue abaixo os links para acesso aos painéis fornecidos pela Sefaz para Monitoramento dos serviços de NF-e e NFC-e.
+<br>
+Abaixo dos links seguem exemplos de como os painéis são apresentados e também as respectivas legendas.
+<br>
+Painel Monitoramento NFC-e <br>
+Link de acesso:<a href="http://www.nfce.se.gov.br/portal/painelMonitor.jsp" target="_blank"> Painel de Monitoramento de Autorizadores de NFC-e (nfce.se.gov.br)</a>
+<br>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/painelsefaz.png?raw=true" alt="" style="width: 80%; height: auto;">
+<br>
+Abaixo do quadro são apresentadas as legendas para interpretação:
+<br>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/legendas%20sefaz.png?raw=true" alt="" style="width: 80%; height: auto;">
+<br>
+Painel Monitoramento NF-e
+Link de acesso:<a href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?AspxAutoDetectCookieSupport=1" target="_blank"> Portal da Nota Fiscal Eletrônica (fazenda.gov.br)</a>
+<br>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/painel2sefaz.png?raw=true" alt="" style="width: 80%; height: auto;">
+<br>
+Abaixo do quadro são apresentadas as legendas para interpretação: <br>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/legandasefaz1.png?raw=true" alt="" style="width: 80%; height: auto;">
+<br>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/Atencao.jpg?raw=true" alt="" style="width: 80%; height: auto;">
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Rejeição 891: GTIN incompatível com a NCM 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Para resolver a Rejeição 891: GTIN incompatível com a NCM [nItem:999; NCM esperada: 99999999], deve-se verificar se o GTIN (código de barras) informado para o produto está devidamente cadastrado e vinculado a um NCM ativo.
+<br>
+Observação 1 : Todo GTIN(cEAN) é vinculado a um NCM deve-se verificar se o GTIN informado está devidamente vinculado a um NCM válido no portal nacional. 
+<br>
+Observação 2:  A regra estará disponível em ambiente de teste a partir de 06/03/2023 e em ambiente de produção a partir de 12/06/2023.
+<br>
+<a href="http://www.nfe.fazenda.gov.br/PORTal/exibirArquivo.aspx?conteudo=mpnXoESqzwE=" target="_blank"> NT2021.003_v1_10 - Validação GTIN</a>
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Informações sobre NFSe Padrão Nacional para MEI 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Sobre a mudança na emissão de NFSe para Microempreendedor Individual (MEI), seguem algumas informações.
+Conforme já sabem, o governo federal disponibilizou a NFSe Padrão Nacional, que começou a ser obrigatória para os MEI's através da plataforma Gov.br, e as prefeituras estão todas orientadas a remover de seus sistemas a emissão de NFSe por prestadores MEI desde 01/setembro, portanto até o momento todo MEI deverá obrigatoriamente usar o gov.br pra emitir notas, via web ou aplicativo. Lembrando que para empresas continua a emissão normal já existente via web ou integração, pelo menos por enquanto.
+<br>
+A partir disso, as prefeituras decidirão se irão disponibilizar integração webservice para MEI, e também como será essa integração, ou seja, tudo vai depender de como cada prefeitura vai proceder. A expectativa é que em algum momento as prefeituras comecem disponibilizar integração para MEI, mas isso é apenas previsão e não há nada definido, não se sabe se continuará da mesma maneira que já funciona para empresas ou se haverá um novo leiaute, teremos que acompanhar como as prefeituras irão proceder futuramente sobre isso.
+Entrei em contato com a prefeitura de Tangará, e me informaram que ainda estão com alta demanda no próprio gov.br, com dificuldades no acesso, erros de validação, instabilidade etc, e ainda nem se fala muito em integração.
+<br>
+Precisamos ir acompanhando as divulgações, tanto do gov.br quanto das prefeituras onde há clientes que atendemos, para isso contamos com a colaboração de todos analistas, repassando informações relevantes, e além disso é muito importante que todos se informem dessa mudança, acompanhem as orientações no gov.br e prefeituras. Seguem alguns links com informações importantes:
+<br>
+<a href="https://www.gov.br/nfse/pt-br" target="_blank"> https://www.gov.br/nfse/pt-br</a> <br>
+<a href="https://www.gov.br/nfse/pt-br/copy_of_perguntas-frequentes/copy_of_faq-nfs-e" target="_blank">https://www.gov.br/nfse/pt-br/copy_of_perguntas-frequentes/copy_of_faq-nfs-e </a><br>
+<a href="https://www.gov.br/nfse/pt-br/ebook-cadastramento-e-emissao-nfs-e-ago-2023.pdf" target="_blank">https://www.gov.br/nfse/pt-br/ebook-cadastramento-e-emissao-nfs-e-ago-2023.pdf </a><br>
+<a href="https://www.youtube.com/watch?v=IQeLt7x6PQc" target="_blank">https://www.youtube.com/watch?v=IQeLt7x6PQc </a><br>
+<a href="https://www.youtube.com/watch?v=m_Clcl6ncZg" target="_blank">https://www.youtube.com/watch?v=m_Clcl6ncZg </a><br>
+</p> 
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Desativação do CT-e versão 3.0 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+A versão 3.00 do CT-e será extinta e perderá vigência na data de 31 de Janeiro de 2024
+<br>
+A Coordenação Técnica do ENCAT alerta todos Transportadores e Embarcadores que a versão 3.00 do CT-e será extinta e perderá vigência na data de 31 de Janeiro de 2024, em caráter IRREVOGÁVEL, devendo os sistemas de emissão de CT-e e os sistemas dos embarcadores estarem migrados para a versão 4.00, preferencialmente até dia 15 de dezembro de 2023, visando evitar dificuldades de última hora.
+A versão 4.00 traz inúmeros benefícios operacionais para o sistema de emissão de CT-e, com novas funcionalidades e simplificação para os transportadores. Para os sistemas de embarcadores, a integração com a versão 4.00 não traz nenhuma dificuldade, considerando o layout do documento fiscal e seus campos.
+<br>
+Link: <a href="https://www.cte.fazenda.gov.br/portal/informe.aspx?informe=112" target="_blank"> Portal do Conhecimento de Transporte Eletrônico (fazenda.gov.br)</a>
+<br>
+Atenção para o recado acima, pois essa mudança vai impactar todos clientes emissores de CT-e. A versão 4.0 do CT-e já está disponível no sistema desde a versão 23.09.01 (Cadastro Filial > Aba DF-e > Aba CT-e / MDF-e > Versão CT-e), no entanto é recomendado atualizar para a 23.11pois nela foram aplicadas melhorias nos tratamentos. No mantis 16957 estão alguns detalhes das principais mudanças, como o fim do CT-e Anulação, fim do evento de Inutilização, mudança no CT-e Complemento. Também estão previstas melhorias nos tratamentos na versão 24.01 que deve ser divulgada nos próximos dias.
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Portaria 262/2023 (Vinculação de meios de pagamento eletrônicos em NF-e/NFC-e) Sefaz/Mato Grosso 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Aviso importante referente à empresas de MT.
+<br>
+(PORTARIA N° 262/2023) SEFAZ Art. 1° Na operação de venda ou revenda de mercadorias ou bens cujo pagamento seja efetuado por meio de cartão de crédito, débito, PIX ou outro instrumento de pagamento eletrônico, a emissão do respectivo comprovante deverá estar vinculada à NFC-e e à NF-e correspondente, mediante interligação tecnológica com o programa emissor do documento fiscal.
+<br>
+Início da obrigatoriedade: 01/04/2024
+<br>
+Segue orientações e próximas ações de acordo com reunião na data 12/03/2024 junto a Sefaz e Afrac:
+<br>
+     1 - Clientes com CNAEs primários ou secundários que constam na Portaria deverão utilizar TEF nas transações com cartão de débito/crédito, e integração via API para transações via PIX;
+<br>
+     2 - Todas as vendas à vista ou à prazo que tenham valor de entrada, em que o meio de pagamento tenha sido eletrônico (Cartão ou PIX), deverão estar vinculados ao documento fiscal.
+<br>
+<br>
+Contratação do TEF - Empresa deverá fazer a contratação junto a empresa fornecedora da ferramenta. A TGA Sistemas está homologada para integração com: SITEF, PAY&GO, LINX, CAPPTA e GET CARD. Portanto, a empresa deverá contactar algumas dessas empresas para realizar aquisição da ferramenta e, posteriormente, entrar em contato com o suporte da TGA Sistemas para solicitar a configuração dentro do sistema (lembrando que a empresa do TEF contratado deverá deixar os pin-pads configurados no(s) computador(es)).
+Integração com API do PIX - A Empresa deverá entrar em contato com a TGA Sistemas para que possamos orientar nos processos.
+<br>
+<br>
+Observações importantes:
+<br>
+      Em breve (06/2024) sairá uma nota técnica disponibilizada pela Sefaz, com novos CNAEs para adequação. Fique atento para contratação do TEF e API do PIX;
+<br>
+      Mesmo nas vendas a prazo, logo haverá necessidade de conciliação às NF-e emitidas. Sefaz ainda não forneceu as informações, nem forneceu Nota Técnica para qualquer adequação.
+<br>
+<br>
+As novas regras não se aplicam nos seguintes casos: <br>
+      NFC-e emitida na forma do Regime Especial da Nota Fiscal Fácil – NFF; <br>
+     Operações de venda não presencial, intermediadas em site ou plataforma de terceiros; <br>
+      Venda com entrega e pagamento em domicílio, desde que o equipamento destinado ao registro do pagamento da operação contenha o nome empresarial e o endereço do estabelecimento, a serem impressos no comprovante da operação;
+ <br>
+      Venda realizada por MEI optante pelo tratamento diferenciado e favorecido de que trata a Lei Complementar (federal) n° 123, de 14/12/06.
+<br>
+Mantis referente ao formato de emissão de nf-e para o evento: <a href="https://mantis.tgasistemas.com.br/view.php?id=0017557" target="_blank"> 0017557</a>
+<br>
+Mantis referente a inclusão das tags para adequação à portaria: <a href="https://mantis.tgasistemas.com.br/view.php?id=0017293" target="_blank"> 0017293</a>
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Orientação para emissão de NFC-e e NF-e com Indicador de Presença 
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+Ao emitir uma Nota Fiscal (NF-e ou NFC-e), é de extrema importância a análise dos códigos válidos para cada modelo de documento segundo a Nota Técnica da Sefaz Versão 7.00 – Novembro de 2020 (https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=LrBx7WT9PuA=).
+<br>
+Segundo a Nota Técnica, é permitido utilizar os seguintes indicadores de acordo com cada modelo de documento:
+<br><br>
+NFC-e: 
+<br>
+1: Operação presencial. <br>
+4: NFC-e em operação com entrega a domicílio.<br>
+ <img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/img/indicapresenca.png?raw=true" alt="" style="width: 80%; height: auto;">
+<br>
+<ul> <p>Para NF-e:</p>
+    <li>0: Não se aplica (por exemplo: Nota Fiscal complementar ou de ajuste).</li>
+    <li>1: Operação presencial.</li>
+    <li>2: Operação não presencial, pela Internet.</li>
+    <li>3: Operação não presencial, Teleatendimento.</li>
+    <li>5: Operação presencial, fora do estabelecimento.</li>
+    <li>9: Operação não presencial, outros.</li>
+</ul>
 </p>
             </div>
         </div>
@@ -2460,9 +2668,9 @@ gerenciamento 54321.
 da adquirente da máquina. Informe o AUTE (ou código de
 autenticação).
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/estorno%20de%20cart%C3%A3o%20-%20pos%20controle.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/estorno%20de%20cart%C3%A3o%20-%20pos%20controle.png?raw=true" alt="" style="width: 80%; height: auto;">>
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/estornar%20cart%C3%A3o.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/estornar%20cart%C3%A3o.png?raw=true" alt="" style="width: 80%; height: auto;">>
 </p>
             </div>
         </div>
@@ -2485,14 +2693,14 @@ tipo de reimpressão
 executar: fechamento de
 caixa ou vendas 
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/reimpress%C3%A3o%20-%20pos%20controle.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/reimpress%C3%A3o%20-%20pos%20controle.png?raw=true" alt="" style="width: 80%; height: auto;">>
 <br><br>
 Reimprimir comprovante de cartão <br><br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/reimprimr%20comprovante%20de%20cart%C3%A3o.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/reimprimr%20comprovante%20de%20cart%C3%A3o.png?raw=true" alt="" style="width: 80%; height: auto;">>
 <br><br>
 Reimpressão de fechamento de caixa 
 <br><br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/reimpress%C3%A3o%20de%20fechamento%20de%20caixa.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/reimpress%C3%A3o%20de%20fechamento%20de%20caixa.png?raw=true" alt="" style="width: 80%; height: auto;">>
 </p>
             </div>
         </div>
@@ -2523,7 +2731,7 @@ ao seu cliente. <br>Ele então deve
 digitar a quantia do
 suprimento.
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/suprimento%20-%20pos%20controle.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/suprimento%20-%20pos%20controle.png?raw=true" alt="" style="width: 80%; height: auto;">>
 </p>
             </div>
         </div>
@@ -2552,7 +2760,7 @@ gerenciamento padrão 54321
 ao seu cliente. Ele então deve
 digitar a quantia da sangria.
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/sangria%20-%20pos%20controle.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/sangria%20-%20pos%20controle.png?raw=true" alt="" style="width: 80%; height: auto;">>
 </p>
             </div>
         </div>
@@ -2580,9 +2788,9 @@ contrário, serão atualizados
 somente os valores dos
 produtos
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/atualizar%20produto%20-%20pos%20controle.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/tgatef/atualizar%20produto%20-%20pos%20controle.png?raw=true" alt="" style="width: 80%; height: auto;">>
 <br>
-<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/atualizar%20produtos.png?raw=true" alt="">
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/pos%20controle/atualizar%20produtos.png?raw=true" alt="" style="width: 80%; height: auto;">>
 </p>
             </div>
         </div>

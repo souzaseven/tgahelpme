@@ -120,6 +120,99 @@
         title="Enviar Sugestão">
         <img class="robot-icon" src="./tgasugestoes/gifrobo.gif" alt="Robô">
     </div>
+<div class="floating-container">
+    <div class="floating-btn1" onclick="redirectToFAQ()" onmouseover="showTooltip()" onmouseout="hideTooltip()">
+        <img src="http://127.0.0.1:3000/Git%20Hub/Projetos/Trabalho/Tutoriais/tgamanuais/perguntas-logo.png" alt="" width="50" height="50">
+    </div>
+    <div id="floating-tooltip">Ver perguntas frequentes</div>
+</div>
+
+<style>
+    /* Container para garantir a posição fixa */
+    .floating-container {
+        position: fixed;
+        bottom: 180px;
+        right: 20px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse; /* Alinha o tooltip à esquerda */
+    }
+
+    /* Estilo para o botão flutuante */
+    .floating-btn1 {
+        background-color: transparent;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        animation: pulse 1.5s infinite alternate; /* Adiciona animação de piscar */
+    }
+
+    /* Animação de piscar */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+        100% {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+        }
+    }
+
+    /* Estilo do tooltip (mensagem) */
+    #floating-tooltip {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        position: absolute;
+        right: 80px; /* Move a mensagem para a esquerda do botão */
+    }
+</style>
+
+<script>
+    // Exibir o tooltip ao carregar a página e ocultar após alguns segundos
+    document.addEventListener("DOMContentLoaded", function () {
+        showTooltip();
+        setTimeout(hideTooltip, 3000); // Esconde após 3 segundos
+    });
+
+    // Exibe o tooltip
+    function showTooltip() {
+        const tooltip = document.getElementById("floating-tooltip");
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+    }
+
+    // Esconde o tooltip
+    function hideTooltip() {
+        const tooltip = document.getElementById("floating-tooltip");
+        tooltip.style.opacity = "0";
+        setTimeout(() => tooltip.style.visibility = "hidden", 500);
+    }
+
+    // Redireciona para a página de perguntas frequentes ao clicar no botão
+    function redirectToFAQ() {
+        window.location.href = "https://tgameajuda.com/tgamanuais/perguntas-frequentes.html";
+    }
+</script>
+
+
+
 
     <style>
         /* Estilo para o botão flutuante */
@@ -534,7 +627,7 @@
                 <div class="Dowloads-item"> <a
                         href="https://tgameajuda.com/NovidadesVersao/novidadeversao.html"
                         target="_blank" class="download-link">
-                        <img src="./NovidadesVersao/25-01.png" alt=" vERSÃO ATUAL" class="responsive-image">
+                        <img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/NovidadesVersao/img/25.02.png?raw=true" alt=" vERSÃO ATUAL" class="responsive-image">
                         <div class="video-title">Versão Atual<br>
                             <a href="https://tgameajuda.com/NovidadesVersao/novidadeversao.html"
                                 target="_blank" class="download-link">
@@ -546,12 +639,12 @@
 
                 <!-- Item 1 -->
                 <div class="Dowloads-item"> <a
-                        href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/513739/versao-25-01-01?menuId=35619-97968-513739&ticketId=&q="
+                        href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/518858/versao-25-02-01?menuId=35619-97968-518858&ticketId=&q="
                         target="_blank" class="download-link">
                         <img src="./img/novidadeversao1_LE_upscale_balanced_x4.jpg" alt="vERSÃO "
                             class="responsive-image" class="responsive-image">
                         <div class="video-title">Novidades da Versão<br>
-                            <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/513739/versao-25-01-01?menuId=35619-97968-513739&ticketId=&q="
+                            <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/518858/versao-25-02-01?menuId=35619-97968-518858&ticketId=&q="
                                 target="_blank" class="download-link">
 
                             </a>
@@ -895,12 +988,12 @@
             <div class="carousel-track">
 
                 <div class="Dowloads-item"> <a
-                        href="./tgamobile/Mobile/Mobile ON - FV/24.12.01/TGAON_v2.4.0-29-g4f82769.apk" target="_blank"
+                        href="./tgamobile/Mobile/Mobile ON - FV/25.02.01/TGAON-25-02_v2.4.1.apk" target="_blank"
                         class="download-link">
 
                         <img src="./tgamobile/TGA-MOBILE512.png" alt="Realizando venda" class="responsive-image">
                         <div class="video-title">Mobile ON<br></div>
-                        <a href="./tgamobile/Mobile/Mobile ON - FV/24.12.01/TGAON_v2.4.0-29-g4f82769.apk"
+                        <a href="./tgamobile/Mobile/Mobile ON - FV/25.02.01/TGAON-25-02_v2.4.1.apk"
                             target="_blank" class="download-link">
 
                             Baixar App <i class="fa fa-download"></i></a>
@@ -2497,9 +2590,9 @@ _blank" class="download-link">
                         </a>
 
                         <!-- Direita: Versão -->
-                        <a href="./versao/v25.01.28.txt" style="text-decoration: none;">
+                        <a href="./versao/v25.02.30.txt" style="text-decoration: none;">
                             <p style=" text-align: right;">
-                                <span id="page-version"> v25.01.30</span>
+                                <span id="page-version"> v25.02.30</span>
                             </p>
                         </a>
 <script>
