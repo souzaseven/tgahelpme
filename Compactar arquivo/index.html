@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compactar Arquivo em ZIP</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Compactar <br>Arquivo em ZIP</h1>
+        <div id="drop-zone" class="drop-zone">
+            <p>Arraste e solte arquivos ou pastas aqui ou clique para selecionar</p>
+            <input type="file" id="file-upload" style="display:none;" multiple webkitdirectory directory>
+        </div>
+        <progress id="progress-bar" max="100" value="0" style="width: 100%; display: none;"></progress>
+        <p id="file-progress"></p>
+        <p id="file-size"></p>
+        <a id="download-link" style="display:none;">Baixar Arquivo Compactado</a>
+        <p id="status"></p>
+    </div>
+
+    <!-- Biblioteca JSZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <!-- Script principal -->
+    <script src="./script.js"></script>
+</body>
+</html>
