@@ -151,7 +151,7 @@
             <button id="copyLink" class="copy-btn" style="display:none;">Copiar Link</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js"></script><!--
     <script>
     const generateLinkButton = document.getElementById('generateLink');
     const customCodeInput = document.getElementById('customCode');
@@ -180,6 +180,37 @@
             alert('Falha ao copiar o link: ' + err);
         });
     });
-    </script>
+    </script>-->
+
+<script>
+    const generateLinkButton = document.getElementById('generateLink');
+    const customCodeInput = document.getElementById('customCode');
+    const linkContainer = document.getElementById('linkContainer');
+    const copyLinkButton = document.getElementById('copyLink');
+
+    generateLinkButton.addEventListener('click', function () {
+        const customCode = customCodeInput.value.trim();
+
+        if (customCode) {
+            const url = `https://whatsapi-${customCode}.wonderfuldune-559d2a60.eastus.azurecontainerapps.io/api/v1/auth/?cid=true`;
+            linkContainer.innerHTML = `<a href="${url}" target="_blank">Ir para o link gerado</a>`;
+            copyLinkButton.style.display = 'inline-block';  // Exibe o botão de copiar
+            copyLinkButton.dataset.url = url;  // Salva a URL para ser copiada
+        } else {
+            linkContainer.innerHTML = `<p style="color: red;">Por favor, insira um código válido!</p>`;
+            copyLinkButton.style.display = 'none';  // Esconde o botão de copiar se não houver URL
+        }
+    });
+
+    copyLinkButton.addEventListener('click', function () {
+        const url = copyLinkButton.dataset.url;  // Recupera a URL armazenada no botão
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copiado com sucesso!');
+        }).catch((err) => {
+            alert('Falha ao copiar o link: ' + err);
+        });
+    });
+</script>
+
 </body>
 </html>
