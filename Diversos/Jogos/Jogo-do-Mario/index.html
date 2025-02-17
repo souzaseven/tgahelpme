@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario</title>
+    <link rel="shortcut icon" href="assets/imgs/Mario-ico.ico" type="image/x-icon">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .game-board {
+            width: 100%;
+            height: 100%;
+            border-bottom: 50px solid green;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(#63c4eb, #E0F6FF);
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .pipe {
+            position: absolute;
+            bottom: 0;
+            width: 10%;
+            max-width: 60px;
+            animation: pipe-animations 1.5s infinite linear;
+        }
+
+        .mario {
+            width: 15%;
+            max-width: 130px;
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .jump {
+            animation: mario-animation 500ms ease-out;
+        }
+
+        .cloud {
+            width: 50%;
+            max-width: 500px;
+            position: absolute;
+            animation: cloud 20s infinite linear;
+        }
+
+        .game-over {
+            visibility: hidden;
+            display: flex;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(65, 57, 57, 0.363);
+        }
+
+        .restart {
+            height: 60px;
+            width: 350px;
+            border-radius: 10px;
+            border: none;
+            font-size: 20px;
+            background-color: blue;
+            cursor: pointer;
+        }
+
+        .scoreboard {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: white;
+            z-index: 2;
+        }
+
+        @keyframes pipe-animations {
+            from {
+                right: -10%;
+            }
+            to {
+                right: 100%;
+            }
+        }
+
+        @keyframes mario-animation {
+            0% {
+                bottom: 0;
+            }
+            40% {
+                bottom: 120px;
+            }
+            50% {
+                bottom: 120px;
+            }
+            60% {
+                bottom: 120px;
+            }
+            100% {
+                bottom: 0px;
+            }
+        }
+
+        @keyframes cloud {
+            from {
+                right: -50%;
+            }
+            to {
+                right: 100%;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .mario {
+                width: 25%;
+                bottom: 0px;
+            }
+
+            .pipe {
+                width: 15%;
+                animation: pipe-animations 1s infinite linear;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="game-board">
+        <img src="assets/imgs/clouds.png" class="cloud">
+        <img src="assets/imgs/mario.gif" class="mario">
+        <img src="assets/imgs/pipe.png" class="pipe">
+    </div>
+
+    <div class="scoreboard">
+        <div>Tempo: <span id="time">0</span>s</div>
+        <div>Pontos: <span id="score">0</span></div>
+    </div>
+
+    <div class="game-over">
+        <button class="restart">REINICIAR</button>
+    </div>
+
+    <script>
+        const mario = document.querySelector('.mario');
+        const pipe = document.querySelector('.pipe');
+        const cloud = document.querySelector('.cloud');
+
+        const gameOver = document.querySelector('.game-over');
+        const restartButton = document.querySelector('.restart');
+        const timeDisplay = document.getElementById('time');
+        const scoreDisplay = document.getElementById('score');
+
+        let time = 0;
+        let score = 0;
+        let timerInterval;
+        let pipeSpeed = 1.5;  // Velocidade inicial da animação do pipe
+        let hasScored = false;
+
+        const startTimer = () => {
+            time = 0;
+            timerInterval = setInterval(() => {
+                time++;
+                timeDisplay.innerText = time;
+
+                if (time % 10 === 0) {
+                    increaseSpeed();
+                }
+            }, 1000);
+        };
+
+        const stopTimer = () => {
+            clearInterval(timerInterval);
+        };
+
+        const increaseSpeed = () => {
+            pipeSpeed -= 0.1;  // Diminui o tempo da animação para aumentar a velocidade
+            pipe.style.animation = `pipe-animations ${pipeSpeed}s infinite linear`;
+        };
+
+        const jump = () => {
+            mario.classList.add('jump');
+
+            setTimeout(() => {
+                mario.classList.remove('jump');
+            }, 500);
+        };
+
+        const loop = setInterval(() => {
+            const pipePosition = pipe.offsetLeft;
+            const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+            const cloudPosition = +window.getComputedStyle(cloud).left.replace('px', '');
+
+            // Verifica se o Mario passou sobre o pipe
+            if (pipePosition < 100 && pipePosition > 0 && marioPosition > 60 && !hasScored) {
+                score++;
+                scoreDisplay.innerText = score;
+                hasScored = true;
+            }
+
+            // Resetar a pontuação de pulo quando o pipe passar completamente
+            if (pipePosition < 0) {
+                hasScored = false;
+            }
+
+            if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 60) {
+                pipe.style.animation = 'none';
+                pipe.style.left = `${pipePosition}px`;
+
+                mario.style.animation = 'none';
+                mario.style.bottom = `${marioPosition}px`;
+
+                mario.src = 'assets/imgs/game-over.png';
+                mario.style.width = '10%';
+                mario.style.maxWidth = '70px';
+                mario.style.marginLeft = '35px';
+
+                cloud.style.animation = 'cloud 20s infinite linear';
+                cloud.style.left = `${cloudPosition}px`;
+
+                gameOver.style.visibility = 'visible';
+
+                stopTimer();
+                clearInterval(loop);
+            }
+        }, 10);
+
+        const restart = () => {
+            gameOver.style.visibility = 'hidden';
+            timeDisplay.innerText = '0';
+            scoreDisplay.innerText = '0';
+            time = 0;
+            score = 0;
+            pipeSpeed = 1.5;  // Resetar a velocidade do pipe
+            hasScored = false;
+
+            pipe.style.animation = `pipe-animations ${pipeSpeed}s infinite linear`;
+            pipe.style.left = ``;
+
+            mario.src = 'assets/imgs/mario.gif';
+            mario.style.width = '15%';
+            mario.style.maxWidth = '130px';
+            mario.style.bottom = '0px';
+            mario.style.marginLeft = '';
+            mario.style.animation = '';
+
+            cloud.style.left = ``;
+
+            startTimer();
+
+            const loop = setInterval(() => {
+                const pipePosition = pipe.offsetLeft;
+                const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+                const cloudPosition = +window.getComputedStyle(cloud).left.replace('px', '');
+            
+                // Verifica se o Mario passou sobre o pipe
+                if (pipePosition < 100 && pipePosition > 0 && marioPosition > 60 && !hasScored) {
+                    score++;
+                    scoreDisplay.innerText = score;
+                    hasScored = true;
+                }
+
+                // Resetar a pontuação de pulo quando o pipe passar completamente
+                if (pipePosition < 0) {
+                    hasScored = false;
+                }
+
+                if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 60) {
+                    pipe.style.animation = 'none';
+                    pipe.style.left = `${pipePosition}px`;
+            
+                    mario.style.animation = 'none';
+                    mario.style.bottom = `${marioPosition}px`;
+            
+                    mario.src = 'assets/imgs/game-over.png';
+                    mario.style.width = '10%';
+                    mario.style.maxWidth = '70px';
+                    mario.style.marginLeft = '35px';
+            
+                    cloud.style.animation = 'cloud 20s infinite linear';
+                    cloud.style.left = `${cloudPosition}px`;
+            
+                    gameOver.style.visibility = 'visible';
+            
+                    stopTimer();
+                    clearInterval(loop);
+                }
+            }, 10);
+        };
+
+        document.addEventListener('keydown', jump);
+        document.addEventListener('touchstart', jump);
+        document.addEventListener('click', jump);
+
+        restartButton.addEventListener('click', restart);
+
+        startTimer(); // Inicia o contador de tempo assim que o jogo começa
+    </script>
+</body>
+</html>

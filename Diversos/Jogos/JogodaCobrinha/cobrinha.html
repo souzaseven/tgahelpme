@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+    
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppings", sans-serif;
+}
+
+body {
+    background-color: #191919;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    padding-top: 40px; /* Subir o conteúdo mais para cima */
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    background-color: #111;
+    margin-top: 20px; /* Subir o canvas mais para cima */
+}
+
+.score {
+    font-size: 1.8rem;
+}
+
+.score--value {
+    font-weight: 700;
+    font-size: 4.5rem;
+    display: block;
+    margin-top: -10px;
+}
+
+.best-score {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.menu-screen, .start-screen {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.game-over {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.final-score {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.btn-play, .btn-start {
+    border: none;
+    border-radius: 100px;
+    padding: 10px 15px 10px 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+    </style>
+    
+    <title>Snake Game</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Score na lateral -->
+        <div class="score-container">
+            <div class="score">
+                Score: <span class="score--value">00</span>
+                <div class="best-score">Melhor Pontuação: <span id="best-score">00</span></div>
+            </div>
+        </div>
+
+        <!-- Canvas no centro -->
+        <div class="canvas-container">
+            <div class="start-screen">
+                <button class="btn-start">
+                    <span class="material-symbols-outlined">
+                        play_circle
+                    </span>
+                    Iniciar Jogo
+                </button>
+            </div>
+
+            <div class="menu-screen">
+                <span class="game-over">Game Over</span>
+                <span class="final-score">Score: <span>00</span></span>
+
+                <button class="btn-play">
+                    <span class="material-symbols-outlined">
+                        restart_alt
+                    </span>
+                    Jogar novamente
+                </button>
+            </div>
+
+            <canvas width="600" height="600"></canvas>
+        </div>
+    </div>
+    
+    <script>
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+const score = document.querySelector(".score--value");
+const bestScoreDisplay = document.getElementById("best-score");
+const finalScore = document.querySelector(".final-score > span");
+const menu = document.querySelector(".menu-screen");
+const startScreen = document.querySelector(".start-screen");
+const buttonPlay = document.querySelector(".btn-play");
+const buttonStart = document.querySelector(".btn-start");
+
+const audio = new Audio("../Pessoal/Jogos/Jogo da Cobrinha/audio.mp3");
+
+const size = 30;
+const initialPosition = { x: 270, y: 240 };
+
+let snake = [initialPosition];
+let direction, loopId;
+let bestScore = localStorage.getItem("bestScore") || 0;
+
+bestScoreDisplay.innerText = bestScore;
+
+const incrementScore = () => {
+    score.innerText = +score.innerText + 10;
+    if (+score.innerText > bestScore) {
+        bestScore = +score.innerText;
+        localStorage.setItem("bestScore", bestScore);
+        bestScoreDisplay.innerText = bestScore;
+    }
+};
+
+const randomNumber = (min, max) => {
+    return Math.round(Math.random() * (max - min) + min);
+};
+
+const randomPosition = () => {
+    const number = randomNumber(0, canvas.width - size);
+    return Math.round(number / 30) * 30;
+};
+
+const randomColor = () => {
+    const red = randomNumber(0, 255);
+    const green = randomNumber(0, 255);
+    const blue = randomNumber(0, 255);
+
+    return `rgb(${red}, ${green}, ${blue})`;
+};
+
+const food = {
+    x: randomPosition(),
+    y: randomPosition(),
+    color: randomColor()
+};
+
+const drawFood = () => {
+    const { x, y, color } = food;
+
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 6;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, size, size);
+    ctx.shadowBlur = 0;
+};
+
+const drawSnake = () => {
+    ctx.fillStyle = "#ddd";
+
+    snake.forEach((position, index) => {
+        if (index == snake.length - 1) {
+            ctx.fillStyle = "white";
+        }
+
+        ctx.fillRect(position.x, position.y, size, size);
+    });
+};
+
+const moveSnake = () => {
+    if (!direction) return;
+
+    const head = snake[snake.length - 1];
+
+    if (direction == "right") {
+        snake.push({ x: head.x + size, y: head.y });
+    }
+
+    if (direction == "left") {
+        snake.push({ x: head.x - size, y: head.y });
+    }
+
+    if (direction == "down") {
+        snake.push({ x: head.x, y: head.y + size });
+    }
+
+    if (direction == "up") {
+        snake.push({ x: head.x, y: head.y - size });
+    }
+
+    snake.shift();
+};
+
+const drawGrid = () => {
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#191919";
+
+    for (let i = 30; i < canvas.width; i += 30) {
+        ctx.beginPath();
+        ctx.lineTo(i, 0);
+        ctx.lineTo(i, 600);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.lineTo(0, i);
+        ctx.lineTo(600, i);
+        ctx.stroke();
+    }
+};
+
+const checkEat = () => {
+    const head = snake[snake.length - 1];
+
+    if (head.x == food.x && head.y == food.y) {
+        incrementScore();
+        snake.push({ ...head });
+        audio.play();
+
+        let x = randomPosition();
+        let y = randomPosition();
+
+        while (snake.find((position) => position.x == x && position.y == y)) {
+            x = randomPosition();
+            y = randomPosition();
+        }
+
+        food.x = x;
+        food.y = y;
+        food.color = randomColor();
+    }
+};
+
+const checkCollision = () => {
+    const head = snake[snake.length - 1];
+    const canvasLimit = canvas.width - size;
+    const neckIndex = snake.length - 2;
+
+    const wallCollision =
+        head.x < 0 || head.x > canvasLimit || head.y < 0 || head.y > canvasLimit;
+
+    const selfCollision = snake.find((position, index) => {
+        return index < neckIndex && position.x == head.x && position.y == head.y;
+    });
+
+    if (wallCollision || selfCollision) {
+        gameOver();
+    }
+};
+
+const gameOver = () => {
+    direction = undefined;
+
+    menu.style.display = "flex";
+    finalScore.innerText = score.innerText;
+    canvas.style.filter = "blur(2px)";
+};
+
+const gameLoop = () => {
+    clearInterval(loopId);
+
+    ctx.clearRect(0, 0, 600, 600);
+    drawGrid();
+    drawFood();
+    moveSnake();
+    drawSnake();
+    checkEat();
+    checkCollision();
+
+    loopId = setTimeout(() => {
+        gameLoop();
+    }, 300);
+};
+
+const startGame = () => {
+    startScreen.style.display = "none";
+    gameLoop();
+};
+
+const resetGame = () => {
+    score.innerText = "00";
+    menu.style.display = "none";
+    canvas.style.filter = "none";
+
+    snake = [initialPosition];
+    direction = undefined;
+    gameLoop();
+};
+
+document.addEventListener("keydown", ({ key }) => {
+    if (key == "ArrowRight" && direction != "left") {
+        direction = "right";
+    }
+
+    if (key == "ArrowLeft" && direction != "right") {
+        direction = "left";
+    }
+
+    if (key == "ArrowDown" && direction != "up") {
+        direction = "down";
+    }
+
+    if (key == "ArrowUp" && direction != "down") {
+        direction = "up";
+    }
+});
+
+buttonStart.addEventListener("click", startGame);
+buttonPlay.addEventListener("click", resetGame);
+
+// Mostrar a tela inicial quando a página carregar
+startScreen.style.display = "flex";
+    </script>
+</body>
+</html>
