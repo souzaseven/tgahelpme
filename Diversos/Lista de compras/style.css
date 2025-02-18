@@ -1,0 +1,294 @@
+/* Estilos globais */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #007ced;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 img {
+    margin-left: 5px;
+    width: 80px; /* Ajuste o tamanho da imagem */
+}
+
+#item-input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
+
+/* Header e lista de compras */
+.header, .list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.header div, .list-item div {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+}
+
+.header {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #f1f1f1;
+}
+
+.list {
+    margin-top: 0;
+    padding: 0;
+}
+
+.list-item {
+    align-items: center;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.list-item:hover {
+    background: #e0e0e0;
+    transform: scale(1.02);
+}
+
+.list-item.confirmed {
+    font-weight: bold;
+    color: green;
+    text-decoration: line-through;
+}
+
+.confirm-icon, .edit-icon, .remove-icon {
+    cursor: pointer;
+    margin-left: 5px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.confirm-icon:hover, .edit-icon:hover, .remove-icon:hover {
+    transform: scale(1.3);
+}
+
+.confirm-icon::after, .edit-icon::after, .remove-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    display: none;
+    z-index: 10;
+}
+
+.confirm-icon:hover::after, .edit-icon:hover::after, .remove-icon:hover::after {
+    display: block;
+}
+
+.confirm-icon {
+    color: green;
+}
+
+.edit-icon {
+    color: orange;
+}
+
+.remove-icon {
+    color: red;
+}
+
+/* Resumo */
+.summary-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+/* Destaque para o valor total */
+#total-price {
+    background-color: #ffe600;
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#total-price span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+/* Ajustes responsivos para telas de 414x896 */
+@media (max-width: 414px) {
+    h1 {
+        font-size: 24px; /* Diminui o tamanho da fonte para caber na tela */
+    }
+
+    h1 img {
+        width: 50px; /* Diminui o tamanho da imagem */
+    }
+
+    #item-input {
+        font-size: 14px; /* Diminui o tamanho do texto no input */
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 6px 10px; /* Reduz o padding dos botões */
+    }
+
+    .header div, .list-item div {
+        font-size: 12px; /* Diminui o tamanho da fonte na lista */
+    }
+
+    .summary-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .summary-container p {
+        margin: 5px 0;
+    }
+
+    #total-price {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    #total-price span {
+        font-size: 20px;
+    }
+}
+
+/* Ajustes para telas de 360x740 */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 22px; /* Diminui o tamanho da fonte para caber na tela menor */
+    }
+
+    h1 img {
+        width: 40px; /* Diminui ainda mais o tamanho da imagem */
+    }
+
+    #item-input {
+        font-size: 12px;
+        padding: 8px; /* Diminui o padding do input */
+    }
+
+    .button {
+        font-size: 11px;
+        padding: 5px 8px; /* Reduz o padding dos botões para caber na tela menor */
+    }
+
+    .header div, .list-item div {
+        font-size: 11px; /* Diminui o tamanho da fonte na lista */
+    }
+
+    .summary-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .summary-container p {
+        margin: 5px 0;
+    }
+
+    #total-price {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    #total-price span {
+        font-size: 18px;
+    }
+}
+
+/* Media Query para tablets (600px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container {
+        padding: 25px;
+    }
+
+    .header div, .list-item div {
+        padding: 5px;
+    }
+
+    .summary-container {
+        flex-wrap: nowrap;
+    }
+
+    .button {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Listas de Compras</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+<!--icone com meu rosto-->
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Listas de Compras 
+            <img src="./carrrinho.png" alt="Carrinho de Compras">
+        </h1>
+        <input type="text" id="item-input" placeholder="Digite o item">
+        <div class="button-container">
+            <button class="button" onclick="addItem()">Adicionar Item</button>
+            <button class="button" onclick="clearAll()">Limpar Tudo</button>
+        </div>
+
+        <!-- Cabeçalho das informações -->
+        <div class="header">
+            <div>Seq.</div>
+            <div>Produto</div>
+            <div>Quantidade</div>
+            <div>Vlr. Und.</div>
+            <div>Total</div>
+            <div>Ações</div>
+        </div>
+
+        <!-- Lista de compras -->
+        <ul class="list" id="shopping-list"></ul>
+
+        <!-- Resumo -->
+        <div class="summary-container">
+            <p id="total-sequence">Produtos na lista: 0</p>
+            <p id="total-quantity">Total de produtos: 0</p>
+            <p id="total-price">Valor total: R$ 0.00</p>
+        </div>
+    </div>
+</body>
+
+</html>
