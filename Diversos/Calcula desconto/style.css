@@ -1,0 +1,96 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        /* Estilo geral da página */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #007ced;
+        }
+
+        /* Estilo do contêiner principal */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 450px;
+        }
+
+        /* Estilo do título */
+        .container h1 {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo para o ícone */
+        .container h1 i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        /* Estilo dos campos de input */
+        .container input[type="number"] {
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 30px;
+            border: 2px solid #ddd;
+            width: 100%;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container input[type="number"]:focus {
+            border-color: #007bff;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Estilo da tabela */
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            font-size: 1.2rem;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Destacar os valores de resultado e diferença */
+        .highlight {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #007bff;
+            background-color: #e0f0ff;
+            border-radius: 8px;
+            padding: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.3);
+        }
