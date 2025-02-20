@@ -1,0 +1,47 @@
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #007bff;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+        .font-digit {
+            font-size: 64px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+            color: #007bff;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .lbl-date {
+            font-size: 18px;
+            color: #555;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .location {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #007bff;
+            font-weight: bold;
+            display: none;
+        }
