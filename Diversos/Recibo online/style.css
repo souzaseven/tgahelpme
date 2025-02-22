@@ -1,0 +1,117 @@
+   body {
+            background-color: #007bff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            margin: 20px;
+        }
+        .recibo {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+        .logomarca {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .logomarca .text-muted {
+            margin-right: 10px;
+        }
+        .logomarca img {
+            max-height: 50px;
+            margin-left: 10px;
+            display: none;
+        }
+        .body p {
+            margin-bottom: 10px;
+        }
+        .signature {
+            margin-top: 20px;
+        }
+        .signature input {
+            border: none;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        .btn-classic {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-classic:hover {
+            background-color: #0056b3;
+        }
+        .btn-default {
+            background-color: #f8f9fa;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-default:hover {
+            background-color: #e2e6ea;
+        }
+        .print-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .print-container label {
+            margin-right: 10px;
+        }
+        .resize-container {
+            position: relative;
+            display: inline-block;
+        }
+        .resize-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .resize-handle {
+            width: 10px;
+            height: 10px;
+            background: #007bff;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: nwse-resize;
+        }
+        /* Estilos para esconder os botões na impressão */
+        @media print {
+            .print-container, .btn-classic, .btn-default, #vias {
+                display: none !important;
+            }
+        }
