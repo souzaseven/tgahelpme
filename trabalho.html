@@ -1,0 +1,1165 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+        <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trabalho</title>
+        
+        <!----Font awesome cdn font icon css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+        <style>
+            *{
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+                font-family: poppins, sans-serif;
+                text-decoration: none;
+
+            }
+            body{
+                overflow-x: hidden;
+                background-color: #222;
+                color: #fff;
+            }
+            .hero-header{
+                width:100%;
+                height: 100%;
+                min-height: 100vh;
+            }
+            .wrapper{
+                width:1280px;
+                max-width: 95%;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            header{
+                padding: 40px 0 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .logo{
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .logo i{
+                height: 45px;
+                width:45px;
+                background-color: #007ced;
+                border-radius: 50%;
+                color:#fff;
+                font-weight: 700;
+                font-size: 1.5rem;
+                padding: 10px;
+                margin-right: 5px;
+                cursor: pointer;
+                text-align: center;
+            }
+            .logo .logo-text{
+                font-size: 24px;
+                font-weight: 500;
+                color:#fff;
+            }
+            nav .togglebtn{
+                width: 35px;
+                height: 35px;
+                position: absolute;
+                top:45px;
+                right: 3%;
+                z-index: 5;
+                cursor: pointer;
+                display: none;
+            }
+            nav .togglebtn span{
+                display: block;
+                background-color: #007ced;
+                margin: 5px 0px;
+                width:100%;
+                height:3px;
+                transition: 0.3s;
+                transition-property: transform, opacity;
+            }
+            nav .navlinks{
+                list-style-type: none;
+            }
+            nav .navlinks li{
+                display: inline-block;
+            }
+            nav .navlinks li a{
+                color:#e5e5e5;
+                margin-right: 2.5rem;
+            }
+            .container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding-top:4rem;
+            }
+            .container .hero-pic{
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 15px solid #444;
+                box-shadow: 5px 7px 25px rgba(0,0,0,0.5);
+            }
+            .hero-pic img{
+                height: 100%;
+                width:100%;
+                transition: 0.5s;
+            }
+            .hero-pic img:hover{
+                transform: scale(1.2);
+            }
+            .hero-text{
+                max-width: 500px;
+                display: flex;
+                flex-direction: column;
+            }
+            .hero-text h5{
+                color:#e5e5e5;
+                font-size: 14px;
+            }
+            .hero-text h5 span{
+                color:#007ced;
+                font-size: 16px;
+            }
+            .hero-text h1{
+                color: #007ced;
+                font-size: 3rem;
+            }
+            .hero-text p{
+                color:#e5e5e5;
+            }
+            .btn-group{
+                margin:45px 0;
+            }
+            .btn-group .btn{
+                border-color: #d5d5d5;
+                color:#fff;
+                background-color: #333;
+                padding: 12px 25px;
+                margin: 5px 0px;
+                margin-right:7px;
+                border-radius: 30px;
+                border:2px solid #e5e5e5;
+                box-shadow:  0 10px 10px -8px rgb(0 0 0 / 78%);
+            }
+            .btn.active{
+                border-color: #007ced;
+            }
+            .hero-text .social i{
+                color: #e5e5e5;
+                font-size: 18px;
+                margin-right: 10px;
+                transition: 0.5s;
+            }
+            .hero-text .social i:hover{
+                color:#007ced;
+                transform: rotate(360deg);
+            }
+            /* Section for social media links */
+            .social-section{
+                background-color: #333;
+                padding: 40px 0;
+                text-align: center;
+            }
+            .social-section h2{
+                color: #fff;
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
+            .social-icons{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+            }
+            .social-icons a{
+                color: #fff;
+                font-size: 2rem;
+                transition: 0.3s;
+            }
+            .social-icons a img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+            .social-icons a:hover{
+                color: #007ced;
+            }
+            .change-colors-btn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #007ced;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+            .change-colors-btn:hover {
+                background-color: #005bb5;
+            }
+            /* Project section */
+            .projects-section {
+                background-color: #f4f4f4;
+                padding: 40px 0;
+                text-align: center;
+            }
+            .projects-section h2 {
+                color: #333;
+                margin-bottom: 20px;
+                font-size: 2rem;
+            }
+            .projects-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .project-item {
+                width: 18%;
+                margin-bottom: 20px;
+                transition: transform 0.3s ease;
+            }
+            .project-item img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.1);
+            }
+            .project-item h3 {
+                color: #007ced;
+                margin-top: 10px;
+            }
+            .project-item:hover {
+                transform: scale(1.05);
+            }
+            .view-all-projects-btn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #007ced;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-size: 1rem;
+                transition: background-color 0.3s ease;
+            }
+            .view-all-projects-btn:hover {
+                background-color: #005bb5;
+            }
+            .progress-bar-container {
+                width: 100%;
+                background-color: #ddd;
+                border-radius: 5px;
+                overflow: hidden;
+                margin-top: 20px;
+            }
+            .progress-bar {
+                width: 0;
+                height: 10px;
+                background-color: #007ced;
+                transition: width 1s ease;
+            }
+            /* Responsive design & displaying navbar for small screens */
+            @media(max-width:930px) {
+                nav .togglebtn {
+                    display: initial;
+                }
+                /* for toggle button**/
+                .click {
+                    top:45px;
+                }
+                .click span {
+                    position: absolute;
+                    margin-top:12px
+                }
+                .click span:first-child {
+                    transform: rotate(-40deg);
+                }
+                .click span:nth-child(2) {
+                    opacity: 0;
+                    margin:0;
+                }
+                .click span:last-child {
+                    transform: rotate(45deg);
+                    top:0;
+                }
+                nav .navlinks {
+                    position: absolute;
+                    top:110px;
+                    right:-100%;
+                    bottom: 0;
+                    width: 60%;
+                    height: 100vh;
+                    background-color: #222;
+                    z-index: 3;
+                    box-shadow: 5px 13px 30px rgba(0,0,0,0.1);
+                    transition: 0.5s;
+                    padding: 25px 0px;
+                }
+                nav .navlinks li {
+                    display: block;
+                }
+                nav .navlinks li a {
+                    display: block;
+                    margin-bottom: 15px;
+                    text-align: center;
+                }
+                nav .navlinks.open {
+                    right:0;
+                }
+            }
+            @media(max-width:768px) {
+                .container {
+                    flex-direction: column;
+                    padding-top:2rem
+                }
+                .hero-text {
+                    padding:40px 0px;
+                }
+            }
+            @media(max-width:600px) {
+                .project-item {
+                    width: 45%;
+                }
+            }
+            @media(max-width:400px) {
+                .project-item {
+                    width: 100%;
+                }
+            }
+
+            .heading {
+                    padding: 10px; /* Aumenta o espaço interno, aumentando a área do fundo */
+                    width: 100%; /* Ajusta a largura do elemento, afetando o tamanho do fundo */
+                    margin: 0 auto; /* Centraliza o elemento dentro do seu contêiner pai */
+                    font-size: 2.0rem; /* Aumenta o tamanho da fonte */
+                }
+
+                .project-item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                    }
+                
+                    .project-item img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 10px;
+                    }
+                
+                    .button-container {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin-top: 1px;
+                    }
+                
+                    .left-button, .right-button {
+                        background-color: #007ced;
+                        color: white;
+                        border: none;
+                        align-items: center;
+                        border-radius: 5px;
+                        padding: 0.1px 1px;
+                        cursor: pointer;
+                    }
+                
+                    .center-text {
+                        flex: 1;
+                        text-align: center;
+                        margin: 0;
+                        align-self: center;
+                    }
+
+                    .heading {
+                        color: black; 
+                        background-color: #007ced; 
+                        text-align: center; 
+                        margin: 40px 0 10px;
+                        font-weight: bold; 
+                    }
+                
+
+                    @keyframes blink {
+                                50% {
+                                    opacity: 0;
+                                }
+                            }
+        
+                            .blinking {
+                                animation: blink 1.5s linear infinite;
+                                color: #007ced;  /* Ou qualquer cor que deseje para o texto */
+                            }
+
+                            /* Estilo para o campo de pesquisa */
+            .search-container {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .search-input {
+                padding: 10px;
+                width: 80%;
+                max-width: 400px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+
+
+    /*******************************************************************************/
+    .block-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .block.cmd {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1 1 calc(19% - 20px);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        max-width: 220px;
+    }
+
+    .block.cmd:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .block.cmd h1 {
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .code-container {
+        max-height: 50px;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        background-color: #222;
+        color: white;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    .download-button, .text-button {
+        background-color: #007ced;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .download-button:hover, .text-button:hover {
+        background-color: #005bb5;
+    }
+
+    @media (max-width: 1024px) {
+        .block.cmd {
+            flex: 1 1 calc(33.33% - 20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .block.cmd {
+            flex: 1 1 calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .block.cmd {
+            flex: 1 1 100%;
+        }
+    }
+
+        </style>
+    </head>
+    <body>
+        <div class="hero-header">
+            <div class="wrapper">
+                <header>
+                    <div class="logo">
+                        <i class="fa-solid fa-a"></i>
+                        <div class="logo-text"></div>
+                    </div>
+                    <nav>
+                        <div class="togglebtn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <ul class="navlinks">
+                            <li><a href="https://site2-jade-chi.vercel.app/">Home</a></li>
+                            <li><a href="#">Portfolio</a></li>
+                            <li><a href="./meusprojetos.html">Projetos</a></li>
+                            <li><a href="./Rede Social/redes-sociais.html">Rede Social</a></li>
+                        </ul>
+                    </nav>
+                </header>
+        
+                <!-- Campo de Pesquisa -->
+                <div class="search-container">
+                    <input type="search" id="search-input" class="search-input" placeholder="Busque por projetos..." onkeyup="filterProjects()">
+                </div>
+
+        <!-- Projects Section -->
+        <div class="projects-section">
+            <div class="wrapper">
+                <h2>Principais</h2>
+                <div class="projects-container">
+                    <div class="project-item">
+                        <a href="./Rede Social/redes-sociais.html">
+                            <img src="./imagens/Painel/redes sociais2.webp" alt="Rede Social">
+                            <a href="#"> <h4>Rede Social</h4>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./cursos.html">
+                            <img src="./imagens/Painel/cursos.jpg" alt="cursos">
+                            <h3>Cursos</h3>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./diversos.html">
+                            <img src="./imagens/Painel/diversos projetos.webp" alt="Projeto diversos">
+                            <h3>Diversos</h3>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./trabalho.html">
+                            <img src="./imagens/Painel/logo tga.jpeg" alt="Projeto 4">
+                            <h3>Trabalho</h3>
+                        </a>
+                    </div>
+                    <div class="project-item">
+                        <a href="./meusprojetos.html">
+                            <img src="./imagens/Painel/meus projetos logo.webp" alt="Pessoal">
+                            <h3>Pessoal</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <section>
+                <section></section>
+            <h1 class="heading" style="color: white; background-color: #007ced; text-align: center; margin: 40px 0 10px;">
+                Trabalho
+            </h1>
+        
+            <div class="projects-container">
+                <div class="project-item">
+                    <a href="./Trabalho/Provas/provas.html">
+                        <img src="./Trabalho/IMG/conhecimento.webp" alt="boleto">
+                        <h6>Conhecimento</h6>
+                    </a>
+                </div>
+                <div class="project-item">
+                    <a href=".//Trabalho/Valida boleto/validaboletoauto.html">
+                        <img src="./Trabalho/IMG/BOLETO.png" alt="boleto">
+                        <h6>Verifica Boleto</h6>
+                    </a>
+                </div>
+
+    <div class="project-item">
+                    <a href=".//Trabalho/Retorno-boleto/index.html">
+                        <img src="./Trabalho/Retorno-boleto/img.jpg" alt="boleto">
+                        <h6>Verifica Retorno do Boleto</h6>
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <a href="./Trabalho/Valida chave/validachave.html">
+                        <img src="./Trabalho/IMG/cupomxnota.png" alt="chave de acesso">
+                        <h6>Verifica Chave de acesso da nota</h6>
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <a href="./Trabalho/Salario/salario.html">
+                        <img src="./Trabalho/IMG/painel.jpg" alt="">
+                        <h6>Calcula salário</h6>
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <a href="./Pessoal/Conta texto/contatexto-auto.html">
+                        <img src="./imagens/IMG PROJETOS/conta texto.webp" alt="Conta texto auto">
+                        <h6>Conta texto auto</h6>
+                    </a>
+                </div>
+
+
+                <div class="project-item">
+                    <a href="./Trabalho/Hora trabalhada/index.html">
+                        <img src="./Trabalho/Hora trabalhada/horas.jpeg" alt="horas">
+                        <h6>Horas trabalhadas</h6>
+                    </a>
+                </div>
+
+                <div class="project-item">
+                    <a href="./Trabalho/SQL/consultas-sql.html">
+                        <img src="./Trabalho/IMG/sql.webp" alt="">
+                        <h6>Consultas SQL</h6>
+                    </a>
+                </div>
+
+                
+    <!---------------------------------------------------------
+    -->
+                <div class="project-item">
+                    <a href="https://exemplo.com/projeto4">
+                        <img src="./imagens/IMG PROJETOS/em construção.webp" alt="Projeto 4">
+                        <h6 class="blinking">EM BREVE</h6>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    <!------------------------------------------------------>
+                            <section>
+                                <!-- Seção "Arquivos .bat e scripts CMD" -->
+                                <section></section>
+                                <h1 class="heading"
+                                    style="color: white; background-color: #007ced; text-align: center; margin: 40px 0 10px;">
+                                    Arquivos .bat e scripts CMD
+                                </h1>
+                                <section>
+                                    <br>
+
+                                    <section>
+                                        <br>
+                                        <div class="block-container cmd"
+                                            style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Desligar Imediatamente</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch">
+                        <img src="" alt="">
+                    </code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Desliga_imediatamente.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Desliga imediatamente.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Desligar Após um Atraso</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch"></code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Desliga_com_atraso.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Desliga com atraso.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Reiniciar Imediatamente</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch"></code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Reinicia_imediatamente.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Reinicia imediatamente.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Cancelar Desligamento</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch"></code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Cancela_desligamento.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Cancela desligamento.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Portas Atualizador</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch">
+                        Configurando regras de firewall para o Atualizador TGA Funcionar...
+                    </code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Portas_Atualizador.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Portas Atualizador.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Adiciona Multiplas Instâncias</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch"></code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Multiplas Instancias.reg" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Multiplas Instancias.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Remove Multiplas Instâncias</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch"></code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Remove Multiplas Instacias.reg" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Remove Multiplas Instacias.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Portas PDV</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch">
+                        Configurando regras de firewall para as portas 2517, 2525, 3050 (UDP e TCP)...
+                    </code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/Libera portas pdv.bat" download>
+                                                        <button class="download-button">Baixar</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/Libera portas pdv.txt">
+                                                        <button class="text-button">Texto</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
+    <div class="block cmd" onmouseover="expandCode(this)"
+                                                onmouseout="shrinkCode(this)">
+                                                <h1>Senha Wifi</h1>
+                                                <div class="code-container">
+                                                    <code class="hljs language-batch">
+
+                        1° consulte <br>2° veja a senha
+                    </code>
+                                                </div>
+                                                <div class="button-group">
+                                                    <a href="./Pessoal/BAT/consultawifi.txt">
+                                                        <button class="text-button">Consulta</button>
+                                                    </a>
+                                                    <a href="./Pessoal/BAT/versenhadowifi.txt">
+                                                        <button class="text-button">Veja</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!--
+                                                            <div class="block cmd" onmouseover="expandCode(this)"
+                                                                onmouseout="shrinkCode(this)">
+                                                                <h1></h1>
+                                                                <div class="code-container">
+                                                                    <code class="hljs language-batch">
+
+                                                        </code>
+                                                                </div>
+                                                                <a href="./Pessoal/BAT/" download>
+                                                                    <button>Baixar</button>
+                                                                </a>
+                                                            </div>
+    -->
+
+                                        </div>
+                                    </section>
+
+
+        <section>
+            <h1 class="heading" style="color: white; background-color: #007ced; text-align: center; margin: 40px 0 10px;">
+                Links Úteis
+            </h1>
+        
+            <div class="projects-container">
+                <div class="project-item">
+                    <a href="https://atendimento.tgasistemas.com.br/Account/Login?ReturnUrl=%2f" target="_blank">
+                        <img src="./Trabalho/IMG/centraldeatendimento.png" alt="centraldeatendimento">
+                        <h6>Central de atendimento</h6>
+                    </a>
+                </div>
+
+    <div class="project-item">
+        <a href="tel:653339-0800"> 
+            <img src="./Trabalho/IMG/contato.png" alt="Telefone">
+            <h6>65 3339-0800</h6> 
+        </a>
+    </div>
+
+
+    <div class="project-item">
+        <a href="mailto:anderson.souza@tgasistemas.com.br">
+            <img src="./Trabalho/IMG/o-email.png" alt="email">
+            <h6>Email</h6>
+        </a>
+    </div>
+
+
+    <div class="project-item">
+                    <a href="https://anydesk.com/pt/downloads/thank-you?dv=win_exe">
+                        <img src="./Trabalho/IMG/anydesk.png" alt="">
+                        <h6>Anydesk</h6>
+                    </a>
+                </div>
+
+    <div class="project-item">
+                    <a href="https://tgasistemas.com.br/" target="_blank">
+                        <img src="./Trabalho/IMG/sitetga.png" alt="sitetga">
+                        <h6>Site TGA</h6>
+                    </a>
+                </div>
+
+    <div class="project-item">
+                    <a href="https://mantis.tgasistemas.com.br/my_view_page.php" target="_blank">
+                        <img src="./Trabalho/IMG/mantis_logo.png" alt="mantis">
+                        <h6>Mantis</h6>
+                    </a>
+                </div>
+
+    <div class="project-item">
+        <a href="./Trabalho/TGABuscaMysuite.rar" download>
+            <img src="./Trabalho/IMG/tgabusca.png" alt="tgabusca">
+            <h6>TGA Busca</h6>
+        </a>
+    </div>
+
+    <div class="project-item">
+        <a href="https://www.youtube.com/@SouzaSystemTGA/videos?sub_confirmation=1" target="_blank">
+            <img src="./Trabalho/IMG/logo youtube.png" alt="">
+            <h6>YouTube</h6>
+        </a>
+    </div>
+    <div class="project-item">
+        <a href="./Trabalho/Tutoriais/tutoriais-tga.html">
+            <img src="./Trabalho/IMG/logo you blue.png" alt="">
+            <h6>Tutoriais</h6>
+        </a>
+    </div>
+    <div class="project-item">
+        <a href="">
+            <img src="" alt="">
+            <h6></h6>
+        </a>
+    </div>
+
+    <div class="item-container">
+    <!-- Item 1 -->
+                <div class="main__item">
+    <a href="https://atendimento.tgasistemas.com.br/kb/article/349019/boas-vindas-base-de-conhecimento" target="_blank">
+                        <i class="fas fa-book" style="color: #00aeef;"></i> <!-- Ícone de caderneta -->
+                        <h3>Base de conhecimento</h3>
+                    </a>
+                </div>
+
+        <!-- Item 2 -->
+                <div class="main__item">
+    <a href="https://atendimento.tgasistemas.com.br/kb/article/348741/boas-vindas-atualizacoes" target="_blank">
+                    <i class="fas fa-sync" style="color: #00aeef;"></i> <!-- Ícone de atualização -->
+                        <h3>Atualizações</h3>
+                    </a>
+                </div>
+    <!-- Item 3 -->
+                <div class="main__item">
+        <a href="https://atendimento.tgasistemas.com.br/kb/article/358893/boas-vindas-tutoriais" target="_blank">
+                    <i class="fas fa-desktop" style="color: #00aeef;"></i> <!-- Ícone de monitor -->
+                        <h3>Tutoriais</h3>
+                    </a>
+                </div>
+
+    <style>
+    .item-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Ajusta o espaçamento entre os itens */
+    }
+
+    .main__item {
+
+    margin: 10px; /* Adiciona margem para criar espaço */
+
+        flex: 1 1 calc(25% - 20px); /* Define a largura inicial em 25%, ajustável */
+    
+        min-width: 150px; /* Define o limite mínimo para a largura */
+        height: 150px; /* Mantém a altura fixa */
+        background: #fff;
+        margin: 10px;
+    
+        gap: 15px; /* Espaçamento entre os itens */
+        flex-direction: column;
+        justify-content: center;
+    width: 100%; /* Garante que a linha ocupe todo o espaço horizontal */
+        display: flex; /* Exibe os itens em linha */
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.2s ease;
+    flex-wrap: wrap; /* Permite que os itens quebrem para novas linhas em telas menores */
+    }
+
+
+        .main__item:hover {
+            transform: scale(1.05); /* Amplia levemente ao passar o mouse */
+        }
+
+        .main__item i {
+            font-size: 36px; /* Tamanho do ícone */
+            color: #009bff; /* Cor azul do ícone */
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+    <section></section>
+
+    <h1 class="heading" style="display: inline-flex; align-items: center; justify-content: center; background-color: #007ced; color: white; padding: 5px 10px; border-radius: 8px; font-size: 24px;">
+        <img src="./Trabalho/IMG/sefaz marca.png" alt="Logo SEFAZ" style="max-width: 30%; height: auto; margin-right: 10px;">
+    </h1>
+
+    
+    </h1>
+    <style>
+    @media (max-width: 600px) {
+        .heading img {
+            max-width: 70%; /* Reduz o tamanho da imagem em telas pequenas */
+        }
+
+        .heading {
+            font-size: 18px; /* Ajusta o tamanho da fonte */
+        }
+    }
+
+    </style>
+
+
+    <div class="project-item">
+        <a href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=&AspxAutoDetectCookieSupport=1" >
+            <img src="./Trabalho/IMG/nfe.png" alt="baixaxml">
+            <h6>Baixar XML NF-e</h6>
+        </a>
+    </div>
+
+    <div class="project-item">
+        <a href="https://www.sefaz.mt.gov.br/nfce/consultanfce" >
+            <img src="./Trabalho/IMG/NFCe.jpg" alt="consultanfce">
+            <h6>Consulta NFC-e</h6>
+        </a>
+    </div>
+
+
+
+    <div class="project-item">
+        <a href="https://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=inutilizacao&tipoConteudo=nDmpH/MjKrg=" >
+            <img src="./Trabalho/IMG/inutilizacao.png" alt="Duplicidade">
+            <h6>Consulta Duplicidade</h6>
+        </a>
+    </div>
+
+
+    <div class="project-item">
+        <a href="https://dfe-portal.svrs.rs.gov.br/Mdfe" >
+            <img src="./Trabalho/IMG/mdfe.png" alt="mdfe">
+            <h6>Consulta MDFe</h6>
+        </a>
+    </div>
+
+    <div class="project-item">
+        <a href="https://dfe-portal.svrs.rs.gov.br/Cte" >
+            <img src="./Trabalho/IMG/CTe.png" alt="Cte">
+            <h6>Consulta CTe</h6>
+        </a>
+    </div>
+
+    <div class="project-item">
+        <a href="./Trabalho/TGABuscaMysuite.rar" >
+            <img src="./Trabalho/IMG/disponibilidade sefaz.png" alt="disponibilidade">
+            <h6>Disponibilidade SEFAZ</h6>
+        </a>
+    </div>
+
+    <div class="project-item">
+        <a href="https://monitor.tecnospeed.com.br/?&filter-doc=nfe">
+            <img src="./Trabalho/IMG/MONITORTECNOSPEED.png" alt="monitor">
+            <h6>Monitor SEFAZ</h6>
+        </a>
+    </div>
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <div class="project-item">
+        <a href="https://www.google.com/maps/place/TGA+SISTEMAS/@-14.6124074,-57.4951796,17z/data=!3m1!4b1!4m6!3m5!1s0x9398fb6e942bf581:0x7720fa9909511731!8m2!3d-14.6124074!4d-57.4926047!16s%2Fg%2F11bvvzhxyh?entry=ttu&g_ep=EgoyMDI0MTExOC4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+            <!-- Ajuste do tamanho do mapa no iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.7659001882707!2d-57.49517962489364!3d-14.612407385875311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9398fb6e942bf581%3A0x7720fa9909511731!2sTGA%20SISTEMAS!5e0!3m2!1spt-BR!2sbr!4v1732164313137!5m2!1spt-BR!2sbr" 
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </a>
+    </div>
+
+    <style>
+        iframe {
+            width: 110vh;
+            height: 300px; /* Ajuste da altura para um valor fixo ou flexível */
+            border: 0;
+    margin-left: 50%;
+        }
+
+
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571"
+        crossorigin="anonymous"></script>
+    <!-- Anúncios -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6176119186804571"
+        data-ad-slot="3576883624"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+        <script>
+            function filterProjects() {
+                const input = document.getElementById('search-input').value.toLowerCase();
+                const projectItems = document.querySelectorAll('.project-item');
+                let found = false;
+
+                projectItems.forEach(function(item) {
+                    const text = item.textContent.toLowerCase();
+                    item.classList.remove('highlighted');
+
+                    if (text.includes(input)) {
+                        if (!found) {
+                            found = true;
+                            item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            item.classList.add('highlighted-temp');
+                        }
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                setTimeout(function() {
+                    document.querySelectorAll('.highlighted-temp').forEach(function(item) {
+                        item.classList.remove('highlighted-temp');
+                        item.classList.add('highlighted');
+                    });
+                }, 2000); // O tempo pode ser ajustado
+            }
+        </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571"
+        crossorigin="anonymous"></script>
+    <!-- Anúncios -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6176119186804571"
+        data-ad-slot="3576883624"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCYBG5BNL4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YCYBG5BNL4');
+    </script>
+
+    <p style="text-align: center; font-size: 18px; color: #333;">
+        Visitantes<br>
+        <img src="https://profile-counter.glitch.me/site2/count.svg" alt="Contador de Visitantes" 
+            style="border: 2px solid #007ced; border-radius: 8px; background: #f4f4f4; padding: 5px;">
+    </p>
+
+    </body>
+    </html>

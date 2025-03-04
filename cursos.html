@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+
+    <!----Font awesome cdn font icon css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: poppins, sans-serif;
+            text-decoration: none;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .hero-header {
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            width: 1280px;
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo i {
+            height: 45px;
+            width: 45px;
+            background-color: #007ced;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 10px;
+            margin-right: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .logo .logo-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        nav .togglebtn {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top: 45px;
+            right: 3%;
+            z-index: 5;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav .togglebtn span {
+            display: block;
+            background-color: #007ced;
+            margin: 5px 0px;
+            width: 100%;
+            height: 3px;
+            transition: 0.3s;
+            transition-property: transform, opacity;
+        }
+
+        nav .navlinks {
+            list-style-type: none;
+        }
+
+        nav .navlinks li {
+            display: inline-block;
+        }
+
+        nav .navlinks li a {
+            color: #e5e5e5;
+            margin-right: 2.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 4rem;
+        }
+
+        .container .hero-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 15px solid #444;
+            box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-pic img {
+            height: 100%;
+            width: 100%;
+            transition: 0.5s;
+        }
+
+        .hero-pic img:hover {
+            transform: scale(1.2);
+        }
+
+        .hero-text {
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-text h5 {
+            color: #e5e5e5;
+            font-size: 14px;
+        }
+
+        .hero-text h5 span {
+            color: #007ced;
+            font-size: 16px;
+        }
+
+        .hero-text h1 {
+            color: #007ced;
+            font-size: 3rem;
+        }
+
+        .hero-text p {
+            color: #e5e5e5;
+        }
+
+        .btn-group {
+            margin: 45px 0;
+        }
+
+        .btn-group .btn {
+            border-color: #d5d5d5;
+            color: #fff;
+            background-color: #333;
+            padding: 12px 25px;
+            margin: 5px 0px;
+            margin-right: 7px;
+            border-radius: 30px;
+            border: 2px solid #e5e5e5;
+            box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
+        }
+
+        .btn.active {
+            border-color: #007ced;
+        }
+
+        .hero-text .social i {
+            color: #e5e5e5;
+            font-size: 18px;
+            margin-right: 10px;
+            transition: 0.5s;
+        }
+
+        .hero-text .social i:hover {
+            color: #007ced;
+            transform: rotate(360deg);
+        }
+
+        /* Section for social media links */
+        .social-section {
+            background-color: #333;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 2rem;
+            transition: 0.3s;
+        }
+
+        .social-icons a img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .social-icons a:hover {
+            color: #007ced;
+        }
+
+        .change-colors-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007ced;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-colors-btn:hover {
+            background-color: #005bb5;
+        }
+
+        /* Project section */
+        .projects-section {
+            background-color: #f4f4f4;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .projects-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .project-item {
+            width: 18%;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item h3 {
+            color: #007ced;
+            margin-top: 10px;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+        }
+
+        .view-all-projects-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007ced;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-all-projects-btn:hover {
+            background-color: #005bb5;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 10px;
+            background-color: #007ced;
+            transition: width 1s ease;
+        }
+
+        /* Responsive design & displaying navbar for small screens */
+        @media(max-width:930px) {
+            nav .togglebtn {
+                display: initial;
+            }
+
+            /* for toggle button**/
+            .click {
+                top: 45px;
+            }
+
+            .click span {
+                position: absolute;
+                margin-top: 12px
+            }
+
+            .click span:first-child {
+                transform: rotate(-40deg);
+            }
+
+            .click span:nth-child(2) {
+                opacity: 0;
+                margin: 0;
+            }
+
+            .click span:last-child {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+            nav .navlinks {
+                position: absolute;
+                top: 110px;
+                right: -100%;
+                bottom: 0;
+                width: 60%;
+                height: 100vh;
+                background-color: #222;
+                z-index: 3;
+                box-shadow: 5px 13px 30px rgba(0, 0, 0, 0.1);
+                transition: 0.5s;
+                padding: 25px 0px;
+            }
+
+            nav .navlinks li {
+                display: block;
+            }
+
+            nav .navlinks li a {
+                display: block;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            nav .navlinks.open {
+                right: 0;
+            }
+        }
+
+        @media(max-width:768px) {
+            .container {
+                flex-direction: column;
+                padding-top: 2rem
+            }
+
+            .hero-text {
+                padding: 40px 0px;
+            }
+        }
+
+        @media(max-width:600px) {
+            .project-item {
+                width: 45%;
+            }
+        }
+
+        @media(max-width:400px) {
+            .project-item {
+                width: 100%;
+            }
+        }
+
+        .heading {
+            padding: 10px;
+            /* Aumenta o espaço interno, aumentando a área do fundo */
+            width: 100%;
+            /* Ajusta a largura do elemento, afetando o tamanho do fundo */
+            margin: 0 auto;
+            /* Centraliza o elemento dentro do seu contêiner pai */
+            font-size: 2.0rem;
+            /* Aumenta o tamanho da fonte */
+        }
+
+        .project-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 1px;
+        }
+
+        .left-button,
+        .right-button {
+            background-color: #007ced;
+            color: white;
+            border: none;
+            align-items: center;
+            border-radius: 5px;
+            padding: 0.1px 1px;
+            cursor: pointer;
+        }
+
+        .center-text {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+            align-self: center;
+        }
+
+        .heading {
+            color: black;
+            background-color: #007ced;
+            text-align: center;
+            margin: 40px 0 10px;
+            font-weight: bold;
+        }
+
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blinking {
+            animation: blink 1.5s linear infinite;
+            color: #007ced;
+            /* Ou qualquer cor que deseje para o texto */
+        }
+
+        /* Estilo para o campo de pesquisa */
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-a"></i>
+                    <div class="logo-text"></div>
+                </div>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlinks">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="./meusprojetos.html">Projetos</a></li>
+                        <li><a href="#">Rede Social</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Campo de Pesquisa -->
+            <div class="search-container">
+                <input type="search" id="search-input" class="search-input" placeholder="Busque por projetos..."
+                    onkeyup="filterProjects()">
+            </div>
+
+            <!-- Projects Section -->
+            <div class="projects-section">
+                <div class="wrapper">
+                    <h2>Principais</h2>
+                    <div class="projects-container">
+                        <div class="project-item">
+                            <a href="https://exemplo.com/projeto-rede-sociais">
+                                <img src="./imagens/Painel/redes sociais2.webp" alt="Rede Social">
+                                <a href="#">
+                                    <h4>Rede Social</h4>
+                                </a>
+                        </div>
+                        <div class="project-item">
+                            <a href="./cursos.html">
+                                <img src="./imagens/Painel/cursos.jpg" alt="cursos">
+                                <h3>Cursos</h3>
+                            </a>
+                        </div>
+                        <div class="project-item">
+                            <a href="./diversos.html">
+                                <img src="./imagens/Painel/diversos projetos.webp" alt="Projeto diversos">
+                                <h3>Diversos</h3>
+                            </a>
+                        </div>
+                        <div class="project-item">
+                            <a href="./trabalho.html">
+                                <img src="./imagens/Painel/logo tga.jpeg" alt="Projeto 4">
+                                <h3>Trabalho</h3>
+                            </a>
+                        </div>
+                        <div class="project-item">
+                            <a href="./meusprojetos.html">
+                                <img src="./imagens/Painel/meus projetos logo.webp" alt="Pessoal">
+                                <h3>Pessoal</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <section>
+                    <section></section>
+                    <h1 class="heading"
+                        style="color: white; background-color: #007ced; text-align: center; margin: 40px 0 10px;">
+                        Cursos
+                    </h1>
+
+                    <div class="projects-container">
+                        <div class="project-item">
+                            <a href="./Cursos/Curso em video/cursoemvideo.html">
+                                <img src="./Cursos/Curso em video/logo.png" alt="">
+                                <h6>Curso em video</h6>
+                            </a>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="./Cursos/Alura/alura.html">
+                                <img src="./Cursos/Alura/aura logo.png" alt="">
+                                <h6>Alura</h6>
+                            </a>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://www.devmedia.com.br/">
+                                <img src="./Cursos/Devmedia/logo-devmedia.png" alt="">
+                                <h6>Devmedia</h6>
+                            </a>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://www.w3schools.com/">
+                                <img src="./Cursos/W3school/logo.png" alt="">
+                                <h6>W3schools</h6>
+                            </a>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="./Diversos/qrcode.html">
+                                <img src="" alt="">
+                                <h6></h6>
+                            </a>
+                        </div>
+
+
+
+                        <div class="project-item">
+                            <a href="./Diversos/qrcode.html">
+                                <img src="" alt="">
+                                <h6></h6>
+                            </a>
+                        </div>
+
+
+                        <!---------------------------------------------------------
+  
+            <div class="project-item">
+                <a href="https://exemplo.com/projeto4">
+                    <img src="./imagens/IMG PROJETOS/em construção.webp" alt="Projeto 4">
+                    <h6 class="blinking">EM BREVE</h6>
+                </a>
+            </div>-->
+
+                    </div>
+                </section>
+
+                <script>
+                    function filterProjects() {
+                        const input = document.getElementById('search-input').value.toLowerCase();
+                        const projectItems = document.querySelectorAll('.project-item');
+                        let found = false;
+
+                        projectItems.forEach(function (item) {
+                            const text = item.textContent.toLowerCase();
+                            item.classList.remove('highlighted');
+
+                            if (text.includes(input)) {
+                                if (!found) {
+                                    found = true;
+                                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    item.classList.add('highlighted-temp');
+                                }
+                                item.style.display = '';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+
+                        setTimeout(function () {
+                            document.querySelectorAll('.highlighted-temp').forEach(function (item) {
+                                item.classList.remove('highlighted-temp');
+                                item.classList.add('highlighted');
+                            });
+                        }, 2000); // O tempo pode ser ajustado
+                    }
+                </script>
+
+</body>
+
+</html>

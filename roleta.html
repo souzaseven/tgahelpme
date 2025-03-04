@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Roleta Online">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para criar sorteio com roleta aleatória personalizável. Pode ser utilizada para sorteio personalizado de nomes, números, letras, sim ou não.">
+	<meta property="og:title" content="Roleta Online">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.invertexto.com/roleta-online">
+	<meta property="og:image" content="https://cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para criar sorteio com roleta aleatória personalizável. Pode ser utilizada para sorteio personalizado de nomes, números, letras, sim ou não.">
+	<title>Roleta Online | invertexto.com</title>
+
+	<link rel="canonical" href="https://www.invertexto.com/roleta-online">
+	<link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+	<link rel="stylesheet" href="https://cdn.invertexto.com/css/app.css?id=20240307">
+	<link rel="apple-touch-icon" href="https://cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<main>
+		<style>
+			.blocks {
+				display: flex;
+				gap: 16px;
+			}
+			.superWheel {
+				position: relative;
+				max-width: 100%;
+				margin: 4em auto 1em;
+				font-size: 25px;
+				font-weight: bold;
+			}
+			.superWheel,
+			.superWheel * {
+				box-sizing: border-box;
+				user-select: none;
+			}
+			.sWheel-wrapper {
+				position: relative;
+			}
+			.superWheel .sWheel-inner {
+				display: block;
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.superWheel .sWheel {
+				border-radius: 100%;
+				overflow: hidden;
+			}
+			.superWheel .sWheel,
+			.superWheel .sWheel>.sWheel-bg-layer,
+			.superWheel .sWheel>.sWheel-txt-wrap,
+			.superWheel .sWheel>.sWheel-txt-wrap>.sWheel-txt {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.superWheel .sWheel>.sWheel-txt-wrap>.sWheel-txt,
+			.superWheel .sWheel-bg-layer {
+				border-radius: 100%;
+				padding: 0;
+				list-style: none;
+				color: #ecf0f1;
+			}
+			.superWheel .sWheel>.sWheel-txt-wrap,
+			.superWheel .sWheel>.sWheel-bg-layer {
+				transform: rotate(-90deg);
+			}
+			.superWheel .sWheel>.sWheel-bg-layer>div {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				height: 100%;
+				transform-origin: 0 0;
+				border: 1px solid transparent;
+				background-color: #404040;
+			}
+			.superWheel .sWheel>.sWheel-bg-layer>div:nth-child(odd) {
+				background-color: #616161;
+			}
+			.superWheel .sWheel-marker {
+				width: 16%;
+				height: 14%;
+				position: absolute;
+				left: 50%;
+				top: -18%;
+				margin-top: 7%;
+				margin-left: -8%;
+				transform-origin: 50% 35%;
+				z-index: 1;
+				display: block;
+				transform: rotate(0deg);
+			}
+			.superWheel .sWheel-marker>svg {
+				height: 100%;
+				display: block;
+				text-align: center;
+				margin: 0 auto;
+			}
+			.blocks {
+				display: flex;
+				gap: 16px;
+			}
+			.blocks .config {
+				display: flex;
+				flex-direction: column;
+				background-color: #fff;
+				padding: 16px;
+			}
+			.blocks .mywheel {
+				background-color: #fff;
+				flex: 1;
+				padding: 16px;
+			}
+			@media (max-width: 767px) {
+				.blocks {
+					flex-direction: column;
+				}
+				.blocks .config {
+					width: 100%;
+					order: 2;
+				}
+				.blocks .mywheel {
+					width: 100%;
+					height: 400px;
+					order: 1;
+				}
+			}
+		</style>
+		<div class="container">
+			<h1>Roleta Online</h1>
+			<div class="blocks">
+				<div class="config">
+					<textarea id="text" class="form-control" rows="16" style="flex:1">Sim
+Não
+Sim
+Não
+Sim
+Não
+Sim
+Não
+Sim
+Não</textarea>
+					<div style="margin-top:16px">
+						<div class="btn btn-default" id="order">Ordenar</div>
+						<div class="btn btn-default" id="random">Misturar</div>
+						<div class="btn btn-default" id="clear">Limpar</div>
+					</div>
+				</div>
+				<div class="mywheel">
+					<div class="wheel" style="width:500px;height:500px;margin-bottom:32px"></div>
+					<button class="btn btn-primary btn-block spin-to-win" type="button">Girar</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function run() {
+				const colors = ['#7dd3fc', '#fda4af', '#d8b4fe', '#93c5fd', '#fcd34d', '#86efac'];
+
+				function wheel() {
+					const text = $('#text').val();
+					const values = text.trim().split('\n');
+					const unique = [...new Set(values)];
+
+					let i = 0;
+					const items = [];
+					values.forEach(function (value) {
+						if (value.trim().length == 0) return;
+
+						if (colors[i % unique.length] == undefined) i = 0;
+						const color = colors[i % unique.length];
+
+						items.push({
+							text: value,
+							message: '',
+							background: color,
+							value: 0,
+						});
+
+						i++;
+					});
+
+					$('.wheel').superWheel({
+						slices: items,
+						text: {
+							color: '#333',
+							size: 14,
+							offset: 8,
+							letterSpacing: 0,
+							orientation: 'v',
+							arc: true
+						},
+						slice: {
+							background: "#333",
+						},
+						line: {
+							width: 4,
+							color: "#fefefe",
+						},
+						outer: {
+							width: 6,
+							color: "#fefefe",
+						},
+						inner: {
+							width: 6,
+							color: "#fefefe",
+						},
+						center: {
+							width: 16,
+						},
+						width: 400,
+						duration: 8000,
+					});
+
+					const tick = new Audio('/sounds/tick.mp3');
+
+					$('.wheel').superWheel('onStart', function () {
+						$('.spin-to-win').text('Girando...');
+					});
+
+					$('.wheel').superWheel('onStep', function () {
+						if (typeof tick.currentTime !== 'undefined') tick.currentTime = 0;
+						tick.play();
+					});
+
+					$('.wheel').superWheel('onComplete', function () {
+						$('.spin-to-win:disabled').prop('disabled', false).text('Girar');
+					});
+				}
+
+				$(document).on('click', '.spin-to-win', function (e) {
+					e.preventDefault();
+					if ($('#text').val().trim().length == 0) return alert('Nenhum valor informado.');
+					$('.wheel').superWheel('start', 0);
+					$(this).prop('disabled', true);
+				});
+
+				$('#text').on('input', function () {
+					wheel();
+				})
+
+				wheel();
+
+				// Buttons
+				function shuffleArray(array) {
+					for (let i = array.length - 1; i > 0; i--) {
+						const j = Math.floor(Math.random() * (i + 1));
+						[array[i], array[j]] = [array[j], array[i]];
+					}
+				}
+
+				$('#order').click(function () {
+					var text = $('#text').val();
+					var lines = text.trim().split('\n');
+
+					lines.sort(function (a, b) {
+						return a.localeCompare(b);
+					});
+
+					$('#text').val(lines.join('\n'));
+					wheel();
+				});
+
+				$('#random').click(function () {
+					var text = $('#text').val();
+					var lines = text.trim().split('\n');
+
+					shuffleArray(lines);
+					$('#text').val(lines.join('\n'));
+					wheel();
+				});
+
+				$('#clear').click(function () {
+					$('#text').val('').focus();
+					wheel();
+				});
+			}
+
+			if (typeof run === "function") {
+				run();
+			}
+		</script>
+	</main>
+
+	<footer class="hidden-print"></footer>
+
+	<script src="https://cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="/js/superwheel.min.js"></script>
+</body>
+</html>

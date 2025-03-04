@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code PIX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #009b3a 0%, #ffdf00 25%, #002776 50%, #ffffff 75%);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #009b3a;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #007b2e;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gerador de QR Code PIX</h1>
+    <form id="pixForm">
+        <div class="input-group">
+            <label for="payee">Chave PIX (CPF ou CNPJ):</label>
+            <input type="text" id="payee" name="payee" required>
+        </div>
+        <div class="input-group">
+            <label for="amount">Valor:</label>
+            <input type="number" step="0.01" id="amount" name="amount" required>
+        </div>
+        <div class="input-group">
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        <button type="button" onclick="generateQRCode()">Gerar QR Code</button>
+    </form>
+
+    <div class="qr-code" id="qrCodeContainer"></div>
+</div>
+
+<!-- Include QR Code library -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<script>
+    function generateQRCode() {
+        // Get form values
+        const payee = document.getElementById('payee').value;
+        const amount = document.getElementById('amount').value;
+        const description = document.getElementById('description').value;
+
+        // Validate inputs
+        if (!payee || !amount || !description) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Construct the PIX URL
+        const pixUrl = `pix:${payee}?amount=${amount}&currency=BRL&description=${encodeURIComponent(description)}`;
+
+        // Clear any existing QR code
+        const qrCodeContainer = document.getElementById('qrCodeContainer');
+        qrCodeContainer.innerHTML = '';
+
+        // Generate QR Code
+        QRCode.toCanvas(qrCodeContainer, pixUrl, function (error) {
+            if (error) {
+                console.error(error);
+                alert('Erro ao gerar o QR Code.');
+            } else {
+                console.log('QR Code gerado com sucesso!');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
