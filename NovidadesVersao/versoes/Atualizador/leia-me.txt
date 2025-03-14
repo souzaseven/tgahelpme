@@ -1,0 +1,35 @@
+**************************************************************************************************************************************
+**************************************************Configurando o TGA_Atualizador:*****************************************************
+**************************************************************************************************************************************
+ 
+**************************************************************************************************************************************
+1°Certifique-se de que a pasta TGA esteja compartilhada com todos.
+**************************************************************************************************************************************
+2° No Servidor execute o cmd como administrador e rode os comandos abaixo individualmente:
+"Ele irá criar uma nova regra liberando a porta 20002"
+
+1- netsh advfirewall firewall add rule name= "Atualizador TGA Entrada" dir=in  protocol=TCP localport=20002 action=allow
+2- netsh advfirewall firewall add rule name= "Atualizador TGA Saída" dir=out  protocol=TCP localport=20002 action=allow
+**************************************************************************************************************************************
+3°Com o Prompt de Comando e digite "ipconfig". O IP do servidor será listado como "IPv4 Address".
+**************************************************************************************************************************************
+4°No terminal, execute o arquivo .exe do Atualizador TGA.
+**************************************************************************************************************************************
+5°Na tela de instalação selecione "Estação de trabalho".
+No campo "Endereço IP do servidor", digite o IP do servidor que você acabou de pegar.
+Clique em "Executar".
+**************************************************************************************************************************************
+6° No servidor, execute o arquivo .exe do Atualizador TGA.
+Na tela de instalação, selecione "Servidor".
+
+Na seção "Diretórios que serão ignorados", adicione as pastas que você deseja ignorar.
+exemplo C:\TGA\Backup, dados, flamerobin,logosBanco,pdvoff,report,sounds, Nfe,MDF-e, NFS-e)
+
+Na seção "Ignorar arquivos", selecione os tipos de arquivo que você deseja ignorar.
+exemplo .txt .pdf .png
+Clique em "Avançar".
+Clique em "Finalizar" para concluir a instalação.
+**************************************************************************************************************************************
+7° comece a atualização
+**************************************************************************************************************************************
+
