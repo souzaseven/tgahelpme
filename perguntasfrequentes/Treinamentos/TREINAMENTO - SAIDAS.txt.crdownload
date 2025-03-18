@@ -1,0 +1,48 @@
+*Saídas* 
+
+1- IDENTIFICAÇÃO E SUB ABAS
+
+  CARACTERISTICAS - Buscar Numeração e Copiar Movimento
+  
+  EMITENTE/DESTINATÁRIO - Limite de Crédito / Em atraso/Conceito/ Só Avista
+  
+   DADOS FISCAIS - TIPO DE OPERAÇÃO E/S - MODELO DE DOC - EFD - TRIBUTAÇÃO DOS ITENS 
+
+  FUNCIONÁRIO - Pede Senha de vendedor
+
+  OUTROS DADOS - Expedição controle - Tabela de Preço (Onde Buscar) - Objetos - Movimento usado no controle de carga 
+
+      DATAS - Data de movimento Default -> usar data de sistema para controle do extrato de movimentação exemplo OS e compra
+
+Movimento em espera.
+
+  
+2- ITENS
+Seleção e edição de preços
+ 
+  identificação 2/2 
+    Flag usa múltiplo na quantidade
+
+
+ 
+3- VALORES FINANCEIRO
+    Desconto para produtos/serviços - aplicar desconto sobre
+
+
+
+4- ESTOQUE
+
+  Movimentação dos Saldos
+  Mudar nome do saldo - Citar exemplos de controles: Entrega Futura/Condicional 
+
+
+
+5- GERA MOVIMENTO
+         Flags de Faturamento: baixa estorna, cancela lançamento financeiro
+               Orientar relação entre esses movimentos, sempre observando a operação de estoque configurada no movimento destino, para evitar erro de saldos, recálculos, comandos,  
+ 
+   Movimento Relacionado: Tipo de relacionamento (devolução, faturamento e simples carrega de itens)
+
+
+
+  6- INTEGRAÇÕES - Ordem de Serviço e Flags PDV 
