@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+ <!--
+<link rel="shortcut icon" href="./img/bot-tga.png" type="image/x-icon">-->
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/tgahelpme/Desafios/icon%20bot%20tga.ico" type="image/x-icon">
+
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+<!--icone com meu rosto-->
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #007ced;
+            margin: 0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            box-sizing: border-box;
+            min-height: 100vh;
+            overflow-y: auto; /* Permitir rolagem vertical */
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            max-width: 900px;
+            width: 100%;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+        .left-container, .right-container {
+            padding: 10px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin: 5px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .left-container {
+            background-color: #f0f8ff;
+        }
+        .right-container {
+            background-color: #fafad2;
+        }
+        .form-inline {
+            width: 100%; 
+            padding: 0;
+        }
+        .form-control {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 0.75rem;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 6px;
+            margin: 0;
+            white-space: nowrap;
+            overflow-x: auto;
+            text-overflow: ellipsis;
+        }
+        .btn {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            margin: 5px 0;
+            justify-content: center;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn img {
+            margin-left: 8px;
+            height: 16px;
+            width: auto;
+        }
+        .result {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            border-top: 1px solid #ccc;
+            padding-top: 5px;
+            text-align: left;
+        }
+        .error {
+            color: red;
+        }
+        h1, h2 {
+            color: #007ced;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .tooltip-box {
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            display: none;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+        .example {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #333;
+            text-align: center;
+        }
+        .format-chaves {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -5px;
+        }
+        .format-chaves div {
+            flex: 1;
+            min-width: calc(33.333% - 10px);
+            box-sizing: border-box;
+            padding: 5px;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            border-radius: 4px;
+            position: relative;
+            font-size: 0.75rem;
+        }
+        .format-chaves div::after {
+            content: attr(data-info);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            white-space: nowrap;
+            display: none;
+            z-index: 1000;
+        }
+        .format-chaves div:hover::after {
+            display: block;
+        }
+        .info-text {
+            text-align: left;
+            margin-top: 8px;
+            font-size: 0.75rem;
+        }
+        .info-text img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .button-group {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .button-group img {
+            margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px;
+                height: auto;
+            }
+            .container {
+                flex-direction: column;
+                padding: 10px;
+                max-width: 100%;
+                margin-top: 20px;
+            }
+            .left-container {
+                margin-bottom: 20px;
+            }
+        }
+        /* Estilos para o modal */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.9); 
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .modal-content, .modal-caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media only screen and (max-width: 700px){
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div>
+                <h1>Validador de Chave de Acesso NF-e / NFC-e</h1>
+                <label for="chave" id="ctl00_ContentPlaceHolder1_lblChaveAcesso" class="labelConsulta">Chave de Acesso da NF-e</label>
+                <div class="form-inline" style="width: 100%; padding: 0;">
+                    <input type="text" id="chave" class="form-control" placeholder="Digite a Chave de Acesso (44 dígitos)" maxlength="44" style="width: 100%; margin: 0;">
+                </div>
+                <div class="example">
+                    <strong>Exemplo de Chave:</strong><br>
+                    <span>51220128400690000195550010000036321012476717</span>
+                </div>
+                <div class="result" id="resultado"></div>
+                <div class="result" id="resultado-formatado"></div>
+                <div class="tooltip-box" id="tooltip-box"></div>
+                <div id="format-chaves" class="format-chaves"></div>
+            </div>
+            <div class="button-group">
+                <img src="https://www.sefaz.mt.gov.br/imagens/cabecalho.PNG" alt="Logo">
+                <a href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" target="_blank" class="btn">Consulta NF-e</a>
+                <a href="https://www.sefaz.mt.gov.br/nfce/consultanfce" target="_blank" class="btn">Consulta NFC-e</a>
+                <a href="https://www.cte.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=cktLvUUKqh0=" target="_blank" class="btn">Consulta CT-e</a>
+            </div>
+        </div>
+        <div class="right-container">
+            <h2>Informações sobre a Chave de Acesso</h2>
+            <div class="info-text">
+                <p>Chave de Acesso de um Documento Fiscal: NF-e, CT-e, NFC-e e MDF-e é formada pelas seguintes informações:</p>
+                <ul>
+                    <li><strong>cUF</strong> - Código da UF do emitente do Documento Fiscal;</li>
+                    <li><strong>AAMM</strong> - Ano e Mês de emissão da NF-e;</li>
+                    <li><strong>CNPJ</strong> - CNPJ do emitente;</li>
+                    <li><strong>mod</strong> - Modelo do Documento Fiscal;</li>
+                    <li><strong>série</strong> - Série do Documento Fiscal;</li>
+                    <li><strong>nNF</strong> - Número do Documento Fiscal;</li>
+                    <li><strong>tpEmis</strong> – Forma de emissão da NF-e;</li>
+                    <li><strong>cNF</strong> - Código Numérico que compõe a Chave de Acesso;</li>
+                    <li><strong>cDV</strong> - Dígito Verificador da Chave de Acesso.</li>
+                </ul>
+                <p>Confira abaixo a distribuição pela quantidade de caracteres de cada campo:</p>
+                <img id="myImg1" class="img-responsive" src="https://www.oobj.com.br/bc/assets/Articles/281/Chave_Acesso.png" alt="">
+                
+                <p>A imagem abaixo mostra quais campos do XML compõem a chave de acesso, logo, se algum dos valores correspondentes mudarem no XML, a chave de acesso irá mudar também.</p>
+                <img id="myImg2" class="img-responsive" src="https://www.oobj.com.br/bc/assets/Articles/282/Composicao_chave_acesso.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para a imagem -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chaveInput = document.getElementById('chave');
+            const formatChavesDiv = document.getElementById('format-chaves');
+            const tooltipBox = document.getElementById('tooltip-box');
+            const resultadoFormatado = document.getElementById('resultado-formatado');
+            
+            chaveInput.addEventListener('input', function() {
+                const chave = chaveInput.value.trim();
+                updateFormatChaves(chave);
+                
+                if (validateChave(chave)) {
+                    document.getElementById('resultado').innerHTML = `<strong>Detalhes da Chave:</strong><br>${formatChave(chave)}`;
+                    resultadoFormatado.innerHTML = `<strong>Chave Formatada:</strong><br>${formatarChave(chave)}`;
+                } else if (chave.length > 0) {
+                    document.getElementById('resultado').innerHTML = `<span class="error">A chave deve ter 44 dígitos e ser válida.</span>`;
+                    resultadoFormatado.innerHTML = '';
+                } else {
+                    document.getElementById('resultado').innerHTML = '';
+                    resultadoFormatado.innerHTML = '';
+                }
+            });
+
+            function validateChave(chave) {
+                return chave.length === 44 && /^\d+$/.test(chave);
+            }
+
+            function formatChave(chave) {
+                return `
+                    <div><strong>cUF:</strong> ${chave.slice(0, 2)}</div>
+                    <div><strong>AAMM:</strong> ${chave.slice(2, 6)}</div>
+                    <div><strong>CNPJ:</strong> ${chave.slice(6, 20)}</div>
+                    <div><strong>mod:</strong> ${chave.slice(20, 22)} (${getNotaTipo(chave.slice(20, 22))})</div>
+                    <div><strong>série:</strong> ${chave.slice(22, 25)}</div>
+                    <div><strong>nNF:</strong> ${chave.slice(25, 34)}</div>
+                    <div><strong>tpEmis:</strong> ${chave.slice(34, 35)}</div>
+                    <div><strong>cNF:</strong> ${chave.slice(35, 43)}</div>
+                    <div><strong>cDV:</strong> ${chave.slice(43)}</div>
+                `;
+            }
+
+            function getNotaTipo(mod) {
+                switch(mod) {
+                    case '55':
+                        return 'NF-e = Nota Fiscal Eletrônica';
+                    case '65':
+                        return 'NFC-e = Cupom Fiscal Eletrônico';
+                    case '57':
+                        return 'CT-e = Conhecimento de Transporte Eletrônico';
+                    default:
+                        return 'Modelo Desconhecido';
+                }
+            }
+
+            function formatarChave(chave) {
+                return `
+                    ${chave.slice(0, 2)} ${chave.slice(2, 6)} ${chave.slice(6, 20)} ${chave.slice(20, 22)} ${chave.slice(22, 25)} ${chave.slice(25, 34)} ${chave.slice(34, 35)} ${chave.slice(35, 43)} ${chave.slice(43)}
+                `;
+            }
+
+            function updateFormatChaves(chave) {
+                const sections = [
+                    { label: 'cUF', length: 2, info: 'UF (estado do emitente da nota)' },
+                    { label: 'AAMM', length: 4, info: 'Ano e mês que a nota foi gerada' },
+                    { label: 'CNPJ', length: 14, info: 'CNPJ da empresa emitente da nota' },
+                    { label: 'mod', length: 2, info: 'Modelo da NF-e (ex.: 55 — NF-e)' },
+                    { label: 'série', length: 3, info: 'Série da NF-e' },
+                    { label: 'nNF', length: 9, info: 'Número da NF-e' },
+                    { label: 'tpEmis', length: 1, info: 'Tipo de emissão do documento (contingência = 9, autorizada = 1)' },
+                    { label: 'cNF', length: 8, info: 'Código numérico da Chave de Acesso' },
+                    { label: 'cDV', length: 1, info: 'Dígito verificador da Chave de Acesso' }
+                ];
+
+                let currentIndex = 0;
+                formatChavesDiv.innerHTML = sections.map(section => {
+                    const value = chave.slice(currentIndex, currentIndex + section.length);
+                    currentIndex += section.length;
+                    return `
+                        <div data-info="${section.info}">
+                            <strong>${section.label}:</strong> ${value || ''}
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            var modal = document.getElementById("myModal");
+            var imgs = document.querySelectorAll(".info-text img");
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+
+            imgs.forEach(function(img) {
+                img.onclick = function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                }
+            });
+
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() { 
+                modal.style.display = "none";
+            }
+        });
+
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        const resposta = confirm("Deseja ir para a versão 2?");
+        if (resposta) {
+            window.location.href = "https://tgameajuda.com/diversos/Valida%20chave/v2/index.html"; 
+        }
+    }, 2000); // Aguarda 2000ms (2 segundos) antes de exibir a pergunta
+});
+
+
+    </script>
+
+
+</body>
+</html>
