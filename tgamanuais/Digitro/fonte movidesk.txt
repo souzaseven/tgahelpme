@@ -1,0 +1,1767 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>TGA Sistemas - Central de servi&#231;os</title>
+    <link href="/Content/styles?v=k_cvU_S-fd9ofaExIzh63zn2n3RyKFuS_0_Ga7Xwz281" rel="stylesheet"/>
+
+    <link href="/Content/themes/movidesk/css?v=WT_a0gT4kQR4QDquDAmQuyZ49kWYmMToyWOugJvHHcg1" rel="stylesheet"/>
+
+    
+
+<style type="text/css">
+        
+        #home {
+            background-color: #FAFAF9;
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12), 0px 1px 8px rgba(0, 0, 0, 0.2);
+        }
+        #home .menu-item-label span,
+        .button-main-menu-toggle {
+            color: #0A0A0A;
+        }
+        #home .menu-item-label ul {
+            background-color: #FAFAF9;
+        }
+        .full-side-menu #side-menu-header .img-menu-normal {
+            background-image: url('https://s3.amazonaws.com/movidesk-files/6A4674631A93473A3AD38E366CCBAB37') !important;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100px;
+            background-position-x: right;
+        }
+        .side-menu #side-menu-header .img-menu-compact {
+            background-image: url('https://s3.amazonaws.com/movidesk-files/9E5269FC90E5987563616705C10FE364') !important;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 23px;
+        }
+        
+
+    
+    .color-menu-personal {
+        background-color: #FAFAF9;
+        color: #0A0A0A;
+        opacity: 1;
+    }
+</style>
+
+
+<link rel="shortcut icon" type="image/png" href="https://s3.amazonaws.com/movidesk-files/CC58FD58BA6D271728A27CEF7574AB24" />
+
+    <script type="text/javascript">
+        var movideskConfig = {"isAdmin":false,"storageUrl":"https://s3.amazonaws.com/movidesk-files/","staticFilesUrl":"https://cdn.app.movidesk.com","uploadFileMaxSize":10,"uploadFileMaxSizeInBytes":10485760,"workProfileType":1,"chatGroups":[{"id":11340,"name":"Suporte Matriz","agentType":2,"enableAutomaticDistribution":true}],"remoteAccessGroups":[],"telephonyGroups":[],"currentUser":{"Id":42420857,"TenantId":26793,"PersonType":1,"ProfileType":3,"UserName":"anderson.souza","DisplayName":"Anderson de Souza","AccessProfileId":112052,"HasAccessProfileAccessRules":true,"TimeZoneId":null,"CreatedDate":"2022-10-28T12:11:23.4771332","CodeReference":"508316900"},"currentRelationships":[{"id":"46550415","accessProfileId":112052,"text":"TGA SISTEMAS","name":"Anderson de Souza","fullName":null,"email":"anderson.souza@tgasistemas.com.br","contact":"65999452676","role":"","classification":"","personId":42420857,"personType":1,"profileType":3,"isOnline":false,"isDisabled":false,"disabled":false,"isMailBlocked":false,"remoteAccess":null,"hierarchy":[{"id":41942494,"text":"TGA SISTEMAS","personType":2},{"id":42420857,"text":"Anderson de Souza","personType":1}]}],"CurrentTeams":[{"id":98595,"name":"Agentes Matriz"}],"currentTenant":{"url":"https://s3.amazonaws.com/movidesk-files/CC58FD58BA6D271728A27CEF7574AB24","movideskBrand":true,"cultureIsPtBR":true,"id":26793,"text":"TGA Sistemas"},"satisfactionSurveyModel":1,"useKnowledgeBase":true,"tenantId":26793,"debug":false,"culture":"pt-BR","cultureServer":"en-US","canScheduleLinkAsset":true,"canScheduleLinkTicket":true,"useProtocol":false,"canTimeShock":true,"canEventOnlyEveryFifteenMinutes":false,"canCreatePinboardClient":false,"canCreatePinboardAgent":false,"canViewGraphicTimeAgreement":true,"isKbElasticSearchActive":true,"articleEvaluation":1,"useNewChatHub":true,"useCustomerSuccessProduct":false,"currentCustomerAccessProfile":0,"sessionGuid":"70ae6bea-910f-efdf-e7ed-794709f931f6","timeLimitOfSessionInactivity":240,"endpointUpdateSessionUser":"https://session.app.movidesk.com","sessionTimeoutLimit":45000,"anyActiveTicketIntegration":false,"cdnBaseUrl":"https://cdn.app.movidesk.com","unleash":{"GR_46_NEW_PRICE":true,"SER_12_PASSWORD_IMPROVEMENTS":false,"USE_NEW_CHAT_PANEL":false,"USE_LGPD":true,"LGPD_CUSTOM_FIELDS":true,"USE_55PBX":false,"INV_791_SUCCESS_CALENDAR_BUTTON":true,"EXP_1851_CHANGE_VIEW_DASHBOARD_MENU":true,"COR_1067_CHANGE_CHAT_WIDGET_POWERED_BY_REDIRECT_LINK":true,"GR_17_ADICIONAR_LABEL_CLICAVEL_NO_CHAT":false,"GR_19_ADICIONAR_TRACK_MIXPANEL":true,"DAI_27_ERROR_500_REPORT_TICKET_SERVICE":true,"DAI_298_CHECK_CHANGES_IN_TICKET_LIST_WHEN_TICKET_TAB_IS_ACTIVE":false,"GST_764_NEW_REPORTS":true,"GST_356_REPORTS_DATE_FORMAT":false,"GST_210_ADD_COLUMN_REPORTS":false,"COR_1044_FIX_CHATS_ALREADY_ANSWERED_IN_QUEUE_WAITING_FOR_SERVICE":true,"GST_820_REPORTS_TIME_FORMAT":false,"GST_166_ADD_SPECIFICPERIOD_CHATMAININDICATORS":false,"GST_918_ADJUST_LINK_TICKETS_REPORTS":false,"DAI_358_ADJUST_FILTER_CLIENT_TICKETSERVICE":true,"DAI_477_USE_NEW_REPORTS":false,"GST_802_MODIFY_NOTIFICATIONS_FOR_ASYNC":false,"DAI_658_APPLY_LOGIN_REBRANDING":true,"DAI_660_APPLY_MENU_REBRANDING":true,"DAI_150_ADJUST_FILTER_OWNER_SATISFACTIONSURVEYREPORT":true,"DAI_711_APPLY_TABS_REBRANDING":false,"COR_1039_FIX_CHAT_INACTIVITY_STARTS_COUNTING_FROM_ZERO_EVEN_WITHOUT_THE_AGENT_RELOADING_THE_PAGE":true,"COR_840_FIX_NOTIFICATION_CONTINUES_TO_APPEAR_AFTER_CHAT_IS_DISTRIBUTED_OR_ANSWERED_FRONT_END":true,"HD_1154_USE_NEW_TICKET_PANEL":false,"JTK_2486_TICKET_PANEL_VIEW_REDIRECT":false,"JTK_1769_SIGNALR_PAGE_REFRESH":true,"JTK_2516_ALLOW_PERSONTYPE_CLIENT_NEW_TICKETLIST":false,"JTK_2608_MIXPANEL_EVENT":false,"JTK_2732_CHANGED_LIMIT_TOTAL_PANEL_TICKETS":true,"HDII_1131_TENANT_USES_GENERIC_INTEGRATIONS":false,"JTK_1017_VALIDATE_ERROR_STATUS_TEAM":true,"GER_238_RESET_STATUS_TEAM_UPDATE":true,"SOC_904_ADJUST_FLOW_OF_AUTOMATIC_MESSAGES_SENT_BY_THE_BOT":true,"GER_75_SUBDOMAIN_LOWERCASE":true,"JTK_902_NOT_ALLOW_TO_CREATE_EQUAL_TAGS":true,"JTK_474_TREEVIEW_SERVICE_SIZE":true,"JTK_1685_SEND_SEARCH_PARAMETERS":true,"JTK_2418_APPLY_PERMISSION_SEARCH_SERVICES":true,"JTK_919_BLOCK_TAG_FIELD":true,"JTK_929_RETURN_FIELD_VALUE_TICKET":true,"AUT_796_TRIGGER_APPROVAL":true,"GR_38_WHATSAPP_ONLY_TRIAL_TENANT_ID":false,"GR_67_TRACKING_HOME_MENU_MIXPANEL_TRIAL":false,"JTK_1906_SEND_DATA_MIXPANEL":true,"JTK_2911_LOADING_EXPORT_TICKETS":true,"JTK_2824_ADD_ATTRIBUTE_TINYMCE":true,"CHAT_476_DDI_VALIDATION":false,"JTK_2411_FIX_KEYDOWN_ERROR":false,"CHAT_536_SANITIZE_CHAT_MESSAGES":true,"COR_1052_CHAT_EXPOSED_CROSS_SITE_SCRIPTING_VULNERABILITY_THROUGH_OFFLINE_MESSAGE_FORM":true,"JTK_1821_ENABLE_VALIDATE_STATUS_TO_CHANGE_OWNER":false,"GST_154_ADD_INDICATOR_REOPENEDTICKETSBYSYSTEM":true,"GST_801_MULTIPLE_REPORTS_TABS_BUG":true,"SOC_699_DISABLE_FIELD_AFTER_24_HOURS":false,"COR_522_SET_IS_AGENT_FLAG_AT_RUNTIME":true,"JTK_2303_VALIDATE_CC_CHARACTER_LIMIT":true,"GST_939_CHANGE_REPORT_TICKETS_BY_CLIENTS":true,"GST_940_CHANGE_REPORT_WORK_TIME":true,"GST_941_CHANGE_REPORT_RESUME_TICKETS_BY_SERVICE":true,"GST_942_DATE_LIMIT_TIME_BY_STATUS":true,"GST_943_DATE_LIMIT_TIME_BY_OWNER":true,"GST_944_CHANGE_REPORT_SATISFACTION_RESEARCH":true,"GST_945_CHANGE_REPORT_OF_SERVICES_ISSUED":true,"GST_946_DATE_LIMIT_INTERNAL_CHAT_HISTORY":true,"GST_947_DATE_LIMIT_ACCESS_CONTROL":true,"GST_948_CHANGE_REPORT_TICKETS_EXTRA_EXPENSES":true,"GST_949_DATE_LIMIT_CONTRACT_HOURS":true,"GST_950_CHANGE_REPORT_CONTRACT_SUMMARY_PERIOD":true,"GST_1012_VALIDATE_PERIOD_REPORT":true,"GST_958_CONTRACT_HOURS_PERIOD_SCROLL":true,"GST_443_WORK_TIME_SCROLL":true,"GST_751_TABLE_WORK_TIME_SCROLL":true,"GST_124_CHANGE_DISPLAY_PERIOD":false,"GST_208_REPORT_BY_STATUS_SCROLL":true,"GST_916_FIX_RESPONSIBILITY_FOR_CHARTS_ZOOM":false,"GST_619_FIX_REPORTS_ZOOM":true,"GST_1052_REPORT_FILTER_SCROLL":true,"GST_274_ZOOM_INDICATORS_FIX":true,"GST_218_FIX_COMMENT_REPORT_SATISFACTION_SURVEY":true,"GST_1081_SERVICE_REPORT_PRINT":true,"JTK_2582_CUSTOMFIELD_HTML_REQUIRED":false,"JTK_2914_SHOW_RETRACTED_TICKETS_HOME":true,"GST_1101_PROCESSING_CENTER_MENU_ITEM":false,"JTK_2374_SERVICE_COM_ID_NO_NOME":true,"EXP_1406_CHANGE_SEGMENTATION_MENU_ITEM":true,"GER_63_CAMPOS_ADICIONAIS_SOBREPONDO":true,"GER_102_ALTERAR_SLA_TICKETS_ESPANHOL":true},"isHomolog":false,"googleAuthBaseUrl":"https://googleauth.app.movidesk.com","useNewChatPanel":false,"permissionViewPerson":true,"permissionViewEnterprise":true,"permissionViewDepartment":true,"isTenantOnAutomaticUpsell":true,"isMovideskChatbotFeatureEnabled":false,"showEditChatbotFlowOption":false,"appSpaUrl":"https://app.movidesk.com","isPgRequester":false,"movideskOauthBaseUrl":"https://movidesk-oauth-manager.app.movidesk.com"};
+    </script>
+
+    <script src="https://unpkg.com/libphonenumber-js@1.9.42/bundle/libphonenumber-max.js" integrity="sha384-4c+5vLD4kNBlW6Eg6kJQoGiyeffSkL76XPfE566p4HwJwN5Ot2ZwPbJdjCXEHXhU" crossorigin="anonymous"></script>
+
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.23.6/antd.min.css" rel="stylesheet" />
+        <script src="https://cdn.app.movidesk.com/event-tracker/main.a58b4a3f.js"></script>
+        <script src="https://cdn.app.movidesk.com/satisfactionSurvey/js/runtime~main.fd43d1a0.js"></script>
+        <script type="text/javascript">
+            var journeysTracker = new MovideskTracker({
+                amplitudeToken: "85f5510c22599896ba870e93e5730652"
+            });
+            var movideskTracker = new MovideskTracker({
+                amplitudeToken: "59e4f8754851318ecb58e5ea4e8619d0"
+            });
+            window.journeysTracker = journeysTracker;
+            window.movideskTracker = movideskTracker;
+        </script>
+    <script type="text/javascript">
+        (function (e, a) {
+            if (!a.__SV) {
+                var b = window; try { var c, l, i, j = b.location, g = j.hash; c = function (a, b) { return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null }; g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search))) } catch (m) { } var k, h; window.mixpanel = a; a._i = []; a.init = function (b, c, f) {
+                    function e(b, a) {
+                        var c = a.split("."); 2 == c.length && (b = b[c[0]], a = c[1]); b[a] = function () {
+                            b.push([a].concat(Array.prototype.slice.call(arguments,
+                                0)))
+                        }
+                    } var d = a; "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel"; d.people = d.people || []; d.toString = function (b) { var a = "mixpanel"; "mixpanel" !== f && (a += "." + f); b || (a += " (stub)"); return a }; d.people.toString = function () { return d.toString(1) + ".people (stub)" }; k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+                    for (h = 0; h < k.length; h++)e(d, k[h]); a._i.push([b, c, f])
+                }; a.__SV = 1.2; b = e.createElement("script"); b.type = "text/javascript"; b.async = !0; b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn4.mxpnl.com/libs/mixpanel-2-latest.min.js"; c = e.getElementsByTagName("script")[0]; c.parentNode.insertBefore(b, c)
+            }
+        })(document, window.mixpanel || []);
+    </script>
+        <!-- start Mixpanel -->
+        <script type="text/javascript">
+            mixpanel.init("a21580b18f882d4a5eeeedb89142becb");
+        </script>
+        <!-- end Mixpanel -->
+
+    <!-- Facebook Messenger Javascript SDK -->
+    <script>
+        window.fbAsyncInit = function () {
+            window.appId = "554634298445454";
+            FB.init({
+                appId: window.appId,
+                xfbml: true,
+                version: "v2.5"
+            });
+            window.fbObj = FB;
+        };
+        (function (d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'TenantId': window.movideskConfig.currentUser.TenantId,
+            'UserName': window.movideskConfig.currentUser.UserName,
+            'DisplayName': window.movideskConfig.currentUser.DisplayName,
+            'PersonCreatedDate': window.movideskConfig.currentUser.CreatedDate,
+            'Chatbot': window.movideskConfig.isMovideskChatbotFeatureEnabled,
+            'Success': window.movideskConfig.useCustomerSuccessProduct,
+            'isTrial': false,
+            'isUserGuidingCampaign': false
+        });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5MGVRVT');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+
+    
+
+<!-- Hotjar Tracking Code for https://www.movidesk.com/ -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 1038968, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+
+        window.hj('identify', 42420857, {
+            'Tipo de perfil': 'Agent/Client',
+            'Id do usuário': 42420857,
+            'Id do tenant': 26793,
+            'Permissão no Customer': 'WithoutPermission',
+            'Data da contratação': '2022-05-17T00:00:00Z',
+            'Data de criação do usuário': '2022-10-28T12:11:23Z',
+            'Trial': false,
+            'Clientes com bot': false,
+        });
+
+        if (false) {
+            window.hj('trigger', 'isTrial');
+        }
+    </script>
+
+</head>
+<body class="authenticated base-body movidesk-is-show ">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MGVRVT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+    <input name="__RequestVerificationToken" type="hidden" value="3BvaLheyL4-qNWSF9OutvPpdYv5GfAiNFWDtgtzwpODmXmt88-CwONZh9cORLzKHXCAkImARUjTADbwqSNlLw3ZeQsA1" />
+
+    
+
+
+<aside id="home" class="side-menu">
+    
+    <!-- Menu begins -->
+    <div class="navbar-header main-menu-toggle" id="side-menu-header">
+        <div class="img-menu img-menu-normal" id="sidebar-menu-logo"></div>
+        <div class="img-menu img-menu-compact" id="sidebar-menu-logo-compact"></div>
+        <div class="button-main-menu-toggle"><i class="icon-mv-expand-left"></i></div>
+    </div>
+    <section id="home-menu" tabindex="-1" class="col-md-12">
+
+            <div class="row menu-item menu-home" id="menu-home" title="P&#225;gina inicial">
+                <a href="#"
+                   class="open-in-tab"
+                   data-force-new-tab="true"
+                   data-tab-class="tab-ticket"
+                   data-icon="glyphicon glyphicon-home"
+                   id="sidebar-menu-home">
+                    <span class="menu-item-label">
+                        <span class="icon">
+                            <i class="icon-mv-home" aria-hidden="true"></i>
+                        </span>
+                        <span class="title">P&#225;gina inicial</span>
+                    </span>
+                </a>
+            </div>
+                <div class="row menu-item menu-ticket" id="menu-ticket" title="Tickets">
+                    <a href="/Ticket"
+                       class="open-in-tab"
+                       data-force-new-tab="true"
+                       data-tab-class="tab-ticket"
+                       data-icon="icon-mv-earphones-alt"
+                       data-color="Ticket"
+                       id="sidebar-menu-tickets">
+                        <span class="menu-item-label">
+                            <span class="icon">
+                                <i class="icon-mv-earphones-alt" aria-hidden="true"></i>
+                            </span>
+                            <span class="title">Tickets</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="row menu-item menu-person" id="menu-person" title="Pessoas">
+                    <a href="/Person"
+                       class="open-in-tab"
+                       data-force-new-tab="true"
+                       data-tab-class="tab-person"
+                       data-icon="icon-mv-users"
+                       data-color="Person"
+                       id="sidebar-menu-users">
+                        <span class="menu-item-label">
+                            <span class="icon">
+                                <i class="icon-mv-users" aria-hidden="true"></i>
+                            </span>
+                            <span class="title">Pessoas</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="row menu-item menu-pinboard sub-menu-container">
+                    <div>
+                        <span class="menu-item-label sub-menu-item-container cancel-default-menu-click no-selection"
+                              style="flex-direction: column">
+                            <div class="side-flex-row">
+                                <span class="icon cancel-default-menu-click">
+                                    <i class="icon-mv-graph cancel-default-menu-click" aria-hidden="true"></i>
+                                </span>
+                                <span class="title text-menu-important-to-replace cancel-default-menu-click">An&#225;lise e dados</span>
+                                <span class="icon icon-sub-menu cancel-default-menu-click">
+                                    <i class="icon-mv-expand-down icon-sub-menu-item cancel-default-menu-click" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <ul class="sub-menu-ul">
+                                        <li>
+                                            <div class="sub-menu-item menu-dashboard" id="menu-dashboards" title="Indicadores">
+                                                <a href="/Dashboard"
+                                                   class="open-in-tab"
+                                                   data-tab-class="tab-dashboard"
+                                                   data-force-new-tab="true"
+                                                   data-icon="icon-mv-chart"
+                                                   data-color="Dashboard"
+                                                   id="sidebar-menu-indicators">
+                                                    <span class="sub-menu-item-wrapper">
+                                                        <span class="icon">
+                                                            <i class="icon-mv-chart" aria-hidden="true"></i>
+                                                        </span>
+                                                        <span class="sub-menu-item-text">Indicadores</span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                <li>
+                                        <div class="sub-menu-item menu-reports" id="menu-reports" title="Relat&#243;rios">
+                                            <a href="/Report"
+                                               class="open-in-tab"
+                                               data-tab-class="tab-report"
+                                               data-force-new-tab="true"
+                                               data-icon="icon-mv-doc"
+                                               data-color="Report"
+                                               id="sidebar-menu-reports">
+                                                <span class="sub-menu-item-wrapper">
+                                                    <span class="icon">
+                                                        <i class="icon-mv-doc" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="sub-menu-item-text">Relat&#243;rios</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                    <div class="row menu-item menu-chat" id="menu-chat" title="Chat">
+                        <a href="/ChatQueue"
+                           class="open-in-tab"
+                           data-tab-class="tab-chat"
+                           data-force-new-tab="true"
+                           data-only-one="true"
+                           data-icon="icon-mv-chat1"
+                           data-color="Chat"
+                           id="sidebar-menu-chat">
+                            <span class="menu-item-label">
+                                <span class="icon">
+                                    <i class="icon-mv-chat1" aria-hidden="true"></i>
+                                </span>
+                                <span class="title">Chat</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="row menu-item menu-bot" id="menu-bot" title="Bot">
+                        <a href="/BotDemoApplication"
+                           class="open-in-tab"
+                           data-force-new-tab="true"
+                           data-tab-class="tab-chatbot-editor"
+                           data-only-one="true"
+                           data-icon="icon-mv-bot"
+                           data-color="Default"
+                           id="sidebar-menu-bot"
+                           data-tab-title="Bot Movidesk">
+                            <span class="menu-item-label">
+                                <span class="icon">
+                                    <i class="icon-mv-bot" aria-hidden="true"></i>
+                                </span>
+                                <span class="title">Bot</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="row menu-item menu-pinboard sub-menu-container">
+                        <div>
+                            <span class="menu-item-label sub-menu-item-container cancel-default-menu-click no-selection"
+                                  style="flex-direction: column">
+                                <div class="side-flex-row">
+                                    <span class="icon cancel-default-menu-click">
+                                        <i class="icon-mv-drawar cancel-default-menu-click" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="title text-menu-important-to-replace cancel-default-menu-click">Recados</span>
+                                    <span class="icon icon-sub-menu cancel-default-menu-click">
+                                        <i class="icon-mv-expand-down icon-sub-menu-item cancel-default-menu-click" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <ul class="sub-menu-ul">
+                                    <li>
+                                        <div class="sub-menu-item menu-messages" id="menu-messages" title="Mensagens">
+                                            <a href="/Message"
+                                               class="open-in-tab"
+                                               data-tab-class="tab-message-list tab-message"
+                                               data-force-new-tab="true"
+                                               data-only-one="true"
+                                               data-icon="icon-mv-envelope" .
+                                               data-color="Message"
+                                               id="sidebar-menu-messages">
+                                                <span class="sub-menu-item-wrapper">
+                                                    <span class="icon">
+                                                        <i class="icon-mv-envelope" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="sub-menu-item-text">Mensagens</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="sub-menu-item menu-pinboard" id="menu-pinboard" title="Mural de avisos">
+                                            <a href="/Pinboard"
+                                               class="open-in-tab"
+                                               data-tab-class="tab-pinboard-list tab-pinboard"
+                                               data-force-new-tab="true"
+                                               data-only-one="true"
+                                               data-icon="icon-mv-pin-alt"
+                                               data-color="Pinboard"
+                                               id="sidebar-menu-notification">
+                                                <span class="sub-menu-item-wrapper">
+                                                    <span class="icon">
+                                                        <i class="icon-mv-pin-alt" aria-hidden="true"></i>
+                                                    </span>
+                                                    <span class="sub-menu-item-text">Mural de avisos</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                <div class="row menu-item menu-schedule" id="menu-schedule" title="Agenda">
+                    <a href="/Schedule"
+                       class="open-in-tab"
+                       data-tab-class="tab-schedule-list tab-schedule"
+                       data-force-new-tab="true"
+                       data-only-one="true"
+                       data-icon="icon-mv-calendar"
+                       data-color="Schedule"
+                       id="sidebar-menu-calendar">
+                        <span class="menu-item-label">
+                            <span class="icon">
+                                <i class="icon-mv-calendar" aria-hidden="true"></i>
+                            </span>
+                            <span class="title">Agenda</span>
+                        </span>
+                    </a>
+                </div>
+
+            <div class="end-menu-itens">
+                    <div class="row menu-item menu-configurations last-item-help mobile-itens" id="menu-configurations" title="Configura&#231;&#245;es">
+                        <a href="#"
+                           class="open-in-tab"
+                           data-tab-class="tab-configuration"
+                           data-force-new-tab="true"
+                           data-icon="icon-mv-settings"
+                           data-color="Configuration"
+                           id="sidebar-menu-settings">
+                            <span class="menu-item-label">
+                                <span class="icon">
+                                    <i class="icon-mv-settings" aria-hidden="true"></i>
+                                </span>
+                                <span class="title">Configura&#231;&#245;es</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="row menu-item menu-help mobile-itens" id="menu-help" title="Ajuda">
+                        <a href=https://atendimento.movidesk.com/kb/pt-br target="_blank" id="sidebar-menu-help">
+                            <span class="menu-item-label">
+                                <span class="icon">
+                                    <i class="icon-mv-question" aria-hidden="true"></i>
+                                </span>
+                                <span class="title">Ajuda</span>
+                            </span>
+                        </a>
+                    </div>
+            </div>
+    </section>
+    <!-- End of menu -->
+
+</aside>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- start DOMPurify -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js" integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- end DOMPurify -->
+
+
+    <div class="anchor-schedule-notification"></div>
+
+        <div class="go-straight-to-ticket-container">
+            <div class="go-straight-to-ticket-subcontainer">
+                <input type="text" id="go-straight-to-ticket" placeholder="V&#225; direto ao ticket" />
+            </div>
+        </div>
+
+    <header id="main-header">
+        <!-- Begin of Main-menu -->
+        <div id="main-menu" class="navbar" role="navigation">
+            <!-- [ AQUI VAI TODO O TOPO... INCLUSIVE AS ABAS ] -->
+            <!-- Begin of tabs -->
+            <div id="tabs" class="" role="navigation">
+                <div class="tabs-wrapper">
+                    <div class="tabs-container">
+                        <div class="inner-overflow">
+                            <ul id="tabs-nav" class="nav navbar-nav">
+                                
+        <li id="tabDefault" class="tab-chat active" data-color="Chat">
+            <a data-toggle="tab" href="#tab-paneDefault" data-uri="/ChatQueue">
+                <span class="icon-mv-chat1"></span>
+                <span class="tab-title">Chat</span>
+            </a>
+            <button class="close" type="button" title="Fechar esta aba (ALT + W)">×</button>
+        </li>
+    
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dropdown tabs-dropdown-container" id="tabs-dropdown-btn-container">
+                        <button class="dropdown-toggle" type="button" id="tabs-dropdown-btn" data-toggle="dropdown" aria-expanded="false" style="display: none">
+                            <span class="number-hidden-tabs"></span>
+                        </button>
+                        <ul id="tabs-dropdown-nav" class="dropdown-menu" role="menu" aria-labelledby="tabs-dropdown-btn">
+                                <div class="fake-tab-mobile fake-home">
+                                    <div class="icon-mv-home"></div>
+                                    <div class="fake-tab-text">P&#225;gina inicial</div>
+                                </div>
+
+                                    <div class="fake-tab-mobile fake-config">
+                                        <div class="icon-mv-settings"></div>
+                                        <div class="fake-tab-text">Configura&#231;&#245;es</div>
+                                    </div>
+                        </ul>
+                    </div>
+                        <div class="button-more-tab-nav dropdown-dad-movidesk">
+                            <div class="button-more-icon-container" id="button-more-icon-container">
+                                <span class="icon-mv-add"></span>
+                            </div>
+                            <ul class="dropdown-menu-movidesk open-right" role="menu" id="more-itens-button-new-ticket">
+                                    <li class="dropdown-item-link-movidesk" id="top-bar-new-ticket-link">
+                                        <a href="/Ticket" class="new-ticket dropdown-item-with-icon" data-color="Ticket">
+                                            <span class="icon-mv-earphones-alt"></span>
+                                            <div class="dropdown-item-text-movidesk">Novo Ticket</div>
+                                            <div class="dropdown-item-text-movidesk-shortcuts">Alt + T</div>
+                                        </a>
+                                    </li>
+                                                                    <li class="dropdown-item-link-movidesk" id="top-bar-new-person-link">
+                                        <a href="/Person" class="new-person dropdown-item-with-icon" data-color="Configuration" data-tab-origin="configuration">
+                                            <span class="icon-mv-user-add"></span>
+                                            <div class="dropdown-item-text-movidesk">Nova Pessoa</div>
+                                            <div class="dropdown-item-text-movidesk-shortcuts">Alt + P</div>
+                                        </a>
+                                    </li>
+                                                                    <li class="divider"></li>
+                                <li class="dropdown-item-link-movidesk closeAllTabs" id="closeAllTabs">
+                                    <a href="#">
+                                        <div class="dropdown-item-text-movidesk">Fechar todas as guias</div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-item-link-movidesk closeAllTabsLessCurrent" id="closeAllTabsLessCurrent">
+                                    <a href="#">
+                                        <div class="dropdown-item-text-movidesk">Fechar todas, menos a atual</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+            <div class="top-user-itens">
+                <div class="button-main-menu-toggle main-menu-toggle color-menu-personal" id="button-main-menu-topbar">
+                    <i class="icon-mv-mv-menu"></i>
+                </div>
+                    <ul class="wrapper-list-user-itens">
+                        <li class="empty-wrapper"></li>
+                        <li class="top-user-item-search top-search-field" title="Pesquisar">
+                            <div class="navbar-form navbar-left container-search-header" role="search">
+                                <div class="wrapper">
+                                    <input id="goto-ticket" type="text" autocomplete="off" class="form-control top-search" placeholder="Localize seu ticket">
+                                    <input id="goto-ticket-before-keydown" type="text" autocomplete="off" class="hidden">
+                                    <button id="btn-goto-ticket" class="">
+                                        <span class="top-icon-mv icon-mv-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <i class="top-icon-mv icon-mv-search" id="top-bar-search-icon"></i>
+                        </li>
+                        <li id="btn-ticket-history" class="dropdown-dad-movidesk top-user-itens-icons-container">
+                            <div id="top-bar-clock-icon">
+                                <i class="top-icon-mv icon-mv-clock"></i>
+                            </div>
+                            <ul id="ticket-history" class="dropdown-menu-movidesk open-left" role="menu"></ul>
+                        </li>
+                        <li class="dropdown-dad-movidesk top-user-itens-icons-container flare-flags" id="top-notifications">
+                            <div id="top-bar-bell-icon">
+                                <i class="top-icon-mv icon-mv-bell icon-notify-container">
+                                    <span id="notifications-count" class="header-notification-badge badge-notifications count0"></span>
+                                </i>
+                            </div>
+                                <ul class="dropdown-menu-movidesk open-left menu-notifications" role="menu">
+
+    <li class="item-no-count disable">
+        <a href="#">
+            <div class="dropdown-item-text-movidesk">Nenhuma notifica&#231;&#227;o</div>
+        </a>
+    </li>
+
+                                </ul>
+
+                        </li>
+                        <!-- Status da telefonia -->
+
+
+
+
+<li class="dropdown-dad-movidesk chat-group-dropdown-actions top-user-itens-icons-container">
+    <div id="top-bar-chat-balloon-icon">
+        <i class="top-icon-mv icon-mv-chat-status chat-icon-status status-online">
+            <span id="message-notification-count" class="header-notification-badge badge-chat count0"></span>
+        </i>
+    </div>
+    <ul id="message-notification-items" class="dropdown-menu-movidesk open-left fancy-scroll" role="menu">
+            <li id="chat-status-menu" class="dropdown-item-link-movidesk">
+                <input type="hidden" id="current-chat-status" value="Online" />
+                <a href="/Chat/SetStatus/Offline" class="change-chat-status dropdown-item-with-icon">
+                    <span class="icon-mv-chat2 chat-circle-status status-offline"></span>
+                    <div class="chat-status-text dropdown-item-text-movidesk">Chat offline</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+        
+    <li class="no-chat-notification dropdown-item-link-movidesk disable">
+        <a href="#">
+            <div class="dropdown-item-text-movidesk">Nenhuma notifica&#231;&#227;o</div>
+        </a>
+    </li>
+
+    </ul>
+</li>
+
+                        <li style="display:none;">
+                            <i class="top-icon-mv icon-mv-call-in"></i>
+                        </li>
+                    </ul>
+                <div class="user-avatar-container dropdown-dad-movidesk" id="edit-profile-menu">
+                    <div class="user-avatar" id="top-bar-avatar-picture">
+                        
+
+<img class="img-avatar" src="https://s3.amazonaws.com/movidesk-files/7C109A2F4A45F0FD2AE50B7EA6EBE2B5"/>
+                    </div>
+                    <a id="editProfileUserName" style="display: none;">Anderson de Souza</a>
+                    <ul class="dropdown-menu-movidesk open-left" role="menu">
+                        <li class="dropdown-header-movidesk">
+                            <div class="dropdown-header-text-movidesk">Anderson de Souza</div>
+                        </li>
+                        <li class="divider"></li>
+                            <li class="dropdown-item-link-movidesk" id="top-bar-edit-profile">
+                                <a href="/Account/EditProfile"
+                                   class="open-in-tab dropdown-item-with-icon"
+                                   data-force-new-tab="true"
+                                   data-icon="icon-mv-settings"
+                                   data-only-one="true"
+                                   data-tab-class="account-tab"
+                                   data-color="Configuration"
+                                   data-tab-origin="configuration">
+                                    <span class="icon-mv-user"></span>
+                                    <div class="dropdown-item-text-movidesk">Editar perfil</div>
+                                </a>
+                            </li>
+                                                    <li class="dropdown-item-link-movidesk" id="top-bar-help">
+                                <a class="dropdown-item-with-icon" href=https://atendimento.movidesk.com/kb/pt-br target="_blank">
+                                    <span class="icon-mv-question"></span>
+                                    <div class="dropdown-item-text-movidesk">Ajuda</div>
+                                </a>
+                            </li>
+                                                                            <li class="dropdown-item-link-movidesk" id="top-bar-go-directly-to-ticket">
+                                <a href="#" class="dropdown-item-with-icon easter-egg-ctrl-space-user-menu-button">
+                                    <span></span>
+                                    <div class="dropdown-item-text-movidesk">V&#225; direto ao ticket</div>
+                                    <div class="dropdown-item-text-movidesk-shortcuts">Ctrl + Espa&#231;o</div>
+                                </a>
+                            </li>
+                                <li class="dropdown-item-link-movidesk" id="top-bar-tell-a-friend">
+                                    <a href="https://landing.movidesk.com/cliente-indica-cliente/?bl_ref=QNGXD" data-tab-title="Indique um amigo" rel="nofollow" target="_blank">
+                                        <span class=""></span>
+                                        <div class="dropdown-item-text-movidesk">Indique um amigo</div>
+                                    </a>
+                                </li>
+                                                    <li class="dropdown-item-link-movidesk">
+                                <a id="terms-of-use" class="dropdown-item" href="https://atendimento.movidesk.com/kb/article/248470/politicas-de-uso-movidesk" target="_blank">
+                                    <span></span>
+                                    <div class="dropdown-item-text-movidesk">Termos de uso</div>
+                                </a>
+                            </li>
+                                                    <li class="dropdown-item-link-movidesk">
+                                <a id="privacy-policy" class="dropdown-item" href="https://atendimento.movidesk.com/kb/article/168232/politica-privacidade-movidesk" target="_blank">
+                                    <span></span>
+                                    <div class="dropdown-item-text-movidesk">Pol&#237;tica de privacidade</div>
+                                </a>
+                            </li>
+                        <li class="dropdown-item-link-movidesk">
+                            <a id="sign-out-link" class="dropdown-item-with-icon" href="/Account/Logout">
+                                <span></span>
+                                <div class="dropdown-item-text-movidesk">Sair</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bar-tab-color-preview"></div>
+        </div>
+        <!-- End of #main-menu -->
+    </header>
+    <!-- End of #secondary-menu -->
+    <!-- MainContainer -->
+    <section id="main-container" class="container-fluid tab-content">
+            <div class="tab-pane" id="tab-paneHome">
+
+<section class="home-panel isAgent">
+
+    <div class="row" id="hello-message-panel">
+        <div class="col-sm-8 introduction-hello-name">
+            <div class="row introduction-hello-line">
+                <div class="col-sm-12">
+                    <strong>
+                        Ol&#225;,
+                            <a href="/Account/EditProfile"
+                               class="open-in-tab"
+                               data-force-new-tab="true"
+                               data-icon="icon-mv-settings"
+                               data-only-one="true"
+                               data-tab-title="Editar perfil"
+                               data-tab-class="account-container"
+                               data-color="Configuration"
+                               data-tab-origin="configuration">Anderson de Souza.</a>
+                    </strong>
+                </div>
+            </div>
+            <div class="row introduction-hello-line">
+                <div class="col-sm-12">
+                    <span class="hello-message">Que bom te ver por aqui! :)</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 home-flags-container" style="text-align: right;">
+
+        </div>
+    </div>
+
+        <div style="padding-top: 10px">
+            Para acessar os contadores de tickets &#233; s&#243; expandir os indicadores que deseja visualizar e utilizar normalmente
+        </div>
+
+
+    <div class="home-panel-cards">
+            <div class="container-content-panel" id="home-panel-my">
+                <div class="panel-wrapper-introduction container-fluid compact" data-ticket-type="mine">
+                    <div class="row row-top-icons">
+                        <i class="col-xs-1 icon-mv-earphones-alt"></i>
+                        <div class="col-xs-10">Meus tickets</div>
+                        <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-down"></i>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper ticket"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-6 panel-text-container">
+                            <div class="row font-16-bold panel-text-padding-bottom skeleton-md" id="Mine-Pending">
+                                <a href="/Ticket/?ticketIntroductionType=1"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="MinePending">0</span> <span>pendentes</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-New">
+                                <a href="/Ticket/?ticketIntroductionType=2"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="MineNew">0</span><span> novos</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-In-Attendance">
+                                <a href="/Ticket/?ticketIntroductionType=3"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="MineInAttendance">0</span> <span>em atendimento</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-Stopped">
+                                <a href="/Ticket/?ticketIntroductionType=4"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="MineStopped">0</span><span> parados</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="row">
+                                <div class="opened-today-container skeleton-md" id="Mine-Today">
+                                    <a href="/Ticket/?ticketIntroductionType=5"
+                                       data-tab-title="Tickets"
+                                       data-color="Ticket"
+                                       class="open-in-tab dashboard-no-link-style skeleton-md"
+                                       data-force-new-tab="true"
+                                       data-tab-class="tab-ticket"
+                                       data-icon="icon-mv-earphones-alt">
+                                        <div class="opened-today-container-number" id="MineToday">0</div>
+                                        <div class="opened-today-container-text">abertos hoje</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row padding-default-row line-container toggle-container">
+                        <div class="col-xs-12 line-wrapper ticket"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-text-container">
+                            <div class="row font-16-bold">Vencimentos</div>
+                            <div class="row result-bar skeleton-md" id="MineResultBar">
+                                <div class="result-indicator result-indicator-red" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-yellow" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-green" style="flex:;"></div>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-Expired-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=6"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-red"></span>
+                                    <span id="MineExpiredTickets">0</span> <span>venceram</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-Expire-Today-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=7"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-yellow"></span>
+                                    <span id="MineExpireTodayTickets">0</span> <span> vencem hoje</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Mine-Expire-This-Week-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=8"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-green"></span>
+                                    <span id="MineExpireThisWeekTickets">0</span> <span> vencem esta semana</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-content-panel" id="home-panel-team">
+                <div class="panel-wrapper-introduction container-fluid compact" data-ticket-type="team">
+                    <div class="row row-top-icons">
+                        <i class="col-xs-1 icon-mv-earphones-alt"></i>
+                        <div class="col-xs-10">Tickets da minha equipe</div>
+                        <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-down"></i>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper ticket"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-6 panel-text-container">
+                            <div class="row font-16-bold panel-text-padding-bottom skeleton-md" id="Team-Pending">
+                                <a href="/Ticket/?ticketIntroductionType=9"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="TeamPending">0</span> <span> pendentes</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-New">
+                                <a href="/Ticket/?ticketIntroductionType=10"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="TeamNew">0</span> <span> novos</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-In-Attendance">
+                                <a href="/Ticket/?ticketIntroductionType=11"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="TeamInAttendance">0</span> <span> em atendimento</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-Stopped">
+                                <a href="/Ticket/?ticketIntroductionType=12"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style skeleton-md"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span id="TeamStopped">0</span> <span>parados</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="row">
+                                <div class="opened-today-container skeleton-md" id="Team-Today">
+                                    <a href="/Ticket/?ticketIntroductionType=13"
+                                       data-tab-title="Tickets"
+                                       data-color="Ticket"
+                                       class="open-in-tab dashboard-no-link-style skeleton-md"
+                                       data-force-new-tab="true"
+                                       data-tab-class="tab-ticket"
+                                       data-icon="icon-mv-earphones-alt">
+                                        <div class="opened-today-container-number" id="TeamToday">0</div>
+                                        <div class="opened-today-container-text">abertos hoje</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row padding-default-row line-container toggle-container">
+                        <div class="col-xs-12 line-wrapper ticket"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-text-container">
+                            <div class="row font-16-bold">Vencimentos</div>
+                            <div class="row result-bar skeleton-md" id="TeamResultBar">
+                                <div class="result-indicator result-indicator-red" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-yellow" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-green" style="flex:;"></div>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-Expired-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=14"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-red"></span>
+                                    <span id="TeamExpiredTickets">0</span> <span>venceram</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-Expire-Today-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=15"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-yellow"></span>
+                                    <span id="TeamExpireTodayTickets">0</span> <span>vencem hoje</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="Team-Expire-This-Week-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=16"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-green"></span>
+                                    <span id="TeamExpireThisWeekTickets">0</span><span> vencem esta semana</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container-content-panel" id="home-panel-all">
+            <div class="panel-wrapper-introduction container-fluid compact" data-ticket-type="all">
+                <div class="row row-top-icons">
+                    <i class="col-xs-1 icon-mv-earphones-alt"></i>
+                    <div class="col-xs-10">Tickets de todos os agentes</div>
+                    <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-down"></i>
+                </div>
+                <div class="row padding-default-row line-container">
+                    <div class="col-xs-12 line-wrapper ticket"></div>
+                </div>
+                <div class="row padding-default-row toggle-container">
+                    <div class="col-xs-6 panel-text-container">
+                        <div class="row font-16-bold panel-text-padding-bottom skeleton-md" id="All-Pending">
+                            <a href="/Ticket/?ticketIntroductionType=17"
+                               data-tab-title="Tickets"
+                               data-color="Ticket"
+                               class="open-in-tab dashboard-no-link-style"
+                               data-force-new-tab="true"
+                               data-tab-class="tab-ticket"
+                               data-icon="icon-mv-earphones-alt">
+                                <span id="AllPending">0</span><span> pendentes</span>
+                            </a>
+                        </div>
+                        <div class="row panel-text-normal skeleton-md" id="All-New">
+                            <a href="/Ticket/?ticketIntroductionType=18"
+                               data-tab-title="Tickets"
+                               data-color="Ticket"
+                               class="open-in-tab dashboard-no-link-style"
+                               data-force-new-tab="true"
+                               data-tab-class="tab-ticket"
+                               data-icon="icon-mv-earphones-alt">
+                                <span id="AllNew">0</span><span> novos</span>
+                            </a>
+                        </div>
+                        <div class="row panel-text-normal skeleton-md" id="All-In-Attendance">
+                            <a href="/Ticket/?ticketIntroductionType=19"
+                               data-tab-title="Tickets"
+                               data-color="Ticket"
+                               class="open-in-tab dashboard-no-link-style"
+                               data-force-new-tab="true"
+                               data-tab-class="tab-ticket"
+                               data-icon="icon-mv-earphones-alt">
+                                <span id="AllInAttendance">0</span><span> em atendimento</span>
+                            </a>
+                        </div>
+                        <div class="row panel-text-normal skeleton-md" id="All-Stopped">
+                            <a href="/Ticket/?ticketIntroductionType=20"
+                               data-tab-title="Tickets"
+                               data-color="Ticket"
+                               class="open-in-tab dashboard-no-link-style"
+                               data-force-new-tab="true"
+                               data-tab-class="tab-ticket"
+                               data-icon="icon-mv-earphones-alt">
+                                <span id="AllStopped">0</span> <span>parados</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="opened-today-container skeleton-md" id="All-Today">
+                                <a href="/Ticket/?ticketIntroductionType=21"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style skeleton-md"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <div class="opened-today-container-number" id="AllToday">0</div>
+                                    <div class="opened-today-container-text">abertos hoje</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row padding-default-row line-container toggle-container">
+                        <div class="col-xs-12 line-wrapper ticket"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-text-container">
+                            <div class="row font-16-bold">Vencimentos</div>
+                            <div class="row result-bar skeleton-md" id="AllResultBar">
+                                <div class="result-indicator result-indicator-red" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-yellow" style="flex:;"></div>
+                                <div class="result-indicator result-indicator-green" style="flex:;"></div>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="All-Expired-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=22"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-red"></span>
+                                    <span id="AllExpiredTickets">0</span> <span>venceram</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="All-Expire-Today-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=23"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-yellow"></span>
+                                    <span id="AllExpireTodayTickets">0</span><span> vencem hoje</span>
+                                </a>
+                            </div>
+                            <div class="row panel-text-normal skeleton-md" id="All-Expire-This-Week-Tickets">
+                                <a href="/Ticket/?ticketIntroductionType=24"
+                                   data-tab-title="Tickets"
+                                   data-color="Ticket"
+                                   class="open-in-tab dashboard-no-link-style"
+                                   data-force-new-tab="true"
+                                   data-tab-class="tab-ticket"
+                                   data-icon="icon-mv-earphones-alt">
+                                    <span class="square-result square-color-result-green"></span>
+                                    <span id="AllExpireThisWeekTickets">0</span><span> vencem esta semana</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+            <div class="container-content-panel pinboard">
+                <div class="panel-wrapper-introduction container-fluid">
+                    <div class="row row-top-icons">
+                        <i class="col-xs-1 icon-mv-pin-alt"></i>
+                        <div class="col-xs-10">Mural de avisos</div>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper chat" style="
+                            background-color: #f57c00;
+                        "></div>
+                    </div>
+                    <div id="PinboardList" class="pinboard-list-items p-10 pt-0">
+                    </div>
+                    <div class="row padding-default-row">
+                        <div class="col-xs-12 panel-general-link-container">
+                            <a href="/Pinboard" class="open-in-tab p-20" data-color="Pinboard" data-tab-class="tab-pinboard-list tab-pinboard" data-force-new-tab="true" data-only-one="true" data-icon="icon-mv-pin-alt" data-tab-title="Mural de avisos" style="color: #f57c00;">
+                                VER AVISOS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-content-panel">
+                <div class="panel-wrapper-introduction container-fluid">
+                    <div class="row row-top-icons">
+                        <i class="col-xs-1 icon-mv-envelope"></i>
+                        <div class="col-xs-10">Mensagens</div>
+                        <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-up"></i>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper message"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-text-container skeleton-md">
+                            <div class="row other-text-container">Você tem <span id='NewMessages'>0</span> mensagens novas</div>
+                        </div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-general-link-container skeleton-md">
+                            <a href="/Message"
+                               class="open-in-tab message"
+                               data-color="Message"
+                               data-tab-class="tab-message-list tab-message"
+                               data-force-new-tab="true"
+                               data-only-one="true"
+                               data-icon="icon-mv-envelope"
+                               data-tab-title="Mensagens">
+                                CAIXA DE ENTRADA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-content-panel">
+                <div class="panel-wrapper-introduction container-fluid">
+                    <div class="row row-top-icons">
+                        <i class="col-xs-1 icon-mv-chat1"></i>
+                        <div class="col-xs-10">Chat</div>
+                        <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-up"></i>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper chat"></div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-text-container skeleton-md">
+                            <div class="row other-text-container"><span id="NewChats">0</span> chats aguardando atendimento</div>
+                            <div class="row other-text-container"><span id="InAttendanceChats">0</span> chats em atendimento</div>
+                        </div>
+                    </div>
+                    <div class="row padding-default-row toggle-container">
+                        <div class="col-xs-12 panel-general-link-container skeleton-md">
+                            <a href="/ChatQueue"
+                               class="open-in-tab chat"
+                               data-color="Chat"
+                               data-tab-class="tab-chat-list tab-chat"
+                               data-force-new-tab="true"
+                               data-only-one="true"
+                               data-icon="icon-mv-chat1"
+                               data-tab-title="Chat">
+                                VER CONVERSAS
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="container-content-panel">
+                    <div class="panel-wrapper-introduction container-fluid">
+                        <div class="row row-top-icons">
+                            <i class="col-xs-1 icon-mv-calendar"></i>
+                            <div class="col-xs-10">Agenda</div>
+                            <i class="col-xs-1 icon-arrow-dashboard icon-mv-expand-up"></i>
+                        </div>
+                        <div class="row padding-default-row line-container">
+                            <div class="col-xs-12 line-wrapper schedule"></div>
+                        </div>
+                        <div class="row padding-default-row toggle-container">
+                            <div class="col-xs-12 panel-text-container skeleton-md">
+                                <div class="row font-16-bold panel-text-padding-bottom" id="countTodayEvents">
+                                    
+                                </div>
+                                <div class="row panel-text-normal" id="firstEventPreview">
+                                    
+                                </div>
+                                <div class="row panel-text-normal" id="secondEventPreview">
+                                    
+                                </div>
+                                <div class="row font-16-bold panel-text-padding-bottom" id="countWeekEvents">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row padding-default-row toggle-container">
+                            <div class="col-xs-12 panel-general-link-container">
+                                <a href="/Schedule"
+                                   class="open-in-tab schedule"
+                                   data-color="Schedule"
+                                   data-tab-class="tab-schedule-list tab-schedule"
+                                   data-force-new-tab="true"
+                                   data-only-one="true"
+                                   data-icon="icon-mv-calendar"
+                                   data-tab-title="Agenda">
+                                    VER AGENDA
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="container-content-panel help-container" style="display: none" id="HelpCenter">
+            <a target="_blank" id="HelpCenterUrl">
+                <div class="panel-wrapper-introduction container-fluid">
+                    <div class="row row-top-icons help">
+                        <i class="col-xs-1 icon-mv-question"></i>
+                        <div class="col-xs-10">Central de ajuda</div>
+                    </div>
+                    <div class="row padding-default-row line-container">
+                        <div class="col-xs-12 line-wrapper default"></div>
+                    </div>
+                    <div class="row padding-default-row">
+                        <div class="col-xs-12 panel-text-container skeleton-md">
+                            <div class="row help-text-container">
+                                Aqui voc&#234; ter&#225; acesso &#224;s atualiza&#231;&#245;es da base de conhecimento da TGA Sistemas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+            </div>
+                <div class="tab-pane" id="tab-paneConfiguration">
+
+<section class="home-configuration configuration-container">
+    
+<aside class="configuration-sidebar col-xs-12 col-md-9">
+    <div class="inner row">
+        <div class="col-xs-12 configuration-search-container">
+            <div class="search-field-container">
+                <input type="text" class="configuration-search-field" placeholder="Do que voc&#234; precisa?" autofocus="true" />
+                <span class="icon-mv-search"></span>
+            </div>
+            <div class="search-buttons-container">
+                <button class="toggle-group active">Grupo</button>
+                <button class="toggle-az">A - Z</button>
+            </div>
+        </div>
+
+    <div class="col-xs-12 configuration-options-container container-fluid">
+
+
+        
+        
+        
+<div class='configuration-item-container' data-name='Pessoas'><h4><div class='block-list-header-partial'></div><span class='icon-mv-users'></span><div class='title'> Pessoas</div></h4><ul class=''>            <li class="group-item" data-name="Pessoas">
+                <a href="/Person"
+                   class="open-in-tab"
+                   data-force-new-tab="true"
+                   data-tab-class="tab-configuration"
+                   data-tab-origin="configuration"
+                   data-icon="icon-mv-users"
+                   data-color="Configuration">
+                    Pessoas
+                </a>
+            </li>
+                        <li class="group-item" data-name="Regras para associa&#231;&#227;o">
+                    <a href="/PersonAssociationRule"
+                       class="open-in-tab"
+                       data-force-new-tab="true"
+                       data-tab-class="tab-configuration"
+                       data-tab-origin="configuration"
+                       data-icon="icon-mv-settings"
+                       data-color="Configuration">
+                        Regras para associa&#231;&#227;o
+                    </a>
+                </li>
+        </ul></div>
+
+
+
+<div class='configuration-item-container' data-name='Chat'><h4><div class='block-list-header-partial'></div><span class='icon-mv-chat1'></span><div class='title'> Chat</div></h4><ul class=''>            <li class="group-item" data-name="WhatsApp">
+                <a href="/SocialChannelWhatsApp/Consumption"
+                    class="open-in-tab"
+                    data-force-new-tab="true"
+                    data-tab-class="tab-social-whatsapp"
+                    data-tab-origin="configuration"
+                    data-only-one="true"
+                    data-icon="icon-mv-wa3"
+                    data-color="Chat">
+                    WhatsApp
+                </a>
+            </li>
+</ul></div>
+
+        <div class="no-results-found">Nenhum resultado encontrado</div>
+    </div>
+    </div>
+</aside>
+    
+
+<section class="height-full col-xs-12 col-md-3 configuration-summary-container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="configuration-summary">
+                <div class="panel-heading">
+                    <span class="icon-mv-settings"></span><h3 class="panel-title">Pessoas</h3>
+                </div>
+                <div class="panel-body persons">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="row">
+                                <ul class="list-people">
+                                    <li><div><strong>4210 Clientes</strong></div></li>
+                                    <li><div>2687 Empresas</div></li>
+                                    <li><div>0 Departamentos</div></li>
+                                    <li><div>1523 Pessoas</div></li>
+                                </ul>
+                            </div>
+                        </div>
+                            <div class="col-xs-6 agents-box-container">
+                                <div class="agents-box">
+                                    <div class="info-1">57</div>
+                                    <div class="info-2">Agentes ativos</div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 add-more-people-link">
+                                <a href="/Person" style="font-size: 85%; color: #5f5f5f; text-decoration: none;">Cadastre mais pessoas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- Release notes  -->
+                <div class="configuration-summary">
+                    <div class="panel-heading">
+                        <span class="icon-mv-settings"></span><h3 class="panel-title">&#218;ltimas atualiza&#231;&#245;es do Movidesk</h3>
+                    </div>
+                    <div class="panel-body release-notes scrollable-container">
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    31/10/2022
+                                    Vers&#227;o: 22.10.31
+                                    <a href="https://atendimento.movidesk.com/kb/article/332310/outubro2022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    30/09/2022
+                                    Vers&#227;o: 22.09.30
+                                    <a href="https://atendimento.movidesk.com/kb/article/324833/setembro2022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    12/08/2022
+                                    Vers&#227;o: 22.08.11
+                                    <a href="https://atendimento.movidesk.com/kb/article/312902/agosto2022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    22/07/2022
+                                    Vers&#227;o: 22.07.21
+                                    <a href="https://atendimento.movidesk.com/kb/article/308846/220721-22072022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    15/07/2022
+                                    Vers&#227;o: 22.07.14
+                                    <a href="https://atendimento.movidesk.com/kb/article/306867/220714-15072022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    08/07/2022
+                                    Vers&#227;o: 22.07.07
+                                    <a href="https://atendimento.movidesk.com/kb/article/305052/220707-08072022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    01/07/2022
+                                    Vers&#227;o: 22.06.30
+                                    <a href="https://atendimento.movidesk.com/kb/article/302674/220630-01072022" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>Nova vers&#227;o do release notes no ar!</dt>
+                                <dd>
+                                    06/08/2021
+                                    Vers&#227;o: 21.08.05
+                                    <a href="https://atendimento.movidesk.com/kb/article/223866/210805-06082021" target="_blank">Saiba o que mudou.</a>
+                                    <div class="line-division"></div>
+                                </dd>
+                            </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section></section>
+                </div>
+            <div class="tab-pane active " id="tab-paneDefault">
+                
+                
+    <section class="line-top height-full scrollable-container general-queue-container chat-queue-container chatQueue-container">
+        <div class="navbar-chat navbar-container">
+            <input type="hidden" class="field-server-date-iso" value="2023-01-13 20:05:03" />
+            <ul class="navbar-list-group chat-tabs">
+                <li class="navbar-item active">
+                    <a href="#conversations-tab-cd06f5b9-5636-4b6d-a75d-f0e860c32e77" class="tab-link" data-toggle="tab">Conversas</a>
+                </li>
+                <li class="navbar-item" style="display: none;">
+                    <a href="#admin-panel-tab-cd06f5b9-5636-4b6d-a75d-f0e860c32e77" class="tab-link" data-toggle="tab">Indicadores</a>
+                </li>
+                <li class="navbar-item" style="display: block;">
+                    <a href="#internal-chat-tab-cd06f5b9-5636-4b6d-a75d-f0e860c32e77" class="tab-link" data-toggle="tab">Chat interno</a>
+                </li>
+            </ul>
+
+            <div class="container offline-warning-row">
+                <div class="row offline-warning" style="display: none;">
+                    <div class="col-xs-12 col-xs-offset-0 col-md-12">
+                        <div class="alert alert-danger" role="alert">
+                            <p><strong>Aten&#231;&#227;o!</strong></p>
+                            <p>Seu status do chat est&#225; offline. Voc&#234; poder&#225; atender as conversas em fila mesmo assim, mas n&#227;o receber&#225; as notifica&#231;&#245;es de novas solicita&#231;&#245;es de conversa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container md-form tab-content">
+<div id="internal-chat-tab-cd06f5b9-5636-4b6d-a75d-f0e860c32e77" class="tab-pane fade">
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="internal-chat-header">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-06">
+                            <h3 class="chat-internal-title">Chat interno</h3>
+                            <div class="chat-internal-help">Inicie conversas com agentes da sua organiza&#231;&#227;o.</div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-chat-help">
+                                    <input type="hidden" class="start-a-conversation btn-mv">
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                <hr />
+
+                    <div class="row history-internal-chat-media">
+                        <div class="col-xs-12 col-md-06">
+                            <div class="internal-chat-header-toolbox">
+                                <h3 class="chat-internal-title">Hist&#243;rico</h3>
+                                <div class="chat-internal-help">Visualize o hist&#243;rico de conversas do chat interno.</div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-chat-help">
+                                        <button type="button" class="btn-mv view-history-internal-chat">
+                                            <a href="/Report"
+                                               class="open-in-tab" data-tab-class="tab-report" data-force-new-tab="true" data-color="Chat" data-icon="icon-mv-doc" data-additional="InternalChatHistory">
+                                                Hist&#243;rico do chat interno
+                                            </a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+                    <div class="row update-conversations col-xs-12 col-md-12" style="display: none;">
+                        <div class="alert-refresh">
+                            <div class="fa fa-exclamation-circle update-conversations-exclamation"></div>
+                            <p>Atualize as listas das conversas.</p>
+                        </div>
+                        <button type="button" class="btn-refresh-conversations">
+                            <div class="icon-mv-refresh"></div>
+                            <p>ATUALIZAR</p>
+                        </button>
+                    </div>
+
+                <input id="allow-transfer-of-chats-between-groups" name="allow-transfer-of-chats-between-groups" type="hidden" value="True" />
+                
+
+<div id="conversations-tab-cd06f5b9-5636-4b6d-a75d-f0e860c32e77" class="tab-pane fade active in">
+    <div class="container-fluid">
+
+        <div class="container offline-warning-container">
+            <div class="row offline-warning" style="display: none;">
+                <div class="col-xs-12 col-xs-offset-0 col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        <p><strong>Aten&#231;&#227;o: Voc&#234; esta offline!</strong></p>
+                        <p>Com esse status, voc&#234; pode atender as conversas em fila, mas n&#227;o recebe novas solicita&#231;&#245;es.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="table-title">Conversas aguardando atendimento</h3>
+                        <h3 class="table-title-media">Aguardando atendimento</h3>
+                            <div class="inQueue-container-media InQueue-container">
+<input type="hidden" class="field-social-integration" value='1' />
+<input type="hidden" class="field-user-id" value="42420857" />
+
+<table class="table table-hover table-condensed monitoring-table InQueue">
+    <thead></thead>
+    <tbody></tbody>
+</table></div>
+                        <div class="InQueue-container-internal internal">
+</div>
+                        <div class="no-data-found InQueue">Sem dados para exibir</div>
+
+                        <div class="container no-chat InQueue">
+                            <div class="row">
+                                <div class="col-xs-12 no-chat-inqueue">
+                                    <div class="alert alert-no-chat" role="alert">
+                                        <p>Nenhuma conversa aguardando atendimento</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="table-title">Conversas em atendimento</h3>
+                        <h3 class="table-title-media">Em atendimento</h3>
+                            <div class="talking-container-media Talking-container">
+<input type="hidden" class="field-social-integration" value='1' />
+<input type="hidden" class="field-user-id" value="42420857" />
+
+<table class="table table-hover table-condensed monitoring-table Talking">
+    <thead></thead>
+    <tbody></tbody>
+</table></div>
+                        <div class="Talking-container-internal">
+</div>
+                        <div class="no-data-found Talking">Sem dados para exibir</div>
+
+                        <div class="container no-chat Talking">
+                            <div class="row">
+                                <div class="col-xs-12 no-chat-talking">
+                                    <div class="alert alert-no-chat" role="alert">
+                                        <p>Nenhuma conversa em atendimento</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <div class="main-print-container">
+                    <div class="zoom print-modal movidesk-modal" style="display: none"> 
+    <div class="modal-header">
+        <button class="btn btn-primary btn-print">
+            <span class="fa fa-print"></span>
+            Imprimir
+        </button>
+        <button type="button" class="btn btn-default btn-close">
+            <span class="fa fa-close"></span>
+            Fechar
+        </button>
+    </div>
+    <div class="zoom-container"></div>
+</div>
+                </div>
+            </div>
+        </div>
+<div class="modal fade transferChatModal" tabindex="-1" role="dialog" aria-labelledby="transferChatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-lg centered-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="icon-mv-close close-modal-button" data-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title">                    
+                    Transfer&#234;ncia de chat
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    Selecione o &quot;grupo de chat&quot; para transferir a conversa atual
+                </div>
+                <div class="container-fluid chat-group-select smile-padding">
+                </div>
+                <div class="container-fluid smile-padding">
+                    <span id="chat-group-message">
+                        <span class="icon-mv-info-alt-solid"></span>
+                        <span>Apenas grupos online est&#227;o vis&#237;veis </span>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer" style="height: 60px; padding-top: 0;">
+                <div class="buttons-container">
+                    <button type="button" class="btn-mv-default cancel btn-mv" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-mv-confirm btn-main-transfer-chat btn-mv btn-confirm-action">Transferir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+                
+
+
+
+            </div>
+    </section>
+    <footer id="page-footer">
+        
+    </footer>
+    <script type="text/javascript">
+        var mdVersion = "23011266707797c3";
+    </script>
+    <script src="/Script/Resources/pt-BR.js"></script>
+    <script src="https://cdn.app.movidesk.com/Scripts/tinymce/2.1/tinymce.min.js"></script>
+    <script src="https://cdn.app.movidesk.com/Scripts/tinymce/2.1/mdtinymce.min.js"></script>
+<script src="/bundles/vendor.base?v=eUKY2HhQSICLHvx9sOEiWkQiqA_HUi-y48hFccnpp3c1"></script>
+<script src="/bundles/vendor.jqx.core?v=DiF9WuXE513yz_pfNtW-IRY-usGxLh8WTIMYAGMxAP01"></script>
+<script src="/bundles/md.lib?v=WGV9S45Mbo6IwMQW8x5NFgSUK8WuPiFQCi58kiCeRXM1"></script>
+    <input type="hidden" id="ticket-script-path" value="/bundles/tickets?v=psQAHPo1Ha6PQifLHL0DHFvwECdfwbKHBB42_w9ulEA1" />
+    <input type="hidden" id="dashboard-script-path" value="/bundles/dashboard?v=CY65NDqnlmJ_e4fsWpMfePhaS-I56GXE3O7fAu6my1E1" />
+    <input type="hidden" id="report-script-path" value="/bundles/reports?v=RnnH9fYziCIDtE1jUkIm1jN3p_l8R2YN4rXA2bzLmmk1" />
+
+
+        <section class="microfrontend-wrapper" id="lgpd-acceptance-wrapper"></section>
+        <script>
+            $.cachedScript("https://cdn.app.movidesk.com/components/lgpd-acceptance/main.4c072854.js").done(function () {
+                LgpdAcceptance({
+                    container: document.getElementById("lgpd-acceptance-wrapper"),
+                    tenantName: "TGA Sistemas",
+                    mdAlert: MDAlert
+                })
+            });
+        </script>
+
+    <script>
+        //Define locale
+        numeral.locale(movideskConfig.culture);
+    </script>
+        <script src="/Scripts/i18n/jquery.colorbox-pt-BR.js"></script>
+    
+
+
+    
+
+
+            <script>
+                let cookieName = 'registerTrialLoginMixPanel';
+
+                if (typeof $.cookie(cookieName) !== 'undefined' && $.cookie(cookieName) !== "") {
+                    mixpanel.identify("anderson.souza@tgasistemas.com.br");
+                    mixpanel.people.set({
+                        "$email": "anderson.souza@tgasistemas.com.br",
+                        "$first_name": window.movideskConfig.currentUser.DisplayName,
+                        "$referring_domain": "Movidesk",
+                        "TenantId": window.movideskConfig.currentUser.TenantId
+                    });
+                    mixpanel.track('Trial - Login realizado');
+                    $.removeCookie(cookieName);
+                };
+            </script>
+
+
+
+        <script>
+
+        if (hasWhatsAppCache()) {
+            var whatsappCache = localStorage.getItem("hasWhatsapp");
+            pushToDataLayer(JSON.parse(whatsappCache).hasWhatsapp);
+        } else {
+            var loggedUserToken = Cookies.get("Bearer");
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://socialchannel.app.movidesk.com/api/v1/whatsapp/consumption/get-numbers",
+                "method": "GET",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${loggedUserToken}`
+                },
+            }
+
+            $.ajax(settings)
+                .done(function (response) {
+                    const hasWhatsapp = response.length > 0 ? true : false;
+                    setWhatsAppCache(hasWhatsapp);
+                    pushToDataLayer(hasWhatsapp);
+                })
+                .fail(function (response) {
+                    const hasWhatsapp = false
+                    setWhatsAppCache(hasWhatsapp);
+                    pushToDataLayer(hasWhatsapp);
+                });
+        }
+
+        function hasWhatsAppCache() {
+            var whatsappCache = localStorage.getItem("hasWhatsapp");
+
+            if (!whatsappCache || whatsappCache.expiry < new Date().getTime())
+                return false;
+
+            return true;
+        }
+
+        function setWhatsAppCache(hasWhatsApp) {
+            localStorage.setItem("hasWhatsapp", JSON.stringify({
+                hasWhatsapp: hasWhatsApp,
+                expiry: new Date().getTime() + 80000000
+            }));
+        }
+
+        function pushToDataLayer(hasWhatsapp) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'Whatsapp' : hasWhatsapp
+            });
+        }
+
+        </script>
+
+</body>
+</html>
