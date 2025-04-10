@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="noindex,nofollow">
+
+<title>Faleweb/Roadmap_Faleweb_Release_2.0.0 - Wiki Digitro</title>
+<script type="text/javascript" src="/mywiki/moin_static197/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/mywiki/moin_static197/modernized/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="/mywiki/moin_static197/modernized/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="/mywiki/moin_static197/modernized/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="/mywiki/moin_static197/modernized/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/mywiki/moin_static197/modernized/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Wiki Digitro: Faleweb/Roadmap_Faleweb_Release_2.0.0" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=Faleweb%2FRoadmap_Faleweb_Release_2.0.0&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="/mywiki/%C3%81reaDTI">
+<link rel="Alternate" title="Wiki Markup" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=print">
+<link rel="Up" href="/mywiki/Faleweb">
+<link rel="Appendix" title="manual_espanhol.pdf" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile&amp;do=view&amp;target=manual_espanhol.pdf">
+<link rel="Appendix" title="manual_portugues.pdf" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile&amp;do=view&amp;target=manual_portugues.pdf">
+<link rel="Search" href="/mywiki/FindPage">
+<link rel="Index" href="/mywiki/TitleIndex">
+<link rel="Glossary" href="/mywiki/WordIndex">
+<link rel="Help" href="/mywiki/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+
+<form id="searchform" method="get" action="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="/mywiki/%C3%81reaDTI"><img src="/mywiki/moin_static197/common/logo-digitro.jpg" alt="Logo Digitro "></a></div>
+<div id="username"><a href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><span class="pagepath"><a href="/mywiki/Faleweb">Faleweb</a></span><span class="sep">/</span><a class="backlink" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=fullsearch&amp;value=linkto%3A%22Faleweb%2FRoadmap_Faleweb_Release_2.0.0%22&amp;context=180" rel="nofollow" title="Click to do a full-text search for this title">Roadmap_Faleweb_Release_2.0.0</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a class="nonexistent" href="/mywiki/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="/mywiki/FindPage">FindPage</a></li><li class="wikilink"><a href="/mywiki/HelpContents">HelpContents</a></li><li class="current"><a href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0">Roadmap_Fal...lease_2.0.0</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+<div id="message">
+<p><div class="error">Attachment 'template_release_notes.pdf' does not exist!</div></p><a class="clear-link" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0">Clear message</a>
+</div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><div><table><tbody><tr>  <td colspan="1" rowspan="2" style="text-align: center;  vertical-align: top;"><p class="line862"> Roadmap Faleweb </td>
+  <td style="text-align: center; ; width: 99%"><p class="line862"> <strong>FALEWEB</strong> </td>
+  <td colspan="1" rowspan="2" style="text-align: center;  vertical-align: bottom;"><p class="line862"> <img alt="http://www.dti.digitro.com.br/mywiki/ATUMX?action=AttachFile&amp;do=get&amp;target=digitro_new.JPG" class="external_image" src="http://www.dti.digitro.com.br/mywiki/ATUMX?action=AttachFile&amp;do=get&amp;target=digitro_new.JPG" title="http://www.dti.digitro.com.br/mywiki/ATUMX?action=AttachFile&amp;do=get&amp;target=digitro_new.JPG" /> </td>
+</tr>
+<tr>  <td style="text-align: left;"><span class="anchor" id="line-2"></span><p class="line862"> <strong>Coordenador de Produto:</strong> <em>Elizabeth Rocha Fernandes  - DTE</em> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><div><table><tbody><tr style="background-color: #ff8080">  <td><p class="line862"> Segurança da Informação </td>
+  <td><p class="line862"> <a class="http" href="http://digitro6.daf.digitro.com.br/oem/usr-procedimentos-consultar.php3?pCD_PROCEDIMENTO=126">Classificação da informação</a> </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-5"></span><p class="line862">Nível de sigilo: </td>
+  <td><p class="line891"><strong>Informação Interna</strong> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><p class="line867">
+<h1 id="Roadmap_Faleweb_vers.2BAOM-o_2.0">Roadmap Faleweb versão 2.0</h1>
+<span class="anchor" id="line-9"></span><p class="line874">A release 2.0 do Faleweb contempla somente a recompilação com o novo SDK (Visual Studio 2010). <span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><p class="line867"><div class="table-of-contents"><p class="table-of-contents-heading">Contents<ol><li>
+<a href="#Roadmap_Faleweb_vers.2BAOM-o_2.0">Roadmap Faleweb versão 2.0</a></li><li>
+<a href="#Hist.2BAPM-rico_de_Revis.2BAPU-es">Histórico de Revisões</a></li><li>
+<a href="#Objetivo">Objetivo</a></li><li>
+<a href="#Lista_de_hist.2BAPM-rias">Lista de histórias</a><ol><li>
+<a href="#Hist.2BAPM-rias">Histórias</a></li><li>
+<a href="#Manuten.2BAOcA4w-o">Manutenção</a></li><li>
+<a href="#Documenta.2BAOcA4w-o">Documentação</a><ol><li>
+<a href="#Itens_Adicionais">Itens Adicionais</a></li></ol></li><li>
+<a href="#Lista_dos_Bugs">Lista dos Bugs</a></li><li>
+<a href="#Lista_de_OP.27s">Lista de OP's</a></li></ol></li><li>
+<a href="#Documentos">Documentos</a><ol><li>
+<a href="#Documenta.2BAOcA4w-o_P.2BAPo-blica">Documentação Pública</a><ol><li>
+<a href="#Release_Notes">Release Notes</a></li><li>
+<a href="#Manuais_P.2BAPo-blicos">Manuais Públicos</a></li></ol></li><li>
+<a href="#Documenta.2BAOcA4w-o_Interna">Documentação Interna</a><ol><li>
+<a href="#Documenta.2BAOcA4w-o_de_Desenvolvimento">Documentação de Desenvolvimento</a></li><li>
+<a href="#Documenta.2BAOcA9Q-es_de_patchs">Documentações de patchs</a></li><li>
+<a href="#Documenta.2BAOcA4w-o_de_Treinamento">Documentação de Treinamento</a></li></ol></li></ol></li><li>
+<a href="#Marcos_da_Release">Marcos da Release</a></li><li>
+<a href="#Altera.2BAOcA9Q-es_de_infraestrutura">Alterações de infraestrutura</a></li></ol></div> <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><p class="line867">
+<h1 id="Hist.2BAPM-rico_de_Revis.2BAPU-es">Histórico de Revisões</h1>
+<span class="anchor" id="line-14"></span><div><table style="width: 936px"><tbody><tr>  <td><p class="line862">Versão </td>
+  <td><p class="line862">Data </td>
+  <td><p class="line862">Descrição </td>
+  <td><p class="line862">Autor </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-15"></span><p class="line862">0.1.0 </td>
+  <td><p class="line862">24/05/2016 </td>
+  <td><p class="line862">Criação da página </td>
+  <td><p class="line862">Elizabeth Fernandes </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-16"></span><p class="line862">0.1.1 </td>
+  <td><p class="line862">27/10/2016 </td>
+  <td><p class="line862">Adicionada as histórias do PI </td>
+  <td><p class="line862">Elizabeth Fernandes </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-17"></span><p class="line862">0.1.2 </td>
+  <td><p class="line862">18/01/2017 </td>
+  <td><p class="line862">Documentação da história FS6 </td>
+  <td><p class="line862">Cristiano Rufino </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-18"></span><p class="line862">0.1.3 </td>
+  <td><p class="line862">19/10/2017 </td>
+  <td><p class="line862">Adicionada a história do SHA2 </td>
+  <td><p class="line862">Elizabeth Fernandes </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><p class="line867">
+<h1 id="Objetivo">Objetivo</h1>
+<span class="anchor" id="line-21"></span><p class="line874">O objetivo da release 2.0 é acrescentar no Faleweb o desenvolvimento: <span class="anchor" id="line-22"></span><ul><li>Recompilar como o novo SDK (Visual Studio 2010). <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span></li></ul><p class="line867">
+<h1 id="Lista_de_hist.2BAPM-rias">Lista de histórias</h1>
+<span class="anchor" id="line-25"></span><p class="line874">A tabela abaixo apresenta as histórias implementadas nesta release.  <span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><p class="line874">Apresentam-se as histórias ordenadas pela prioridade. <span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><p class="line867">
+<h2 id="Hist.2BAPM-rias">Histórias</h2>
+<span class="anchor" id="line-30"></span><div><table><tbody><tr>  <td><p class="line891"><strong>ID</strong> </td>
+  <td><p class="line891"><strong>História</strong> </td>
+  <td><p class="line891"><strong>Estimativa</strong> </td>
+  <td><p class="line891"><strong>Origem</strong> </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-31"></span><p class="line891"><a href="/mywiki/Inviolatus/IC1">IC1</a> </td>
+  <td><p class="line891"><strong>Certificado de Criptografia com SHA256 e SHA512</strong> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> CITEx|UNA </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-32"></span><p class="line891"><a href="/mywiki/Faleweb/FS6">FS6</a></td>
+  <td><p class="line891"><a href="/mywiki/Faleweb/FS6">Recompilar SDK</a></td>
+  <td><p class="line862"> -  </td>
+  <td><p class="line862"> - </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><p class="line867">
+<h2 id="Manuten.2BAOcA4w-o">Manutenção</h2>
+<span class="anchor" id="line-35"></span><p class="line874">Ver a lista de bugs corrigidos para verificar o desenvolvimento dos itens: <span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><p class="line867">
+<h2 id="Documenta.2BAOcA4w-o">Documentação</h2>
+<span class="anchor" id="line-38"></span><div><table><tbody><tr>  <td><p class="line891"><strong>ID</strong> </td>
+  <td><p class="line891"><strong>História</strong> </td>
+  <td><p class="line891"><strong>Estimativa</strong> </td>
+  <td><p class="line891"><strong>Origem</strong> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><p class="line867">
+<h3 id="Itens_Adicionais">Itens Adicionais</h3>
+<span class="anchor" id="line-41"></span><ul><li>Não se aplica <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></li></ul><p class="line867">
+<h2 id="Lista_dos_Bugs">Lista dos Bugs</h2>
+<span class="anchor" id="line-44"></span><div><table><tbody><tr>  <td><p class="line891"><strong>Prioridade</strong> </td>
+  <td><p class="line891"><strong>Custo</strong> </td>
+  <td><p class="line891"><strong>Bug</strong> </td>
+  <td><p class="line891"><strong>Feito</strong> </td>
+  <td><p class="line862"> Informação adicional</td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><p class="line867">
+<h2 id="Lista_de_OP.27s">Lista de OP's</h2>
+<span class="anchor" id="line-47"></span><p class="line874">Lista das OPs para esse release. <span class="anchor" id="line-48"></span><img alt="/!\" height="16" src="/mywiki/moin_static197/modernized/img/alert.png" title="/!\" width="16" /> Não será implementada nenhuma OP de infraestrutura nessa release pois será necessário utilizar o tempo de OP (janeiro a fevereiro) para poder entregar as funcionalidades dessa release. <span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><p class="line867">
+<h1 id="Documentos">Documentos</h1>
+<span class="anchor" id="line-51"></span><div><table><tbody><tr style="background-color: #e8f9fd">  <td><p class="line862"> <img alt="(!)" height="16" src="/mywiki/moin_static197/modernized/img/idea.png" title="(!)" width="16" /> <em>Nesta seção são encontrados os documentos publicados para esta versão do sistema. Caso deseje o documento de uma versão diferente, acesse a <a class="http" href="http://www.dti.digitro.com.br/mywiki/SoftSwitch">Release Softswitch</a> da versão correspondente.</em></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><p class="line867">
+<h2 id="Documenta.2BAOcA4w-o_P.2BAPo-blica">Documentação Pública</h2>
+<span class="anchor" id="line-54"></span><p class="line867">
+<h3 id="Release_Notes">Release Notes</h3>
+<span class="anchor" id="line-55"></span><div><table><tbody><tr>  <td style="width: 30%"><p class="line862">Documento<strong></strong> </td>
+  <td><p class="line862"> Versão<strong></strong> </td>
+  <td><p class="line862"> Descrição<strong></strong> </td>
+  <td style="width: 15%"><p class="line862">Data de Publicação<strong></strong> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line867">
+<h3 id="Manuais_P.2BAPo-blicos">Manuais Públicos</h3>
+<span class="anchor" id="line-58"></span><div><table><tbody><tr>  <td style="width: 30%"><p class="line862">Documento<strong></strong></td>
+  <td><p class="line891"><strong>ADT</strong></td>
+  <td><p class="line862">Descrição<strong></strong> </td>
+  <td style="width: 15%"><p class="line862">Data de Publicação<strong></strong> </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-59"></span><p class="line891"><a class="attachment" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile&amp;do=view&amp;target=manual_portugues.pdf" title="Manual Português">Manual Português</a></td>
+  <td><p class="line862"> -</td>
+  <td><p class="line862"> Manual de Operação e Configuração no idioma Português</td>
+  <td><p class="line862"> 08/03/2018 </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-60"></span><p class="line891"><a class="attachment" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile&amp;do=view&amp;target=manual_espanhol.pdf" title="Manual Espanhol">Manual Espanhol</a></td>
+  <td><p class="line862"> - </td>
+  <td><p class="line862"> Manual do Operação e Configuração no idioma Espanhol</td>
+  <td><p class="line862"> 04/04/2018 </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><p class="line867">
+<h2 id="Documenta.2BAOcA4w-o_Interna">Documentação Interna</h2>
+<span class="anchor" id="line-63"></span><p class="line867">
+<h3 id="Documenta.2BAOcA4w-o_de_Desenvolvimento">Documentação de Desenvolvimento</h3>
+<span class="anchor" id="line-64"></span><div><table><tbody><tr>  <td><p class="line891"><strong>ID</strong> </td>
+  <td><p class="line891"><strong>Documentação Técnica</strong> </td>
+  <td><p class="line891"><strong>Responsável</strong> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><p class="line867">
+<h3 id="Documenta.2BAOcA9Q-es_de_patchs">Documentações de patchs</h3>
+<span class="anchor" id="line-67"></span><ul><li><p class="line891"><a class="http" href="http://www.dti.digitro.com.br/mywiki/FaleWeb/Download">Faleweb Download</a> <span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span></li></ul><p class="line867">
+<h3 id="Documenta.2BAOcA4w-o_de_Treinamento">Documentação de Treinamento</h3>
+<span class="anchor" id="line-70"></span><div><table><tbody><tr>  <td style="width: 30%"><p class="line862">Documento<strong></strong> </td>
+  <td><p class="line862">Descrição<strong></strong> </td>
+  <td style="width: 15%"><p class="line862">Data de Publicação<strong></strong> </td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><p class="line867">
+<h1 id="Marcos_da_Release">Marcos da Release</h1>
+<span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><p class="line874">Data de início do planejamento:  <span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><p class="line874">Data de início do planejamento pela equipe de desenvolvimento:  <span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><p class="line874">Data de início do desenvolvimento:  <span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><p class="line874">Data de finalização do desenvolvimento:  <span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><p class="line874">Data de primeiro ciclo de testes internos:  <span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><p class="line874">Data de primeiro ciclo de homologação na THV:  <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><p class="line874">Data de segundo ciclo de testes internos:  <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><p class="line874">Data de segundo ciclo de homologação na THV:  <span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><p class="line874">Entrega da release:  <span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><p class="line867">
+<h1 id="Altera.2BAOcA9Q-es_de_infraestrutura">Alterações de infraestrutura</h1>
+<span class="anchor" id="line-94"></span><div><table><tbody><tr style="background-color: #e8f9fd">  <td><p class="line862"> <img alt="(!)" height="16" src="/mywiki/moin_static197/modernized/img/idea.png" title="(!)" width="16" /> <em>Neste item, são apresentadas todas as alterações na infraestrutura de servidores, banco de dados, servidores de aplicação, etc. que precisam ser aplicadas nas máquinas de teste (tanto para THV quanto para SIC/NDS), inicialmente, e no cliente, ao final.  Por exemplo:  - Incluir processo "<a class="nonexistent" href="/mywiki/TrataTudo">TrataTudo</a>".  - Alterar versão do Oracle para 12g.  - Instalar supercomputador para tratamento online dos áudios interceptados.</em></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-95"></span><span class="anchor" id="bottom"></span></div>
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/mywiki/Faleweb/Roadmap_Faleweb_Release_2.0.0">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+</html>
+
