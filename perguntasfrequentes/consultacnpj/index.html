@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CNPJ - BrasilAPI</title>
+    
+<style>
+/* Reset e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilização do corpo */
+body {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container principal */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Campo de entrada e botão */
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #0056b3;
+}
+
+/* Estilização dos botões */
+button {
+    width: 25%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Estilização dos resultados */
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.result h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #0056b3;
+}
+
+.result p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Lista de CNAEs */
+.result ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.result li {
+    font-size: 14px;
+    color: #555;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .result p,
+    .result li {
+        font-size: 12px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Consulta CNPJ</h1>
+        <div class="input-container">
+            <input type="text" id="cnpj" placeholder="Digite o CNPJ (somente números)" maxlength="14">
+            <button onclick="consultarCNPJ()">Consultar</button>
+        </div>
+        <div id="result" class="result">
+            <!-- Resultado da consulta será exibido aqui -->
+        </div>
+    </div>
+
+
+<script>
+async function consultarCNPJ() {
+    const cnpj = document.getElementById('cnpj').value.replace(/[^\d]+/g, ''); // Remove qualquer caractere não numérico
+
+    // Verifica se o CNPJ tem 14 caracteres numéricos
+    if (cnpj.length !== 14 || isNaN(cnpj)) {
+        alert("Por favor, insira um CNPJ válido com 14 números.");
+        return;
+    }
+
+    const url = `https://brasilapi.com.br/api/cnpj/v1/${cnpj}`;
+
+    try {
+        const response = await fetch(url);
+
+        // Verificando a resposta da API
+        if (!response.ok) {
+            console.error('Erro na requisição:', response.status);
+            if (response.status === 404) {
+                alert('CNPJ não encontrado. Verifique o número e tente novamente.');
+            } else if (response.status === 429) {
+                alert('Limite de requisições excedido. Tente novamente mais tarde.');
+            } else {
+                alert(`Erro ao consultar CNPJ: ${response.status}`);
+            }
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Dados recebidos:', data); // Exibe a resposta da API no console
+
+        // Verificando se os dados foram recebidos corretamente
+        if (data && data.cnpj) {
+            const resultContainer = document.getElementById('result');
+            
+            // Exibe as informações do CNPJ
+            resultContainer.innerHTML = `
+                <h3>Informações do CNPJ: ${data.razao_social || 'Não disponível'}</h3>
+                <p><strong>CNPJ:</strong> ${data.cnpj}</p>
+                <p><strong>Razão Social:</strong> ${data.razao_social || 'Não disponível'}</p>
+                <p><strong>Nome Fantasia:</strong> ${data.nome_fantasia || 'Não disponível'}</p>
+                <p><strong>Abertura:</strong> ${data.data_inicio_atividade || 'Não disponível'}</p>
+                <p><strong>Natureza Jurídica:</strong> ${data.codigo_natureza_juridica || 'Não disponível'}</p>
+                <p><strong>Endereço:</strong> ${data.descricao_tipo_de_logradouro} ${data.logradouro || 'Não disponível'}, ${data.numero || 'Não disponível'}, ${data.complemento || ''}, ${data.bairro || 'Não disponível'} - ${data.municipio || 'Não disponível'} (${data.uf || 'Não disponível'})</p>
+                <p><strong>Telefone:</strong> ${data.ddd_telefone_1 || 'Não disponível'}</p>
+                <p><strong>CNAE Principal:</strong> ${data.cnae_fiscal_descricao || 'Não disponível'}</p>
+                <p><strong>CNAEs Secundários:</strong></p>
+                <ul>
+                    ${data.cnaes_secundarios && data.cnaes_secundarios.map(cnae => `<li>${cnae.descricao}</li>`).join('')}
+                </ul>
+                <p><strong>Capital Social:</strong> ${data.capital_social || 'Não disponível'}</p>
+                <p><strong>Porte:</strong> ${data.descricao_porte || 'Não disponível'}</p>
+                <p><strong>Opção pelo Simples:</strong> ${data.opcao_pelo_simples ? 'Sim' : 'Não'}</p>
+                <p><strong>Opção pelo MEI:</strong> ${data.opcao_pelo_mei ? 'Sim' : 'Não'}</p>
+                <h4>Responsável:</h4>
+                <p><strong>Nome:</strong> ${data.qsa[0]?.nome_socio || 'Não disponível'}</p>
+                <p><strong>Qualificação:</strong> ${data.qsa[0]?.codigo_qualificacao_socio || 'Não disponível'}</p>
+            `;
+        } else {
+            alert("CNPJ não encontrado ou houve um erro na consulta.");
+        }
+    } catch (error) {
+        console.error('Erro ao consultar CNPJ:', error);
+        alert("Erro ao consultar CNPJ. Tente novamente mais tarde.");
+    }
+}
+
+</script>
+</body>
+</html>
