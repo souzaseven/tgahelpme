@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Tickets Smarts</title>
+    <link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    
+    <div class="container">
+        <div class="search-container">
+            <input id="searchInput" type="text" placeholder="Pesquisar em todos os campos..." oninput="filterTickets()">
+            <button class="btn btn-primary" onclick="openModal()">
+                <i class="fas fa-plus"></i> Novo Ticket
+            </button>
+            <button class="btn btn-export" onclick="exportToExcel()">
+                <i class="fas fa-file-excel"></i> Exportar Relatório
+            </button>
+
+<button id="darkModeBtn" class="btn">
+    <i class="fas fa-moon"></i> Modo Escuro
+</button>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <div class="table-container">
+            <div class="scrollable-container">
+                <table class="tickets-table" id="ticketsTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">ID</th>
+                            <th style="width: 80px;">Ticket</th>
+                            <th style="width: 120px;">Empresa</th>
+                            <th style="width: 120px;">CNPJ</th>
+                            <th style="width: 100px;">Código</th>
+                            <th style="width: 60px;">Qtd.</th>
+                            <th style="width: 100px;">Adquirente</th>
+                            <th style="width: 100px;">Modelo</th>
+                            <th style="width: 150px;">Solicitação</th>
+                            <th style="width: 150px;">Anotações</th>
+                            <th style="width: 100px;">Monitor</th>
+                            <th style="width: 100px;">Finalizado</th>
+                            <th style="width: 120px;">Criação</th>
+                            <th style="width: 120px;">Atualização</th>
+                            <th style="width: 80px;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketsList"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top-button">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal para novo ticket -->
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Novo Ticket</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="ticketForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="ticketNumber">Número do Ticket*</label>
+                            <input type="text" id="ticketNumber" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa*</label>
+                            <input type="text" id="empresa" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cnpj">CNPJ</label>
+                            <input type="text" id="cnpj" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="codCliente">Código Cliente</label>
+                            <input type="text" id="codCliente" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="quantSmart">Quantidade</label>
+                            <input type="number" id="quantSmart" class="form-control" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="adquirente">Adquirente*</label>
+                            <select id="adquirente" class="form-control" required>
+                                <option value="">Selecione</option>
+                                <option value="REDE">REDE</option>
+                                <option value="CIELO">CIELO</option>
+                                <option value="GETNET">GETNET</option>
+                                <option value="SICREDI">SICREDI</option>
+                                <option value="STONE">STONE</option>
+                                <option value="SIPAG">SIPAG</option>
+                                <option value="PAGSEGURO">PAGSEGURO</option>
+                                <option value="VERO">VERO</option>
+                                <option value="SAFRAPAY">SAFRAPAY</option>
+                                <option value="CAIXA">CAIXA</option>
+                                <option value="BIN">BIN</option>
+                                <option value="PUNTO">PUNTO</option>
+                                <option value="JUSTA">JUSTA</option>
+                                <option value="ELGIN">ELGIN</option>
+                                <option value="ADQ">ADQ</option>
+                                <option value="REDEFLEX">REDEFLEX</option>
+                                <option value="CLOVER">CLOVER</option>
+                                <option value="PICPAY">PICPAY</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelo">Modelo*</label>
+                            <select id="modelo" class="form-control" required>
+                                <option value="">Selecione a Adquirente primeiro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="solicitacao">Solicitação*</label>
+                            <input type="text" id="solicitacao" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="anotacao">Anotações</label>
+                        <textarea id="anotacao" class="form-control"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="monitor">Monitor</label>
+                        <input type="text" id="monitor" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="finalizado">Finalizado</label>
+                        <select id="finalizado" class="form-control">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn" onclick="closeModal()">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Ticket</button>
+                    </div>
+                </form>
+                <div id="formMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para edição de ticket -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Ticket</h2>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <input type="hidden" id="editId">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editTicket">Número do Ticket*</label>
+                            <input type="text" id="editTicket" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmpresa">Empresa*</label>
+                            <input type="text" id="editEmpresa" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCnpj">CNPJ</label>
+                            <input type="text" id="editCnpj" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editCodCliente">Código Cliente</label>
+                            <input type="text" id="editCodCliente" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editQuant">Quantidade</label>
+                            <input type="number" id="editQuant" class="form-control" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="editAdquirente">Adquirente*</label>
+                            <select id="editAdquirente" class="form-control" required>
+                                <option value="">Selecione</option>
+                                <option value="REDE">REDE</option>
+                                <option value="CIELO">CIELO</option>
+                                <option value="GETNET">GETNET</option>
+                                <option value="SICREDI">SICREDI</option>
+                                <option value="STONE">STONE</option>
+                                <option value="SIPAG">SIPAG</option>
+                                <option value="PAGSEGURO">PAGSEGURO</option>
+                                <option value="VERO">VERO</option>
+                                <option value="SAFRAPAY">SAFRAPAY</option>
+                                <option value="CAIXA">CAIXA</option>
+                                <option value="BIN">BIN</option>
+                                <option value="PUNTO">PUNTO</option>
+                                <option value="JUSTA">JUSTA</option>
+                                <option value="ELGIN">ELGIN</option>
+                                <option value="ADQ">ADQ</option>
+                                <option value="REDEFLEX">REDEFLEX</option>
+                                <option value="CLOVER">CLOVER</option>
+                                <option value="PICPAY">PICPAY</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editModelo">Modelo*</label>
+                            <select id="editModelo" class="form-control" required>
+                                <option value="">Selecione a Adquirente primeiro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editSolicitacao">Solicitação*</label>
+                            <input type="text" id="editSolicitacao" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editAnotacao">Anotações</label>
+                        <textarea id="editAnotacao" class="form-control"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editMonitor">Monitor</label>
+                        <input type="text" id="editMonitor" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editStatus">Finalizado</label>
+                        <select id="editStatus" class="form-control">
+                            <option value="0">Não</option>
+                            <option value="1">Sim</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn" onclick="closeEditModal()">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </form>
+                <div id="editMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>
