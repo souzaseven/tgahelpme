@@ -1,0 +1,589 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --info-color: #3498db;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --gray-color: #95a5a6;
+    --border-color: #dfe6e9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0f71d3;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    flex: 1;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-info {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Table Styles */
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 100%;
+    flex: 1;
+}
+
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tickets-table th, .tickets-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    word-wrap: break-word;
+}
+
+.tickets-table th {
+    background-color: var(--dark-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    font-weight: 500;
+}
+
+.tickets-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.tickets-table tr:hover {
+    background-color: #f1f7fe;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 80px;
+    text-align: center;
+}
+
+.status-finalizado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Scrollable Container */
+.scrollable-container {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    z-index: 99;
+}
+
+#scrollToTopBtn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+/* Error Message */
+#errorMessage {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    max-width: 900px;
+    width: 99%;
+    animation: modalFadeIn 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 20px;
+    background-color: var(--dark-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Form Grid - 4 campos por linha */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+#formMessage, #editMessage {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    display: none;
+}
+
+/* Botão de edição */
+.edit-btn {
+    background-color: var(--info-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Export Buttons */
+.export-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-export {
+    background-color: var(--gray-color);
+    color: white;
+}
+
+.btn-export:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .container,
+.dark-mode .modal-content,
+.dark-mode .table-container {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode .tickets-table th {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .tickets-table tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+.dark-mode .tickets-table tr:hover {
+    background-color: #333333;
+}
+
+.dark-mode .form-control,
+.dark-mode #searchInput {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+.dark-mode .form-control:focus,
+.dark-mode #searchInput:focus {
+    border-color: var(--primary-color);
+    background-color: #333;
+}
+
+.dark-mode .status-finalizado {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.dark-mode .status-pendente {
+    background-color: #c62828;
+    color: white;
+}
+
+.dark-mode .modal-header {
+    background-color: #2d2d2d;
+}
+
+.dark-mode .btn-dark {
+    background-color: #444;
+    color: white;
+}
+
+.dark-mode .btn-dark:hover {
+    background-color: #555;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.btn-dark {
+    background-color: #333;
+    color: white;
+}
+
+.btn-dark:hover {
+    background-color: #444;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1600px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    #searchInput {
+        min-width: 100%;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tickets-table th, 
+    .tickets-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .modal-body {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .modal-content {
+        margin: 5px auto;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .table-container,
+body.dark-mode .modal-content,
+body.dark-mode .form-control {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .tickets-table th {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .tickets-table tr:nth-child(even) {
+    background-color: #252525;
+}
+
+body.dark-mode .tickets-table tr:hover {
+    background-color: #333333;
+}
+
+.status-finalizado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-em-atendimento {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.status-cancelado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+.dark-mode .status-finalizado {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.dark-mode .status-pendente {
+    background-color: #f39c12;
+    color: black;
+}
+
+.dark-mode .status-em-atendimento {
+    background-color: #3498db;
+    color: white;
+}
+
+.dark-mode .status-cancelado {
+    background-color: #e74c3c;
+    color: white;
+}
+/* Estilo para o container do filtro */
+#statusFilterContainer {
+    padding: 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+/* No modo escuro */
+.dark-mode #statusFilterContainer {
+    background: #333;
+    color: white;
+}
+
+.dark-mode #statusFilterContainer label {
+    color: white;
+}
+
+#statusFilterContainer {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding: 10px;
+}
