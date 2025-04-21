@@ -127,38 +127,33 @@ function toggleDarkMode() {
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.innerHTML = darkMode ? '<i class="fas fa-sun"></i> Modo Claro' : '<i class="fas fa-moon"></i> Modo Escuro';
 }
-/*
+
 function exportToExcel() {
-    const rows = document.querySelectorAll('#ticketsList tr');
-    if (rows.length === 0) {
+    if (allTickets.length === 0) {
         alert('Nenhum dado para exportar!');
         return;
     }
 
     const data = [
-        ['ID', 'Ticket', 'Empresa', 'CNPJ', 'Código Cliente', 'Quantidade', 'Adquirente', 'Modelo', 'Solicitação', 'Anotações', 'Monitor', 'Status', 'Criação', 'Atualização']
+        ['ID', 'Ticket', 'Empresa', 'CNPJ', 'CÃ³digo Cliente', 'Quantidade', 'Adquirente', 'Modelo', 'SolicitaÃ§Ã£o', 'AnotaÃ§Ãµes', 'Monitor', 'Status', 'CriaÃ§Ã£o', 'AtualizaÃ§Ã£o']
     ];
 
-    rows.forEach(row => {
-        // Verifica se a linha está visível
-        if (row.style.display === 'none') return;
-
-        const cells = row.querySelectorAll('td');
+    allTickets.forEach(ticket => {
         data.push([
-            cells[0].textContent, // ID
-            cells[1].textContent, // Ticket
-            cells[2].textContent, // Empresa
-            cells[3].textContent, // CNPJ
-            cells[4].textContent, // Código Cliente
-            cells[5].textContent, // Quantidade
-            cells[6].textContent, // Adquirente
-            cells[7].textContent, // Modelo
-            cells[8].textContent, // Solicitação
-            cells[9].textContent, // Anotações
-            cells[10].textContent, // Monitor
-            cells[11].textContent, // Status
-            cells[12].textContent, // Criação
-            cells[13].textContent  // Atualização
+            ticket.id,
+            ticket.ticket,
+            ticket.empresa || '',
+            ticket.cnpj || '',
+            ticket.cod_cliente_tga || '',
+            ticket.quant_smart || 0,
+            ticket.adquirente || '',
+            ticket.modelo || '',
+            ticket.solicitacao || '',
+            ticket.anotacao || '',
+            ticket.monitor || '',
+            ticket.status || '',
+            formatDate(ticket.data_criacao),
+            formatDate(ticket.data_atualizacao)
         ]);
     });
 
@@ -167,58 +162,6 @@ function exportToExcel() {
     XLSX.utils.book_append_sheet(wb, ws, "Tickets");
     XLSX.writeFile(wb, 'relatorio_tickets.xlsx');
 }
-*/
-function exportToExcel() {
-    const rows = document.querySelectorAll('#ticketsList tr');
-    if (rows.length === 0) {
-        alert('Nenhum dado para exportar!');
-        return;
-    }
-
-    const data = [
-        ['ID', 'Ticket', 'Empresa', 'CNPJ', 'Código Cliente', 'Quantidade', 'Adquirente', 'Modelo', 'Solicitação', 'Anotações', 'Monitor', 'Status', 'Criação', 'Atualização']
-    ];
-
-    rows.forEach(row => {
-        if (row.style.display === 'none') return;
-
-        const cells = row.querySelectorAll('td');
-        data.push([
-            cells[0].textContent,
-            cells[1].textContent,
-            cells[2].textContent,
-            cells[3].textContent,
-            cells[4].textContent,
-            cells[5].textContent,
-            cells[6].textContent,
-            cells[7].textContent,
-            cells[8].textContent,
-            cells[9].textContent,
-            cells[10].textContent,
-            cells[11].textContent,
-            cells[12].textContent,
-            cells[13].textContent
-        ]);
-    });
-
-    // Obter os status selecionados
-    const selectedStatuses = Array.from(document.querySelectorAll('.status-checkbox:not([value="todos"])'))
-        .filter(cb => cb.checked)
-        .map(cb => cb.value.charAt(0).toUpperCase() + cb.value.slice(1));
-
-    let statusLabel = 'Todos';
-    if (selectedStatuses.length > 0 && selectedStatuses.length < 4) {
-        statusLabel = selectedStatuses.join(', ');
-    }
-
-    const fileName = `relatorio_tickets (${statusLabel}).xlsx`;
-
-    const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.aoa_to_sheet(data);
-    XLSX.utils.book_append_sheet(wb, ws, "Tickets");
-    XLSX.writeFile(wb, fileName);
-}
-
 
 function formatDate(dateString) {
     if (!dateString) return '-';
@@ -484,86 +427,5 @@ function setupScrollButton() {
 
     scrollBtn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-function toggleStatusDropdown() {
-    const dropdown = document.getElementById('statusDropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
-
-function toggleAllStatuses() {
-    const allCheckbox = document.querySelector('.status-checkbox[value="todos"]');
-    const statusCheckboxes = document.querySelectorAll('.status-checkbox:not([value="todos"])');
-
-    statusCheckboxes.forEach(cb => cb.checked = allCheckbox.checked);
-    filterTickets();
-}
-
-function filterTickets() {
-    const searchText = document.getElementById('searchInput').value.toLowerCase();
-    const checkboxes = document.querySelectorAll('.status-checkbox:not([value="todos"])');
-    const selectedStatuses = Array.from(checkboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value);
-
-    // Se todos estiverem selecionados, marca a opção "Todos"
-    const allCheckbox = document.querySelector('.status-checkbox[value="todos"]');
-    allCheckbox.checked = checkboxes.length === selectedStatuses.length;
-
-    const rows = document.querySelectorAll('#ticketsList tr');
-
-    rows.forEach(row => {
-        const rowText = row.textContent.toLowerCase();
-        const status = row.querySelector('td:nth-child(12)')?.textContent.toLowerCase();
-
-        const matchesSearch = rowText.includes(searchText);
-        const matchesStatus = selectedStatuses.includes(status);
-
-        row.style.display = matchesSearch && matchesStatus ? '' : 'none';
-    });
-}
-
-function toggleStatusDropdown() {
-    const dropdown = document.getElementById('statusDropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
-
-// Fecha o dropdown ao clicar fora
-document.addEventListener('click', function (event) {
-    const wrapper = document.querySelector('.custom-select-wrapper');
-    if (!wrapper.contains(event.target)) {
-        document.getElementById('statusDropdown').style.display = 'none';
-    }
-});
-
-function toggleAllStatuses() {
-    const allCheckbox = document.querySelector('.status-checkbox[value="todos"]');
-    const statusCheckboxes = document.querySelectorAll('.status-checkbox:not([value="todos"])');
-
-    statusCheckboxes.forEach(cb => cb.checked = allCheckbox.checked);
-    filterTickets();
-}
-
-function filterTickets() {
-    const searchText = document.getElementById('searchInput').value.toLowerCase();
-    const checkboxes = document.querySelectorAll('.status-checkbox:not([value="todos"])');
-    const selectedStatuses = Array.from(checkboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value);
-
-    const allCheckbox = document.querySelector('.status-checkbox[value="todos"]');
-    allCheckbox.checked = checkboxes.length === selectedStatuses.length;
-
-    const rows = document.querySelectorAll('#ticketsList tr');
-
-    rows.forEach(row => {
-        const rowText = row.textContent.toLowerCase();
-        const status = row.querySelector('td:nth-child(12)')?.textContent.toLowerCase();
-
-        const matchesSearch = rowText.includes(searchText);
-        const matchesStatus = selectedStatuses.includes(status);
-
-        row.style.display = matchesSearch && matchesStatus ? '' : 'none';
     });
 }

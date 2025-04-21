@@ -19,30 +19,15 @@
     <div class="container">
         <div class="search-container">
             <input id="searchInput" type="text" placeholder="Pesquisar em todos os campos..." oninput="filterTickets()">
-  <button class="btn btn-primary" onclick="openModal()">
+            <button class="btn btn-primary" onclick="openModal()">
                 <i class="fas fa-plus"></i> Novo Ticket
             </button>
-
-<div class="custom-select-wrapper">
-    <div class="custom-select-trigger" onclick="toggleStatusDropdown()">Status</div>
-    <div class="custom-options" id="statusDropdown">
-        <label><input type="checkbox" class="status-checkbox" value="todos" checked onchange="toggleAllStatuses()"> Todos</label>
-        <label><input type="checkbox" class="status-checkbox" value="pendente" checked onchange="filterTickets()"> Pendente</label>
-        <label><input type="checkbox" class="status-checkbox" value="em atendimento" checked onchange="filterTickets()"> Em Atendimento</label>
-        <label><input type="checkbox" class="status-checkbox" value="cancelado" checked onchange="filterTickets()"> Cancelado</label>
-        <label><input type="checkbox" class="status-checkbox" value="finalizado" checked onchange="filterTickets()"> Finalizado</label>
-    </div>
-</div>
-
-
-          
             <button class="btn btn-export" onclick="exportToExcel()">
                 <i class="fas fa-file-excel"></i> Exportar Relatório
             </button>
             <button id="darkModeBtn" class="btn">
                 <i class="fas fa-moon"></i> Modo Escuro
             </button>
-
         </div>
 
         <div id="errorMessage" class="error-message"></div>
