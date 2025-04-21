@@ -5981,10 +5981,39 @@ Sempre que houver algo relacionado a uma análise de viabilidade, colocar essa o
         </div>
     </div>
 </div>
-
-
-
-
+<div class="faq-item">
+            <div class="faq-question">
+                Controle devolução "Troca de Mercadoria" no movimento
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+<a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/530312/controle-devolucao-troca-de-mercadoria-no-movimento" target="_blank">Ver manual no movidesk</a>
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                TGA Service Whatsapp 25.04
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+<a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" target="_blank">Ver manual no movidesk</a>
+</p>
+            </div>
+        </div>
+<div class="faq-item">
+            <div class="faq-question">
+                Utilitario para Instalação / Migração Firebird 5.0
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p> 
+<a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/527506/firebird-50" target="_blank">Ver manual no movidesk</a>
+</p>
+            </div>
+        </div>
 
 <!-----configurações----->
   <div class="faq-item">
@@ -8256,6 +8285,77 @@ Tamanhos em pixel</p>
 
 
 <!-----MOBILE----->
+<div class="faq-item">
+    <div class="faq-question">
+        Tabelas do Sistema Mobile
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+        <div style="font-size: 1.1em; line-height: 1.6;">
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #3498db;">
+                <h3 style="color: #2c3e50; margin-top: 0;">Estrutura do Banco de Dados Mobile</h3>
+                <p>Principais tabelas do módulo mobile e suas funcionalidades:</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <!-- Coluna 1 -->
+                <div>
+                    <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #0d47a1; margin-top: 0;">TMOBILE</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Informações gerais sobre dispositivos móveis, vendedores e configurações</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILE;</code>
+                    </div>
+
+                    <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #2e7d32; margin-top: 0;">TMOBILEFILIAL</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Informações das filiais que operam com o sistema mobile</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILEFILIAL;</code>
+                    </div>
+
+                    <div style="background-color: #fff3e0; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #e65100; margin-top: 0;">TMOBILEPEDIDO</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Pedidos de venda, compras ou ordens de serviço mobile</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILEPEDIDO;</code>
+                    </div>
+
+                    <div style="background-color: #f3e5f5; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #6a1b9a; margin-top: 0;">TMOBILERELPRODUTO</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Relação entre produtos e outras entidades no mobile</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILERELPRODUTO;</code>
+                    </div>
+                </div>
+
+                <!-- Coluna 2 -->
+                <div>
+                    <div style="background-color: #ffebee; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #c62828; margin-top: 0;">TMOBILEKEY</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Chaves de autenticação/licenciamento mobile</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILEKEY;</code>
+                    </div>
+
+                    <div style="background-color: #e0f7fa; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #00838f; margin-top: 0;">TMOBILEON_LICENCA</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Licenças ativas para dispositivos ou usuários</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILEON_LICENCA;</code>
+                    </div>
+
+                    <div style="background-color: #e8eaf6; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #3949ab; margin-top: 0;">TMOBILETABPRECO</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Tabelas de preços específicas para mobile</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILETABPRECO;</code>
+                    </div>
+
+                    <div style="background-color: #f1f8e9; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="color: #558b2f; margin-top: 0;">TMOBILETIPOMOV</h4>
+                        <p style="font-style: italic; font-size: 0.9em;">Tipos de movimentação (vendas, transferências, etc.)</p>
+                        <code style="display: block; background: #f5f5f5; padding: 8px; border-radius: 4px; margin-top: 8px;">SELECT * FROM TMOBILETIPOMOV;</code>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="faq-item">
             <div class="faq-question">
@@ -8560,7 +8660,7 @@ Configurando Integração Sistema Domínio
 <div class="faq-item">
             <div class="faq-question">
                 Como abrir o painel de configuração TGA Backup antigo
-                <i class="fas fa-chevron-down"></i>
+                <i clmovidesk-ass="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
               <p> 
@@ -10882,6 +10982,248 @@ No Movimento?
 <hr>
 </div>
 -----versões----->
+
+<div class="faq-item">
+    <div class="faq-question">
+        Destaques das Atualizações - Versão 25.04.01
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+        <h2>Time para bloqueio usuário "TGA"</h2>
+        <ul>
+            <li>Timer quando acessado o sistema com usuário "TGA".  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18835" target="_blank">(Mantis: 18835)</a></strong>
+            </li>
+        </ul>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/timertga.png?raw=true" alt="">
+<br>
+
+        <h2>Controle devolução "Troca de Mercadoria" no movimento</h2>
+        <ul>
+            <li>Controle de Devolução (troca de mercadoria) no Movimento.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18853" target="_blank">(Mantis: 18853)</a></strong>
+            </li>
+        </ul>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/trocademercadoriamovimento.png?raw=true" alt="">
+<br>
+        <p>Vale ressaltar que esta funcionalidade será destinada ao cliente que realiza no seu processo de venda a devolução na sua totalidade (Popularmente identificada como troca de mercadorias). Clientes que realizam o processo de devolução parcial deverão utilizar a baixa pelo FINANCEIRO.</p>
+        <p>Acesse o manual de configuração <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/530312/controle-devolucao-troca-de-mercadoria-no-movimento" target="_blank">clicando aqui</a>.</p>
+
+        <h2>TGA Service WhatsApp</h2>
+        <p>TGA Service é responsável pelos envios de mensagens automatizadas para o WhatsApp;</p>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/tgaservice-whatsapp.png?raw=true" alt="">
+<br>
+        <p>Acesse o manual de configuração <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" target="_blank">clicando aqui</a>.</p>
+
+        <h2>TGA Utilitário / Migrador Firebird 5.0</h2>
+        <p>Utilitário para Instalação / Migração do Firebird 5.0 é uma ferramenta para auxilio na instalação nas estações e migrações de banco de dados que ainda estejam na versão 2.5;</p>
+
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/migracaofirebird.png?raw=true" alt="">
+<br>
+        <p>Acesse o manual de configuração <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/527506/firebird-50" target="_blank">clicando aqui</a>.</p>
+
+        <h2>Anamnese - Clinica</h2>
+        <ul>
+            <li>Criação de Anamnese - Clinica.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18273" target="_blank">(Mantis: 18273)</a></strong>
+            </li>
+        </ul>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/anamneseclinica.png?raw=true" alt="">
+<br>
+
+        <h2>Taxa PIX - Dinâmico</h2>
+        <ul>
+            <li>Implementado taxa de PIX.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18793" target="_blank">(Mantis: 18793)</a></strong>
+            </li>
+        </ul>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/taxapix.png?raw=true" alt="">
+<br>
+
+        <h2>Dashboard - Estoque</h2>
+        <ul>
+            <li>Alteração do Dashboard Estoque.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18567" target="_blank">(Mantis: 18567)</a></strong>
+            </li>
+        </ul>
+<img src="https://github.com/souzaseven/tgahelpme/blob/Desafios/perguntasfrequentes/versoes/25.04.01/dashboard-estoque.png?raw=true" alt="">
+<br>
+
+        <h2>TGA Estoque</h2>
+        <h3>Movimentos</h3>
+        <ul>
+            <li>Correção na falha no saldo "Solicitação de Compra" quando gera Cotação.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18786" target="_blank">(Mantis: 18786)</a></strong>
+            </li>
+            <li>Implementado opção de "Custo Médio Gravado" no relatório de Lucro Líquido.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18850" target="_blank">(Mantis: 18850)</a></strong>
+            </li>
+            <li>Tratamento no Modulo Separação de Mercadoria (NOMEVEND2).  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18854" target="_blank">(Mantis: 18854)</a></strong>
+            </li>
+            <li>Correção na falha no status de faturamento ao agrupar movimentos.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18764" target="_blank">(Mantis: 18764)</a></strong>
+            </li>
+            <li>Problema corrigido na janela de Lançar Frete no movimento de compra.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18842" target="_blank">(Mantis: 18842)</a></strong>
+            </li>
+            <li>Problema corrigido com custo do fracionado quando usa Custo/Preço por filial.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18866" target="_blank">(Mantis: 18866)</a></strong>
+            </li>
+            <li>Ajuste de perfil para Catálogo Eletrônico.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18902" target="_blank">(Mantis: 18902)</a></strong>
+            </li>
+            <li>Incluido o campo "Qtde Pendente" nas colunas da Grande dos Itens a faturar.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18871" target="_blank">(Mantis: 18871)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Documentos Fiscais</h3>
+        <ul>
+            <li>Correção no desconto na NFS-e Sapezal.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18633" target="_blank">(Mantis: 18633)</a></strong>
+            </li>
+            <li>Enviar número beneficio Processo para provedor Ágili.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18751" target="_blank">(Mantis: 18751)</a></strong>
+            </li>
+            <li>Trazer nas informações complementares da NFe o descritivo da Lei Complementar n° 123/2006 quando CSOSN for 201.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18840" target="_blank">(Mantis: 18840)</a></strong>
+            </li>
+            <li>Implementado idTermPag na NF/NFC-e conforme NT2023.004_v1.10 -Campos e Regras.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18798" target="_blank">(Mantis: 18798)</a></strong>
+            </li>
+            <li>Emissão NFe para não contribuinte com IE.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18796" target="_blank">(Mantis: 18796)</a></strong>
+            </li>
+            <li>Alterar a NFS-e / ACBrNFSeXServicos de Confresa - MT, mudou para Fiorilli..  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18817" target="_blank">(Mantis: 18817)</a></strong>
+            </li>
+            <li>Corrigido o Carregamento das Chaves de Acesso referenciadas na Devolução por Seleção Múltipla de NF-e.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18785" target="_blank">(Mantis: 18785)</a></strong>
+            </li>
+            <li>Corrigido link NFSe no provedor Fiorilli.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18821" target="_blank">(Mantis: 18821)</a></strong>
+            </li>
+            <li>Alterado a NFS-e / ACBrNFSeXServicos de Pontes e Lacerda, mudar para Coplan.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18794" target="_blank">(Mantis: 18794)</a></strong>
+            </li>
+            <li>Alterado a NFS-e / ACBrNFSeXServicos de São Felix do Araguaia, mudar para Centi.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18724" target="_blank">(Mantis: 18724)</a></strong>
+            </li>
+            <li>Incluido uma coluna com a informação da placa do veículo no Gerenciador MDF-e.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18930" target="_blank">(Mantis: 18930)</a></strong>
+            </li>
+            <li>Controle de Lote para Item Principal - Produção.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18169" target="_blank">(Mantis: 18169)</a></strong>
+            </li>
+            <li>Atualizado o ACBR para pegar os dados do novo provedor NFS-e de Ourinhos/SP.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18875" target="_blank">(Mantis: 18875)</a></strong>
+            </li>
+        </ul>
+
+        <h3>PDV - ON</h3>
+        <ul>
+            <li>Incluido opção para bloquear encerrar/cancelar a venda no PDV-ON, caso tenha informado as Formas de Pagamento..  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18920" target="_blank">(Mantis: 18920)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Cadastros</h3>
+        <ul>
+            <li>Incluido "Funcionário 2" nas Tabelas (F_USADEFAULTSCFO) do Cliente/Fornecedor.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18667" target="_blank">(Mantis: 18667)</a></strong>
+            </li>
+            <li>Pesquisa de Produto - Alteração em Lote.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18701" target="_blank">(Mantis: 18701)</a></strong>
+            </li>
+            <li>Ajustado a configuração de Dias Fixos do Cadastro do Cliente para as demais Parcelas.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18858" target="_blank">(Mantis: 18858)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Relatórios</h3>
+        <ul>
+            <li>Incluido o filtro "Vendedor por Item" no Relatório de Resumo de Produtos Vendidos.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18712" target="_blank">(Mantis: 18712)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Utilitários</h3>
+        <ul>
+            <li>Correção na Divergência ao Ajustar/Zerar Estoque pelo Ajuste de Saldo (Menu Utilitários) com Produto com Grade.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18804" target="_blank">(Mantis: 18804)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Dashboard</h3>
+        <ul>
+            <li>Alteração do Dashboard Estoque.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18567" target="_blank">(Mantis: 18567)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Clínica</h3>
+        <ul>
+            <li>Criação de Anamnese - Clinica.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18273" target="_blank">(Mantis: 18273)</a></strong>
+            </li>
+        </ul>
+
+        <h2>TGA Financeiro</h2>
+        <h3>Integração</h3>
+        <ul>
+            <li>Adicionado filtro de Tipo de Documento no Envio Analítico de Cobrança (WhatsApp).  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18847" target="_blank">(Mantis: 18847)</a></strong>
+            </li>
+            <li>Correção no envio de juros e alteração de juros Banco do Brasil.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18934" target="_blank">(Mantis: 18934)</a></strong>
+            </li>
+            <li>Melhoria no retorno dos boletos por API.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18474" target="_blank">(Mantis: 18474)</a></strong>
+            </li>
+            <li>Implementado opção de filtrar por Lista retorno API Cobrança Sicoob.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18772" target="_blank">(Mantis: 18772)</a></strong>
+            </li>
+        </ul>
+
+        <h3>TEF/SMART POS</h3>
+        <ul>
+            <li>Implementado o gravar BIN nas informações de Baixa.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18512" target="_blank">(Mantis: 18512)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Relatórios</h3>
+        <ul>
+            <li>Implementado filtro de lista de Tipo de Documento para o Relatório de Cobrança.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18861" target="_blank">(Mantis: 18861)</a></strong>
+            </li>
+        </ul>
+
+        <h3>Perfil</h3>
+        <ul>
+            <li>Opção de bloquear alteração valor do juros, bloqueando incorretamente.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18874" target="_blank">(Mantis: 18874)</a></strong>
+            </li>
+        </ul>
+
+        <h2>PDV OFF</h2>
+        <ul>
+            <li>Implementado validação na sessão de caixa PDVOFF.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18790" target="_blank">(Mantis: 18790)</a></strong>
+            </li>
+            <li>Implementado idTermPag na NFC-e conforme NT2023.004_v1.10 -Campos e Regras - PDVOFF.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18839" target="_blank">(Mantis: 18839)</a></strong>
+            </li>
+            <li>Implementado melhorias na sincronização de vendas no PDV OFF.  
+                <strong><a href="https://mantis.tgasistemas.com.br/view.php?id=18876" target="_blank">(Mantis: 18876)</a></strong>
+            </li>
+        </ul>
+  <h3>
+<a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529318/versao-25-04-01?menuId=35619-97968-529318&ticketId=&q=" target="_blank"> Ver Documentação v25.04.01</a></h3>
+<hr>
+    </div>
+</div>
 
 <div class="faq-item">
     <div class="faq-question">
