@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras de Porcentagem</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+<!--icone com meu rosto-->
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- Calculator 1 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 1</div>
+            <div class="form-group">
+                <label for="c1v1">Quanto é</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="c1v1" placeholder="Insira a porcentagem">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c1v2">de</label>
+                <input type="number" class="form-control" id="c1v2" placeholder="Insira o valor">
+            </div>
+            <span class="result" id="r1"></span>
+        </div>
+
+        <!-- Calculator 2 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 2</div>
+            <div class="form-group">
+                <label for="c2v1">O valor</label>
+                <input type="number" class="form-control" id="c2v1" placeholder="Insira o valor">
+            </div>
+            <div class="form-group">
+                <label for="c2v2">é qual porcentagem de</label>
+                <input type="number" class="form-control" id="c2v2" placeholder="Insira o total">
+            </div>
+            <span class="result" id="r2"></span>
+        </div>
+
+        <!-- Calculator 3 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 3</div>
+            <div class="form-group">
+                <label for="c3v1">Eu tenho um valor de</label>
+                <input type="number" class="form-control" id="c3v1" placeholder="Insira o valor original">
+            </div>
+            <div class="form-group">
+                <label for="c3v2">que mudou para</label>
+                <input type="number" class="form-control" id="c3v2" placeholder="Insira o valor atual">
+            </div>
+            <label>Qual foi a variação percentual?</label><br>
+            <span class="result" id="r3"></span>
+        </div>
+
+        <!-- Calculator 4 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 4</div>
+            <div class="form-group">
+                <label for="c4v1">Eu tenho um valor de</label>
+                <input type="number" class="form-control" id="c4v1" placeholder="Insira o valor original">
+            </div>
+            <div class="form-group">
+                <label for="c4v2">e quero AUMENTAR</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="c4v2" placeholder="Insira a porcentagem de aumento">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+            <label>Qual é o resultado?</label><br>
+            <span class="result" id="r4"></span>
+        </div>
+
+        <!-- Calculator 5 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 5</div>
+            <div class="form-group">
+                <label for="c5v1">Eu tenho um valor de</label>
+                <input type="number" class="form-control" id="c5v1" placeholder="Insira o valor original">
+            </div>
+            <div class="form-group">
+                <label for="c5v2">e quero DIMINUIR</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="c5v2" placeholder="Insira a porcentagem de desconto">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+            <label>Qual é o resultado?</label><br>
+            <span class="result" id="r5"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Calculator 6 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 6</div>
+            <div class="form-group">
+                <label for="c6v1">Eu tenho um valor final de</label>
+                <input type="number" class="form-control" id="c6v1" placeholder="Valor final após aumento">
+            </div>
+            <div class="form-group">
+                <label for="c6v2">que foi um aumento de</label>
+                <input type="number" class="form-control" id="c6v2" placeholder="Insira a porcentagem de aumento">
+                <span class="input-group-text">%</span>
+            </div>
+            <label>Qual era o valor original?</label><br>
+            <span class="result" id="r6"></span>
+        </div>
+
+        <!-- Calculator 7 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 7</div>
+            <div class="form-group">
+                <label for="c7v1">Valor inicial</label>
+                <input type="number" class="form-control" id="c7v1" placeholder="Insira o valor inicial">
+            </div>
+            <div class="form-group">
+                <label for="c7v2">Série de aumentos (%) separados por vírgula (ex: 10, 5, 2)</label>
+                <input type="text" class="form-control" id="c7v2" placeholder="Ex.: 10,5,2">
+            </div>
+            <label>Valor final após os aumentos?</label><br>
+            <span class="result" id="r7"></span>
+        </div>
+
+        <!-- Calculator 8 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 8</div>
+            <div class="form-group">
+                <label for="c8v1">Valor inicial</label>
+                <input type="number" class="form-control" id="c8v1" placeholder="Insira o valor inicial">
+            </div>
+            <div class="form-group">
+                <label for="c8v2">Série de descontos (%) separados por vírgula (ex: 10, 5, 2)</label>
+                <input type="text" class="form-control" id="c8v2" placeholder="Ex.: 10,5,2">
+            </div>
+            <label>Valor final após os descontos?</label><br>
+            <span class="result" id="r8"></span>
+        </div>
+
+        <!-- Calculator 9 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 9</div>
+            <div class="form-group">
+                <label for="c9v1">Valor total</label>
+                <input type="number" class="form-control" id="c9v1" placeholder="Insira o valor total">
+            </div>
+            <div class="form-group">
+                <label for="c9v2">Número de partes</label>
+                <input type="number" class="form-control" id="c9v2" placeholder="Número de partes">
+            </div>
+            <label>Valor correspondente a cada parte (dividido em porcentagem)?</label><br>
+            <span class="result" id="r9"></span>
+        </div>
+
+        <!-- Calculator 10 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 10</div>
+            <div class="form-group">
+                <label for="c10v1">Valor inicial</label>
+                <input type="number" class="form-control" id="c10v1" placeholder="Insira o valor inicial">
+            </div>
+            <div class="form-group">
+                <label for="c10v2">Valor final desejado</label>
+                <input type="number" class="form-control" id="c10v2" placeholder="Insira o valor final desejado">
+            </div>
+            <label>Qual porcentagem de ajuste é necessária?</label><br>
+            <span class="result" id="r10"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Calculator 11 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 11</div>
+            <div class="form-group">
+                <label for="c11v1">Valor após desconto</label>
+                <input type="number" class="form-control" id="c11v1" placeholder="Valor com desconto">
+            </div>
+            <div class="form-group">
+                <label for="c11v2">Desconto (%)</label>
+                <input type="number" class="form-control" id="c11v2" placeholder="Porcentagem de desconto">
+            </div>
+            <label>Qual era o valor original?</label><br>
+            <span class="result" id="r11"></span>
+        </div>
+
+        <!-- Calculator 12 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 12</div>
+            <div class="form-group">
+                <label for="c12v1">A porcentagem (%)</label>
+                <input type="number" class="form-control" id="c12v1" placeholder="Porcentagem">
+            </div>
+            <div class="form-group">
+                <label for="c12v2">corresponde a quantos de</label>
+                <input type="number" class="form-control" id="c12v2" placeholder="Valor total">
+            </div>
+            <label>Qual é o valor correspondente?</label><br>
+            <span class="result" id="r12"></span>
+        </div>
+
+        <!-- Calculator 13 -->
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2-4">
+            <div class="item-title">Calculadora 13</div>
+            <div class="form-group">
+                <label for="c13v1">Valor original (bruto)</label>
+                <input type="number" class="form-control" id="c13v1" placeholder="Insira o valor original">
+            </div>
+            <div class="form-group">
+                <label for="c13v2">Valor final (com desconto/aumento)</label>
+                <input type="number" class="form-control" id="c13v2" placeholder="Insira o valor final">
+            </div>
+            <label>Qual foi a porcentagem de desconto ou aumento?</label><br>
+            <span class="result" id="r13"></span>
+        </div>
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
