@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Devocionais</title>
+
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <main class="main-content">
+      <article>
+        <header class="header">
+          <h1>📖 Devocionais Semanais</h1>
+          <div class="actions">
+            <input type="text" id="searchInput" placeholder="Buscar por tema, texto ou data..." aria-label="Buscar devocionais">
+            <button id="newDevocionalBtn" aria-label="Adicionar novo devocional">
+              <span class="material-icons">add</span>
+              <span>Novo Devocional</span>
+            </button>
+            <button id="toggleDarkMode" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+              <span class="material-icons">brightness_6</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="devocional-do-dia" id="devocionalDia" aria-live="polite">
+          <h2>Devocional de Hoje</h2>
+          <div id="infoDevocional">Carregando devocional...</div>
+        </section>
+
+        <section class="historico" aria-labelledby="historico-titulo">
+          <h2 id="historico-titulo">Histórico de Devocionais</h2>
+          <div class="historico-container" role="list">
+            <!-- O conteúdo será inserido aqui pelo JavaScript -->
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <!-- Modal Novo/Editar Devocional -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <h2 id="modal-titulo">Novo Devocional</h2>
+      <input type="date" id="inputData" required aria-label="Data do devocional">
+      <input type="text" id="inputTema" placeholder="Tema do Devocional" required aria-label="Tema do devocional">
+      <textarea id="inputTexto" placeholder="Digite o texto do devocional..." required aria-label="Texto do devocional"></textarea>
+      <div class="modal-actions">
+        <button id="cancelarBtn" aria-label="Cancelar">
+          <span class="material-icons">cancel</span>
+          <span>Cancelar</span>
+        </button>
+        <button id="salvarBtn" aria-label="Salvar devocional">
+          <span class="material-icons">save</span>
+          <span>Salvar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
