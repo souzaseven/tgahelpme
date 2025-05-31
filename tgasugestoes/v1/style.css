@@ -1,0 +1,154 @@
+/* Resetando alguns estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #007ced; /* Fundo azul */
+    color: #fff; /* Texto branco para contraste */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff; /* Cor do título em branco */
+}
+
+/* Formulário */
+form {
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Labels do formulário */
+label {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="email"],  /* Adiciona o campo de e-mail */
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+/* Efeito de foco nos campos de entrada */
+input[type="text"]:focus,
+input[type="email"]:focus, /* Foco no campo de e-mail */
+textarea:focus,
+select:focus {
+    border-color: #007ced; /* Foco com a cor do fundo azul */
+    outline: none;
+}
+
+/* Botão de envio */
+button {
+    background-color: #007ced; /* Cor do botão azul */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background-color: #005bb5; /* Cor do botão no hover */
+}
+
+/* Estilo da tabela de sugestões */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007ced; /* Fundo da tabela azul */
+    color: white;
+}
+
+table td a {
+    color: #007ced; /* Cor do link azul */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Efeito de hover no link */
+table td a:hover {
+    text-decoration: underline;
+    color: #005bb5; /* Cor do link no hover */
+}
+
+/* Estilo de mensagens de status */
+p {
+    font-size: 1.1rem;
+    color: #007ced;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+p.error {
+    color: red;
+}
+
+/* Resposta do formulário */
+form {
+    transition: transform 0.3s ease;
+}
+
+form.success {
+    transform: scale(1.02);
+}
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+    left: 1px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}

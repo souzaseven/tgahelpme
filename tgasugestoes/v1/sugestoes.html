@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Sugestões</title>
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="consulta.css">
+<style>
+/* Adiciona estilos para exibir o aviso em segundo plano */
+    #status-message {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        z-index: 9999; /* Garante que esteja acima de outros elementos */
+        display: none; /* Começa oculto */
+    }
+</style>
+</head>
+<body>
+    <a href="https://tgameajuda.com/#sugestoes" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <h1>Painel de Sugestões</h1>
+    <div id="status-message"></div> <!-- Aqui aparecerá a mensagem de sucesso -->
+    
+    <form id="suggestion-form" method="POST">
+        <label for="nome">Seu Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="email">Seu E-mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="sugestao">Sua Sugestão:</label><br>
+        <textarea id="sugestao" name="sugestao" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Enviar Sugestão</button>
+    </form>
+
+    <script>
+        // Preencher o formulário com os dados armazenados no localStorage (se houver)
+        window.onload = function() {
+            var nome = localStorage.getItem('nome');
+            var email = localStorage.getItem('email');
+
+            if (nome) {
+                document.getElementById('nome').value = nome;
+            }
+
+            if (email) {
+                document.getElementById('email').value = email;
+            }
+        };
+
+        document.getElementById('suggestion-form').addEventListener('submit', function(e) {
+            e.preventDefault();  // Evita o envio tradicional do formulário
+
+            var formData = new FormData(this);
+            var statusMessage = document.getElementById('status-message');
+            
+            // Salvar nome e email no localStorage
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('email', email);
+
+            // Envia o formulário via AJAX
+            fetch('salvar_sugestao.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                statusMessage.innerHTML = '<p>' + data + '</p>';
+                statusMessage.style.color = '#4CAF50';
+
+                // Exibe a mensagem de sucesso
+                statusMessage.style.position = 'fixed';
+                statusMessage.style.top = '50%';
+                statusMessage.style.left = '50%';
+                statusMessage.style.transform = 'translate(-50%, -50%)';
+                statusMessage.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                statusMessage.style.padding = '20px';
+                statusMessage.style.borderRadius = '10px';
+                statusMessage.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                statusMessage.style.zIndex = '9999';
+
+                // Após 3 segundos, redireciona para a página de sugestões
+                setTimeout(() => {
+                    window.location.href = 'consultasugestao.php';
+                }, 3000);
+            })
+            .catch(error => {
+                statusMessage.innerHTML = '<p>Erro ao salvar a sugestão. Tente novamente.</p>';
+                statusMessage.style.color = 'red';
+            });
+        });
+    </script>
+</body>
+</html>

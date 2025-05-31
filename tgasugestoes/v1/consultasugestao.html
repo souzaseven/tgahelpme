@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Sugestões</title>
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <a href="https://tgameajuda.com/#sugestoes" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <!-- Botões de rolagem -->
+    <button id="scroll-down-btn" onclick="scrollToBottom()">⬇️</button>
+    <button id="scroll-up-btn" onclick="scrollToTop()">⬆️</button>
+
+    <div class="container">
+        <h1>Sugestões Enviadas</h1
+
+        <h3>Lista de Sugestões</h3>
+
+        <?php
+        // Incluir a conexão para obter os dados
+        include 'conexao.php';
+
+        // Busca todas as sugestões no banco
+        try {
+            $stmt = $pdo->query("SELECT * FROM sugestoes ORDER BY data_criacao DESC");
+            $sugestoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if ($sugestoes): ?>
+                <table id="suggestions-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Sugestão</th>
+                            <th>Aprovado</th>
+                            <th>Versão</th>
+                            <th id="sort-date" style="cursor: pointer;">Data <i class="fas fa-sort"></i></th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($sugestoes as $sugestao): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($sugestao['nome']); ?></td>
+                                <td><?php echo htmlspecialchars($sugestao['sugestao']); ?></td>
+                                <td>
+                                    <?php 
+                                        $aprovado = htmlspecialchars($sugestao['aprovado']);
+                                        echo $aprovado === 'sim' ? 'SIM' : ($aprovado === 'nao' ? 'Não' : 'Em Análise');
+                                    ?>
+                                </td>
+                                <td><?php echo htmlspecialchars($sugestao['versao']); ?></td>
+                                <td><?php echo htmlspecialchars($sugestao['data_criacao']); ?></td>
+                                <td><a href="login.php?id=<?php echo $sugestao['id']; ?>"><i class="fas fa-edit"></i> Editar</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p class="no-data">Não há sugestões para mostrar.</p>
+            <?php endif; ?>
+
+        <?php catch (PDOException $e) {
+            echo "Erro ao buscar sugestões: " . $e->getMessage();
+        }
+        ?>
+    </div>
+
+    <script>
+        // Funções para rolar para cima ou para baixo
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        // Mostrar/ocultar botões de rolagem
+        window.onscroll = function() {
+            const scrollUpBtn = document.getElementById("scroll-up-btn");
+            const scrollDownBtn = document.getElementById("scroll-down-btn");
+
+            if (window.scrollY > 100) {
+                scrollUpBtn.style.display = "block";
+            } else {
+                scrollUpBtn.style.display = "none";
+            }
+
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+                scrollDownBtn.style.display = "none";
+            } else {
+                scrollDownBtn.style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>
