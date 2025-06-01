@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Scripts SQL</title>
+
+ <link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sql.css">
+    <style>
+        /* Estilo do formulário e overlay */
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            padding: 20px;
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        #overlay.active {
+            display: block;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-container button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .form-container button.close-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #007bff;
+        }
+
+        .search-container {
+            margin: 20px;
+        }
+
+        .scroll-to-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .scroll-to-top-button:hover {
+            background-color: #0056b3;
+        }
+
+        #sqlList li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            list-style: none;
+        }
+
+        #sqlList li button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #sqlList li button:hover {
+            opacity: 0.9;
+        }
+
+        /* Estilo do modal para visualizar scripts */
+        #scriptModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #scriptModal .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        #scriptModal .modal-content h3 {
+            margin-top: 0;
+        }
+
+        #scriptModal .modal-content textarea {
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+            resize: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        #scriptModal .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #downloadModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #downloadModal .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        #downloadModal .modal-buttons button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #downloadModal .modal-buttons .close-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #downloadModal .modal-buttons button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://tgameajuda.com/" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+<h1></h1>
+    <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Pesquisar script..." oninput="filterFiles()">
+    </div>
+
+    <div style="text-align: center; margin: 10px; color: #f44336; font-weight: bold;">
+        De preferência, envie um arquivo de texto ou adicione digitando o comando e salvando.
+    </div>
+
+    <button onclick="openForm()">Adicionar Novo Script</button>
+
+   <div id="formContainer" class="form-container">
+    <form id="uploadForm">
+        <h2>Adicionar Novo Script</h2>
+        <label for="titulo">Título do Script</label>
+        <input type="text" name="titulo" id="titulo" placeholder="Título do Script" required>
+        
+        <label for="texto">Escreva seu Script SQL (opcional)</label>
+        <textarea name="texto" id="texto" rows="5" placeholder="Digite o comando SQL aqui"></textarea>
+        
+        <label for="file">Ou envie um arquivo SQL</label>
+        <input type="file" name="file" id="file" accept=".sql" onchange="updateFileName()">
+        
+        <input type="hidden" name="dataHora" id="dataHora">
+        <button type="submit">Enviar</button>
+        <button type="button" class="close-btn" onclick="closeForm()">Fechar</button>
+    </form>
+    <div id="formMessage"></div>
+</div>
+
+    <div class="containers">
+        <div id="sqlContainer" class="container">
+            <h2><i class="fas fa-database"></i> SCRIPTS SQL</h2>
+            <ul id="sqlList"></ul>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i> </button>
+
+    <!-- Modal para exibir o conteúdo do script -->
+    <div id="scriptModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">Fechar</button>
+            <h3 id="scriptTitle"></h3>
+            <textarea id="scriptText" readonly></textarea>
+            <button onclick="copyToClipboard()">Copiar Texto</button>
+        </div>
+    </div>
+
+    <!-- Modal para selecionar formato de download -->
+    <div id="downloadModal">
+        <div class="modal-content">
+            <h3>Escolha o formato do download</h3>
+            <div class="modal-buttons">
+                <button onclick="confirmDownload('txt')">.txt</button>
+                <button onclick="confirmDownload('sql')">.sql</button>
+                <button class="close-btn" onclick="closeDownloadModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDownloadPath = '';
+        let currentDownloadName = '';
+
+async function carregarArquivos() {
+    try {
+        // Use o nome correto do arquivo PHP
+        const response = await fetch(`./listar_arquivossql.php?nocache=${Date.now()}`);
+        
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+
+        const arquivos = await response.json();
+
+        const sqlList = document.getElementById('sqlList');
+        sqlList.innerHTML = '';
+
+        if (!Array.isArray(arquivos) || arquivos.length === 0) {
+            sqlList.innerHTML = `<li>Nenhum arquivo encontrado.</li>`;
+            return;
+        }
+
+  arquivos.forEach(arquivo => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <strong>Título:</strong> ${arquivo.arquivo}<br>
+        <!-- <strong>Adicionado:</strong> ${arquivo.adicionadoPor || 'N/A'}<br> --><br>
+        <button onclick="verScript('${arquivo.caminho}', '${arquivo.arquivo}')">Ver Script</button>
+        <button onclick="abrirDownloadModal('${arquivo.caminho}', '${arquivo.arquivo}')">Baixar</button>
+    `;
+    sqlList.appendChild(li);
+});
+
+    } catch (error) {
+        console.error('Erro ao carregar os arquivos:', error);
+        const sqlList = document.getElementById('sqlList');
+        sqlList.innerHTML = `<li>Erro ao carregar os arquivos: ${error.message}</li>`;
+    }
+}
+
+
+
+        async function verScript(caminho, titulo) {
+            try {
+                const response = await fetch(caminho);
+                if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+                const texto = await response.text();
+
+                document.getElementById('scriptTitle').innerText = titulo;
+                document.getElementById('scriptText').value = texto;
+                document.getElementById('scriptModal').style.display = 'flex';
+            } catch (error) {
+                alert('Erro ao carregar o script: ' + error.message);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('scriptModal').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const texto = document.getElementById('scriptText');
+            texto.select();
+            document.execCommand('copy');
+            alert('Texto copiado para a área de transferência!');
+        }
+
+        function abrirDownloadModal(caminho, nome) {
+            currentDownloadPath = caminho;
+            currentDownloadName = nome;
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+
+        function confirmDownload(extensao) {
+            const novoNome = currentDownloadName.replace('.txt', `.${extensao}`);
+            const link = document.createElement('a');
+            link.href = currentDownloadPath;
+            link.download = novoNome;
+            link.click();
+            closeDownloadModal();
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        function openForm() {
+            document.getElementById('formContainer').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function closeForm() {
+            document.getElementById('formContainer').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+       function updateFileName() {
+    const fileInput = document.getElementById('file');
+    const fileName = fileInput.files[0]?.name.split('.')[0] || '';
+    document.getElementById('titulo').value = fileName;
+}
+
+
+   document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const now = new Date();
+    const dataHoraFormatada = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+    document.getElementById('dataHora').value = dataHoraFormatada;
+
+    const formData = new FormData(e.target);
+    const formMessage = document.getElementById('formMessage');
+
+    try {
+        const response = await fetch('./uploadsql.php', {
+            method: 'POST',
+            body: formData
+        });
+        const resultado = await response.json();
+
+        if (resultado.sucesso) {
+    formMessage.textContent = 'Arquivo salvo com sucesso!';
+    formMessage.style.color = 'green';
+
+    // Adiciona o novo arquivo diretamente na lista
+    const sqlList = document.getElementById('sqlList');
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <strong>Título:</strong> ${document.getElementById('titulo').value}.txt<br>
+       <!-- <strong>Adicionado:</strong> ${document.getElementById('dataHora').value}   -->    <br>
+        <button onclick="verScript('./uploads/${document.getElementById('titulo').value}.txt', '${document.getElementById('titulo').value}.txt')">Ver Script</button>
+        <button onclick="abrirDownloadModal('./uploads/${document.getElementById('titulo').value}.txt', '${document.getElementById('titulo').value}.txt')">Baixar</button>
+    `;
+    sqlList.appendChild(li);
+
+    // Fecha o modal após 2 segundos
+    setTimeout(() => {
+        formMessage.textContent = '';
+        closeForm(); // Fecha o modal
+    }, 2000);
+}
+ else {
+            formMessage.textContent = resultado.erro || 'Erro ao salvar o arquivo.';
+            formMessage.style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Erro ao enviar o script:', error);
+        formMessage.textContent = 'Erro ao enviar o script: ' + error.message;
+        formMessage.style.color = 'red';
+    }
+});
+
+
+
+
+        function filterFiles() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const arquivos = document.querySelectorAll('#sqlList li');
+
+            arquivos.forEach(arquivo => {
+                const texto = arquivo.textContent.toLowerCase();
+                arquivo.style.display = texto.includes(searchValue) ? '' : 'none';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarArquivos);
+    </script>
+</body>
+
+</html>
