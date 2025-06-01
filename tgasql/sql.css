@@ -1,0 +1,328 @@
+/* Variáveis CSS para tema */
+:root {
+    --primary-color: #007ced;
+    --secondary-color: #ffffff;
+    --highlight-color: #0056b3;
+    --hover-color: #003d8a;
+    --error-color: #f44336;
+    --error-hover-color: #d32f2f;
+    --button-bg: #000000;
+    --button-hover-bg: #005bb5;
+    --text-color: #333333;
+    --shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    --rounded: 10px;
+    --padding: 20px;
+    --gap: 20px;
+}
+
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--primary-color);
+    margin: 0;
+    padding: var(--padding);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: var(--gap);
+    color: var(--text-color);
+}
+
+
+/* Containers principais */
+.search-container, .form-container {
+    width: 96%;
+    max-width: 600px;
+    background: var(--secondary-color);
+    padding: var(--padding);
+    border-radius: var(--rounded);
+    box-shadow: var(--shadow);
+align-items: center;
+margin: 20px auto;
+}
+
+
+
+
+
+/* Campos de entrada e botões */
+input, button {
+    font-size: 16px;
+}
+
+input[type="text"], input[type="file"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--rounded);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 5px var(--highlight-color);
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--highlight-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--rounded);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* Adiciona flex para os itens dentro da lista */
+.download button {
+    display: inline-flex;
+    align-items:flex-start;
+    justify-content: center;
+    padding: 10px 20px;
+    background: #007ced;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Estilo para hover e active do botão */
+.download button:hover {
+    background: #005bb5;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.download button:active {
+    background: #003d8a;
+    transform: translateY(1px);
+}
+
+/* Tamanho do ícone do botão */
+.download button i {
+    font-size: 18px;
+}
+
+/* Containers flexíveis para a exibição de arquivos */
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    width: 96%;
+    justify-content: space-between;
+}
+
+.container {
+    flex: 1 1 calc(30% - var(--gap));
+    background: var(--secondary-color);
+    border-radius: var(--rounded);
+    box-shadow: var(--shadow);
+    padding: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 280px;
+}
+
+/* Títulos */
+.container h2 {
+    font-size: 20px;
+    margin: 0;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Listas */
+.container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container ul li {
+    margin-bottom: 10px;
+}
+
+/* Modais */
+.form-container {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--secondary-color);
+    padding: var(--padding);
+    border-radius: var(--rounded);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+}
+
+.form-container.active {
+    display: block;
+}
+
+/* Botões de ação */
+.close-btn {
+    padding: 10px;
+    background: var(--error-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--rounded);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background: var(--error-hover-color);
+}
+
+/* Overlay */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+#overlay.active {
+    display: block;
+}
+
+/* Botão voltar ao topo */
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: var(--rounded);
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    z-index: 9999;
+}
+
+.scroll-to-top-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Botão voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: var(--rounded);
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.btn-voltar:hover {
+    opacity: 0.8;
+}
+
+a button {
+    padding: 10px 20px;
+    background: #007ced;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+a button:hover {
+    background: #005bb5;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+a button:active {
+    background: #003d8a;
+    transform: translateY(1px);
+}
+
+a button i {
+    margin-right: 8px;
+}
+
+
+/* Listagem de arquivos (Flexbox) */
+#etiquetasList {
+    display: flex;
+    flex-direction: column; /* Exibe os itens empilhados em telas pequenas */
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start; /* Garante que os itens sejam alinhados ao topo */
+    align-items: flex-start; /* Garante que os itens fiquem alinhados à esquerda */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
+}
+
+/* Responsividade para telas maiores (largura maior que 768px) */
+@media (min-width: 768px) {
+    #etiquetasList {
+        flex-direction: row; /* Exibe os itens lado a lado */
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+        justify-content: flex-start; /* Alinha os itens ao início, não ao centro */
+    }
+
+    #etiquetasList li {
+        flex: 1 1 calc(48% - 10px); /* Cada item ocupa 48% da largura com espaçamento */
+        margin: 5px; /* Adiciona espaçamento entre os itens */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .download button {
+        font-size: 18px;
+    }
+}
+
+/* Responsividade para telas maiores (largura maior que 1024px) */
+@media (min-width: 1024px) {
+    #etiquetasList li {
+        flex: 1 1 calc(30% - 10px); /* Cada item ocupa 30% da largura em telas grandes */
+    }
+
+    .download button {
+        font-size: 20px;
+    }
+}
