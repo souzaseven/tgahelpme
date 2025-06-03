@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Arquivos de Fórmulas</title>
+  <link rel="icon" href="./icon bot tga.ico" type="image/x-icon" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/etiqueta.css" />
+
+  <style>
+
+.form-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%; /* Essa linha precisa ser ativada */
+  transform: translate(-50%, -50%);
+  background: var(--secondary-color, #fff); /* fallback se a variável não existir */
+  padding: var(--padding, 25px);
+  border-radius: var(--rounded, 12px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 900px; /* Aumentado para ocupar mais nas laterais */
+  max-width: 95vw; /* Limite responsivo para não ultrapassar a tela */
+}
+
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+
+.form-container .button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.form-container form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-container form button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.form-container form .close-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+    .form-container form label {
+      font-weight: bold;
+    }
+
+    .form-container form input[type="text"],
+    .form-container form textarea,
+    .form-container form input[type="file"] {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .form-container form button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .form-container form button[type="submit"] {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .form-container form .close-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    button.ver-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button.ver-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+#previewTexto {
+  margin-top: 15px;
+  line-height: 1.6;
+  font-size: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+  </style>
+</head>
+
+<body>
+  <a href="https://tgameajuda.com/" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+  <div class="search-container">
+    <input id="searchInput" type="text" placeholder="Pesquisar arquivo..." oninput="filterFiles()" />
+  </div>
+
+  <button onclick="openForm()">Adicionar Novo Arquivo</button>
+
+  <div id="overlay" onclick="closeForm()"></div>
+
+  <div class="form-container" id="formContainer">
+    <form id="uploadForm">
+      <h2>Adicionar Nova Fórmula</h2>
+
+      <label for="titulo">Título da Fórmula</label>
+      <input type="text" name="titulo" id="titulo" placeholder="Título da Fórmula" required />
+
+      <label for="descricao">Descrição ou Fórmula (opcional)</label>
+      <textarea name="descricao" id="descricao" rows="5" placeholder="Digite a fórmula ou explicação aqui"></textarea>
+
+      <label for="file">Ou envie um arquivo com a fórmula</label>
+      <input type="file" name="file" id="file" accept=".txt,.pdf,.doc,.docx" onchange="updateFileName()" />
+
+      <input type="hidden" name="dataHora" id="dataHora" />
+    <div class="button-group">
+  <button type="submit">Enviar</button>
+  <button type="button" class="close-btn" onclick="closeForm()">Fechar</button>
+</div>
+
+    </form>
+
+    <div id="formMessage"></div>
+  </div>
+
+  <div class="containers">
+    <div id="etiquetas" class="container">
+      <h2><i class="fas fa-tag"></i> FÓRMULAS</h2>
+      <ul id="etiquetasList"></ul>
+    </div>
+  </div>
+
+  <div id="previewModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closePreviewModal()">&times;</span>
+      <h3 id="previewTitulo"></h3>
+      <pre id="previewTexto" style="white-space: pre-wrap;"></pre>
+      <button onclick="copiarTexto()">Copiar Texto</button>
+    </div>
+  </div>
+
+  <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i></button>
+
+  <script>
+    async function carregarArquivos() {
+      try {
+        const response = await fetch("./listar_formulas.php");
+        if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
+        const arquivos = await response.json();
+
+        const etiquetasList = document.getElementById("etiquetasList");
+        etiquetasList.innerHTML = "";
+
+        if (arquivos.erro) {
+          etiquetasList.innerHTML = `<li>${arquivos.erro}</li>`;
+          return;
+        }
+
+        arquivos.forEach((arquivo) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <div style="margin-bottom: 8px;"><strong>Arquivo ${arquivo.sequencial}:</strong> ${arquivo.arquivo}</div>
+            <div><strong>Adicionado:</strong> ${arquivo.adicionadoPor}</div>
+            <div class="btn-group">
+              <a href="${arquivo.caminho}" class="download" download>
+                <button><i class="fas fa-download"></i> Baixar</button>
+              </a>
+              <button class="ver-btn" onclick="verConteudo('${arquivo.caminho}', '${arquivo.arquivo}')">
+                <i class="fas fa-eye"></i> Ver
+              </button>
+            </div>
+          `;
+          etiquetasList.appendChild(li);
+        });
+      } catch (error) {
+        console.error("Erro ao carregar os arquivos:", error);
+        document.getElementById("etiquetasList").innerHTML = `<li>Erro ao carregar os arquivos: ${error.message}</li>`;
+      }
+    }
+
+    function filterFiles() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      const etiquetasList = document.getElementById("etiquetasList");
+      const files = etiquetasList.getElementsByTagName("li");
+
+      for (let i = 0; i < files.length; i++) {
+        const textContent = files[i].textContent.toLowerCase();
+        files[i].style.display = textContent.includes(searchTerm) ? "block" : "none";
+      }
+    }
+
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const now = new Date();
+      const dia = String(now.getDate()).padStart(2, "0");
+      const mes = String(now.getMonth() + 1).padStart(2, "0");
+      const ano = now.getFullYear();
+      const hora = String(now.getHours()).padStart(2, "0");
+      const minutos = String(now.getMinutes()).padStart(2, "0");
+      const dataHoraFormatada = `${dia}/${mes}/${ano} ${hora}:${minutos}`;
+
+      document.getElementById("dataHora").value = dataHoraFormatada;
+
+      const formData = new FormData(e.target);
+
+      try {
+        const response = await fetch("./uploadformulas.php", {
+          method: "POST",
+          body: formData,
+        });
+        const resultado = await response.json();
+        const formMessage = document.getElementById("formMessage");
+        formMessage.textContent = resultado.sucesso || resultado.erro;
+        formMessage.style.color = resultado.sucesso ? "green" : "red";
+
+        if (resultado.sucesso) {
+          carregarArquivos();
+          closeForm();
+        }
+      } catch (error) {
+        console.error("Erro ao enviar arquivo:", error);
+        const formMessage = document.getElementById("formMessage");
+        formMessage.textContent = "Erro ao enviar o arquivo: " + error.message;
+        formMessage.style.color = "red";
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", carregarArquivos);
+
+    function openForm() {
+      document.getElementById("formContainer").classList.add("active");
+      document.getElementById("overlay").classList.add("active");
+    }
+
+    function closeForm() {
+      document.getElementById("formContainer").classList.remove("active");
+      document.getElementById("overlay").classList.remove("active");
+    }
+
+    function updateFileName() {
+      const fileInput = document.getElementById("file");
+      const fileName = fileInput.files[0]?.name.split(".")[0] || "";
+      if (fileName && !document.getElementById("titulo").value) {
+        document.getElementById("titulo").value = fileName;
+      }
+    }
+
+function verConteudo(caminho, titulo) {
+  fetch(caminho)
+    .then((res) => res.arrayBuffer())
+    .then((buffer) => {
+      // Tenta ler como ISO-8859-1 (Latin1), usado em arquivos antigos Windows
+      const decoder = new TextDecoder("iso-8859-1");
+      const textoOriginal = decoder.decode(buffer);
+
+      // Remove acentuação (opcional)
+      const textoNormalizado = textoOriginal.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      document.getElementById("previewTitulo").innerText = titulo;
+      document.getElementById("previewTexto").innerText = textoNormalizado;
+      document.getElementById("previewModal").style.display = "flex";
+    })
+    .catch((err) => {
+      alert("Erro ao carregar o conteúdo do arquivo.");
+      console.error(err);
+    });
+}
+
+
+
+
+    function closePreviewModal() {
+      document.getElementById("previewModal").style.display = "none";
+    }
+
+    function copiarTexto() {
+      const texto = document.getElementById("previewTexto").innerText;
+      navigator.clipboard.writeText(texto)
+        .then(() => alert("Texto copiado com sucesso!"))
+        .catch(() => alert("Falha ao copiar o texto."));
+    }
+  </script>
+</body>
+</html>
