@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Arquivos de Etiquetas</title>
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/etiqueta.css">
+</head>
+
+<body>
+    <a href="https://tgameajuda.com/" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+    <div class="search-container">
+        <input id="searchInput" type="text" placeholder="Pesquisar arquivo..." oninput="filterFiles()">
+    </div>
+
+    <button type="button" onclick="openForm()">Adicionar Novo Arquivo</button>
+
+    <div id="overlay" onclick="closeForm()"></div>
+    <div class="form-container" id="formContainer">
+        <form id="uploadForm">
+            <h2>Adicionar Novo Arquivo</h2>
+            <input type="text" name="fileName" id="fileName" placeholder="Nome do arquivo (sem extensão)" required>
+            <input type="file" name="file" id="file" accept=".rtm" required onchange="updateFileName()">
+            <input type="hidden" name="dataHora" id="dataHora">
+            <button type="submit">Enviar</button>
+            <button type="button" class="close-btn" onclick="closeForm()">Fechar</button>
+        </form>
+        <div id="formMessage"></div>
+    </div>
+
+    <div class="containers">
+        <div id="etiquetas" class="container">
+            <h2><i class="fas fa-tag"></i> ETIQUETAS</h2>
+            <ul id="etiquetasList"></ul>
+        </div>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        async function carregarArquivos() {
+            const errorMessage = document.getElementById('errorMessage');
+            try {
+                const response = await fetch(`./listar_arquivos.php?_=${Date.now()}`);
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+
+                let arquivos;
+                try {
+                    arquivos = await response.json();
+                } catch {
+                    throw new Error("Resposta inválida do servidor");
+                }
+
+                const etiquetasList = document.getElementById('etiquetasList');
+                etiquetasList.innerHTML = '';
+                errorMessage.style.display = 'none';
+
+                if (arquivos.erro) {
+                    etiquetasList.innerHTML = `<li>${arquivos.erro}</li>`;
+                    return;
+                }
+
+                arquivos.forEach(arquivo => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <strong>Arquivo ${arquivo.sequencial}:</strong> ${arquivo.arquivo}<br>
+                        <strong>Adicionado:</strong> ${arquivo.adicionadoPor}<br>
+                        <a href="${arquivo.caminho}" class="download" download>
+                            <button><i class="fas fa-download"></i> Baixar</button>
+                        </a>
+                    `;
+                    etiquetasList.appendChild(li);
+                });
+            } catch (error) {
+                errorMessage.textContent = `Erro ao carregar os arquivos: ${error.message}`;
+                errorMessage.style.display = 'block';
+                console.error('Erro ao carregar os arquivos:', error);
+            }
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const now = new Date();
+            const dataHoraFormatada = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+            document.getElementById('dataHora').value = dataHoraFormatada;
+
+            const formData = new FormData(e.target);
+
+            try {
+                const response = await fetch('./uploadetiquetas.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const resultado = await response.json();
+
+                const formMessage = document.getElementById('formMessage');
+                formMessage.textContent = resultado.sucesso || resultado.erro;
+                formMessage.style.color = resultado.sucesso ? 'green' : 'red';
+
+                if (resultado.sucesso) {
+                    carregarArquivos();
+                    closeForm();
+                }
+            } catch (error) {
+                console.error('Erro ao enviar arquivo:', error);
+                const formMessage = document.getElementById('formMessage');
+                formMessage.textContent = 'Erro ao enviar o arquivo: ' + error.message;
+                formMessage.style.color = 'red';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', carregarArquivos);
+
+        function openForm() {
+            document.getElementById('formContainer').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function closeForm() {
+            document.getElementById('formContainer').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        function updateFileName() {
+            const fileInput = document.getElementById('file');
+            const fileName = fileInput.files[0]?.name.split('.')[0] || '';
+            document.getElementById('fileName').value = fileName;
+        }
+
+ function filterFiles() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const etiquetasList = document.getElementById('etiquetasList');
+        if (!etiquetasList) return;
+
+        const files = etiquetasList.getElementsByTagName('li');
+        for (let i = 0; i < files.length; i++) {
+            const textContent = files[i].textContent.toLowerCase();
+            if (textContent.includes(searchTerm)) {
+                files[i].style.display = 'block';
+            } else {
+                files[i].style.display = 'none';
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
