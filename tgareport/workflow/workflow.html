@@ -136,13 +136,19 @@
                 arquivos.forEach(arquivo => {
                     const div = document.createElement('div');
                     div.className = 'file-item';
-                    div.innerHTML = `
-                        <strong>Arquivo ${arquivo.sequencial}:</strong> ${arquivo.nome_arquivo}<br>
-                        <strong>Extensão:</strong> ${arquivo.extensao}<br>
-                        <a href="${arquivo.caminho}" class="download" download>
-                            <button><i class="fas fa-download"></i> Baixar</button>
-                        </a>
-                    `;
+               div.innerHTML = `
+    <strong>Arquivo ${arquivo.sequencial}:</strong> ${arquivo.nome_arquivo}<br>
+    <strong>Extensão:</strong> ${arquivo.extensao}<br>
+    <div style="display: flex; gap: 8px; justify-content: center; margin-top: 5px;">
+        <a href="${arquivo.caminho}" class="download" download title="Baixar este arquivo">
+            <button><i class="fas fa-download"></i></button>
+        </a>
+        <button title="Excluir este arquivo" style="background:#f44336;color:white;" onclick="confirmarExclusao('${arquivo.caminho}', '${arquivo.nome_arquivo}')">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </div>
+`;
+
                     workflowList.appendChild(div);
                 });
             } catch (error) {
@@ -218,6 +224,46 @@
             files[i].style.display = 'none';
         }
     }
+}
+function confirmarExclusao(caminho, nomeArquivo) {
+    const usuario = prompt("Digite o nome de usuário:");
+    const senha = prompt("Digite a senha:");
+
+    if (!usuario || !senha) {
+        alert("Usuário e senha são obrigatórios.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("usuario", usuario);
+    formData.append("senha", senha);
+    formData.append("arquivo", caminho);
+
+    fetch("workflow.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(async res => {
+        const text = await res.text();
+        try {
+            return JSON.parse(text);
+        } catch {
+            console.error("Resposta inválida:", text);
+            throw new Error("Resposta inválida.");
+        }
+    })
+    .then(resp => {
+        if (resp.sucesso) {
+            alert("Arquivo excluído com sucesso!");
+            carregarArquivos();
+        } else {
+            alert(resp.erro || "Erro ao excluir.");
+        }
+    })
+    .catch(err => {
+        console.error("Erro:", err);
+        alert("Erro ao excluir.");
+    });
 }
 
     </script>
