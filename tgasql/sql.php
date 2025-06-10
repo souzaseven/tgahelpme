@@ -46,5 +46,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     echo json_encode($arquivosOrdenados);
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require 'conexao.php';
+
+    $usuario = $_POST['usuario'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+    $arquivo = $_POST['arquivo'] ?? '';
+
+    if (!$usuario || !$senha || !$arquivo) {
+        echo json_encode(['erro' => 'Dados incompletos.']);
+        exit;
+    }
+
+    try {
+        $stmt = $pdo->prepare("SELECT senha FROM usuarios WHERE nome = ?");
+        $stmt->execute([$usuario]);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$resultado || $senha !== $resultado['senha']) {
+
+            echo json_encode(['erro' => 'Usuário ou senha inválidos.']);
+            exit;
+        }
+
+        if ($usuario !== 'anderson') {
+            echo json_encode(['erro' => 'Apenas o usuário anderson pode excluir arquivos.']);
+            exit;
+        }
+
+        if (file_exists($arquivo)) {
+            unlink($arquivo);
+            echo json_encode(['sucesso' => true]);
+        } else {
+            echo json_encode(['erro' => 'Arquivo não encontrado.']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['erro' => 'Erro ao excluir: ' . $e->getMessage()]);
+    }
 }
 ?>

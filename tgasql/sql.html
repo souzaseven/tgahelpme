@@ -353,6 +353,7 @@ async function carregarArquivos() {
         <!-- <strong>Adicionado:</strong> ${arquivo.adicionadoPor || 'N/A'}<br> --><br>
         <button onclick="verScript('${arquivo.caminho}', '${arquivo.arquivo}')">Ver Script</button>
         <button onclick="abrirDownloadModal('${arquivo.caminho}', '${arquivo.arquivo}')">Baixar</button>
+        <button style="background-color:#f44336; color:white;" onclick="confirmarExclusao('${arquivo.caminho}', '${arquivo.nome_arquivo}.sql')">Excluir</button>
     `;
     sqlList.appendChild(li);
 });
@@ -448,7 +449,7 @@ async function carregarArquivos() {
     formMessage.style.color = 'green';
 
     // Adiciona o novo arquivo diretamente na lista
-    const sqlList = document.getElementById('sqlList');
+   /* const sqlList = document.getElementById('sqlList');
     const li = document.createElement('li');
     li.innerHTML = `
         <strong>Título:</strong> ${document.getElementById('titulo').value}.txt<br>
@@ -456,7 +457,19 @@ async function carregarArquivos() {
         <button onclick="verScript('./uploads/${document.getElementById('titulo').value}.txt', '${document.getElementById('titulo').value}.txt')">Ver Script</button>
         <button onclick="abrirDownloadModal('./uploads/${document.getElementById('titulo').value}.txt', '${document.getElementById('titulo').value}.txt')">Baixar</button>
     `;
-    sqlList.appendChild(li);
+    sqlList.appendChild(li);*/
+const tituloOriginal = document.getElementById('titulo').value;
+const tituloSanitizado = tituloOriginal.replace(/[^\w\-]/g, '_');
+const sqlList = document.getElementById('sqlList');
+const li = document.createElement('li');
+li.innerHTML = `
+    <strong>Título:</strong> ${tituloOriginal}.txt<br>
+    <button onclick="verScript('./uploads/${tituloSanitizado}.txt', '${tituloOriginal}.txt')">Ver Script</button>
+    <button onclick="abrirDownloadModal('./uploads/${tituloSanitizado}.txt', '${tituloOriginal}.txt')">Baixar</button>
+    <button onclick="confirmarExclusao('./uploads/${tituloSanitizado}.txt', '${tituloOriginal}.txt')">Excluir</button>
+    <button style="background-color:#f44336; color:white;" onclick="confirmarExclusao('./uploads/${tituloSanitizado}.txt', '${tituloOriginal}.txt')">Excluir</button>
+`;
+
 
     // Fecha o modal após 2 segundos
     setTimeout(() => {
@@ -483,13 +496,55 @@ async function carregarArquivos() {
             const arquivos = document.querySelectorAll('#sqlList li');
 
             arquivos.forEach(arquivo => {
-                const texto = arquivo.textContent.toLowerCase();
-                arquivo.style.display = texto.includes(searchValue) ? '' : 'none';
+             /*  const texto = arquivo.textContent.toLowerCase();
+                arquivo.style.display = texto.includes(searchValue) ? '' : 'none';*/
+const texto = arquivo.textContent.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[_\-]/g, ' ');
+const busca = searchValue.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[_\-]/g, ' ');
+arquivo.style.display = texto.includes(busca) ? '' : 'none';
+
             });
         }
 
         document.addEventListener('DOMContentLoaded', carregarArquivos);
+
+function confirmarExclusao(caminho, nomeArquivo) {
+    const usuario = prompt("Digite o nome de usuário:");
+    const senha = prompt("Digite a senha:");
+
+    if (!usuario || !senha) {
+        alert("Usuário e senha são obrigatórios.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("usuario", usuario);
+    formData.append("senha", senha);
+    formData.append("arquivo", caminho);
+
+    fetch("sql.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(resultado => {
+        if (resultado.sucesso) {
+            alert("Arquivo excluído com sucesso!");
+            carregarArquivos(); // Recarrega a lista
+        } else {
+            alert(resultado.erro || "Erro ao excluir arquivo.");
+        }
+    })
+    .catch(error => {
+        console.error("Erro:", error);
+        alert("Erro na exclusão.");
+    });
+}
+
+
     </script>
+<div id="overlay"></div>
+
+
 </body>
 
 </html>
