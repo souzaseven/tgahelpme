@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acesso TGA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+    <!--souza system-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+<link rel="icon" href="./img/icon bot tga.ico" type="image/x-icon">
+  <style>
+    :root {
+      --azul-tga: #007ced;
+      --azul-claro: #66bfff;
+      --azul-escuro: #003e7e;
+      --white-glass: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+/*
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      height: 100vh;/*
+      background: radial-gradient(circle at top, #007ced 0%, #0d1a2d 80%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://sdmntprwestus.oaiusercontent.com/files/00000000-9ce4-6230-8352-13d3b5118e25/raw?se=2025-06-15T02%3A24%3A07Z&sp=r&sv=2024-08-04&sr=b&scid=68ad4ac5-d3ad-5474-b57c-0e9facf71124&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-14T22%3A59%3A55Z&ske=2025-06-15T22%3A59%3A55Z&sks=b&skv=2024-08-04&sig=QtFg/HsdWRvBda9NJxaPB3erUH1mwYGc2OdIpg71R4Q%3D);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+
+
+    .login-box {
+      background: var(--white-glass);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 45px 40px;
+      box-shadow: 0 0 25px rgba(0, 124, 237, 0.3);
+      text-align: center;
+      width: 100%;
+      max-width: 420px;
+      animation: fadeIn 0.8s ease-out;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+margin-top: 170px;
+    }
+
+    h2 {
+      font-size: 1.9em;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #66bfff, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-box button, .login-box input {
+      padding: 14px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Outfit', sans-serif;
+      margin-top: 12px;
+      transition: all 0.3s ease;
+    }
+
+    button {
+      background: var(--azul-tga);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button:hover {
+      background: var(--azul-claro);
+      transform: translateY(-2px);
+      box-shadow: 0 0 8px var(--azul-claro);
+    }
+
+    input {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    #formSuporte {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .erro {
+      color: #ff6b6b;
+      font-size: 0.9em;
+      margin-top: 6px;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+      .login-box {
+        padding: 30px 20px;
+        margin: 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2><i data-lucide="lock"></i> TGA ME AJUDA</h2>
+    <button onclick="acessarComoCliente()">
+      <i data-lucide="user" class="icon"></i> Sou Cliente
+    </button>
+    <button onclick="mostrarLoginSuporte()">
+      <i data-lucide="shield" class="icon"></i> Sou Suporte
+    </button>
+
+    <div id="formSuporte">
+      <input type="text" id="usuarioSuporte" placeholder="Usuário" value="SUPORTE" disabled>
+      <input type="password" id="senhaSuporte" placeholder="Senha do mês">
+      <button onclick="validarSuporte()">
+        <i data-lucide="log-in" class="icon"></i> Entrar
+      </button>
+      <p class="erro" id="erroSuporte"></p>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+function acessarComoCliente() {
+    localStorage.setItem("acesso", "cliente");
+    location.href = "cliente-tga.html"; // redireciona para página do cliente
+  }
+
+  function mostrarLoginSuporte() {
+    document.getElementById("formSuporte").style.display = "block";
+  }
+
+  function validarSuporte() {
+    const senha = document.getElementById("senhaSuporte").value;
+    fetch("verifica_suporte.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: "senha=" + encodeURIComponent(senha)
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d.sucesso) {
+        localStorage.setItem("acesso", "suporte");
+        location.href = "index.html";
+      } else {
+        document.getElementById("erroSuporte").textContent = "Senha incorreta.";
+      }
+    });
+  }
+  </script>
+
+</body>
+</html>
