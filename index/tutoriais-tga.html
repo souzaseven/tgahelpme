@@ -15,6 +15,96 @@
 
 <link rel="stylesheet" href="tutoriais.css">
 
+<style>
+
+.sair-button {
+  position: fixed;
+  top: 42px;
+  right: 20px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.sair-button:hover {
+  background: linear-gradient(135deg, #ff1a1a, #990000);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 77, 77, 0.4);
+}
+
+
+
+#tempo-sessao {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+/*
+  background: linear-gradient(135deg, rgba(0, 124, 237, 0.7), rgba(0, 95, 163, 0.7));*/
+  color: white;/*
+  padding: 10px 22px;*/
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  border-radius: 30px;/*
+  box-shadow: 0 4px 12px rgba(0, 124, 237, 0.3);*/
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  opacity: 0.9;
+  transition: top 0.3s ease, opacity 0.3s ease;
+}
+
+#tempo-sessao.oculto {
+  top: -60px;
+  opacity: 0;
+}
+
+
+#contador {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+  animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    transform: scale(1.08);
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+</style>
+
 <head>
 
     <meta charset="UTF-8">
@@ -59,11 +149,18 @@
     <header id="topo"></header>
     <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i> </button>
 
+<div id="tempo-sessao"><span id="contador">⏳05:00</span>
+</div>
+
+
+
+
 
     <!-- Botão com ícone -->
     <button onclick="toggleDarkMode()" class="dark-mode-button">
         <i class="fas fa-adjust"></i> Mudar cor
     </button>
+<button onclick="sair()" class="sair-button">🔓 Sair</button>
 
     <!-- Botão de três barrinhas -->
     <div class="menu-container">
@@ -2193,10 +2290,10 @@ _blank" class="download-link">
             </div>
 
             <!-- Item 1 -->
-            <div class="Dowloads-item"> <a href="./tgawallpaper/wallpapers.html" class="download-link">
+            <div class="Dowloads-item"> <a href="./tgawallpaper/index.html" class="download-link">
                     <img src="./tgawallpaper/logo tga azul.png" alt="SITE" class="responsive-image-Dowloads">
                     <div class="video-title">Ver imagens
-                        <a href="./tgawallpaper/wallpapers.html" target="_blank" class="download-link">
+                        <a href="./tgawallpaper/index.html" target="_blank" class="download-link">
                             <!--Acessar <i class="fas fa-external-link-alt"></i>-->
                         </a>
                     </div>
@@ -2827,7 +2924,51 @@ _blank" class="download-link">
         }, 300000); // 5 min
       });
   }
+
+function sair() {
+    localStorage.removeItem("acesso");
+    window.location.href = "login.html";
+  }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contadorEl = document.getElementById("contador");
+
+  if (!contadorEl) return; // garante que o elemento existe
+
+  let tempoRestante = 300; // 5 minutos
+
+  function atualizarContador() {
+    const minutos = String(Math.floor(tempoRestante / 60)).padStart(2, '0');
+    const segundos = String(tempoRestante % 60).padStart(2, '0');
+    contadorEl.textContent = `${minutos}:${segundos}`;
+
+    if (tempoRestante <= 0) {
+      sair(); // chama logout
+    }
+
+    tempoRestante--;
+  }
+
+  atualizarContador(); // inicializa
+  setInterval(atualizarContador, 1000); // atualiza a cada segundo
+});
+
+
+document.addEventListener("scroll", () => {
+  const sessao = document.getElementById("tempo-sessao");
+  if (!sessao) return;
+
+  if (window.scrollY > 50) {
+    sessao.classList.add("oculto");
+  } else {
+    sessao.classList.remove("oculto");
+  }
+});
+
+
 </script>
+<script src="tutoriais.js" defer></script>
+
 </body>
 
 </html>
