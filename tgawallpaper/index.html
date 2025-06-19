@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Wallpapers TGA">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpapers TGA</title>
+
+ <!--souza system-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+
+    <link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./wallpaper.css">
+    <style>
+h1 {
+    position: relative;
+    font-size: 3em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 20px 40px;
+    margin-top: 40px;
+    color: white;
+    background: linear-gradient(90deg, white, #00f0ff, white);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brilhoFuturista 5s linear infinite;
+    filter: drop-shadow(0 0 10px #ffffff88) drop-shadow(0 0 20px #00f0ff88);
+    overflow: hidden;
+}
+
+/* animação de escaneamento */
+h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    animation: scanLight 3s infinite;
+}
+
+/* efeito de flash de câmera */
+h1::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, transparent 60%);
+    animation: cameraFlash 8s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@keyframes brilhoFuturista {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+@keyframes scanLight {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+@keyframes cameraFlash {
+    0%, 96%, 100% { opacity: 0; }
+    97% { opacity: 1; }
+    98% { opacity: 0.3; }
+    99% { opacity: 0; }
+}
+
+        #modalUpload .modal-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 450px;
+            margin: auto;
+            color: #333;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
+        }
+        #modalUpload h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #007ced;
+        }
+        #modalUpload form input[type="file"],
+        #modalUpload form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #modalUpload .download-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Wallpapers TGA</h1>
+
+    <a href="https://tgameajuda.com/#wallpapers" class="btn-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+<style>
+    .btn-adicionar {
+        background: linear-gradient(135deg, #007ced, #00c6ff);
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-adicionar:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #005ecb, #0099cc);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-adicionar i {
+        font-size: 18px;
+    }
+</style>
+
+<div style="margin: 20px;">
+    <button onclick="abrirModalUpload()" class="btn-adicionar">
+        <i class="fas fa-plus-circle"></i> Adicionar Novo 
+    </button>
+</div>
+
+
+
+    <!-- Modal de Upload -->
+    <div id="modalUpload" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="fecharModalUpload()">&times;</span>
+        <h3>Enviar Novo Wallpaper</h3>
+        <form id="formUpload" enctype="multipart/form-data">
+          <input type="file" name="arquivo" required>
+          <label for="tipoSelect">Escolha o tipo:</label>
+          <select name="tipo" id="tipoSelect" required>
+            <option value="">-- Selecione --</option>
+            <option value="tga">TGA</option>
+            <option value="outros">Outros</option>
+          </select>
+          <button type="submit" class="download-btn">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+    <section>
+        <h2>Wallpapers TGA</h2>
+        <div id="wallpapers-tga" class="wallpaper-container"></div>
+    </section>
+<h1>
+<hr></h1>
+    <section>
+        <h2>Wallpapers Diversos</h2>
+        <div id="wallpapers-outros" class="wallpaper-container"></div>
+    </section>
+
+    <div id="modal" class="modal">
+        <span class="close" id="close">&times;</span>
+        <img class="modal-content" id="expandedImage" alt="Imagem em destaque">
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const expandedImage = document.getElementById('expandedImage');
+        const closeModal = document.getElementById('close');
+
+        function openModal(img) {
+            modal.style.display = 'block';
+            expandedImage.src = img.src;
+        }
+
+        closeModal.onclick = () => {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+            if (e.target === document.getElementById('modalUpload')) {
+                fecharModalUpload();
+            }
+        };
+
+        function abrirModalUpload() {
+            document.getElementById('modalUpload').style.display = 'block';
+        }
+
+        function fecharModalUpload() {
+            document.getElementById('modalUpload').style.display = 'none';
+        }
+
+        document.getElementById('formUpload').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const resp = await fetch('upload_wallpaper.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const json = await resp.json();
+                alert(json.message);
+                if (json.success) {
+                    fecharModalUpload();
+                    carregarWallpapers(formData.get('tipo'));
+                }
+            } catch (err) {
+                alert('Erro ao enviar arquivo.');
+                console.error(err);
+            }
+        });
+
+        async function carregarWallpapers(tipo) {
+            const container = document.getElementById(`wallpapers-${tipo}`);
+            container.innerHTML = '<p>Carregando...</p>';
+
+            try {
+                const response = await fetch(`listar_wallpapers.php?tipo=${tipo}`);
+                const dados = await response.json();
+
+                if (dados.success) {
+                    container.innerHTML = '';
+
+                    dados.data.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'wallpaper-item';
+
+                        const img = document.createElement('img');
+                        img.src = item.caminho;
+                        img.alt = item.nome_arquivo;
+                        img.className = 'wallpaper';
+                        img.loading = 'lazy';
+                        img.onclick = () => openModal(img);
+
+                        const link = document.createElement('a');
+                        link.href = item.caminho;
+                        link.download = '';
+                        link.className = 'download-btn';
+                        link.textContent = 'Baixar';
+
+                        div.appendChild(img);
+                        div.appendChild(link);
+
+                        container.appendChild(div);
+                    });
+                } else {
+                    container.innerHTML = '<p>Erro ao carregar imagens.</p>';
+                }
+            } catch (e) {
+                console.error(e);
+                container.innerHTML = '<p>Erro na requisição.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarWallpapers('tga');
+            carregarWallpapers('outros');
+        });
+    </script>
+
+<img src="https://profile-counter.glitch.me/tgahelpme-wallpapers/count.svg" alt="Contador de Visitantes" style="border: 2px solid; border-radius: 8px; background: transparent; padding: 5px;">
+</body>
+
+</html>
