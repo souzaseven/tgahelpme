@@ -1,0 +1,8 @@
+{
+    "error": {
+        "message": "Project `proj_DMsZf8D7Y950Pe4fFFTB6Eag` does not have access to model `gpt-3.5-turbo`",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "model_not_found"
+    }
+}
