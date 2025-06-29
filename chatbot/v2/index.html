@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat de Suporte</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="chat-container">
+    <button id="toggle-theme">Modo Claro</button>
+
+    <div id="chat-header">
+      <i class="fas fa-robot"></i> Chat de Suporte do TGAMEAJUDA
+    </div>
+
+    <div id="chat-conteudo">
+      <div id="chat-box"></div>
+
+      <form id="chat-form">
+        <label for="user-input" class="visually-hidden">Digite sua pergunta:</label>
+        <input type="text" id="user-input" placeholder="Digite sua pergunta..." required autocomplete="off">
+
+        <!-- Botão para emojis -->
+        <button type="button" id="emoji-btn" title="Inserir emoji">😃</button>
+
+        <!-- Upload de imagem -->
+        <input type="file" id="image-input" accept="image/*" hidden>
+        <button type="button" id="image-btn" title="Enviar imagem">🖼️</button>
+
+        <!-- Botão de envio -->
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <div id="preview-container" style="text-align:center;margin-top:10px;"></div>
+
+  <script>
+    if (!localStorage.getItem('chatUserName')) {
+      const nome = prompt("Antes de começarmos, qual é o seu nome?");
+      if (nome && nome.trim() !== "") {
+        localStorage.setItem('chatUserName', nome.trim());
+      }
+    }
+  </script>
+
+  <script src="./chat.js"></script>
+</body>
+</html>
