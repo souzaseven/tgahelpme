@@ -180,11 +180,13 @@ $logDebug = file_exists($debugPath) ? file($debugPath, FILE_IGNORE_NEW_LINES | F
   <div style="background:#343a40;color:#fff;padding:12px 20px;border-radius:8px;">
     📚 Total de Respostas: <strong><?= $total_respostas ?></strong>
   </div>
+
 </div>
 
 <h1>📋 Admin - Perguntas Pendentes</h1>
 
 <div class="top-bar">
+<a href="https://platform.deepseek.com/api_keys" target="_blank">🔑 api_keys</a>
   <a href="index.html" target="_blank">🔗 Chat</a>
   <a href="estatisticas.php" target="_blank">📊 Estatísticas</a>
   <a href="scraper.php" target="_blank">🧹 Scraper</a>
