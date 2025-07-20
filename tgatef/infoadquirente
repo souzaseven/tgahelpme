@@ -1,0 +1,38 @@
+
+<div class="faq-item">
+    <div class="faq-question">
+        Informações necessárias para liberação do app PDV.MOBI para cada adquirente
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+        <p>
+            Vou deixar registrado aqui, TODAS informações que cada adquirente necessita para liberação do app PDV.MOBI. Alguns casos vocês mesmo abrem o ticket colocando adquirente X, e informação X que não é a informação correta, normalmente eu entro em contato com cliente, mas se vocês já estão em contato com o mesmo, seja implantador ou suporte que está atendendo sobre troca de maquininha, já coletam a informação correta de acordo com a adquirente e registra no ticket da solicitação. Dessa forma fica tudo mais fácil e rápido para ambos lados.
+        </p>
+        <p><strong>Informações necessária de cada adquirente:</strong></p>
+        <ul>
+            <li><strong>BIN:</strong> Apenas o código loja (fazendo processo FISERV)</li>
+            <li><strong>Caixa:</strong> Apenas o código loja (fazendo processo FISERV)</li>
+            <li><strong>Cielo DX800:</strong> Código EC (12 dígitos) + Loja (4 dígitos)</li>
+            <li><strong>Cielo Lio 2 / Lio on:</strong> Código EC (16 dígitos) + Número Lógico</li>
+            <li><strong>GetNet:</strong> Código do Estabelecimento (EC) + Número Serial (Físico)</li>
+            <li><strong>PagSeguro:</strong> Número Serial</li>
+            <li><strong>Rede SD/SR:</strong> Não é necessário fazer solicitação</li>
+            <li><strong>Rede SB:</strong> Eu mesmo entro em contato porque é um processo mais moroso</li>
+            <li><strong>RedeFlex:</strong> Apenas CNPJ</li>
+            <li><strong>Safra:</strong> Não é necessário fazer solicitação</li>
+            <li><strong>Sicredi:</strong> Apenas o código loja (fazendo processo FISERV)</li>
+            <li><strong>Stone:</strong> Stone Code + CNPJ</li>
+            <li><strong>Sipag/Sicoob:</strong> Não é necessário fazer solicitação</li>
+        </ul>
+        <p>
+            Todas informações sempre estão na aba "sobre" da configuração das maquininhas. Mesmo as maquininhas que tem informação na parte física da maquininha (PagSeguro por exemplo é atrás na bandeja de impressão) aconselho ir na aba SOBRE da maquininha e pegar por lá, a informação sempre é mais legível.
+        </p>
+        <p><strong>Procedimento para troca de maquininha:</strong></p>
+        <p>
+            Sempre que o cliente entrar em contato com SUPORTE para fazer substituição/troca de maquininha, o procedimento é:
+        </p>
+        <p>
+            Abrir um ticket ou usar o mesmo do atendimento, registra a informação que o cliente está trocando adquirente X para X ou de X para Y, e podem direcionar o ticket para meu nome, (não precisa me informar o numero do ticket no TEAMS, só colocar o ticket pro meu nome que chega a notificação do ticket pra min).
+        </p>
+    </div>
+</div>
