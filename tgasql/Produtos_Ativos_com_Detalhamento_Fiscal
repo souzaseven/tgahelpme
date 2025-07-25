@@ -1,0 +1,27 @@
+-- Seleção de colunas específicas da tabela de produtos
+SELECT 
+
+  CODPRD,                          -- Código do produto
+  NOMEFANTASIA,                    -- Nome fantasia do produto
+  CODCLAS,                         -- Código da classificação fiscal do produto
+
+  -- Condicional para exibir a descrição da situação tributária
+  CASE 
+    WHEN CODSIT = '01' THEN '01 - TRIBUTADO'             -- Se for '01', exibe "01 - TRIBUTADO"
+    WHEN CODSIT = '02' THEN '02 - SUBSTITUIÇÃO'          -- Se for '02', exibe "02 - SUBSTITUIÇÃO"
+    ELSE CODSIT                                           -- Para outros valores, exibe como está
+  END AS SITUACAO_TRIBUTARIA,
+
+  CSTPIS AS "CST PIS (SAÍDA)",                -- Código da Situação Tributária do PIS para saída
+  CSTCOFINS AS "CST COFINS (SAÍDA)",          -- Código da Situação Tributária do COFINS para saída
+  CSTPISENTRADA AS "CST PIS (ENTRADA)",       -- Código da Situação Tributária do PIS para entrada
+  CSTCOFINSENTRADA AS "CST COFINS (ENTRADA)"  -- Código da Situação Tributária do COFINS para entrada
+
+FROM 
+  TPRODUTO                                   -- Fonte dos dados: tabela de produtos
+
+WHERE 
+  INATIVO = 'F' AND TIPO = 'P'               -- Filtro: apenas produtos ativos (INATIVO = 'F') e do tipo 'P'
+
+ORDER BY 
+  CODCLAS, NOMEFANTASIA;                     -- Ordenação: primeiro por classificação fiscal, depois por nome
