@@ -1,0 +1,6 @@
+UPDATE operadores SET fila = 'Suporte Matriz' WHERE lider = 'Alex Sandro Braulio';
+UPDATE operadores SET fila = 'Suporte Matriz' WHERE lider = 'Daniel Feix';
+UPDATE operadores SET fila = 'Fila Matriz Chat/Whats' WHERE lider = 'Daniel Feix' OR lider = 'Willian Pereira Reis ';
+UPDATE operadores SET fila = 'Fila Matriz Chat/Whats' WHERE lider = 'Daniel Feix' OR lider = 'Alex Sandro Braulio ';
+UPDATE operadores SET fila = 'Fila Matriz Chat/Whats' WHERE lider = 'Alex Sandro Braulio' OR lider = 'Willian Pereira Reis ';
+
