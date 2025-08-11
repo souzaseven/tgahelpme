@@ -1,0 +1,1679 @@
+object ppReport1: TppReport
+  Tag = 1
+  AutoStop = False
+  DataPipeline = daSQLQueryDataView1.TMOV
+  PrinterSetup.BinName = 'Default'
+  PrinterSetup.DocumentName = 'Report'
+  PrinterSetup.Duplex = dpNone
+  PrinterSetup.PaperName = 'Carta'
+  PrinterSetup.PrinterName = 'Default'
+  PrinterSetup.SaveDeviceSettings = False
+  PrinterSetup.mmMarginBottom = 6350
+  PrinterSetup.mmMarginLeft = 6350
+  PrinterSetup.mmMarginRight = 6350
+  PrinterSetup.mmMarginTop = 6350
+  PrinterSetup.mmPaperHeight = 279401
+  PrinterSetup.mmPaperWidth = 215900
+  PrinterSetup.PaperSize = 1
+  SaveAsTemplate = True
+  Template.DatabaseSettings.DataPipeline = plItem
+  Template.DatabaseSettings.Name = 'Relatorio de produtos deletados-Jesiane(R)'
+  Template.DatabaseSettings.NameField = 'NAME'
+  Template.DatabaseSettings.TemplateField = 'TEMPLATE'
+  Template.FileName = 
+    'C:\Users\ANDERSON.SOUZA\Downloads\Produtos exclu'#237'dos do moviment' +
+    'o-Jesiane (R).rtm'
+  Template.Format = ftASCII
+  AllowPrintToFile = True
+  ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+  DeviceType = 'Screen'
+  DefaultFileDeviceType = 'PDF'
+  EmailSettings.ReportFormat = 'PDF'
+  EmailSettings.ConnectionSettings.MailService = 'SMTP'
+  EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+  EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+  EmailSettings.ConnectionSettings.EnableMultiPlugin = False
+  LanguageID = 'Default'
+  OpenFile = False
+  OutlineSettings.CreateNode = True
+  OutlineSettings.CreatePageNodes = True
+  OutlineSettings.Enabled = False
+  OutlineSettings.Visible = False
+  ThumbnailSettings.Enabled = False
+  ThumbnailSettings.Visible = False
+  ThumbnailSettings.DeadSpace = 30
+  ThumbnailSettings.PageHighlight.Width = 3
+  ThumbnailSettings.ThumbnailSize = tsSmall
+  PDFSettings.EmbedFontOptions = [efUseSubset]
+  PDFSettings.EncryptSettings.AllowCopy = True
+  PDFSettings.EncryptSettings.AllowInteract = True
+  PDFSettings.EncryptSettings.AllowModify = True
+  PDFSettings.EncryptSettings.AllowPrint = True
+  PDFSettings.EncryptSettings.AllowExtract = True
+  PDFSettings.EncryptSettings.AllowAssemble = True
+  PDFSettings.EncryptSettings.AllowQualityPrint = True
+  PDFSettings.EncryptSettings.Enabled = False
+  PDFSettings.EncryptSettings.KeyLength = kl40Bit
+  PDFSettings.EncryptSettings.EncryptionType = etRC4
+  PDFSettings.DigitalSignatureSettings.SignPDF = False
+  PDFSettings.FontEncoding = feAnsi
+  PDFSettings.ImageCompressionLevel = 25
+  PDFSettings.PDFAFormat = pafNone
+  PreviewFormSettings.PageBorder.mmPadding = 0
+  PreviewFormSettings.WindowState = wsMaximized
+  PreviewFormSettings.ZoomSetting = zs100Percent
+  RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+  RTFSettings.DefaultFont.Color = clWindowText
+  RTFSettings.DefaultFont.Height = -13
+  RTFSettings.DefaultFont.Name = 'Arial'
+  RTFSettings.DefaultFont.Style = []
+  ShowAutoSearchDialog = True
+  TextFileName = '($MyDocuments)\Report.pdf'
+  TextSearchSettings.DefaultString = '<Texto a localizar>'
+  TextSearchSettings.Enabled = False
+  XLSSettings.AppName = 'ReportBuilder'
+  XLSSettings.Author = 'ReportBuilder'
+  XLSSettings.Subject = 'Report'
+  XLSSettings.Title = 'Report'
+  XLSSettings.WorksheetName = 'Report'
+  CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+  CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+  CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.OneDriveSettings.DirectorySupport = True
+  Left = 309
+  Top = 165
+  Version = '21.02'
+  mmColumnWidth = 0
+  DataPipelineName = 'TMOV'
+  object ppHeaderBand1: TppHeaderBand
+    Background.Brush.Style = bsClear
+    Border.mmPadding = 0
+    mmBottomOffset = 0
+    mmHeight = 13229
+    mmPrintPosition = 0
+    object ppLabel2: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label2'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'EMISSAO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 7408
+      mmWidth = 20254
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLabel4: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label4'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Produto'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 91297
+      mmTop = 7408
+      mmWidth = 36248
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLabel1: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label1'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'ORIGEM'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 21431
+      mmTop = 7408
+      mmWidth = 31485
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLabel3: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label3'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'N'#176' MOVIMENTO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 61523
+      mmTop = 7408
+      mmWidth = 26339
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLabel5: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label5'
+      Border.mmPadding = 0
+      Caption = 'Produtos excluidos do Movimento'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 15
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 6350
+      mmLeft = 51329
+      mmTop = 0
+      mmWidth = 85461
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLabel6: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label6'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Alterado por:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 166433
+      mmTop = 6615
+      mmWidth = 34697
+      BandType = 0
+      LayerName = Foreground
+    end
+  end
+  object ppDetailBand1: TppDetailBand
+    Background1.Brush.Style = bsClear
+    Background2.Brush.Style = bsClear
+    Border.mmPadding = 0
+    mmBottomOffset = 0
+    mmHeight = 5027
+    mmPrintPosition = 0
+    object ppDBText2: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText2'
+      Border.mmPadding = 0
+      DataField = 'DATAEMISSAO'
+      DataPipeline = daSQLQueryDataView1.TMOV
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'TMOV'
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 264
+      mmWidth = 20088
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable1: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable1'
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 20638
+      mmTop = 264
+      mmWidth = 43496
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable2: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable2'
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 1
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 91287
+      mmTop = 265
+      mmWidth = 73378
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText1: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText1'
+      Border.mmPadding = 0
+      DataField = 'NUMEROMOV'
+      DataPipeline = daSQLQueryDataView1.TMOV
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'TMOV'
+      mmHeight = 4763
+      mmLeft = 64081
+      mmTop = 264
+      mmWidth = 22910
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable4: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable4'
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4316
+      mmLeft = 166688
+      mmTop = 265
+      mmWidth = 26894
+      BandType = 4
+      LayerName = Foreground
+    end
+  end
+  object ppFooterBand1: TppFooterBand
+    Background.Brush.Style = bsClear
+    Border.mmPadding = 0
+    mmBottomOffset = 0
+    mmHeight = 0
+    mmPrintPosition = 0
+  end
+  object raCodeModule1: TraCodeModule
+    object raProgramInfo1: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable1OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable1OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=   TMOV['#39'CODTMV'#39'] + '#39' - '#39' +  TTIPOMOV['#39'NOME'#39'] ;'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable1'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo2: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable2OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable2OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=     TMOVITENS['#39'Codigo do Produto'#39'] + '#39' - '#39' + TPRODUTO['#39'Nome ' +
+        'Fantasia'#39'];'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable2'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo4: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable4OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable4OnCalc(var Value: Variant);'#13#10'begin'#13#10'  if GUSU' +
+        'ARIOS['#39'ID_Usuario'#39'] = '#39'0'#39' then value :=  '#39'Suporte TGA'#39' else  '#13#10' ' +
+        ' Value :=  GUSUARIOS['#39'Nome_Usuario'#39'];'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable4'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+  end
+  object daDataModule1: TdaDataModule
+    object daSQLQueryDataView1: TdaSQLQueryDataView
+      UserName = 'Query_TMOV'
+      Height = 197
+      Left = 10
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 311
+      AutoSearchTabOrder = 0
+      object TMOV: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TMOV'
+        object ppField1: TppField
+          FieldAlias = 'CODCFO'
+          FieldName = 'CODCFO'
+          FieldLength = 25
+          DisplayWidth = 25
+          Position = 0
+          TableName = 'TMOV_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'CODEMPRESA'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 10
+          Position = 1
+          TableName = 'TMOV_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'IDMOV'
+          FieldName = 'IDMOV'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 10
+          Position = 2
+          TableName = 'TMOV_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'CODTMV'
+          FieldName = 'CODTMV'
+          FieldLength = 10
+          DisplayWidth = 10
+          Position = 3
+          TableName = 'TMOV_1'
+        end
+        object ppField5: TppField
+          FieldAlias = 'DATAEMISSAO'
+          FieldName = 'DATAEMISSAO'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 4
+          TableName = 'TMOV_1'
+        end
+        object ppField6: TppField
+          FieldAlias = 'STATUS'
+          FieldName = 'STATUS'
+          FieldLength = 1
+          DisplayWidth = 1
+          Position = 5
+          TableName = 'TMOV_1'
+        end
+        object ppField7: TppField
+          FieldAlias = 'NUMEROMOV'
+          FieldName = 'NUMEROMOV'
+          FieldLength = 35
+          DisplayWidth = 35
+          Position = 6
+          TableName = 'TMOV_1'
+        end
+      end
+      object daSQL1: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'TMOV'
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TMOV_1.CODCFO, TMOV_1.CODEMPRESA, '
+          '       TMOV_1.IDMOV, TMOV_1.CODTMV, '
+          '       TMOV_1.DATAEMISSAO, TMOV_1.STATUS, '
+          '       TMOV_1.NUMEROMOV'
+          'FROM TMOV TMOV_1'
+          'ORDER BY TMOV_1.DATAEMISSAO, TMOV_1.CODTMV')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoBetween
+          object TdaField
+            Alias = 'DATAEMISSAO'
+            AutoSearch = True
+            DataType = dtDate
+            DisplayWidth = 10
+            FieldAlias = 'DATAEMISSAO'
+            FieldLength = 0
+            FieldName = 'DATAEMISSAO'
+            SQLFieldName = 'DATAEMISSAO'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+        end
+        object daCriteria2: TdaCriteria
+          ChildType = 7
+          Level = 0
+          object TdaField
+            Alias = 'CODTMV'
+            AutoSearch = True
+            DisplayWidth = 10
+            FieldAlias = 'CODTMV'
+            FieldLength = 10
+            FieldName = 'CODTMV'
+            SQLFieldName = 'CODTMV'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+        end
+        object daCriteria3: TdaCriteria
+          ChildType = 7
+          Level = 0
+          object TdaField
+            Alias = 'NUMEROMOV'
+            AutoSearch = True
+            DisplayWidth = 35
+            FieldAlias = 'NUMEROMOV'
+            FieldLength = 35
+            FieldName = 'NUMEROMOV'
+            SQLFieldName = 'NUMEROMOV'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+        end
+        object daField1: TdaField
+          Alias = 'CODCFO'
+          DisplayWidth = 25
+          FieldAlias = 'CODCFO'
+          FieldLength = 25
+          FieldName = 'CODCFO'
+          SQLFieldName = 'CODCFO'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField2: TdaField
+          Alias = 'CODEMPRESA'
+          DataType = dtInteger
+          DisplayWidth = 10
+          FieldAlias = 'CODEMPRESA'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField3: TdaField
+          Alias = 'IDMOV'
+          DataType = dtInteger
+          DisplayWidth = 10
+          FieldAlias = 'IDMOV'
+          FieldLength = 0
+          FieldName = 'IDMOV'
+          SQLFieldName = 'IDMOV'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField4: TdaField
+          Alias = 'CODTMV'
+          DisplayWidth = 10
+          FieldAlias = 'CODTMV'
+          FieldLength = 10
+          FieldName = 'CODTMV'
+          SQLFieldName = 'CODTMV'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField5: TdaField
+          Alias = 'DATAEMISSAO'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'DATAEMISSAO'
+          FieldLength = 0
+          FieldName = 'DATAEMISSAO'
+          SQLFieldName = 'DATAEMISSAO'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField6: TdaField
+          Alias = 'STATUS'
+          DisplayWidth = 1
+          FieldAlias = 'STATUS'
+          FieldLength = 1
+          FieldName = 'STATUS'
+          SQLFieldName = 'STATUS'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField7: TdaField
+          Alias = 'NUMEROMOV'
+          DisplayWidth = 35
+          FieldAlias = 'NUMEROMOV'
+          FieldLength = 35
+          FieldName = 'NUMEROMOV'
+          SQLFieldName = 'NUMEROMOV'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField8: TdaField
+          ChildType = 2
+          Alias = 'DATAEMISSAO'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'DATAEMISSAO'
+          FieldLength = 0
+          FieldName = 'DATAEMISSAO'
+          SQLFieldName = 'DATAEMISSAO'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daField9: TdaField
+          ChildType = 2
+          Alias = 'CODTMV'
+          DisplayWidth = 10
+          FieldAlias = 'CODTMV'
+          FieldLength = 10
+          FieldName = 'CODTMV'
+          SQLFieldName = 'CODTMV'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+          TableSQLAlias = 'TMOV_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'TMOV'
+          JoinType = dajtNone
+          SQLAlias = 'TMOV_1'
+          TableAlias = 'TMOV'
+          TableName = 'TMOV'
+        end
+      end
+    end
+    object daSQLQueryDataView2: TdaSQLQueryDataView
+      UserName = 'Query_TMOVITENS'
+      Height = 251
+      Left = 242
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 344
+      TypeColumnWidth = 52
+      Width = 286
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_TMOV'
+      object TMOVITENS: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TMOVITENS'
+        MasterDataPipelineName = 'TMOV'
+        object ppField1: TppField
+          FieldAlias = 'Data de Emissao'
+          FieldName = 'DATAEMISSAO'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'TMOVITENS_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codigo do Produto'
+          FieldName = 'CODPRD'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 1
+          TableName = 'TMOVITENS_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Codigo da Empresa'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 2
+          TableName = 'TMOVITENS_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'Numero do Movimento'
+          FieldName = 'IDMOV'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 3
+          TableName = 'TMOVITENS_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'DATAEMISSAO'
+          GuidCollationType = gcString
+          DetailFieldName = 'DATAEMISSAO_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODTMV'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODTMV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'IDMOV'
+          GuidCollationType = gcString
+          DetailFieldName = 'IDMOV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL2: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'TMOVITENS'
+        IsCaseSensitive = True
+        LinkColor = clNavy
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TMOVITENS_1.DATAEMISSAO, '
+          '       TMOVITENS_1.CODPRD, '
+          '       TMOVITENS_1.CODEMPRESA, TMOVITENS_1.IDMOV'
+          'FROM TMOVITENS TMOVITENS_1')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'Data de Emissao'
+          AutoSearch = True
+          DataType = dtDate
+          DisplayWidth = 0
+          FieldAlias = 'Data de Emissao'
+          FieldLength = 0
+          FieldName = 'DATAEMISSAO'
+          SQLFieldName = 'DATAEMISSAO'
+          TableAlias = 'TMOVITENS'
+          TableName = 'TMOVITENS'
+          TableSQLAlias = 'TMOVITENS_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codigo do Produto'
+          AutoSearch = True
+          DisplayWidth = 30
+          FieldAlias = 'Codigo do Produto'
+          FieldLength = 30
+          FieldName = 'CODPRD'
+          SQLFieldName = 'CODPRD'
+          TableAlias = 'TMOVITENS'
+          TableName = 'TMOVITENS'
+          TableSQLAlias = 'TMOVITENS_1'
+        end
+        object daField3: TdaField
+          Alias = 'Codigo da Empresa'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo da Empresa'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'TMOVITENS'
+          TableName = 'TMOVITENS'
+          TableSQLAlias = 'TMOVITENS_1'
+        end
+        object daField4: TdaField
+          Alias = 'Numero do Movimento'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Numero do Movimento'
+          FieldLength = 0
+          FieldName = 'IDMOV'
+          SQLFieldName = 'IDMOV'
+          TableAlias = 'TMOVITENS'
+          TableName = 'TMOVITENS'
+          TableSQLAlias = 'TMOVITENS_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'TMOVITENS'
+          JoinType = dajtNone
+          SQLAlias = 'TMOVITENS_1'
+          TableAlias = 'TMOVITENS'
+          TableName = 'TMOVITENS'
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField5: TdaField
+            ChildType = 10
+            Alias = 'CODEMPRESA'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'CODEMPRESA'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+          object daField6: TdaField
+            ChildType = 11
+            Alias = 'Codigo da Empresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codigo da Empresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TMOVITENS'
+            TableName = 'TMOVITENS'
+            TableSQLAlias = 'TMOVITENS_1'
+          end
+        end
+        object daSQLLink1: TdaSQLLink
+          ChildType = 9
+          object daField1: TdaField
+            ChildType = 10
+            Alias = 'IDMOV'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'IDMOV'
+            FieldLength = 0
+            FieldName = 'IDMOV'
+            SQLFieldName = 'IDMOV'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+          object daField2: TdaField
+            ChildType = 11
+            Alias = 'Numero do Movimento'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Numero do Movimento'
+            FieldLength = 0
+            FieldName = 'IDMOV'
+            SQLFieldName = 'IDMOV'
+            TableAlias = 'TMOVITENS'
+            TableName = 'TMOVITENS'
+            TableSQLAlias = 'TMOVITENS_1'
+          end
+        end
+      end
+    end
+    object daSQLQueryDataView3: TdaSQLQueryDataView
+      UserName = 'Query_TMOVITENSDEL'
+      Height = 199
+      Left = 690
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 393
+      TypeColumnWidth = 52
+      Width = 224
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_TMOVITENS'
+      object TMOVITENSDEL: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TMOVITENSDEL'
+        MasterDataPipelineName = 'TMOVITENS'
+        object ppField1: TppField
+          FieldAlias = 'Codempresa'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codprd'
+          FieldName = 'CODPRD'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 1
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Codusuario'
+          FieldName = 'CODUSUARIO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 2
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'Datahora'
+          FieldName = 'DATAHORA'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 0
+          Position = 3
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object ppField5: TppField
+          FieldAlias = 'Idmov'
+          FieldName = 'IDMOV'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 4
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object ppField6: TppField
+          FieldAlias = 'Nseq'
+          FieldName = 'NSEQ'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 5
+          TableName = 'TMOVITENSDEL_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'DATAEMISSAO_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'DATAEMISSAO'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODTMV'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODTMV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'IDMOV_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'IDMOV_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODPRD'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODPRD'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL3: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'TMOVITENSDEL'
+        IsCaseSensitive = True
+        LinkColor = clGreen
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TMOVITENSDEL_1.CODEMPRESA, '
+          '       TMOVITENSDEL_1.CODPRD, '
+          '       TMOVITENSDEL_1.CODUSUARIO, '
+          '       TMOVITENSDEL_1.DATAHORA, '
+          '       TMOVITENSDEL_1.IDMOV, TMOVITENSDEL_1.NSEQ'
+          'FROM TMOVITENSDEL TMOVITENSDEL_1')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          object TdaField
+            Alias = 'Codprd'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codprd'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'TMOVITENSDEL'
+            TableName = 'TMOVITENSDEL'
+            TableSQLAlias = 'TMOVITENSDEL_1'
+          end
+        end
+        object daField1: TdaField
+          Alias = 'Codempresa'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codempresa'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codprd'
+          AutoSearch = True
+          DisplayWidth = 30
+          FieldAlias = 'Codprd'
+          FieldLength = 30
+          FieldName = 'CODPRD'
+          SQLFieldName = 'CODPRD'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daField3: TdaField
+          Alias = 'Codusuario'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codusuario'
+          FieldLength = 0
+          FieldName = 'CODUSUARIO'
+          SQLFieldName = 'CODUSUARIO'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daField4: TdaField
+          Alias = 'Datahora'
+          AutoSearch = True
+          DataType = dtDate
+          DisplayWidth = 0
+          FieldAlias = 'Datahora'
+          FieldLength = 0
+          FieldName = 'DATAHORA'
+          SQLFieldName = 'DATAHORA'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daField5: TdaField
+          Alias = 'Idmov'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Idmov'
+          FieldLength = 0
+          FieldName = 'IDMOV'
+          SQLFieldName = 'IDMOV'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daField6: TdaField
+          Alias = 'Nseq'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Nseq'
+          FieldLength = 0
+          FieldName = 'NSEQ'
+          SQLFieldName = 'NSEQ'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+          TableSQLAlias = 'TMOVITENSDEL_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'TMOVITENSDEL'
+          JoinType = dajtNone
+          SQLAlias = 'TMOVITENSDEL_1'
+          TableAlias = 'TMOVITENSDEL'
+          TableName = 'TMOVITENSDEL'
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField7: TdaField
+            ChildType = 10
+            Alias = 'Codigo da Empresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codigo da Empresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TMOVITENS'
+            TableName = 'TMOVITENS'
+            TableSQLAlias = 'TMOVITENS_1'
+          end
+          object daField8: TdaField
+            ChildType = 11
+            Alias = 'Codempresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codempresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TMOVITENSDEL'
+            TableName = 'TMOVITENSDEL'
+            TableSQLAlias = 'TMOVITENSDEL_1'
+          end
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField9: TdaField
+            ChildType = 10
+            Alias = 'Codigo do Produto'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codigo do Produto'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'TMOVITENS'
+            TableName = 'TMOVITENS'
+            TableSQLAlias = 'TMOVITENS_1'
+          end
+          object daField10: TdaField
+            ChildType = 11
+            Alias = 'Codprd'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codprd'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'TMOVITENSDEL'
+            TableName = 'TMOVITENSDEL'
+            TableSQLAlias = 'TMOVITENSDEL_1'
+          end
+        end
+      end
+    end
+    object daSQLQueryDataView4: TdaSQLQueryDataView
+      UserName = 'Query_TTIPOMOV'
+      Height = 207
+      Left = 447
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 34
+      TypeColumnWidth = 52
+      Width = 363
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_TMOV'
+      object TTIPOMOV: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TTIPOMOV'
+        MasterDataPipelineName = 'TMOV'
+        object ppField1: TppField
+          FieldAlias = 'CODEMPRESA'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 10
+          Position = 0
+          TableName = 'TTIPOMOV_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'CODTIPOMOV'
+          FieldName = 'CODTIPOMOV'
+          FieldLength = 10
+          DisplayWidth = 10
+          Position = 1
+          TableName = 'TTIPOMOV_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'NOME'
+          FieldName = 'NOME'
+          FieldLength = 50
+          DisplayWidth = 50
+          Position = 2
+          TableName = 'TTIPOMOV_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'DATAEMISSAO'
+          GuidCollationType = gcString
+          DetailFieldName = 'DATAEMISSAO'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODTMV'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODTIPOMOV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL4: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'TTIPOMOV'
+        IsCaseSensitive = True
+        LinkColor = clPurple
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TTIPOMOV_1.CODEMPRESA, '
+          '       TTIPOMOV_1.CODTIPOMOV, TTIPOMOV_1.NOME'
+          'FROM TTIPOMOV TTIPOMOV_1')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'CODEMPRESA'
+          DataType = dtInteger
+          DisplayWidth = 10
+          FieldAlias = 'CODEMPRESA'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'TTIPOMOV'
+          TableName = 'TTIPOMOV'
+          TableSQLAlias = 'TTIPOMOV_1'
+        end
+        object daField2: TdaField
+          Alias = 'CODTIPOMOV'
+          DisplayWidth = 10
+          FieldAlias = 'CODTIPOMOV'
+          FieldLength = 10
+          FieldName = 'CODTIPOMOV'
+          SQLFieldName = 'CODTIPOMOV'
+          TableAlias = 'TTIPOMOV'
+          TableName = 'TTIPOMOV'
+          TableSQLAlias = 'TTIPOMOV_1'
+        end
+        object daField3: TdaField
+          Alias = 'NOME'
+          DisplayWidth = 50
+          FieldAlias = 'NOME'
+          FieldLength = 50
+          FieldName = 'NOME'
+          SQLFieldName = 'NOME'
+          TableAlias = 'TTIPOMOV'
+          TableName = 'TTIPOMOV'
+          TableSQLAlias = 'TTIPOMOV_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'TTIPOMOV'
+          JoinType = dajtNone
+          SQLAlias = 'TTIPOMOV_1'
+          TableAlias = 'TTIPOMOV'
+          TableName = 'TTIPOMOV'
+        end
+        object daSQLLink1: TdaSQLLink
+          ChildType = 9
+          object daField1: TdaField
+            ChildType = 10
+            Alias = 'CODEMPRESA'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'CODEMPRESA'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+          object daField2: TdaField
+            ChildType = 11
+            Alias = 'CODEMPRESA'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'CODEMPRESA'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'TTIPOMOV'
+            TableName = 'TTIPOMOV'
+            TableSQLAlias = 'TTIPOMOV_1'
+          end
+        end
+        object daSQLLink2: TdaSQLLink
+          ChildType = 9
+          object daField1: TdaField
+            ChildType = 10
+            Alias = 'CODTMV'
+            DisplayWidth = 10
+            FieldAlias = 'CODTMV'
+            FieldLength = 10
+            FieldName = 'CODTMV'
+            SQLFieldName = 'CODTMV'
+            TableAlias = 'TMOV'
+            TableName = 'TMOV'
+            TableSQLAlias = 'TMOV_1'
+          end
+          object daField2: TdaField
+            ChildType = 11
+            Alias = 'CODTIPOMOV'
+            DisplayWidth = 10
+            FieldAlias = 'CODTIPOMOV'
+            FieldLength = 10
+            FieldName = 'CODTIPOMOV'
+            SQLFieldName = 'CODTIPOMOV'
+            TableAlias = 'TTIPOMOV'
+            TableName = 'TTIPOMOV'
+            TableSQLAlias = 'TTIPOMOV_1'
+          end
+        end
+      end
+    end
+    object daSQLQueryDataView5: TdaSQLQueryDataView
+      UserName = 'Query_TPRODUTO'
+      Height = 314
+      Left = 975
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 158
+      TypeColumnWidth = 52
+      Width = 371
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_TMOVITENS'
+      object TPRODUTO: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TPRODUTO'
+        MasterDataPipelineName = 'TMOVITENS'
+        object ppField1: TppField
+          FieldAlias = 'Codigo Empresa'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codigo do Produto'
+          FieldName = 'CODPRD'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 1
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Nome Fantasia'
+          FieldName = 'NOMEFANTASIA'
+          FieldLength = 80
+          DisplayWidth = 80
+          Position = 2
+          TableName = 'TPRODUTO_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'DATAEMISSAO_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'DATAEMISSAO'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODTMV'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODTMV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'IDMOV_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'IDMOV_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODPRD'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODPRD'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL5: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'TPRODUTO'
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TPRODUTO_1.CODEMPRESA, TPRODUTO_1.CODPRD, '
+          '       TPRODUTO_1.NOMEFANTASIA'
+          'FROM TPRODUTO TPRODUTO_1')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'Codigo Empresa'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo Empresa'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'TPRODUTO'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codigo do Produto'
+          AutoSearch = True
+          DisplayWidth = 30
+          FieldAlias = 'Codigo do Produto'
+          FieldLength = 30
+          FieldName = 'CODPRD'
+          SQLFieldName = 'CODPRD'
+          TableAlias = 'TPRODUTO'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField3: TdaField
+          Alias = 'Nome Fantasia'
+          AutoSearch = True
+          DisplayWidth = 80
+          FieldAlias = 'Nome Fantasia'
+          FieldLength = 80
+          FieldName = 'NOMEFANTASIA'
+          SQLFieldName = 'NOMEFANTASIA'
+          TableAlias = 'TPRODUTO'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'TPRODUTO'
+          JoinType = dajtNone
+          SQLAlias = 'TPRODUTO_1'
+          TableAlias = 'TPRODUTO'
+          TableName = 'TPRODUTO'
+        end
+        object daSQLLink1: TdaSQLLink
+          ChildType = 9
+          object daField1: TdaField
+            ChildType = 10
+            Alias = 'Codigo do Produto'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codigo do Produto'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'TMOVITENS'
+            TableName = 'TMOVITENS'
+            TableSQLAlias = 'TMOVITENS_1'
+          end
+          object daField2: TdaField
+            ChildType = 11
+            Alias = 'Codigo do Produto'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codigo do Produto'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'TPRODUTO'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+        end
+      end
+    end
+    object daSQLQueryDataView6: TdaSQLQueryDataView
+      UserName = 'Query_GUSUARIOS'
+      Height = 131
+      Left = 1032
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 597
+      TypeColumnWidth = 52
+      Width = 224
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_TMOVITENSDEL'
+      object GUSUARIOS: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'GUSUARIOS'
+        MasterDataPipelineName = 'TMOVITENSDEL'
+        object ppField1: TppField
+          FieldAlias = 'ID_Usuario'
+          FieldName = 'IDUSU'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'GUSUARIOS_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Nome_Usuario'
+          FieldName = 'NOME'
+          FieldLength = 40
+          DisplayWidth = 40
+          Position = 1
+          TableName = 'GUSUARIOS_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'DATAEMISSAO'
+          GuidCollationType = gcString
+          DetailFieldName = 'DATAEMISSAO'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODTMV'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODTMV'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA_3'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'IDMOV_3'
+          GuidCollationType = gcString
+          DetailFieldName = 'IDMOV_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODPRD_2'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODPRD_2'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODUSUARIO'
+          GuidCollationType = gcString
+          DetailFieldName = 'IDUSU'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL6: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'GUSUARIOS'
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT GUSUARIOS_1.IDUSU, GUSUARIOS_1.NOME'
+          'FROM GUSUARIOS GUSUARIOS_1')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          object TdaField
+            Alias = 'ID_Usuario'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'ID_Usuario'
+            FieldLength = 0
+            FieldName = 'IDUSU'
+            SQLFieldName = 'IDUSU'
+            TableAlias = 'GUSUARIOS'
+            TableName = 'GUSUARIOS'
+            TableSQLAlias = 'GUSUARIOS_1'
+          end
+          object TdaNumericValue
+          end
+        end
+        object daField1: TdaField
+          Alias = 'ID_Usuario'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'ID_Usuario'
+          FieldLength = 0
+          FieldName = 'IDUSU'
+          SQLFieldName = 'IDUSU'
+          TableAlias = 'GUSUARIOS'
+          TableName = 'GUSUARIOS'
+          TableSQLAlias = 'GUSUARIOS_1'
+        end
+        object daField2: TdaField
+          Alias = 'Nome_Usuario'
+          AutoSearch = True
+          DisplayWidth = 40
+          FieldAlias = 'Nome_Usuario'
+          FieldLength = 40
+          FieldName = 'NOME'
+          SQLFieldName = 'NOME'
+          TableAlias = 'GUSUARIOS'
+          TableName = 'GUSUARIOS'
+          TableSQLAlias = 'GUSUARIOS_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'GUSUARIOS'
+          JoinType = dajtNone
+          SQLAlias = 'GUSUARIOS_1'
+          TableAlias = 'GUSUARIOS'
+          TableName = 'GUSUARIOS'
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField3: TdaField
+            ChildType = 10
+            Alias = 'Codusuario'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codusuario'
+            FieldLength = 0
+            FieldName = 'CODUSUARIO'
+            SQLFieldName = 'CODUSUARIO'
+            TableAlias = 'TMOVITENSDEL'
+            TableName = 'TMOVITENSDEL'
+            TableSQLAlias = 'TMOVITENSDEL_1'
+          end
+          object daField4: TdaField
+            ChildType = 11
+            Alias = 'ID_Usuario'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'ID_Usuario'
+            FieldLength = 0
+            FieldName = 'IDUSU'
+            SQLFieldName = 'IDUSU'
+            TableAlias = 'GUSUARIOS'
+            TableName = 'GUSUARIOS'
+            TableSQLAlias = 'GUSUARIOS_1'
+          end
+        end
+      end
+    end
+  end
+  object ppDesignLayers1: TppDesignLayers
+    object ppDesignLayer1: TppDesignLayer
+      UserName = 'Foreground'
+      LayerType = ltBanded
+      Index = 0
+    end
+  end
+  object ppParameterList1: TppParameterList
+  end
+end
