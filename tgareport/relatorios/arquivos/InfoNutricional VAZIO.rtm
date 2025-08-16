@@ -1,0 +1,3621 @@
+object ppReport1: TppReport
+  Tag = 1
+  AutoStop = False
+  DataPipeline = daSQLQueryDataView1.Produtos
+  PrinterSetup.BinName = 'Default'
+  PrinterSetup.DocumentName = 'Report'
+  PrinterSetup.Duplex = dpNone
+  PrinterSetup.PaperName = 'Custom'
+  PrinterSetup.PrinterName = 'Default'
+  PrinterSetup.SaveDeviceSettings = False
+  PrinterSetup.mmMarginBottom = 6350
+  PrinterSetup.mmMarginLeft = 6350
+  PrinterSetup.mmMarginRight = 6350
+  PrinterSetup.mmMarginTop = 6350
+  PrinterSetup.mmPaperHeight = 139700
+  PrinterSetup.mmPaperWidth = 127000
+  PrinterSetup.PaperSize = 256
+  SaveAsTemplate = True
+  Template.DatabaseSettings.DataPipeline = plItem
+  Template.DatabaseSettings.Name = 'InfoNUtricional (R)'
+  Template.DatabaseSettings.NameField = 'NAME'
+  Template.DatabaseSettings.TemplateField = 'TEMPLATE'
+  Template.FileName = 'C:\Users\souza\Downloads\InfoNutricional VAZIO.rtm'
+  Template.Format = ftASCII
+  AllowPrintToFile = True
+  ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+  DeviceType = 'Screen'
+  DefaultFileDeviceType = 'PDF'
+  EmailSettings.ReportFormat = 'PDF'
+  EmailSettings.ConnectionSettings.MailService = 'SMTP'
+  EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+  EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+  EmailSettings.ConnectionSettings.EnableMultiPlugin = False
+  LanguageID = 'Default'
+  OpenFile = False
+  OutlineSettings.CreateNode = True
+  OutlineSettings.CreatePageNodes = True
+  OutlineSettings.Enabled = False
+  OutlineSettings.Visible = False
+  ThumbnailSettings.Enabled = False
+  ThumbnailSettings.Visible = False
+  ThumbnailSettings.DeadSpace = 30
+  ThumbnailSettings.PageHighlight.Width = 3
+  ThumbnailSettings.ThumbnailSize = tsSmall
+  PDFSettings.EmbedFontOptions = [efUseSubset]
+  PDFSettings.EncryptSettings.AllowCopy = True
+  PDFSettings.EncryptSettings.AllowInteract = True
+  PDFSettings.EncryptSettings.AllowModify = True
+  PDFSettings.EncryptSettings.AllowPrint = True
+  PDFSettings.EncryptSettings.AllowExtract = True
+  PDFSettings.EncryptSettings.AllowAssemble = True
+  PDFSettings.EncryptSettings.AllowQualityPrint = True
+  PDFSettings.EncryptSettings.Enabled = False
+  PDFSettings.EncryptSettings.KeyLength = kl40Bit
+  PDFSettings.EncryptSettings.EncryptionType = etRC4
+  PDFSettings.DigitalSignatureSettings.SignPDF = False
+  PDFSettings.FontEncoding = feAnsi
+  PDFSettings.ImageCompressionLevel = 25
+  PDFSettings.PDFAFormat = pafNone
+  PreviewFormSettings.PageBorder.mmPadding = 0
+  PreviewFormSettings.WindowState = wsMaximized
+  PreviewFormSettings.ZoomSetting = zs100Percent
+  RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+  RTFSettings.DefaultFont.Color = clWindowText
+  RTFSettings.DefaultFont.Height = -13
+  RTFSettings.DefaultFont.Name = 'Arial'
+  RTFSettings.DefaultFont.Style = []
+  ShowAutoSearchDialog = True
+  TextFileName = '($MyDocuments)\Report.pdf'
+  TextSearchSettings.DefaultString = '<Texto a localizar>'
+  TextSearchSettings.Enabled = False
+  XLSSettings.AppName = 'ReportBuilder'
+  XLSSettings.Author = 'ReportBuilder'
+  XLSSettings.Subject = 'Report'
+  XLSSettings.Title = 'Report'
+  XLSSettings.WorksheetName = 'Report'
+  CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+  CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+  CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+  CloudDriveSettings.OneDriveSettings.DirectorySupport = True
+  Left = 309
+  Top = 165
+  Version = '21.02'
+  mmColumnWidth = 0
+  DataPipelineName = 'Produtos'
+  object ppHeaderBand1: TppHeaderBand
+    Background.Brush.Style = bsClear
+    Border.mmPadding = 0
+    mmBottomOffset = 0
+    mmHeight = 10054
+    mmPrintPosition = 0
+    object ppDBText1: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText1'
+      AutoSize = True
+      Border.mmPadding = 0
+      DataField = 'NOMEFANTASIA'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      WordWrap = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 9121
+      mmLeft = 265
+      mmTop = 265
+      mmWidth = 114035
+      BandType = 0
+      LayerName = Foreground
+    end
+    object ppLine1: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line1'
+      Border.mmPadding = 0
+      Pen.Color = clWindowText
+      Pen.Width = 8
+      Weight = 6.000000000000000000
+      mmHeight = 583
+      mmLeft = 291
+      mmTop = 9617
+      mmWidth = 113479
+      BandType = 0
+      LayerName = Foreground
+    end
+  end
+  object ppDetailBand1: TppDetailBand
+    Background1.Brush.Style = bsClear
+    Background2.Brush.Style = bsClear
+    Border.mmPadding = 0
+    PrintHeight = phDynamic
+    mmBottomOffset = 0
+    mmHeight = 125413
+    mmPrintPosition = 0
+    object ppLabel1: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label1'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Ingredientes:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 1058
+      mmWidth = 21705
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText2: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText2'
+      Border.mmPadding = 0
+      DataField = 'NOMEFANTASIA'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 23135
+      mmTop = 1058
+      mmWidth = 81756
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel2: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label2'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Produzido em:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 6350
+      mmWidth = 23849
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText3: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText3'
+      Border.mmPadding = 0
+      DataField = 'NOMEFANTASIA'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 24285
+      mmTop = 6350
+      mmWidth = 82021
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel3: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label3'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'CNPJ:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 11377
+      mmWidth = 10622
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText4: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText4'
+      Border.mmPadding = 0
+      DataField = 'NOMEFANTASIA'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 11405
+      mmTop = 11377
+      mmWidth = 81756
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel4: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label4'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Embalado por:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 16669
+      mmWidth = 23849
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText5: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText5'
+      Border.mmPadding = 0
+      DataField = 'NOMEFANTASIA'
+      DataPipeline = daSQLQueryDataView3.Filiais
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      ParentDataPipeline = False
+      Transparent = True
+      DataPipelineName = 'Filiais'
+      mmHeight = 4763
+      mmLeft = 24285
+      mmTop = 16669
+      mmWidth = 82021
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel5: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label5'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'CNPJ:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 21960
+      mmWidth = 10622
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText6: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText6'
+      Border.mmPadding = 0
+      DataField = 'CGC'
+      DataPipeline = daSQLQueryDataView3.Filiais
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      ParentDataPipeline = False
+      Transparent = True
+      DataPipelineName = 'Filiais'
+      mmHeight = 4763
+      mmLeft = 11060
+      mmTop = 21960
+      mmWidth = 82021
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel6: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label6'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Fabrica'#231#227'o:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 27252
+      mmWidth = 19512
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText7: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText7'
+      Border.mmPadding = 0
+      DataField = 'DESCRICAO'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 20145
+      mmTop = 27252
+      mmWidth = 81756
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel7: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label7'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Validade:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 31750
+      mmWidth = 15933
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText8: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText8'
+      Border.mmPadding = 0
+      DataField = 'APLICACAO'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 15775
+      mmTop = 31750
+      mmWidth = 82021
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel8: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label8'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Peso L'#237'quido:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 37042
+      mmWidth = 22860
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText9: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText9'
+      Border.mmPadding = 0
+      DataField = 'PESOLIQUIDO'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 23365
+      mmTop = 37042
+      mmWidth = 54264
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel9: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label9'
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Peso da embalagem:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4763
+      mmLeft = 529
+      mmTop = 42069
+      mmWidth = 33713
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText10: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText10'
+      Border.mmPadding = 0
+      DataField = 'PESOBRUTO'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 34616
+      mmTop = 42333
+      mmWidth = 72275
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText11: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText11'
+      Angle = 270
+      Border.mmPadding = 0
+      Color = clBlack
+      DataField = 'PRECO1'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      DisplayFormat = '$ #,0.00;($#,0.00)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Name = 'Arial'
+      Font.Size = 25
+      Font.Style = [fsBold]
+      VerticalAlignment = avCenter
+      DataPipelineName = 'Produtos'
+      mmHeight = 44104
+      mmLeft = 87313
+      mmTop = 47269
+      mmWidth = 22754
+      BandType = 4
+      LayerName = Foreground
+      RotatedOriginLeft = 22754
+      RotatedOriginTop = 0
+    end
+    object ppDBBarCode1: TppDBBarCode
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBBarCode1'
+      AlignBarCode = ahCenter
+      AutoEncode = True
+      BarCodeType = bcCode128
+      BarColor = clBlack
+      Border.mmPadding = 0
+      CalcCheckDigit = False
+      DataField = 'CODPRD'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Orientation = orTopToBottom
+      Alignment = taCenter
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 31242
+      mmLeft = 93240
+      mmTop = 92161
+      mmWidth = 9313
+      BandType = 4
+      LayerName = Foreground
+      mmBarWidth = 254
+      mmWideBarRatio = 50800
+    end
+    object ppLine2: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line2'
+      Border.mmPadding = 0
+      Pen.Width = 3
+      Position = lpLeft
+      Weight = 2.250000000000000000
+      mmHeight = 28869
+      mmLeft = 87259
+      mmTop = 85074
+      mmWidth = 943
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine3: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line3'
+      Border.mmPadding = 0
+      Pen.Width = 3
+      Position = lpLeft
+      Weight = 2.250000000000000000
+      mmHeight = 28639
+      mmLeft = 109267
+      mmTop = 85189
+      mmWidth = 1058
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine4: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line4'
+      Border.mmPadding = 0
+      Pen.Width = 3
+      Weight = 2.250000000000000000
+      mmHeight = 909
+      mmLeft = 87347
+      mmTop = 113357
+      mmWidth = 22552
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine5: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line5'
+      Border.mmPadding = 0
+      Pen.Width = 4
+      Weight = 3.000000000000000000
+      mmHeight = 1039
+      mmLeft = 1963
+      mmTop = 47443
+      mmWidth = 83820
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine6: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line6'
+      Border.mmPadding = 0
+      Pen.Width = 4
+      Weight = 3.000000000000000000
+      mmHeight = 1058
+      mmLeft = 1963
+      mmTop = 113182
+      mmWidth = 83237
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine7: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line7'
+      Border.mmPadding = 0
+      Pen.Width = 4
+      Position = lpLeft
+      Weight = 3.000000000000000000
+      mmHeight = 66689
+      mmLeft = 1323
+      mmTop = 47443
+      mmWidth = 1058
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine8: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line8'
+      Border.mmPadding = 0
+      Pen.Width = 4
+      Position = lpLeft
+      Weight = 3.000000000000000000
+      mmHeight = 66718
+      mmLeft = 84667
+      mmTop = 47443
+      mmWidth = 1058
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLine9: TppLine
+      DesignLayer = ppDesignLayer1
+      UserName = 'Line9'
+      Border.mmPadding = 0
+      Pen.Width = 4
+      Weight = 3.000000000000000000
+      mmHeight = 1058
+      mmLeft = 2335
+      mmTop = 52734
+      mmWidth = 83344
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel10: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label10'
+      Border.mmPadding = 0
+      Caption = 'Informa'#231#227'o Nutricional'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4188
+      mmLeft = 14552
+      mmTop = 48110
+      mmWidth = 58209
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel11: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label101'
+      Border.mmPadding = 0
+      Caption = 'Por'#231#227'o de '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 2841
+      mmTop = 53793
+      mmWidth = 16510
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable1: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable1'
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      Transparent = True
+      mmHeight = 3245
+      mmLeft = 19315
+      mmTop = 54126
+      mmWidth = 4041
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppTableGrid1: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid1'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 3969
+      mmLeft = 2167
+      mmTop = 62008
+      mmWidth = 83451
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow1: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow1'
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell1: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell1'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppLabel16: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label11'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Valor Energetico'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3854
+            mmLeft = 3225
+            mmTop = 61801
+            mmWidth = 36249
+            BandType = 4
+            LayerName = Foreground
+          end
+          object ppLabel18: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label18'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Carboidrato'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3969
+            mmLeft = 3225
+            mmTop = 66228
+            mmWidth = 36249
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell2: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell2'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable2: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable2'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 1
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 41705
+            mmTop = 62261
+            mmWidth = 14663
+            BandType = 4
+            LayerName = Foreground
+          end
+          object ppLabel17: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label17'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'kcal'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Courier New'
+            Font.Size = 6
+            Font.Style = [fsBold]
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            TextAlignment = taCentered
+            Transparent = True
+            mmHeight = 2278
+            mmLeft = 57345
+            mmTop = 63181
+            mmWidth = 5021
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell3: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell3'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable10: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable10'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 8
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 64252
+            mmTop = 62146
+            mmWidth = 19627
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+      end
+      object ppTableColumn1: TppTableColumn
+        UserName = 'TableColumn1'
+        mmWidth = 38365
+      end
+      object ppTableColumn2: TppTableColumn
+        UserName = 'TableColumn2'
+        mmWidth = 22662
+      end
+      object ppTableColumn3: TppTableColumn
+        UserName = 'TableColumn3'
+        mmWidth = 22424
+      end
+    end
+    object ppVariable11: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable101'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 9
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 48948
+      mmTop = 57415
+      mmWidth = 20373
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppTableGrid3: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid3'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 70265
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow3: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow3'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell7: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell7'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppLabel19: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label19'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Proteinas'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3969
+            mmLeft = 3221
+            mmTop = 70403
+            mmWidth = 36156
+            BandType = 4
+            LayerName = Foreground
+          end
+          object ppLabel20: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label20'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Gorduras Totais'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3969
+            mmLeft = 3221
+            mmTop = 74430
+            mmWidth = 36156
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell8: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell8'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell9: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell9'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable12: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable102'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 10
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 64155
+            mmTop = 70748
+            mmWidth = 20308
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+      end
+      object ppTableColumn4: TppTableColumn
+        UserName = 'TableColumn4'
+        mmWidth = 38272
+      end
+      object ppTableColumn5: TppTableColumn
+        UserName = 'TableColumn5'
+        mmWidth = 22662
+      end
+      object ppTableColumn6: TppTableColumn
+        UserName = 'TableColumn301'
+        mmWidth = 22424
+      end
+    end
+    object ppTableGrid4: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid4'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 74383
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow4: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow4'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell10: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell10'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppLabel21: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label21'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Gorduras Saturadas'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3969
+            mmLeft = 3221
+            mmTop = 78663
+            mmWidth = 36156
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell11: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell11'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable5: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable5'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 3
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 3658
+            mmLeft = 41493
+            mmTop = 74636
+            mmWidth = 20546
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell12: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell12'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn7: TppTableColumn
+        UserName = 'TableColumn7'
+        mmWidth = 38272
+      end
+      object ppTableColumn8: TppTableColumn
+        UserName = 'TableColumn8'
+        mmWidth = 22662
+      end
+      object ppTableColumn9: TppTableColumn
+        UserName = 'TableColumn9'
+        mmWidth = 22424
+      end
+    end
+    object ppTableGrid5: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid5'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 91037
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow5: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow5'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell13: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell101'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppLabel24: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label24'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'S'#243'dio'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3509
+            mmLeft = 3221
+            mmTop = 91175
+            mmWidth = 36156
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell14: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell14'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell15: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell15'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn10: TppTableColumn
+        UserName = 'TableColumn10'
+        mmWidth = 38272
+      end
+      object ppTableColumn11: TppTableColumn
+        UserName = 'TableColumn11'
+        mmWidth = 22662
+      end
+      object ppTableColumn12: TppTableColumn
+        UserName = 'TableColumn12'
+        mmWidth = 22424
+      end
+    end
+    object ppTableGrid6: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid6'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 86918
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow6: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow6'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell16: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell16'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell17: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell17'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable8: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable8'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 6
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 41493
+            mmTop = 87171
+            mmWidth = 20546
+            BandType = 4
+            LayerName = Foreground
+          end
+          object ppVariable9: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable9'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 7
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 41493
+            mmTop = 91099
+            mmWidth = 20546
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell18: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell18'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn13: TppTableColumn
+        UserName = 'TableColumn13'
+        mmWidth = 38272
+      end
+      object ppTableColumn14: TppTableColumn
+        UserName = 'TableColumn14'
+        mmWidth = 22662
+      end
+      object ppTableColumn15: TppTableColumn
+        UserName = 'TableColumn15'
+        mmWidth = 22424
+      end
+    end
+    object ppTableGrid7: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid7'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 82835
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow7: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow7'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell19: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell19'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell20: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell20'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell21: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell21'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn16: TppTableColumn
+        UserName = 'TableColumn401'
+        mmWidth = 38272
+      end
+      object ppTableColumn17: TppTableColumn
+        UserName = 'TableColumn17'
+        mmWidth = 22662
+      end
+      object ppTableColumn18: TppTableColumn
+        UserName = 'TableColumn18'
+        mmWidth = 22424
+      end
+    end
+    object ppTableGrid8: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid8'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4498
+      mmLeft = 2163
+      mmTop = 78601
+      mmWidth = 83358
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow8: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow8'
+        mmHeight = 4498
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell22: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell22'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppLabel22: TppLabel
+            DesignLayer = ppDesignLayer1
+            UserName = 'Label22'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            Caption = 'Gorduras Trans'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+            FormFieldSettings.FormFieldType = fftNone
+            Transparent = True
+            mmHeight = 3969
+            mmLeft = 3221
+            mmTop = 82897
+            mmWidth = 36156
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell23: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell23'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+          object ppVariable6: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable6'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 4
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 41493
+            mmTop = 78739
+            mmWidth = 20546
+            BandType = 4
+            LayerName = Foreground
+          end
+          object ppVariable7: TppVariable
+            DesignLayer = ppDesignLayer1
+            UserName = 'Variable7'
+            Anchors = [atLeft, atRight]
+            AutoSize = False
+            Border.mmPadding = 0
+            BlankWhenZero = False
+            CalcOrder = 5
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Name = 'Arial'
+            Font.Size = 10
+            Font.Style = []
+            Transparent = True
+            mmHeight = 4233
+            mmLeft = 41493
+            mmTop = 82897
+            mmWidth = 20546
+            BandType = 4
+            LayerName = Foreground
+          end
+        end
+        object ppTableCell24: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell24'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn19: TppTableColumn
+        UserName = 'TableColumn19'
+        mmWidth = 38272
+      end
+      object ppTableColumn20: TppTableColumn
+        UserName = 'TableColumn20'
+        mmWidth = 22662
+      end
+      object ppTableColumn21: TppTableColumn
+        UserName = 'TableColumn21'
+        mmWidth = 22424
+      end
+    end
+    object ppMemo1: TppMemo
+      DesignLayer = ppDesignLayer1
+      UserName = 'Memo1'
+      Border.mmPadding = 0
+      Caption = 
+        '(*) Valores Diarios com base em uma dieta de 2000 kcal ou 84 00 ' +
+        'KJ. Seu s'
+      CharWrap = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 7
+      Font.Style = [fsBold]
+      Lines.Strings = (
+        
+          '(*) Valores Diarios com base em uma dieta de 2000 kcal ou 84 00 ' +
+          'KJ. Seus valores podem ser maiores ou menores dependendo de suas' +
+          ' necessidades energeticas.'
+        '(**)VD n'#227'o estabelecido.')
+      RemoveEmptyLines = False
+      Stretch = True
+      Transparent = True
+      mmHeight = 16741
+      mmLeft = 2910
+      mmTop = 96126
+      mmWidth = 57381
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmLeading = 0
+    end
+    object ppLabel12: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label12'
+      Border.mmPadding = 0
+      Caption = 'Quantidade por por'#231#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 2646
+      mmTop = 57497
+      mmWidth = 44450
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel13: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label13'
+      Border.mmPadding = 0
+      Caption = '%VD(*)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 67998
+      mmTop = 57497
+      mmWidth = 12700
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel14: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label14'
+      Border.mmPadding = 0
+      Caption = 'g'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 23283
+      mmTop = 54656
+      mmWidth = 1852
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel15: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label15'
+      Border.mmPadding = 0
+      Caption = '(1 colher de sopa)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 25665
+      mmTop = 53793
+      mmWidth = 33338
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppLabel23: TppLabel
+      DesignLayer = ppDesignLayer1
+      UserName = 'Label23'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      Caption = 'Fibra Alimentar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+      FormFieldSettings.FormFieldType = fftNone
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 3232
+      mmTop = 87280
+      mmWidth = 36248
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable4: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable4'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 41633
+      mmTop = 70633
+      mmWidth = 14663
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable13: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable103'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 11
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64029
+      mmTop = 74564
+      mmWidth = 20308
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable14: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable104'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 12
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64029
+      mmTop = 78589
+      mmWidth = 20308
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable15: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable105'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64029
+      mmTop = 83074
+      mmWidth = 20308
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable16: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable106'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 14
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64029
+      mmTop = 87099
+      mmWidth = 20308
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable17: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable107'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 15
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64029
+      mmTop = 91124
+      mmWidth = 20308
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppTableGrid2: TppTableGrid
+      DesignLayer = ppDesignLayer1
+      UserName = 'TableGrid2'
+      DefaultColWidth = 0.500000000000000000
+      DefaultRowHeight = 0.500000000000000000
+      mmHeight = 4965
+      mmLeft = 2151
+      mmTop = 65608
+      mmWidth = 83344
+      BandType = 4
+      LayerName = Foreground
+      mmBottomOffset = 0
+      mmOverFlowOffset = 0
+      mmStopPosition = 0
+      mmMinHeight = 0
+      mmDefaultRowHeight = 12700
+      mmDefaultColWidth = 12700
+      object ppTableRow2: TppTableRow
+        DesignLayer = ppDesignLayer1
+        UserName = 'TableRow2'
+        mmHeight = 4965
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 48948
+        BandType = 4
+        LayerName = Foreground
+        mmBottomOffset = 0
+        mmOverFlowOffset = 0
+        mmStopPosition = 0
+        mmMinHeight = 0
+        object ppTableCell4: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell4'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 4965
+          mmLeft = 2036
+          mmTop = 65608
+          mmWidth = 38445
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell5: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell5'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 3854
+          mmLeft = 40366
+          mmTop = 66526
+          mmWidth = 22627
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+        object ppTableCell6: TppTableCell
+          DesignLayer = ppDesignLayer1
+          UserName = 'TableCell6'
+          Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 1058
+          Brush.Style = bsClear
+          Padding = 0.041700001806020740
+          Transparent = True
+          mmHeight = 23548
+          mmLeft = 0
+          mmTop = 0
+          mmWidth = 48948
+          BandType = 4
+          LayerName = Foreground
+          mmBottomOffset = 0
+          mmOverFlowOffset = 0
+          mmStopPosition = 0
+          mmMinHeight = 0
+          mmPadding = 1058
+        end
+      end
+      object ppTableColumn22: TppTableColumn
+        UserName = 'TableColumn22'
+        mmWidth = 38330
+      end
+      object ppTableColumn23: TppTableColumn
+        UserName = 'TableColumn23'
+        mmWidth = 22627
+      end
+      object ppTableColumn24: TppTableColumn
+        UserName = 'TableColumn24'
+        mmWidth = 22389
+      end
+    end
+    object ppVariable3: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable3'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 16
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 41736
+      mmTop = 65674
+      mmWidth = 14663
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppVariable18: TppVariable
+      DesignLayer = ppDesignLayer1
+      UserName = 'Variable18'
+      Anchors = [atLeft, atRight]
+      AutoSize = False
+      Border.mmPadding = 0
+      BlankWhenZero = False
+      CalcOrder = 17
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 64208
+      mmTop = 66411
+      mmWidth = 14663
+      BandType = 4
+      LayerName = Foreground
+    end
+    object ppDBText12: TppDBText
+      DesignLayer = ppDesignLayer1
+      UserName = 'DBText12'
+      Border.mmPadding = 0
+      DataField = 'CODPRD'
+      DataPipeline = daSQLQueryDataView1.Produtos
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'Produtos'
+      mmHeight = 4763
+      mmLeft = 93398
+      mmTop = 37042
+      mmWidth = 20638
+      BandType = 4
+      LayerName = Foreground
+    end
+  end
+  object ppFooterBand1: TppFooterBand
+    Background.Brush.Style = bsClear
+    Border.mmPadding = 0
+    mmBottomOffset = 0
+    mmHeight = 0
+    mmPrintPosition = 0
+  end
+  object daDataModule1: TdaDataModule
+    object daSQLQueryDataView1: TdaSQLQueryDataView
+      UserName = 'Query_Produtos'
+      Height = 363
+      Left = 10
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 243
+      AutoSearchTabOrder = 0
+      object Produtos: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'Produtos'
+        object ppField1: TppField
+          FieldAlias = 'Codigo Empresa'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codigo do Produto'
+          FieldName = 'CODPRD'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 1
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Cod Barras'
+          FieldName = 'CODBARRAS'
+          FieldLength = 20
+          DisplayWidth = 20
+          Position = 2
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'Codigo Fabricante'
+          FieldName = 'CODFAB'
+          FieldLength = 15
+          DisplayWidth = 15
+          Position = 3
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField5: TppField
+          FieldAlias = 'Nome Fantasia'
+          FieldName = 'NOMEFANTASIA'
+          FieldLength = 80
+          DisplayWidth = 80
+          Position = 4
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField6: TppField
+          FieldAlias = 'Peso Bruto'
+          FieldName = 'PESOBRUTO'
+          FieldLength = 6
+          DataType = dtDouble
+          DisplayWidth = 6
+          Position = 5
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField7: TppField
+          FieldAlias = 'Peso Liquido'
+          FieldName = 'PESOLIQUIDO'
+          FieldLength = 6
+          DataType = dtDouble
+          DisplayWidth = 6
+          Position = 6
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField8: TppField
+          FieldAlias = 'Preco 1'
+          FieldName = 'PRECO1'
+          FieldLength = 4
+          DataType = dtDouble
+          DisplayWidth = 4
+          Position = 7
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField9: TppField
+          FieldAlias = 'Aplica'#231#227'o'
+          FieldName = 'APLICACAO'
+          FieldLength = 1
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 1
+          Position = 8
+          TableName = 'TPRODUTO_1'
+        end
+        object ppField10: TppField
+          FieldAlias = 'Descricao'
+          FieldName = 'DESCRICAO'
+          FieldLength = 1
+          DisplayWidth = 1
+          Position = 9
+          TableName = 'TPRODUTO_1'
+        end
+      end
+      object daSQL1: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'Produtos'
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TPRODUTO_1.CODEMPRESA, TPRODUTO_1.CODPRD, '
+          '       TPRODUTO_1.CODBARRAS, TPRODUTO_1.CODFAB, '
+          '       TPRODUTO_1.NOMEFANTASIA, '
+          '       TPRODUTO_1.PESOBRUTO, '
+          '       TPRODUTO_1.PESOLIQUIDO, TPRODUTO_1.PRECO1, '
+          '       TPRODUTO_1.APLICACAO, TPRODUTO_1.DESCRICAO'
+          'FROM TPRODUTO TPRODUTO_1')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoLike
+          object TdaField
+            Alias = 'Nome Fantasia'
+            AutoSearch = True
+            DisplayWidth = 80
+            FieldAlias = 'Nome Fantasia'
+            FieldLength = 80
+            FieldName = 'NOMEFANTASIA'
+            SQLFieldName = 'NOMEFANTASIA'
+            TableAlias = 'Produtos'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+        end
+        object daCriteria2: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoInList
+          object TdaField
+            Alias = 'CODPRD'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'CODPRD'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'Produtos'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+        end
+        object daField1: TdaField
+          Alias = 'Codigo Empresa'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo Empresa'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codigo do Produto'
+          AutoSearch = True
+          DisplayWidth = 30
+          FieldAlias = 'Codigo do Produto'
+          FieldLength = 30
+          FieldName = 'CODPRD'
+          SQLFieldName = 'CODPRD'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField3: TdaField
+          Alias = 'Cod Barras'
+          AutoSearch = True
+          DisplayWidth = 20
+          FieldAlias = 'Cod Barras'
+          FieldLength = 20
+          FieldName = 'CODBARRAS'
+          SQLFieldName = 'CODBARRAS'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField4: TdaField
+          Alias = 'Codigo Fabricante'
+          AutoSearch = True
+          DisplayWidth = 15
+          FieldAlias = 'Codigo Fabricante'
+          FieldLength = 15
+          FieldName = 'CODFAB'
+          SQLFieldName = 'CODFAB'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField5: TdaField
+          Alias = 'Nome Fantasia'
+          AutoSearch = True
+          DisplayWidth = 80
+          FieldAlias = 'Nome Fantasia'
+          FieldLength = 80
+          FieldName = 'NOMEFANTASIA'
+          SQLFieldName = 'NOMEFANTASIA'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField6: TdaField
+          Alias = 'Peso Bruto'
+          AutoSearch = True
+          DataType = dtDouble
+          DisplayWidth = 6
+          FieldAlias = 'Peso Bruto'
+          FieldLength = 6
+          FieldName = 'PESOBRUTO'
+          SQLFieldName = 'PESOBRUTO'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField7: TdaField
+          Alias = 'Peso Liquido'
+          AutoSearch = True
+          DataType = dtDouble
+          DisplayWidth = 6
+          FieldAlias = 'Peso Liquido'
+          FieldLength = 6
+          FieldName = 'PESOLIQUIDO'
+          SQLFieldName = 'PESOLIQUIDO'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField8: TdaField
+          Alias = 'Preco 1'
+          AutoSearch = True
+          DataType = dtDouble
+          DisplayWidth = 4
+          FieldAlias = 'Preco 1'
+          FieldLength = 4
+          FieldName = 'PRECO1'
+          SQLFieldName = 'PRECO1'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField9: TdaField
+          Alias = 'Aplica'#231#227'o'
+          AutoSearch = True
+          DataType = dtMemo
+          DisplayWidth = 1
+          FieldAlias = 'Aplica'#231#227'o'
+          FieldLength = 1
+          FieldName = 'APLICACAO'
+          Linkable = False
+          SQLFieldName = 'APLICACAO'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daField10: TdaField
+          Alias = 'Descricao'
+          AutoSearch = True
+          DisplayWidth = 1
+          FieldAlias = 'Descricao'
+          FieldLength = 1
+          FieldName = 'DESCRICAO'
+          SQLFieldName = 'DESCRICAO'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+          TableSQLAlias = 'TPRODUTO_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'Produtos'
+          JoinType = dajtNone
+          SQLAlias = 'TPRODUTO_1'
+          TableAlias = 'Produtos'
+          TableName = 'TPRODUTO'
+        end
+      end
+    end
+    object daSQLQueryDataView2: TdaSQLQueryDataView
+      UserName = 'Query_Tprodinfnutri'
+      Height = 331
+      Left = 288
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 169
+      TypeColumnWidth = 52
+      Width = 437
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_Produtos'
+      object Tprodinfnutri: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'Tprodinfnutri'
+        MasterDataPipelineName = 'Produtos'
+        object ppField1: TppField
+          FieldAlias = 'Codempresa'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codprd'
+          FieldName = 'CODPRD'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 1
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Valorcalorico'
+          FieldName = 'VALORCALORICO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 2
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'Vdcarboidratos'
+          FieldName = 'VDCARBOIDRATOS'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 3
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField5: TppField
+          FieldAlias = 'Descricao'
+          FieldName = 'DESCRICAO'
+          FieldLength = 50
+          DisplayWidth = 50
+          Position = 4
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField6: TppField
+          FieldAlias = 'Codigo'
+          FieldName = 'CODIGO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 5
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField7: TppField
+          FieldAlias = 'Carboidratos'
+          FieldName = 'CARBOIDRATOS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 6
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField8: TppField
+          FieldAlias = 'Sodio'
+          FieldName = 'SODIO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 7
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField9: TppField
+          FieldAlias = 'Quantidade'
+          FieldName = 'QUANTIDADE'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 8
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField10: TppField
+          FieldAlias = 'Undporcao'
+          FieldName = 'UNDPORCAO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 9
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField11: TppField
+          FieldAlias = 'Vdsodio'
+          FieldName = 'VDSODIO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 10
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField12: TppField
+          FieldAlias = 'Gordurastrans'
+          FieldName = 'GORDURASTRANS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 11
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField13: TppField
+          FieldAlias = 'Gordurastotais'
+          FieldName = 'GORDURASTOTAIS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 12
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField14: TppField
+          FieldAlias = 'Gordurassaturadas'
+          FieldName = 'GORDURASSATURADAS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 13
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField15: TppField
+          FieldAlias = 'Proteinas'
+          FieldName = 'PROTEINAS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 14
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField16: TppField
+          FieldAlias = 'Colesterol'
+          FieldName = 'COLESTEROL'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 15
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField17: TppField
+          FieldAlias = 'Vdgordurastotais'
+          FieldName = 'VDGORDURASTOTAIS'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 16
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField18: TppField
+          FieldAlias = 'Vdgordurassaturadas'
+          FieldName = 'VDGORDURASSATURADAS'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 17
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField19: TppField
+          FieldAlias = 'Vdproteinas'
+          FieldName = 'VDPROTEINAS'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 18
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField20: TppField
+          FieldAlias = 'Vdvalorcalorico'
+          FieldName = 'VDVALORCALORICO'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 19
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField21: TppField
+          FieldAlias = 'Fibras'
+          FieldName = 'FIBRAS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 20
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField22: TppField
+          FieldAlias = 'Vdcolesterol'
+          FieldName = 'VDCOLESTEROL'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 21
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField23: TppField
+          FieldAlias = 'Vdfibraalimentar'
+          FieldName = 'VDFIBRAALIMENTAR'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 22
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object ppField24: TppField
+          FieldAlias = 'Acucarestotais'
+          FieldName = 'ACUCARESTOTAIS'
+          FieldLength = 2
+          DataType = dtInteger
+          DisplayWidth = 2
+          Position = 23
+          TableName = 'TPRODINFNUTRI_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODPRD'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODPRD'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL2: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'Tprodinfnutri'
+        IsCaseSensitive = True
+        LinkColor = clNavy
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT TPRODINFNUTRI_1.CODEMPRESA, '
+          '       TPRODINFNUTRI_1.CODPRD, '
+          '       TPRODINFNUTRI_1.VALORCALORICO, '
+          '       TPRODINFNUTRI_1.VDCARBOIDRATOS, '
+          '       TPRODINFNUTRI_1.DESCRICAO, '
+          '       TPRODINFNUTRI_1.CODIGO, '
+          '       TPRODINFNUTRI_1.CARBOIDRATOS, '
+          '       TPRODINFNUTRI_1.SODIO, '
+          '       TPRODINFNUTRI_1.QUANTIDADE, '
+          '       TPRODINFNUTRI_1.UNDPORCAO, '
+          '       TPRODINFNUTRI_1.VDSODIO, '
+          '       TPRODINFNUTRI_1.GORDURASTRANS, '
+          '       TPRODINFNUTRI_1.GORDURASTOTAIS, '
+          '       TPRODINFNUTRI_1.GORDURASSATURADAS, '
+          '       TPRODINFNUTRI_1.PROTEINAS, '
+          '       TPRODINFNUTRI_1.COLESTEROL, '
+          '       TPRODINFNUTRI_1.VDGORDURASTOTAIS, '
+          '       TPRODINFNUTRI_1.VDGORDURASSATURADAS, '
+          '       TPRODINFNUTRI_1.VDPROTEINAS, '
+          '       TPRODINFNUTRI_1.VDVALORCALORICO, '
+          '       TPRODINFNUTRI_1.FIBRAS, '
+          '       TPRODINFNUTRI_1.VDCOLESTEROL, '
+          '       TPRODINFNUTRI_1.VDFIBRAALIMENTAR, '
+          '       TPRODINFNUTRI_1.ACUCARESTOTAIS'
+          'FROM TPRODINFNUTRI TPRODINFNUTRI_1')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoLike
+          object TdaField
+            Alias = 'Descricao'
+            AutoSearch = True
+            DisplayWidth = 50
+            FieldAlias = 'Descricao'
+            FieldLength = 50
+            FieldName = 'DESCRICAO'
+            SQLFieldName = 'DESCRICAO'
+            TableAlias = 'Tprodinfnutri'
+            TableName = 'TPRODINFNUTRI'
+            TableSQLAlias = 'TPRODINFNUTRI_1'
+          end
+        end
+        object daField1: TdaField
+          Alias = 'Codempresa'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codempresa'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codprd'
+          AutoSearch = True
+          DisplayWidth = 30
+          FieldAlias = 'Codprd'
+          FieldLength = 30
+          FieldName = 'CODPRD'
+          SQLFieldName = 'CODPRD'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField3: TdaField
+          Alias = 'Valorcalorico'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Valorcalorico'
+          FieldLength = 0
+          FieldName = 'VALORCALORICO'
+          SQLFieldName = 'VALORCALORICO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField4: TdaField
+          Alias = 'Vdcarboidratos'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdcarboidratos'
+          FieldLength = 0
+          FieldName = 'VDCARBOIDRATOS'
+          SQLFieldName = 'VDCARBOIDRATOS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField5: TdaField
+          Alias = 'Descricao'
+          AutoSearch = True
+          DisplayWidth = 50
+          FieldAlias = 'Descricao'
+          FieldLength = 50
+          FieldName = 'DESCRICAO'
+          SQLFieldName = 'DESCRICAO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField6: TdaField
+          Alias = 'Codigo'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo'
+          FieldLength = 0
+          FieldName = 'CODIGO'
+          SQLFieldName = 'CODIGO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField7: TdaField
+          Alias = 'Carboidratos'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Carboidratos'
+          FieldLength = 2
+          FieldName = 'CARBOIDRATOS'
+          SQLFieldName = 'CARBOIDRATOS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField8: TdaField
+          Alias = 'Sodio'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Sodio'
+          FieldLength = 0
+          FieldName = 'SODIO'
+          SQLFieldName = 'SODIO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField9: TdaField
+          Alias = 'Quantidade'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Quantidade'
+          FieldLength = 0
+          FieldName = 'QUANTIDADE'
+          SQLFieldName = 'QUANTIDADE'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField10: TdaField
+          Alias = 'Undporcao'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Undporcao'
+          FieldLength = 0
+          FieldName = 'UNDPORCAO'
+          SQLFieldName = 'UNDPORCAO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField11: TdaField
+          Alias = 'Vdsodio'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdsodio'
+          FieldLength = 0
+          FieldName = 'VDSODIO'
+          SQLFieldName = 'VDSODIO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField12: TdaField
+          Alias = 'Gordurastrans'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Gordurastrans'
+          FieldLength = 2
+          FieldName = 'GORDURASTRANS'
+          SQLFieldName = 'GORDURASTRANS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField13: TdaField
+          Alias = 'Gordurastotais'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Gordurastotais'
+          FieldLength = 2
+          FieldName = 'GORDURASTOTAIS'
+          SQLFieldName = 'GORDURASTOTAIS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField14: TdaField
+          Alias = 'Gordurassaturadas'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Gordurassaturadas'
+          FieldLength = 2
+          FieldName = 'GORDURASSATURADAS'
+          SQLFieldName = 'GORDURASSATURADAS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField15: TdaField
+          Alias = 'Proteinas'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Proteinas'
+          FieldLength = 2
+          FieldName = 'PROTEINAS'
+          SQLFieldName = 'PROTEINAS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField16: TdaField
+          Alias = 'Colesterol'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Colesterol'
+          FieldLength = 0
+          FieldName = 'COLESTEROL'
+          SQLFieldName = 'COLESTEROL'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField17: TdaField
+          Alias = 'Vdgordurastotais'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdgordurastotais'
+          FieldLength = 0
+          FieldName = 'VDGORDURASTOTAIS'
+          SQLFieldName = 'VDGORDURASTOTAIS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField18: TdaField
+          Alias = 'Vdgordurassaturadas'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdgordurassaturadas'
+          FieldLength = 0
+          FieldName = 'VDGORDURASSATURADAS'
+          SQLFieldName = 'VDGORDURASSATURADAS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField19: TdaField
+          Alias = 'Vdproteinas'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdproteinas'
+          FieldLength = 0
+          FieldName = 'VDPROTEINAS'
+          SQLFieldName = 'VDPROTEINAS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField20: TdaField
+          Alias = 'Vdvalorcalorico'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdvalorcalorico'
+          FieldLength = 0
+          FieldName = 'VDVALORCALORICO'
+          SQLFieldName = 'VDVALORCALORICO'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField21: TdaField
+          Alias = 'Fibras'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Fibras'
+          FieldLength = 2
+          FieldName = 'FIBRAS'
+          SQLFieldName = 'FIBRAS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField22: TdaField
+          Alias = 'Vdcolesterol'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdcolesterol'
+          FieldLength = 0
+          FieldName = 'VDCOLESTEROL'
+          SQLFieldName = 'VDCOLESTEROL'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField23: TdaField
+          Alias = 'Vdfibraalimentar'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Vdfibraalimentar'
+          FieldLength = 0
+          FieldName = 'VDFIBRAALIMENTAR'
+          SQLFieldName = 'VDFIBRAALIMENTAR'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daField24: TdaField
+          Alias = 'Acucarestotais'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 2
+          FieldAlias = 'Acucarestotais'
+          FieldLength = 2
+          FieldName = 'ACUCARESTOTAIS'
+          SQLFieldName = 'ACUCARESTOTAIS'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+          TableSQLAlias = 'TPRODINFNUTRI_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'Tprodinfnutri'
+          JoinType = dajtNone
+          SQLAlias = 'TPRODINFNUTRI_1'
+          TableAlias = 'Tprodinfnutri'
+          TableName = 'TPRODINFNUTRI'
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField25: TdaField
+            ChildType = 10
+            Alias = 'Codigo Empresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codigo Empresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'Produtos'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+          object daField26: TdaField
+            ChildType = 11
+            Alias = 'Codempresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codempresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'Tprodinfnutri'
+            TableName = 'TPRODINFNUTRI'
+            TableSQLAlias = 'TPRODINFNUTRI_1'
+          end
+        end
+        object TdaSQLLink
+          ChildType = 9
+          object daField27: TdaField
+            ChildType = 10
+            Alias = 'Codigo do Produto'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codigo do Produto'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'Produtos'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+          object daField28: TdaField
+            ChildType = 11
+            Alias = 'Codprd'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'Codprd'
+            FieldLength = 30
+            FieldName = 'CODPRD'
+            SQLFieldName = 'CODPRD'
+            TableAlias = 'Tprodinfnutri'
+            TableName = 'TPRODINFNUTRI'
+            TableSQLAlias = 'TPRODINFNUTRI_1'
+          end
+        end
+      end
+    end
+    object daSQLQueryDataView3: TdaSQLQueryDataView
+      UserName = 'Query_Filiais'
+      Height = 165
+      Left = 771
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 224
+      AutoSearchTabOrder = 0
+      MasterDataViewUserName = 'Query_Produtos'
+      object Filiais: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'Filiais'
+        MasterDataPipelineName = 'Produtos'
+        object ppField1: TppField
+          FieldAlias = 'Codigo Empresa Filial'
+          FieldName = 'CODEMPRESA'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 0
+          TableName = 'GFILIAL_1'
+        end
+        object ppField2: TppField
+          FieldAlias = 'Codigo Filial'
+          FieldName = 'CODFILIAL'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 0
+          Position = 1
+          TableName = 'GFILIAL_1'
+        end
+        object ppField3: TppField
+          FieldAlias = 'Nome Fantasia Filial'
+          FieldName = 'NOMEFANTASIA'
+          FieldLength = 100
+          DisplayWidth = 100
+          Position = 2
+          TableName = 'GFILIAL_1'
+        end
+        object ppField4: TppField
+          FieldAlias = 'CGC Filial'
+          FieldName = 'CGC'
+          FieldLength = 20
+          DisplayWidth = 20
+          Position = 3
+          TableName = 'GFILIAL_1'
+        end
+        object TppMasterFieldLink
+          MasterFieldName = 'CODEMPRESA'
+          GuidCollationType = gcString
+          DetailFieldName = 'CODEMPRESA'
+          DetailSortOrder = soAscending
+          IgnoreTrailingSpaces = False
+          IsCaseSensitive = True
+        end
+      end
+      object daSQL3: TdaSQL
+        DatabaseName = 'Conexao'
+        DatabaseType = dtFirebird
+        DataPipelineName = 'Filiais'
+        IsCaseSensitive = True
+        LinkColor = clGreen
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT GFILIAL_1.CODEMPRESA, GFILIAL_1.CODFILIAL, '
+          '       GFILIAL_1.NOMEFANTASIA, GFILIAL_1.CGC'
+          'FROM GFILIAL GFILIAL_1')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'Codigo Empresa Filial'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo Empresa Filial'
+          FieldLength = 0
+          FieldName = 'CODEMPRESA'
+          SQLFieldName = 'CODEMPRESA'
+          TableAlias = 'Filiais'
+          TableName = 'GFILIAL'
+          TableSQLAlias = 'GFILIAL_1'
+        end
+        object daField2: TdaField
+          Alias = 'Codigo Filial'
+          AutoSearch = True
+          DataType = dtInteger
+          DisplayWidth = 0
+          FieldAlias = 'Codigo Filial'
+          FieldLength = 0
+          FieldName = 'CODFILIAL'
+          SQLFieldName = 'CODFILIAL'
+          TableAlias = 'Filiais'
+          TableName = 'GFILIAL'
+          TableSQLAlias = 'GFILIAL_1'
+        end
+        object daField3: TdaField
+          Alias = 'Nome Fantasia Filial'
+          AutoSearch = True
+          DisplayWidth = 100
+          FieldAlias = 'Nome Fantasia Filial'
+          FieldLength = 100
+          FieldName = 'NOMEFANTASIA'
+          SQLFieldName = 'NOMEFANTASIA'
+          TableAlias = 'Filiais'
+          TableName = 'GFILIAL'
+          TableSQLAlias = 'GFILIAL_1'
+        end
+        object daField4: TdaField
+          Alias = 'CGC Filial'
+          AutoSearch = True
+          DisplayWidth = 20
+          FieldAlias = 'CGC Filial'
+          FieldLength = 20
+          FieldName = 'CGC'
+          SQLFieldName = 'CGC'
+          TableAlias = 'Filiais'
+          TableName = 'GFILIAL'
+          TableSQLAlias = 'GFILIAL_1'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'Filiais'
+          JoinType = dajtNone
+          SQLAlias = 'GFILIAL_1'
+          TableAlias = 'Filiais'
+          TableName = 'GFILIAL'
+        end
+        object daSQLLink1: TdaSQLLink
+          ChildType = 9
+          object daField1: TdaField
+            ChildType = 10
+            Alias = 'Codigo Empresa'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codigo Empresa'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'Produtos'
+            TableName = 'TPRODUTO'
+            TableSQLAlias = 'TPRODUTO_1'
+          end
+          object daField2: TdaField
+            ChildType = 11
+            Alias = 'Codigo Empresa Filial'
+            AutoSearch = True
+            DataType = dtInteger
+            DisplayWidth = 0
+            FieldAlias = 'Codigo Empresa Filial'
+            FieldLength = 0
+            FieldName = 'CODEMPRESA'
+            SQLFieldName = 'CODEMPRESA'
+            TableAlias = 'Filiais'
+            TableName = 'GFILIAL'
+            TableSQLAlias = 'GFILIAL_1'
+          end
+        end
+      end
+    end
+  end
+  object raCodeModule1: TraCodeModule
+    object raProgramInfo1: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable1OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable1OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' := Tprodinfnutri['#39'Quantidade'#39'] '#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable1'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo2: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable2OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable2OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' := Tprodinfnutri['#39'Valorcalorico'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable2'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo3: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable9OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable9OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=   Tprodinfnutri['#39'Sodio'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable9'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo4: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable8OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable8OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=   Tprodinfnutri['#39'Fibras'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable8'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo5: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable7OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable7OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=     Tprodinfnutri['#39'Gordurastrans'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable7'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo6: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable6OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable6OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=  Tprodinfnutri['#39'Gordurassaturadas'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable6'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo7: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable5OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable5OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' := Tprodinfnutri['#39'Gordurastotais'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable5'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo8: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable4OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable4OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=      Tprodinfnutri['#39'Vdvalorcalorico'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable4'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo10: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable10OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable10OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Valu' +
+        'e :=  Tprodinfnutri['#39'Valorcalorico'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable10'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo11: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable102OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable102OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=                     Tprodinfnutri['#39'Vdproteinas'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable102'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo12: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable103OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable103OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=   Tprodinfnutri['#39'Vdgordurastotais'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable103'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo13: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable104OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable104OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=   Tprodinfnutri['#39'Vdgordurassaturadas'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable104'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo14: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable105OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable105OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=   Tprodinfnutri['#39'Vdcolesterol'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable105'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo15: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable106OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable106OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=  Tprodinfnutri['#39'Vdfibraalimentar'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable106'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo16: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable107OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable107OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Val' +
+        'ue :=  Tprodinfnutri['#39'Vdsodio'#39'] '#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable107'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo9: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable3OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable3OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+        ' :=   Tprodinfnutri['#39'Carboidratos'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable3'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+    object raProgramInfo17: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'Variable18OnCalc'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variable18OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Valu' +
+        'e :=     Tprodinfnutri['#39'Vdcarboidratos'#39']'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Variable18'
+      raProgram.EventName = 'OnCalc'
+      raProgram.EventID = 33
+    end
+  end
+  object ppDesignLayers1: TppDesignLayers
+    object ppDesignLayer1: TppDesignLayer
+      UserName = 'Foreground'
+      LayerType = ltBanded
+      Index = 0
+    end
+  end
+  object ppParameterList1: TppParameterList
+  end
+end
