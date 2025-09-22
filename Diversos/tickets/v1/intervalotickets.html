@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Ícone e Meta -->
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abrir Tickets Sequenciais</title>
+  <link rel="stylesheet" href="./asserts/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Abrir Tickets Sequenciais</h1>
+
+
+    <!-- Formulário -->
+    <div class="form-group">
+      <label for="numeroInicial">Número Inicial:</label>
+      <input type="number" id="numeroInicial" placeholder="Ex: 240889">
+    </div>
+
+    <div class="form-group">
+      <label for="numeroFinal">Número Final:</label>
+      <input type="number" id="numeroFinal" placeholder="Ex: 240895">
+    </div>
+
+    <button id="abrirTickets">🚀 Abrir Tickets</button>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
+    <!-- Status -->
+    <div id="statusMessage" class="status"></div>
+  </div>
+
+  <!-- Notificações toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="./asserts/js/script.js"></script>
+</body>
+</html>
