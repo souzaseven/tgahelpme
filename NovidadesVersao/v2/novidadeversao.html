@@ -1216,8 +1216,32 @@
 
 
 </body>
+ <!-- Estrutura da janela -->
+  <div class="overlay" id="aviso">
+    <div class="modal">
+      <h2>Atenção!</h2>
+      <p>Você será direcionado para a nova versão do site (v3).</p>
+      <button onclick="irNovaVersao()">OK, continuar</button>
+    </div>
+  </div>
+  <script>
+    let redirecionamento;
 
-<script src="./novidadeversao.js"></script>
+    // Exibe o aviso 2 segundos após carregar a página
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById("aviso").style.display = "flex";
+        // Inicia contagem de 5s para redirecionar automático
+        redirecionamento = setTimeout(irNovaVersao, 5000);
+      }, 2000); // 2000 ms = 2s
+    };
 
+    // Função para redirecionar
+    function irNovaVersao() {
+      clearTimeout(redirecionamento); // evita duplo redirecionamento
+      document.getElementById("aviso").style.display = "none";
+      window.location.href = "https://tgameajuda.com/NovidadesVersao/index.html";
+    }
+  </script>
 
 </html>
