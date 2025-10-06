@@ -1,0 +1,24 @@
+/* Estrutura principal */
+#app {
+  display: flex;
+  min-height: 100vh;
+}
+
+#sidebar {
+  width: 260px;
+  background: var(--bg-light);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+#content {
+  flex: 1;
+  padding: 20px;
+}
+
+header {
+  background: var(--bg-light);
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
