@@ -21,21 +21,29 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Modificando a consulta SQL para ordenar o campo "aprovado"
+   $filtroAprovado = $_GET['aprovado'] ?? '';
+
+if ($filtroAprovado === 'sim' || $filtroAprovado === 'nao' || $filtroAprovado === 'em analise') {
+    $stmt = $pdo->prepare("SELECT * FROM sugestoes WHERE aprovado = :aprovado ORDER BY data_criacao DESC");
+    $stmt->execute([':aprovado' => $filtroAprovado]);
+} else {
     $stmt = $pdo->query("SELECT * 
-FROM sugestoes 
-ORDER BY 
-    CASE 
-        WHEN aprovado = 'em analise' THEN 1
-        ELSE 2
-    END, 
-    data_criacao DESC;
-");  // Ordena primeiro por "aprovado" e depois por data_criacao
+        FROM sugestoes 
+        ORDER BY 
+            CASE 
+                WHEN aprovado = 'em analise' THEN 1
+                ELSE 2
+            END, 
+            data_criacao DESC");
+}
+
+
     $sugestoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Erro: " . $e->getMessage();
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -357,6 +365,22 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
     }
 }
 
+.btn-novo {
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    z-index: 1000;
+    background-color: #007BFF;
+    color: #fff !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.btn-novo:hover {
+    background-color: #0056b3;
+}
 
 
 </style>
@@ -365,15 +389,47 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
     <a href="https://tgameajuda.com/#sugestoes" class="btn-voltar">
         <i class="fas fa-arrow-left"></i> Voltar
     </a>
+  <a href="https://tgameajuda.com/tgasugestoes/sugestoes.html" class="btn-novo">
+    <i class="fas fa-plus"></i> Novo
+</a>
+
+</div>
+
 
 
 
 
     <div class="container">
         <h1>Sugestões Enviadas</h1>
+<form method="GET" style="margin-bottom: 20px; background-color: #222;">
+    <select name="aprovado" id="aprovado" onchange="this.form.submit()" style="
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: none;
+        font-size: 13px;
+      background-color: #111;
+  color: #fff;
+        cursor: pointer;
+        appearance: none;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    ">
+        <option value="">Todas</option>
+ <option value="nao" <?= (isset($_GET['aprovado']) && $_GET['aprovado'] === 'nao') ? 'selected' : '' ?>>Em Análise</option>
+  <option value="sim" <?= (isset($_GET['aprovado']) && $_GET['aprovado'] === 'sim') ? 'selected' : '' ?>>Aprovado</option>
+        <option value="em analise" <?= (isset($_GET['aprovado']) && $_GET['aprovado'] === 'em analise') ? 'selected' : '' ?>>Não Aprovado</option>
+    </select>
+</form>
+
+
+
+
+
 
         <?php if ($sugestoes): ?>
             <table id="suggestions-table">
@@ -394,7 +450,8 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
                         <tr>
 <td><?php echo htmlspecialchars($sugestao['id']); ?></td> <!-- Exibindo ID -->
                             <td><?php echo htmlspecialchars($sugestao['nome']); ?></td>
-                            <td><?php echo htmlspecialchars($sugestao['sugestao']); ?></td>
+                           <td><?php echo htmlspecialchars($sugestao['resumo']); ?></td>
+
                             <td>
                                 <?php 
                                     // Verifica o valor da coluna "aprovado" e exibe "Aprovado", "Não Aprovado" ou "Em Análise"
@@ -511,6 +568,23 @@ window.onscroll = function() {
     }
 };
 
+  document.getElementById('mostrar_aprovadas').addEventListener('change', function () {
+    const aprovado = this.checked ? 'sim' : '';
+    window.location.href = 'sugestoes.html?aprovado=' + aprovado;
+  });
+
+/*atualiza a pagina a cada 1min*/
+  setInterval(function() {
+    location.reload();
+  }, 60000); // 60.000 milissegundos = 1 minuto
+
+
     </script>
+<!--
+<img src="https://profile-counter.glitch.me/tgahelpme-consultasugestaophp/count.svg" alt="Contador de Visitantes" style="border: 2px solid; border-radius: 8px; background: transparent; padding: 5px;">
+-->
+<div style="display: flex; justify-content: center; margin: 10px 0;">
+  <img alt="visitas" src="https://hits.sh/tgameajuda.com/consultasugestaophp.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+</div>
 </body>
 </html>

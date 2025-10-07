@@ -1,29 +1,40 @@
 <?php
-// Conexão com o banco de dados
-$host = '108.167.151.50';
-$dbname = 'tgamea80_SUPORTE';
-$user = 'tgamea80_tgamea80';
-$password = 'anderson@2250';
+require_once 'conexao.php';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $resumo = $_POST['resumo'] ?? '';
+    $sugestao = $_POST['sugestao'] ?? '';
+    $imagemNome = '';
 
-    // Verifica se os dados necessários foram recebidos
-    if (isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sugestao'])) {
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $sugestao = $_POST['sugestao'];
-
-        // Insere os dados no banco de dados
-        $stmt = $pdo->prepare("INSERT INTO sugestoes (nome, email, sugestao, data_criacao) VALUES (?, ?, ?, NOW())");
-        $stmt->execute([$nome, $email, $sugestao]);
-
-        echo "Sugestão enviada com sucesso!";
-    } else {
-        echo "Todos os campos são obrigatórios.";
+    // Upload da imagem (se houver)
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+        $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+        $imagemNome = uniqid('img_') . '.' . $extensao;
+        move_uploaded_file($_FILES['imagem']['tmp_name'], 'img/' . $imagemNome);
     }
-} catch (PDOException $e) {
-    echo "Erro: " . $e->getMessage();
+
+    // Inserir no banco
+    $sql = "INSERT INTO sugestoes (nome, email, resumo, sugestao, imagem, aprovado, versao) 
+            VALUES (:nome, :email, :resumo, :sugestao, :imagem, 'nao', '')";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':nome' => $nome,
+        ':email' => $email,
+        ':resumo' => $resumo,
+        ':sugestao' => $sugestao,
+        ':imagem' => $imagemNome
+    ]);
+
+    // Redirecionar para o painel após salvar
+    header("Location: sugestoes.html");
+    exit;
+
+} else {
+    // Requisição inválida
+    header("Location: sugestoes.html?erro=1");
+    exit;
 }
 ?>

@@ -35,19 +35,63 @@
     <link rel="stylesheet" href="style.css"> 
     <link rel="stylesheet" href="consulta.css">
 <style>
+
+</style>
+
+
+<style>
 /* Adiciona estilos para exibir o aviso em segundo plano */
-    #status-message {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 8px;
-        z-index: 9999; /* Garante que esteja acima de outros elementos */
-        display: none; /* Começa oculto */
-    }
+#sucesso-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-family: sans-serif;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-grid label,
+.form-grid input,
+.form-grid textarea,
+.form-grid select {
+  width: 100%;
+}
+
+.form-grid-full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#sucesso-toast.mostrar {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
 </style>
 </head>
 <body>
@@ -55,21 +99,47 @@
         <i class="fas fa-arrow-left"></i> Voltar
     </a>
 
+
+
     <h1>Painel de Sugestões</h1>
     <div id="status-message"></div> <!-- Aqui aparecerá a mensagem de sucesso -->
-    
-    <form id="suggestion-form" method="POST">
-        <label for="nome">Seu Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <!---->
+  <form id="suggestion-form" method="POST" enctype="multipart/form-data">
+  <div class="form-grid">
+    <div>
+      <label for="nome">Seu Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+    </div>
 
-        <label for="email">Seu E-mail:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    <div>
+      <label for="email">Seu E-mail:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
 
-        <label for="sugestao">Sua Sugestão:</label><br>
-        <textarea id="sugestao" name="sugestao" rows="4" cols="50" required></textarea><br><br>
+    <div class="form-grid-full">
+      <label for="resumo">Resumo da Sugestão:</label>
+      <textarea id="resumo" name="resumo" rows="2" required></textarea>
+    </div>
 
-        <button type="submit">Enviar Sugestão</button>
-    </form>
+    <div class="form-grid-full">
+      <label for="sugestao">Descrição Detalhada:</label>
+      <textarea id="sugestao" name="sugestao" rows="4" required></textarea>
+    </div>
+
+    <div class="form-grid-full">
+      <label for="imagem">Imagem (opcional):</label>
+      <input type="file" id="imagem" name="imagem" accept="image/*">
+      <div id="preview" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="form-grid-full" style="text-align:center;">
+      <button type="submit">Enviar Sugestão</button>
+    </div>
+  </div>
+</form>
+<div id="sucesso-toast"></div>
+
+
 
     <script>
         // Preencher o formulário com os dados armazenados no localStorage (se houver)
@@ -105,31 +175,73 @@
                 body: formData
             })
             .then(response => response.text())
-            .then(data => {
-                statusMessage.innerHTML = '<p>' + data + '</p>';
-                statusMessage.style.color = '#4CAF50';
+.then(data => {
+    mostrarMensagemSucesso("Sugestão criada com sucesso!");
+})
 
-                // Exibe a mensagem de sucesso
-                statusMessage.style.position = 'fixed';
-                statusMessage.style.top = '50%';
-                statusMessage.style.left = '50%';
-                statusMessage.style.transform = 'translate(-50%, -50%)';
-                statusMessage.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-                statusMessage.style.padding = '20px';
-                statusMessage.style.borderRadius = '10px';
-                statusMessage.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-                statusMessage.style.zIndex = '9999';
 
-                // Após 3 segundos, redireciona para a página de sugestões
-                setTimeout(() => {
-                    window.location.href = 'consultasugestao.php';
-                }, 3000);
-            })
             .catch(error => {
                 statusMessage.innerHTML = '<p>Erro ao salvar a sugestão. Tente novamente.</p>';
                 statusMessage.style.color = 'red';
             });
         });
+
+// Suporte à colagem de imagem (Ctrl+V)
+document.addEventListener('paste', function (e) {
+    const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+    for (let item of items) {
+        if (item.type.indexOf("image") === 0) {
+            const file = item.getAsFile();
+            const input = document.getElementById('imagem');
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            input.files = dataTransfer.files;
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                document.getElementById('preview').innerHTML = '<img src="' + event.target.result + '" style="max-width:100%;margin-top:10px;">';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+// Mostra preview da imagem quando selecionada via botão
+document.getElementById('imagem').addEventListener('change', function () {
+    const file = this.files[0];
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            document.getElementById('preview').innerHTML = '<img src="' + event.target.result + '" style="max-width:100%;margin-top:10px;">';
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+
+
+
+
     </script>
+
+
+<script>
+function mostrarMensagemSucesso(mensagem) {
+    const toast = document.getElementById('sucesso-toast');
+    toast.innerHTML = mensagem;
+    toast.classList.add('mostrar');
+
+    // Após 2 segundos, redireciona
+    setTimeout(() => {
+        window.location.href = 'consultasugestao.php';
+    }, 2000);
+}
+
+</script>
+<!--
+<img src="https://profile-counter.glitch.me/tgahelpme-sugestoes/count.svg" alt="Contador de Visitantes" style="border: 2px solid; border-radius: 8px; background: transparent; padding: 5px;">
+-->
+<div style="display: flex; justify-content: center; margin: 10px 0;">
+  <img alt="visitas" src="https://hits.sh/tgameajuda.com/sugestoeshtml.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
 </body>
 </html>
