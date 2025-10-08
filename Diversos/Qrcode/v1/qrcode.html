@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code</title>
+   
+    <link rel="stylesheet" href="style.css">
+
+
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+<!--icone com meu rosto-->
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa fa-qrcode"></i> Gerador de QR Code</h1>
+        <div class="form-group">
+            <select id="tamanho">
+                <option value="1">Tamanho: 1</option>
+                <option value="2">Tamanho: 2</option>
+                <option value="3">Tamanho: 3</option>
+                <option value="4">Tamanho: 4</option>
+                <option value="5" selected>Tamanho: 5</option>
+                <option value="6">Tamanho: 6</option>
+                <option value="7">Tamanho: 7</option>
+                <option value="8">Tamanho: 8</option>
+                <option value="9">Tamanho: 9</option>
+                <option value="10">Tamanho: 10</option>
+            </select>
+
+            <select id="errorlevel">
+                <option value="L">Nível de erro: L (7%)</option>
+                <option value="M" selected>Nível de erro: M (15%)</option>
+                <option value="Q">Nível de erro: Q (25%)</option>
+                <option value="H">Nível de erro: H (30%)</option>
+            </select>
+
+            <div class="color-picker-wrapper">
+                <input type="text" id="corqr" class="color-picker" placeholder="Cor QR (#000000)">
+                <input type="color" id="colorqrpicker">
+                <i class="fa fa-palette color-icon" onclick="document.getElementById('colorqrpicker').click()"></i>
+            </div>
+
+            <div class="color-picker-wrapper">
+                <input type="text" id="corbg" class="color-picker" placeholder="Cor do fundo (#ffffff)">
+                <input type="color" id="colorbgpicker">
+                <i class="fa fa-palette color-icon" onclick="document.getElementById('colorbgpicker').click()"></i>
+            </div>
+
+            <input type="text" id="qrcodetxt" placeholder="Texto ou URL" class="input-text">
+        </div>
+
+        <!-- Botões alinhados lado a lado -->
+        <div class="button-group">
+            <button class="btn" onclick="generateQRCode()"><i class="fa fa-qrcode"></i> Gerar QR Code</button>
+            <button id="download-btn" class="btn" style="display: none;" onclick="downloadQRCode()"><i class="fa fa-download"></i> Baixar</button>
+        </div>
+
+        <!-- Container para o QR Code -->
+        <div id="qrcode"></div>
+    </div>
+
+    <!-- Biblioteca QR Code e Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

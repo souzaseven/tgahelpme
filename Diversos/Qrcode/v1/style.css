@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #007ced;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    width: calc(50% - 10px);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    border-color: #007bff;
+}
+
+.color-picker-wrapper {
+    position: relative;
+    width: calc(50% - 10px);
+}
+
+.color-picker {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.color-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.color-picker-wrapper input[type="color"] {
+    display: none;
+}
+
+/* Botões alinhados lado a lado com espaçamento */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-group button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 48%;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+#qrcode {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.container .qr-title {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #333;
+}
