@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Script do Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <!-- Favicon e Meta Tags -->
+    <link rel="icon" href="assets/whatsapp-icon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Link para WhatsApp | Ferramenta Profissional</title>
+    <meta name="description" content="Gere links e QR Codes para WhatsApp de forma rápida e profissional">
+    
+    <!-- Importando ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <!-- Biblioteca para gerar QR code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Container principal -->
+        <div class="container">
+            <!-- Texto destacado com ícones de celular e WhatsApp -->
+            <h2>
+                <i class="fa fa-mobile-alt floating"></i> Gerador de Link 
+                <span class="highlight">WhatsApp</span> 
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png" alt="WhatsApp Icon" class="whatsapp-icon floating">
+            </h2>
+
+            <!-- Campo para número de telefone -->
+            <input type="tel" class="form-control" id="numero" placeholder="Digite o número (ex: 5511912345678)">
+
+            <!-- Campo para mensagem -->
+            <textarea class="form-control" id="mensagem" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+
+            <!-- Exibição de erro -->
+            <div id="erro" class="erro" style="display: none;">Por favor, insira um número de telefone válido.</div>
+
+            <!-- Botões com espaçamento entre eles -->
+            <div class="btn-container">
+                <button type="button" class="btn process" id="gerar" disabled><i class="fa fa-link"></i> Gerar Link</button>
+                <button type="button" class="btn whatsapp" id="iniciar" disabled><i class="fa fa-whatsapp"></i> Iniciar Chat</button>
+                <button type="button" class="btn qr" id="gerar-qrcode" disabled><i class="fa fa-qrcode"></i> QR Code</button>
+            </div>
+
+            <!-- Container para exibir o link gerado -->
+            <div class="link-display-container" id="link-display-container">
+                <h3 style="color: var(--primary); margin-bottom: 15px;">
+                    <i class="fas fa-link"></i> Link Gerado
+                </h3>
+                <div class="link-display" id="link-display"></div>
+                <div class="link-actions">
+                    <button type="button" class="link-action-btn copy-link" id="copiar-link">
+                        <i class="fa fa-copy"></i> Copiar Link
+                    </button>
+                    <button type="button" class="link-action-btn open-whatsapp" id="abrir-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Abrir WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <!-- Links gerados -->
+            <div class="link-container" id="link-container">
+                <a id="whatsapp-link" href="#" target="_blank" class="whatsapp-link" style="display: none;">
+                    <i class="fab fa-whatsapp"></i> Conversar no WhatsApp
+                </a>
+                <br>
+                <a id="whatsapp-web-link" href="#" target="_blank" class="whatsapp-web-link" style="display: none;">
+                    <i class="fas fa-desktop"></i> Conversar no WhatsApp Web
+                </a>
+            </div>
+
+            <!-- Feedback de sucesso -->
+            <div id="feedback" class="feedback" style="display: none;">
+                <i class="fas fa-check-circle"></i> Ação realizada com sucesso!
+            </div>
+        </div>
+
+        <!-- Sidebar de resultados -->
+        <div class="results-sidebar">
+            <div class="sidebar-title">
+                <i class="fas fa-qrcode"></i> Resultados & QR Code
+            </div>
+            
+            <!-- QR Code será exibido aqui -->
+            <div class="qrcode-container" id="qrcode-container">
+                <div id="qrcode"></div>
+                <button type="button" class="btn download" id="copiar-qr" style="display: none;">
+                    <i class="fas fa-download"></i> Copiar QR Code
+                </button>
+            </div>
+            
+            <!-- Informações adicionais -->
+            <div class="additional-info" style="margin-top: auto; padding: 20px; background: rgba(30,30,30,0.6); border-radius: var(--border-radius); backdrop-filter: blur(10px);">
+                <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.2rem;">
+                    <i class="fas fa-info-circle"></i> Como usar:
+                </h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--success); margin-top: 4px;"></i>
+                        <span>Digite o DDD com o número</span>
+                    </li>
+                    <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--success); margin-top: 4px;"></i>
+                        <span>Adicione uma mensagem personalizada caso preferir</span>
+                    </li>
+                    <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check" style="color: var(--success); margin-top: 4px;"></i>
+                        <span>Gere o link ou QR Code</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Gerador de Link WhatsApp - Ferramenta profissional</p>
+    </div>
+
+<script src="./js/script.js"></script>
+
+           <div class="visitor-counter">
+                        <img src="https://hits.sh/tgameajuda.com/diversos/qrcode.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico" 
+                             alt="Contador de visitas">
+                    </div>
+</body>
+</html>

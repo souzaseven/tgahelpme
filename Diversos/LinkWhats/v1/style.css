@@ -1,0 +1,165 @@
+/* Estilos do corpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Tema padrão */
+:root {
+    --background-color: #007ced;
+    --text-color: black;
+    --container-bg-color: #ffffff;
+    --button-bg-color: #28a745;
+    --button-text-color: white;
+    --button-bg-hover: #218838;
+    --input-bg-color: white;
+    --input-text-color: black;
+}
+
+/* Tema claro */
+body.light {
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --container-bg-color: #ffffff;
+    --button-bg-color: #007bff;
+    --button-text-color: white;
+    --button-bg-hover: #0056b3;
+    --input-bg-color: white;
+    --input-text-color: black;
+}
+
+/* Tema escuro */
+body.dark {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg-color: #1f1f1f;
+    --button-bg-color: #bb86fc;
+    --button-text-color: white;
+    --button-bg-hover: #8854d0;
+    --input-bg-color: #333;
+    --input-text-color: #ddd;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--container-bg-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Seleção de tema */
+.theme-selector {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Título principal */
+.container h2 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-style: italic;
+}
+
+/* Destaque para o texto do WhatsApp */
+.highlight {
+    color: #25D366;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-style: italic;
+}
+
+/* Estilo do ícone do WhatsApp */
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+}
+
+/* Campo de input */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+/* Botões */
+.btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn:hover {
+    background-color: var(--button-bg-hover);
+}
+
+/* Link gerado */
+.link-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.link-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+/* Mensagem de erro */
+.erro {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilo do QR Code */
+#qrcode {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Feedback de ação realizada */
+.feedback {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: opacity 0.5s ease;
+}

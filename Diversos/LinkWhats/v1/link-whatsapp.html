@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Script do Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6176119186804571" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <!-- Favicon e Meta Tags -->
+    <link rel="icon" href="assets/whatsapp-icon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Link para WhatsApp</title>
+    
+    <!-- Importando ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Biblioteca para gerar QR code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+<!--icone com meu rosto-->
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</head>
+<body>
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Seleção de tema -->
+        <div class="theme-selector">
+            <label for="theme-selector">Escolha o tema: </label>
+            <select id="theme-selector">
+            
+                <option value="dark">Escuro</option>
+                <option value="light">Claro</option>
+            </select>
+        </div>
+
+        <!-- Texto destacado com ícones de celular e WhatsApp -->
+        <h2>
+            <i class="fa fa-mobile-alt"></i> Gerador de Link <br> para 
+            <span class="highlight">WhatsApp</span> 
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png" alt="WhatsApp Icon" class="whatsapp-icon">
+        </h2>
+
+        <!-- Campo para número de telefone -->
+        <input type="tel" class="form-control" id="numero" placeholder="Digite o número (ex: 11961234567)">
+        
+        <!-- Campo para mensagem -->
+        <textarea class="form-control" id="mensagem" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+
+        <!-- Exibição de erro -->
+        <div id="erro" class="erro" style="display: none;">Por favor, insira o número de telefone.</div>
+
+        <!-- Botões com espaçamento entre eles -->
+        <div class="btn-container">
+            <button type="button" class="btn process" id="gerar" disabled><i class="fa fa-link"></i> Gerar</button>
+            <button type="button" class="btn process" id="iniciar" disabled><i class="fa fa-whatsapp"></i> Iniciar</button>
+            <button type="button" class="btn copy" id="copiar" style="display: none;"><i class="fa fa-copy"></i> Copiar</button>
+            <button type="button" class="btn qr" id="gerar-qrcode" disabled><i class="fa fa-qrcode"></i> QR Code</button>
+        </div>
+
+        <!-- Links gerados -->
+        <div class="link-container" id="link-container">
+            <a id="whatsapp-link" href="#" target="_blank" style="display: none;">Clique aqui para conversar no WhatsApp</a>
+            <br>
+            <a id="whatsapp-web-link" href="#" target="_blank" style="display: none;" onclick="alertaWhatsAppWeb()">Clique aqui para conversar no WhatsApp Web</a>
+        </div>
+
+        <!-- QR Code será exibido aqui -->
+        <div id="qrcode"></div>
+
+        <!-- Feedback de sucesso -->
+        <div id="feedback" class="feedback" style="display: none;">Ação realizada com sucesso!</div>
+    </div>
+
+    <!-- Script para lógica do gerador de link e QR code -->
+    <script src="script.js"></script>
+</body>
+</html>
