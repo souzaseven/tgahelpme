@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Dígito de Boleto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ <!--
+<link rel="shortcut icon" href="./img/bot-tga.png" type="image/x-icon">-->
+<link rel="icon" href="https://raw.githubusercontent.com/souzaseven/tgahelpme/Desafios/icon%20bot%20tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+  
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificador de Dígito de Boleto</h1>
+        <form id="boleto-form">
+            <label for="linha-digitavel">Linha Digitável:</label>
+            <input type="text" id="linha-digitavel" required>
+
+            <label for="linha-digitavel2">Linha Digitável Formatada:</label>
+            <input type="text" id="linha-digitavel2" readonly>
+
+            <div class="btn-group">
+                <button type="button" class="btn-copy" id="copy-button"><i class="fas fa-copy"></i> Copiar Linha Digitável</button>
+                <button type="button" class="btn-clear" id="clear-button"><i class="fas fa-trash-alt"></i> Limpar</button>
+            </div>
+        </form>
+
+        <div class="result" id="result"></div>
+        <div class="copy-info" id="copy-info"></div>
+    </div>
+
+    <div class="inline-copy-container" id="codigo-container">
+ <p id="codigo">
+748910000300142080407615942100459100000000003400</p>
+<!-- antigo com fator 9999
+        <p id="codigo">74891000030014208040761594210045977000000003400</p>-->
+        <button class="btn-small-copy" id="copy-codigo-button"><i class="fas fa-copy"></i> Copiar</button>
+    </div>
+
+   <script src="./script.js"></script>
+</body>
+</html>

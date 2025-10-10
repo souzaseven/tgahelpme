@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- ===== CONFIGURAÇÕES BÁSICAS DA PÁGINA ===== -->
+    <meta charset="UTF-8"> <!-- Define codificação de caracteres para português -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura viewport para responsividade -->
+    <title>Verificador de Dígito de Boleto</title> <!-- Título da página na aba do navegador -->
+
+    <!-- ===== IMPORTAÇÕES DE RECURSOS EXTERNOS ===== -->
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Ícone da página (favicon) -->
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/tgahelpme/Desafios/icon%20bot%20tga.ico" type="image/x-icon">
+
+    <!-- ===== GOOGLE ANALYTICS ===== -->
+    <!-- Configuração do Google Analytics para rastreamento -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+    
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- ===== CONTAINER PRINCIPAL ===== -->
+    <div class="container">
+        
+        <!-- ===== CABEÇALHO ===== -->
+        <div class="header">
+            <h1>Verificador de Dígito de Boleto</h1>
+            <p class="subtitle">Analise e valide informações de boletos bancários de forma rápida e precisa</p>
+        </div>
+        
+        <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+        <div class="content">
+            
+            <!-- ===== CARD DE INFORMAÇÕES DO BOLETO ===== -->
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-barcode"></i> Informações do Boleto</h2>
+                
+                <!-- ===== FORMULÁRIO PRINCIPAL ===== -->
+                <form id="boleto-form">
+                    <div class="form-group">
+                        <label for="linha-digitavel">Linha Digitável</label>
+                        <div class="input-group">
+                            <input type="text" id="linha-digitavel" placeholder="Digite a linha digitável do boleto" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="linha-digitavel2">Linha Digitável Formatada</label>
+                        <div class="input-group">
+                            <input type="text" id="linha-digitavel2" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" id="copy-button">
+                            <i class="fas fa-copy"></i> Copiar Linha Digitável
+                        </button>
+                        <button type="button" class="btn btn-danger" id="clear-button">
+                            <i class="fas fa-trash-alt"></i> Limpar Campos
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="copy-info" id="copy-info"></div>
+            </div>
+            
+            <!-- ===== CARD DE DETALHES DO BOLETO ===== -->
+            <div class="card result-container">
+                <h2 class="card-title"><i class="fas fa-chart-bar"></i> Detalhes do Boleto</h2>
+                <div class="result" id="result"></div>
+            </div>
+            
+            <!-- ===== CARD DE CÓDIGO EXEMPLO ===== -->
+            <div class="inline-copy-container" id="codigo-container">
+                <h2 class="card-title"><i class="fas fa-code"></i> Código de Exemplo</h2>
+                <div class="code-display">
+                    <p id="codigo">748910000300142080407615942100459100000000003400</p>
+                </div>
+                <button class="btn-small" id="copy-codigo-button">
+                    <i class="fas fa-copy"></i> Copiar Código
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER FORA DO CONTAINER ===== -->
+    <div class="footer">
+        <div class="visitor-counter">
+            <img src="https://hits.sh/tgameajuda.com/diversos/validaboleto.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico" 
+                 alt="Contador de visitas">
+        </div>
+    </div>
+
+    <!-- ===== SCRIPT JAVASCRIPT PERSONALIZADO ===== -->
+    <script src="./js/script.js"></script>
+</body>
+</html>

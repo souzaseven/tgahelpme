@@ -1,0 +1,166 @@
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #007ced;
+            padding: 20px;
+            margin: 0;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        button i {
+            margin-right: 8px;
+        }
+
+        button:last-child {
+            margin-right: 0;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .btn-clear {
+            background-color: #f44336;
+        }
+
+        .btn-clear:hover {
+            background-color: #d32f2f;
+        }
+
+        .result {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .field {
+            flex: 1 1 calc(33.3333% - 10px);
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 10px;
+            align-items: center;
+            color: #333;
+        }
+
+        .field:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        .field span {
+            display: block;
+            font-weight: bold;
+            color: #005bb5;
+        }
+
+        .copy-info {
+            text-align: center;
+            font-size: 14px;
+            color: #005bb5;
+        }
+
+        .inline-copy-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-direction: column;
+        }
+
+        .btn-small-copy {
+            background-color: #007bff;
+            color: white;
+            padding: 3px 8px;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-small-copy i {
+            margin-right: 3px;
+        }
+
+        .btn-small-copy:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            color: #fff;
+            text-align: center;
+        }
+
+        .field-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .field-inline .field {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .field-inline .field:last-child {
+            margin-right: 0;
+        }
