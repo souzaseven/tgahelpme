@@ -1,0 +1,444 @@
+/* login.css - Estilos específicos para a página de login - Modo Escuro */
+
+/* Reset e configurações base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página de login - Tema Escuro */
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0c1426 0%, #1a1f36 50%, #0f172a 100%);
+    color: #e2e8f0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Efeito de partículas sutis no fundo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+    background-size: 50% 50%, 60% 60%, 70% 70%;
+    background-position: 0 0, 100% 0, 50% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Container principal com efeito glassmorphism */
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Cabeçalhos */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    color: #f8fafc;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+h4 {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #94a3b8;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Container do formulário - Glassmorphism */
+form {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    padding: 48px 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho sutil no formulário */
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.03),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+form:hover::before {
+    left: 100%;
+}
+
+/* Labels do formulário */
+label {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Container dos campos */
+.input-group {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+/* Campos de entrada */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 16px 18px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1.5px solid #334155;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #f1f5f9;
+    font-weight: 400;
+}
+
+/* Placeholder estilizado */
+input::placeholder {
+    color: #64748b;
+    font-weight: 400;
+}
+
+/* Efeito de foco nos campos */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #60a5fa;
+    outline: none;
+    box-shadow: 
+        0 0 0 3px rgba(96, 165, 250, 0.15),
+        0 4px 20px rgba(96, 165, 250, 0.1);
+    transform: translateY(-1px);
+    background: rgba(15, 23, 42, 0.9);
+}
+
+/* Ícones nos campos (opcional) */
+.input-group::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    z-index: 2;
+    font-size: 14px;
+}
+
+#username + .input-group::before { content: "\f007"; }
+#password + .input-group::before { content: "\f023"; }
+
+/* Botão de envio */
+button {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+    border: none;
+    padding: 18px 24px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    width: 100%;
+    margin-top: 8px;
+    box-shadow: 
+        0 8px 25px rgba(59, 130, 246, 0.25),
+        0 2px 4px rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+/* Efeito de brilho no botão */
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 35px rgba(59, 130, 246, 0.35),
+        0 4px 8px rgba(59, 130, 246, 0.15);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 6px 20px rgba(59, 130, 246, 0.3),
+        0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Mensagem de erro */
+.error {
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: #fca5a5;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+    border-left: 4px solid #ef4444;
+}
+
+/* Botão voltar */
+.btn-voltar {
+    position: fixed;
+    top: 28px;
+    left: 28px;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(16px);
+    color: #cbd5e1;
+    padding: 14px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.btn-voltar:hover {
+    background: rgba(51, 65, 85, 0.9);
+    color: #f1f5f9;
+    transform: translateY(-2px) translateX(2px);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Ícone do botão voltar */
+.btn-voltar i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.btn-voltar:hover i {
+    transform: translateX(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 16px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .login-container {
+        max-width: 100%;
+    }
+    
+    form {
+        padding: 40px 28px;
+        margin: 0;
+        border-radius: 16px;
+    }
+    
+    .btn-voltar {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 30px;
+        align-self: flex-start;
+        background: rgba(30, 41, 59, 0.9);
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 32px 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h4 {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        padding: 14px 16px;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+    }
+}
+
+/* Estados de loading para o botão */
+button.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+    animation: pulse 2s infinite;
+}
+
+button.loading::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 50%;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -11px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Efeito de foco acessível */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+/* Melhorias de acessibilidade para reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Estilos para o contador de visitas */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(16px);
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.visitor-counter:hover {
+    background: rgba(51, 65, 85, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.visitor-counter img {
+    height: 24px;
+    border-radius: 6px;
+}
+
+/* Responsividade para o contador */
+@media (max-width: 768px) {
+    .visitor-counter {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 30px;
+        align-self: center;
+    }
+}

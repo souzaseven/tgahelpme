@@ -78,9 +78,9 @@ if ($filtroAprovado === 'sim' || $filtroAprovado === 'nao' || $filtroAprovado ==
 
   gtag('config', 'G-S8EC5C2WTG');
 </script>
-    
+    <link rel="stylesheet" href="./css/consultasugestao.css">
 
-
+<!--
 <style>
 /* Resetando alguns estilos padrões */
 * {
@@ -112,7 +112,7 @@ body {
 .container {
     /* Tamanho flexível e centrado */
     width: 90%;               /* Ocupa 90% da tela em desktops maiores */
-    max-width: 1200px;        /* Limite de largura para boa legibilidade */
+    max-width: 1700px;        /* Limite de largura para boa legibilidade */
     margin: 40px auto;        /* Centraliza horizontalmente e dá espaçamento vertical */
     
     /* Visual moderno e escuro */
@@ -383,7 +383,7 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
 
 
 </style>
-
+-->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -404,6 +404,11 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
 
     <div class="container">
         <h1>Sugestões Enviadas</h1>
+<!-- Campo de busca -->
+<div class="search-container">
+    <input type="text" id="search-input" class="search-input" placeholder="Digite para buscar sugestões..." autocomplete="off">
+</div>
+
 <form method="GET" style="margin-bottom: 20px; background-color: #222;">
     <select name="aprovado" id="aprovado" onchange="this.form.submit()" style="
         padding: 6px 14px;
@@ -430,6 +435,7 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
 
 
 
+
         <?php if ($sugestoes): ?>
             <table id="suggestions-table">
                 <thead>
@@ -444,7 +450,7 @@ table th:nth-child(3) { /* 3ª coluna: "Sugestão" */
                         <th>Ação</th>
                     </tr>
                 </thead>
-                <tbody>
+               <tbody id="suggestions-body">
                     <?php foreach ($sugestoes as $sugestao): ?> 
                         <tr>
 <td><?php echo htmlspecialchars($sugestao['id']); ?></td> <!-- Exibindo ID -->
@@ -566,11 +572,25 @@ window.onscroll = function() {
         scrollDownBtn.style.display = "block"; // Mostra o botão de "descer"
     }
 };
-
-  document.getElementById('mostrar_aprovadas').addEventListener('change', function () {
-    const aprovado = this.checked ? 'sim' : '';
-    window.location.href = 'sugestoes.html?aprovado=' + aprovado;
-  });
+// Função de busca automática
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#suggestions-body tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
+});
 
 /*atualiza a pagina a cada 1min*/
   setInterval(function() {

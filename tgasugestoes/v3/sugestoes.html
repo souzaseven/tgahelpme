@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Sugestões</title>
+
+    <link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!--souza system-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+    <!--meajudatga-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+
+    <!-- CSS corrigido -->
+    <link rel="stylesheet" href="./css/sugestoes.css">
+</head>
+<body>
+    <div class="container">
+        <a href="https://tgameajuda.com/#sugestoes" class="btn-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+
+        <h1>Painel de Sugestões</h1>
+        
+        <div id="status-message"></div>
+
+        <form id="suggestion-form" method="POST" enctype="multipart/form-data">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Seu E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group form-grid-full">
+                    <label for="resumo">Resumo da Sugestão:</label>
+                    <textarea id="resumo" name="resumo" rows="2" required></textarea>
+                </div>
+
+                <div class="form-group form-grid-full">
+                    <label for="sugestao">Descrição Detalhada:</label>
+                    <textarea id="sugestao" name="sugestao" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group form-grid-full">
+                    <label for="imagem">Imagem (opcional):</label>
+                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                    <div id="preview"></div>
+                </div>
+
+                <div class="form-group form-grid-full submit-container">
+                    <button type="submit">Enviar Sugestão</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="sucesso-toast"></div>
+
+        <div class="visitor-counter">
+            <img alt="visitas" src="https://hits.sh/tgameajuda.com/sugestoeshtml.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+        </div>
+    </div>
+
+    <script>
+        // Preencher o formulário com os dados armazenados no localStorage (se houver)
+        window.onload = function() {
+            var nome = localStorage.getItem('nome');
+            var email = localStorage.getItem('email');
+
+            if (nome) {
+                document.getElementById('nome').value = nome;
+            }
+
+            if (email) {
+                document.getElementById('email').value = email;
+            }
+        };
+
+        document.getElementById('suggestion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            var statusMessage = document.getElementById('status-message');
+            
+            // Salvar nome e email no localStorage
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('email', email);
+
+            // Envia o formulário via AJAX
+            fetch('salvar_sugestao.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                mostrarMensagemSucesso("Sugestão criada com sucesso!");
+            })
+            .catch(error => {
+                statusMessage.innerHTML = '<p>Erro ao salvar a sugestão. Tente novamente.</p>';
+                statusMessage.style.color = 'red';
+            });
+        });
+
+        // Suporte à colagem de imagem (Ctrl+V)
+        document.addEventListener('paste', function (e) {
+            const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+            for (let item of items) {
+                if (item.type.indexOf("image") === 0) {
+                    const file = item.getAsFile();
+                    const input = document.getElementById('imagem');
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    input.files = dataTransfer.files;
+
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        document.getElementById('preview').innerHTML = '<img src="' + event.target.result + '" alt="Preview">';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+
+        // Mostra preview da imagem quando selecionada via botão
+        document.getElementById('imagem').addEventListener('change', function () {
+            const file = this.files[0];
+            if (file && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById('preview').innerHTML = '<img src="' + event.target.result + '" alt="Preview">';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function mostrarMensagemSucesso(mensagem) {
+            const toast = document.getElementById('sucesso-toast');
+            toast.innerHTML = mensagem;
+            toast.classList.add('mostrar');
+
+            setTimeout(() => {
+                window.location.href = 'consultasugestao.php';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

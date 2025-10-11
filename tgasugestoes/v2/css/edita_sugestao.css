@@ -1,0 +1,708 @@
+/* Reset e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #007ced;
+    --primary-dark: #005bb5;
+    --primary-light: #3399ff;
+    --primary-glow: rgba(0, 124, 237, 0.4);
+    --primary-shadow: rgba(0, 124, 237, 0.5);
+    --bg-dark: #0a0a1a;
+    --bg-darker: #050511;
+    --bg-card: #1a1a2e;
+    --bg-card-light: #252545;
+    --bg-input: #2d2d4d;
+    --text-primary: #e0e0ff;
+    --text-secondary: #a0a0cc;
+    --text-muted: #6c6c8c;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --border-color: #3a3a5a;
+    --border-light: #4a4a6a;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 25px rgba(0, 124, 237, 0.6);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #151528 50%, #1a1a2e 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(0, 124, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 124, 237, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-primary);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color));
+    border-radius: 4px;
+    box-shadow: 0 2px 8px var(--primary-glow);
+}
+
+/* Wrapper do formulário */
+.form-wrapper {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--border-color);
+    position: relative;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--primary-color));
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 2px 10px var(--primary-shadow);
+}
+
+/* Grid do formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    width: 100%;
+}
+
+.form-grid-full {
+    grid-column: 1 / -1;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--primary-light);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    text-shadow: 0 1px 2px rgba(0, 124, 237, 0.3);
+}
+
+/* Campos de input, textarea e select */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    transition: all 0.4s ease;
+    font-weight: 500;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--primary-glow), 0 8px 20px rgba(0, 124, 237, 0.2);
+    background: var(--bg-input);
+    transform: translateY(-2px);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--primary-light);
+    box-shadow: 0 4px 12px rgba(0, 124, 237, 0.2);
+    background: var(--bg-card-light);
+}
+
+input:disabled {
+    background: #2a2a4a;
+    color: var(--text-muted);
+    cursor: not-allowed;
+    border-color: #3a3a5a;
+}
+
+/* Textarea específico */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* Imagem preview */
+img {
+    border-radius: 12px;
+    border: 3px solid var(--border-color);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    max-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    background: var(--bg-input);
+}
+
+img:hover {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 25px var(--primary-shadow);
+}
+
+/* File input */
+input[type="file"] {
+    padding: 12px;
+    background: var(--bg-input);
+    border: 3px dashed var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    width: 100%;
+    font-weight: 500;
+}
+
+input[type="file"]:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 124, 237, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 124, 237, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Container de botões */
+.button-container {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+/* Botões base */
+button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Botão Salvar */
+.save-button {
+    background: linear-gradient(135deg, var(--success-color), #1e7e34);
+    color: white;
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #218838, #1c7430);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(40, 167, 69, 0.5);
+}
+
+/* Botão Excluir */
+.delete-button {
+    background: linear-gradient(135deg, var(--danger-color), #c82333);
+    color: white;
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.delete-button:hover {
+    background: linear-gradient(135deg, #c82333, #a71e2a);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.5);
+}
+
+/* Botão E-mail */
+.email-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    box-shadow: 0 6px 20px var(--primary-shadow);
+}
+
+.email-button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), #004a9c);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px var(--primary-shadow), 0 0 20px var(--primary-glow);
+}
+
+/* Modal da imagem */
+#image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+#image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 16px;
+    box-shadow: var(--shadow-glow);
+    border: 3px solid var(--primary-color);
+    cursor: pointer;
+    animation: zoomIn 0.3s ease;
+    background: var(--bg-card);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mensagem de sucesso */
+#sucesso {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, var(--success-color), #1e7e34);
+    color: white;
+    padding: 18px 28px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-lg);
+    font-family: sans-serif;
+    z-index: 10000;
+    border-left: 5px solid rgba(255, 255, 255, 0.8);
+    animation: slideIn 0.4s ease;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Contador de visitas */
+.visitor-counter {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.visitor-counter img {
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+    background: var(--bg-input);
+}
+
+.visitor-counter img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Mensagens de texto */
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+p[style*="color:gray"] {
+    color: var(--text-muted) !important;
+    font-style: italic;
+    background: rgba(0, 124, 237, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Estados dos selects */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%233399ff' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 50px;
+    appearance: none;
+    background-color: var(--bg-input);
+}
+
+/* Botão Voltar */
+.btn-voltar {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(26, 26, 46, 0.85));
+    color: var(--primary-light);
+    padding: 12px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    transition: all 0.4s ease;
+    border: 2px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+}
+
+.btn-voltar:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-glow);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+        height: auto;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #0a0a1a 0%, #151528 100%);
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .form-wrapper {
+        padding: 2rem;
+        border-radius: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+        margin-bottom: 2rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    button {
+        width: 100%;
+        min-width: auto;
+        padding: 16px 24px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        font-size: 16px;
+        padding: 16px 14px;
+    }
+
+    .btn-voltar {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .form-wrapper {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .button-container {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+    }
+
+    button {
+        padding: 18px 24px;
+        font-size: 1rem;
+    }
+}
+
+/* Animações suaves */
+.form-grid > * {
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 5px;
+    border: 2px solid #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-dark), #004a9c);
+}
+
+/* Efeito de brilho nos elementos interativos */
+input[type="text"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--primary-light);
+}
+
+/* Destaque para campos obrigatórios */
+input:required,
+textarea:required {
+    border-left: 4px solid var(--primary-color);
+    background: linear-gradient(90deg, rgba(0, 124, 237, 0.1) 0%, transparent 20px);
+}
+
+/* Loading state para botões */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+button:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Estilo para mensagens de erro */
+.error {
+    color: #ff6b6b;
+    font-size: 0.95rem;
+    margin-top: 6px;
+    display: block;
+    font-weight: 600;
+    background: rgba(220, 53, 69, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--danger-color);
+}
+
+/* Melhorias na tabela (caso precise) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 35px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+table th, table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+table td {
+    color: var(--text-secondary);
+    background: var(--bg-card-light);
+}
+
+table td a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+table td a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+    background: rgba(0, 124, 237, 0.2);
+}
+
+/* Efeitos de foco aprimorados */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Sombras e profundidade aprimoradas */
+.form-wrapper, .btn-voltar, button, input, select, textarea {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Gradientes e overlays */
+.button-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+/* Modo escuro específico para elementos de texto */
+strong, b {
+    color: var(--text-primary);
+}
+
+small {
+    color: var(--text-muted);
+}
+
+/* Placeholders em modo escuro */
+::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+::-webkit-input-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+::-moz-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
