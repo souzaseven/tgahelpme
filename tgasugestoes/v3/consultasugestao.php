@@ -603,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <img src="https://profile-counter.glitch.me/tgahelpme-consultasugestaophp/count.svg" alt="Contador de Visitantes" style="border: 2px solid; border-radius: 8px; background: transparent; padding: 5px;">
 -->
 <div style="display: flex; justify-content: center; margin: 10px 0;">
-  <img alt="visitas" src="https://hits.sh/tgameajuda.com/consultasugestaophp.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+  <img alt="visitas" src="https://hits.sh/tgameajuda.com/consultasugestaophpv2.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
 </div>
 </body>
 </html>
