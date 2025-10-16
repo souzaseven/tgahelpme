@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGA Versões - Sistema de Controle</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/tgahelpme/Desafios/icon%20bot%20tga.ico" type="image/x-icon">
+    
+    <!-- Fontes Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="./v3/main.css">
+    <link rel="stylesheet" href="./v3/responsive.css">
+    <link rel="stylesheet" href="./v3/components.css">
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+
+
+</head>
+
+<body>
+   
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="header-content">
+        <!-- Botão Voltar para V1 -->
+        <a href="https://tgameajuda.com/NovidadesVersao/novidadeversao.html" class="version-toggle-btn" title="Voltar para versão anterior"><!--
+            <i class="fas fa-arrow-left"></i>-->
+            v1
+        </a>
+ <a href="https://tgameajuda.com/" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+
+            <h1 class="logo">
+                <i class="fas fa-rocket"></i>
+                TGA VERSÕES
+            </h1>
+            <p class="subtitle">Central de downloads e novidades do sistema</p>
+        </div>
+    </header>
+
+    <!-- Barra de Pesquisa -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" 
+                           class="search-input" 
+                           id="searchInput" 
+                           placeholder="Pesquisar versões... (ex: 25.09, 2024, PDV)">
+                    <div class="search-hints">
+                        <span class="hint">Dica: Digite números como "2410" para buscar "24.10"</span>
+                    </div>
+                </div>
+                <div id="resultsCount" class="results-count">Carregando versões...</div>
+            </div>
+
+<!-- Foto na lateral direita superior -->
+<div class="floating-profile">
+    <button class="floating-profile-toggle" onclick="toggleProfile()" title="Ocultar perfil">
+        <i class="fas fa-times"></i>
+    </button>
+    <img src="./v3/img/eutga.png" alt="Anderson de Souza" class="floating-profile-image">
+</div>
+
+<!-- Informações abaixo da foto -->
+<div class="floating-profile-info">
+    <h2 class="floating-profile-name">Anderson de Souza</h2>
+    <p class="floating-profile-role">Analista de Suporte TGA</p>
+</div>
+
+        </div>
+    </section>
+
+
+    <!-- Botões de Ação Flutuantes -->
+    <div class="floating-actions">
+        <button onclick="toggleDarkMode()" class="action-btn dark-mode-btn" title="Modo Escuro">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button id="scrollToTopBtn" class="action-btn scroll-top-btn" title="Voltar ao Topo">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <a href="https://tgameajuda.com/" class="action-btn back-btn" title="Voltar ao Site Principal">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Ano 2025 -->
+
+<section class="version-section" id="2025">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Versões 2025
+            </h2>
+            <div class="section-badge">Atual</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- TGA Atualizador 25.03 -->
+            <div class="version-card" data-version="25.03-atualizador">
+                <div class="card-header">
+                    <h3 class="version-title">TGA Atualizador 25.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Ferramenta de atualização automática</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/521816/tga-atualizador?ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="https://tgameajuda.com/NovidadesVersao/TGA.Atualizador-25.03.01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Migrador Firebird 5.0 -->
+            <div class="version-card" data-version="firebird-5.0">
+                <div class="card-header">
+                    <h3 class="version-title">Migrador Firebird 5.0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Migração para Firebird 5.0</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/527506/firebird-50" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./Instaladores 2025/MigradorFirebird.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+    <a href="./Instaladores 2025/COPIAR_DLLS _FIREBIRD-5 _V2_2.bat" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Copiar Dll.bat
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.10">
+                <div class="card-header">
+                    <h3 class="version-title">25.10</h3>
+                    <span class="version-badge new">Nova</span>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Última versão com correções e melhorias</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/557089/versao-25-10-01?menuId=35619-97968-557089&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_10_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.09 -->
+            <div class="version-card" data-version="25.09">
+                <div class="card-header">
+                    <h3 class="version-title">25.09</h3>
+                
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/553207/versao-25-09-01?menuId=35619-97968-553207&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_09_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.08 -->
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/549641/versao-25-08-01" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_08_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.07 -->
+            <div class="version-card" data-version="25.07">
+                <div class="card-header">
+                    <h3 class="version-title">25.07</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/544456/versao-25-07-01" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_07_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.06 -->
+            <div class="version-card" data-version="25.06">
+                <div class="card-header">
+                    <h3 class="version-title">25.06</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/541363/versao-25-06-01?menuId=35619-97968-541363&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_06_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.05 -->
+            <div class="version-card" data-version="25.05">
+                <div class="card-header">
+                    <h3 class="version-title">25.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/533605/versao-25-05-01?menuId=35619-97968-533605&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_05_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.04 -->
+            <div class="version-card" data-version="25.04">
+                <div class="card-header">
+                    <h3 class="version-title">25.04</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529318/versao-25-04-01?menuId=35619-97968-529318&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_04_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.03 -->
+            <div class="version-card" data-version="25.03">
+                <div class="card-header">
+                    <h3 class="version-title">25.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/522790/versao-25-03-01?menuId=35619-97968-522790&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_03_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.02 -->
+            <div class="version-card" data-version="25.02">
+                <div class="card-header">
+                    <h3 class="version-title">25.02</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/518858/versao-25-02-01?menuId=35619-97968-518858&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_02_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.01 -->
+            <div class="version-card" data-version="25.01">
+                <div class="card-header">
+                    <h3 class="version-title">25.01</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/513739/versao-25-01-01?menuId=35619-97968-513739&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2025/Instalador_TGA_v25_01_R01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Módulo: Força de Vendas -->
+<section class="module-section" id="forca-vendas">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-mobile-alt"></i>
+                Força de Vendas
+            </h2>
+            <div class="section-badge">Mobile-OFF</div>
+        </div>
+        
+        <div class="version-grid">
+    
+            <!-- Versão 25.09 Força de Vendas -->
+            <div class="version-card" data-version="25.09">
+                <div class="card-header">
+                    <h3 class="version-title">25.09 FV</h3>
+                    <span class="version-badge update">Atualizado</span>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">API Web e aplicativo mobile off</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/ForcadeVendas/API WEB/Instalador_API_v25_09_R01.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-code"></i>
+                            API
+                        </a>
+                        <a href="./MOBILE/ForcadeVendas/Apk/Forca_de_Vendasv25-09.apk" 
+                           class="btn btn-outline">
+                            <i class="fas fa-mobile"></i>
+                            APK
+                        </a>
+                        <a href="https://tgameajuda.com/NovidadesVersao/MOBILE/ForcadeVendas/index.html" 
+                           class="btn btn-info">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./MOBILE/ForcadeVendas/API WEB/Trigger_carga_atualizados_Forca_vendas.txt" 
+                           class="btn btn-outline">
+                            <i class="fas fa-database"></i>
+                            Triggers
+                        </a>
+                    </div>
+                </div>
+            </div>
+ <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08 FV</h3><!--
+                    <span class="version-badge update"></span>-->
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">API Web e aplicativo mobile off</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/ForcadeVendas/API WEB/Instalador_API_v25_08_R01.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-code"></i>
+                            API
+                        </a>
+                 
+                        <a href="https://tgameajuda.com/NovidadesVersao/MOBILE/ForcadeVendas/index.html" 
+                           class="btn btn-info">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Módulo: Mobile ON -->
+<section class="module-section" id="mobile-on">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-tablet-alt"></i>
+                Mobile ON - Smart_Client
+            </h2>
+            <div class="section-badge">Online</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versões 2025 -->
+
+<div class="version-card" data-version="25.10">
+                <div class="card-header">
+                    <h3 class="version-title">25.10 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para IOS</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.10.01/TgaFV-25.10.01.7z" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="https://apps.apple.com/br/app/smart-client-tga/id6752778618?platform=iphone" 
+                           class="btn btn-success">
+                            <i class="fab fa-apple"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+<div class="version-card" data-version="25.10">
+                <div class="card-header">
+                    <h3 class="version-title">25.10 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.10.01/TgaFV-25.10.01.7z" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Smart_Client/25.10.01/Smart_Client_(TGAON)25_10.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.09">
+                <div class="card-header">
+                    <h3 class="version-title">25.09 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.09.01/TGA_FV2509.7z" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Smart_Client/25.09.01/Smart_Client_(TGAON)25-09.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.08.01/TgaFV25_08.7z" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Smart_Client/25.08.01/Smart_Client(TGAON)25_08.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.07">
+                <div class="card-header">
+                    <h3 class="version-title">25.07 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.07.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Smart_Client/Smart_Client(TGAON)-25.07.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.06">
+                <div class="card-header">
+                    <h3 class="version-title">25.06 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Smart_Client/25.06.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Smart_Client/25.06.01/Smart_Client(TGAON)25-06.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.05">
+                <div class="card-header">
+                    <h3 class="version-title">25.05 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/25.05.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/25.05.01/TGAON25-05_v2.4.1.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.04">
+                <div class="card-header">
+                    <h3 class="version-title">25.04 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/25.04.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/25.04.01/TGAON_v2.4.1- 25-04.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.03">
+                <div class="card-header">
+                    <h3 class="version-title">25.03 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/25.03.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/25.03.01/TGAON_v2.4.1(25-03).apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.02">
+                <div class="card-header">
+                    <h3 class="version-title">25.02 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/25.02.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/25.02.01/TGAON-25-02_v2.4.1.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="25.01">
+                <div class="card-header">
+                    <h3 class="version-title">25.01 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/25.01.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/25.01.01/TGAON_v2.4.1(25-01).apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versões 2024 -->
+            <div class="version-card" data-version="24.12">
+                <div class="card-header">
+                    <h3 class="version-title">24.12 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/24.12.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/24.12.01/TGAON_v2.4.0-29-g4f82769.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="24.11">
+                <div class="card-header">
+                    <h3 class="version-title">24.11 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/24.11.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/24.11.01/TGAON.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="24.05">
+                <div class="card-header">
+                    <h3 class="version-title">24.05 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/24.05.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/24.05.01/TGAON_v2.3.1.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versões 2023 -->
+            <div class="version-card" data-version="23.12">
+                <div class="card-header">
+                    <h3 class="version-title">23.12 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/23.12.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/23.12.01/TGAON_v2.2.0.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="23.04">
+                <div class="card-header">
+                    <h3 class="version-title">23.04 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/23.04.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/23.04.01/TGAON_v2.1.5.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versões 2022 -->
+            <div class="version-card" data-version="22.09">
+                <div class="card-header">
+                    <h3 class="version-title">22.09 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/22.09.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/22.09.01/TGAON.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="22.06">
+                <div class="card-header">
+                    <h3 class="version-title">22.06 ON</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Força de Vendas e App para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile ON - FV/22.06.01/TgaFV.exe" 
+                           class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            FV
+                        </a>
+                        <a href="./MOBILE/Mobile ON - FV/22.06.01/TGAON.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            App
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Módulo: Mobile OFF -->
+<section class="module-section" id="mobile-off">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-tablet-alt"></i>
+                Mobile OFF
+            </h2>
+            <div class="section-badge">Offline</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versão 25.08 Mobile OFF -->
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Versões para aparelhos Android <br>  v8a-v2.12.7(aparelhos mais recentes)</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile%20Off%20-%20RT/tgamobile-arm64-v8a-v2.12.7(aparelhos mais recentes).apk" 
+                           class="btn btn-outline">
+                            <i class="fas fa-mobile"></i>
+                            ARM64
+                        </a>
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Versões para aparelhos Android <br>v7a-v2.12.7(aparelhos mais antigos)</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group compact">
+                        <a href="./MOBILE/Mobile%20Off%20-%20RT/tgamobile-armeabi-v7a-v2.12.7(aparelhos mais antigos).apk" 
+                           class="btn btn-outline">
+                            <i class="fas fa-mobile"></i>
+                            Armeabi
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.05 RT Mobile OFF -->
+            <div class="version-card" data-version="23.05-rt">
+                <div class="card-header">
+                    <h3 class="version-title">23.05 RT</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Instalador para Windows</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./MOBILE/Mobile Off - RT/tgaMobile Instalador 23_05_01.exe" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.05 IOS Mobile OFF -->
+            <div class="version-card" data-version="23.05-ios">
+                <div class="card-header">
+                    <h3 class="version-title">23.05 IOS</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Versão para dispositivos Apple</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://apps.apple.com/br/app/tga-mobile/id1591660759" 
+                           class="btn btn-success" target="_blank">
+                            <i class="fab fa-apple"></i>
+                            App Store
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.05 ANDROID Mobile OFF -->
+            <div class="version-card" data-version="23.05-android">
+                <div class="card-header">
+                    <h3 class="version-title">23.05 ANDROID</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Versão para Android</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./MOBILE/Mobile Off - RT/tgamobile_2.10.0 ANDROID 23-05.apk" 
+                           class="btn btn-success">
+                            <i class="fab fa-android"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.05 Xiaomi Mobile OFF -->
+            <div class="version-card" data-version="23.05-xiaomi">
+                <div class="card-header">
+                    <h3 class="version-title">23.05 Xiaomi</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Versão específica para dispositivos Xiaomi</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./MOBILE/Mobile Off - RT/app-arm64-v8a-release xiaomi 23-05.apk" 
+                           class="btn btn-success">
+                            <i class="fas fa-mobile"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Módulo: PDV OFF -->
+<section class="module-section" id="pdv-off">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-cash-register"></i>
+                PDV OFF
+            </h2>
+            <div class="section-badge">Ponto de Venda</div>
+        </div>
+        
+        <div class="version-grid">
+<!-- Versão 25.10 PDV OFF -->
+            <div class="version-card" data-version="25.10">
+                <div class="card-header">
+                    <h3 class="version-title">25.10 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/557089/versao-25-10-01?menuId=35619-97968-557089&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_10_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Versão 25.09 PDV OFF -->
+            <div class="version-card" data-version="25.09">
+                <div class="card-header">
+                    <h3 class="version-title">25.09 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/553207/versao-25-09-01?menuId=35619-97968-553207&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.08 PDV OFF -->
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/549641/versao-25-08-01" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_08_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.07 PDV OFF -->
+            <div class="version-card" data-version="25.07">
+                <div class="card-header">
+                    <h3 class="version-title">25.07 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/544456/versao-25-07-01" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_07_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.06 PDV OFF -->
+            <div class="version-card" data-version="25.06">
+                <div class="card-header">
+                    <h3 class="version-title">25.06 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/541363/versao-25-06-01?menuId=35619-97968-541363&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_06_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.05 PDV OFF -->
+            <div class="version-card" data-version="25.05">
+                <div class="card-header">
+                    <h3 class="version-title">25.05 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/533605/versao-25-05-01?menuId=35619-97968-533605&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_05_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.04 PDV OFF -->
+            <div class="version-card" data-version="25.04">
+                <div class="card-header">
+                    <h3 class="version-title">25.04 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529318/versao-25-04-01?menuId=35619-97968-529318&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_04_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.03 PDV OFF -->
+            <div class="version-card" data-version="25.03">
+                <div class="card-header">
+                    <h3 class="version-title">25.03 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/522790/versao-25-03-01?menuId=35619-97968-522790&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_03_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.02 PDV OFF -->
+            <div class="version-card" data-version="25.02">
+                <div class="card-header">
+                    <h3 class="version-title">25.02 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/518858/versao-25-02-01?menuId=35619-97968-518858&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v25_02_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.12 PDV OFF -->
+            <div class="version-card" data-version="24.12">
+                <div class="card-header">
+                    <h3 class="version-title">24.12 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/508838/versao-24-12-01?menuId=35619-97968-508838&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_12_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.11 PDV OFF -->
+            <div class="version-card" data-version="24.11">
+                <div class="card-header">
+                    <h3 class="version-title">24.11 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/504373/versao-24-11-01?menuId=35619-97968-504373&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_11_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.09 PDV OFF -->
+            <div class="version-card" data-version="24.09">
+                <div class="card-header">
+                    <h3 class="version-title">24.09 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/497061/versao-240901?menuId=35619-97968-497061&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.08 PDV OFF -->
+            <div class="version-card" data-version="24.08">
+                <div class="card-header">
+                    <h3 class="version-title">24.08 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/488277/versao-240801?menuId=35619-97968-488277&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_08_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.05 PDV OFF -->
+            <div class="version-card" data-version="24.05">
+                <div class="card-header">
+                    <h3 class="version-title">24.05 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/468655/versao-240401?menuId=35619-97968-468655&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_05_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.04 PDV OFF -->
+            <div class="version-card" data-version="24.04">
+                <div class="card-header">
+                    <h3 class="version-title">24.04 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/459451/versao-240401?menuId=35619-97968-459451&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_04_R03.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.01 PDV OFF -->
+            <div class="version-card" data-version="24.01">
+                <div class="card-header">
+                    <h3 class="version-title">24.01 PDV</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/446940/versao-240101?menuId=35619-97968-446940&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./PDV OFF/Instalador_PDVOFF_v24_01_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+<!-- Versão 23.12 PDV OFF -->
+<div class="version-card" data-version="23.12">
+    <div class="card-header">
+        <h3 class="version-title">23.12 PDV</h3>
+    </div>
+    <div class="card-body">
+        <p class="version-desc"></p>
+    </div>
+    <div class="card-footer">
+        <div class="button-group">
+            <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/508838/versao-24-12-01?menuId=35619-97968-508838&ticketId=&q=" 
+               class="btn btn-primary" target="_blank">
+                <i class="fas fa-newspaper"></i>
+                Novidades
+            </a>
+            <a href="./PDV OFF/Instalador_PDVOFF_v24_12_R01.exe" 
+               class="btn btn-success">
+                <i class="fas fa-download"></i>
+                Instalar
+            </a>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- Módulo: WhatsApp -->
+<section class="module-section" id="whatsapp">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </h2>
+            <div class="section-badge">Integração</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versão 25.09 WhatsApp -->
+            <div class="version-card" data-version="25.09">
+                <div class="card-header">
+                    <h3 class="version-title">25.09 WA</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./WHATSAPP/Instalador_TGA_Service_v25.09.01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.08 WhatsApp -->
+            <div class="version-card" data-version="25.08">
+                <div class="card-header">
+                    <h3 class="version-title">25.08 WA</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./WHATSAPP/Instalador_TGA_Service_v4.0.11.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.06 WhatsApp -->
+            <div class="version-card" data-version="25.06">
+                <div class="card-header">
+                    <h3 class="version-title">25.06 WA</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./WHATSAPP/Instalador_TGA_Service_v25.06.01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 25.04 WhatsApp -->
+            <div class="version-card" data-version="25.04">
+                <div class="card-header">
+                    <h3 class="version-title">25.04 WA</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/529727/tga_service" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-book"></i>
+                            Manual
+                        </a>
+                        <a href="./WHATSAPP/Instalador_TGA_Service.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão v3.3.0 WhatsApp -->
+            <div class="version-card" data-version="3.3.0">
+                <div class="card-header">
+                    <h3 class="version-title">v3.3.0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./WHATSAPP/TGAService_v3.3.0.msi" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão v3.0.0 WhatsApp -->
+            <div class="version-card" data-version="3.0.0">
+                <div class="card-header">
+                    <h3 class="version-title">v3.0.0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./WHATSAPP/TGAService_v3.0.0.msi" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão v2.1.0 WhatsApp -->
+            <div class="version-card" data-version="2.1.0">
+                <div class="card-header">
+                    <h3 class="version-title">v2.1.0</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./WHATSAPP/TGAService_v2.1.0.msi" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão v1.0.5 WhatsApp -->
+            <div class="version-card" data-version="1.0.5">
+                <div class="card-header">
+                    <h3 class="version-title">v1.0.5</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc">Integração com WhatsApp</p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./WHATSAPP/TGAService_v1.0.5.msi" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Ano 2024 -->
+<section class="version-section" id="2024">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Versões 2024
+            </h2>
+            <div class="section-badge">Anterior</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versão 24.12 -->
+            <div class="version-card" data-version="24.12">
+                <div class="card-header">
+                    <h3 class="version-title">24.12</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/508838/versao-24-12-01?menuId=35619-97968-508838&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_12_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v24_12.FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.11 -->
+            <div class="version-card" data-version="24.11">
+                <div class="card-header">
+                    <h3 class="version-title">24.11</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/504373/versao-24-11-01?menuId=35619-97968-504373&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_11_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.09 -->
+            <div class="version-card" data-version="24.09">
+                <div class="card-header">
+                    <h3 class="version-title">24.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/497061/versao-240901?menuId=35619-97968-497061&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.08 -->
+            <div class="version-card" data-version="24.08">
+                <div class="card-header">
+                    <h3 class="version-title">24.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/488277/versao-240801?menuId=35619-97968-488277&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_08_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.07 -->
+            <div class="version-card" data-version="24.07">
+                <div class="card-header">
+                    <h3 class="version-title">24.07</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/482475/versao-240701?menuId=35619-97968-482475&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_07_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.05 -->
+            <div class="version-card" data-version="24.05">
+                <div class="card-header">
+                    <h3 class="version-title">24.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/468655/versao-240401?menuId=35619-97968-468655&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_05_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.04 -->
+            <div class="version-card" data-version="24.04">
+                <div class="card-header">
+                    <h3 class="version-title">24.04</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/459451/versao-240401?menuId=35619-97968-459451&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_04_R03.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.02 -->
+            <div class="version-card" data-version="24.02">
+                <div class="card-header">
+                    <h3 class="version-title">24.02</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/450538/versao-240201?menuId=35619-97968-450538&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_02_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v24_02.FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 24.01 -->
+            <div class="version-card" data-version="24.01">
+                <div class="card-header">
+                    <h3 class="version-title">24.01</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/446940/versao-240101?menuId=35619-97968-446940&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2024/Instalador_TGA_v24_01_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v24_01.FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Ano 2023 -->
+<section class="version-section" id="2023">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Versões 2023
+            </h2>
+            <div class="section-badge">Arquivado</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versão 23.11 -->
+            <div class="version-card" data-version="23.11">
+                <div class="card-header">
+                    <h3 class="version-title">23.11</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/434445/versao-231101?menuId=35619-97968-434445&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_11_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v23_11.FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.10 -->
+            <div class="version-card" data-version="23.10">
+                <div class="card-header">
+                    <h3 class="version-title">23.10</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/426342/versao-231001?menuId=35619-97968-426342&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_10_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.09 -->
+            <div class="version-card" data-version="23.09">
+                <div class="card-header">
+                    <h3 class="version-title">23.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/414326/versao-230901?menuId=35619-97968-414326&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.08 -->
+            <div class="version-card" data-version="23.08">
+                <div class="card-header">
+                    <h3 class="version-title">23.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/396387/versao-230601?menuId=35619-97968-396387&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_08_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.05 -->
+            <div class="version-card" data-version="23.05">
+                <div class="card-header">
+                    <h3 class="version-title">23.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/385597/versao-230501?menuId=35619-97968-385597&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_05_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.03 -->
+            <div class="version-card" data-version="23.03">
+                <div class="card-header">
+                    <h3 class="version-title">23.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/372251/versao-23-03-01?menuId=35619-97968-372251&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_03_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.02 -->
+            <div class="version-card" data-version="23.02">
+                <div class="card-header">
+                    <h3 class="version-title">23.02</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/363425/versao-23-02-01?menuId=35619-97968-363425&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_02_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v23_02.FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 23.01 -->
+            <div class="version-card" data-version="23.01">
+                <div class="card-header">
+                    <h3 class="version-title">23.01</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/355649/23-01-01?menuId=35619-97968-355649&ticketId=&q=" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2023/Instalador_TGA_v23_01_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Ano 2022 -->
+<section class="version-section" id="2022">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-calendar-alt"></i>
+                Versões 2022
+            </h2>
+            <div class="section-badge">Arquivado</div>
+        </div>
+        
+        <div class="version-grid">
+            <!-- Versão 22.11 -->
+            <div class="version-card" data-version="22.11">
+                <div class="card-header">
+                    <h3 class="version-title">22.11</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/313019/releases" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-newspaper"></i>
+                            Novidades
+                        </a>
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_11_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.10 -->
+            <div class="version-card" data-version="22.10">
+                <div class="card-header">
+                    <h3 class="version-title">22.10</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_10_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.09 -->
+            <div class="version-card" data-version="22.09">
+                <div class="card-header">
+                    <h3 class="version-title">22.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                        <a href="./dolar/$TGA-v22_09..FDB" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-dollar-sign"></i>
+                            Dólar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.09 Atualizador -->
+            <div class="version-card" data-version="22.09-atualizador">
+                <div class="card-header">
+                    <h3 class="version-title">22.09 Atualizador</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./TGA.Atualizador-22.09.01.rc9.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar Atualizador
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.08 -->
+            <div class="version-card" data-version="22.08">
+                <div class="card-header">
+                    <h3 class="version-title">22.08</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_08_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.07 -->
+            <div class="version-card" data-version="22.07">
+                <div class="card-header">
+                    <h3 class="version-title">22.07</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_07_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.05 -->
+            <div class="version-card" data-version="22.05">
+                <div class="card-header">
+                    <h3 class="version-title">22.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_05_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.03 -->
+            <div class="version-card" data-version="22.03">
+                <div class="card-header">
+                    <h3 class="version-title">22.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_03_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Versão 22.01 -->
+            <div class="version-card" data-version="22.01">
+                <div class="card-header">
+                    <h3 class="version-title">22.01</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2022/Instalador_TGA_v22_01_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Versões Antigas -->
+<section class="version-section" id="antigas">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-archive"></i>
+                Versões Antigas
+            </h2>
+            <div class="section-badge">Histórico</div>
+        </div>
+
+        <div class="version-grid">
+<div class="version-card" data-version="21.12">
+                <div class="card-header">
+                    <h3 class="version-title">21.12</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2021/Instalador_TGA_v21_12_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+<div class="version-card" data-version="21.09">
+                <div class="card-header">
+                    <h3 class="version-title">21.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2021/Instalador_TGA_v21_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+ <div class="version-card" data-version="21.06">
+                <div class="card-header">
+                    <h3 class="version-title">21.06</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2021/Instalador_TGA_v21_06_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+ <div class="version-card" data-version="21.02">
+                <div class="card-header">
+                    <h3 class="version-title">21.02</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaladores 2021/Instalador_TGA_v21_01_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="version-card" data-version="19.03">
+                <div class="card-header">
+                    <h3 class="version-title">19.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v19_03_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="version-card" data-version="18.09">
+                <div class="card-header">
+                    <h3 class="version-title">18.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v18_09_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="18.05">
+                <div class="card-header">
+                    <h3 class="version-title">18.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v18_05_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="16.06">
+                <div class="card-header">
+                    <h3 class="version-title">16.06</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v16_06_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="16.04">
+                <div class="card-header">
+                    <h3 class="version-title">16.04</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v16_04_R03.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="16.03">
+                <div class="card-header">
+                    <h3 class="version-title">16.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v16_03_R02 (CEST).exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="15.03">
+                <div class="card-header">
+                    <h3 class="version-title">15.03</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v15_03_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="14.09">
+                <div class="card-header">
+                    <h3 class="version-title">14.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v14_09_R03.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="13.09">
+                <div class="card-header">
+                    <h3 class="version-title">13.09</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v13_09_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="13.06">
+                <div class="card-header">
+                    <h3 class="version-title">13.06</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v13_06_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="12.11">
+                <div class="card-header">
+                    <h3 class="version-title">12.11</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v12_11_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="11.05">
+                <div class="card-header">
+                    <h3 class="version-title">11.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v11_05_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="11.02">
+                <div class="card-header">
+                    <h3 class="version-title">11.02</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v11_02_R02.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="version-card" data-version="10.05">
+                <div class="card-header">
+                    <h3 class="version-title">10.05</h3>
+                </div>
+                <div class="card-body">
+                    <p class="version-desc"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="button-group">
+                        <a href="./Instaldores 2010 a 2019/Instalador_TGA_v10_05_R01.exe" 
+                           class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Instalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TGA Sistemas</h4>
+                    <p>Central de versões e downloads</p>
+                </div>
+                <div class="footer-section">
+                    <div class="visitor-counter">
+                        <img src="https://hits.sh/tgameajuda.com/NovidadesVersao/novidadeversao_v1.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico" 
+                             alt="Contador de visitas">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TGA Sistemas. Todos os direitos reservados.</p>
+            </div>
+
+
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./v3/app.js"></script>
+    <script src="./v3/darkmode.js"></script>
+
+
+</body>
+</html>
