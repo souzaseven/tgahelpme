@@ -1,155 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abrir Tickets Sequenciais</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .status {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 4px;
-            display: none;
-        }
-        .success {
-            background-color: #dff0d8;
-            color: #3c763d;
-            display: block;
-        }
-        .error {
-            background-color: #f2dede;
-            color: #a94442;
-            display: block;
-        }
-    </style>
+<!-- Ícone e Meta -->
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abrir Tickets Sequenciais</title>
+  <link rel="stylesheet" href="./asserts/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Abrir Tickets Sequenciais</h1>
-        <div class="form-group">
-            <label for="numeroInicial">Número Inicial:</label>
-            <input type="number" id="numeroInicial" placeholder="Ex: 240889">
-        </div>
-        <div class="form-group">
-            <label for="numeroFinal">Número Final:</label>
-            <input type="number" id="numeroFinal" placeholder="Ex: 240895">
-        </div>
-        <button id="abrirTickets">Abrir Tickets</button>
-        <div id="statusMessage" class="status"></div>
+  <div class="container">
+    <h1>Abrir Tickets Sequenciais</h1>
+
+
+    <!-- Formulário -->
+    <div class="form-group">
+      <label for="numeroInicial">Número Inicial:</label>
+      <input type="number" id="numeroInicial" placeholder="Ex: 240889">
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('abrirTickets').addEventListener('click', function() {
-                const numeroInicial = parseInt(document.getElementById('numeroInicial').value);
-                const numeroFinal = parseInt(document.getElementById('numeroFinal').value);
-                const statusMessage = document.getElementById('statusMessage');
-                
-                // Reset status message
-                statusMessage.className = 'status';
-                statusMessage.textContent = '';
-                
-                // Validations
-                if (isNaN(numeroInicial)) {
-                    statusMessage.textContent = 'Por favor, informe um número inicial válido.';
-                    statusMessage.classList.add('error');
-                    return;
-                }
-                
-                if (isNaN(numeroFinal)) {
-                    statusMessage.textContent = 'Por favor, informe um número final válido.';
-                    statusMessage.classList.add('error');
-                    return;
-                }
-                
-                if (numeroInicial > numeroFinal) {
-                    statusMessage.textContent = 'O número final deve ser maior ou igual ao número inicial.';
-                    statusMessage.classList.add('error');
-                    return;
-                }
-                
-                // Calculate how many tabs will be opened
-                const totalTabs = numeroFinal - numeroInicial + 1;
-                
-                // Ask for confirmation if opening many tabs
-                if (totalTabs > 5) {
-                    const confirmacao = confirm(`Você está prestes a abrir ${totalTabs} abas. Deseja continuar?`);
-                    if (!confirmacao) {
-                        statusMessage.textContent = 'Operação cancelada pelo usuário.';
-                        statusMessage.classList.add('error');
-                        return;
-                    }
-                }
-                
-                // Open tabs with slight delay to avoid popup blockers
-                let openedTabs = 0;
-                const openTabWithDelay = (i) => {
-                    if (i > numeroFinal) {
-                        statusMessage.textContent = `${openedTabs} abas foram abertas com sucesso!`;
-                        statusMessage.classList.add('success');
-                        return;
-                    }
-                    
-                    setTimeout(() => {
-                        const url = `https://atendimento.tgasistemas.com.br/Ticket/Edit/${i}`;
-                        const newWindow = window.open(url, '_blank');
-                        if (newWindow) {
-                            openedTabs++;
-                        }
-                        openTabWithDelay(i + 1);
-                    }, 200); // 200ms delay between tabs
-                };
-                
-                statusMessage.textContent = 'Abrindo abas...';
-                statusMessage.classList.add('success');
-                openTabWithDelay(numeroInicial);
-            });
-        });
-    </script>
+    <div class="form-group">
+      <label for="numeroFinal">Número Final:</label>
+      <input type="number" id="numeroFinal" placeholder="Ex: 240895">
+    </div>
+
+    <button id="abrirTickets">🚀 Abrir Tickets</button>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
+    <!-- Status -->
+    <div id="statusMessage" class="status"></div>
+  </div>
+
+  <!-- Notificações toast -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="./asserts/js/script.js"></script>
 </body>
 </html>
