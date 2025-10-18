@@ -1,0 +1,363 @@
+/* TGA Me Ajuda Styles - Dark Mode - CORRIGIDO */
+.meajuda-section {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.meajuda-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.meajuda-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.meajuda-subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Grid Layout CORRIGIDO */
+.meajuda-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Cards CORRIGIDOS */
+.meajuda-card {
+    background: #2d3748;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #4a5568;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.meajuda-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: #667eea;
+}
+
+.meajuda-card.compact {
+    padding: 15px;
+}
+
+.meajuda-card.full-width {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+}
+
+.meajuda-card h3 {
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 8px;
+}
+
+/* Buttons CORRIGIDOS */
+.meajuda-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.meajuda-buttons.compact {
+    gap: 8px;
+}
+
+/* Grids de botões CORRIGIDOS */
+.meajuda-buttons-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.meajuda-buttons-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.meajuda-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+    background: #4a5568;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.meajuda-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.meajuda-btn.compact-btn {
+    padding: 10px 12px;
+    font-size: 0.85em;
+}
+
+/* Button Variants */
+.meajuda-btn.primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.meajuda-btn.secondary { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.meajuda-btn.success { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.meajuda-btn.info { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.meajuda-btn.warning { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+.meajuda-btn.primary:hover { background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%); }
+.meajuda-btn.secondary:hover { background: linear-gradient(135deg, #d882e9 0%, #d94d63 100%); }
+.meajuda-btn.success:hover { background: linear-gradient(135deg, #3d9be8 0%, #00d9e3 100%); }
+.meajuda-btn.info:hover { background: linear-gradient(135deg, #3bd371 0%, #32e0c4 100%); }
+.meajuda-btn.warning:hover { background: linear-gradient(135deg, #e86592 0%, #e6d13d 100%); }
+
+/* Button Icons CORRIGIDOS */
+.meajuda-btn-icon {
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
+
+.meajuda-btn-icon.compact-icon {
+    font-size: 1em;
+}
+
+/* Ajustes específicos para cards full-width */
+.meajuda-card.full-width .meajuda-buttons-grid-4,
+.meajuda-card.full-width .meajuda-buttons-grid-5 {
+    margin-top: 10px;
+}
+
+/* Modal Styles CORRIGIDOS */
+.meajuda-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.meajuda-modal-content {
+    background: #2d3748;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #4a5568;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.meajuda-modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.meajuda-modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.close-meajuda-modal {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close-meajuda-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.meajuda-info-grid {
+    padding: 20px;
+}
+
+/* Info Sections */
+.info-section {
+    background: #4a5568;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #667eea;
+}
+
+.info-section h3 {
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.info-section h4 {
+    color: #cbd5e0;
+    margin: 15px 0 10px 0;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Alerts and Highlights */
+.alert {
+    background: #fed7d7;
+    color: #c53030;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #f56565;
+    margin: 15px 0;
+}
+
+.highlight {
+    background: #2d3748;
+    border: 1px solid #4a5568;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.success-alert {
+    background: #c6f6d5;
+    color: #276749;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #48bb78;
+}
+
+/* Responsive Design CORRIGIDO */
+@media (max-width: 1200px) {
+    .meajuda-buttons-grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
+    .meajuda-buttons-grid-5 {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .meajuda-grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .meajuda-buttons-grid-4,
+    .meajuda-buttons-grid-5 {
+        grid-template-columns: 1fr;
+    }
+    
+    .meajuda-header h1 {
+        font-size: 2em;
+    }
+    
+    .meajuda-modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .meajuda-card.full-width {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .meajuda-section {
+        padding: 10px;
+    }
+    
+    .meajuda-card {
+        padding: 15px;
+    }
+    
+    .meajuda-btn {
+        padding: 10px 12px;
+        font-size: 0.85em;
+    }
+    
+    .meajuda-card.full-width {
+        margin-top: 10px;
+    }
+}
+
+/* Animation for modal appearance */
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.meajuda-modal-content {
+    animation: modalAppear 0.3s ease-out;
+}
+
+/* Scrollbar Styling */
+.meajuda-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.meajuda-modal-content::-webkit-scrollbar-track {
+    background: #4a5568;
+    border-radius: 0 15px 15px 0;
+}
+
+.meajuda-modal-content::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+.meajuda-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #5a6fd8;
+}
+
+/* Garantir que os grids funcionem corretamente */
+.meajuda-grid-4 > * {
+    min-width: 0;
+}

@@ -60,6 +60,7 @@ include "conexao.php";
 <link rel="stylesheet" href="css/smart-section.css">
 <link rel="stylesheet" href="css/modals.css">
 <link rel="stylesheet" href="css/timeout.css">
+<link rel="stylesheet" href="css/meajuda.css">
 </head>
 <body>
     <header>
@@ -70,6 +71,7 @@ include "conexao.php";
                 <button class="nav-btn" data-table="operadores">⚡ Operadores</button>
                 <button class="nav-btn" data-table="devocionais">📖 Devocionais</button>
                 <button class="nav-btn" id="smartSectionBtn">📳 Sessão Smart</button>
+<button class="nav-btn" id="meAjudaBtn">🛠️ TGA Me Ajuda</button>
             </nav>
         </div>
     </header>
@@ -92,7 +94,7 @@ include "conexao.php";
     <div id="linksLiderModal" class="modal"></div>
     <div id="smartModal" class="modal"></div>
 <div id="formulariosModal" class="modal"></div>
-
+ 
 </div>
 
     <!-- Scripts - ORDEM CORRETA -->
@@ -103,6 +105,7 @@ include "conexao.php";
     <script src="js/modals.js"></script>
     <script src="js/smart-section.js"></script>
 <script src="js/timeout.js"></script>
+<script src="js/meajuda.js"></script>
 
     <script>
         // ✅ EVENT LISTENERS PARA OS BOTÕES - DEPOIS QUE TODOS OS SCRIPTS CARREGARAM
