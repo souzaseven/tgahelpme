@@ -1,0 +1,457 @@
+/* ====================== CONTAINER DE VÍDEOS ====================== */
+.video-section {
+    margin-bottom: 70px;
+    position: relative;
+}
+
+.video-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-card);
+    border-radius: 2px;
+}
+
+.video-container {
+    display: grid;
+    grid-template-columns: 1fr; /* SEMPRE 1 coluna */
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px; /* Limita a largura máxima */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-item {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px) saturate(180%);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+}
+
+.video-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), var(--shadow-primary);
+    border-color: var(--glass-border-light);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 400px; /* Altura maior para telas grandes */
+    border: none;
+    display: block;
+}
+
+.video-title {
+    padding: 20px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.4;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+}
+
+/* ====================== TELAS MÉDIAS ====================== */
+@media (min-width: 768px) {
+    .video-container {
+        max-width: 900px;
+    }
+    
+    .video-item iframe {
+        height: 450px;
+    }
+    
+    .video-title {
+        font-size: 1.2rem;
+        padding: 25px;
+    }
+}
+
+/* ====================== TELAS GRANDES ====================== */
+@media (min-width: 1200px) {
+    .video-container {
+        max-width: 1000px;
+    }
+    
+    .video-item iframe {
+        height: 500px;
+    }
+    
+    .video-title {
+        font-size: 1.3rem;
+        padding: 30px;
+    }
+}
+
+/* ====================== TELAS MUITO GRANDES ====================== */
+@media (min-width: 1400px) {
+    .video-container {
+        max-width: 1100px;
+    }
+    
+    .video-item iframe {
+        height: 550px;
+    }
+}
+
+/* ====================== TELAS PEQUENAS ====================== */
+@media (max-width: 767px) {
+    .video-container {
+        gap: 20px;
+        max-width: 100%;
+    }
+    
+    .video-item iframe {
+        height: 250px;
+    }
+    
+    .video-title {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item iframe {
+        height: 200px;
+    }
+    
+    .video-title {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ====================== FILTRO DE BUSCA GLOBAL ====================== */
+.filter-container {
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-filter {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px) saturate(180%);
+    padding: 14px 20px;
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+}
+
+.search-filter:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 124, 237, 0.2);
+}
+
+.search-filter::placeholder {
+    color: var(--text-lighter);
+}
+
+/* ====================== MODAL DE VÍDEO GRANDE ====================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 15, 31, 0.98);
+    backdrop-filter: blur(15px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--glass);
+    border: 1px solid var(--glass-border-light);
+    backdrop-filter: blur(25px) saturate(200%);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 1400px;
+    width: 95%;
+    max-height: 95vh;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 124, 237, 0.3);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text);
+    font-size: 2.2rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 124, 237, 0.4);
+}
+
+.modal-video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    margin-bottom: 25px;
+}
+
+.modal-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-video-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 20px;
+    line-height: 1.3;
+}
+
+/* ====================== ESTILOS DA BUSCA GLOBAL ====================== */
+.search-highlight {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.search-feedback {
+    margin: 40px auto;
+    max-width: 500px;
+}
+
+.no-results-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px) saturate(180%);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.no-results-card .card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+    box-shadow: var(--shadow-primary);
+}
+
+.no-results-card h3 {
+    color: var(--text);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.no-results-card p {
+    color: var(--text-light);
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.no-results-card .suggestion {
+    font-size: 0.9rem;
+    color: var(--text-lighter);
+    font-style: italic;
+}
+
+/* Transição suave para elementos escondidos/mostrados */
+section, .card, .video-item {
+    transition: all 0.3s ease;
+}
+
+/* ====================== RESPONSIVIDADE MODAL ====================== */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 25px 20px;
+        width: 98%;
+        margin: 10px;
+    }
+    
+    .modal-video-title {
+        font-size: 1.3rem;
+    }
+    
+    .modal-close {
+        top: 15px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+    
+    .no-results-card {
+        padding: 30px 20px;
+    }
+    
+    .no-results-card .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px 15px;
+    }
+    
+    .modal-video-title {
+        font-size: 1.1rem;
+        margin-top: 15px;
+    }
+    
+    .modal-close {
+        top: 10px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.6rem;
+    }
+    
+    .no-results-card {
+        padding: 25px 15px;
+    }
+    
+    .no-results-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ====================== TELAS GRANDES - MODAL MAIOR ====================== */
+@media (min-width: 1200px) {
+    .modal-content {
+        max-width: 1200px;
+        padding: 45px;
+    }
+    
+    .modal-video-container {
+        margin-bottom: 30px;
+    }
+    
+    .modal-video-title {
+        font-size: 2rem;
+        margin-top: 25px;
+    }
+    
+    .modal-close {
+        top: 25px;
+        right: 30px;
+        width: 55px;
+        height: 55px;
+        font-size: 2.4rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .modal-content {
+        max-width: 1400px;
+        padding: 50px;
+    }
+    
+    .modal-video-title {
+        font-size: 2.2rem;
+    }
+    
+    .modal-close {
+        width: 60px;
+        height: 60px;
+        font-size: 2.6rem;
+    }
+}
+
+/* Efeitos de animação para busca */
+@keyframes searchPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.search-highlight {
+    animation: searchPulse 0.6s ease;
+}
+
+/* Melhorias de acessibilidade */
+.search-filter:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.modal-close:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Animações suaves para o modal */
+@keyframes modalAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-overlay.active .modal-content {
+    animation: modalAppear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

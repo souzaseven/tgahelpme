@@ -1,0 +1,757 @@
+/* ==========================================================================
+   STYLE.CSS — Força de Vendas - Tutorial
+   - Tema escuro moderno com glassmorphism aprimorado
+   - Header com efeito parallax e design impactante
+   - Sistema visual refinado com animações sofisticadas
+   ========================================================================== */
+
+/* ====================== VARIÁVEIS DO TEMA APRIORADAS ====================== */
+:root {
+  --primary: #007ced;
+  --primary-light: #4da8ff;
+  --primary-lighter: #80c1ff;
+  --primary-dark: #0066cc;
+  --primary-darker: #0052a3;
+  
+  --secondary: #7209b7;
+  --secondary-light: #9d4edd;
+  --secondary-dark: #5a08a3;
+  
+  --accent: #06d6a0;
+  --accent-light: #4ef5c5;
+  --accent-dark: #05b58c;
+
+  --dark: #0a0f1f;
+  --dark-medium: #121826;
+  --dark-light: #1e293b;
+  --dark-lighter: #2d3748;
+
+  --text: #f1f5f9;
+  --text-light: #cbd5e1;
+  --text-lighter: #94a3b8;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-light: rgba(255, 255, 255, 0.15);
+  --glass-dark: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 8px 25px rgba(0, 124, 237, 0.25);
+  --shadow-accent: 0 8px 25px rgba(6, 214, 160, 0.25);
+
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  --gradient-primary-hover: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+  --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  --gradient-header: linear-gradient(135deg, rgba(0,124,237,0.4), rgba(114,9,183,0.4));
+  --gradient-bg: linear-gradient(135deg, var(--dark), var(--dark-medium), var(--dark-light));
+  --gradient-card: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+/* ====================== RESET & BASE APRIORADOS ====================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: var(--gradient-bg);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* ====================== ANIMAÇÃO DE FUNDO DINÂMICO ====================== */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ====================== HEADER COM EFEITO PARALLAX ====================== */
+header {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 200px 20px 120px;
+  overflow: hidden;
+  background:
+    var(--gradient-header),
+    url('../img/forcavendas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito parallax */
+  background-color: var(--dark);
+}
+
+/* Overlay com gradiente para melhor legibilidade */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 31, 0.7) 0%,
+    rgba(10, 15, 31, 0.4) 50%,
+    rgba(10, 15, 31, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+/* Elementos decorativos animados */
+header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 124, 237, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(114, 9, 183, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(6, 214, 160, 0.1) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Conteúdo do header */
+.header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--text), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Elemento decorativo abaixo do header */
+.header-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="%23121226" d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path fill="%23121226" d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path fill="%23121226" d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>');
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
+}
+
+/* ====================== CONTAINER ====================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ====================== SEÇÕES & TÍTULOS APRIORADOS ====================== */
+section { 
+  margin-bottom: 70px; 
+  position: relative;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-card);
+  border-radius: 2px;
+}
+
+h2 {
+  color: var(--text);
+  margin: 50px 0 35px;
+  padding-bottom: 15px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-card);
+  border-radius: 3px;
+}
+
+/* ====================== GRIDS & LAYOUT APRIORADOS ====================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin-top: 30px;
+}
+
+/* ====================== CARDS APRIORADOS (GLASSMORPHISM+) ====================== */
+.card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(15px) saturate(180%);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-card);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg), var(--shadow-primary);
+  border-color: var(--glass-border-light);
+}
+
+.card:hover::before {
+  opacity: 0.05;
+}
+
+.card:hover::after {
+  left: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.card-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 14px;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: var(--shadow-primary);
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-primary), 0 0 20px rgba(0, 124, 237, 0.4);
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  background: linear-gradient(135deg, var(--text), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-content {
+  color: var(--text-light);
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+/* ====================== BOTÕES APRIORADOS ====================== */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--gradient-primary);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-primary);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  background: var(--gradient-primary-hover);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 124, 237, 0.4);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--dark-lighter), var(--dark-light));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--dark-light), var(--dark-lighter));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-accent {
+  background: var(--gradient-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+  box-shadow: 0 10px 25px rgba(6, 214, 160, 0.4);
+}
+
+/* ====================== LINKS VISÍVEIS APRIORADOS ====================== */
+.link-group { 
+  margin-top: 20px; 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link-url {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  background: var(--glass-dark);
+  color: var(--text-lighter);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid var(--glass-border);
+  word-break: break-all;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.link-url::before {
+  content: '🔗';
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+.link-url::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0.1;
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.link-url:hover {
+  color: var(--text);
+  background: var(--glass-light);
+  border-color: var(--glass-border-light);
+  transform: translateY(-2px);
+}
+
+.link-url:hover::after {
+  left: 0;
+}
+
+/* ====================== BADGES / TAGS APRIORADOS ====================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 10px;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(0, 124, 237, 0.3);
+}
+
+.badge-success { 
+  background: var(--success); 
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.badge-warning { 
+  background: var(--warning); 
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* ====================== CÓDIGO INLINE APRIORADO ====================== */
+code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  color: var(--primary-lighter);
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ====================== FOOTER APRIORADO ====================== */
+footer {
+  background: linear-gradient(90deg, var(--dark), var(--dark-medium));
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-card);
+}
+
+footer p {
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ====================== ANIMAÇÕES APRIORADAS ====================== */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.fade-in { 
+  animation: fadeInUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* Efeito de brilho sutil para elementos importantes */
+.glow {
+  box-shadow: 0 0 20px rgba(0, 124, 237, 0.3);
+}
+
+/* ====================== RESPONSIVIDADE APRIORADA ====================== */
+@media (max-width: 1024px) {
+  .two-columns { 
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+  }
+  
+  header h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header { 
+    min-height: 60vh;
+    padding: 60px 20px 100px; 
+    background-attachment: scroll; /* Remove parallax em mobile */
+  }
+  
+  header h1 { 
+    font-size: 2.5rem; 
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  h2 { 
+    font-size: 1.8rem; 
+  }
+
+  .card-grid { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .btn-group { 
+    flex-direction: column; 
+  }
+  
+  .btn { 
+    justify-content: center; 
+    width: 100%; 
+  }
+  
+  .container {
+    padding: 0 15px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 { 
+    font-size: 2rem; 
+  }
+  
+  h2 {
+    font-size: 1.6rem;
+  }
+  
+  .card { 
+    padding: 25px 20px; 
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+  
+  .link-group {
+    flex-direction: column;
+  }
+  
+  .link-url {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Estilo para scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+
+/* Estilização do botão de voltar */
+.btn-voltar {
+    position: fixed;
+    top: 20px; /* Distância do topo da tela */
+  /*  right: 20px;  Distância da lateral direita */
+left: 20px; /* Distância da lateral esquerda */
+    background-color: #007ced; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    padding: 10px 20px;
+    border-radius: 11px;
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para o efeito de profundidade */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+.btn-voltar:hover {
+    opacity: 0.8; /* Efeito de hover */
+}
+
+/* Exibir 4 colunas na seção de Tutoriais em telas grandes */
+.card-grid.tutoriais {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+
+/* Responsivo - 2 colunas para tablets */
+@media (max-width: 1024px) {
+  .card-grid.tutoriais {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsivo - 1 coluna em mobile */
+@media (max-width: 768px) {
+  .card-grid.tutoriais {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*Estilo dos botoes de copiar */
+ button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color:  #47cd47;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #005bb5;
+  }
+  code {
+    font-weight: bold;
+  }
+
+
+/*botao youtube*/
+  .btn-youtube {
+    background-color: #FF0000; /* vermelho YouTube */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+
+  .btn-youtube:hover {
+    background-color: #cc0000;
+  }
+
+  .btn-youtube span {
+    margin-right: 5px;
+  }
+
+
+/* =================== BOTÃO VOLTAR AO TOPO =================== */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-primary);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 124, 237, 0.4);
+}
+
