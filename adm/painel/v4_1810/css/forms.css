@@ -1,0 +1,22 @@
+/* Formulários e botões */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

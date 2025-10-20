@@ -1,0 +1,445 @@
+/* Modais */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal.active {
+  display: block;
+}
+
+/* CORREÇÃO CRÍTICA - FORÇAR CENTRALIZAÇÃO PARA TODOS OS MODAIS */
+.modal-content {
+  background: var(--bg-card, var(--bg-light, #1e293b));
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  margin: 50px auto !important; /* FORÇAR centralização */
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+  border: 1px solid var(--border, var(--border-color, #334155));
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+/* CORREÇÃO PARA MODAIS MAIORES - IMPORTANTE! */
+.modal-content[style*="max-width: 600px"] {
+  max-width: 600px !important;
+  width: 90% !important;
+}
+
+.modal-content[style*="max-width: 700px"] {
+  max-width: 700px !important;
+  width: 90% !important;
+}
+
+/* CORREÇÃO ESPECÍFICA PARA MODAL DE FORMULÁRIOS (large-modal) */
+.modal-content.large-modal {
+  max-width: 95% !important;
+  width: 95% !important;
+  max-height: 90vh !important;
+  margin: 2rem auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Container de formulários dentro do modal large */
+.formularios-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  height: 60vh;
+  flex: 1;
+}
+
+/* Grid de formulários */
+.formularios-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Cards de formulários */
+.formulario-card {
+  background: var(--bg-card, #252525);
+  border: 1px solid var(--border, #404040);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-align: center;
+  min-height: 120px;
+}
+
+.formulario-card:hover {
+  background: var(--primary, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.formulario-icon {
+  font-size: 2rem;
+  display: block;
+}
+
+.formulario-title {
+  color: var(--text, #f8fafc);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.formulario-card:hover .formulario-title {
+  color: white;
+}
+
+/* Área de detalhes do formulário */
+.formulario-detalhes-content {
+  background: var(--bg-secondary, #1e1e1e);
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  border: 1px solid var(--border, #404040);
+}
+
+/* CORREÇÃO ESPECÍFICA PARA MODAL DO PAINEL DE OPERADORES */
+#painelOperadorModal .modal-content,
+#smartModal .modal-content,
+#formulariosModal .modal-content {
+  margin: 50px auto !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  position: relative !important;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border, var(--border-color, #334155));
+}
+
+.modal-header h3 {
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary, var(--primary-color, #2563eb)) 0%, var(--primary-light, #3b82f6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.4rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-muted, #94a3b8);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--danger, var(--danger-color, #dc3545));
+  color: white;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border, var(--border-color, #334155));
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+/* Painel de Operadores */
+.painel-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+    width: 100%;
+}
+
+.painel-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: left;
+    color: white;
+    min-height: 70px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    width: 100%;
+    font-family: inherit;
+}
+
+.painel-link-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* CORREÇÃO DAS CORES - USANDO VALORES FIXOS PARA EVITAR CONFLITOS */
+.painel-link-btn.primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.painel-link-btn.info { background: linear-gradient(135deg, #17a2b8, #138496); }
+.painel-link-btn.success { background: linear-gradient(135deg, #28a745, #1e7e34); }
+.painel-link-btn.warning { background: linear-gradient(135deg, #ffc107, #e0a800); }
+.painel-link-btn.secondary { background: linear-gradient(135deg, #6c757d, #545b62); }
+.painel-link-btn.danger { background: linear-gradient(135deg, #dc3545, #c82333); }
+.painel-link-btn.dark { background: linear-gradient(135deg, #343a40, #23272b); }
+.painel-link-btn.purple { background: linear-gradient(135deg, #6f42c1, #59359e); }
+.painel-link-btn.teal { background: linear-gradient(135deg, #20c997, #199d74); }
+
+.btn-icon {
+    font-size: 22px;
+    width: 30px;
+    text-align: center;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* GARANTIR QUE OS BOTÕES FICAM BEM DISTRIBUÍDOS */
+@media (min-width: 768px) {
+    .modal-content[style*="max-width: 700px"] .painel-links-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* MODAIS GRANDES - OTIMIZAÇÃO DE ESPAÇO */
+.modal-content[style*="max-width: 700px"] {
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content[style*="max-width: 700px"] .modal-body {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 0;
+}
+
+.modal-content[style*="max-width: 700px"] .modal-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+/* Responsividade para formulários */
+@media (max-width: 1200px) {
+  .formularios-grid-5 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .formularios-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .formularios-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 200px;
+  }
+  
+  .formulario-detalhes-content {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px auto !important;
+    padding: 20px;
+  }
+  
+  .modal-content.large-modal {
+    width: 95% !important;
+    max-width: 95% !important;
+    margin: 20px auto !important;
+  }
+  
+  .modal-content[style*="max-width: 700px"],
+  .modal-content[style*="max-width: 600px"] {
+    width: 95% !important;
+    max-width: 95% !important;
+    margin: 20px auto !important;
+  }
+  
+  .painel-links-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .painel-link-btn {
+    padding: 15px;
+    min-height: 60px;
+    font-size: 14px;
+  }
+  
+  .btn-icon {
+    font-size: 20px;
+    width: 25px;
+  }
+  
+  .formularios-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .formulario-card {
+    min-height: 100px;
+    padding: 1rem;
+  }
+  
+  .formulario-icon {
+    font-size: 1.5rem;
+  }
+  
+  .formulario-title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    width: 100%;
+    margin: 10px auto !important;
+    padding: 15px;
+  }
+  
+  .modal-content.large-modal {
+    width: 100% !important;
+    margin: 10px auto !important;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-footer {
+    flex-direction: column;
+  }
+  
+  .modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .painel-link-btn {
+    padding: 12px 15px;
+    min-height: 55px;
+    font-size: 13px;
+  }
+  
+  /* Ajuste para modais grandes em mobile */
+  .modal-content[style*="max-width: 700px"] {
+    max-height: 90vh;
+    margin: 10px auto !important;
+  }
+  
+  .formularios-grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CORREÇÃO EXTRA PARA GARANTIR CENTRALIZAÇÃO */
+#passwordModal .modal-content,
+#filaModal .modal-content,
+#linksLiderModal .modal-content,
+#painelOperadorModal .modal-content,
+#smartModal .modal-content,
+#formulariosModal .modal-content {
+  margin: 50px auto !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  position: relative !important;
+}
+
+/* Scrollbar personalizada para formulários */
+.formularios-grid-5::-webkit-scrollbar,
+.formulario-detalhes-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.formularios-grid-5::-webkit-scrollbar-track,
+.formulario-detalhes-content::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #1e1e1e);
+  border-radius: 3px;
+}
+
+.formularios-grid-5::-webkit-scrollbar-thumb,
+.formulario-detalhes-content::-webkit-scrollbar-thumb {
+  background: var(--primary, #2563eb);
+  border-radius: 3px;
+}
+
+.formularios-grid-5::-webkit-scrollbar-thumb:hover,
+.formulario-detalhes-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark, #1d4ed8);
+}

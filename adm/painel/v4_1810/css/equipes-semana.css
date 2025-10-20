@@ -1,0 +1,823 @@
+/* Equipes da Semana - Estilo Aprimorado com Tema Escuro */
+.equipes-semana-container {
+    padding: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    min-height: 100vh;
+    color: var(--text);
+}
+
+.equipes-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.equipes-header h1 {
+    color: var(--text);
+    margin-bottom: 12px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.equipes-header p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Dashboard de Estatísticas - Aprimorado */
+.equipes-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.equipe-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 5px solid var(--primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.equipe-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.equipe-card:hover::before {
+    transform: scaleX(1);
+}
+
+.equipe-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.equipe-card.telefone {
+    border-top-color: var(--success);
+}
+
+.equipe-card.telefone::before {
+    background: linear-gradient(90deg, var(--success) 0%, #34d399 100%);
+}
+
+.equipe-card.chat {
+    border-top-color: var(--warning);
+}
+
+.equipe-card.chat::before {
+    background: linear-gradient(90deg, var(--warning) 0%, #fbbf24 100%);
+}
+
+.equipe-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.equipe-card span {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    display: block;
+    margin-top: 8px;
+}
+
+/* Rotação de Equipes - Aprimorado */
+.rotacao-equipes {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+}
+
+.rotacao-equipes h2 {
+    color: var(--text);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.rotacao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.rotacao-item {
+    background: var(--bg-dark);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.rotacao-item:hover {
+    background: var(--bg-card-light);
+    border-color: var(--primary-light);
+}
+
+.rotacao-item.atual {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--primary);
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
+}
+
+.rotacao-item .rotulo {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.rotacao-item .valor {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.rotacao-item.atual .valor {
+    color: var(--primary-light);
+}
+
+/* Semana de Telefone - Visual Melhorado */
+.semana-telefone-container {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    border: 1px solid var(--border);
+}
+
+.semana-telefone-container h2 {
+    color: var(--text);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.rotacao-telefone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    text-align: center;
+}
+
+.rotacao-telefone-item {
+    background: var(--bg-dark);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 30px 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rotacao-telefone-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--border-light);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.rotacao-telefone-item:hover::after {
+    transform: scaleX(1);
+}
+
+.rotacao-telefone-item.anterior {
+    border-color: var(--secondary);
+    background: var(--bg-dark);
+}
+
+.rotacao-telefone-item.anterior::after {
+    background: var(--secondary);
+}
+
+.rotacao-telefone-item.atual {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+    transform: scale(1.03);
+    box-shadow: 0 8px 15px rgba(16, 185, 129, 0.15);
+}
+
+.rotacao-telefone-item.atual::after {
+    background: var(--success);
+    transform: scaleX(1);
+}
+
+.rotacao-telefone-item.proxima {
+    border-color: var(--info);
+    background: rgba(14, 165, 233, 0.1);
+}
+
+.rotacao-telefone-item.proxima::after {
+    background: var(--info);
+}
+
+.rotacao-telefone-item .rotulo {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.rotacao-telefone-item .valor {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.rotacao-telefone-item.atual .valor {
+    color: var(--success);
+    font-size: 1.4rem;
+}
+
+.rotacao-telefone-item.anterior .valor {
+    color: var(--text-light);
+}
+
+.rotacao-telefone-item.proxima .valor {
+    color: var(--info);
+}
+
+/* Lista de Operadores - Aprimorado */
+.operadores-lista {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.operadores-lista h2 {
+    color: var(--text);
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.monitor-block {
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.monitor-block:hover {
+    border-color: var(--primary-light);
+}
+
+.monitor-header {
+    background: var(--primary);
+    color: white;
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.monitor-header:hover {
+    background: var(--primary-dark);
+}
+
+.monitor-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.agent-item {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+    background: var(--bg-dark);
+}
+
+.agent-item:hover {
+    background: var(--bg-card-light);
+}
+
+.agent-item:last-child {
+    border-bottom: none;
+}
+
+.agent-info {
+    flex: 1;
+}
+
+.agent-name {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+
+.agent-queue {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.agent-actions a {
+    background: var(--success);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.agent-actions a:hover {
+    background: var(--success-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+}
+
+/* Controles - Aprimorado */
+.equipes-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-equipes {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+.btn-equipes:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-equipes:active {
+    transform: translateY(0);
+}
+
+.btn-equipes.atualizar {
+    background: var(--success);
+    box-shadow: var(--shadow);
+}
+
+.btn-equipes.atualizar:hover {
+    background: var(--success-dark);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-equipes.voltar {
+    background: var(--secondary);
+    box-shadow: var(--shadow);
+}
+
+.btn-equipes.voltar:hover {
+    background: var(--secondary-dark);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Loading - Aprimorado */
+.loading-equipes {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-muted);
+}
+
+.loading-equipes i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+/* Estilo para o resumo das equipes acima da tabela - Aprimorado */
+.equipes-resumo {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.equipe-card-resumo {
+    flex: 1;
+    min-width: 220px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border-top: 5px solid var(--primary);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.equipe-card-resumo:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.equipe-card-resumo.telefone {
+    border-top-color: var(--success);
+}
+
+.equipe-card-resumo.chat {
+    border-top-color: var(--warning);
+}
+
+.equipe-card-resumo h4 {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.equipe-card-resumo span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* Estados vazios - Aprimorado */
+.no-operadores {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-muted);
+    background: var(--bg-dark);
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+}
+
+.no-operadores i {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-operadores p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Ajustes para ícones de toggle */
+.monitor-header i.fa-chevron-down,
+.monitor-header i.fa-chevron-up {
+    font-size: 0.9rem;
+    margin-left: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.equipe-card, .rotacao-item, .rotacao-telefone-item, .monitor-block {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsivo - Aprimorado */
+@media (max-width: 1024px) {
+    .rotacao-telefone-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .equipes-semana-container {
+        padding: 20px 15px;
+    }
+    
+    .equipes-dashboard {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .rotacao-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .rotacao-telefone-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .equipes-controls {
+        flex-direction: column;
+    }
+    
+    .agent-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .agent-actions {
+        width: 100%;
+    }
+    
+    .agent-actions a {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .equipes-resumo {
+        flex-direction: column;
+    }
+    
+    .equipe-card-resumo {
+        min-width: auto;
+    }
+    
+    .equipes-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .equipes-header p {
+        font-size: 1rem;
+    }
+    
+    .rotacao-telefone-item {
+        min-height: 120px;
+        padding: 25px 15px;
+    }
+    
+    .semana-telefone-container h2,
+    .rotacao-equipes h2,
+    .operadores-lista h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .equipes-semana-container {
+        padding: 15px 10px;
+    }
+    
+    .equipe-card, 
+    .rotacao-equipes, 
+    .semana-telefone-container, 
+    .operadores-lista {
+        padding: 20px 15px;
+    }
+    
+    .equipe-card span {
+        font-size: 1.8rem;
+    }
+    
+    .rotacao-telefone-item .valor {
+        font-size: 1.15rem;
+    }
+    
+    .rotacao-telefone-item.atual .valor {
+        font-size: 1.25rem;
+    }
+}
+
+/* Estilos para o resumo da semana na lista de operadores */
+.semana-telefone-resumo {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+}
+
+.semana-telefone-resumo h2 {
+    color: var(--text);
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.rotacao-telefone-grid-resumo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    text-align: center;
+}
+
+.rotacao-telefone-item-resumo {
+    background: var(--bg-dark);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 15px;
+    transition: all 0.3s ease;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rotacao-telefone-item-resumo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--border-light);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.rotacao-telefone-item-resumo:hover::after {
+    transform: scaleX(1);
+}
+
+.rotacao-telefone-item-resumo.anterior {
+    border-color: var(--secondary);
+    background: var(--bg-dark);
+}
+
+.rotacao-telefone-item-resumo.anterior::after {
+    background: var(--secondary);
+}
+
+.rotacao-telefone-item-resumo.atual {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+}
+
+.rotacao-telefone-item-resumo.atual::after {
+    background: var(--success);
+    transform: scaleX(1);
+}
+
+.rotacao-telefone-item-resumo.proxima {
+    border-color: #fbbf24; /* Amarelo mais vibrante */
+    background: rgba(251, 191, 36, 0.15);
+}
+
+.rotacao-telefone-item-resumo.proxima::after {
+    background: #fbbf24; /* Amarelo mais vibrante */
+}
+
+.rotacao-telefone-item-resumo .rotulo {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.rotacao-telefone-item-resumo .valor {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.rotacao-telefone-item-resumo.atual .valor {
+    color: var(--success);
+    font-size: 1.1rem;
+}
+
+.rotacao-telefone-item-resumo.anterior .valor {
+    color: var(--text-light);
+}
+
+.rotacao-telefone-item-resumo.proxima .valor {
+    color: #fbbf24; /* Amarelo mais vibrante */
+}
+
+.operadores-titulo {
+    color: var(--text);
+    margin: 25px 0 15px 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+/* Responsivo para o resumo */
+@media (max-width: 768px) {
+    .rotacao-telefone-grid-resumo {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .rotacao-telefone-item-resumo {
+        min-height: 80px;
+        padding: 15px 10px;
+    }
+    
+    .semana-telefone-resumo h2 {
+        font-size: 1.2rem;
+    }
+    
+    .operadores-titulo {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,171 @@
+<?php 
+session_start();
+$error = $_SESSION['login_error'] ?? null;
+unset($_SESSION['login_error']); // Limpa o erro após mostrar
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Painel de Administrador</title>
+  <link rel="icon" href="./assets/bannerbot1.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+body {
+  background: url(./assets/bannerbot1.png) no-repeat center center fixed;
+background-size: 100vw auto;
+
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: black; /* cor de fundo caso a imagem não cubra tudo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+    .login-container {
+      background-color: rgba(255,255,255,0.20);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 400px; width: 100%;
+    }
+    h2 { text-align: center; margin-bottom: 10px; color: #2c3e50; }
+    p { text-align: center; font-size: 14px; color: #555; }
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .form-group input {
+      width: 100%; padding: 12px 45px 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 15px; top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #888;
+    }
+    .btn {
+      width: 100%; padding: 12px;
+      background-color: #4361ee;
+      color: white;
+      font-size: 16px; font-weight: bold;
+      border: none; border-radius: 8px;
+      cursor: pointer; transition: background-color 0.3s;
+    }
+    .btn:hover { background-color: #3a0ca3; }
+    .forgot-password {
+      text-align: center; margin-top: 15px;
+    }
+    .forgot-password a {
+      color: red; font-weight: bold;
+      font-size: 14px; text-decoration: none;
+    }
+    .forgot-password a:hover { text-decoration: underline; }
+    .error {
+      color: #e74c3c;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .floating-msg {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      z-index: 9999;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login 🔐</h2>
+    <p>Painel do Administrador </p>
+    <form action="login.php" method="POST">
+      <div class="form-group">
+        <input type="text" name="usuario" placeholder="Usuário" required autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <input type="password" name="senha" id="senha" placeholder="Senha" required autocomplete="current-password" />
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+      <!-- Mensagem de erro opcional via GET -->
+   <div id="erroLogin" class="error" style="display: none;">
+  Usuário ou senha inválidos.
+</div>
+
+      <button type="submit" class="btn">Entrar</button>
+      <div class="forgot-password">
+        <a href="#" onclick="mostrarMensagem()">Esqueceu a senha?</a>
+      </div>
+    </form>
+  </div>
+
+  <div id="mensagemSenha" class="floating-msg">
+    Contate o administrador para redefinir sua senha.
+  </div>
+
+  <script>
+    function togglePassword() {
+      const senha = document.getElementById("senha");
+      senha.type = senha.type === "password" ? "text" : "password";
+    }
+    function mostrarMensagem() {
+      const msg = document.getElementById("mensagemSenha");
+      msg.style.display = "block";
+      setTimeout(() => { msg.style.display = "none"; }, 4000);
+    }
+  </script>
+
+<script>
+  // Exibe erro se "erro=1" estiver presente na URL
+  if (window.location.search.includes('erro=1')) {
+    document.getElementById('erroLogin').style.display = 'block';
+  }
+</script>
+
+
+</body>
+</html>
