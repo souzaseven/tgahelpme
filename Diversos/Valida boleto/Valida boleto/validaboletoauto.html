@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Dígito de Boleto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificador de Dígito de Boleto</h1>
+        <form id="boleto-form">
+            <label for="linha-digitavel">Linha Digitável:</label>
+            <input type="text" id="linha-digitavel" required>
+
+            <label for="linha-digitavel2">Linha Digitável Formatada:</label>
+            <input type="text" id="linha-digitavel2" readonly>
+
+            <div class="btn-group">
+                <button type="button" class="btn-copy" id="copy-button"><i class="fas fa-copy"></i> Copiar Linha Digitável</button>
+                <button type="button" class="btn-clear" id="clear-button"><i class="fas fa-trash-alt"></i> Limpar</button>
+            </div>
+        </form>
+
+        <div class="result" id="result"></div>
+        <div class="copy-info" id="copy-info"></div>
+    </div>
+
+    <div class="inline-copy-container" id="codigo-container">
+        <p id="codigo">74891000030014208040761594210045977000000003400</p>
+        <button class="btn-small-copy" id="copy-codigo-button"><i class="fas fa-copy"></i> Copiar</button>
+    </div>
+
+   <script src="./script.js"></script>
+</body>
+</html>
