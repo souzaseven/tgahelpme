@@ -210,7 +210,7 @@ function acessarComoCliente() {
     .then(d => {
       if (d.sucesso) {
         localStorage.setItem("acesso", "suporte");
-        location.href = "index.html";
+        location.href = d.redirecionar_para || "index.html";
       } else {
         document.getElementById("erroSuporte").textContent = "Senha incorreta.";
       }
