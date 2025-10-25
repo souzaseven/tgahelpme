@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento via Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .payment-option {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+        .payment-option:hover {
+            border-color: #007BFF;
+        }
+        .payment-option img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+        .payment-option h2 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #007BFF;
+        }
+        .payment-option p {
+            font-size: 14px;
+            color: #666;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha a Forma de Pagamento</h1>
+
+        <!-- Cartão de Crédito/Débito -->
+        <div class="payment-option">
+            <img src="https://image.flaticon.com/icons/png/512/633/633611.png" alt="Cartão de Crédito">
+            <h2>Cartão de Crédito/Débito</h2>
+            <p>Pague com segurança usando seu cartão de crédito ou débito.</p>
+            <a href="#" class="button">Pagar com Cartão</a>
+        </div>
+
+        <!-- Pix -->
+        <div class="payment-option">
+            <img src="https://image.flaticon.com/icons/png/512/1375/1375106.png" alt="Pix">
+            <h2>Pix</h2>
+            <p>Pagamento instantâneo através do Pix. Escaneie o QR Code ou use o código "copia e cola".</p>
+            <a href="#" class="button">Pagar com Pix</a>
+        </div>
+
+        <!-- Boleto -->
+        <div class="payment-option">
+            <img src="https://image.flaticon.com/icons/png/512/893/893123.png" alt="Boleto">
+            <h2>Boleto Bancário</h2>
+            <p>Gere um boleto para pagamento em qualquer banco ou lotérica.</p>
+            <a href="#" class="button">Gerar Boleto</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Conhecimentos Fiscais</title>
+
+
+
+<link rel="icon" href="./icon bot tga.ico" type="image/x-icon">
+
+<!--souza system-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+     crossorigin="anonymous"></script>
+
+<!--meajudatga-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --correct-color: #27ae60;
+            --wrong-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: black;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;/*
+            color: var(--primary-color);*/
+color: white;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .question h2 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .answer {
+            display: none;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: var(--light-color);
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .answer.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .show-answer {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .show-answer:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .correct {
+            background-color: rgba(39, 174, 96, 0.2);
+            border-left: 4px solid var(--correct-color);
+        }
+        
+        .wrong {
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        
+        .checkbox {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #95a5a6;
+            border-radius: 3px;
+            margin-right: 10px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .correct-checkbox {
+            background-color: var(--correct-color);
+            border-color: var(--correct-color);
+        }
+        
+        .correct-checkbox::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .wrong-checkbox {
+            background-color: var(--wrong-color);
+            border-color: var(--wrong-color);
+        }
+        
+        .wrong-checkbox::after {
+            content: '✗';
+            position: absolute;
+            color: white;
+            font-size: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .question-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .question-title {
+            display: inline;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TESTE DE CONHECIMENTOS FISCAIS</h1>
+
+        <div class="question">
+            <h2><span class="question-number">01</span> <span class="question-title">Descreva o significado de NFC-e e sua finalidade.</span></h2>
+            <p>Nota fiscal de consumidor eletrônica, mod. 65, veio para substituir o Cupom Fiscal.</p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p>Serve como um comprovante fiscal da compra, sendo utilizada para vendas de varejo e entregas a domicílio, com preenchimento simplificado de dados.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">02</span> <span class="question-title">Descreva o significado de NF-e e sua finalidade.</span></h2>
+            <p>Nota fiscal eletrônica, mod. 55, sendo mais detalhada as informações.</p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p>Serve como um comprovante fiscal da compra, usada nos transportes de mercadorias para atender e facilitar a fiscalização, utilizada também para empresas devido ao aproveitamento de créditos. Este modelo de nota fiscal eletrônica pode ser usado também para pessoa física.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">03</span> <span class="question-title">Descreva o significado de CST e CSOSN, e para qual regime de tributação cada um é aplicado.</span></h2>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p><strong>CST</strong> = Código de situação tributária, empresas do regime normal (Lucro presumido, Lucro real, Simples nacional excesso de sub-limite de receita estadual), tendo algumas exceções em casos de empresas do simples nacional que vende gás por exemplo e emissões de CT-e, usa CST.</p>
+                <p><strong>CSOSN</strong> = Código de situação da operação no simples nacional, empresas simples nacional.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">04</span> <span class="question-title">O que significa NCM e qual sua importância?</span></h2>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p>Nomenclatura comum do mercosul, código que tem a finalidade de identificar os produtos, sua categoria e composição entre os países do mercosul, também utilizado para definições de tributações.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">05</span> <span class="question-title">O que significa CEST e qual sua importância?</span></h2>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p>Código especificador da substituição tributária, utilizado junto ao NCM para identificar produtos sujeitos a substituição tributária nas operações estaduais e interestadual e para cálculo do MVA.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">06</span> <span class="question-title">Tendo em vista uma troca de regime tributário, onde, dentro do sistema, deve ser alterado o Código de Regime Tributário (CRT)?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) Dentro do cadastro de Empresas, na aba "Outros dados"</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) Dentro do cadastro da Filial, na aba "Outros dados"</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>C) No cadastro de "Tributos"</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>D) Dentro do cadastro da Filial, na aba "Dados Fiscais"</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">07</span> <span class="question-title">Uma empresa passou a ser tributada no regime tributário Lucro Real. Referente ao PIS/COFINS, quais são as alíquotas corretas a serem aplicadas nos produtos tributados?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) 1,65% para o PIS e 7,00% para o COFINS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) 0,65% para o PIS e 3,00% para o COFINS</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>C) 1,65% para o PIS e 7,60% para o COFINS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>D) 0,65% para o PIS e 7,60% para o COFINS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">08</span> <span class="question-title">Sabendo que a empresa irá destacar os seguintes tributos em um movimento específico de nota fiscal: ICMS, COFINS, ICMS-ST, IPI e PIS, qual seria a ordem de cálculo correta destes tributos na configuração do movimento para evitar erros nos cálculos automáticos do sistema?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) ICMS, COFINS, IPI e PIS</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>B) IPI, ICMS, ICMS-ST, PIS e COFINS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>C) IPI, PIS, COFINS e ICMS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>D) PIS, COFINS, ICMS e IPI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">09</span> <span class="question-title">Em uma emissão de nota fiscal de bonificação, sem valor comercial, é correto destacar PIS e COFINS?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>SIM</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>NÃO</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">10</span> <span class="question-title">A empresa saiu do regime tributário do Simples Nacional e passou para o Simples Nacional Excesso de Sub-limite de Receita. Qual desses tributos ela passará a destacar nas emissões de notas fiscais?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) PIS/COFINS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) CSLL, IRPJ</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>C) ICMS</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>D) IPI</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">11</span> <span class="question-title">Ao receber um questionário fiscal de uma empresa do Simples Nacional, qual seria a forma correta dos dados referentes aos CFOP de venda e CST/CSOSN tributado?</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) CFOP 5.102 com CST 00</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) CFOP 5.102 com CSOSN 900</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>C) CFOP 5.102 com CSOSN 101/102</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>D) CFOP 5.405 com CST 00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">12</span> <span class="question-title">Referente às notas fiscais de devolução de venda, assinale a alternativa correta:</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) O CFOP deverá ser o mesmo da nota fiscal de venda, pois a devolução serve apenas para dar entrada no estoque fiscal da mercadoria.</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) Apenas a empresa emissora da nota fiscal de venda poderá fazer a nota fiscal de devolução.</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>C) Os tributos devem sair todos zerados, pois, em nenhuma situação, é necessário informá-los, devido à devolução cancelar a operação de venda.</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>D) O CFOP deve ser de devolução de venda de mercadoria, de acordo com a situação tributária do produto, destacando os tributos envolvidos na venda e, em alguns casos, o PIS/COFINS.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">13</span> <span class="question-title">A Lei nº 12.741 de 8 de Dezembro de 2012 (Lei da Transparência Fiscal) concernente ao valor aproximado dos tributos, tem como principal objetivo:</span></h2>
+            <div class="options">
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>A) Simplificar o cálculo de impostos para as empresas.</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>B) Trazer valor simbólico, sem relevância, sendo assim a empresa pode optar por desabilitar quando achar mais conveniente.</span>
+                </div>
+                <div class="option correct">
+                    <span class="checkbox correct-checkbox"></span>
+                    <span>C) Informar o consumidor sobre a carga tributária aproximada incidente sobre o que ele está adquirindo.</span>
+                </div>
+                <div class="option wrong">
+                    <span class="checkbox wrong-checkbox"></span>
+                    <span>D) Definir o valor do ICMS sobre o total dos itens tributados da Nota Fiscal Eletrônica NF-e.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="question">
+            <h2><span class="question-number">14</span> <span class="question-title">Ao receber um questionário fiscal preenchido pela contabilidade, o suporte técnico responsável pela troca de regime notou que algumas informações podem estar erradas. Sendo assim, qual seria o procedimento correto a se tomar por parte do suporte?</span></h2>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+            <div class="answer">
+                <p>Informar ao cliente que o questionário está incompleto ou com informações aparentemente erradas e que o mesmo será devolvido à contabilidade para correção. Caso seja necessário, o próprio suporte técnico pode estar entrando em contato com a contabilidade e explicando a situação para otimização de tempo.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(button) {
+            const answer = button.nextElementSibling;
+            answer.classList.toggle('visible');
+            
+            if (answer.classList.contains('visible')) {
+                button.textContent = 'Ocultar Resposta';
+            } else {
+                button.textContent = 'Ver Resposta';
+            }
+        }
+    </script>
+</body>
+</html>

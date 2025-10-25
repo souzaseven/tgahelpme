@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas e Respostas - Parte 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #007ced;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+        }
+       
+        h1 {
+            text-align: center;
+            color: #007ced;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        .question-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thumbnail {
+    display: none;
+    margin-left: 20px;
+    max-width: 200px;
+    border-radius: 4px;
+    transition: transform 0.3s;
+}
+
+.thumbnail.visible {
+    display: block;
+    transform: scale(1);
+}
+
+
+        .question {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question h2 {
+            font-size: 1.2rem;
+            color: #007ced;
+            margin-bottom: 10px;
+        }
+
+        .answer, .tooltip {
+            display: none;
+            margin-left: 10px;
+            color: #333;
+        }
+
+        .answer.visible, .tooltip.visible {
+            display: inline;
+        }
+
+        .show-answer {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 1rem;
+            color: #007ced;
+            background-color: #fff;
+            border: 2px solid #007ced;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .show-answer:hover {
+            background-color: #007ced;
+            color: white;
+        }
+
+        .thumbnail {
+    display: none;
+    margin-left: 20px;
+    max-width: 300px; /* Aumentado de 200px para 300px */
+    border-radius: 4px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.thumbnail.visible {
+    display: block;
+    transform: scale(1);
+}
+
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        /* Estilos para as tooltips */
+        #question2 .tooltip {
+            position: relative;
+            cursor: pointer;
+            color: #007ced;
+            text-decoration: underline;
+        }
+
+        #question2 .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%; /* Posiciona a tooltip acima do texto */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #question2 .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #question2 .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* Posiciona a seta no final da tooltip */
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Perguntas e Respostas<br>Parte 1</strong></h1>
+        <h5 style="text-align: center; color: #007ced;"></h5>
+
+        <div class="question">
+            <h2>1 – Descreva o significado de cada 1 dos acrósticos abaixo:</h2>
+            <p><strong>NCM:</strong> <span class="answer">Nomenclatura Comum do Mercosul</span></p>
+            <p><strong>CEST:</strong> <span class="answer">Código especificador de Substituição Tributária</span></p>
+            <p><strong>CFOP:</strong> <span class="answer">Código Fiscal de Operações e Prestações</span></p>
+            <p><strong>CST:</strong> <span class="answer">Código da Situação Tributária</span></p>
+            <p><strong>CSOSN:</strong> <span class="answer">Código da Situação de Operação do Simples Nacional</span></p>
+            <p><strong>MVA:</strong> <span class="answer">Margem do Valor Agregado</span></p>
+            <p><strong>CNAE:</strong> <span class="answer">Classificação Nacional das Atividades Econômicas</span></p>
+            <p><strong>DANFE:</strong> <span class="answer">Documento Auxiliar de Nota Fiscal Eletrônica</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Respostas</button>
+        </div>
+
+        <div id="question2" class="question">
+            <h2>2 – Qual a diferença entre Condição de Pagamento e Forma de Pagamento?</h2>
+            <p>
+                <strong>Condição de pagamento:</strong> 
+                <span class="answer">É o prazo para pagamento. 
+                    <span class="tooltip">Exemplos
+                        <span class="tooltiptext">À vista, 30 dias, 60 dias, etc.</span>
+                    </span>
+                </span>
+            </p>
+            <p>
+                <strong>Forma de pagamento:</strong> 
+                <span class="answer">Refere-se ao meio pelo qual o pagamento será realizado
+                    <span class="tooltip">Exemplos.
+                        <span class="tooltiptext">Dinheiro, cartão, PIX, boleto.</span>
+                    </span>
+                </span>
+            </p>
+            <button class="show-answer" onclick="toggleAnswerForQuestion2(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>3 – Relacione os tipos de movimento de acordo com a forma correta de cadastro no sistema.</h2>
+            <p><strong>Venda de Mercadoria:</strong> <span class="answer">(1) 2.2.XX</span></p>
+            <p><strong>Compra de Mercadoria:</strong> <span class="answer">(2) 1.2.XX</span></p>
+            <p><strong>Orçamento:</strong> <span class="answer">(3) 2.1.XX</span></p>
+            <p><strong>Devolução de Compra:</strong> <span class="answer">(4) 1.3.XX</span></p>
+            <p><strong>Ajuste de saldo:</strong> <span class="answer">(5) 4.1.XX</span></p>
+            <p><strong>Cotação:</strong> <span class="answer">(6) 1.1.XX</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>4 – Do que se trata a Contrassenha do sistema TGA?</h2>
+            <p><span class="answer">Validação da situação financeira na base de dados da TGA (se há débitos ou não), e/ou se a empresa está ativa em nossa base de dados para utilização do sistema.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>5 – Se for realizada uma venda com cartão de crédito no dia 10/10/2023, e o cartão de crédito do cliente vence todo dia 25, a empresa receberá o valor da operação em qual data?</h2>
+            <p><span class="answer">Prazo padrão é 30 dias após passar o cartão, porém há possibilidade de antecipação, e há máquinas de cartão que a antecipação é automática já na aquisição dela.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>6 – Defina o conceito de cada um dos valores abaixo:</h2>
+            <p><strong>Preço de Compra:</strong> <span class="answer">Preço de fábrica</span></p>
+            <p><strong>Custo Unitário:</strong> <span class="answer">Valor da mercadoria considerando impostos e outras despesas até chegar à empresa.</span></p>
+            <p><strong>Custo Médio:</strong> <span class="answer">Custo médio da mercadoria em estoque</span></p>
+            <p><strong>Ponto de Equilíbrio:</strong> <span class="answer">Valor mínimo de venda que não gera nem prejuízo nem lucro</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>7 – Para que, normalmente, é utilizado o campo Conceito do cadastro do cliente no sistema?</h2>
+            <p><span class="answer">Para validação da situação cadastral/financeira na liberação ou não de vendas a prazo.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>8 – Para que serve Centro de Custos?</h2>
+            <p><span class="answer">Para controlar despesas, receitas e investimentos agrupando por tipo.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question" id="question9">
+            <h2>9 – Quais são os dados que aparecem no Dashboard BI do módulo Estoque do TGA?</h2>
+            <div class="question-content">
+                <div class="answer">
+                    <p>Análise de Vendas, Estoque, NF-e e NFC-e por status e Ordens de Serviço.</p>
+                </div>
+                <img src="./dashboard.png" alt="Dashboard BI" class="thumbnail" onclick="showModalImage(this.src)">
+            </div>
+            <button class="show-answer" onclick="toggleAnswerForQuestion9(this)">Ver Resposta</button>
+        </div>
+        
+        
+
+        <div class="question">
+            <h2>10 – Para que serve (como funciona) o flag "Usa Regra de Preço" que existe dentro do cadastro do produto, na aba Preços?</h2>
+            <p><span class="answer">Para tratar o preço do item pela quantidade vendida.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>11 – Qual prazo para cancelamento de NF-e e NFC-e?</h2>
+            <p><strong>NF-e:</strong> <span class="answer">8 Horas</span></p>
+            <p><strong>NFC-e:</strong> <span class="answer">30 Minutos</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>12 – Como abrir dois módulos (Financeiro/Estoque) ao mesmo tempo?</h2>
+            <p><span class="answer">Instalando Múltiplas Instâncias</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>13 – Assim como Produto está para TPRODUTO e Clientes está para FCFO, qual o nome das tabelas para os itens abaixo?</h2>
+            <p><strong>Movimento:</strong> <span class="answer">TMOV</span></p>
+            <p><strong>Itens:</strong> <span class="answer">TMOVITENS</span></p>
+            <p><strong>Lançamentos:</strong> <span class="answer">FLAN</span></p>
+            <p><strong>Extratos:</strong> <span class="answer">FEXTRATO</span></p>
+            <p><strong>Grupo de Produtos:</strong> <span class="answer">TGRUPO</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>14 – Numere a sequência de cada etapa, referente à atualização da versão do sistema.</h2>
+            <p id="question14-hidden-answer">
+                ( ) Nomear a pasta do Banco de Dados<br>
+                ( ) Executar o Atualizador<br>
+                ( ) Iniciar o Firebird<br>
+                ( ) Executar o Instalador<br>
+                ( ) Parar o Firebird<br>
+                ( ) Renomear a pasta do Banco de Dados<br>
+                ( ) Renomear o inicializador do sistema (gerenciador de Bases)
+            </p>
+            <p id="question14-answer" class="answer">
+                (7) Nomear a pasta do Banco de Dados<br>
+                (6) Executar o Atualizador<br>
+                (3) Iniciar o Firebird<br>
+                (5) Executar o Instalador<br>
+                (1) Parar o Firebird<br>
+                (2) Renomear a pasta do Banco de Dados<br>
+                (4) Renomear o inicializador do sistema (gerenciador de Bases)
+            </p>
+            <button id="button-question14" class="show-answer">Ver Resposta</button>
+        </div>
+
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
+        
+
+        <div class="question">
+            <h2>15 – NF-e com Status Denegada, o que quer dizer?</h2>
+            <p><span class="answer">Situação fiscal do emitente ou destinatário com problema.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+        <div class="question">
+            <h2>16 – O que é preciso para configurar o protocolo de comunicação TCP-IP no servidor e terminais?</h2>
+            <p><span class="answer">Criar no Firewall as regras do Firebird, para os dois protocolos: TCP e UDP, com as duas direções: Entrada e Saída, com a porta 3050.</span></p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Ver Resposta</button>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAnswerForQuestion2(button) {
+            const question = document.getElementById('question2');
+            const answers = question.querySelectorAll('.answer');
+
+            answers.forEach(answer => {
+                answer.classList.toggle('visible');
+            });
+
+            button.textContent = answers[0].classList.contains('visible') ? 'Ocultar Resposta' : 'Ver Resposta';
+        }
+
+        function toggleAnswerForQuestion9(button) {
+    const question = document.getElementById('question9');
+    const answer = question.querySelector('.answer');
+    const thumbnail = question.querySelector('.thumbnail');
+
+    answer.classList.toggle('visible');
+    thumbnail.classList.toggle('visible');
+
+    button.textContent = answer.classList.contains('visible') ? 'Ocultar Resposta' : 'Ver Resposta';
+}
+
+function showModalImage(src) {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    modal.style.display = "block";
+    modalImg.src = src;
+}
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+
+
+        function toggleAnswer(button) {
+            if (button.id === 'button-question14') {
+                const hiddenAnswer = document.getElementById('question14-hidden-answer');
+                const answer = document.getElementById('question14-answer');
+
+                if (hiddenAnswer.style.display === 'none') {
+                    hiddenAnswer.style.display = 'block';
+                    answer.style.display = 'none';
+                    button.textContent = 'Ver Resposta';
+                } else {
+                    hiddenAnswer.style.display = 'none';
+                    answer.style.display = 'block';
+                    button.textContent = 'Ocultar Resposta';
+                }
+            } else {
+                const answers = button.parentElement.querySelectorAll('.answer');
+                const tooltips = button.parentElement.querySelectorAll('.tooltip');
+
+                answers.forEach(answer => {
+                    answer.classList.toggle('visible');
+                });
+
+                tooltips.forEach(tooltip => {
+                    tooltip.classList.toggle('visible');
+                });
+
+                button.textContent = answers[0].classList.contains('visible') ? 'Ocultar Resposta' : 'Ver Resposta';
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById("myModal");
+            const img = document.querySelector(".thumbnail");
+            const modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        document.querySelector('#button-question14').addEventListener('click', function() {
+            toggleAnswer(this);
+        });
+    </script>
+</body>
+</html>
