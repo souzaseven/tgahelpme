@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncios TGA - Gerenciamento Profissional</title>
+    <link rel="shortcut icon" href="./img/bot-tga.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-messaging.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <style>
+        :root {
+            --primary: #007ced;
+            --primary-dark: #0066cc;
+            --primary-light: #4da8ff;
+            --secondary: #6c757d;
+            --dark: #121212;
+            --dark-light: #1e1e1e;
+            --dark-lighter: #2d2d2d;
+            --light: #f8f9fa;
+            --text-light: #e0e0e0;
+            --text-dark: #333;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --gray-light: #404040;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --bg-color: #f5f7fa;
+            --card-bg: white;
+            --text-color: #333;
+            --header-bg: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            --footer-bg: var(--dark);
+            --footer-text: white;
+            --ad-container-bg: #f9f9f9;
+            --ad-border: 1px dashed #ddd;
+        }
+
+        .dark-mode {
+            --bg-color: var(--dark);
+            --card-bg: var(--dark-light);
+            --text-color: var(--text-light);
+            --header-bg: linear-gradient(135deg, #0056b3, #004499);
+            --footer-bg: #0a0a0a;
+            --footer-text: var(--text-light);
+            --ad-container-bg: var(--dark-lighter);
+            --ad-border: 1px dashed #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230066cc" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Auto Refresh Panel */
+        .refresh-panel {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .refresh-info {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .refresh-counter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .counter-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .counter-label {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 0.3rem;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            max-width: 200px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .refresh-controls {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-header i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-description {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .ad-container {
+            margin: 1rem 0;
+            border: var(--ad-border);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            background-color: var(--ad-container-bg);
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Stats */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Floating Buttons */
+        .floating-container {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .floating-btn, .floating-btn1 {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 124, 237, 0.3);
+            position: relative;
+        }
+
+        .floating-btn:hover, .floating-btn1:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .floating-btn1 {
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 124, 237, 0.6); }
+            100% { transform: scale(1.1); box-shadow: 0 0 20px rgba(0, 124, 237, 0.9); }
+        }
+
+        .floating-btn[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            right: 70px;
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 10000;
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .scroll-to-top-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .floating-container {
+                bottom: 100px;
+                right: 15px;
+            }
+            
+            .refresh-panel {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .refresh-info {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .progress-container {
+                max-width: 100%;
+                order: -1;
+            }
+            
+            .refresh-controls {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="logo">
+                    <i class="fas fa-ad logo-icon"></i>
+                    <h1>Anúncios TGA</h1>
+                </div>
+                <div style="width: 40px;"></div> <!-- Spacer para alinhamento -->
+            </div>
+            <div class="header-content">
+                <p class="tagline">Gerenciamento profissional de anúncios para seu site</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Painel de Auto-Atualização -->
+        <div class="refresh-panel">
+            <div class="refresh-info">
+                <div class="refresh-counter">
+                    <span class="counter-value" id="refreshCount">0</span>
+                    <span class="counter-label">Atualizações</span>
+                </div>
+                <div class="refresh-counter">
+                    <span class="counter-value" id="timeRemaining">60</span>
+                    <span class="counter-label">Segundos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="refresh-controls">
+                <button class="btn btn-primary" id="refreshNow">Atualizar Agora</button>
+                <button class="btn btn-outline" id="toggleAutoRefresh">Pausar</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Tipos de Anúncios Disponíveis</h2>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Por Site</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Implementação de anúncios em todo o site com configuração centralizada.</p>
+                    <div class="ad-container">
+                        <div class="ad-label">Anúncio por Site</div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Display</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Anúncios de display responsivos que se adaptam a qualquer dispositivo.</p>
+                    <div class="ad-container">
+                        <div class="ad-label">Anúncio de Display</div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+                        <!-- Display -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-8542251167876044"
+                             data-ad-slot="7622049777"
+                             data-ad-format="auto"
+                             data-full-width-responsive="true"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-stream"></i>
+                    <h3>In-feed</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Anúncios integrados ao conteúdo do feed para melhor engajamento.</p>
+                    <div class="ad-container">
+                        <div class="ad-label">Anúncio In-feed</div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-format="fluid"
+                             data-ad-layout-key="-fb+5w+4e-db+86"
+                             data-ad-client="ca-pub-8542251167876044"
+                             data-ad-slot="1743677769"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>In-article</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Anúncios posicionados dentro de artigos para maior relevância contextual.</p>
+                    <div class="ad-container">
+                        <div class="ad-label">Anúncio In-article</div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
+                             data-ad-client="ca-pub-8542251167876044"
+                             data-ad-slot="3993704063"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Multiplex</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Anúncios multiplex para maior visibilidade e engajamento.</p>
+                    <div class="ad-container">
+                        <div class="ad-label">Anúncio Multiplex</div>
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-format="autorelaxed"
+                             data-ad-client="ca-pub-8542251167876044"
+                             data-ad-slot="9430596092"></ins>
+                        <script>
+                             (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <img alt="visitas" src="https://hits.sh/tgameajuda.com/anuncios1-tga.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+        </div>
+    </main>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8542251167876044" data-ad-slot="7622049777"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
+        data-ad-format="fluid" data-ad-client="ca-pub-8542251167876044" data-ad-slot="3993704063"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-8542251167876044" data-ad-slot="1743677769"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-8542251167876044"
+        data-ad-slot="9430596092"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <!-- Floating Buttons -->
+    <div class="floating-container">
+        <button class="floating-btn1" title="Ação Rápida"><i class="fas fa-bolt"></i></button>
+        <button class="floating-btn" title="Suporte"><i class="fas fa-headset"></i></button>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top-button"><i class="fas fa-arrow-up"></i></button>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Desenvolvido por <a href="https://www.linkedin.com/in/anderson-s-352605137/" target="_blank">Anderson de Souza</a></p>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="Portfólio"><i class="fas fa-briefcase"></i></a>
+                </div>
+                <p>&copy; 2023 Anúncios TGA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-S8EC5C2WTG');
+    gtag('config', 'G-E7ZNTJSRYR');
+
+    // Sistema de Modo Claro/Escuro
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Verificar preferência salva ou definir padrão
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.className = savedTheme + '-mode';
+    updateThemeIcon();
+    
+    themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.replace('dark-mode', 'light-mode');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.replace('light-mode', 'dark-mode');
+            localStorage.setItem('theme', 'dark');
+        }
+        updateThemeIcon();
+    });
+    
+    function updateThemeIcon() {
+        const icon = themeToggle.querySelector('i');
+        if (body.classList.contains('dark-mode')) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    }
+
+    // Sistema de Auto-Atualização (1 minuto) - 
+    let refreshCount = parseInt(localStorage.getItem('refreshCount')) || 0; 
+    let timeRemaining = 60;
+    let autoRefreshEnabled = true;
+    let refreshInterval;
+    let progressInterval;
+    
+    const refreshCountElement = document.getElementById('refreshCount');
+    const timeRemainingElement = document.getElementById('timeRemaining');
+    const refreshNowButton = document.getElementById('refreshNow');
+    const toggleAutoRefreshButton = document.getElementById('toggleAutoRefresh');
+    const progressBar = document.getElementById('progressBar');
+    
+    // Atualizar o contador na tela ao carregar a página 
+    refreshCountElement.textContent = refreshCount;
+    
+    // Iniciar contador
+    startAutoRefresh();
+    
+    function startAutoRefresh() {
+        if (refreshInterval) clearInterval(refreshInterval);
+        if (progressInterval) clearInterval(progressInterval);
+        
+        // Atualizar contador de tempo
+        refreshInterval = setInterval(() => {
+            if (autoRefreshEnabled) {
+                timeRemaining--;
+                timeRemainingElement.textContent = timeRemaining;
+                
+                // Atualizar barra de progresso
+                updateProgressBar();
+                
+                if (timeRemaining <= 0) {
+                    refreshPage();
+                }
+            }
+        }, 1000);
+        
+        // Animação suave da barra de progresso (10x por segundo)
+        progressInterval = setInterval(() => {
+            if (autoRefreshEnabled) {
+                updateProgressBar();
+            }
+        }, 100);
+    }
+    
+    function updateProgressBar() {
+        if (progressBar) {
+            const progress = ((60 - timeRemaining) / 60) * 100;
+            progressBar.style.width = progress + '%';
+        }
+    }
+    
+    function refreshPage() {
+        refreshCount++;
+        localStorage.setItem('refreshCount', refreshCount); 
+        refreshCountElement.textContent = refreshCount;
+        timeRemaining = 60;
+        timeRemainingElement.textContent = timeRemaining;
+        
+        // Resetar barra de progresso
+        if (progressBar) {
+            progressBar.style.width = '0%';
+        }
+        
+        // Recarregar anúncios
+        reloadAds();
+        
+        // Feedback visual
+        showRefreshFeedback();
+    }
+    
+    function reloadAds() {
+        // Forçar recarregamento dos scripts de anúncios
+        if (window.adsbygoogle) {
+            // Recarregar todos os anúncios
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                console.log('Anúncios recarregados - ' + new Date().toLocaleTimeString());
+            } catch (error) {
+                console.error('Erro ao recarregar anúncios:', error);
+            }
+        }
+    }
+    
+    function showRefreshFeedback() {
+        // Efeito visual de atualização
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        // Feedback no painel de atualização
+        const refreshPanel = document.querySelector('.refresh-panel');
+        if (refreshPanel) {
+            refreshPanel.style.backgroundColor = 'var(--primary-light)';
+            setTimeout(() => {
+                refreshPanel.style.backgroundColor = '';
+            }, 500);
+        }
+    }
+    
+    refreshNowButton.addEventListener('click', () => {
+        refreshPage();
+    });
+    
+    toggleAutoRefreshButton.addEventListener('click', () => {
+        autoRefreshEnabled = !autoRefreshEnabled;
+        toggleAutoRefreshButton.textContent = autoRefreshEnabled ? 'Pausar' : 'Retomar';
+        toggleAutoRefreshButton.className = autoRefreshEnabled ? 'btn btn-outline' : 'btn btn-primary';
+        
+        if (autoRefreshEnabled) {
+            startAutoRefresh();
+        } else {
+            clearInterval(refreshInterval);
+            clearInterval(progressInterval);
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+        }
+    });
+
+    // Service Worker e Notificações
+    if ('serviceWorker' in navigator && 'Notification' in window) {
+        navigator.serviceWorker.register('./notificacao/service-worker.js')
+            .then(reg => console.log('SW registrado:', reg))
+            .catch(err => console.error('Erro ao registrar SW:', err));
+
+        if (Notification.permission === 'default') {
+            Notification.requestPermission().then(permission => {
+                console.log(`Permissão para notificações: ${permission}`);
+            });
+        }
+    } else {
+        console.log('Seu navegador não suporta notificações.');
+    }
+
+    // Verificação de nova versão do site
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentVersion = document.querySelector("#page-version")?.textContent.trim();
+        const storedVersion = localStorage.getItem("siteVersion");
+        if (currentVersion && storedVersion !== currentVersion) {
+            console.log(`Nova versão disponível! Versão atual: ${currentVersion}`);
+            localStorage.setItem("siteVersion", currentVersion);
+        }
+    });
+
+    // Firebase Config
+    const firebaseConfig = {
+        apiKey: "BECXD5Aj5_o9zNq2VNDsCDguVl2hCoS9u0Oty-KG79nKd-3WnGEn4ey8Zm7NCcuVufLuH-hAnAnLEFlGWw7w7EM",
+        authDomain: "tgameajuda.firebaseapp.com",
+        projectId: "tgameajuda",
+        storageBucket: "tgameajuda.appspot.com",
+        messagingSenderId: "74941945706",
+        appId: "1:74941945706:web:9f0da4e18bb9247a3bb713",
+        measurementId: "G-J6NCJKCF63"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+
+    function requestPermission() {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") getFCMToken();
+        });
+    }
+
+    function getFCMToken() {
+        messaging.getToken({ vapidKey: firebaseConfig.apiKey })
+            .then(token => {
+                if (token) console.log('Token FCM:', token);
+            })
+            .catch(err => console.error('Erro ao obter token:', err));
+    }
+
+    document.addEventListener("DOMContentLoaded", requestPermission);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./firebase-messaging-sw.js')
+            .then(reg => console.log('Service Worker do Firebase registrado:', reg))
+            .catch(err => console.error('Erro SW Firebase:', err));
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'flex';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
+    
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Inicializar anúncios quando a página carregar
+    window.addEventListener('load', function() {
+        // Forçar carregamento dos anúncios após um pequeno delay
+        setTimeout(() => {
+            reloadAds();
+        }, 1000);
+    });
+
+    // Recarregar anúncios quando a página ganhar foco
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            reloadAds();
+        }
+    });
+
+    // Recarregar anúncios quando a conexão voltar
+    window.addEventListener('online', function() {
+        reloadAds();
+    });
+</script>
+
+<script>
+    setInterval(function () {
+        // Incrementa o contador antes de recarregar 
+        let currentCount = parseInt(localStorage.getItem('refreshCount')) || 0;
+        localStorage.setItem('refreshCount', currentCount + 1);
+        
+        // Recarrega a página
+        location.reload();
+    }, 60000); // 60000 milissegundos = 60 segundos
+</script>
+
+</body>
+</html>
