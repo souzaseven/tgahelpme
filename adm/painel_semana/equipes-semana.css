@@ -1,0 +1,796 @@
+/* Equipes da Semana - Design Ultra Premium */
+.equipes-semana-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: 
+        radial-gradient(ellipse at 15% 15%, rgba(120, 119, 198, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 85% 85%, rgba(255, 119, 198, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 35% 65%, rgba(120, 219, 255, 0.1) 0%, transparent 60%),
+        linear-gradient(165deg, #0a0f1c 0%, #0f172a 30%, #1e293b 70%, #0d1425 100%);
+    min-height: 100vh;
+    color: #f8fafc;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de partículas premium */
+.equipes-semana-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.04) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.02) 3px, transparent 3px);
+    background-size: 50px 50px, 80px 80px, 30px 30px;
+    pointer-events: none;
+    z-index: 0;
+    animation: particleFloat 20s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.equipes-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 40px 20px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.equipes-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+}
+
+.equipes-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #3b82f6, 
+        #8b5cf6, 
+        #ec4899, 
+        transparent
+    );
+    border-radius: 3px;
+    box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.6),
+        0 0 40px rgba(139, 92, 246, 0.4);
+}
+
+.equipes-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, 
+        #60a5fa 0%, 
+        #a78bfa 25%, 
+        #f472b6 50%, 
+        #a78bfa 75%, 
+        #60a5fa 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 300% 300%;
+    animation: shimmer 4s ease-in-out infinite;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.equipes-header p {
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
+}
+
+/* Dashboard Premium */
+.equipes-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+}
+
+.equipe-card {
+    background: linear-gradient(145deg, 
+        rgba(30, 41, 59, 0.8), 
+        rgba(15, 23, 42, 0.9)
+    );
+    backdrop-filter: blur(25px) saturate(200%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.equipe-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.7s ease;
+}
+
+.equipe-card:hover::before {
+    left: 100%;
+}
+
+.equipe-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 24px;
+}
+
+.equipe-card:hover::after {
+    opacity: 1;
+}
+
+.equipe-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(99, 102, 241, 0.2);
+}
+
+/* VERDE NEON - TELEFONE */
+.equipe-card.telefone {
+    background: linear-gradient(145deg, 
+        rgba(34, 197, 94, 0.15), 
+        rgba(22, 163, 74, 0.1)
+    );
+    border-color: rgba(34, 197, 94, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 8px 32px rgba(34, 197, 94, 0.4),
+        0 0 0 1px rgba(34, 197, 94, 0.3);
+}
+
+.equipe-card.telefone:hover {
+    border-color: rgba(34, 197, 94, 0.8);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 40px rgba(34, 197, 94, 0.6),
+        0 0 0 1px rgba(34, 197, 94, 0.4);
+}
+
+/* ÂMBAR LUMINOSO - CHAT */
+.equipe-card.chat {
+    background: linear-gradient(145deg, 
+        rgba(245, 158, 11, 0.15), 
+        rgba(217, 119, 6, 0.1)
+    );
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 8px 32px rgba(245, 158, 11, 0.4),
+        0 0 0 1px rgba(245, 158, 11, 0.3);
+}
+
+.equipe-card.chat:hover {
+    border-color: rgba(245, 158, 11, 0.8);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 40px rgba(245, 158, 11, 0.6),
+        0 0 0 1px rgba(245, 158, 11, 0.4);
+}
+
+.equipe-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.equipe-card span {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #f8fafc;
+    display: block;
+    margin-top: 8px;
+    text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px currentColor;
+    position: relative;
+    z-index: 2;
+}
+
+/* Seção de Rotação Ultra Premium */
+.semana-telefone-resumo {
+    background: linear-gradient(145deg, 
+        rgba(30, 41, 59, 0.7), 
+        rgba(15, 23, 42, 0.8)
+    );
+    backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 28px;
+    padding: 40px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 0 80px rgba(59, 130, 246, 0.1);
+    z-index: 1;
+}
+
+.semana-telefone-resumo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        #3b82f6, 
+        #8b5cf6, 
+        #ec4899, 
+        transparent
+    );
+    box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.8),
+        0 0 40px rgba(139, 92, 246, 0.6);
+}
+
+.semana-telefone-resumo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+.semana-telefone-resumo h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+    color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.semana-telefone-resumo h3::before,
+.semana-telefone-resumo h3::after {
+    content: '✦';
+    color: #60a5fa;
+    font-size: 1.4rem;
+    opacity: 0.8;
+    animation: pulse 3s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.rotacao-telefone-grid-resumo {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.rotacao-telefone-item-resumo {
+    background: linear-gradient(145deg, 
+        rgba(30, 41, 59, 0.8), 
+        rgba(51, 65, 85, 0.6)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 20px;
+    padding: 28px 20px;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 160px;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 24px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.rotacao-telefone-item-resumo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.rotacao-telefone-item-resumo:hover::before {
+    opacity: 1;
+}
+
+.rotacao-telefone-item-resumo.anterior {
+    background: linear-gradient(145deg, 
+        rgba(100, 116, 139, 0.4), 
+        rgba(71, 85, 105, 0.3)
+    );
+    border-color: rgba(148, 163, 184, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 6px 24px rgba(100, 116, 139, 0.3),
+        0 0 0 1px rgba(148, 163, 184, 0.2);
+}
+
+/* VERDE NEON - ATUAL */
+.rotacao-telefone-item-resumo.atual {
+    background: linear-gradient(145deg, 
+        rgba(34, 197, 94, 0.25), 
+        rgba(22, 163, 74, 0.2)
+    );
+    border-color: rgba(34, 197, 94, 0.7);
+    transform: scale(1.05);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 12px 32px rgba(34, 197, 94, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 40px rgba(34, 197, 94, 0.3);
+}
+
+.rotacao-telefone-item-resumo.atual:hover {
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 16px 40px rgba(34, 197, 94, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 60px rgba(34, 197, 94, 0.4);
+}
+
+/* ÂMBAR LUMINOSO - PRÓXIMA */
+.rotacao-telefone-item-resumo.proxima {
+    background: linear-gradient(145deg, 
+        rgba(245, 158, 11, 0.25), 
+        rgba(217, 119, 6, 0.2)
+    );
+    border-color: rgba(245, 158, 11, 0.7);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 6px 24px rgba(245, 158, 11, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.rotacao-telefone-item-resumo.proxima:hover {
+    border-color: rgba(245, 158, 11, 0.9);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 10px 32px rgba(245, 158, 11, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 40px rgba(245, 158, 11, 0.3);
+}
+
+.rotacao-telefone-item-resumo .rotulo {
+    display: block;
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+}
+
+.rotacao-telefone-item-resumo .valor {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #f8fafc;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+    text-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 15px currentColor;
+    margin-bottom: 8px;
+}
+
+.rotacao-telefone-item-resumo.atual .valor {
+    color: #22c55e;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(34, 197, 94, 0.8);
+}
+
+.rotacao-telefone-item-resumo.anterior .valor {
+    color: #f1f5f9;
+    opacity: 0.8;
+}
+
+.rotacao-telefone-item-resumo.proxima .valor {
+    color: #f59e0b;
+    text-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(245, 158, 11, 0.6);
+}
+
+/* Badges Ultra Premium - CORES ATUALIZADAS */
+.fila, .extra {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(15px);
+    border: 1px solid;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* AZUL VIBRANTE - CHAT/WHATS */
+.fila {
+    background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.9), 
+        rgba(37, 99, 235, 0.8)
+    );
+    border-color: rgba(96, 165, 250, 0.6);
+    color: white;
+    box-shadow: 
+        0 4px 16px rgba(59, 130, 246, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.fila::before {
+    content: '💬';
+    margin-right: 8px;
+    font-size: 0.9rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* VERMELHO ENERGÉTICO - COMPENSAÇÃO */
+.extra {
+    background: linear-gradient(135deg, 
+        rgba(239, 68, 68, 0.9), 
+        rgba(220, 38, 38, 0.8)
+    );
+    border-color: rgba(248, 113, 113, 0.6);
+    color: white;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    box-shadow: 
+        0 4px 16px rgba(239, 68, 68, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.extra::before {
+    content: '⏰';
+    margin-right: 6px;
+    font-size: 0.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Efeitos hover premium */
+.fila:hover, .extra:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 0 20px currentColor;
+}
+
+.fila:hover {
+    box-shadow: 
+        0 8px 24px rgba(59, 130, 246, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.extra:hover {
+    box-shadow: 
+        0 8px 24px rgba(239, 68, 68, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Animações Premium */
+@keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) scale(1.05) rotate(0deg); 
+    }
+    33% { 
+        transform: translateY(-6px) scale(1.06) rotate(0.5deg); 
+    }
+    66% { 
+        transform: translateY(-3px) scale(1.055) rotate(-0.5deg); 
+    }
+}
+
+@keyframes glow {
+    0%, 100% { 
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            0 12px 32px rgba(34, 197, 94, 0.5),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 40px rgba(34, 197, 94, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 16px 40px rgba(34, 197, 94, 0.7),
+            0 0 0 1px rgba(255, 255, 255, 0.15),
+            0 0 60px rgba(34, 197, 94, 0.5);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 0.7; 
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.2);
+        text-shadow: 0 0 20px rgba(96, 165, 250, 0.8);
+    }
+}
+
+@keyframes badgePulseBlue {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.5);
+    }
+    50% { 
+        transform: scale(1.08); 
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.7);
+    }
+}
+
+@keyframes badgePulseRed {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 4px 16px rgba(239, 68, 68, 0.5);
+    }
+    50% { 
+        transform: scale(1.08); 
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.7);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.rotacao-telefone-item-resumo.atual {
+    animation: float 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+}
+
+.fila {
+    animation: badgePulseBlue 4s ease-in-out infinite;
+}
+
+.extra {
+    animation: badgePulseRed 4s ease-in-out infinite;
+}
+
+/* Loading States Premium */
+.loading-equipes {
+    text-align: center;
+    padding: 80px;
+    color: #94a3b8;
+    position: relative;
+    z-index: 1;
+}
+
+.loading-equipes i {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    opacity: 0.9;
+    animation: spin 2s linear infinite;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Responsivo Premium */
+@media (max-width: 1024px) {
+    .equipes-semana-container {
+        padding: 24px;
+    }
+    
+    .equipes-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .rotacao-telefone-grid-resumo {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .equipes-semana-container {
+        padding: 20px 16px;
+    }
+    
+    .equipes-dashboard {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .equipes-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .equipes-header p {
+        font-size: 1.1rem;
+    }
+    
+    .rotacao-telefone-grid-resumo {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .semana-telefone-resumo {
+        padding: 32px 24px;
+    }
+    
+    .rotacao-telefone-item-resumo {
+        min-height: 140px;
+        padding: 24px 20px;
+    }
+    
+    .rotacao-telefone-item-resumo.atual {
+        transform: scale(1.03);
+    }
+    
+    .equipe-card {
+        padding: 28px 20px;
+    }
+    
+    .equipe-card span {
+        font-size: 2rem;
+    }
+    
+    .fila, .extra {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .equipes-semana-container {
+        padding: 16px 12px;
+    }
+    
+    .equipes-header {
+        padding: 32px 16px 24px;
+    }
+    
+    .equipes-header h1 {
+        font-size: 2rem;
+    }
+    
+    .semana-telefone-resumo h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .rotacao-telefone-item-resumo .valor {
+        font-size: 1.2rem;
+    }
+    
+    .rotacao-telefone-item-resumo.atual .valor {
+        font-size: 1.3rem;
+    }
+    
+    .fila, .extra {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+    
+    .fila::before, .extra::before {
+        margin-right: 4px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .equipe-card,
+    .rotacao-telefone-item-resumo,
+    .rotacao-telefone-item-resumo.atual,
+    .equipes-header h1,
+    .fila, .extra {
+        animation: none;
+        transition: none;
+    }
+    
+    .equipes-semana-container::before {
+        animation: none;
+    }
+}
