@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Pausa - Equipe Daniel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../../img/principal/bot-tga.webp" type="image/x-icon">
+
+    <!--souza system-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+        
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S8EC5C2WTG');
+</script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-clock"></i> Controle de Pausa</h1>
+            <p class="subtitle">Equipe Daniel</p>
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-indicator online"></div>
+                    <span>Sistema Online</span>
+                </div>
+                <div class="status-item">
+                    <div class="status-indicator sync"></div>
+                    <span id="sync-status">Sincronizando...</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-database"></i>
+                    <span>Banco de Dados Conectado</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="dashboard">
+            <div class="card pausa-container">
+                <h2><i class="fas fa-coffee"></i> Em Pausa</h2>
+                <div class="contador">
+                    <i class="fas fa-users"></i>
+                    <span id="contador-pausa">0</span> de 2 vagas ocupadas
+                </div>
+                <div id="pausa-lista">
+                    <div class="lista-vazia">
+                        <i class="fas fa-mug-hot" style="font-size: 2.5rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <div>Nenhuma pessoa na pausa no momento</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card lista-espera-container">
+                <h2><i class="fas fa-list-ol"></i> Lista de Espera</h2>
+                <div class="contador">
+                    <i class="fas fa-clock"></i>
+                    <span id="contador-espera">0</span> pessoas na lista de espera
+                </div>
+                <div id="lista-espera">
+                    <div class="lista-vazia">
+                        <i class="fas fa-clipboard-list" style="font-size: 2.5rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <div>Nenhuma pessoa na lista de espera</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card participantes-container full-width">
+                <h2><i class="fas fa-users"></i> Participantes</h2>
+                <div class="participantes-grid" id="participantes-lista">
+                    <div class="lista-vazia">
+                        <div class="loading"></div>
+                        <div style="margin-top: 15px;">Carregando participantes...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REMOVA ESTA LINHA: <div class="toast-container" id="toast-container"></div> -->
+
+    <script src="script.js"></script>
+    
+    <img alt="visitas" src="https://hits.sh/tgameajuda.com/pauastestes.html.svg?color=007ced&amp;label=visitas&amp;labelColor=FFFFFF&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
+</body>
+</html>
