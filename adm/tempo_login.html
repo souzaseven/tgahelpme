@@ -1,0 +1,40 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const contadorEl = document.getElementById("contador");
+
+  if (!contadorEl) return; // garante que o elemento existe
+
+  let tempoRestante = 300; // 5 minutos
+
+  function atualizarContador() {
+    const minutos = String(Math.floor(tempoRestante / 60)).padStart(2, '0');
+    const segundos = String(tempoRestante % 60).padStart(2, '0');
+    contadorEl.textContent = `${minutos}:${segundos}`;
+
+    if (tempoRestante <= 0) {
+      sair(); // chama logout
+    }
+
+    tempoRestante--;
+  }
+
+  atualizarContador(); // inicializa
+  setInterval(atualizarContador, 1000); // atualiza a cada segundo
+});
+
+
+      function sair() {
+    localStorage.removeItem("acesso");
+    window.location.href = "login.html";
+}
+
+// Verificação inicial de acesso
+const acesso = localStorage.getItem("acesso");
+if (!acesso) {
+    location.href = "login.html";
+}
+
+      
+visual
+      <div id="tempo-sessao">
+    <span id="contador">⏳05:00</span>
+</div>
