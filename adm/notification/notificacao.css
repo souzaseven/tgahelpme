@@ -1,0 +1,96 @@
+/* ======== ESTILOS GERAIS ======== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #007ced, #004e92);
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background: #fff;
+  color: #004e92;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #004e92;
+  color: #fff;
+}
+
+.status {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #e0e0e0;
+}
+
+/* ======== TOAST ======== */
+.toast-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+}
+
+.toast {
+  background: rgba(255, 255, 255, 0.95);
+  color: #004e92;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.4s ease, fadeOut 0.5s ease 3.5s forwards;
+}
+
+.toast img {
+  width: 24px;
+  height: 24px;
+}
+
+/* ======== ANIMAÇÕES ======== */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
+/* ======== BOTÕES DE CONFIGURAÇÃO ======== */
+.toggle {
+  background: #ffffff33;
+  color: #fff;
+  border: 1px solid #ffffff55;
+  margin: 5px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.toggle:hover {
+  background: #ffffff55;
+}
+.toggle.desativado {
+  background: #444;
+  color: #ccc;
+  border-color: #666;
+}
