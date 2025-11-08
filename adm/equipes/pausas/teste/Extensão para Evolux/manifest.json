@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Controle de Pausa",
+    "version": "1.0",
+    "description": "Impede pausas se mais de 2 da mesma equipe estiverem em pausa.",
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "background"
+    ],
+    "host_permissions": [
+        "https://tgasistemas.evolux.io/monitor/agent/*",
+        "http://10.1.1.240:3000/*"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://10.1.1.240:3000"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "48": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://tgasistemas.evolux.io/monitor/agent/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}
