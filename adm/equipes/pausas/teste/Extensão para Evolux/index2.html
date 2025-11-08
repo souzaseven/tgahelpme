@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zaito Soluções — Dev House & Produtos</title>
+
+    <script>tailwind = { darkMode: 'class' }</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <link rel="icon" href="https://img.icons8.com/fluency/96/artificial-intelligence.png" />
+
+    <style>
+        /* ===== Variáveis de tema ===== */
+        :root {
+            --bg-light-1: #f8fafc;
+            --bg-light-2: #eef2ff;
+            --text-light: #0f172a;
+            --accent-light: #4f46e5;
+            --bg-dark-1: #030615;
+            --bg-dark-2: #071229;
+            --text-dark: #E6EEF8;
+            --accent-dark: #8b5cf6;
+            --header-height: 80px; /* Altura aproximada do header */
+        }
+
+        /* CORREÇÃO CRÍTICA PARA O SCROLL OFFSET */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height); /* Compensar a altura do header fixo */
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, sans-serif;
+            transition: background 0.5s ease, color 0.5s ease;
+            -webkit-font-smoothing: antialiased;
+            background: linear-gradient(180deg, var(--bg-light-1), var(--bg-light-2));
+            color: var(--text-light);
+        }
+
+        body.theme-dark {
+            background: linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2));
+            color: var(--text-dark);
+        }
+
+        /* ===== Partículas (Mantido) ===== */
+        #tsparticles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .app {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ===== Navbar (Altura e Sombra Aprimorada) ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px); /* Aumentado o blur */
+            background-color: rgba(248, 250, 252, 0.85); /* Fundo semi-transparente light */
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        body.theme-dark header {
+            background-color: rgba(3, 6, 21, 0.85); /* Fundo semi-transparente dark */
+        }
+
+        header.scrolled {
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+        }
+        body.theme-dark header.scrolled {
+            box-shadow: 0 6px 30px rgba(2, 6, 23, 0.5);
+        }
+
+        /* ===== Seções (Ajustado o padding para melhor visualização) ===== */
+        section {
+            min-height: calc(100vh - var(--header-height)); /* Ajuste para preencher a tela */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8vmin 5vw;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ===== Glass card (Sombra e transição aprimoradas) ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.65); /* Opacidade um pouco maior */
+            backdrop-filter: blur(10px) saturate(130%); /* Blur e saturação aprimorados */
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); /* Sombra mais visível */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+            transition: all 0.3s ease;
+        }
+        .glass:hover {
+            transform: translateY(-4px); /* Aumentado o hover effect */
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18);
+        }
+        body.theme-dark .glass {
+            background: rgba(10, 14, 20, 0.55);
+            box-shadow: 0 10px 40px rgba(2, 6, 23, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== Mobile menu (Estilização aprimorada) ===== */
+        #mobilePanel {
+            position: fixed;
+            right: -100%;
+            top: var(--header-height); /* Iniciar abaixo do header */
+            height: calc(100% - var(--header-height)); /* Altura total menos o header */
+            width: 80%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            transition: right 0.35s ease;
+            z-index: 70;
+            padding: 2rem 1.5rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        body.theme-dark #mobilePanel {
+            background: rgba(10, 14, 20, 0.98);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #mobilePanel.open { right: 0; }
+
+        /* ===== Hero Lottie (Mantido) ===== */
+        .hero-lottie {
+            width: 100%;
+            max-width: 480px; /* Levemente maior */
+            height: 380px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-lottie {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 80%;
+                opacity: 0.15;
+                height: auto;
+            }
+            .hero-text {
+                z-index: 2;
+                position: relative;
+            }
+        }
+
+        /* ===== Efeitos e animações (Mantido) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Botão WhatsApp (Gradiente aprimorado e dark mode) ===== */
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(90deg, var(--accent-light), #06b6d4);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); /* Sombra mais forte */
+            z-index: 60;
+            transition: transform 0.2s ease;
+            font-weight: 600;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        body.theme-dark .whatsapp-float {
+            background: linear-gradient(90deg, var(--accent-dark), #14b8a6);
+        }
+
+        @media (max-width: 768px) {
+            section { min-height: 90vh; padding: 6vmin 6vw; }
+            .whatsapp-float { right: 12px; bottom: 12px; padding: 10px 12px; font-size: 14px; }
+            header .container { padding-top: 10px; padding-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <div class="app">
+
+        <header id="siteHeader">
+            <div class="container flex items-center justify-between h-full">
+                <div class="flex items-center gap-3">
+                    <div class="font-bold text-2xl">Zaito <span class="text-indigo-600 dark:text-indigo-300">Soluções</span></div>
+                </div>
+
+                <nav class="hidden md:flex gap-8 items-center text-lg font-medium">
+                    <a href="#home" class="hover:text-indigo-500 dark:hover:text-indigo-300 transition duration-150">Início</a>
+                    <a href="#sobre" class="hover:text-indigo-500 dark:hover:text-indigo-300 transition duration-150">Sobre</a>
+                    <a href="#produtos" class="hover:text-indigo-500 dark:hover:text-indigo-300 transition duration-150">Soluções</a>
+                    <a href="#contato" class="hover:text-indigo-500 dark:hover:text-indigo-300 transition duration-150">Contato</a>
+                </nav>
+
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" class="p-2 rounded-full border dark:border-gray-700 bg-white dark:bg-gray-800 transition duration-150 hover:scale-105">
+                        <span class="text-xl">🌞</span> </button>
+                    <button id="openMobile" class="md:hidden p-2 text-2xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="mobilePanel">
+            <nav class="flex flex-col gap-6 text-xl font-semibold">
+                <a href="#home" onclick="closeMobile()" class="hover:text-indigo-600 transition">Início</a>
+                <a href="#sobre" onclick="closeMobile()" class="hover:text-indigo-600 transition">Sobre</a>
+                <a href="#produtos" onclick="closeMobile()" class="hover:text-indigo-600 transition">Soluções</a>
+                <a href="#contato" onclick="closeMobile()" class="hover:text-indigo-600 transition">Contato</a>
+            </nav>
+        </div>
+
+        <section id="home" class="min-h-[90vh]">
+            <div class="container grid md:grid-cols-2 gap-12 items-center relative">
+                <div class="hero-text reveal">
+                    <h1 class="text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                        Conversas que <span class="text-indigo-600 dark:text-indigo-300">vendem</span>.
+                    </h1>
+                    <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">
+                        A <strong>Zaito Soluções</strong> cria automações e experiências digitais que conectam marcas e clientes — de forma <strong>natural, eficiente e personalizada</strong>.
+                    </p>
+                    <a href="#produtos" class="inline-block px-7 py-4 text-lg rounded-xl text-white font-bold shadow-lg transform transition duration-300 hover:scale-[1.03]" style="background:linear-gradient(90deg,#4f46e5,#06b6d4)">🚀 Conheça nossas soluções</a>
+                </div>
+                <div class="reveal flex justify-center md:justify-end relative">
+                    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_ktwnwv5m.json" class="hero-lottie" background="transparent" loop autoplay></lottie-player>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <div class="container">
+                <div class="glass p-8 md:p-12 reveal">
+                    <h2 class="text-4xl font-bold mb-6 text-indigo-600 dark:text-indigo-300">Soluções que respiram resultado</h2>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-3xl">
+                        Desenvolvemos sistemas, landing pages e automações que se adaptam ao seu negócio — não o contrário.
+                        Cada projeto é pensado para ser <strong>intuitivo, rápido e escalável</strong>. Nosso foco é a conversão.
+                    </p>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                        <div class="p-6 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md transition duration-300 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-700 border border-transparent">
+                            <h3 class="font-bold text-xl text-indigo-600 dark:text-indigo-300 mb-3">Landing Pages</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300">Experiências focadas que convertem visitantes em leads e clientes com alta performance.</p>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md transition duration-300 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-700 border border-transparent">
+                            <h3 class="font-bold text-xl text-indigo-600 dark:text-indigo-300 mb-3">Sistemas Sob Medida</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300">Sistemas robustos e integrações personalizadas para otimizar toda a sua operação interna.</p>
+                        </div>
+                        <div class="p-6 rounded-xl bg-white/60 dark:bg-white/10 backdrop-blur-md transition duration-300 hover:shadow-lg hover:border-indigo-400 dark:hover:border-indigo-700 border border-transparent">
+                            <h3 class="font-bold text-xl text-indigo-600 dark:text-indigo-300 mb-3">Automação de Chat</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300">Bots de WhatsApp com NLP e reconhecimento de localização para atendimento 24/7 e pedidos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos">
+            <div class="container">
+                <div class="glass p-8 md:p-12 reveal">
+                    <h2 class="text-4xl font-bold mb-8 text-indigo-600 dark:text-indigo-300 text-center">Nossa Solução Principal</h2>
+                    <div class="grid md:grid-cols-2 gap-10 mt-6 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="text-3xl font-bold mb-4">Zaito Gestão de Pedidos</h3>
+                            <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                                Nosso produto carro-chefe é um <strong>gestor de pedidos completo</strong> por conversa direta no <strong>WhatsApp</strong>. Ele utiliza <strong>NLP (Processamento de Linguagem Natural)</strong> própria para entender pedidos complexos e aceitar localização em tempo real.
+                                O sistema é <strong>natural, totalmente automatizado</strong> e pode ser ajustado para operar apenas nos horários do seu negócio, garantindo que você nunca perca uma venda.
+                            </p>
+                        </div>
+                        <div class="order-1 md:order-2 flex justify-center">
+                            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_jcikwtux.json" style="width:100%; max-width: 450px; height: 350px;" background="transparent" speed="1" loop autoplay></lottie-player>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="min-h-[50vh]">
+            <div class="container">
+                <div class="glass p-8 md:p-12 text-center reveal">
+                    <h2 class="text-4xl font-bold mb-5 text-indigo-600 dark:text-indigo-300">Fale com a gente e comece a vender mais!</h2>
+                    <p class="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+                        Quer transformar seu negócio com tecnologia feita sob medida e automações que realmente funcionam? 
+                        Fale conosco agora e descubra o que a Zaito pode construir com você.
+                    </p>
+                    <div class="flex justify-center gap-6 flex-wrap">
+                        <a href="https://wa.me/5599999999999" target="_blank" class="px-8 py-4 text-lg rounded-xl text-white font-bold transform transition duration-300 hover:scale-[1.05]" style="background:linear-gradient(90deg,#4f46e5,#06b6d4)">💬 Iniciar Conversa no WhatsApp</a>
+                        <a href="mailto:contato@zaito.com" class="px-8 py-4 text-lg rounded-xl border-2 border-indigo-600 dark:border-indigo-300 dark:text-indigo-300 font-bold transition duration-300 hover:bg-indigo-50 dark:hover:bg-gray-800 hover:shadow-md">✉️ Enviar um E-mail</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800">
+            © 2025 Zaito Soluções — Conversas que geram resultado.
+        </footer>
+
+        <a href="https://wa.me/5599999999999" target="_blank" class="whatsapp-float">
+            💬 Fale conosco
+        </a>
+    </div>
+
+    <script>
+        // ===== Tema =====
+        const themeToggle = document.getElementById('themeToggle');
+        function setTheme(dark) {
+            document.body.classList.toggle('theme-dark', dark);
+            // Atualiza o ícone do botão com base no tema
+            themeToggle.querySelector('span').textContent = dark ? '🌙' : '🌞'; 
+            localStorage.setItem('zaito_theme', dark ? 'dark' : 'light');
+            loadParticles(dark ? 'dark' : 'light');
+        }
+        const saved = localStorage.getItem('zaito_theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(saved ? saved === 'dark' : prefersDark);
+        themeToggle.addEventListener('click', () =>
+            setTheme(!document.body.classList.contains('theme-dark'))
+        );
+
+        // ===== Mobile Menu =====
+        const mobilePanel = document.getElementById('mobilePanel');
+        const openMobile = document.getElementById('openMobile');
+        openMobile.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+        function closeMobile() { mobilePanel.classList.remove('open'); }
+
+        // Adiciona um listener para fechar o menu mobile ao redimensionar (desktop)
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobile();
+            }
+        });
+
+        // ===== Scroll reveal (Mantido) =====
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        reveals.forEach(r => observer.observe(r));
+
+        // ===== Sticky Header (Mantido) =====
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ===== Partículas (Mantido) =====
+        async function loadParticles(theme = 'light') {
+            const existing = window.tsParticles.dom();
+            if (existing.length) existing.forEach(p => p.destroy());
+
+            const light = {
+                particles: {
+                    number: { value: 70 },
+                    color: { value: ['#1e3a8a', '#60a5fa', '#06b6d4'] },
+                    links: { enable: true, color: '#93c5fd', opacity: 0.1 },
+                    move: { enable: true, speed: 0.3 },
+                    opacity: { value: 0.3 },
+                    size: { value: { min: 1, max: 3 } },
+                },
+            };
+
+            const dark = {
+                particles: {
+                    number: { value: 70 },
+                    color: { value: ['#8b5cf6', '#06b6d4', '#a855f7'] },
+                    links: { enable: true, color: '#a78bfa', opacity: 0.15 },
+                    move: { enable: true, speed: 0.35 },
+                    opacity: { value: 0.4 },
+                    size: { value: { min: 1, max: 3.5 } },
+                },
+            };
+
+            await tsParticles.load('tsparticles', theme === 'dark' ? dark : light);
+        }
+        loadParticles(document.body.classList.contains('theme-dark') ? 'dark' : 'light');
+    </script>
+</body>
+</html>
