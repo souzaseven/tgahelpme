@@ -1,0 +1,57 @@
+{
+    "participantes": [
+        {
+            "nome": "Anderson de Souza",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Uanderson Almeida",
+            "status": "pausa"
+        },
+        {
+            "nome": "Pablo de Freitas Sanches de Souza",
+            "status": "espera"
+        },
+        {
+            "nome": "Carlos Eduardo Nascimento Silva",
+            "status": "espera"
+        },
+        {
+            "nome": "Emerson Hoffmann Cassemiro",
+            "status": "espera"
+        },
+        {
+            "nome": "Rafael Felipe Santos Machado",
+            "status": "espera"
+        },
+        {
+            "nome": "Renan Canachiro dos Santos",
+            "status": "pausa"
+        },
+        {
+            "nome": "Rodrigo de Moraes Ribeiro",
+            "status": "pausa"
+        },
+        {
+            "nome": "Alexsandro Matsushita",
+            "status": "espera"
+        },
+        {
+            "nome": "Andrey Mayer",
+            "status": "espera"
+        },
+        {
+            "nome": "Diogo de Lima Neves",
+            "status": "pausa"
+        },
+        {
+            "nome": "Luiz Henrique Camargo Moura",
+            "status": "pausa"
+        },
+        {
+            "nome": "Pedro Henrique de Souza Egues",
+            "status": "pausa"
+        }
+    ],
+    "ultima_atualizacao": "2025-11-09 16:03:07"
+}

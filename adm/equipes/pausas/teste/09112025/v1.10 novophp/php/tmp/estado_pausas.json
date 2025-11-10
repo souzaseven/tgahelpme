@@ -1,0 +1,45 @@
+{
+    "participantes": [
+        {
+            "nome": "Suzana Ferreira da Silva Leão",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Anderson de Souza",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Antonio Oliveira",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Heitor Simon Gosmann",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Carlos Eduardo Nascimento Silva",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Igor Gabriel Andrade Souza",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Jessica Bergue",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Pablo de Freitas Sanches de Souza",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Uanderson Almeida",
+            "status": "disponivel"
+        },
+        {
+            "nome": "Jesse Kalebe Soares Andrade",
+            "status": "disponivel"
+        }
+    ],
+    "ultima_atualizacao": "2025-11-09 20:23:07"
+}

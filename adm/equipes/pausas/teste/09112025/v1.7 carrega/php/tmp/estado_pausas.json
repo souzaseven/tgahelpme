@@ -1,0 +1,17 @@
+{
+    "participantes": [
+        {
+            "nome": "Felipe Vargas Maldonado de Souza",
+            "status": "espera"
+        },
+        {
+            "nome": "Anderson de Souza",
+            "status": "pausa"
+        },
+        {
+            "nome": "Carlos Eduardo Nascimento Silva",
+            "status": "espera"
+        }
+    ],
+    "ultima_atualizacao": "2025-11-09 12:59:11"
+}

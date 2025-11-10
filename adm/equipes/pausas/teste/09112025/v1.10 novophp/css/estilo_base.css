@@ -1,0 +1,781 @@
+/* ============================================================
+   estilo_base.css - Tema Escuro Moderno v1.7
+   ------------------------------------------------------------
+   🔹 Responsável pelo layout completo do Controle de Pausas
+   🔹 Cores sólidas por status nos operadores
+   🔹 Mantém estrutura responsiva, moderna e fluida
+   ============================================================ */
+
+/* 🔹 Variáveis e reset */
+:root {
+  --primary-color: #00c3ff;
+  --success-color: #00ff88;
+  --warning-color: #ffaa00;
+  --error-color: #ff4444;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-dark: #0d1117;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+header h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   STATUS DO SISTEMA
+   ============================================================ */
+.status-sistema {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--success-color);
+  font-size: 0.85rem;
+  margin: 10px auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-online { background: var(--success-color); }
+.status-offline { background: var(--error-color); }
+.status-warning { background: var(--warning-color); }
+
+/* ============================================================
+   DASHBOARD E CARDS
+   ============================================================ */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+  .participantes-container {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.card h2 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+/* ============================================================
+   CONTADORES E STATUS
+   ============================================================ */
+.contador-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.contador {
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.sync-status {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   LISTAS DE PAUSAS, FILA E PARTICIPANTES
+   ============================================================ */
+.lista-pausas,
+.lista-fila,
+.lista-participantes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 100px;
+}
+
+/* ============================================================
+   ITENS DAS LISTAS (PAINÉIS SUPERIORES)
+   ============================================================ */
+.item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+}
+
+.item.pausa { border-left: 4px solid #007ced; }
+.item.espera { border-left: 4px solid #ffaa00; }
+.item.disponivel { border-left: 4px solid #00ff88; }
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-nome {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.item-status {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   BOTÕES DE AÇÃO
+   ============================================================ */
+.admin-botoes,
+.user-botoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-acao {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-acao:hover {
+  background: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.btn-acao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================================
+   FILTRO DE EQUIPES
+   ============================================================ */
+.participantes-filtro {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.participantes-filtro label {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.participantes-filtro label:hover {
+  background: rgba(0, 124, 237, 0.2);
+  border-color: var(--primary-color);
+}
+
+.participantes-filtro input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* ============================================================
+   BLOCO DE EQUIPES
+   ============================================================ */
+.equipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.equipe-bloco {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.equipe-bloco:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.equipe-bloco h3 {
+  color: var(--primary-color);
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.equipe-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+/* ============================================================
+   ITENS DE OPERADORES - CORES SÓLIDAS POR STATUS
+   ============================================================ */
+
+/* 🔹 BASE PARA TODOS OS OP-ITEM */
+.op-item {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 🟢 DISPONÍVEL - Verde */
+.op-item.disponivel {
+  background: #00ff88;
+  border-left: 4px solid #00cc66;
+}
+
+/* 🟡 ESPERA - Amarelo */
+.op-item.espera {
+  background: #ffdd00;
+  border-left: 4px solid #ffaa00;
+}
+
+/* 🔴 PAUSA - Vermelho */
+.op-item.pausa {
+  background: #ff6b6b;
+  border-left: 4px solid #ff4444;
+}
+
+/* 📝 TEXTO (comum a todos) */
+.op-item strong {
+  color: #000000;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.op-item small {
+  color: #333333;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.op-item .status {
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.op-item .tempo {
+  color: #333333;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.op-item .tempo::before {
+  content: "⏱";
+  opacity: 0.7;
+}
+
+/* 🖱️ HOVER EFFECTS */
+.op-item:hover {
+  transform: translateY(-3px);
+}
+
+.op-item.disponivel:hover {
+  background: #00e077;
+  box-shadow: 0 6px 16px rgba(0, 255, 136, 0.4);
+}
+
+.op-item.espera:hover {
+  background: #ffcc00;
+  box-shadow: 0 6px 16px rgba(255, 221, 0, 0.4);
+}
+
+.op-item.pausa:hover {
+  background: #ff5555;
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+/* ============================================================
+   ESTADOS DE CARREGAMENTO E LISTAS VAZIAS
+   ============================================================ */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.loading:before {
+  content: "⏳";
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.lista-vazia {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.lista-vazia i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   BOTÃO DE TROCA DE USUÁRIO
+   ============================================================ */
+.btn-trocar-usuario {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--error-color);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.btn-trocar-usuario:hover {
+  background: #ff6666;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+}
+
+/* ============================================================
+   TOAST DE NOTIFICAÇÃO
+   ============================================================ */
+#toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10000;
+  font-size: 0.95rem;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   MODAL DE LOGIN
+   ============================================================ */
+#modalOperador {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+#modalOperador.ativo {
+  display: flex;
+}
+
+#modalOperador .janela {
+  background: #1e1e2e;
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 30px 25px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: surgir 0.3s ease;
+}
+
+@keyframes surgir {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#modalOperador h2 {
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+#modalOperador input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#modalOperador input[type="text"],
+#modalOperador input[type="password"] {
+  background: #29293d;
+  color: var(--text-primary);
+}
+
+#modalOperador input:focus {
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+#modalOperador input[type="password"] {
+  display: none;
+}
+
+#modalOperador button {
+  width: 100%;
+  margin-top: 15px;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#modalOperador button:hover {
+  background: #0090ff;
+  transform: translateY(-1px);
+}
+
+#modalOperador button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#modalOperador .msg-erro {
+  margin-top: 10px;
+  color: var(--error-color);
+  font-size: 0.9rem;
+  display: none;
+}
+
+/* ============================================================
+   INFO DO USUÁRIO LOGADO
+   ============================================================ */
+.usuario-logado {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 124, 237, 0.2);
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  border: 1px solid rgba(0, 124, 237, 0.3);
+}
+
+/* ============================================================
+   CORREÇÃO PARA O CONTAINER DE PARTICIPANTES
+   ============================================================ */
+.lista-participantes {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  min-height: 200px;
+}
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 768px) {
+  .container { padding: 15px; }
+  header h1 { font-size: 2rem; }
+
+  .participantes-filtro {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .equipe-operadores { grid-template-columns: 1fr; }
+
+  .btn-trocar-usuario {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  #modalOperador .janela {
+    margin: 20px;
+    padding: 25px 20px;
+  }
+
+  .admin-botoes, .user-botoes {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.8rem; }
+  .card { padding: 15px; }
+  .op-item { padding: 12px; }
+
+  .contador-status {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+
+/* ============================================================
+   🔹 Botão Ver Equipes - Edição Premium v2.1 (Souza System)
+   ============================================================ */
+#btnToggleEquipes {
+  background: linear-gradient(135deg, #007ced, #6f00ff);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 124, 237, 0.35);
+}
+
+/* 💫 Brilho animado */
+#btnToggleEquipes::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-25deg);
+  transition: all 0.5s ease;
+}
+
+#btnToggleEquipes:hover::after { left: 130%; }
+
+#btnToggleEquipes:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 18px rgba(0,124,237,0.45);
+}
+
+#btnToggleEquipes:active {
+  transform: scale(0.97);
+}
+
+/* 🌈 Estado ativo */
+#btnToggleEquipes.ativo {
+  background: linear-gradient(135deg, #ff0066, #ff8800);
+  box-shadow: 0 0 15px rgba(255, 136, 0, 0.5);
+}
+
+#btnToggleEquipes.ativo i {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* ============================================================
+   🔄 Atualização suave sem piscar (Equipes)
+   ============================================================ */
+.equipes-container {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.equipes-container.atualizando {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: blur(0.3px);
+}
+
+/* ✨ Efeitos fade refinados */
+.fade-in {
+  animation: fadeIn 0.35s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.25s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-3px); }
+}
+
+/* 💡 Destaque sutil em operadores atualizados */
+.op-item {
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.op-item.atualizado {
+  animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 rgba(0,124,237,0); }
+  50% { box-shadow: 0 0 10px rgba(0,124,237,0.5); }
+  100% { box-shadow: 0 0 0 rgba(0,124,237,0); }
+}
+
+
+#btnToggleEquipes {
+  background: linear-gradient(135deg, #007bff, #00c3ff);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+#btnToggleEquipes:hover {
+  background: linear-gradient(135deg, #00c3ff, #007bff);
+  transform: scale(1.05);
+}
+#btnToggleEquipes.ativo {
+  background: linear-gradient(135deg, #00b36b, #00e09b);
+}
+
