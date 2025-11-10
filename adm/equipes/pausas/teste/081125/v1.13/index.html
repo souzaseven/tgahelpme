@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Pausa - Equipe Daniel</title>
+
+  <!-- Ícone e Font Awesome -->
+  <link rel="icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 🔧 Setup de versão automática -->
+  <script src="./setup_sistema.php"></script>
+
+  <!--souza system-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+
+  <!-- Carregar CSS dinamicamente -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const versao = window.SISTEMA_CONFIG?.versao || (() => {
+        const path = window.location.pathname.split("/");
+        return path[path.indexOf("pausas") + 1] || "v1.0";
+      })();
+      const baseCSS = window.SISTEMA_CONFIG?.caminhos?.css || `/adm/equipes/pausas/${versao}/css/`;
+      console.log(`🎨 Carregando CSS da versão ${versao} →`, baseCSS);
+
+      const estilos = [
+        "core.css",
+        "botoes.css",
+        "components.css",
+        "animations.css",
+        "notificacoes.css",
+        "contador_pausa.css"
+      ];
+
+      estilos.forEach(arq => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = baseCSS + arq + `?v=${versao}&t=${Date.now()}`;
+        document.head.appendChild(link);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-clock"></i> Controle de Pausa</h1>
+      <p class="subtitle">Equipe Daniel Feix</p>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <div class="status-indicator online"></div>
+          <span>Sistema Online</span>
+        </div>
+        <div class="status-item">
+          <div class="status-indicator sync"></div>
+          <span id="sync-status">Sincronizando...</span>
+        </div>
+        <div class="status-item">
+          <i class="fas fa-database"></i>
+          <span>Banco de Dados Conectado</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Painéis -->
+    <div class="dashboard">
+      <div class="card pausa-container">
+        <h2><i class="fas fa-coffee"></i> Em Pausa</h2>
+        <div class="contador">
+          <i class="fas fa-users"></i>
+          <span id="contador-pausa">0</span> de 2 vagas ocupadas
+        </div>
+        <div id="pausa-lista">
+          <div class="lista-vazia">
+            <i class="fas fa-mug-hot" style="font-size: 2.5rem; margin-bottom: 15px; opacity: 0.5;"></i>
+            <div>Nenhuma pessoa em pausa no momento ☕</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card lista-espera-container">
+        <h2><i class="fas fa-list-ol"></i> Lista de Espera</h2>
+        <div class="contador">
+          <i class="fas fa-clock"></i>
+          <span id="contador-espera">0</span> pessoas aguardando
+        </div>
+        <div id="lista-espera">
+          <div class="lista-vazia">
+            <i class="fas fa-clipboard-list" style="font-size: 2.5rem; margin-bottom: 15px; opacity: 0.5;"></i>
+            <div>Nenhuma pessoa na lista de espera 📋</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card participantes-container full-width">
+        <h2><i class="fas fa-users"></i> Participantes</h2>
+        <div class="participantes-grid" id="listaParticipantes">
+          <div class="lista-vazia">
+            <div class="loading"></div>
+            <div style="margin-top: 15px;">Carregando participantes...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contador de visitas -->
+  <div style="display: flex; justify-content: center; margin: 10px 0;">
+    <img alt="visitas"
+      src="https://hits.sh/tgameajuda.com/adm/equipes/pausas/auto.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+  </div>
+
+  <!-- Carregar scripts dinamicamente -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const versao = window.SISTEMA_CONFIG?.versao || (() => {
+        const path = window.location.pathname.split("/");
+        return path[path.indexOf("pausas") + 1] || "v1.0";
+      })();
+
+      const baseJS = window.SISTEMA_CONFIG?.caminhos?.js || `/adm/equipes/pausas/${versao}/js/`;
+      console.log(`🧩 Carregando JS da versão ${versao} →`, baseJS);
+
+      const scripts = [
+        "autenticacao.js",
+        "contador_pausa.js",
+        "contador_espera.js",
+        "controle_pausa.js",
+        "diagnostico_sistema.js",
+        "main.js",
+        "login_operador.js"
+      ];
+
+      const carregados = new Set();
+      scripts.forEach(arquivo => {
+        if (carregados.has(arquivo)) return;
+        carregados.add(arquivo);
+        const script = document.createElement("script");
+        script.src = baseJS + arquivo + `?v=${versao}&t=${Date.now()}`;
+        script.defer = true;
+        document.body.appendChild(script);
+      });
+    });
+  </script>
+
+  <!-- ============================================================
+  MODAL DE LOGIN DE OPERADOR / ADMIN
+  ============================================================ -->
+  <style>
+  #modalOperador {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    font-family: "Poppins", sans-serif;
+  }
+  #modalOperador.ativo { display: flex; }
+  #modalOperador .janela {
+    background: #1e1e2e;
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 25px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    text-align: center;
+    animation: surgir 0.3s ease;
+  }
+  @keyframes surgir {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  #modalOperador h2 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: #00c3ff;
+  }
+  #modalOperador input {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+  }
+  #modalOperador input[type="text"], #modalOperador input[type="password"] {
+    background: #29293d;
+    color: #fff;
+  }
+  #modalOperador input[type="password"] { display: none; }
+  #modalOperador button {
+    width: 100%;
+    margin-top: 10px;
+    background: #007ced;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  #modalOperador button:hover { background: #0090ff; }
+  #modalOperador .msg-erro {
+    margin-top: 10px;
+    color: #ff5c5c;
+    font-size: 0.9rem;
+    display: none;
+  }
+  </style>
+
+  <div id="modalOperador">
+    <div class="janela">
+      <h2>Identifique-se</h2>
+      <input id="inputNome" type="text" placeholder="Seu nome..." autocomplete="off">
+      <input id="inputSenha" type="password" placeholder="Senha de admin">
+      <button id="btnEntrar">Entrar</button>
+      <div class="msg-erro" id="msgErro"></div>
+    </div>
+  </div>
+
+  <!-- Botão sair fixo -->
+  <button id="btnLogout" class="btn-logout" title="Sair"><i class="fas fa-sign-out-alt"></i></button>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalOperador");
+    const nomeInput = document.getElementById("inputNome");
+    const senhaInput = document.getElementById("inputSenha");
+    const btnEntrar = document.getElementById("btnEntrar");
+    const msgErro = document.getElementById("msgErro");
+
+    const salvo = localStorage.getItem("operador_nome");
+    if (!salvo) modal.classList.add("ativo");
+
+    nomeInput.addEventListener("input", () => {
+      if (nomeInput.value.trim().toLowerCase() === "anderson") {
+        senhaInput.style.display = "block";
+        senhaInput.focus();
+      } else {
+        senhaInput.style.display = "none";
+        senhaInput.value = "";
+      }
+    });
+
+    btnEntrar.addEventListener("click", async () => {
+      const nome = nomeInput.value.trim();
+      const senha = senhaInput.value.trim();
+      msgErro.style.display = "none";
+
+      if (!nome) {
+        msgErro.textContent = "Informe seu nome.";
+        msgErro.style.display = "block";
+        return;
+      }
+
+      if (nome.toLowerCase() === "anderson") {
+        if (!senha) {
+          msgErro.textContent = "Informe sua senha de admin.";
+          msgErro.style.display = "block";
+          return;
+        }
+        try {
+          const resp = await fetch("php/controle_pausa.php?acao=login_admin", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ senha })
+          });
+          const data = await resp.json();
+          if (data.success) {
+            localStorage.setItem("operador_nome", nome);
+            localStorage.setItem("modo_admin", "true");
+            modal.classList.remove("ativo");
+            location.reload();
+          } else {
+            msgErro.textContent = data.error || "Senha incorreta.";
+            msgErro.style.display = "block";
+          }
+        } catch {
+          msgErro.textContent = "Erro de conexão.";
+          msgErro.style.display = "block";
+        }
+      } else {
+        try {
+          const resp = await fetch("php/controle_pausa.php?acao=validar_operador", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome })
+          });
+          const data = await resp.json();
+          if (data.success && data.nome_canonico) {
+            localStorage.setItem("operador_nome", data.nome_canonico);
+            localStorage.removeItem("modo_admin");
+            modal.classList.remove("ativo");
+            location.reload();
+          } else {
+            msgErro.textContent = data.error || "Nome não encontrado.";
+            msgErro.style.display = "block";
+          }
+        } catch {
+          msgErro.textContent = "Erro ao validar operador.";
+          msgErro.style.display = "block";
+        }
+      }
+    });
+  });
+  </script>
+</body>
+</html>

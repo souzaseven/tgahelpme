@@ -1,0 +1,30 @@
+/* ================================
+   contador_pausa.css
+   Estilo dos temporizadores de pausa
+==================================*/
+
+.contador-pausa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.contador-tempo-pausa {
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.tempo-normal { color: #00c8ff; }
+.tempo-alerta { color: #ffaa00; }
+.tempo-excedido { color: #ff4444; font-weight: 700; }
+
+.piscante-alerta {
+  animation: piscar 1s infinite alternate;
+}
+
+@keyframes piscar {
+  0% { background-color: transparent; }
+  100% { background-color: rgba(255, 0, 0, 0.2); }
+}

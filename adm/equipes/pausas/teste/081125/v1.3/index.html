@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Pausa - Equipes Matriz</title>
+
+  <!-- Ícone e Font Awesome -->
+  <link rel="icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 🔧 Setup de versão automática -->
+  <script src="./setup_sistema.php"></script>
+
+  <!--souza system-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+
+  <!-- Carregar CSS dinamicamente -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const versao = window.SISTEMA_CONFIG?.versao || (() => {
+        const path = window.location.pathname.split("/");
+        return path[path.indexOf("pausas") + 1] || "v1.0";
+      })();
+      const baseCSS = window.SISTEMA_CONFIG?.caminhos?.css || `/adm/equipes/pausas/${versao}/css/`;
+      console.log(`🎨 Carregando CSS da versão ${versao} →`, baseCSS);
+
+      const estilos = ["core.css", "equipes_operadores.css"];
+      estilos.forEach(arq => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = baseCSS + arq + `?v=${versao}&t=${Date.now()}`;
+        document.head.appendChild(link);
+      });
+    });
+  </script>
+
+  <style>
+    /* 🔹 Layout geral das equipes */
+    .participantes-filtro {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    .participantes-filtro label {
+      background: rgba(255,255,255,0.05);
+      padding: 8px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .participantes-filtro label:hover {
+      background: rgba(0,124,237,0.2);
+    }
+    .equipes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    .equipe-bloco {
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid var(--border-color);
+    }
+    .equipe-bloco h3 {
+      color: #00c6ff;
+      margin-bottom: 10px;
+    }
+    .equipe-operadores {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .op-item {
+      background: rgba(255,255,255,0.06);
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    .op-item span {
+      display: block;
+      color: var(--text-secondary);
+    }
+
+    /* 🔹 Botão de troca de usuário */
+    .btn-trocar-usuario {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #ff4444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      transition: 0.2s;
+      z-index: 9999;
+    }
+    .btn-trocar-usuario:hover { background: #ff6666; transform: translateY(-2px); }
+
+    /* 🔹 Toast visual */
+    #toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: #00c6ff;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      font-family: "Poppins", sans-serif;
+      z-index: 10000;
+      font-size: 0.95rem;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 🔹 Modal de login */
+    #modalOperador {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      font-family: "Poppins", sans-serif;
+    }
+    #modalOperador.ativo { display: flex; }
+    #modalOperador .janela {
+      background: #1e1e2e;
+      color: #fff;
+      border-radius: 12px;
+      padding: 30px 25px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      text-align: center;
+      animation: surgir 0.3s ease;
+    }
+    @keyframes surgir {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #modalOperador h2 { margin-bottom: 15px; font-size: 1.4rem; color: #00c3ff; }
+    #modalOperador input {
+      width: 100%; padding: 10px 12px; margin: 8px 0;
+      border-radius: 8px; border: none; font-size: 1rem; outline: none;
+    }
+    #modalOperador input[type="text"], #modalOperador input[type="password"] {
+      background: #29293d; color: #fff;
+    }
+    #modalOperador input[type="password"] { display: none; }
+    #modalOperador button {
+      width: 100%; margin-top: 10px; background: #007ced;
+      color: #fff; border: none; border-radius: 8px; padding: 10px;
+      font-size: 1rem; cursor: pointer; transition: 0.2s;
+    }
+    #modalOperador button:hover { background: #0090ff; }
+    #modalOperador .msg-erro {
+      margin-top: 10px; color: #ff5c5c; font-size: 0.9rem; display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-clock"></i> Controle de Pausa</h1>
+      <p class="subtitle">Equipes Matriz</p>
+    </header>
+
+    <div class="dashboard">
+      <div class="card participantes-container full-width">
+        <h2><i class="fas fa-users"></i> Participantes</h2>
+        <div class="participantes-filtro">
+          <label><input type="checkbox" class="chk-equipe" value="Daniel Feix" checked> Equipe Daniel</label>
+          <label><input type="checkbox" class="chk-equipe" value="Alex Sandro Braulio" checked> Equipe Alex</label>
+          <label><input type="checkbox" class="chk-equipe" value="Willian Pereira Reis" checked> Equipe Willian</label>
+        </div>
+        <div id="listaEquipes" class="equipes-container"><div class="loading"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de login -->
+  <div id="modalOperador">
+    <div class="janela">
+      <h2>Identifique-se</h2>
+      <input id="inputNome" type="text" placeholder="Seu nome..." autocomplete="off">
+      <input id="inputSenha" type="password" placeholder="Senha de admin">
+      <button id="btnEntrar">Entrar</button>
+      <div class="msg-erro" id="msgErro"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast">✅ Sessão encerrada com sucesso.</div>
+
+  <!-- Botão de trocar usuário -->
+  <button id="btnTrocarUsuario" class="btn-trocar-usuario" title="Trocar usuário">
+    <i class="fas fa-user-switch"></i> Trocar Usuário
+  </button>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const versao = window.SISTEMA_CONFIG?.versao || "v1.0";
+      const baseJS = `/adm/equipes/pausas/${versao}/js/`;
+      ["main.js", "equipes_operadores.js"].forEach(a => {
+        const s = document.createElement("script");
+        s.src = baseJS + a + `?v=${versao}&t=${Date.now()}`;
+        s.defer = true;
+        document.body.appendChild(s);
+      });
+
+      const btnTrocar = document.getElementById("btnTrocarUsuario");
+      const modal = document.getElementById("modalOperador");
+      const nomeInput = document.getElementById("inputNome");
+      const senhaInput = document.getElementById("inputSenha");
+      const msgErro = document.getElementById("msgErro");
+      const toast = document.getElementById("toast");
+
+      function mostrarToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+      btnTrocar.addEventListener("click", () => {
+        if (confirm("Deseja realmente trocar de usuário?")) {
+          localStorage.clear();
+          sessionStorage.clear();
+          caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+
+          mostrarToast("✅ Sessão encerrada com sucesso.");
+          nomeInput.value = "";
+          senhaInput.value = "";
+          senhaInput.style.display = "none";
+          msgErro.style.display = "none";
+          modal.classList.add("ativo");
+          setTimeout(() => nomeInput.focus(), 400);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
