@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores Pausados - Auto Refresh</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .agent-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .agent-table th,
+        .agent-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .agent-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            color: #dc3545;
+            padding: 10px;
+            background-color: #f8d7da;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .refresh-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        
+        .refresh-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .refresh-btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .status-info {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .auto-refresh-info {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>📊 Operadores Pausados</h1>
+        
+        <div class="status-info">
+            <strong>Última atualização:</strong> <span id="last-update">--:--:--</span> |
+            <strong>Status:</strong> <span id="status">Carregando...</span>
+        </div>
+        
+        <button class="refresh-btn" id="refresh-btn" onclick="window.cookieManager.loadPausedAgents()">
+            🔄 Atualizar Agora
+        </button>
+        
+        <div class="auto-refresh-info">
+            ⚡ Atualização automática a cada 30 segundos
+        </div>
+        
+        <div id="loading" class="loading">
+            🔄 Carregando operadores pausados...
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="agents-container" style="display: none;">
+            <p><strong>Total pausado: <span id="total-count">0</span></strong></p>
+            
+            <table class="agent-table">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Motivo da Pausa</th>
+                        <th>Duração</th>
+                    </tr>
+                </thead>
+                <tbody id="agents-list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="auto_refresh.js"></script>
+    <script>
+        // Inicializar apenas uma vez quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Criar instância global
+            window.cookieManager = new CookieManager();
+            
+            // Iniciar auto refresh
+            window.cookieManager.startAutoRefresh();
+            
+            // Configurar botão de refresh
+            const refreshBtn = document.getElementById('refresh-btn');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function() {
+                    this.disabled = true;
+                    window.cookieManager.loadPausedAgents();
+                    setTimeout(() => {
+                        this.disabled = false;
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

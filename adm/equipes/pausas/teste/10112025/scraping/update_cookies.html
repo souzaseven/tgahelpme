@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atualizar Cookies</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        textarea { width: 100%; height: 150px; margin: 10px 0; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Atualizar Cookies</h1>
+        
+        <h3>Passo 1: Extrair novos cookies</h3>
+        <ol>
+            <li>Faça login em <a href="https://tgasistemas.evolux.io" target="_blank">tgasistemas.evolux.io</a></li>
+            <li>Pressione <strong>F12</strong> → Aba <strong>Network</strong></li>
+            <li>Recarregue a página (F5)</li>
+            <li>Clique em qualquer requisição (ex: queue_sla)</li>
+            <li>Na aba <strong>Headers</strong>, procure por <strong>Cookie:</strong></li>
+            <li>Copie TODO o texto após "Cookie: "</li>
+        </ol>
+
+        <h3>Passo 2: Colar os cookies aqui</h3>
+        <textarea id="cookiesInput" placeholder="Cole aqui os cookies que você extraiu..."></textarea>
+        
+        <button onclick="updateCookies()">💾 Salvar Cookies</button>
+        
+        <div id="result" style="margin-top: 20px; padding: 10px; display: none;"></div>
+    </div>
+
+    <script>
+        async function updateCookies() {
+            const cookies = document.getElementById('cookiesInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!cookies) {
+                resultDiv.innerHTML = '<div style="color: red;">❌ Por favor, cole os cookies</div>';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch('save_cookies.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'cookies=' + encodeURIComponent(cookies)
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = '<div style="color: green;">✅ Cookies salvos com sucesso! Agora volte para o <a href="index.html">sistema principal</a>.</div>';
+                } else {
+                    resultDiv.innerHTML = '<div style="color: red;">❌ Erro: ' + data.error + '</div>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<div style="color: red;">❌ Erro de conexão: ' + error.message + '</div>';
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
