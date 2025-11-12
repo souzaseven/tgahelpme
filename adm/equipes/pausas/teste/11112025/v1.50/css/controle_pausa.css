@@ -1,0 +1,434 @@
+/* ============================================================
+   controle_pausa_v15.css - Tema visual do Controle de Pausas
+   ============================================================ */
+
+/* ---------- CORES POR STATUS ---------- */
+.op-item.ativo,
+.op-item.disponivel {
+  border-left: 4px solid #00c8ff;
+  background: rgba(0, 200, 255, 0.1);
+}
+
+.op-item.espera {
+  border-left: 4px solid #ffcc00;
+  background: rgba(255, 204, 0, 0.1);
+}
+
+.op-item.pausa {
+  border-left: 4px solid #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.op-item.expirada {
+  border-left: 4px solid #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+/* ---------- TEMPO (cronômetro) ---------- */
+.op-item .tempo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00bfff;
+  margin-top: 4px;
+}
+
+/* ---------- BOTÕES DE AÇÃO ---------- */
+.user-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  justify-content: center;
+}
+
+.user-botoes .btn-acao {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.user-botoes .btn-acao:hover {
+  background: var(--primary-color, #007ced);
+  transform: translateY(-1px);
+}
+
+.user-botoes .btn-acao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- TOASTS (ajustado para o lado esquerdo) ---------- */
+.toast-global {
+  position: fixed;
+  top: 20px;
+  left: 20px;             /* ✅ muda o lado */
+  right: auto;            /* remove o direito */
+  background: rgba(15, 23, 42, 0.95);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-left: 5px solid #00ff88;
+  opacity: 0;
+  transform: translateX(-400px);  /* ✅ anima vindo da esquerda */
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.toast-global.show {
+  opacity: 1;
+  transform: translateX(0); /* ✅ entra suavemente da esquerda */
+}
+
+/* ---------- MODAL DE TROCA ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-login {
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 25px 28px;
+  color: #fff;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease;
+}
+
+/* ---------- ANIMAÇÕES ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 768px) {
+  .toast-global {
+    top: auto;
+    bottom: 15px;
+    right: 10px;
+    width: calc(100% - 20px);
+    border-left-width: 0;
+    border-top: 3px solid #00ff88;
+  }
+
+  .modal-login {
+    padding: 20px;
+  }
+}
+
+/* ---------- BOTÕES DE FILTRO ---------- */
+.filtro-equipe-box {
+  display: flex;
+  gap: 10px;
+  margin-left: 15px;
+}
+
+.btn-filtro {
+  background: var(--primary-color, #007ced);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-filtro:hover {
+  background: var(--primary-dark, #005bb5);
+}
+
+/* ======================================================
+   🌎 MODO TODAS AS EQUIPES
+   ====================================================== */
+.lista-participantes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.equipe-bloco {
+  flex: 1 1 calc(33.33% - 20px);
+  min-width: 300px;
+  background: #0b0b0b;
+  border-radius: 12px;
+  padding: 10px 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.equipe-bloco:hover {
+  transform: scale(1.02);
+}
+
+/* =======================================================
+   🧭 Organização correta: título sempre acima da lista
+   ======================================================= */
+.participantes-container {
+  display: flex;              /* Força layout vertical */
+  flex-direction: column;     /* Cabeçalho em cima, lista abaixo */
+  align-items: stretch;
+  width: 100%;
+}
+
+/* O cabeçalho (Participantes / Legenda / HUD) ocupa 100% */
+.participantes-container .titulo-participantes {
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: 12px;        /* Espaçamento entre título e lista */
+  clear: both;
+}
+
+/* A lista (todas as equipes ou só uma) vem logo abaixo e ocupa o restante */
+.participantes-container .lista-participantes {
+  width: 100%;
+  clear: both;
+}
+
+
+/* ============================================================
+   👥 MODO "SOMENTE MINHA EQUIPE" - 100% largura / 6 por linha
+   ============================================================ */
+/* 👥 Somente minha equipe — 6 operadores por linha */
+body.modo-minha-equipe .lista-participantes {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+body.modo-minha-equipe .equipe-bloco {
+  width: 100%;
+  background: #0b0b0b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+body.modo-minha-equipe .equipe-operadores {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 1200px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 900px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: 1fr; }
+}
+
+
+/* =======================================================
+   🌈 Legenda + HUD + Botões
+   ======================================================= */
+.titulo-participantes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.legenda-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.legenda-inline .l-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Barras coloridas */
+.barra {
+  width: 4px;
+  height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.barra-ativo { background: #00c8ff; }
+.barra-espera { background: #ffcc00; }
+.barra-pausa { background: #00ff88; }
+.barra-expirada { background: #ff4444; }
+
+/* HUD */
+.hud-operador {
+  color: #38bdf8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(56,189,248,0.6);
+  white-space: nowrap;
+}
+
+/* Botões ao lado do HUD */
+.titulo-participantes .filtro-equipe-box {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .titulo-participantes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hud-operador {
+    margin-left: 0;
+    font-size: 0.85rem;
+  }
+
+  .titulo-participantes .filtro-equipe-box {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+}
+
+/* =======================================================
+   👥 Contador de operadores por equipe
+   ======================================================= */
+/*.equipe-bloco h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  color: #00c6ff;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+}
+*/
+.equipe-bloco h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #00c6ff;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 6px;
+  white-space: nowrap;              /* ✅ evita quebra de linha */
+  overflow: hidden;                 /* ✅ evita estouro */
+  text-overflow: ellipsis;          /* ✅ corta texto se passar da largura */
+}
+
+/* 🔹 Faz o título ocupar mais espaço proporcionalmente */
+.equipe-bloco h3 span.contador-equipe {
+  flex-shrink: 0;                   /* evita encolher */
+  margin-left: auto;                /* empurra pro canto direito */
+  white-space: nowrap;              /* mantém tudo na mesma linha */
+}
+
+/* 🔹 Garante que o nome da equipe tenha espaço suficiente */
+.equipe-bloco h3 {
+  min-width: 0;                     /* permite ajuste dinâmico */
+}
+
+.equipe-bloco {
+  overflow: hidden;                 /* previne quebrar estrutura */
+}
+
+.contador-equipe {
+  font-size: 0.8rem;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* HUD central no topo */
+#hud-operador {
+  display: block;
+  text-align: center;
+  margin: 6px auto 10px auto;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+/* ✅ Exibir o status do sistema lado a lado (sem quebra) */
+header.topo .status-sistema {
+  display: flex !important;
+ /* flex-direction: row !important;*/
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  gap: 18px !important;
+}
+
+header.topo .status-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+/* Quebra automática apenas em telas menores */
+@media (max-width: 900px) {
+  header.topo .status-sistema {
+    flex-wrap: wrap !important;
+  }
+}
+
+
+
+/* Layout em grid quando mostrar todas as equipes */
+.lista-participantes.todas-equipes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.lista-participantes.todas-equipes .participante {
+  flex: 1 1 300px; /* cresce, mas respeita largura mínima */
+  max-width: 100%;
+}
+
