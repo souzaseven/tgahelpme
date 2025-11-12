@@ -1,0 +1,291 @@
+/* ==============================================
+   equipes_operadores.css
+   Estilos visuais para o painel de equipes
+   ============================================== */
+
+.equipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.equipe-bloco {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  border: 1px solid var(--border-color, #30363d);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  padding: 18px 22px;
+  transition: 0.3s;
+}
+
+.equipe-bloco:hover {
+  transform: translateY(-3px);
+  border-color: #007ced;
+  box-shadow: 0 10px 28px rgba(0, 124, 237, 0.25);
+}
+
+.equipe-bloco h3 {
+  color: #00c6ff;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+}
+
+/* ===============================
+   GRID DE OPERADORES
+   =============================== */
+.equipe-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* ===============================
+   ITEM DE OPERADOR
+   =============================== */
+.op-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  border: 1px solid var(--border-color, #30363d);
+  padding: 12px 14px;
+  line-height: 1.4;
+  transition: 0.3s;
+  position: relative;
+}
+
+.op-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 18px rgba(0, 124, 237, 0.15);
+}
+
+.op-item strong {
+  font-size: 1.05rem;
+  color: #fff;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.op-item span {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  display: block;
+}
+
+/* ===============================
+   STATUS COLORIDOS
+   =============================== */
+.op-item .status {
+  font-weight: 600;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.status-disponivel {
+  color: #00ff88;
+  animation: brilhoVerde 2s infinite alternate;
+}
+
+.status-espera {
+  color: #ffaa00;
+  animation: brilhoAmarelo 2s infinite alternate;
+}
+
+.status-pausa {
+  color: #00c6ff;
+  animation: brilhoAzul 2s infinite alternate;
+}
+
+.status-expirado {
+  color: #ff4444;
+  animation: brilhoVermelho 2s infinite alternate;
+}
+
+/* ===============================
+   TEMPO E MOTIVO
+   =============================== */
+.op-item .tempo {
+  color: #ccc;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.op-item .tempo::before {
+  content: "⏱";
+  opacity: 0.7;
+}
+
+/* ===============================
+   ANIMAÇÕES DE STATUS
+   =============================== */
+@keyframes brilhoVerde {
+  from { text-shadow: 0 0 4px rgba(0, 255, 136, 0.4); }
+  to { text-shadow: 0 0 12px rgba(0, 255, 136, 0.8); }
+}
+
+@keyframes brilhoAmarelo {
+  from { text-shadow: 0 0 4px rgba(255, 187, 51, 0.4); }
+  to { text-shadow: 0 0 12px rgba(255, 187, 51, 0.9); }
+}
+
+@keyframes brilhoAzul {
+  from { text-shadow: 0 0 4px rgba(0, 198, 255, 0.4); }
+  to { text-shadow: 0 0 12px rgba(0, 198, 255, 0.9); }
+}
+
+@keyframes brilhoVermelho {
+  from { text-shadow: 0 0 4px rgba(255, 68, 68, 0.4); }
+  to { text-shadow: 0 0 12px rgba(255, 68, 68, 0.9); }
+}
+
+/* ===============================
+   MODO RESPONSIVO
+   =============================== */
+@media (max-width: 768px) {
+  .equipe-operadores {
+    grid-template-columns: 1fr;
+  }
+  .op-item {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* 🔹 Fallback temporário para garantir que os estilos carreguem */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #00c3ff;
+  font-size: 1.1rem;
+}
+
+.lista-vazia {
+  text-align: center;
+  padding: 40px;
+  color: #9cd;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.equipes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.equipe-bloco {
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.equipe-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.op-item {
+  background: rgba(255,255,255,0.06);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+/* Card de participantes ocupando a tela toda */
+.participantes-container.full-width {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;              /* remove margens laterais */
+}
+
+/* A lista de equipes vira um grid com 3 colunas */
+.lista-participantes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 equipes lado a lado */
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Cada equipe fica como uma coluna */
+.equipe-bloco {
+  background: rgba(15, 23, 42, 0.9);  /* mantém o estilo escuro */
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* Dentro de cada equipe, os operadores ficam em coluna */
+.equipe-operadores {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* Em telas menores, quebramos pra não espremê-las demais */
+@media (max-width: 1200px) {
+  .lista-participantes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .lista-participantes {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Container dos botões do usuário */
+.user-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* Estilo base dos botões de ação */
+.user-botoes .btn-acao {
+  border: none;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  cursor: pointer;
+  background: #1f2937;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Opcional: cores específicas por ação */
+.user-botoes .entrar-fila {
+  background: #0f766e;        /* tom de verde-azulado */
+}
+
+.user-botoes .entrar-pausa {
+  background: #b45309;        /* tom de laranja */
+}
+
+.user-botoes .disponivel {
+  background: #15803d;        /* verde */
+}
+
+/* Efeito hover suave */
+.user-botoes .btn-acao:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
