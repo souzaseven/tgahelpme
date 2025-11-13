@@ -1,0 +1,792 @@
+// ============================================================
+// controle_pausa.js (v5.3)
+// Núcleo de estado, render e eventos do Sistema de Pausas
+// - Integra com php/controle_pausa_novo.php (v1.17+)
+// - Compatível com interface_botoes.js (v3.0) e acoes_operador.js
+// - Notificações por equipe via diff de estado (sem socket)
+// - Cronômetro contínuo (sem piscar)
+// - Destaque visual do operador logado
+// - Botões de admin: Derrubar Pausados / Derrubar Fila (por equipe)
+// ============================================================
+
+console.log(
+  "%c[Controle de Pausa v5.3] núcleo carregado",
+  "color:#00ff88;font-weight:bold;"
+);
+
+class ControlePausaSistema {
+  constructor() {
+    // -----------------------------------------
+    // CONFIGURAÇÕES BÁSICAS
+    // -----------------------------------------
+    this.urlPHP = "./php/controle_pausa_novo.php";
+    this.intervaloAtualizacao = 2000; // 2s - polling único
+    this.intervaloCronometro = 1000;  // 1s - contador visual
+    this.maxPausas = 2;
+
+    // -----------------------------------------
+    // ESTADO EM MEMÓRIA
+    // -----------------------------------------
+    this.estado = [];               // lista de operadores vindos do PHP
+    this.atualizando = false;       // trava de requisição
+    this.jaSaudou = false;          // evita múltiplas boas-vindas
+    this.modoMinhaEquipe = true;    // inicia focado na equipe do operador
+
+    // Mapa para diff de notificações
+    this.mapaEstadoAnterior = new Map(); // chave: nome|equipe  valor: status
+    this.primeiraCargaNotificacao = true;
+
+    // Ordem de prioridade para renderização
+    this.pesoStatus = {
+      ativo: 0,
+      disponivel: 0,
+      espera: 1,
+      aguardando: 2,
+      pausa: 3,
+      expirada: 4
+    };
+
+    // -----------------------------------------
+    // REFERÊNCIAS DO DOM
+    // -----------------------------------------
+    this.listaParticipantes = document.getElementById("listaParticipantes");
+    this.headerUsuario = document.getElementById("usuarioLogado");
+    this.hudOperador = document.getElementById("hud-operador");
+
+    // -----------------------------------------
+    // SESSÃO / OPERADOR LOGADO
+    // -----------------------------------------
+    this.operador = localStorage.getItem("operador_nome") || "";
+  }
+
+  // -----------------------------------------
+  // UTILIDADES
+  // -----------------------------------------
+  normalizar(s) {
+    return (s || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim()
+      .toLowerCase();
+  }
+
+  formatarTempo(segundos) {
+    const s = Math.max(0, Math.floor(segundos));
+    const m = Math.floor(s / 60)
+      .toString()
+      .padStart(2, "0");
+    const r = (s % 60).toString().padStart(2, "0");
+    return `${m}:${r}`;
+  }
+
+  formatarStatus(s) {
+    return (
+      {
+        pausa: "☕ Em Pausa",
+        espera: "🟡 Em Espera",
+        aguardando: "🟢⚡ Vaga aberta (aguardando confirmação)",
+        disponivel: "✅ Disponível",
+        ativo: "🟢 Ativo",
+        expirada: "🔴 Expirada"
+      }[s] || s
+    );
+  }
+
+  buscarEquipePorOperador(nome) {
+    const p = this.estado.find(
+      (x) => this.normalizar(x.nome) === this.normalizar(nome)
+    );
+    return p ? p.equipe : "";
+  }
+
+  // -----------------------------------------
+  // INICIALIZAÇÃO GERAL
+  // -----------------------------------------
+  async iniciar() {
+    console.log("🚀 [Controle] iniciando…");
+
+    document.body.classList.add("modo-minha-equipe");
+
+    // 1ª carga de estado
+    await this.sincronizarAtualizacoes();
+
+    // Exibe identificação do usuário / equipe
+    await this.exibirIdentificacao();
+
+    // Filtro "Minha equipe" / "Todas equipes"
+    this.inicializarFiltroEquipes();
+
+    // Botões de administração (derrubar pausados / fila)
+    this.injetarToolbarAdmin();
+
+    // Polling de estado
+    setInterval(() => this.sincronizarAtualizacoes(), this.intervaloAtualizacao);
+
+    // Atualização visual dos cronômetros
+    setInterval(() => this.atualizarCronometros(), this.intervaloCronometro);
+
+    // Permissão de notificação
+    try {
+      if ("Notification" in window && Notification.permission !== "granted") {
+        Notification.requestPermission().catch(() => {});
+      }
+    } catch (e) {
+      // ignora
+    }
+  }
+
+  // -----------------------------------------
+  // SINCRONIZAÇÃO COM O BACKEND
+  // -----------------------------------------
+  async sincronizarAtualizacoes() {
+    if (this.atualizando) return;
+    this.atualizando = true;
+
+    try {
+      const resp = await fetch(`${this.urlPHP}?acao=get_estado`, {
+        cache: "no-store"
+      });
+      const dados = await resp.json();
+      if (!dados.success) {
+        console.warn("⚠️ get_estado retornou erro:", dados);
+        return;
+      }
+
+      const novoEstado = dados.estado || [];
+
+      // Evita re-renderização e diff se nada mudou
+      if (JSON.stringify(novoEstado) === JSON.stringify(this.estado)) return;
+
+      const estadoAnterior = this.estado;
+      this.estado = novoEstado;
+
+      // Notificações baseadas em diff de status (para toda equipe)
+      this.processarDiffNotificacoes(estadoAnterior, novoEstado);
+
+      // Modo "Minha equipe" ou "Todas"
+      if (this.modoMinhaEquipe) {
+        const minhaEquipe = this.buscarEquipePorOperador(this.operador);
+        const filtrada = minhaEquipe
+          ? this.estado.filter((p) => p.equipe === minhaEquipe)
+          : [];
+        this.renderizarParticipantes(filtrada);
+      } else {
+        this.renderizarParticipantes(this.estado);
+      }
+
+      // Evento global para outros módulos (status_cards, interface_botoes etc.)
+      document.dispatchEvent(
+        new CustomEvent("estado:atualizado", { detail: { estado: this.estado } })
+      );
+    } catch (e) {
+      console.warn("⚠️ Falha ao sincronizar:", e);
+    } finally {
+      this.atualizando = false;
+    }
+  }
+
+  // -----------------------------------------
+  // DIFF PARA NOTIFICAÇÕES POR EQUIPE
+  // -----------------------------------------
+  processarDiffNotificacoes(estadoAntigo, estadoNovo) {
+    // Monta mapas: chave = nome|equipe
+    const mapNovo = new Map();
+    estadoNovo.forEach((p) => {
+      const chave = `${this.normalizar(p.nome)}|${this.normalizar(p.equipe)}`;
+      mapNovo.set(chave, p.status);
+    });
+
+    // Primeira carga: só armazena, não notifica
+    if (this.primeiraCargaNotificacao) {
+      this.mapaEstadoAnterior = mapNovo;
+      this.primeiraCargaNotificacao = false;
+      return;
+    }
+
+    const mapAntigo = this.mapaEstadoAnterior;
+
+    mapNovo.forEach((statusAtual, chave) => {
+      const statusAnterior = mapAntigo.get(chave);
+      if (!statusAnterior) {
+        // novo usuário → notificação opcional (por enquanto não)
+        return;
+      }
+      if (statusAtual === statusAnterior) return;
+
+      const [nomeN, equipeN] = chave.split("|");
+      this.notificarEquipeStatus({
+        nome: nomeN,
+        equipe: equipeN,
+        statusAnterior,
+        statusAtual
+      });
+    });
+
+    this.mapaEstadoAnterior = mapNovo;
+  }
+
+  // -----------------------------------------
+  // IDENTIFICAÇÃO DO OPERADOR / EQUIPE
+  // -----------------------------------------
+  async exibirIdentificacao() {
+    const operador = this.operador;
+    if (!operador) {
+      if (this.headerUsuario) {
+        this.headerUsuario.textContent = "Usuário não identificado";
+      }
+      return;
+    }
+
+    const ehAdmin =
+      this.normalizar(operador) === this.normalizar("Anderson de Souza");
+
+    try {
+      const resp = await fetch(`${this.urlPHP}?acao=get_estado`, {
+        cache: "no-store"
+      });
+      const dados = await resp.json();
+      if (!dados.success) throw new Error("Erro ao buscar equipe");
+
+      const userData = (dados.estado || []).find(
+        (p) => this.normalizar(p.nome) === this.normalizar(operador)
+      );
+      const equipe = userData?.equipe || null;
+
+      if (ehAdmin) {
+        if (this.headerUsuario) {
+          this.headerUsuario.textContent = `👑 Administrador: ${operador}`;
+        }
+        if (!this.jaSaudou) {
+          this.toast(
+            `👋 Bem-vindo, ${operador}! Você tem acesso administrativo.`
+          );
+          this.jaSaudou = true;
+        }
+        return;
+      }
+
+      if (!equipe) {
+        if (this.headerUsuario) {
+          this.headerUsuario.textContent = `${operador} • 🟠 Usuário sem equipe definida`;
+        }
+        if (!this.jaSaudou) {
+          this.toast(
+            `⚠️ ${operador}, sua equipe não está cadastrada no painel.`,
+            true
+          );
+          this.jaSaudou = true;
+        }
+        return;
+      }
+
+      if (this.headerUsuario) {
+        this.headerUsuario.textContent = `👤 Operador: ${operador} • Equipe: ${equipe}`;
+      }
+      if (!this.jaSaudou) {
+        this.toast(
+          `👋 Bem-vindo, ${operador}! Você pertence à equipe ${equipe}.`
+        );
+        this.jaSaudou = true;
+      }
+    } catch (e) {
+      console.warn("⚠️ Erro ao exibir identificação:", e);
+      if (this.headerUsuario) {
+        this.headerUsuario.textContent = "Usuário não identificado";
+      }
+    }
+  }
+
+  // -----------------------------------------
+  // CRONÔMETROS VISUAIS (espera / aguardando / pausa)
+  // -----------------------------------------
+  atualizarCronometros() {
+    const itens = document.querySelectorAll(".op-item .tempo");
+    itens.forEach((div) => {
+      const inicio = div.dataset.tinicio;
+      const status = div.dataset.status;
+      if (!inicio) return;
+
+      // Conta tempo para espera, aguardando e pausa
+      if (!["espera", "aguardando", "pausa"].includes(status)) return;
+
+      const diff = (Date.now() - new Date(inicio).getTime()) / 1000;
+      div.textContent = this.formatarTempo(diff);
+    });
+  }
+
+  // -----------------------------------------
+  // RENDERIZAÇÃO PRINCIPAL
+  // -----------------------------------------
+  renderizarParticipantes(lista = this.estado) {
+    const container = this.listaParticipantes;
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    // Agrupa por equipe
+    const grupos = {};
+    (lista || []).forEach((p) => {
+      if (!grupos[p.equipe]) grupos[p.equipe] = [];
+      grupos[p.equipe].push(p);
+    });
+
+    // Monta bloco por equipe
+    Object.keys(grupos).forEach((equipe) => {
+      const participantes = grupos[equipe] || [];
+      const qtd = participantes.length;
+
+      const ativos = participantes.filter((p) =>
+        ["ativo", "disponivel"].includes(p.status)
+      ).length;
+      const pausas = participantes.filter((p) => p.status === "pausa").length;
+      const espera = participantes.filter((p) => p.status === "espera").length;
+      const aguardando = participantes.filter(
+        (p) => p.status === "aguardando"
+      ).length;
+
+      const box = document.createElement("div");
+      box.className = "equipe-bloco";
+      box.innerHTML = `
+        <h3>
+          ${equipe}
+          <span class="contador-equipe">
+            <i class="fas fa-users"></i> ${qtd} operador${
+        qtd > 1 ? "es" : ""
+      }
+            <span class="detalhes-status">
+              <span class="ativo">🟢 ${ativos}</span>
+              <span class="espera">⏳ ${espera}</span>
+              <span class="aguardando">🟢⚡ ${aguardando}</span>
+              <span class="pausa">☕ ${pausas}</span>
+            </span>
+          </span>
+        </h3>
+        <div class="equipe-operadores"></div>
+      `;
+
+      const inner = box.querySelector(".equipe-operadores");
+
+      // Ordena pela prioridade do status
+      participantes
+        .slice()
+        .sort(
+          (a, b) =>
+            (this.pesoStatus[a.status] ?? 9) -
+            (this.pesoStatus[b.status] ?? 9)
+        )
+        .forEach((p) => {
+          inner.appendChild(this.criarItemOperador(p));
+        });
+
+      container.appendChild(box);
+    });
+
+    // HUD superior com resumo
+    const totalOperadores = lista.length;
+    const totalEquipes = Object.keys(grupos).length;
+    if (this.hudOperador) {
+      if (this.modoMinhaEquipe) {
+        const minhaEquipe = Object.keys(grupos)[0] || "";
+        this.hudOperador.textContent = `👥 ${minhaEquipe} — ${totalOperadores} operador${
+          totalOperadores > 1 ? "es" : ""
+        }`;
+      } else {
+        this.hudOperador.textContent = `🌎 ${totalEquipes} equipe${
+          totalEquipes > 1 ? "s" : ""
+        } • ${totalOperadores} operador${
+          totalOperadores > 1 ? "es" : ""
+        }`;
+      }
+    }
+
+    // Evento para outros scripts ajustarem botões/estilos
+    document.dispatchEvent(new CustomEvent("ui:operadores-renderizados"));
+  }
+
+  criarItemOperador(p) {
+    const item = document.createElement("div");
+    item.className = `op-item ${p.status || "ativo"}`;
+
+    // Destaque visual para o operador logado
+    if (this.normalizar(p.nome) === this.normalizar(this.operador)) {
+      item.classList.add("operador-logado");
+    }
+
+    // Controle de tempo:
+    // Sempre usa tempo_entrada como base (sem piscar)
+    const tEntrada = p.tempo_entrada || null;
+    let tempoInicial = "--:--";
+
+    if (tEntrada && ["espera", "aguardando", "pausa"].includes(p.status)) {
+      const diff = (Date.now() - new Date(tEntrada).getTime()) / 1000;
+      tempoInicial = this.formatarTempo(diff);
+    }
+
+    const labelPosicao =
+      p.status === "espera" && p.posicao_fila
+        ? ` • #${p.posicao_fila}`
+        : p.status === "aguardando"
+        ? " • Vaga liberada"
+        : "";
+
+    item.innerHTML = `
+      <strong>${p.nome}</strong>
+      <small>${this.formatarStatus(p.status)}${labelPosicao}</small>
+      <div class="tempo" 
+           data-tinicio="${tEntrada || ""}" 
+           data-status="${p.status || "ativo"}">${tempoInicial}</div>
+      <div class="botoes-operador" aria-live="polite"></div>
+    `;
+
+    // interface_botoes.js vai cuidar dos botões
+
+    return item;
+  }
+
+  // -----------------------------------------
+  // AÇÕES GENÉRICAS (POST para o PHP)
+  // -----------------------------------------
+  async enviarAcao(acao, dados) {
+    try {
+      const payload = { ...dados };
+
+      if (!payload.nome) {
+        this.toast("Nome é obrigatório.", true);
+        return;
+      }
+      if (!payload.equipe) {
+        payload.equipe = this.buscarEquipePorOperador(payload.nome) || "";
+      }
+      if (!payload.equipe) {
+        this.toast("Equipe não encontrada para o operador.", true);
+        return;
+      }
+
+      const resp = await fetch(`${this.urlPHP}?acao=${acao}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const ret = await resp.json();
+
+      if (ret.success) {
+        this.toast(`✅ ${ret.msg || "Ação executada."}`);
+        await this.sincronizarAtualizacoes();
+
+        document.dispatchEvent(
+          new CustomEvent("status:alterado", {
+            detail: { nome: payload.nome, acao }
+          })
+        );
+      } else {
+        this.toast(`⚠️ ${ret.error || "Ação não permitida."}`, true);
+      }
+    } catch (e) {
+      console.error("❌ Erro na ação:", e);
+      this.toast("Erro de comunicação com o servidor.", true);
+    }
+  }
+
+  // -----------------------------------------
+  // TOAST SIMPLES
+  // -----------------------------------------
+  toast(msg, erro = false) {
+    const div = document.createElement("div");
+    div.className = "toast-global";
+    Object.assign(div.style, {
+      position: "fixed",
+      left: "20px",
+      top: "20px",
+      transform: "translateX(-160px)",
+      background: "rgba(0,0,0,0.70)",
+      padding: "10px 14px",
+      borderRadius: "10px",
+      backdropFilter: "blur(4px)",
+      color: "#fff",
+      zIndex: 99999,
+      borderLeft: `6px solid ${erro ? "#ff4444" : "#00ff88"}`,
+      opacity: 0
+    });
+
+    div.innerHTML = `<span style="margin-right:6px;">${
+      erro ? "⚠️" : "💬"
+    }</span> ${msg}`;
+    document.body.appendChild(div);
+
+    requestAnimationFrame(() => {
+      div.style.transition = "transform 0.35s ease, opacity 0.35s ease";
+      div.style.transform = "translateX(0)";
+      div.style.opacity = "1";
+    });
+
+    setTimeout(() => {
+      div.style.opacity = "0";
+      div.style.transform = "translateX(-160px)";
+      setTimeout(() => div.remove(), 380);
+    }, 3500);
+  }
+
+  // -----------------------------------------
+  // NOTIFICAÇÃO PARA EQUIPE (toast + Notification)
+  // -----------------------------------------
+  notificarEquipeStatus({ nome, equipe, statusAnterior, statusAtual }) {
+    // Verifica se o operador logado pertence à mesma equipe
+    const operadorAtual = this.estado.find(
+      (p) => this.normalizar(p.nome) === this.normalizar(this.operador)
+    );
+    const mesmaEquipe =
+      operadorAtual && this.normalizar(operadorAtual.equipe) === this.normalizar(equipe);
+
+    const ehAdmin =
+      this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
+
+    if (!mesmaEquipe && !ehAdmin) return;
+
+    let mensagem = "";
+
+    if (statusAtual === "pausa") {
+      mensagem = `☕ ${nome} entrou em pausa.`;
+    } else if (statusAnterior === "pausa" && statusAtual === "ativo") {
+      mensagem = `✅ ${nome} saiu da pausa e voltou a ficar disponível.`;
+    } else if (statusAtual === "espera") {
+      mensagem = `🕓 ${nome} entrou na fila de espera.`;
+    } else if (statusAnterior === "espera" && statusAtual === "aguardando") {
+      mensagem = `⚡ ${nome} está com vaga liberada e aguardando confirmação.`;
+    } else if (statusAnterior === "espera" && statusAtual === "ativo") {
+      mensagem = `❌ ${nome} saiu da fila de espera.`;
+    } else if (statusAtual === "aguardando") {
+      mensagem = `⚡ ${nome} está aguardando confirmação para entrar em pausa.`;
+    } else if (statusAtual === "expirada") {
+      mensagem = `🔴 ${nome} teve a pausa expirada.`;
+    } else if (statusAtual === "ativo") {
+      mensagem = `✅ ${nome} está disponível.`;
+    } else {
+      mensagem = `${nome} alterou o status (${statusAnterior} → ${statusAtual}).`;
+    }
+
+    // Toast para o operador logado (mesma equipe ou admin)
+    this.toast(mensagem);
+
+    // Notificação nativa do navegador (se permitido)
+    try {
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification("Alteração de Status", {
+          body: mensagem,
+          icon: "https://tgameajuda.com/img/principal/bot-tga.webp"
+        });
+      }
+    } catch (e) {
+      // ignora
+    }
+  }
+
+  // -----------------------------------------
+  // ADMIN: DERRUBAR PAUSADOS / FILA (por EQUIPE)
+  // -----------------------------------------
+  async adminDerrubarPausadosEquipe() {
+    const ehAdmin =
+      this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
+    if (!ehAdmin) {
+      this.toast("Apenas o administrador pode executar esta ação.", true);
+      return;
+    }
+
+    const minhaEquipe = this.buscarEquipePorOperador(this.operador);
+    if (!minhaEquipe) {
+      this.toast("Não foi possível identificar sua equipe para derrubar pausados.", true);
+      return;
+    }
+
+    const confirmar = confirm(
+      `Você deseja derrubar TODOS os operadores EM PAUSA da equipe "${minhaEquipe}" para Disponível?`
+    );
+    if (!confirmar) return;
+
+    const alvos = (this.estado || []).filter(
+      (p) =>
+        this.normalizar(p.equipe) === this.normalizar(minhaEquipe) &&
+        p.status === "pausa"
+    );
+
+    if (!alvos.length) {
+      this.toast("Nenhum operador em pausa na sua equipe.", false);
+      return;
+    }
+
+    try {
+      for (const p of alvos) {
+        await fetch(`${this.urlPHP}?acao=voltar_disponivel`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome: p.nome, equipe: p.equipe })
+        }).catch(() => {});
+        await new Promise((r) => setTimeout(r, 80));
+      }
+      this.toast(`🔴 ${alvos.length} operador(es) em pausa voltaram a Disponível (equipe ${minhaEquipe}).`);
+      await this.sincronizarAtualizacoes();
+    } catch (e) {
+      console.error(e);
+      this.toast("Erro ao derrubar pausados da equipe.", true);
+    }
+  }
+
+  async adminDerrubarFilaEquipe() {
+    const ehAdmin =
+      this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
+    if (!ehAdmin) {
+      this.toast("Apenas o administrador pode executar esta ação.", true);
+      return;
+    }
+
+    const minhaEquipe = this.buscarEquipePorOperador(this.operador);
+    if (!minhaEquipe) {
+      this.toast("Não foi possível identificar sua equipe para derrubar fila.", true);
+      return;
+    }
+
+    const confirmar = confirm(
+      `Você deseja derrubar TODOS os operadores da FILA (espera/aguardando) da equipe "${minhaEquipe}" para Disponível?`
+    );
+    if (!confirmar) return;
+
+    const alvos = (this.estado || []).filter(
+      (p) =>
+        this.normalizar(p.equipe) === this.normalizar(minhaEquipe) &&
+        ["espera", "aguardando"].includes(p.status)
+    );
+
+    if (!alvos.length) {
+      this.toast("Nenhum operador na fila de espera da sua equipe.", false);
+      return;
+    }
+
+    try {
+      for (const p of alvos) {
+        await fetch(`${this.urlPHP}?acao=voltar_disponivel`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nome: p.nome, equipe: p.equipe })
+        }).catch(() => {});
+        await new Promise((r) => setTimeout(r, 80));
+      }
+      this.toast(`🟡 ${alvos.length} operador(es) na fila foram definidos como Disponível (equipe ${minhaEquipe}).`);
+      await this.sincronizarAtualizacoes();
+    } catch (e) {
+      console.error(e);
+      this.toast("Erro ao derrubar fila da equipe.", true);
+    }
+  }
+
+  // -----------------------------------------
+  // BOTÕES FLUTUANTES DE ADMIN
+  // -----------------------------------------
+  injetarToolbarAdmin() {
+    const ehAdmin =
+      this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
+    if (!ehAdmin) return;
+    if (document.getElementById("toolbarAdminPausaFila")) return;
+
+    const wrap = document.createElement("div");
+    wrap.id = "toolbarAdminPausaFila";
+    Object.assign(wrap.style, {
+      position: "fixed",
+      right: "16px",
+      bottom: "16px",
+      zIndex: 9999,
+      display: "flex",
+      flexDirection: "column",
+      gap: "8px"
+    });
+
+    const btnPausa = document.createElement("button");
+    btnPausa.textContent = "🔴 Derrubar Pausados";
+    Object.assign(btnPausa.style, {
+      padding: "8px 12px",
+      background: "#ff3b30",
+      color: "#fff",
+      border: "none",
+      borderRadius: "10px",
+      boxShadow: "0 8px 20px rgba(0,0,0,.25)",
+      cursor: "pointer",
+      fontWeight: "600"
+    });
+    btnPausa.onmouseenter = () => (btnPausa.style.filter = "brightness(1.05)");
+    btnPausa.onmouseleave = () => (btnPausa.style.filter = "none");
+    btnPausa.onclick = () => this.adminDerrubarPausadosEquipe();
+
+    const btnFila = document.createElement("button");
+    btnFila.textContent = "🟡 Derrubar Fila";
+    Object.assign(btnFila.style, {
+      padding: "8px 12px",
+      background: "#ffcc00",
+      color: "#000",
+      border: "none",
+      borderRadius: "10px",
+      boxShadow: "0 8px 20px rgba(0,0,0,.25)",
+      cursor: "pointer",
+      fontWeight: "600"
+    });
+    btnFila.onmouseenter = () => (btnFila.style.filter = "brightness(1.05)");
+    btnFila.onmouseleave = () => (btnFila.style.filter = "none");
+    btnFila.onclick = () => this.adminDerrubarFilaEquipe();
+
+    wrap.appendChild(btnPausa);
+    wrap.appendChild(btnFila);
+    document.body.appendChild(wrap);
+  }
+
+  // -----------------------------------------
+  // FILTRO: MINHA EQUIPE / TODAS EQUIPES
+  // -----------------------------------------
+  inicializarFiltroEquipes() {
+    const btnEquipe = document.getElementById("btnFiltroEquipe");
+    const btnTodas = document.getElementById("btnFiltroTodas");
+    const lista = document.getElementById("listaParticipantes");
+
+    if (!btnEquipe || !btnTodas || !lista) return;
+
+    const operador = this.operador;
+
+    // Mostrar apenas minha equipe
+    btnEquipe.onclick = () => {
+      const minhaEquipe = this.buscarEquipePorOperador(operador) || null;
+      if (!minhaEquipe) {
+        this.toast("Usuário sem equipe definida.", true);
+        return;
+      }
+      const filtrada = this.estado.filter((p) => p.equipe === minhaEquipe);
+      this.modoMinhaEquipe = true;
+      document.body.classList.add("modo-minha-equipe");
+      lista.classList.remove("todas-equipes");
+      this.renderizarParticipantes(filtrada);
+      btnEquipe.style.display = "none";
+      btnTodas.style.display = "inline-block";
+    };
+
+    // Mostrar todas as equipes
+    btnTodas.onclick = () => {
+      this.modoMinhaEquipe = false;
+      document.body.classList.remove("modo-minha-equipe");
+      lista.classList.add("todas-equipes");
+      this.renderizarParticipantes(this.estado);
+      btnTodas.style.display = "none";
+      btnEquipe.style.display = "inline-block";
+    };
+  }
+}
+
+// Exposição global
+window.ControlePausaSistema = ControlePausaSistema;
+
+// Bootstrap ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  if (!window.controle) {
+    window.controle = new ControlePausaSistema();
+    window.controle.iniciar();
+  }
+  // Gatilho inicial para focar na própria equipe, se existir
+  setTimeout(() => {
+    const btn = document.getElementById("btnFiltroEquipe");
+    btn && btn.click();
+  }, 500);
+});

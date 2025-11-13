@@ -1,0 +1,159 @@
+/* ============================================================
+   botoes_operador.css (v2.5)
+   Botões do operador com cores e ícones animados por status
+   ============================================================ */
+
+/* ===== CONTAINER DOS BOTÕES ===== */
+.botoes-operador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  opacity: 1;
+  transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+/* ===== BOTÕES PADRÃO ===== */
+.botoes-operador .btn-acao {
+  background: rgba(0, 124, 237, 0.15);
+  border: 1px solid rgba(0, 124, 237, 0.4);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hover e Active */
+.botoes-operador .btn-acao:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+.botoes-operador .btn-acao:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   CORES POR STATUS DO OPERADOR
+   ============================================================ */
+
+/* 🔵 Disponível / Ativo */
+.op-item.disponivel .botoes-operador .btn-acao,
+.op-item.ativo .botoes-operador .btn-acao {
+  background: rgba(0, 124, 237, 0.15);
+  border-color: rgba(0, 124, 237, 0.4);
+}
+.op-item.disponivel .botoes-operador .btn-acao:hover,
+.op-item.ativo .botoes-operador .btn-acao:hover {
+  background: #007ced;
+  border-color: #007ced;
+}
+
+/* 🟡 Em Espera */
+.op-item.espera .botoes-operador .btn-acao {
+  background: rgba(255, 200, 0, 0.15);
+  border-color: rgba(255, 200, 0, 0.4);
+}
+.op-item.espera .botoes-operador .btn-acao:hover {
+  background: #ffbb00;
+  border-color: #ffbb00;
+}
+
+/* ☕ Em Pausa */
+.op-item.pausa .botoes-operador .btn-acao {
+  background: rgba(0, 255, 128, 0.1);
+  border-color: rgba(0, 255, 128, 0.35);
+}
+.op-item.pausa .botoes-operador .btn-acao:hover {
+  background: #00cc6a;
+  border-color: #00cc6a;
+}
+
+/* 🔴 Expirada */
+.op-item.expirada .botoes-operador .btn-acao {
+  background: rgba(255, 68, 68, 0.12);
+  border-color: rgba(255, 68, 68, 0.4);
+}
+.op-item.expirada .botoes-operador .btn-acao:hover {
+  background: #ff4444;
+  border-color: #ff4444;
+}
+
+/* ============================================================
+   ÍCONES ANIMADOS POR STATUS
+   ============================================================ */
+
+/* Espera → ícone girando */
+.op-item.espera .botoes-operador .btn-acao::before {
+  content: "⏳";
+  display: inline-block;
+  animation: girar 3s linear infinite;
+}
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pausa → ícone pulsando */
+.op-item.pausa .botoes-operador .btn-acao::before {
+  content: "☕";
+  display: inline-block;
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+@keyframes pulsar {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Expirada → ícone piscando */
+.op-item.expirada .botoes-operador .btn-acao::before {
+  content: "🔴";
+  animation: piscar 1s step-start infinite;
+}
+@keyframes piscar {
+  50% { opacity: 0; }
+}
+
+/* Disponível → ícone fixo */
+.op-item.disponivel .botoes-operador .btn-acao::before,
+.op-item.ativo .botoes-operador .btn-acao::before {
+  content: "💼";
+  margin-right: 3px;
+}
+
+/* ============================================================
+   ANIMAÇÕES DE ENTRADA / DESTAQUE
+   ============================================================ */
+.botoes-operador.ib-fade-in {
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: ibFadeIn .25s ease forwards;
+}
+@keyframes ibFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ib-pulse {
+  animation: ibPulse 600ms ease;
+}
+@keyframes ibPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,124,237,.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(0,124,237,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,124,237,0); }
+}
+
+/* ============================================================
+   MODO DARK
+   ============================================================ */
+body.dark-mode .botoes-operador .btn-acao {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
