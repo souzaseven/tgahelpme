@@ -1,0 +1,43 @@
+/* =============================== */
+/* 🎨 Cards de Pausas e Fila       */
+/* =============================== */
+.card-status {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #00bfff;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 6px 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+.card-status strong {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.card-status small {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+.card-status .status-text {
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+.card-status.pausa {
+  border-left-color: #00ff88;
+}
+.card-status.fila {
+  border-left-color: #ffcc00;
+}
+.card-status.meu-status {
+  background: rgba(0, 124, 237, 0.15);
+  border-left-color: #007ced;
+}
+.vazio {
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.85rem;
+  padding: 8px;
+}
