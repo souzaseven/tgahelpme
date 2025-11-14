@@ -1,0 +1,41 @@
+/* ============================================================
+   cronometro.css (v1.0)
+   Estilos visuais do contador de tempo
+   ============================================================ */
+
+.cronometro {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  transition: color 0.4s linear;
+}
+
+/* Em espera */
+.cron-espera {
+  color: #ffaa00;
+}
+
+/* Em pausa normal */
+.cron-pausa {
+  color: #22c55e;
+}
+
+/* Excedeu 20 min */
+.cron-excedido {
+  color: #ff4444;
+  font-weight: 900;
+}
+
+
+/* Quando passar do limite de 20min */
+.op-item.expirado-limite {
+  border-left-color: #ff4444 !important;
+  background: rgba(255, 68, 68, 0.15) !important;
+  animation: pulseLimite 1.4s ease-in-out infinite;
+}
+
+@keyframes pulseLimite {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.3); }
+  70%  { box-shadow: 0 0 12px 6px rgba(255, 68, 68, 0.0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+}

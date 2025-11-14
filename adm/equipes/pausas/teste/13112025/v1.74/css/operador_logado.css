@@ -1,0 +1,25 @@
+/* ============================================================
+   operador_logado.css — Destaque para operador logado
+   ============================================================ */
+
+.op-item.operador-logado-destaque {
+    border: 2px solid #38bdf8 !important;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    background: rgba(56, 189, 248, 0.12) !important;
+    position: relative;
+}
+
+/* Badge de identificação */
+.op-item.operador-logado-destaque::after {
+    content: "VOCÊ";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    background: #38bdf8;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    opacity: 0.85;
+}

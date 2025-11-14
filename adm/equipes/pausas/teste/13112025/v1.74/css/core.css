@@ -1,0 +1,667 @@
+/* ============================================================
+   core.css (v3.0 - ENXUTO)
+   Estilos principais do painel de Controle de Pausas
+   - Foco em layout, tipografia e containers
+   - Cores de status e botões detalhados ficam em:
+     • controle_pausa_v15.css
+     • botoes_operador.css
+   ============================================================ */
+
+/* ----------------- RESET BÁSICO ----------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+  color: #ffffff;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ----------------- VARIÁVEIS ----------------- */
+:root {
+  --primary: #007ced;
+  --primary-dark: #005bb5;
+  --success: #00ff88;
+  --warning: #ffcc00;
+  --danger: #ff4444;
+  --bg-card: #020617;
+  --bg-card-soft: #020818;
+  --border-soft: rgba(148, 163, 184, 0.35);
+  --text-muted: #9ca3af;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-soft: 0 14px 45px rgba(15, 23, 42, 0.7);
+}
+
+/* ----------------- CONTAINER GERAL ----------------- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ============================================================
+   HEADER 1: TÍTULO (BLOCO-TITULO)
+   ============================================================ */
+header.topo.bloco-titulo {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+header.topo.bloco-titulo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.22), transparent 55%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+header.topo.bloco-titulo .titulo {
+  position: relative;
+}
+
+header.topo.bloco-titulo h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+header.topo.bloco-titulo .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   HEADER 2: STATUS + USUÁRIO (BLOCO-STATUS)
+   ============================================================ */
+header.topo.bloco-status {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-soft);
+  margin: 0 0 18px 0;
+}
+
+/* Painel lateral (usuário + status sistema) */
+.painel-lateral {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* Usuário logado */
+.usuario-logado {
+  font-size: 0.95rem;
+  color: #e5f2ff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.usuario-logado i {
+  color: var(--primary);
+}
+
+/* Status do sistema */
+.status-sistema {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.status-icon {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.status-online {
+  background: var(--success);
+}
+
+.status-offline {
+  background: var(--danger);
+}
+
+.status-warning {
+  background: var(--warning);
+}
+
+/* Painel de controles à direita */
+.painel-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botão Trocar Usuário */
+.btn-trocar-usuario {
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+}
+
+.btn-trocar-usuario i {
+  color: #38bdf8;
+}
+
+.btn-trocar-usuario:hover {
+  background: rgba(30, 64, 175, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.5);
+}
+
+/* Filtro de equipe */
+.filtro-equipe-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-filtro {
+  background: var(--primary);
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: #f9fafb;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.btn-filtro:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Modo responsivo do topo */
+@media (max-width: 900px) {
+  header.topo.bloco-status {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .painel-lateral {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .status-sistema {
+    flex-wrap: wrap !important;
+  }
+
+  .painel-controles {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+/* ============================================================
+   DASHBOARD: CARDS DE PAUSAS, FILA E PARTICIPANTES
+   ============================================================ */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Card genérico */
+.card {
+  background: linear-gradient(145deg, #020617, #020825);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: 18px 18px 16px 18px;
+  box-shadow: var(--shadow-soft);
+  min-height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Borda superior leve no hover */
+.card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #22c55e, #facc15, #f97316, #0ea5e9);
+  background-size: 200% 100%;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.2s ease;
+}
+
+.card:hover::before {
+  opacity: 0.9;
+  animation: cardBar 3s linear infinite;
+}
+
+@keyframes cardBar {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h2 i {
+  color: #0ea5e9;
+}
+
+/* Card full-width (Participantes) */
+.card.participantes-container.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Contador de status nos cards */
+.contador-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.contador {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  background: #0ea5e9;
+  color: #0b1120;
+  font-weight: 700;
+}
+
+.sync-status {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* Listas dos cards */
+.lista-pausas,
+.lista-fila {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 80px;
+}
+
+/* Estado vazio */
+.lista-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 24px 8px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  border-radius: 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.6);
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.2), transparent 65%);
+}
+
+.lista-vazia i {
+  font-size: 1.8rem;
+  opacity: 0.7;
+}
+
+/* Itens de Pausa e Fila (cards compactos) */
+.item-pausa,
+.item-fila {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  font-size: 0.82rem;
+}
+
+.item-pausa strong,
+.item-fila strong {
+  font-weight: 600;
+}
+
+.item-pausa small,
+.item-fila small {
+  color: var(--text-muted);
+}
+
+.item-pausa .tempo,
+.item-fila .tempo {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  justify-self: flex-end;
+}
+
+/* Posição na fila (#1, #2...) */
+.item-fila .pos {
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+/* Badge de aguardando */
+.aguardando-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: #bbf7d0;
+}
+
+/* ============================================================
+   PARTICIPANTES: CABEÇALHO + LISTA
+   (cores e grid detalhado ficam em controle_pausa_v15.css)
+   ============================================================ */
+.titulo-participantes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+/* Grupos esquerda/direita */
+.titulo-participantes .grupo-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.titulo-participantes .grupo-direita {
+  margin-left: auto;
+}
+
+/* Legenda inline */
+.legenda-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.legenda-inline .l-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.barra {
+  width: 6px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Cores das barras (apenas legenda; blocos reais ficam em controle_pausa_v15.css) */
+.barra-ativo    { background: #22c55e; }
+.barra-espera   { background: #facc15; }
+.barra-pausa    { background: #0ea5e9; }
+.barra-expirada { background: #ef4444; }
+
+/* HUD (texto da equipe e contagem) */
+.hud-operador {
+  font-size: 0.85rem;
+  color: #e5e7eb;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+}
+
+/* Lista de participantes (blocos das equipes) */
+.lista-participantes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Base do bloco de equipe (estilização fina em controle_pausa_v15.css) */
+.equipe-bloco {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 10px 12px;
+}
+
+.equipe-bloco h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #e0f2fe;
+}
+
+.equipe-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+/* Operador (cores de status já tratadas em controle_pausa_v15.css) */
+.op-item {
+  font-size: 0.85rem;
+  padding: 8px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.op-item strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.op-item small {
+  color: var(--text-muted);
+  display: block;
+}
+
+/* Destaque para operador logado será aplicado via JS adicionando classe, se quiser */
+.op-item.meu-operador {
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.9);
+  position: relative;
+}
+
+/* ============================================================
+   MODAL SIMPLES DE LOGIN (modalOperador)
+   ============================================================ */
+#modalOperador {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.88);
+  display: none; /* será controlado pelo JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+}
+
+#modalOperador .janela {
+  background: #020617;
+  border-radius: 14px;
+  padding: 18px 18px 16px 18px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: var(--shadow-soft);
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+}
+
+#modalOperador h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+#modalOperador input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+#modalOperador input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.8);
+}
+
+#modalOperador button#btnEntrar {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: none;
+  background: var(--primary);
+  color: #f9fafb;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+#modalOperador button#btnEntrar:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+#modalOperador .msg-erro {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #fecaca;
+}
+
+/* ============================================================
+   TOAST SIMPLES (#toast - legado)
+   ============================================================ */
+#toast {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(52, 211, 153, 0.7);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 9998;
+}
+
+/* Quando JS adicionar classe .show */
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVIDADE GERAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  header.topo.bloco-titulo {
+    padding: 10px 12px !important;
+  }
+
+  header.topo.bloco-status {
+    padding: 10px 12px !important;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .titulo-participantes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hud-operador {
+    text-align: left;
+  }
+}
