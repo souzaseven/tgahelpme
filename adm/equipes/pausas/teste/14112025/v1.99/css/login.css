@@ -1,0 +1,731 @@
+/* ===========================================
+   DESIGN SYSTEM - TOKENS PROFISSIONAIS
+   =========================================== */
+
+:root {
+  /* ===== PALETA DE CORES ATUALIZADA ===== */
+  /* Primárias - Azul Corporativo */
+  --primary-50: #f0f7ff;
+  --primary-100: #e0f0ff;
+  --primary-200: #bae0ff;
+  --primary-300: #7cc4ff;
+  --primary-400: #47a3ff;
+  --primary-500: #006cff;
+  --primary-600: #0057cc;
+  --primary-700: #003b88;
+  --primary-800: #002a5c;
+  --primary-900: #001d3d;
+
+  /* Semânticas */
+  --success-50: #ecfdf5;
+  --success-500: #10b981;
+  --success-600: #059669;
+  --success-700: #047857;
+  
+  --warning-50: #fffbeb;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  
+  --error-50: #fef2f2;
+  --error-500: #ef4444;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+
+  /* Neutras - Escala mais rica */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  /* Cores de texto otimizadas */
+  --text-primary: #000000;
+  --text-secondary: #374151;
+  --text-tertiary: #6b7280;
+  --text-white: #ffffff;
+
+  /* ===== TIPOGRAFIA ===== */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* ===== ESPAÇAMENTO ===== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* ===== SOMBRAS ===== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* ===== BORDAS ===== */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  /* ===== ANIMAÇÕES ===== */
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-enter: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ===========================================
+   RESET E BASE
+   =========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-primary);
+}
+
+/* ===========================================
+   MODAL PRINCIPAL
+   =========================================== */
+
+#modalOperador {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: var(--space-6);
+  animation: backdropFadeIn 0.4s var(--transition-smooth);
+}
+
+#modalOperador.ativo {
+  display: flex;
+}
+
+@keyframes backdropFadeIn {
+  from { 
+    opacity: 0; 
+    backdrop-filter: blur(0px);
+  }
+  to { 
+    opacity: 1; 
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* ===========================================
+   JANELA DE LOGIN - LARGURA AUMENTADA
+   =========================================== */
+
+.login-janela {
+  width: min(650px, 90vw);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: var(--space-12) var(--space-10);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-2xl);
+  border: 1px solid var(--gray-200);
+  position: relative;
+  animation: modalSlideIn 0.5s var(--transition-bounce);
+  margin: 0 auto;
+}
+
+.login-janela::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.login-janela::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg, 
+    rgba(0, 108, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%, 
+    rgba(0, 108, 255, 0.03) 100%);
+  border-radius: var(--radius-3xl);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===========================================
+   CABEÇALHO E TÍTULOS - CORES OTIMIZADAS
+   =========================================== */
+
+.titulo-login {
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-10);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  position: relative;
+}
+
+.titulo-login::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+  border-radius: var(--radius-sm);
+}
+
+.subtitulo-login {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  letter-spacing: -0.01em;
+}
+
+.subtitulo-login::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--primary-500), var(--primary-700));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.texto-secundario {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-6);
+  line-height: 1.5;
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===========================================
+   NAVEGAÇÃO ENTRE MODOS - CORES CONTRASTANTES
+   =========================================== */
+
+.modo-login-botoes {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+  background: var(--gray-100);
+  padding: var(--space-3);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--gray-200);
+}
+
+.modo-btn {
+  flex: 1;
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  border-radius: var(--radius-xl);
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.modo-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s;
+}
+
+.modo-btn:hover::before {
+  left: 100%;
+}
+
+.modo-btn.ativo {
+  background: var(--gray-50);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-1px);
+  border: 1px solid var(--gray-300);
+}
+
+.modo-btn:hover:not(.ativo) {
+  color: var(--primary-700);
+  background: rgba(0, 108, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* ===========================================
+   SEÇÕES DE LOGIN
+   =========================================== */
+
+.modo-login {
+  display: none;
+  animation: fadeSlideUp 0.4s var(--transition-smooth);
+}
+
+.modo-login.ativo {
+  display: block;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================
+   FORMULÁRIO MANUAL - CORES CONTRASTANTES
+   =========================================== */
+
+#loginModoManual input {
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  border: 2px solid var(--gray-300);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-5);
+  font-size: 1rem;
+  transition: all 0.3s var(--transition-smooth);
+  background: white;
+  font-family: inherit;
+  color: var(--text-primary);
+}
+
+#loginModoManual input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 4px rgba(0, 108, 255, 0.1);
+  background: white;
+  transform: translateY(-2px);
+}
+
+#loginModoManual input::placeholder {
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===========================================
+   BOTÕES PRINCIPAIS
+   =========================================== */
+
+#btnEntrar {
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s var(--transition-smooth);
+  margin-top: var(--space-5);
+  position: relative;
+  overflow: hidden;
+}
+
+#btnEntrar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+#btnEntrar:hover::before {
+  left: 100%;
+}
+
+#btnEntrar:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+}
+
+/* ===========================================
+   GRID DE SELEÇÃO - LAYOUT EXPANDIDO
+   =========================================== */
+
+.grid-equipes,
+.grid-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+/* ===========================================
+   CARDS DE SELEÇÃO - CORES CONTRASTANTES
+   =========================================== */
+
+.card-equipe,
+.card-operador {
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-equipe::before,
+.card-operador::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent, rgba(0, 108, 255, 0.03), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-equipe:hover::before,
+.card-operador:hover::before {
+  opacity: 1;
+}
+
+.card-equipe:hover,
+.card-operador:hover {
+  border-color: var(--primary-300);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  color: var(--primary-700);
+}
+
+.card-operador.selecionado {
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+  color: var(--text-white);
+  border-color: var(--primary-600);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===========================================
+   BOTÕES SECUNDÁRIOS - CORES CONTRASTANTES
+   =========================================== */
+
+.btn-voltar {
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-bottom: var(--space-8);
+  font-size: 0.9375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  transition: all 0.3s var(--transition-smooth);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.btn-voltar:hover {
+  color: var(--primary-700);
+  background: var(--primary-50);
+  transform: translateX(-2px);
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  background: linear-gradient(135deg, var(--success-500), var(--success-700));
+  border: none;
+  border-radius: var(--radius-xl);
+  color: var(--text-white);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  margin-top: var(--space-8);
+  transition: all 0.3s var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-confirmar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.btn-confirmar:hover::before {
+  left: 100%;
+}
+
+.btn-confirmar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-confirmar:disabled::before {
+  display: none;
+}
+
+.btn-confirmar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, var(--success-600), var(--success-800));
+}
+
+/* ===========================================
+   FEEDBACK E MENSAGENS - CORES CONTRASTANTES
+   =========================================== */
+
+.msg-erro {
+  color: var(--error-700);
+  font-size: 0.875rem;
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--error-50);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--error-500);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+}
+
+/* ===========================================
+   TOAST NOTIFICATIONS
+   =========================================== */
+
+.toast {
+  position: fixed;
+  top: var(--space-8);
+  right: var(--space-8);
+  padding: var(--space-5) var(--space-6);
+  background: var(--gray-900);
+  color: var(--text-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  transform: translateX(calc(100% + var(--space-8)));
+  opacity: 0;
+  transition: all 0.5s var(--transition-bounce);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 400px;
+  border-left: 4px solid var(--primary-500);
+}
+
+.toast--success {
+  background: var(--success-600);
+  border-left-color: var(--success-500);
+}
+
+.toast--error {
+  background: var(--error-600);
+  border-left-color: var(--error-500);
+}
+
+.toast--show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  transform-origin: left;
+  animation: toastProgress 5s linear forwards;
+}
+
+@keyframes toastProgress {
+  to { transform: scaleX(0); }
+}
+
+/* ===========================================
+   UTILITÁRIOS
+   =========================================== */
+
+.hidden { 
+  display: none !important; 
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===========================================
+   RESPONSIVIDADE PARA LARGURA AUMENTADA
+   =========================================== */
+
+@media (max-width: 640px) {
+  .login-janela {
+    width: 95vw;
+    padding: var(--space-10) var(--space-6);
+  }
+  
+  .grid-equipes,
+  .grid-operadores {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: var(--space-4);
+  }
+  
+  .modo-login-botoes {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  
+  .titulo-login {
+    font-size: 1.625rem;
+  }
+  
+  .modo-btn {
+    padding: var(--space-4) var(--space-5);
+  }
+}
+
+@media (max-width: 480px) {
+  .login-janela {
+    padding: var(--space-8) var(--space-5);
+    border-radius: var(--radius-2xl);
+  }
+  
+  .grid-equipes,
+  .grid-operadores {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  
+  .card-equipe,
+  .card-operador {
+    padding: var(--space-4) var(--space-3);
+  }
+}
+
+/* ===========================================
+   ACESSIBILIDADE
+   =========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visível para navegação por teclado */
+.modo-btn:focus-visible,
+.input:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 108, 255, 0.1);
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --primary-500: #0044cc;
+    --primary-700: #002966;
+  }
+  
+  .card-equipe,
+  .card-operador {
+    border-width: 2px;
+  }
+  
+  .modo-btn.ativo {
+    border: 2px solid var(--primary-700);
+  }
+}

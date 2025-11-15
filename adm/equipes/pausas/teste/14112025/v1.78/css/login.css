@@ -1,0 +1,199 @@
+/* ================================
+   LOGIN MODAL — ESTILO MODERNO
+================================ */
+
+/* Janela do modal */
+#modalOperador {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#modalOperador.ativo {
+  display: flex;
+}
+
+/* Janela central */
+.janela {
+  width: 360px;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+  animation: fadeIn .25s ease-out;
+}
+
+/* Títulos */
+.titulo-login {
+  color: #003b88;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.subtitulo-login {
+  color: #003b88;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Botões de modo */
+.modo-login-botoes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.modo-btn {
+  flex: 1;
+  padding: 8px;
+  background: #e8eef7;
+  border-radius: 25px;
+  border: 1px solid #d0d8e2;
+  color: #003b88;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.modo-btn.ativo {
+  background: #006cff;
+  color: white;
+  border-color: #0057cc;
+}
+
+/* Inputs modo manual */
+#loginModoManual input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd2df;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* Botão entrar */
+#btnEntrar {
+  width: 100%;
+  padding: 10px;
+  background: #006cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.25s;
+}
+
+#btnEntrar:hover {
+  background: #0057cc;
+}
+
+/* Passos do modo equipe/nome */
+.grid-equipes,
+.grid-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+/* Cards */
+.card-equipe,
+.card-operador {
+  background: #f4f7fc;
+  border: 1px solid #d1d9e6;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-equipe:hover,
+.card-operador:hover {
+  background: #dcedff;
+  border-color: #80b8ff;
+}
+
+/* Operador selecionado */
+.card-operador.selecionado {
+  background: #006cff;
+  color: white;
+  border-color: #004aac;
+}
+
+/* Botão voltar */
+.btn-voltar {
+  border: none;
+  background: none;
+  color: #006cff;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Botão confirmar */
+.btn-confirmar {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 12px;
+  transition: 0.25s;
+}
+
+.btn-confirmar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-confirmar:hover:not(:disabled) {
+  background: #23933d;
+}
+
+.msg-erro {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* Toast */
+#toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  background: #003b88;
+  color: white;
+  font-size: 14px;
+  border-radius: 6px;
+  transform: translateX(150%);
+  opacity: 0;
+  transition: all .25s ease-out;
+  z-index: 10000;
+}
+
+#toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden { display: none !important; }
