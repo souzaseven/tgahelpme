@@ -1,0 +1,66 @@
+/* ============================================================
+   cronometro.css (v1.1)
+   Estilos visuais do contador de tempo — 100% compatível
+   com cronometro.js v1.1 (sem piscar, sem reset visual)
+   ============================================================ */
+
+/* Bloco geral do contador */
+.cronometro {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 4px;
+
+    /* Evita piscar entre cores */
+    transition: color 0.35s linear, opacity 0.3s ease;
+
+    /* Mantém estável quando atualiza */
+    opacity: 1;
+}
+
+/* ================================
+   STATUS → cores e estados
+   ================================ */
+
+/* Em espera (fila) */
+.cron-espera {
+    color: #ffaa00; /* amarelo */
+}
+
+/* Em pausa dentro do tempo */
+.cron-pausa {
+    color: #22c55e; /* verde */
+}
+
+/* Pausa excedida (acima de 20min) */
+.cron-excedido {
+    color: #ff4444; /* vermelho forte */
+    font-weight: 900;
+}
+
+/* ================================
+   Destaque completo no item excedido
+   ================================ */
+
+.op-item.expirado-limite {
+    border-left-color: #ff4444 !important;
+    background: rgba(255, 68, 68, 0.18) !important;
+
+    /* leve pulsação que não atrapalha leitura do tempo */
+    animation: pulseLimite 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseLimite {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.28); }
+    60%  { box-shadow: 0 0 10px 6px rgba(255, 68, 68, 0.0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+}
+
+/* ================================
+   RESET VISUAL
+   Quando o cronômetro é parado não mostra "00:00"
+   (o JS já bloqueia exibição, mas isso reforça a segurança)
+   ================================ */
+
+.cronometro[data-reset="true"] {
+    display: none !important;
+}
