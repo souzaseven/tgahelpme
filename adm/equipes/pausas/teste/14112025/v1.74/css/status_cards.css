@@ -1,0 +1,126 @@
+/* ============================================================
+   status_cards.css v3.5
+   Cards de Pausa e Fila — Otimizados, leves e padronizados
+   Compatível com status_cards.js v3.0
+   ============================================================ */
+
+/* =============================== */
+/* 🎨 Estrutura geral dos cards    */
+/* =============================== */
+
+.card-status, 
+.item-pausa,
+.item-fila {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 4px solid #00bfff;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius: 10px;
+  transition: background .25s ease, border-color .25s ease;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+/* Nome do operador */
+.item-pausa strong,
+.item-fila strong,
+.card-status strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Equipe */
+.item-pausa small,
+.item-fila small,
+.card-status small {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* =============================== */
+/* 🟦 TEMPO                        */
+/* =============================== */
+.item-pausa .tempo,
+.item-fila .tempo {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00bfff;
+  text-shadow: 0 0 4px rgba(0,191,255,0.4);
+}
+
+/* =============================== */
+/* 🟩 Pausa                        */
+/* =============================== */
+.item-pausa {
+  border-left-color: #00ff88;
+  background: rgba(0,255,136,0.12);
+}
+
+/* =============================== */
+/* 🟡 Fila (espera + aguardando)   */
+/* =============================== */
+.item-fila {
+  border-left-color: #ffcc00;
+  background: rgba(255,204,0,0.12);
+}
+
+/* Badge de aguardando confirmação */
+.item-fila .aguardando-badge {
+  margin-top: 6px;
+  display: inline-block;
+  background: rgba(255,204,0,0.25);
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #ffdd55;
+}
+
+/* =============================== */
+/* ⭐ Destaque do operador logado  */
+/* =============================== */
+
+.item-pausa.meu-status,
+.item-fila.meu-status {
+  background: rgba(0,124,237,0.18);
+  border-left-color: #007ced;
+  box-shadow: 0 0 12px rgba(0,124,237,0.6);
+}
+
+/* =============================== */
+/* 🆓 Estado vazio                 */
+/* =============================== */
+.vazio,
+.lista-vazia {
+  text-align: center;
+  opacity: 0.65;
+  font-size: 0.85rem;
+  padding: 12px 8px;
+  border-radius: 8px;
+}
+
+/* =============================== */
+/* 🔢 Posição na fila              */
+/* =============================== */
+.item-fila .pos {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffcc00;
+  margin-bottom: 4px;
+}
+
+/* =============================== */
+/* 📱 Responsivo                   */
+/* =============================== */
+@media (max-width: 500px) {
+  .item-pausa,
+  .item-fila {
+    padding: 10px 12px;
+  }
+
+  .item-fila .pos {
+    font-size: 0.8rem;
+  }
+}

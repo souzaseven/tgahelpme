@@ -98,6 +98,7 @@ class ControlePausaSistema {
     );
     return p ? p.equipe : "";
   }
+
   // -----------------------------------------
   // INICIALIZAÇÃO GERAL
   // -----------------------------------------
@@ -115,30 +116,21 @@ class ControlePausaSistema {
     // Filtro "Minha equipe" / "Todas equipes"
     this.inicializarFiltroEquipes();
 
-    // 🔔 Preferências de notificação (som / desktop)
-    this.inicializarPreferenciasNotificacao();
-
     // Botões de administração (derrubar pausados / fila)
     this.injetarToolbarAdmin();
 
     // Polling de estado
     setInterval(() => this.sincronizarAtualizacoes(), this.intervaloAtualizacao);
 
-    // Permissão de notificação (apenas se usuário quiser desktop)
+    // Permissão de notificação
     try {
-      const permitirDesktop = localStorage.getItem("pref_desktop") === "1";
-      if (
-        permitirDesktop &&
-        "Notification" in window &&
-        Notification.permission !== "granted"
-      ) {
+      if ("Notification" in window && Notification.permission !== "granted") {
         Notification.requestPermission().catch(() => {});
       }
     } catch (e) {
       // ignora
     }
   }
-
 // -----------------------------------------
 // SINCRONIZAÇÃO COM O BACKEND
 // -----------------------------------------
@@ -201,63 +193,6 @@ async sincronizarAtualizacoes() {
   }
 }
 
-  // -----------------------------------------
-  // PREFERÊNCIAS DE NOTIFICAÇÃO (Som / Desktop)
-  // -----------------------------------------
-  inicializarPreferenciasNotificacao() {
-    const btnPref = document.getElementById("btnPreferenciasNotificacao");
-    if (!btnPref) return;
-
-    const atualizarLabel = () => {
-      const permitirSom = localStorage.getItem("pref_som") === "1";
-      const permitirDesktop = localStorage.getItem("pref_desktop") === "1";
-
-      let status = [];
-      status.push(permitirSom ? "🔊 Som ON" : "🔇 Som OFF");
-      status.push(permitirDesktop ? "🖥️ Desktop ON" : "🖥️ Desktop OFF");
-
-      btnPref.textContent = `🔔 Preferências (${status.join(" • ")})`;
-    };
-
-    // Define padrão se ainda não existir
-    if (localStorage.getItem("pref_som") === null) {
-      localStorage.setItem("pref_som", "1"); // som ligado por padrão
-    }
-    if (localStorage.getItem("pref_desktop") === null) {
-      localStorage.setItem("pref_desktop", "1"); // desktop ligado por padrão
-    }
-
-    atualizarLabel();
-
-    btnPref.addEventListener("click", async () => {
-      // Alterna som
-      const somAtual = localStorage.getItem("pref_som") === "1";
-      const novoSom = !somAtual;
-      localStorage.setItem("pref_som", novoSom ? "1" : "0");
-
-      // Alterna desktop
-      const desktopAtual = localStorage.getItem("pref_desktop") === "1";
-      const novoDesktop = !desktopAtual;
-      localStorage.setItem("pref_desktop", novoDesktop ? "1" : "0");
-
-      // Se ativou desktop e ainda não tem permissão, pede
-      if (
-        novoDesktop &&
-        "Notification" in window &&
-        Notification.permission !== "granted"
-      ) {
-        try {
-          await Notification.requestPermission();
-        } catch (e) {}
-      }
-
-      atualizarLabel();
-
-      this.toast(
-        `Preferências atualizadas: Som ${novoSom ? "ativado" : "desativado"} • Notificação desktop ${novoDesktop ? "ativada" : "desativada"}`
-      );
-    });
-  }
 
   // -----------------------------------------
   // DIFF PARA NOTIFICAÇÕES POR EQUIPE
@@ -615,74 +550,60 @@ item.innerHTML = `
       setTimeout(() => div.remove(), 380);
     }, 3500);
   }
+
   // -----------------------------------------
-// NOTIFICAÇÃO CORRETA — Respeita Preferências do Operador
-// -----------------------------------------
-notificarEquipeStatus({ nome, equipe, statusAnterior, statusAtual }) {
-    const prefs = this.carregarPreferencias();
-
+  // NOTIFICAÇÃO PARA EQUIPE (toast + Notification)
+  // -----------------------------------------
+  notificarEquipeStatus({ nome, equipe, statusAnterior, statusAtual }) {
+    // Verifica se o operador logado pertence à mesma equipe
     const operadorAtual = this.estado.find(
-        (p) => this.normalizar(p.nome) === this.normalizar(this.operador)
+      (p) => this.normalizar(p.nome) === this.normalizar(this.operador)
     );
-
     const mesmaEquipe =
-        operadorAtual &&
-        this.normalizar(operadorAtual.equipe) === this.normalizar(equipe);
+      operadorAtual && this.normalizar(operadorAtual.equipe) === this.normalizar(equipe);
 
     const ehAdmin =
-        this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
+      this.normalizar(this.operador) === this.normalizar("Anderson de Souza");
 
     if (!mesmaEquipe && !ehAdmin) return;
 
     let mensagem = "";
 
-    if (statusAtual === "pausa") mensagem = `☕ ${nome} entrou em pausa.`;
-    else if (statusAnterior === "pausa" && statusAtual === "ativo") mensagem = `✅ ${nome} voltou da pausa.`;
-    else if (statusAtual === "espera") mensagem = `🕓 ${nome} entrou na fila.`;
-    else if (statusAtual === "aguardando") mensagem = `⚡ ${nome} está com vaga liberada.`;
-    else if (statusAtual === "expirada") mensagem = `🔴 ${nome} teve a pausa expirada.`;
-    else mensagem = `${nome} mudou o status.`;
+    if (statusAtual === "pausa") {
+      mensagem = `☕ ${nome} entrou em pausa.`;
+    } else if (statusAnterior === "pausa" && statusAtual === "ativo") {
+      mensagem = `✅ ${nome} saiu da pausa e voltou a ficar disponível.`;
+    } else if (statusAtual === "espera") {
+      mensagem = `🕓 ${nome} entrou na fila de espera.`;
+    } else if (statusAnterior === "espera" && statusAtual === "aguardando") {
+      mensagem = `⚡ ${nome} está com vaga liberada e aguardando confirmação.`;
+    } else if (statusAnterior === "espera" && statusAtual === "ativo") {
+      mensagem = `❌ ${nome} saiu da fila de espera.`;
+    } else if (statusAtual === "aguardando") {
+      mensagem = `⚡ ${nome} está aguardando confirmação para entrar em pausa.`;
+    } else if (statusAtual === "expirada") {
+      mensagem = `🔴 ${nome} teve a pausa expirada.`;
+    } else if (statusAtual === "ativo") {
+      mensagem = `✅ ${nome} está disponível.`;
+    } else {
+      mensagem = `${nome} alterou o status (${statusAnterior} → ${statusAtual}).`;
+    }
 
-    // **Toast SEMPRE aparece (é visual interno)**
+    // Toast para o operador logado (mesma equipe ou admin)
     this.toast(mensagem);
 
-    // 🔊 SOM — somente se ativado
-    if (prefs.som && window.somPausa?.aviso) {
-        window.somPausa.aviso(mensagem);
-    }
-
-    // 🖥️ Notificação Desktop (Windows) — apenas se ativada
-    if (
-        prefs.notificacao &&
-        "Notification" in window &&
-        Notification.permission === "granted"
-    ) {
+    // Notificação nativa do navegador (se permitido)
+    try {
+      if ("Notification" in window && Notification.permission === "granted") {
         new Notification("Alteração de Status", {
-            body: mensagem,
-            icon: "https://tgameajuda.com/img/principal/bot-tga.webp"
+          body: mensagem,
+          icon: "https://tgameajuda.com/img/principal/bot-tga.webp"
         });
+      }
+    } catch (e) {
+      // ignora
     }
-}
-
-
-// -----------------------------------------
-// PREFERÊNCIAS DO OPERADOR (Som / Notificação / Layout)
-// -----------------------------------------
-carregarPreferencias() {
-    return {
-        som: localStorage.getItem("pref_som") === "1",
-        notificacao: localStorage.getItem("pref_desktop") === "1",
-        layout: localStorage.getItem("pref_layout") || "default"
-    };
-}
-
-salvarPreferencias(prefs) {
-    localStorage.setItem("pref_som", prefs.som ? "1" : "0");
-    localStorage.setItem("pref_desktop", prefs.notificacao ? "1" : "0");
-    localStorage.setItem("pref_layout", prefs.layout);
-}
-
-
+  }
 
   // -----------------------------------------
   // ADMIN: DERRUBAR PAUSADOS / FILA (por EQUIPE)
@@ -901,39 +822,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btnFiltroEquipe");
     if (btn) btn.click();
   }, 500);
-});
-
-// ========================================
-// MODAL DE PREFERÊNCIAS
-// ========================================
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("modalPreferencias");
-    const btn = document.getElementById("btnPreferencias");
-    const btnSalvar = document.getElementById("btnSalvarPreferencias");
-
-    const cbSom = document.getElementById("prefSom");
-    const cbDesk = document.getElementById("prefDesktop");
-
-    btn.onclick = () => {
-        const prefs = controle.carregarPreferencias();
-        cbSom.checked = prefs.som;
-        cbDesk.checked = prefs.notificacao;
-
-        modal.classList.remove("hidden");
-    };
-
-    btnSalvar.onclick = () => {
-        controle.salvarPreferencias({
-            som: cbSom.checked,
-            notificacao: cbDesk.checked,
-            layout: "default"
-        });
-
-        modal.classList.add("hidden");
-        controle.toast("Preferências atualizadas com sucesso!");
-    };
-
-    modal.onclick = (e) => {
-        if (e.target === modal) modal.classList.add("hidden");
-    }
 });

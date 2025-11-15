@@ -162,18 +162,3 @@ document.addEventListener("status:alterado", (e) => {
 // Compatibilidade com código legado
 // ============================================================
 window.aplicarBotoesOperador = () => __ib_aplicarParaDOM();
-
-const operadorLogado = {
-    nome: localStorage.getItem("operador_nome"),
-    equipe: window.controle?.buscarEquipePorOperador(localStorage.getItem("operador_nome"))
-};
-
-fetch("./php/trocar_posicao.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-        solicitante: operadorLogado.nome,
-        equipe: operadorLogado.equipe,
-        alvo: primeiroDaFila.nome
-    })
-});

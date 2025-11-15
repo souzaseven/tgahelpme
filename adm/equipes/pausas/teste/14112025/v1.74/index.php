@@ -67,24 +67,16 @@ $usuario_nome = $_SESSION['operador_nome'] ?? $_SESSION['usuario_nome'] ?? $_SES
       style="display:flex;justify-content:space-between;align-items:center;width:100%;
       padding:10px 5%;gap:20px;flex-wrap:nowrap;">
 
-    <aside class="painel-lateral"
-  style="display:flex;flex-direction:row;align-items:center;gap:25px;flex:1;min-width:0;white-space:nowrap;">
+      <!-- Painel lateral com usuário e status -->
+      <aside class="painel-lateral"
+        style="display:flex;flex-direction:row;align-items:center;gap:25px;flex:1;min-width:0;white-space:nowrap;">
 
-    <div class="usuario-logado" id="usuarioLogadoBox"
-      style="color:#9cd;font-weight:600;display:flex;align-items:center;gap:6px;">
-      <i class="fas fa-user-circle"></i>
-      <span id="usuarioLogado">👤 Operador: Anderson • Equipe: Daniel Feix</span>
-    </div>
-<div class="preferencias-box">
-    <button id="btnPreferencias" class="btn-preferencias">
-        <i class="fas fa-sliders-h"></i> Preferências
-    </button>
-</div>
-
-
-</aside>
-
-
+        <!-- Usuário logado -->
+        <div class="usuario-logado" id="usuarioLogadoBox"
+          style="color:#9cd;font-weight:600;display:flex;align-items:center;gap:6px;">
+          <i class="fas fa-user-circle"></i>
+          <span id="usuarioLogado">👤 Operador: Anderson • Equipe: Daniel Feix</span>
+        </div>
 
         <!-- Status do sistema -->
         <div id="statusSistema" class="status-sistema"
@@ -183,101 +175,21 @@ $usuario_nome = $_SESSION['operador_nome'] ?? $_SESSION['usuario_nome'] ?? $_SES
         </div>
       </div>
     </div> <!-- fim .dashboard -->
-<!-- MODAL DE LOGIN -->
-<div id="modalOperador">
-  <div class="janela login-janela">
 
-    <h2 class="titulo-login">Identifique-se</h2>
-
-    <!-- Botões para escolha do modo -->
-    <div class="modo-login-botoes">
-      <button id="btnModoManual" class="modo-btn ativo">
-        <i class="fas fa-keyboard"></i> Nome manual
-      </button>
-      <button id="btnModoEquipe" class="modo-btn">
-        <i class="fas fa-users"></i> Equipe / Nome
-      </button>
-    </div>
-
-    <!-- ===========================
-         MODO 1 - NOME MANUAL
-    ============================ -->
-    <div id="loginModoManual" class="modo-login ativo">
-      <input id="inputNome" type="text" placeholder="Seu nome..." autocomplete="off">
-      <input id="inputSenha" type="password" placeholder="Senha de admin" style="display:none;">
-      <button id="btnEntrar">Entrar</button>
-      <div class="msg-erro" id="msgErro"></div>
-    </div>
-
-    <!-- ===========================
-         MODO 2 - EQUIPE/NOME
-    ============================ -->
-    <div id="loginModoEquipe" class="modo-login hidden">
-
-      <!-- PASSO 1: SELEÇÃO DE EQUIPE -->
-      <div id="stepEquipes">
-        <h3 class="subtitulo-login">Escolha sua equipe</h3>
-        <div id="listaEquipes" class="grid-equipes">
-          <!-- Preenchido via JS -->
-        </div>
-      </div>
-
-      <!-- PASSO 2: SELEÇÃO DE OPERADOR -->
-      <div id="stepOperadores" class="hidden">
-        <button id="btnVoltarEquipes" class="btn-voltar">
-          <i class="fas fa-arrow-left"></i> Voltar
-        </button>
-
-        <h3 class="subtitulo-login" id="tituloEquipeSelecionada">Equipe</h3>
-        <p class="texto-secundario">Selecione seu nome:</p>
-
-        <div id="listaOperadores" class="grid-operadores">
-          <!-- Preenchido via JS -->
-        </div>
-
-        <div class="msg-erro" id="msgErroEquipe"></div>
-
-        <button id="btnConfirmarOperador" class="btn-confirmar" disabled>
-          <i class="fas fa-check"></i> Confirmar
-        </button>
+    <!-- MODAL DE LOGIN -->
+    <div id="modalOperador">
+      <div class="janela">
+        <h2>Identifique-se</h2>
+        <input id="inputNome" type="text" placeholder="Seu nome..." autocomplete="off">
+        <input id="inputSenha" type="password" placeholder="Senha de admin">
+        <button id="btnEntrar">Entrar</button>
+        <div class="msg-erro" id="msgErro"></div>
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- Toast genérico -->
-<div id="toast">✅ Sessão encerrada com sucesso.</div>
-
-
-<div id="modalPreferencias" class="modal-pref hidden">
-  <div class="modal-pref-content">
-      
-    <h2><i class="fas fa-sliders-h"></i> Preferências do Operador</h2>
-
-    <div class="pref-group">
-        <label class="switch">
-            <input type="checkbox" id="prefSom">
-            <span class="slider"></span>
-        </label>
-        <span>Som de notificações</span>
-    </div>
-
-    <div class="pref-group">
-        <label class="switch">
-            <input type="checkbox" id="prefDesktop">
-            <span class="slider"></span>
-        </label>
-        <span>Notificação no Windows</span>
-    </div>
-
-    <button id="btnSalvarPreferencias" class="btn-salvar-pref">
-        Salvar Preferências
-    </button>
-  </div>
-</div>
-
-
+    <!-- Toast genérico -->
+    <div id="toast">✅ Sessão encerrada com sucesso.</div>
+  </div> <!-- fim .container -->
 
   <!-- SCRIPTS -->
   <script src="./js/inicializacao.js?v=<?php echo $versao; ?>"></script>
@@ -289,42 +201,6 @@ $usuario_nome = $_SESSION['operador_nome'] ?? $_SESSION['usuario_nome'] ?? $_SES
   <script src="./js/interface_botoes.js?v=<?php echo $versao; ?>"></script>
 <script src="./js/ordenar_logado_primeiro.js?v=<?php echo $versao; ?>"></script>
 <script src="./js/cronometro.js?v=1" defer></script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    const btnPref = document.getElementById("btnPreferenciasNotificacao");
-    const modal = document.getElementById("modalPreferencias");
-    const chkSom = document.getElementById("prefSom");
-    const chkDesk = document.getElementById("prefDesktop");
-    const btnSalvar = document.getElementById("btnSalvarPreferencias");
-
-    // 🔄 Carregar preferências existentes
-    chkSom.checked = localStorage.getItem("pref_som") === "1";
-    chkDesk.checked = localStorage.getItem("pref_desktop") === "1";
-
-    // Abrir modal
-    btnPref.onclick = () => {
-        modal.classList.add("ativo");
-    };
-
-    // Fechar clicando fora
-    modal.onclick = (e) => {
-        if (e.target === modal) modal.classList.remove("ativo");
-    };
-
-    // Salvar preferências
-    btnSalvar.onclick = () => {
-        localStorage.setItem("pref_som", chkSom.checked ? "1" : "0");
-        localStorage.setItem("pref_desktop", chkDesk.checked ? "1" : "0");
-
-        modal.classList.remove("ativo");
-        alert("Preferências salvas!");
-    };
-
-});
-</script>
-
 
   <img alt="Em fase de teste 12-11-2025"
        src="https://hits.sh/tgameajuda.com/teste11-11-2025.html.svg?color=007ced&label=Em fase de teste 12-11-2025&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
