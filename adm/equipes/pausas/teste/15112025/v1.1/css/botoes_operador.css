@@ -1,0 +1,447 @@
+/* ============================================================
+   botoes_operador.css (v3.0)
+   Botões do operador — otimizados, leves, responsivos e animados
+   ============================================================ */
+
+/* ============================================================
+   CONTAINER DOS BOTÕES
+   ============================================================ */
+.botoes-operador {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* ============================================================
+   BOTÃO PADRÃO
+   ============================================================ */
+.botoes-operador .btn-acao {
+  background: rgba(0, 124, 237, 0.15);
+  border: 1px solid rgba(0, 124, 237, 0.4);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    background 0.20s ease,
+    border-color 0.20s ease;
+}
+
+.botoes-operador .btn-acao:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.botoes-operador .btn-acao:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+/* ============================================================
+   CORES POR STATUS
+   ============================================================ */
+
+/* 🔵 ATIVO / DISPONÍVEL */
+.op-item.ativo       .btn-acao,
+.op-item.disponivel .btn-acao {
+  background: rgba(0, 124, 237, 0.15);
+  border-color: rgba(0,124,237,0.45);
+}
+
+.op-item.ativo:hover       .btn-acao,
+.op-item.disponivel:hover .btn-acao {
+  background: #007ced;
+  border-color: #007ced;
+}
+
+/* 🟡 ESPERA */
+.op-item.espera .btn-acao {
+  background: rgba(255, 200, 0, 0.15);
+  border-color: rgba(255, 200, 0, 0.45);
+}
+
+.op-item.espera:hover .btn-acao {
+  background: #ffbb00;
+  border-color: #ffbb00;
+}
+
+/* 🟢⚡ AGUARDANDO */
+.op-item.aguardando .btn-acao {
+  background: rgba(0,255,90,0.15);
+  border-color: rgba(0,255,90,0.40);
+}
+
+.op-item.aguardando:hover .btn-acao {
+  background: #00cc55;
+  border-color: #00cc55;
+}
+
+/* ☕ PAUSA */
+.op-item.pausa .btn-acao {
+  background: rgba(0,255,128,0.12);
+  border-color: rgba(0,255,128,0.40);
+}
+
+.op-item.pausa:hover .btn-acao {
+  background: #00cc6a;
+  border-color: #00cc6a;
+}
+
+/* 🔴 EXPIRADA */
+.op-item.expirada .btn-acao {
+  background: rgba(255, 68, 68, 0.15);
+  border-color: rgba(255, 68, 68, 0.45);
+}
+
+.op-item.expirada:hover .btn-acao {
+  background: #ff4444;
+  border-color: #ff4444;
+}
+
+/* ============================================================
+   ÍCONES AUTOMÁTICOS POR STATUS
+   ============================================================ */
+
+/* Espera → Relógio girando */
+.op-item.espera .btn-acao::before {
+  content: "⏳";
+  animation: girar 3s linear infinite;
+}
+
+/* Pausa → Xícara pulsando */
+.op-item.pausa .btn-acao::before {
+  content: "☕";
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+
+/* Expirada → Ponto vermelho piscando */
+.op-item.expirada .btn-acao::before {
+  content: "🔴";
+  animation: piscar 1s step-start infinite;
+}
+
+/* Disponível/Ativo → Ícone fixo */
+.op-item.ativo .btn-acao::before,
+.op-item.disponivel .btn-acao::before {
+  content: "";
+}
+
+/* Aguardando → Raio */
+.op-item.aguardando .btn-acao::before {
+  content: "⚡";
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+
+/* Animações */
+@keyframes girar    { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+@keyframes piscar   { 50%{opacity:0;} }
+@keyframes pulsar   {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%     { opacity:0.6; transform:scale(1.1); }
+}
+
+/* ============================================================
+   EFEITOS DE ENTRADA
+   ============================================================ */
+.botoes-operador.ib-fade-in {
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: fadeBtn .25s ease forwards;
+}
+@keyframes fadeBtn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   DESTAQUE DO OPERADOR LOGADO
+   ============================================================ */
+.op-item.logado {
+  outline: 2px solid #00ff88;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ff88bb;
+  animation: brilho 2s infinite ease-out;
+}
+
+@keyframes brilho {
+  0%,100% { box-shadow: 0 0 10px #00ff88aa; }
+  50%     { box-shadow: 0 0 20px #00ff88ff; }
+}
+
+/* ============================================================
+   MODO DARK
+   ============================================================ */
+body.dark-mode .btn-acao {
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+}
+
+
+/* ============================================================
+   PREFERENCIA DE NOTIFICACAO
+   ============================================================ */
+.btn-preferencias {
+    background: rgba(0, 124, 237, 0.18);
+    border: 1px solid rgba(0, 124, 237, 0.45);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: .25s;
+}
+
+.btn-preferencias:hover {
+    background: #007ced;
+    border-color: #007ced;
+}
+
+
+/* ============================================================
+   MODAL DE PREFERENCIA
+   ============================================================ */
+.modal-preferencias {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.modal-preferencias.ativo {
+    display: flex;
+}
+
+.janela-preferencias {
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    border: 1px solid rgba(255,255,255,.1);
+    color: #fff;
+}
+
+.janela-preferencias h3 {
+    margin-bottom: 12px;
+}
+
+.btn-salvar-pref {
+    margin-top: 14px;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #007ced;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-pref {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6000;
+}
+.modal-pref.hidden { display: none; }
+
+.modal-pref-content {
+  background: rgba(30, 41, 59, 0.93);
+  padding: 25px 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 380px;
+  animation: modalShow 0.3s ease;
+  color: white;
+}
+
+@keyframes modalShow {
+  from { transform: scale(.95); opacity: .4; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.pref-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 18px 0;
+}
+
+/* SWITCH (estilo iOS) */
+.switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background: #666;
+  border-radius: 24px;
+  inset: 0;
+  transition: .3s;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+input:checked + .slider {
+  background: #00c6ff;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.btn-salvar-pref {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #00c6ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+.btn-salvar-pref:hover {
+  background: #0089c7;
+}
+
+
+
+/* ===== Modal ===== */
+.login-janela {
+  width: 340px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  animation: fadeIn .25s ease;
+}
+
+/* Botões de modo de login */
+.modo-login-botoes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.modo-btn {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f2f2f2;
+  transition: .2s;
+}
+
+.modo-btn.ativo {
+  background: #007bff;
+  color: white;
+  border-color: #0059c9;
+}
+
+/* Seções de login */
+.modo-login {
+  display: none;
+}
+
+.modo-login.ativo {
+  display: block;
+}
+
+.hidden { display: none !important; }
+
+/* Equipes */
+.grid-equipes,
+.grid-operadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-equipe,
+.card-operador {
+  background: #e9e9e9;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: .2s;
+}
+
+.card-operador:hover,
+.card-equipe:hover {
+  background: #d7e6ff;
+}
+
+.card-operador.selecionado {
+  background: #007bff;
+  color: white;
+}
+
+/* Botão voltar */
+.btn-voltar {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Botão confirmar */
+.btn-confirmar {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: .2s;
+}
+
+.btn-confirmar:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.btn-confirmar:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.msg-erro {
+  margin-top: 6px;
+  color: red;
+  font-size: 13px;
+}
