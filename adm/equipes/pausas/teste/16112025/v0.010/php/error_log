@@ -1,0 +1,4 @@
+[15-Nov-2025 18:00:35 America/Fortaleza] PHP Fatal error:  Uncaught Error: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/v0.009/php/conexao.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home4/tgamea80/public_html/adm/equipes/pausas/v0.009/php/controle_pausa_novo.php:38
+Stack trace:
+#0 {main}
+  thrown in /home4/tgamea80/public_html/adm/equipes/pausas/v0.009/php/controle_pausa_novo.php on line 38
