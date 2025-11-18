@@ -1,0 +1,138 @@
+/* ============================
+   TELAS DO SISTEMA
+============================ */
+.tela {
+    display: none;
+    padding: 20px;
+}
+.tela.active {
+    display: block;
+}
+
+/* ============================
+   TELA DE EQUIPES FULLSCREEN
+============================ */
+#tela-equipe {
+    width: 100%;
+    padding: 20px;
+}
+
+/* ============================
+   GRID DAS EQUIPES (3 COLUNAS)
+============================ */
+.equipes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding-bottom: 30px;
+}
+
+/* Responsivo: 2 colunas */
+@media (max-width: 1300px) {
+    .equipes-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsivo: 1 coluna */
+@media (max-width: 900px) {
+    .equipes-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================
+   BLOCO DO LÍDER
+============================ */
+.bloco-lider {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 14px;
+    border-left: 6px solid #007ced;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.bloco-lider:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Título do líder */
+.bloco-lider h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #007ced;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bloco-lider h3 small {
+    font-size: 14px;
+    color: #444;
+    font-weight: 400;
+}
+
+/* ============================
+   OPERADOR DENTRO DO BLOCO
+============================ */
+.operador-item {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.operador-item:last-child {
+    border-bottom: none;
+}
+
+/* Nome */
+.operador-item strong {
+    font-weight: 600;
+}
+
+/* Badge do status */
+.operador-item span {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: capitalize;
+}
+
+/* ============================
+   STATUS COLORS
+============================ */
+.status-disponivel {
+    background: #d4f8d4;
+    color: #0c7a0c;
+}
+.status-pausa {
+    background: #fff1bd;
+    color: #8a6d00;
+}
+.status-espera {
+    background: #e2e2e2;
+    color: #444;
+}
+
+/* ============================
+   RESPONSIVO MOBILE
+============================ */
+@media (max-width: 768px) {
+    .bloco-lider {
+        padding: 18px;
+    }
+    .bloco-lider h3 {
+        font-size: 19px;
+    }
+    .operador-item {
+        font-size: 15px;
+        padding: 10px;
+    }
+}

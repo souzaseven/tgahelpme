@@ -1,0 +1,603 @@
+:root {
+  --bg-main: #020617;
+  --bg-card: #020617;
+  --bg-card-alt: #020617;
+  --border-color: rgba(148, 163, 184, 0.4);
+  --primary-color: #38bdf8;
+  --primary-soft: rgba(56, 189, 248, 0.12);
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --danger: #ef4444;
+  --warning: #facc15;
+  --success: #22c55e;
+  --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.6);
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1e293b 0, #020617 50%, #000000 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* CONTAINER AGORA LARGURA TOTAL */
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==============================================
+   🔹 Cabeçalho principal (topo)
+   ============================================== */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 5%;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.titulo {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.titulo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #00c6ff;
+}
+
+.titulo .subtitle {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* ==============================================
+   🔹 Painel lateral direito
+   ============================================== */
+.painel-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  width: 260px;
+  min-width: 220px;
+}
+
+.usuario-logado {
+  color: #9cd;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-sistema {
+  display: flex;
+  /*flex-direction: column;*/
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.status-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #00ff88;
+}
+.status-icon.status-online {
+  background: #00ff88;
+}
+.status-icon.status-offline {
+  background: #ff4444;
+}
+
+/* ==============================================
+   🔹 Filtros de equipe
+   ============================================== */
+.filtro-equipe-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-filtro {
+  background: var(--primary-color, #007ced);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-filtro:hover {
+  background: var(--primary-dark, #005bb5);
+}
+
+/* ==============================================
+   🔹 Responsividade
+   ============================================== */
+@media (max-width: 900px) {
+  .topo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .painel-lateral {
+    align-items: center;
+    width: 100%;
+  }
+
+  .filtro-equipe-box {
+    justify-content: center;
+  }
+}
+
+/* =======================================================
+   🔹 Ajustes de topo e aside
+   ======================================================= */
+header.topo {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 12px 5%;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.painel-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  width: 260px;
+  min-width: 220px;
+}
+
+/* HUD Operador (mensagem de status/logado) */
+#hud-operador {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 2px;
+  text-align: center;
+}
+
+/* =======================================================
+   🔹 Legenda de Status (ao lado do título "Participantes")
+   ======================================================= */
+.participantes-container h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legenda-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.l-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Barrinha vertical (em vez de bolinha) */
+.barra {
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.barra-ativo { background: var(--success); }
+.barra-espera { background: var(--warning); }
+.barra-pausa { background: var(--danger); }
+.barra-expirada { background: #666; }
+
+/* Layout principal: 2 colunas em cima, participantes embaixo */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* duas colunas iguais */
+  grid-auto-rows: auto;
+  gap: 16px;
+}
+
+/* Cards principais */
+.card {
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.09), #020617 55%);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e5e7eb;
+}
+
+.card h2 i {
+  color: var(--primary-color);
+}
+
+/* Pausas & Fila */
+.pausas-container,
+.fila-container {
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617 60%);
+}
+
+.contador-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.contador {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* listas */
+.lista-pausas,
+.lista-fila {
+  margin-top: 6px;
+  max-height: 270px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.lista-vazia {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.lista-vazia i {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+/* PARTICIPANTES */
+
+/* Card de participantes ocupando 90% da largura, centralizado */
+.participantes-container.full-width {
+  grid-column: 1 / -1;   /* ocupa as duas colunas do grid */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;             /* sem margem lateral */
+}
+
+/* LISTA DE EQUIPES - AGORA EM 3 COLUNAS */
+.lista-participantes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Responsividade para lista-participantes */
+@media (max-width: 1200px) {
+  .lista-participantes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .lista-participantes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BLOCO DE CADA EQUIPE, MAIS COMPACTO */
+.equipe-bloco {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+/*
+.equipe-bloco h3 {
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+*/
+/* Resumo de status da equipe ao lado do nome do líder */
+.resumo-equipe {
+  display: flex;
+  gap: 40px;
+  font-size: 0.8rem;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.badge-disponivel { color: var(--success); }
+.badge-espera    { color: var(--warning); }
+.badge-pausa     { color: var(--danger); }
+
+/* OPERADORES EM COLUNA DENTRO DA EQUIPE */
+.equipe-operadores {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Itens do operador */
+.op-item {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.op-item strong {
+  font-size: 0.92rem;
+  color: #e5e7eb;
+}
+
+.op-item small {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Tempo */
+.op-item .tempo {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+/* Status por cor */
+/* Status por cor – bloco todo ganha o "clima" do status */
+.op-item.disponivel {
+  border-left: 4px solid var(--success);
+  background: rgba(34, 197, 94, 0.10);    /* success */
+}
+
+.op-item.espera {
+  border-left: 4px solid var(--warning);
+  background: rgba(250, 204, 21, 0.12);   /* warning */
+}
+
+.op-item.pausa {
+  border-left: 4px solid var(--danger);
+  background: rgba(239, 68, 68, 0.12);    /* danger */
+}
+
+.op-item.expirado {
+  animation: alertaPulse 1s infinite alternate;
+}
+
+/* CONTAINER DOS BOTÕES DO OPERADOR - MAIS COMPACTO */
+.user-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+/* BOTÃO DE AÇÃO COMPACTO */
+.btn-acao {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.btn-acao:hover {
+  background: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Estado desabilitado / sem permissão */
+.btn-acao:disabled,
+.btn-acao.btn-desabilitado {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+/* Por padrão o modal fica escondido */
+#modalOperador {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Quando tem a classe .ativo, ele aparece */
+#modalOperador.ativo {
+  display: flex;
+}
+
+
+#modalOperador input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+#modalOperador button {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #007ced);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#modalOperador .msg-erro {
+  margin-top: 6px;
+  color: #f97316;
+  font-size: 0.8rem;
+}
+
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 999px;
+  padding: 8px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #bbf7d0;
+  font-size: 0.86rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 60;
+}
+
+/* Botão trocar usuário */
+.btn-trocar-usuario {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 999px;
+  padding: 8px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Animações */
+@keyframes alertaPulse {
+  from {
+    box-shadow: 0 0 0 rgba(248, 113, 113, 0.0);
+  }
+  to {
+    box-shadow: 0 0 12px rgba(248, 113, 113, 0.9);
+  }
+}
+
+/* Scroll */
+.lista-pausas::-webkit-scrollbar,
+.lista-fila::-webkit-scrollbar,
+.lista-participantes::-webkit-scrollbar {
+  width: 6px;
+}
+.lista-pausas::-webkit-scrollbar-thumb,
+.lista-fila::-webkit-scrollbar-thumb,
+.lista-participantes::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
+.user-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.user-botoes .btn-acao {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid #444;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.user-botoes .btn-acao:hover {
+  background: rgba(0,180,255,0.2);
+}
+
+.op-item.disponivel { background-color: rgba(34,197,94,0.08); }  /* verde */
+.op-item.espera { background-color: rgba(250,204,21,0.08); }     /* amarelo */
+.op-item.pausa { background-color: rgba(239,68,68,0.08); }       /* vermelho */

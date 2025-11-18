@@ -1,0 +1,301 @@
+/* ============================================================
+   controle_pausa_v16.css - Tema visual do Sistema de Pausas
+   Estruturado, otimizado e padronizado.
+   ============================================================ */
+
+/* ============================================================
+   🎨 CORES E FUNDOS POR STATUS DO OPERADOR
+   ============================================================ */
+
+.op-item {
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  border-left: 4px solid transparent;
+  transition: background .25s ease, border-color .25s ease;
+}
+
+/* 🟢 Ativo / Disponível */
+.op-item.ativo,
+.op-item.disponivel {
+  border-color: #00c8ff;
+  background: rgba(0, 200, 255, 0.12);
+}
+
+/* ⏳ Espera */
+.op-item.espera {
+  border-color: #ffcc00;
+  background: rgba(255, 204, 0, 0.12);
+}
+
+/* ⚡ Aguardando vaga */
+.op-item.aguardando {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.15);
+}
+
+/* ☕ Pausa */
+.op-item.pausa {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.12);
+}
+
+/* 🔴 Expirada */
+.op-item.expirada {
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.12);
+}
+
+
+/* ============================================================
+   🎛️ BOTÕES DO OPERADOR (herdam animações de botoes_operador.css)
+   ============================================================ */
+.user-botoes,
+.botoes-operador {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  justify-content: center;
+}
+
+/* ============================================================
+   🔔 TOAST — mensagem no canto esquerdo
+   ============================================================ */
+.toast-global {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(15, 23, 42, 0.95);
+  padding: 12px 18px;
+  border-radius: 8px;
+  border-left: 5px solid #00ff88;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: transform .35s ease, opacity .35s ease;
+  z-index: 9999;
+  color: #fff;
+  font-weight: 500;
+}
+
+.toast-global.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   🔐 MODAL DE LOGIN / TROCA
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn .3s ease;
+  z-index: 10000;
+}
+
+.modal-login {
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 10px;
+  width: 95%;
+  max-width: 420px;
+  animation: slideUp .3s ease;
+  color: #fff;
+}
+
+/* Animações */
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================================
+   📱 RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 768px) {
+  .toast-global {
+    top: auto;
+    bottom: 15px;
+    width: calc(100% - 30px);
+    left: 15px;
+    border-left: none;
+    border-bottom: 3px solid #00ff88;
+  }
+
+  .modal-login {
+    padding: 20px;
+  }
+}
+
+/* ============================================================
+   🎚️ BOTÕES DE FILTRO
+   ============================================================ */
+.btn-filtro {
+  background: #007ced;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+  transition: background .25s;
+}
+
+.btn-filtro:hover {
+  background: #005bb5;
+}
+
+.filtro-equipe-box {
+  display: flex;
+  gap: 10px;
+}
+
+/* ============================================================
+   👥 PARTICIPANTES — GRID E LAYOUT
+   ============================================================ */
+.participantes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.lista-participantes {
+  width: 100%;
+}
+
+/* Título sempre acima */
+.titulo-participantes {
+  background: rgba(255,255,255,0.04);
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.legenda-inline {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.hud-operador {
+  color: #38bdf8;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(56,189,248,0.6);
+}
+
+/* ============================================================
+   🌎 TODAS AS EQUIPES (grid)
+   ============================================================ */
+.lista-participantes.todas-equipes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.equipe-bloco {
+  flex: 1 1 300px;
+  min-width: 280px;
+  background: #0b0b0b;
+  padding: 16px;
+  border-radius: 12px;
+  transition: transform .25s ease;
+}
+
+.equipe-bloco:hover {
+  transform: scale(1.02);
+}
+
+.equipe-bloco h3 {
+  color: #00c6ff;
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Contador no canto direito */
+.contador-equipe {
+  background: rgba(255,255,255,0.06);
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ============================================================
+   🔧 MODO "SOMENTE MINHA EQUIPE" — 6 operadores por linha
+   ============================================================ */
+
+body.modo-minha-equipe .lista-participantes {
+  display: block !important;
+  width: 100% !important;
+  padding: 0;
+}
+
+body.modo-minha-equipe .equipe-bloco {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto;
+}
+
+body.modo-minha-equipe .equipe-operadores {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;  /* 🔥 6 operadores por linha */
+  gap: 16px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Responsividade para reduzir para 5,4,3 etc. */
+@media (max-width: 1600px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 1400px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 1100px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  body.modo-minha-equipe .equipe-operadores { grid-template-columns: repeat(1, 1fr); }
+}
+
+
+/* ============================================================
+   ⭐ DESTAQUE DO OPERADOR LOGADO
+   ============================================================ */
+.op-item.logado {
+  box-shadow: 0 0 12px #00ff88aa, inset 0 0 10px rgba(0,255,136,0.18);
+  animation: pulseLogado 2s infinite;
+}
+
+@keyframes pulseLogado {
+  0%,100% { box-shadow: 0 0 12px #00ff88aa; }
+  50%     { box-shadow: 0 0 22px #00ff88ff; }
+}
