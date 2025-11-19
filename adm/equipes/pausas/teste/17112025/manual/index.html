@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Pausas | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+
+    <!-- Setup do Sistema (detecta versão automaticamente) -->
+    <script src="./setup_sistema.php?v=<?php echo time(); ?>"></script>
+
+    <!-- CSS com versionamento automático -->
+    <link rel="stylesheet" href="./css/base.css?v=<?php echo time(); ?>">
+   <link rel="stylesheet" href="./css/responsivo.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./css/controle_pausa.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./css/status_cards.css?v=<?php echo time(); ?>">
+</head>
+<body>
+    <div class="container" id="main-container">
+        <header>
+            <div class="header-left">
+                <h1>Controle de Pausas</h1>
+                <p>Equipe {usuariologado}</p>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn-icon" id="audio-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <button class="btn-icon" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">OP</div>
+                    <div class="user-info">
+                        <div class="user-name">{nomedooperadorlogado}</div>
+                        <div class="user-role">Operador</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Painel</h2>
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Painel Principal</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Equipes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </aside>
+
+        <main>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Operadores Ativos</div>
+                        <div class="stat-icon primary">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+2 desde ontem</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Em Pausa</div>
+                        <div class="stat-icon warning">
+                            <i class="fas fa-pause-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-change negative">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-1 desde ontem</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Em Espera</div>
+                        <div class="stat-icon gray">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+1 desde ontem</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="section pausa-section">
+                <div class="section-header">
+                    <h2 class="section-title">Operadores em Pausa</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-filter"></i>
+                            <span>Filtrar</span>
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            <span>Nova Pausa</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="list-item">
+                        <div class="item-avatar">MA</div>
+                        <div class="item-info">
+                            <div class="item-name">Maria Almeida</div>
+                            <div class="item-details">Pausa para almoço • Iniciada: 12:15</div>
+                        </div>
+                        <div class="item-status status-paused">12 min</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">JS</div>
+                        <div class="item-info">
+                            <div class="item-name">João Silva</div>
+                            <div class="item-details">Pausa rápida • Iniciada: 14:30</div>
+                        </div>
+                        <div class="item-status status-paused">5 min</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">CS</div>
+                        <div class="item-info">
+                            <div class="item-name">Carla Santos</div>
+                            <div class="item-details">Intervalo • Iniciada: 10:45</div>
+                        </div>
+                        <div class="item-status status-paused">18 min</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">PL</div>
+                        <div class="item-info">
+                            <div class="item-name">Pedro Lima</div>
+                            <div class="item-details">Pausa para café • Iniciada: 15:20</div>
+                        </div>
+                        <div class="item-status status-paused">8 min</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section espera-section">
+                <div class="section-header">
+                    <h2 class="section-title">Operadores em Espera</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-filter"></i>
+                            <span>Filtrar</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="list-item">
+                        <div class="item-avatar">AS</div>
+                        <div class="item-info">
+                            <div class="item-name">Ana Souza</div>
+                            <div class="item-details">Aguardando chamada • Desde: 14:10</div>
+                        </div>
+                        <div class="item-status status-waiting">25 min</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">RF</div>
+                        <div class="item-info">
+                            <div class="item-name">Ricardo Ferreira</div>
+                            <div class="item-details">Aguardando supervisor • Desde: 13:45</div>
+                        </div>
+                        <div class="item-status status-waiting">50 min</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">MC</div>
+                        <div class="item-info">
+                            <div class="item-name">Mariana Costa</div>
+                            <div class="item-details">Aguardando sistema • Desde: 15:05</div>
+                        </div>
+                        <div class="item-status status-waiting">15 min</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section operadores-section">
+                <div class="section-header">
+                    <h2 class="section-title">Todos os Operadores da Equipe</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="list-item">
+                        <div class="item-avatar">MA</div>
+                        <div class="item-info">
+                            <div class="item-name">Maria Almeida</div>
+                            <div class="item-details">Online • Ativo há 2h 15min</div>
+                        </div>
+                        <div class="item-status status-active">Ativo</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">JS</div>
+                        <div class="item-info">
+                            <div class="item-name">João Silva</div>
+                            <div class="item-details">Online • Ativo há 1h 40min</div>
+                        </div>
+                        <div class="item-status status-active">Ativo</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">CS</div>
+                        <div class="item-info">
+                            <div class="item-name">Carla Santos</div>
+                            <div class="item-details">Online • Ativo há 3h 05min</div>
+                        </div>
+                        <div class="item-status status-active">Ativo</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">PL</div>
+                        <div class="item-info">
+                            <div class="item-name">Pedro Lima</div>
+                            <div class="item-details">Online • Ativo há 4h 20min</div>
+                        </div>
+                        <div class="item-status status-active">Ativo</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-avatar">AS</div>
+                        <div class="item-info">
+                            <div class="item-name">Ana Souza</div>
+                            <div class="item-details">Online • Ativo há 2h 50min</div>
+                        </div>
+                        <div class="item-status status-active">Ativo</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts com versionamento automático -->
+    <script src="./js/inicializacao.js?v=<?php echo time(); ?>"></script>
+    <script src="./js/controle_pausa.js?v=<?php echo time(); ?>"></script>
+    <script src="./js/status_cards.js?v=<?php echo time(); ?>"></script>
+    <script src="./js/interface_botoes.js?v=<?php echo time(); ?>"></script>
+    <script src="./js/base.js?v=<?php echo time(); ?>"></script>
+</body>
+</html>

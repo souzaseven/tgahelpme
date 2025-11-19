@@ -1,0 +1,341 @@
+/* painel.css - estilo base do painel */
+
+body {
+    background: #020617;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #e2e8f0;
+}
+
+/* ============================
+   PAINEL PRINCIPAL
+============================ */
+.painel-container {
+    margin-left: 240px; /* espaço da sidebar */
+    padding: 20px 32px;
+    max-width: 1400px; /* impede parecer zoom reduzido */
+}
+
+/* ============================
+   TOPO
+============================ */
+.painel-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.titulo-sistema h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #38bdf8;
+}
+
+.titulo-sistema p {
+    margin: 3px 0 0;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.info-operador {
+    text-align: right;
+}
+
+.linha-op {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 6px;
+    color: #cbd5f5;
+}
+
+.btn-trocar {
+    background: #334155;
+    color: #e2e8f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.btn-trocar:hover {
+    background: #475569;
+}
+
+/* ============================
+   STATUS BAR
+============================ */
+.painel-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid #1e293b;
+}
+
+.status-bol {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+.status-online {
+    background: #22c55e;
+}
+
+/* ============================
+   DASHBOARD
+============================ */
+.painel-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #020617;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid #1f2937;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #e5e7eb;
+}
+
+/* Contadores */
+.card-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.contador {
+    font-size: 26px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+/* "Participantes" ocupa a linha inteira */
+.card-participantes {
+    grid-column: 1 / -1;
+}
+
+/* Header do card participantes */
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hud-operador {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* ============================
+   LISTA DE PARTICIPANTES
+============================ */
+.lista-participantes {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.linha-participante {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0a0f1e;
+    font-size: 14px;
+}
+
+.linha-participante.atual {
+    border-color: #38bdf8;
+    background: #0b1120;
+    font-weight: bold;
+}
+
+.bolinha-estado {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #22c55e;
+}
+
+.nome-op {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Vazia */
+.lista-vazia {
+    padding: 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* ============================
+   RESPONSIVIDADE
+============================ */
+@media (max-width: 1000px) {
+    .painel-container {
+        margin-left: 200px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .painel-container {
+        margin-left: 0;
+        padding: 16px;
+    }
+    body:not(.sidebar-fechada) .sidebar {
+        position: absolute;
+        z-index: 10;
+    }
+}
+
+/* ============================
+   SIDEBAR LATERAL
+============================ */
+.sidebar {
+    width: 240px;
+    background: #0f172a;
+    border-right: 1px solid #1e293b;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 18px 14px;
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s ease;
+}
+
+.sidebar-fechada .sidebar {
+    width: 70px;
+}
+.sidebar-fechada .painel-container {
+    margin-left: 90px;
+}
+
+/* Cabeçalho da sidebar */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.sidebar-toggle {
+    background: #020617;
+    border: 1px solid #1e293b;
+    color: #e2e8f0;
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Menu da sidebar */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.2s;
+}
+
+.sidebar-item:hover {
+    background: #1e293b;
+}
+
+.sidebar-item.sair {
+    background: #b91c1c;
+    color: #fff;
+}
+.sidebar-item.sair:hover {
+    background: #dc2626;
+}
+
+/* ============================================
+   Sidebar recolhida → só ícones
+============================================ */
+
+.sidebar-fechada .sidebar {
+    width: 70px;
+}
+
+/* esconder textos dos itens */
+.sidebar-fechada .texto-item {
+    display: none !important;
+}
+
+/* esconder o título no topo */
+.sidebar-fechada .sidebar-titulo {
+    justify-content: center;
+}
+.sidebar-fechada .sidebar-titulo .texto-item {
+    display: none !important;
+}
+
+/* centralizar os ícones */
+.sidebar-fechada .sidebar-item {
+    justify-content: center;
+}
+
+/* reduzir espaço interno no modo fechado */
+.sidebar-fechada .sidebar-menu {
+    padding-left: 0;
+}
+
+/* ajustar painel principal */
+.sidebar-fechada .painel-container {
+    margin-left: 95px;
+}
