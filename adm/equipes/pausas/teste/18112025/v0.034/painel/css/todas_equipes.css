@@ -1,0 +1,101 @@
+/* ============================================
+   todas_equipes.css - Tela "Todas as Equipes"
+============================================ */
+
+/* Container da tela de todas as equipes */
+.painel-container-todas-equipes {
+    margin-left: 240px;
+    padding: 24px 48px;
+    width: calc(100% - 240px);
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* GRID — 3 colunas fixas de equipes */
+.todas-equipes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Responsivo: 2 colunas em telas médias, 1 em telas pequenas */
+@media (max-width: 1200px) {
+    .todas-equipes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .todas-equipes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Card de cada equipe */
+.card-equipe-listagem {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 16px 18px;
+    border-radius: 14px;
+    transition: 0.2s ease;
+    box-shadow: 0 0 8px rgba(0,0,0,0.35);
+}
+
+.card-equipe-listagem:hover {
+    transform: translateY(-3px);
+    border-color: #38bdf8;
+}
+
+/* Título da equipe (líder) */
+.card-equipe-listagem .titulo-equipe {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Texto da quantidade */
+.card-equipe-listagem p {
+    margin: 2px 0 10px;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* Lista de operadores da equipe – em coluna */
+.todas-operadores-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Cada operador em sua própria linha, dentro do card */
+.card-equipe-listagem .linha-participante {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    font-size: 13px;
+}
+
+/* Bolinha de status reaproveitada, mas ajustamos a cor aqui se quiser */
+.card-equipe-listagem .bolinha-estado {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #22c55e;
+}
+
+/* Nome do operador com truncate */
+.card-equipe-listagem .nome-op {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Caixa de “Carregando equipes...” reaproveita .lista-vazia do painel */

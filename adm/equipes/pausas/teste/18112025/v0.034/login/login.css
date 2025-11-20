@@ -1,0 +1,227 @@
+/* ==========================================
+   LOGIN - CONTROLE DE PAUSAS
+   Layout moderno azul/escuro
+========================================== */
+
+/* Fundo geral */
+body {
+    background: #0f172a;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #e2e8f0;
+}
+
+/* Container central */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+/* Box principal */
+.login-box {
+    background: #1e293b;
+    padding: 24px 24px 28px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+/* Títulos */
+h1 {
+    margin: 0 0 8px;
+    color: #38bdf8;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+h1 i {
+    font-size: 24px;
+}
+
+.subtitulo {
+    margin: 0 0 18px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* Steps */
+.step {
+    display: none;
+}
+.step.ativo {
+    display: block;
+}
+
+h3 {
+    margin: 10px 0 8px;
+    color: #e5e7eb;
+    font-size: 16px;
+}
+
+#tituloEquipe {
+    margin: 10px 0 8px;
+    color: #e5e7eb;
+    font-size: 15px;
+}
+
+/* ==========================================
+   GRID DAS EQUIPES (LÍDERES LADO A LADO)
+   - Desktop: 3 colunas
+   - Tablet: 2
+   - Mobile: 1
+========================================== */
+
+.grid-equipes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 líderes lado a lado */
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* ==========================================
+   GRID DOS OPERADORES (6 POR LINHA NO DESKTOP)
+========================================== */
+
+.grid-operadores {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 por linha em telas grandes */
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* Cartões comuns */
+.card-equipe,
+.card-operador {
+    background: #0f172a;
+    padding: 10px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #334155;
+    transition: 0.18s ease;
+    font-size: 13px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Equipes: um pouco mais "chamativas" */
+.card-equipe {
+    font-weight: 600;
+}
+
+/* Hover/seleção */
+.card-equipe:hover,
+.card-operador:hover {
+    background: #1d4ed8;
+    border-color: #38bdf8;
+    color: #e5e7eb;
+}
+
+.card-operador.selecionado {
+    background: #38bdf8;
+    border-color: #38bdf8;
+    color: #0f172a;
+}
+
+/* Botões */
+.voltar-btn,
+.confirmar-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 11px 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.voltar-btn {
+    background: #334155;
+    color: #e2e8f0;
+}
+.voltar-btn:hover {
+    background: #475569;
+}
+
+.confirmar-btn {
+    background: #38bdf8;
+    color: #0f172a;
+}
+.confirmar-btn:hover {
+    background: #0ea5e9;
+}
+
+.confirmar-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Erros */
+.erro {
+    margin-top: 8px;
+    color: #fca5a5;
+    font-size: 13px;
+}
+.oculto {
+    display: none;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+/* Tablet: reduzir operadores para 3 por linha, equipes em 2 colunas */
+@media (max-width: 1024px) {
+
+    .grid-equipes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-operadores {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile médio: 2 por linha */
+@media (max-width: 768px) {
+
+    .login-box {
+        padding: 20px 16px 22px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .grid-equipes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-operadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile pequeno: 1 por linha */
+@media (max-width: 480px) {
+
+    .grid-equipes {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-operadores {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,653 @@
+/* ============================================
+   painel.css - Painel Controle de Pausas v0.004
+============================================ */
+
+/* ============================
+   BASE
+============================ */
+body {
+    background: #020617;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #e2e8f0;
+}
+
+/* ============================
+   PAINEL PRINCIPAL
+============================ */
+.painel-container {
+    margin-left: 240px;
+    padding: 24px 48px;
+    width: calc(100% - 240px);
+    max-width: none;      /* sem limite máximo */
+    box-sizing: border-box;
+}
+
+/* ============================
+   TOPO
+============================ */
+.painel-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.titulo-sistema h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #38bdf8;
+}
+
+.titulo-sistema p {
+    margin: 3px 0 0;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.info-operador {
+    text-align: right;
+}
+
+.linha-op {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    color: #cbd5f5;
+}
+
+.btn-trocar {
+    background: #334155;
+    color: #e2e8f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.btn-trocar:hover {
+    background: #475569;
+}
+
+/* ============================
+   STATUS BAR
+============================ */
+.painel-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid #1e293b;
+}
+
+.status-bol {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+.status-online {
+    background: #22c55e;
+}
+
+/* ============================
+   DASHBOARD
+============================ */
+.painel-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 2 colunas */
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #1f2937;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #e5e7eb;
+}
+
+/* contador */
+.card-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.contador {
+    font-size: 26px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+/* ============================
+   CARD PARTICIPANTES
+============================ */
+.card-participantes {
+    grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hud-operador {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* ============================
+   GRID PARTICIPANTES (tela principal)
+============================ */
+.lista-participantes {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 4px;
+}
+
+.linha-participante {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background: #0b1120;
+    font-size: 14px;
+}
+
+.linha-participante.atual {
+    border-color: #38bdf8;
+    background: #0e1628;
+    font-weight: bold;
+}
+
+.bolinha-estado {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #22c55e;
+}
+
+.nome-op {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lista-vazia {
+    padding: 14px;
+    font-size: 14px;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* ============================
+   RESPONSIVIDADE LISTA PARTICIPANTES
+============================ */
+@media (max-width: 1200px) {
+    .lista-participantes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 900px) {
+    .lista-participantes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .lista-participantes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 420px) {
+    .lista-participantes {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* ============================
+   SIDEBAR LATERAL
+============================ */
+.sidebar {
+    width: 240px;
+    background: #0f172a;
+    border-right: 1px solid #1e293b;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 18px 14px;
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s ease;
+}
+
+/* Sidebar recolhida */
+.sidebar-fechada .sidebar {
+    width: 70px;
+}
+.sidebar-fechada .painel-container {
+    margin-left: 95px;
+}
+
+/* Header da sidebar */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Botão toggle */
+.sidebar-toggle {
+    background: #020617;
+    border: 1px solid #1e293b;
+    color: #e2e8f0;
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Itens da sidebar */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: 0.2s;
+}
+
+.sidebar-item:hover {
+    background: #1e293b;
+}
+
+.sidebar-item.sair {
+    background: #b91c1c;
+    color: #fff;
+}
+.sidebar-item.sair:hover {
+    background: #dc2626;
+}
+
+/* Sidebar recolhida → só ícones */
+.sidebar-fechada .texto-item {
+    display: none !important;
+}
+
+.sidebar-fechada .sidebar-titulo {
+    justify-content: center;
+}
+.sidebar-fechada .sidebar-titulo .texto-item {
+    display: none !important;
+}
+
+.sidebar-fechada .sidebar-item {
+    justify-content: center;
+}
+
+/* ============================
+   MODAL PREFERENCIAS
+============================ */
+.modal-pref {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-pref.hidden {
+    display: none;
+}
+
+.modal-pref-content {
+    background: #0f172a;
+    padding: 22px;
+    width: 380px;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+}
+
+.pref-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+    padding: 10px;
+    background: #0b1120;
+    border-radius: 8px;
+}
+
+.btn-teste {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn-teste:hover {
+    background: #475569;
+}
+
+.btn-salvar-pref {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-top: 18px;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-fechar-pref {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #334155;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ============================
+   LEGENDAS E BARRAS
+============================ */
+.grupo-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.legenda-inline {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #94a3b8;
+    flex-wrap: wrap;
+}
+
+.l-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.barra {
+    width: 18px;
+    height: 5px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.barra-ativo { background: #22c55e; }
+.barra-espera { background: #eab308; }
+.barra-pausa { background: #38bdf8; }
+.barra-expirada { background: #ef4444; }
+
+/* ============================
+   AÇÕES DO OPERADOR (BOTÕES)
+============================ */
+.acoes-operador {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.acao-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+}
+
+.btn-primario { background: #38bdf8; color: #0f172a; font-weight: bold; }
+.btn-primario:hover { background: #7dd3fc; }
+
+.btn-secundario { background: #334155; color: #e2e8f0; }
+.btn-secundario:hover { background: #475569; }
+
+.btn-perigo { background: #b91c1c; color:#fff; }
+.btn-perigo:hover { background: #dc2626; }
+
+.hidden { display:none !important; }
+
+#areaBotoesOperador {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-op {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-primario {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-perigo {
+    background: #dc2626;
+    color: #fff;
+}
+
+.btn-verde {
+    background: #22c55e;
+    color: white;
+}
+
+.btn-aviso {
+    background: #475569;
+    color: #cbd5f5;
+}
+
+/* =============================
+   BOTÕES INLINE MODERNOS
+============================= */
+
+.acoes-operador-inline {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+    align-items: center;
+}
+
+.btn-mini {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+/* Cores principais */
+.btn-mini.btn-primario {
+    background: #0ea5e9;
+    color: #fff;
+}
+.btn-mini.btn-primario:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+}
+
+.btn-mini.btn-secundario {
+    background: #475569;
+    color: #fff;
+}
+.btn-mini.btn-secundario:hover {
+    background: #334155;
+    transform: translateY(-1px);
+}
+
+.btn-mini.btn-perigo {
+    background: #ef4444;
+    color: #fff;
+}
+.btn-mini.btn-perigo:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+/* Ícones menores */
+.btn-mini i {
+    font-size: 13px;
+}
+
+.linha-participante {
+    display: flex;
+    flex-direction: column;   /* 👈 chave pra ficar um embaixo do outro */
+    gap: 4px;
+    padding: 6px 10px;
+}
+
+.linha-participante-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botões embaixo, ocupando a largura toda da linha */
+.acoes-operador-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-left: 24px; /* recuo alinhado com o texto */
+}
+
+/* Mantém o estilo dos botões mini que já criamos */
+.btn-mini {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-mini.btn-primario {
+    background: #0ea5e9;
+    color: #fff;
+}
+.btn-mini.btn-primario:hover {
+    background: #0284c7;
+    transform: translateY(-1px);
+}
+
+.btn-mini.btn-secundario {
+    background: #475569;
+    color: #fff;
+}
+.btn-mini.btn-secundario:hover {
+    background: #334155;
+    transform: translateY(-1px);
+}
+
+.btn-mini.btn-perigo {
+    background: #ef4444;
+    color: #fff;
+}
+.btn-mini.btn-perigo:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.linha-participante {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    gap: 10px;
+    flex-wrap: wrap; /* 💥 PREVINE QUEBRAR LAYOUT */
+}
+
+.nome-op {
+    max-width: 160px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
