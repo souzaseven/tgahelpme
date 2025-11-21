@@ -1,0 +1,191 @@
+/* ============================================================
+   modal_fila.css — FASE 7 (Completo)
+   Estilização do modal de decisão da fila
+============================================================ */
+
+/* Fundo escuro com blur */
+.modal-fila {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 6000;
+}
+
+/* Esconde modal */
+.modal-fila.hidden {
+    display: none;
+}
+
+/* Caixa principal */
+.modal-fila-content {
+    background: #0f172a;
+    border: 1px solid #334155;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    border-radius: 14px;
+    width: 440px;
+    max-width: 94%;
+    padding: 24px;
+    color: #e2e8f0;
+    animation: abrirModal 0.25s ease-out;
+}
+
+/* Animação */
+@keyframes abrirModal {
+    from { transform: scale(0.85); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+}
+
+/* Título */
+.modal-fila-titulo {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Texto posição */
+.texto-posicao-fila {
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    font-size: 16px;
+}
+
+/* Blocos de botões */
+.bloco-acoes-primeiro,
+.bloco-acoes-comuns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+/* Área de troca oculta */
+.area-troca.hidden {
+    display: none;
+}
+
+/* Título da área de troca */
+.titulo-troca {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #4ade80;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Lista de operadores para troca */
+.lista-operadores-troca {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 8px;
+    background: #1e293b;
+}
+
+/* Botão de operador na lista de troca */
+.lista-operadores-troca button {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #e2e8f0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.lista-operadores-troca button:hover {
+    background: #1e293b;
+    border-color: #38bdf8;
+}
+
+/* Botões gerais */
+.btn-fila {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botões por tipo */
+.btn-principal {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-principal:hover {
+    background: #7dd3fc;
+}
+
+.btn-secundario {
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #e2e8f0;
+}
+
+.btn-secundario:hover {
+    background: #334155;
+}
+
+.btn-perigo {
+    background: #ef4444;
+    color: #fff;
+}
+
+.btn-perigo:hover {
+    background: #dc2626;
+}
+
+.btn-info {
+    background: #4ade80;
+    color: #0f172a;
+}
+
+.btn-info:hover {
+    background: #86efac;
+}
+
+.btn-fechar {
+    background: #64748b;
+    color: #fff;
+}
+
+.btn-fechar:hover {
+    background: #475569;
+}
+
+/* Rodapé */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+}
+
+/* Scroll personalizado */
+.lista-operadores-troca::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lista-operadores-troca::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
