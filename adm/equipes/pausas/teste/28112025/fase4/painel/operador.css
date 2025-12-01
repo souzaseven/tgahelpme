@@ -1,0 +1,40 @@
+/* ============================================================
+   BOTÕES INDIVIDUAIS DO OPERADOR (FASE 4)
+   Apenas estilos adicionais — não altera o painel original
+============================================================ */
+
+/* Container dos botões de ação individuais */
+.op-botoes {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Botão base */
+.op-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.2s ease;
+}
+
+/* Cores */
+.op-online  { background: #22c55e; color: #0f172a; }   /* Verde */
+.op-pausa   { background: #fbbf24; color: #0f172a; }   /* Amarelo */
+.op-espera  { background: #f59e0b; color: #0f172a; }   /* Laranja */
+.op-expira  { background: #ef4444; color: #fff; }      /* Vermelho */
+
+/* Hover */
+.op-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Ícone */
+.op-btn i {
+    margin-right: 5px;
+}
