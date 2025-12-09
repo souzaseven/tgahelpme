@@ -1,0 +1,100 @@
+/* ============================================================
+   preferencias.css — Preferências dentro do próprio painel
+   (sem afetar o layout geral)
+============================================================ */
+
+.prefs-container {
+    padding: 20px;
+}
+
+.prefs-card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 14px;
+    width: 480px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 18px rgba(0,0,0,.35);
+}
+
+.prefs-title {
+    text-align: center;
+    color: #38bdf8;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.prefs-sub {
+    text-align: center;
+    color: #94a3b8;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.prefs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.prefs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prefs-item label {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.prefs-item select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+}
+
+/* Botões */
+.btn-testar {
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.prefs-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-voltar,
+.btn-salvar {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-voltar {
+    background: #475569;
+    color: #fff;
+}
+
+.btn-salvar {
+    background: #22c55e;
+    color: #0f172a;
+}
+
+.btn-voltar:hover,
+.btn-salvar:hover,
+.btn-testar:hover {
+    opacity: .85;
+}
