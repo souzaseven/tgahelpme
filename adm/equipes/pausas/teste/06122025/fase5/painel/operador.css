@@ -1,0 +1,89 @@
+/* ============================================================
+   operador.css — FASE 5 UI (única versão limpa e correta)
+   Botões individuais dos operadores + bloco de informações
+============================================================ */
+
+/* ------------------------------------------------------------
+   Container dos botões individuais
+------------------------------------------------------------ */
+.op-botoes {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ------------------------------------------------------------
+   Botão base
+------------------------------------------------------------ */
+.op-btn {
+    width: 100%;
+    padding: 10px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.op-btn i {
+    font-size: 14px;
+}
+
+/* Hover */
+.op-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------
+   Botão para entrar na FILA (único permitido na FASE 5)
+------------------------------------------------------------ */
+.op-btn.op-espera {
+    background: #f59e0b;
+    color: #1f2933;
+}
+
+.op-btn.op-espera:hover {
+    background: #fbbf24;
+    color: #0f172a;
+}
+
+/* ------------------------------------------------------------
+   Bloco de informações da fila
+------------------------------------------------------------ */
+.op-info-fila {
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    font-size: 14px;
+    color: #e2e8f0;
+    margin-top: 8px;
+}
+
+.op-info-fila .linha-info {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.op-info-fila .linha-tempo {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.op-info-fila strong {
+    color: #38bdf8;
+}
