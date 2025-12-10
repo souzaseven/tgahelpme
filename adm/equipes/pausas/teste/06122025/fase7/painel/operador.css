@@ -1,0 +1,87 @@
+/* ============================================================
+   operador.css — FASE 6 (VERSÃO OFICIAL)
+   - Botões simples por operador
+   - Sem posição
+   - Sem tempo
+   - Sem modal
+============================================================ */
+
+/* ------------------------------------------------------------
+   Container dos botões individuais
+------------------------------------------------------------ */
+.op-botoes {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ------------------------------------------------------------
+   Botão padrão
+------------------------------------------------------------ */
+.op-btn {
+    width: 100%;
+    padding: 10px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.op-btn i {
+    font-size: 14px;
+}
+
+/* Hover */
+.op-btn:hover {
+    background: #38bdf8;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------
+   Botão de ENTRAR na FILA
+------------------------------------------------------------ */
+.op-btn.op-espera {
+    background: #f59e0b;
+    color: #1e293b;
+}
+
+.op-btn.op-espera:hover {
+    background: #fbbf24;
+    color: #0f172a;
+}
+
+/* ------------------------------------------------------------
+   Botão de VOLTAR ATIVO (pausa → ativo)
+------------------------------------------------------------ */
+.op-btn.op-voltar {
+    background: #22c55e;
+    color: #0f172a;
+}
+
+.op-btn.op-voltar:hover {
+    background: #4ade80;
+}
+
+/* ------------------------------------------------------------
+   Botão de SAIR da FILA (espera → ativo)
+------------------------------------------------------------ */
+.op-btn.op-sair-fila {
+    background: #ef4444;
+    color: #0f172a;
+}
+
+.op-btn.op-sair-fila:hover {
+    background: #f87171;
+}
