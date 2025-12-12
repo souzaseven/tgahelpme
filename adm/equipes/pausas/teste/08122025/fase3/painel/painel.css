@@ -1,0 +1,466 @@
+/* ============================================================
+   painel.css — Controle de Pausas v2 (sem sidebar, final)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   GLOBAL
+------------------------------------------------------------ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+h1, h2, h3, h4 { margin: 0; }
+p { margin: 4px 0; }
+
+/* ============================================================
+   TOPO
+============================================================ */
+.painel-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.titulo-sistema h1 {
+    color: #38bdf8;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.titulo-sistema p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+/* Operador logado */
+.info-operador {
+    text-align: right;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+/* Linha com ícone */
+.linha-op {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+.card {
+    background: #1e293b;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #38bdf8;
+}
+
+.card-participantes {
+    margin-top: 14px;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================================================
+   GRID SUPERIOR
+============================================================ */
+.painel-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media(max-width: 800px){
+    .painel-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   LISTAS DE PARTICIPANTES
+============================================================ */
+.lista-participantes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.lista-vazia {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* MOBILE */
+@media(max-width: 768px){
+    .lista-participantes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================================
+   CARTÃO DE OPERADOR
+============================================================ */
+.linha-participante {
+    background: #0f172a;
+    padding: 10px 12px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.linha-participante:hover {
+    background: #1e293b;
+}
+
+.linha-participante-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nome-op {
+    flex: 1;
+    font-weight: 600;
+}
+
+/* BOLINHA */
+.bolinha-estado {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+/* Destaque operador logado */
+.linha-participante.atual {
+    border-color: #38bdf8;
+    background: #1e3a8a;
+}
+
+/* ============================================================
+   BOTÕES DO OPERADOR
+============================================================ */
+.acoes-operador {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.acao-btn {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secundario { background: #334155; color: #e2e8f0; }
+.btn-primario   { background: #38bdf8; color: #0f172a; }
+.btn-alerta     { background: #f87171; color: #1e293b; }
+.btn-sucesso    { background: #22c55e; color: #0f172a; }
+
+.acao-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* ============================================================
+   MODAL
+============================================================ */
+.modal-pref {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-pref.hidden { display: none; }
+
+.modal-pref-content {
+    background: #1e293b;
+    padding: 22px;
+    border-radius: 12px;
+    width: 320px;
+    color: #e2e8f0;
+    box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   STATUS — BOLINHAS DE CORES
+============================================================ */
+.bolinha,
+.bolinha-estado {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+/* ONLINE */
+.bolinha.online,
+.bolinha-estado.online {
+    background: #22c55e;
+}
+
+/* FILA */
+.bolinha.espera,
+.bolinha-estado.espera {
+    background: #f59e0b;
+}
+
+/* PAUSA */
+.bolinha.pausa,
+.bolinha-estado.pausa {
+    background: #fbbf24;
+}
+
+/* EXPIRADO */
+.bolinha.expirado,
+.bolinha-estado.expirado {
+    background: #ef4444;
+    animation: piscar 1s infinite alternate;
+}
+
+@keyframes piscar {
+    from { opacity: 1; }
+    to   { opacity: 0.3; }
+}
+
+/* ============================================================
+   LEGENDA DE STATUS
+============================================================ */
+.legenda-status {
+    margin-left: 14px;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.legenda-status .bolinha {
+    margin-left: 12px;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+
+/* ============================================================
+   WRAPPER GERAL
+============================================================ */
+.layout-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================================
+   SIDEBAR LATERAL
+============================================================ */
+.sidebar {
+    width: 65px;
+    background: #1e293b;
+    border-right: 2px solid #334155;
+    padding-top: 10px;
+    transition: width 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0; /* NÃO deixa o sidebar sobrepor o conteúdo */
+}
+
+.sidebar.expanded {
+    width: 220px;
+    align-items: flex-start;
+    padding-left: 10px;
+}
+
+/* Botão Toggle */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: #e2e8f0;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #cbd5e1;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sidebar-item:hover {
+    background: #334155;
+}
+
+.sidebar-item i {
+    font-size: 20px;
+    width: 35px;
+    text-align: center;
+}
+
+.texto-item {
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+}
+
+.sidebar.expanded .texto-item {
+    opacity: 1;
+}
+
+/* ============================================================
+   ÁREA PRINCIPAL (PAINEL)
+============================================================ */
+.painel-container {
+    flex-grow: 1;         /* ocupa todo o resto */
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+    transition: margin-left 0.25s ease;
+}
+/* ============================================================
+   TODAS EQUIPES — VISUAL PREMIUM (OTIMIZADO)
+============================================================ */
+
+/* Container principal */
+.conteudo-extra {
+    margin-top: 25px;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Título */
+.conteudo-extra h2 {
+    color: #38bdf8;
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .5px;
+}
+
+/* GRID – 3 EQUIPES LADO A LADO */
+.todas-equipes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* ============================================================
+   CARD DAS EQUIPES
+============================================================ */
+.card-equipe {
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #334155;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+    transition: 0.25s ease;
+}
+
+.card-equipe:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.35);
+    border-color: #38bdf8;
+}
+
+/* Título da equipe */
+.card-equipe h3 {
+    color: #38bdf8;
+    font-size: 18px;
+    margin-bottom: 14px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* ============================================================
+   LISTA DE OPERADORES
+============================================================ */
+.lista-simples p {
+    background: #1e293b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 5px 0;
+    border: 1px solid #334155;
+    font-size: 15px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+/* Ícone ao lado do nome */
+.lista-simples p i {
+    color: #38bdf8;
+    font-size: 15px;
+}
+
+/* Hover */
+.lista-simples p:hover {
+    background: #334155;
+    border-color: #475569;
+}
+
+/* ============================================================
+   MOBILE — UMA COLUNA
+============================================================ */
+@media(max-width: 900px) {
+    .todas-equipes-grid {
+        grid-template-columns: 1fr;
+    }
+}
