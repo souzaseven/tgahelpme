@@ -1,0 +1,4 @@
+[22-Nov-2025 12:30:40 America/Fortaleza] PHP Fatal error:  Uncaught Error: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/v0.093/backend/conexao.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home4/tgamea80/public_html/adm/equipes/pausas/v0.093/backend/obter_status_equipe.php:17
+Stack trace:
+#0 {main}
+  thrown in /home4/tgamea80/public_html/adm/equipes/pausas/v0.093/backend/obter_status_equipe.php on line 17

@@ -1,0 +1,297 @@
+/* ============================================================
+   LOGIN.CSS - Interface de Login do Controle de Pausas
+   ------------------------------------------------------------
+   • Tela responsável por exibir:
+       - Seleção de Equipe (3 blocos lado a lado)
+       - Seleção de Operador (6 por linha)
+       - Interação visual moderna azul/escuro
+   • Totalmente responsiva (mobile/tablet/desktop)
+   • Estilo consistente com o restante do sistema
+   ============================================================ */
+
+
+/* ============================================================
+   ESTILO GLOBAL
+   ------------------------------------------------------------
+   - Define o fundo escuro
+   - Aplica fonte padrão
+   - Remove margens default
+   ============================================================ */
+/*body {
+    background: #0f172a; /* azul marinho escuro 
+
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    color: #e2e8f0; /* cinza claro para o texto *
+}
+*/
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://tgameajuda.com/img/principal/bannerpausa3.png);
+    transition: background-image 0.3s 
+ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+/* ============================================================
+   CONTAINER PRINCIPAL DO LOGIN
+   ------------------------------------------------------------
+   - Centraliza o box de login vertical e horizontalmente
+   ============================================================ */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+
+/* ============================================================
+   BOX DE LOGIN
+   ------------------------------------------------------------
+   - Card central que contém os steps
+   - Usa bordas arredondadas e sombra suave
+   ============================================================ */
+.login-box {
+    background: #1e293b; /* azul escuro */
+    padding: 24px 24px 28px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    text-align: center;
+background: hsla(215, 27%, 17%, 0.8);
+
+}
+
+
+/* ============================================================
+   TÍTULOS
+   ============================================================ */
+h1 {
+    margin: 0 0 8px;
+    color: #38bdf8; /* azul claro vibrante */
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+h1 i {
+    font-size: 24px;
+}
+
+.subtitulo {
+    margin: 0 0 18px;
+    color: #94a3b8; /* cinza suave */
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   STEPS (ETAPAS)
+   ------------------------------------------------------------
+   - Apenas um step é exibido por vez
+   ============================================================ */
+.step {
+    display: none;
+}
+
+.step.ativo {
+    display: block;
+}
+
+h3 {
+    margin: 10px 0 8px;
+    color: #e5e7eb;
+    font-size: 16px;
+}
+
+#tituloEquipe {
+    margin: 10px 0 8px;
+    color: #e5e7eb;
+    font-size: 15px;
+}
+
+
+/* ============================================================
+   GRID DAS EQUIPES
+   ------------------------------------------------------------
+   - 3 colunas no desktop
+   - 2 no tablet
+   - 1 no mobile
+   ============================================================ */
+.grid-equipes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+
+/* ============================================================
+   GRID DOS OPERADORES
+   ------------------------------------------------------------
+   - 6 por linha no desktop
+   - Reduz responsivamente
+   ============================================================ */
+.grid-operadores {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+
+/* ============================================================
+   CARTÕES (EQUIPES E OPERADORES)
+   ------------------------------------------------------------
+   - Estilo padronizado com hover azul
+   ============================================================ */
+.card-equipe,
+.card-operador {
+    background: #0f172a;
+    padding: 10px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #334155;
+    transition: 0.18s ease;
+    font-size: 13px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Equipes ficam com visual um pouco mais forte */
+.card-equipe {
+    font-weight: 600;
+}
+
+/* Hover para ambos */
+.card-equipe:hover,
+.card-operador:hover {
+    background: #1d4ed8;   /* azul vibrante */
+    border-color: #38bdf8;
+    color: #e5e7eb;
+}
+
+/* Seleção do operador */
+.card-operador.selecionado {
+    background: #38bdf8;
+    border-color: #38bdf8;
+    color: #0f172a; /* texto escuro */
+}
+
+
+/* ============================================================
+   BOTÕES
+   ------------------------------------------------------------
+   - Botão Voltar
+   - Botão Confirmar (fica disabled até escolha)
+   ============================================================ */
+.voltar-btn,
+.confirmar-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 11px 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Voltar */
+.voltar-btn {
+    background: #334155;
+    color: #e2e8f0;
+}
+.voltar-btn:hover {
+    background: #475569;
+}
+
+/* Confirmar */
+.confirmar-btn {
+    background: #38bdf8;
+    color: #0f172a;
+}
+.confirmar-btn:hover {
+    background: #0ea5e9;
+}
+
+.confirmar-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* ============================================================
+   MENSAGENS DE ERRO
+   ============================================================ */
+.erro {
+    margin-top: 8px;
+    color: #fca5a5; /* vermelho suave */
+    font-size: 13px;
+}
+.oculto {
+    display: none;
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+/* Tablet: equipes 2 colunas / operadores 3 colunas */
+@media (max-width: 1024px) {
+    .grid-equipes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-operadores {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile médio */
+@media (max-width: 768px) {
+
+    .login-box {
+        padding: 20px 16px 22px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .grid-equipes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-operadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile pequeno: 1 coluna */
+@media (max-width: 480px) {
+    .grid-equipes {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-operadores {
+        grid-template-columns: 1fr;
+    }
+}
