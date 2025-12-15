@@ -1,0 +1,1343 @@
+/*========================================================
+  SISTEMA DE TEMAS AVANÇADO
+  Design moderno com transições suaves e acessibilidade total
+========================================================*/
+
+/* ====== SISTEMA DE DESIGN TOKENS ====== */
+:root {
+  /* Sistema de cores HSL para fácil manipulação */
+  --hue-primary: 220;
+  --hue-success: 160;
+  --hue-warning: 45;
+  --hue-error: 0;
+  
+  /* Escalas de luminosidade */
+  --lightness-light: 98%;
+  --lightness-mid: 60%;
+  --lightness-dark: 15%;
+  
+  /* Sistema de espaçamento baseado em 4px */
+  --space-unit: 4px;
+  --space-1: var(--space-unit);
+  --space-2: calc(var(--space-unit) * 2);   /* 8px */
+  --space-3: calc(var(--space-unit) * 3);   /* 12px */
+  --space-4: calc(var(--space-unit) * 4);   /* 16px */
+  --space-5: calc(var(--space-unit) * 5);   /* 20px */
+  --space-6: calc(var(--space-unit) * 6);   /* 24px */
+  --space-8: calc(var(--space-unit) * 8);   /* 32px */
+  --space-10: calc(var(--space-unit) * 10); /* 40px */
+  
+  /* Sistema de raio de borda */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+  
+  /* Sistema de elevação (sombras) */
+  --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.06);
+  --elevation-2: 0 3px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --elevation-3: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --elevation-4: 0 16px 48px rgba(0, 0, 0, 0.16), 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  /* Transições e animações */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-md: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Z-index layers */
+  --z-dropdown: 1000;
+  --z-modal: 2000;
+  --z-popover: 3000;
+  --z-tooltip: 4000;
+}
+
+/* ====== TEMA CLARO (DEFAULT) ====== */
+body.tema-claro {
+  /* Sistema de cores - Background */
+  --color-bg-canvas: #ffffff;            /* Fundo principal */
+  --color-bg-surface: #f8fafc;           /* Superfícies elevadas */
+  --color-bg-subtle: #f1f5f9;            /* Fundos sutis */
+  --color-bg-muted: #e2e8f0;             /* Fundos destacados */
+  --color-bg-overlay: rgba(0, 0, 0, 0.4); /* Overlays e backdrops */
+  --color-bg-inverse: #0f172a;           /* Fundo invertido (para elementos escuros) */
+  
+  /* Sistema de cores - Texto */
+  --color-text-primary: #1e293b;         /* Texto principal (escuro) */
+  --color-text-secondary: #475569;       /* Texto secundário (cinza médio) */
+  --color-text-tertiary: #64748b;        /* Texto terciário (cinza claro) */
+  --color-text-muted: #94a3b8;           /* Texto desativado/marcado */
+  --color-text-inverse: #ffffff;         /* Texto em fundos escuros */
+  --color-text-on-dark: #ffffff;         /* Texto sobre elementos escuros */
+  --color-text-on-light: #64748b;        /* Texto sobre elementos claros */
+  
+  /* Sistema de cores - Bordas */
+  --color-border-primary: #e2e8f0;       /* Bordas principais */
+  --color-border-secondary: #cbd5e1;     /* Bordas secundárias */
+  --color-border-emphasis: #94a3b8;      /* Bordas destacadas */
+  
+  /* Sistema de cores - Estados */
+  --color-primary: #3b82f6;              /* Azul principal */
+  --color-primary-hover: #2563eb;        /* Azul hover */
+  --color-primary-active: #1d4ed8;       /* Azul active */
+  --color-success: #10b981;              /* Verde sucesso */
+  --color-warning: #f59e0b;              /* Amarelo alerta */
+  --color-error: #ef4444;                /* Vermelho erro */
+  --color-info: #0ea5e9;                 /* Azul informação */
+  
+  /* Sistema de cores - Especiais */
+  --color-accent: #8b5cf6;               /* Roxo accent */
+  --color-highlight: #fde68a;            /* Amarelo highlight */
+  --color-shadow: rgba(0, 0, 0, 0.1);    /* Cor base de sombras */
+  
+  /* Aplicação ao body */
+  background-color: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+}
+
+/* ====== TEMA ESCURO ====== */
+body.tema-escuro {
+  /* Sistema de cores - Background */
+  --color-bg-canvas: #0f172a;            /* Fundo principal (azul escuro) */
+  --color-bg-surface: #1e293b;           /* Superfícies elevadas */
+  --color-bg-subtle: #334155;            /* Fundos sutis */
+  --color-bg-muted: #475569;             /* Fundos destacados */
+  --color-bg-overlay: rgba(0, 0, 0, 0.6); /* Overlays e backdrops */
+  --color-bg-inverse: #ffffff;           /* Fundo invertido (para elementos claros) */
+  
+  /* Sistema de cores - Texto */
+  --color-text-primary: #f8fafc;         /* Texto principal (branco) */
+  --color-text-secondary: #e2e8f0;       /* Texto secundário (cinza muito claro) */
+  --color-text-tertiary: #cbd5e1;        /* Texto terciário (cinza claro) */
+  --color-text-muted: #94a3b8;           /* Texto desativado/marcado */
+  --color-text-inverse: #0f172a;         /* Texto em fundos claros */
+  --color-text-on-dark: #ffffff;         /* Texto sobre elementos escuros */
+  --color-text-on-light: #475569;        /* Texto sobre elementos claros */
+  
+  /* Sistema de cores - Bordas */
+  --color-border-primary: #334155;       /* Bordas principais */
+  --color-border-secondary: #475569;     /* Bordas secundárias */
+  --color-border-emphasis: #64748b;      /* Bordas destacadas */
+  
+  /* Sistema de cores - Estados */
+  --color-primary: #60a5fa;              /* Azul principal (mais claro) */
+  --color-primary-hover: #93c5fd;        /* Azul hover */
+  --color-primary-active: #3b82f6;       /* Azul active */
+  --color-success: #34d399;              /* Verde sucesso */
+  --color-warning: #fbbf24;              /* Amarelo alerta */
+  --color-error: #f87171;                /* Vermelho erro */
+  --color-info: #38bdf8;                 /* Azul informação */
+  
+  /* Sistema de cores - Especiais */
+  --color-accent: #a78bfa;               /* Roxo accent */
+  --color-highlight: #fde68a;            /* Amarelo highlight */
+  --color-shadow: rgba(0, 0, 0, 0.3);    /* Cor base de sombras */
+  
+  /* Aplicação ao body */
+  background-color: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+}
+
+/* ====== REGRAS ESPECÍFICAS PARA TEXTOS EM DIFERENTES CONTEXTOS ====== */
+
+/* Textos que devem SEMPRE ser claros (mesmo no tema claro) */
+body.tema-claro .text-on-dark,
+body.tema-claro [class*="nome"],
+body.tema-claro .nome,
+body.tema-claro .author,
+body.tema-claro .autor,
+body.tema-claro .user-name,
+body.tema-claro .username,
+body.tema-claro .msg-enviada .nome,
+body.tema-claro .msg-enviada .autor,
+body.tema-claro .chat-badge,
+body.tema-claro .badge,
+body.tema-claro .tag,
+body.tema-claro .pill,
+body.tema-claro .status,
+body.tema-claro .label,
+body.tema-claro .chip {
+  color: var(--color-text-on-dark) !important;
+}
+
+/* Textos que devem ser cinza claro no tema claro */
+body.tema-claro .text-muted,
+body.tema-claro .text-secondary,
+body.tema-claro .text-tertiary,
+body.tema-claro .msg .hora,
+body.tema-claro .msg .time,
+body.tema-claro .timestamp,
+body.tema-claro .date,
+body.tema-claro .meta,
+body.tema-claro .info,
+body.tema-claro .description {
+  color: var(--color-text-muted) !important;
+}
+
+/* Textos que devem ser cinza médio no tema claro */
+body.tema-claro .text-subtle,
+body.tema-claro .text-light,
+body.tema-claro .caption,
+body.tema-claro .small,
+body.tema-claro .helper-text {
+  color: var(--color-text-tertiary) !important;
+}
+
+/* Textos que devem ser escuros no tema claro (padrão) */
+body.tema-claro .text-primary,
+body.tema-claro .text-strong,
+body.tema-claro .title,
+body.tema-claro .heading,
+body.tema-claro h1,
+body.tema-claro h2,
+body.tema-claro h3,
+body.tema-claro h4,
+body.tema-claro h5,
+body.tema-claro h6 {
+  color: var(--color-text-primary);
+}
+
+/* ====== REGRAS PARA CONTEXTOS ESPECÍFICOS ====== */
+
+/* Elementos com fundo escuro no tema claro */
+body.tema-claro .dark-background,
+body.tema-claro .inverse-background,
+body.tema-claro [class*="dark"],
+body.tema-claro [class*="inverse"],
+body.tema-claro .msg-enviada,
+body.tema-claro .btn-primary,
+body.tema-claro .btn-success,
+body.tema-claro .btn-error,
+body.tema-claro .primary-bg,
+body.tema-claro .success-bg,
+body.tema-claro .error-bg {
+  color: var(--color-text-on-dark);
+}
+
+/* Elementos com fundo claro no tema claro */
+body.tema-claro .light-background,
+body.tema-claro [class*="light"],
+body.tema-claro .msg-recebida,
+body.tema-claro .bg-surface,
+body.tema-claro .bg-subtle,
+body.tema-claro .bg-muted {
+  color: var(--color-text-primary);
+}
+
+/* ====== BOTÃO DE CONFIGURAÇÃO DE TEMA ====== */
+#chat-config-btn {
+  /* Posicionamento */
+  position: fixed;
+  top: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-popover);
+  
+  /* Dimensões e aparência */
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xl);
+  
+  /* Cores e bordas */
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-primary);
+  
+  /* Tipografia */
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Efeitos visuais */
+  box-shadow: var(--elevation-2);
+  cursor: pointer;
+  
+  /* Transições */
+  transition: all var(--transition-normal);
+  will-change: transform, box-shadow;
+  
+  /* Estados de interação */
+  &:hover,
+  &:focus-visible {
+    background: var(--color-bg-subtle);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-3), 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+  }
+  
+  &:active {
+    transform: translateY(0);
+    transition-duration: var(--transition-fast);
+  }
+  
+  /* Indicador de notificação */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    opacity: 0;
+    transform: scale(0);
+    transition: all var(--transition-normal);
+  }
+  
+  &.has-notification::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ====== MODAL DE CONFIGURAÇÕES ====== */
+.chat-tema-modal {
+  /* Posicionamento e dimensões */
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  
+  /* Fundo e efeitos */
+  background: var(--color-bg-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Animações */
+  animation: modal-entrance var(--transition-normal) forwards;
+  
+  &.hidden {
+    animation: modal-exit var(--transition-fast) forwards;
+    pointer-events: none;
+  }
+  
+  /* Container do conteúdo */
+  .chat-tema-content {
+    /* Dimensões */
+    width: min(100%, 420px);
+    max-height: min(90vh, 560px);
+    
+    /* Cores e bordas */
+    background: var(--color-bg-canvas);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--radius-xl);
+    
+    /* Efeitos visuais */
+    box-shadow: var(--elevation-4);
+    
+    /* Layout interno */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    /* Animações */
+    animation: content-entrance var(--transition-slow) var(--transition-normal) both;
+  }
+  
+  /* Cabeçalho do modal */
+  .chat-tema-header {
+    /* Layout */
+    padding: var(--space-6) var(--space-6) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    
+    /* Cores e bordas */
+    background: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border-primary);
+    
+    /* Tipografia */
+    h3 {
+      margin: 0;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      
+      svg, i {
+        color: var(--color-primary);
+        font-size: var(--font-size-xl);
+      }
+    }
+  }
+  
+  /* Botão fechar */
+  .chat-tema-fechar {
+    /* Dimensões */
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    
+    /* Cores e bordas */
+    background: transparent;
+    color: var(--color-text-tertiary);
+    border: 1px solid var(--color-border-primary);
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Transições */
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    
+    /* Estados */
+    &:hover,
+    &:focus-visible {
+      color: var(--color-error);
+      border-color: var(--color-error);
+      background: rgba(239, 68, 68, 0.08);
+      outline: none;
+      transform: rotate(90deg);
+    }
+  }
+  
+  /* Corpo do modal */
+  .chat-tema-body {
+    /* Layout */
+    padding: var(--space-6);
+    flex: 1;
+    overflow-y: auto;
+    
+    /* Scrollbar personalizada */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-primary) transparent;
+    
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin: var(--space-2);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-border-primary);
+      border-radius: var(--radius-full);
+      transition: background var(--transition-fast);
+      
+      &:hover {
+        background: var(--color-primary);
+      }
+    }
+  }
+  
+  /* Grupos de opções */
+  .chat-tema-grupo {
+    margin-bottom: var(--space-8);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h4 {
+      margin: 0 0 var(--space-4);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-tertiary);
+    }
+  }
+  
+  /* Opções de tema */
+  .chat-tema-opcoes {
+    display: grid;
+    gap: var(--space-3);
+  }
+  
+  .chat-tema-option {
+    position: relative;
+    
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .chat-tema-option-label {
+      /* Layout */
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-5);
+      
+      /* Cores e bordas */
+      background: var(--color-bg-surface);
+      border: 2px solid var(--color-border-primary);
+      border-radius: var(--radius-lg);
+      
+      /* Tipografia */
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      
+      /* Transições */
+      transition: all var(--transition-normal);
+      cursor: pointer;
+      user-select: none;
+      
+      /* Indicador visual */
+      &::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: var(--radius-full);
+        border: 2px solid var(--color-border-secondary);
+        background: var(--current-theme-preview);
+        flex-shrink: 0;
+        transition: all var(--transition-normal);
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 28px;
+        width: 10px;
+        height: 10px;
+        border-radius: var(--radius-full);
+        background: var(--color-primary);
+        opacity: 0;
+        transform: scale(0);
+        transition: all var(--transition-normal);
+      }
+      
+      /* Estados */
+      &:hover {
+        background: var(--color-bg-subtle);
+        border-color: var(--color-border-secondary);
+        transform: translateX(2px);
+      }
+    }
+    
+    /* Estado selecionado */
+    input:checked + .chat-tema-option-label {
+      background: var(--color-bg-subtle);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 1px var(--color-primary);
+      
+      &::before {
+        border-color: var(--color-primary);
+      }
+      
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Previews específicos para cada tema */
+    &[data-tema="claro"] .chat-tema-option-label::before {
+      --current-theme-preview: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+    
+    &[data-tema="escuro"] .chat-tema-option-label::before {
+      --current-theme-preview: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    
+    &[data-tema="auto"] .chat-tema-option-label::before {
+      --current-theme-preview: linear-gradient(135deg, #0f172a 0%, #0f172a 50%, #ffffff 50%, #ffffff 100%);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 49%, rgba(0, 0, 0, 0.2) 49%, rgba(0, 0, 0, 0.2) 51%, transparent 51%);
+      }
+    }
+  }
+  
+  /* Rodapé do modal */
+  .chat-tema-footer {
+    /* Layout */
+    padding: var(--space-5) var(--space-6);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    
+    /* Cores e bordas */
+    background: var(--color-bg-surface);
+    border-top: 1px solid var(--color-border-primary);
+  }
+  
+  /* Botões do modal */
+  .chat-tema-btn {
+    /* Layout */
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-md);
+    
+    /* Tipografia */
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    
+    /* Transições */
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+    
+    /* Variantes */
+    &.secundario {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border-color: var(--color-border-primary);
+      
+      &:hover,
+      &:focus-visible {
+        background: var(--color-bg-subtle);
+        color: var(--color-text-primary);
+        border-color: var(--color-border-secondary);
+        outline: none;
+      }
+    }
+    
+    &.primario {
+      background: var(--color-primary);
+      color: var(--color-text-on-dark);
+      min-width: 100px;
+      
+      &:hover,
+      &:focus-visible {
+        background: var(--color-primary-hover);
+        transform: translateY(-1px);
+        box-shadow: var(--elevation-2), 0 0 0 3px rgba(59, 130, 246, 0.15);
+        outline: none;
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes modal-entrance {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes modal-exit {
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+@keyframes content-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ====== DETECÇÃO AUTOMÁTICA DE PREFERÊNCIA DO SISTEMA ====== */
+@media (prefers-color-scheme: dark) {
+  body:not([class*="tema-"]) {
+    /* Aplicar tema escuro se não houver tema definido */
+    background-color: var(--color-bg-canvas, #0f172a);
+    color: var(--color-text-primary, #f8fafc);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body:not([class*="tema-"]) {
+    /* Aplicar tema claro se não houver tema definido */
+    background-color: var(--color-bg-canvas, #ffffff);
+    color: var(--color-text-primary, #1e293b);
+  }
+}
+
+/* ====== TRANSIÇÕES SUAVES ENTRE TEMAS ====== */
+body {
+  transition: 
+    background-color var(--transition-slow),
+    color var(--transition-slow),
+    border-color var(--transition-slow);
+  
+  * {
+    transition: 
+      background-color var(--transition-normal),
+      color var(--transition-normal),
+      border-color var(--transition-normal),
+      box-shadow var(--transition-normal);
+  }
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 640px) {
+  #chat-config-btn {
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-md);
+  }
+  
+  .chat-tema-modal {
+    padding: var(--space-2);
+    
+    .chat-tema-content {
+      width: 100%;
+      max-height: calc(100vh - var(--space-4));
+    }
+    
+    .chat-tema-header,
+    .chat-tema-body,
+    .chat-tema-footer {
+      padding: var(--space-4);
+    }
+  }
+}
+
+/* ====== UTILITÁRIOS DE ACESSIBILIDADE ====== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Foco visível para navegação por teclado */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ====== CLASSES UTILITÁRIAS PARA TEXTO ====== */
+.text-on-dark { color: var(--color-text-on-dark); }
+.text-on-light { color: var(--color-text-on-light); }
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-muted { color: var(--color-text-muted); }
+.text-inverse { color: var(--color-text-inverse); }
+
+.bg-canvas { background: var(--color-bg-canvas); }
+.bg-surface { background: var(--color-bg-surface); }
+.bg-subtle { background: var(--color-bg-subtle); }
+.bg-muted { background: var(--color-bg-muted); }
+.bg-inverse { background: var(--color-bg-inverse); }
+
+
+/* Garante que .nome seja branco no tema claro */
+body.tema-claro [class*="nome"],
+body.tema-claro .nome,
+body.tema-claro .author,
+body.tema-claro .autor {
+  color: var(--color-text-on-dark) !important;
+}
+
+/*========================================================
+  MODAL DE TEMA — DESIGN MODERNO & PROFISSIONAL
+  Animações suaves, design de glassmorphism e interações refinadas
+========================================================*/
+
+/* ====== ANIMAÇÕES PRINCIPAIS ====== */
+@keyframes modalBackdropIn {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes modalBackdropOut {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes modalContentSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes modalContentSlideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    filter: blur(3px);
+  }
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ====== MODAL PRINCIPAL ====== */
+#chatTemaModal {
+  /* Posicionamento */
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  
+  /* Fundo com efeito glassmorphism */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Transição suave */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Animação de entrada */
+  animation: modalBackdropIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Estados */
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    animation: modalBackdropOut 0.3s ease forwards;
+    
+    /* Ocultar conteúdo também */
+    .chat-tema-content {
+      animation: modalContentSlideOut 0.3s ease forwards;
+    }
+  }
+  
+  /* Overlay interativo */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ====== CONTEÚDO DO MODAL ====== */
+.chat-tema-content {
+  /* Dimensões */
+  width: min(100%, 420px);
+  max-height: min(90vh, 500px);
+  
+  /* Cores e aparência */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  color: #1a1a1a;
+  
+  /* Bordas e sombras */
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  
+  /* Layout interno */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  /* Animação */
+  animation: modalContentSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+  
+  /* Efeito de destaque na borda */
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* ====== CABEÇALHO DO MODAL ====== */
+.chat-tema-content h3 {
+  /* Layout */
+  margin: 0;
+  padding: 28px 32px 20px;
+  
+  /* Tipografia moderna */
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  letter-spacing: -0.3px;
+  
+  /* Efeito gradiente no texto */
+  background: linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Decorador */
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+    opacity: 0.8;
+  }
+}
+
+/* ====== LISTA DE OPÇÕES ====== */
+.chat-tema-content label {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 32px;
+  margin: 0;
+  
+  /* Cores e interações */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  
+  /* Tipografia */
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a5568;
+  
+  /* Efeito hover */
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.05) 0%,
+      rgba(139, 92, 246, 0.05) 100%
+    );
+    transform: translateX(5px);
+    color: #1a1a1a;
+  }
+  
+  /* Último item sem borda */
+  &:last-of-type {
+    border-bottom: none;
+  }
+  
+  /* Estado ativo/checked */
+  &:has(input:checked) {
+    background: linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.1) 0%,
+      rgba(139, 92, 246, 0.1) 100%
+    );
+    color: #1a1a1a;
+    font-weight: 600;
+    
+    &::before {
+      transform: scale(1);
+      box-shadow: 
+        0 0 0 4px rgba(59, 130, 246, 0.2),
+        0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+  }
+  
+  /* Indicador visual antes do texto */
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e1;
+    background: #ffffff;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex-shrink: 0;
+    position: relative;
+  }
+  
+  /* Indicador de seleção */
+  &:has(input:checked)::before {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-color: transparent;
+  }
+  
+  /* Ponto central quando selecionado */
+  &:has(input:checked)::after {
+    content: '';
+    position: absolute;
+    left: 44px; /* Ajuste conforme necessário */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    z-index: 1;
+  }
+}
+
+/* ====== INPUTS RADIO CUSTOMIZADOS ====== */
+.chat-tema-content input[type="radio"] {
+  /* Esconder o input nativo */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  
+  /* Estados do input */
+  &:focus-visible + label {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+}
+
+/* ====== BOTÃO SALVAR ====== */
+#salvarTemaBtn {
+  /* Layout */
+  margin: 24px 32px 32px;
+  padding: 16px 32px;
+  
+  /* Cores e aparência */
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  
+  /* Bordas e sombras */
+  border: none;
+  border-radius: 14px;
+  box-shadow: 
+    0 8px 24px rgba(59, 130, 246, 0.3),
+    0 2px 6px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  
+  /* Tipografia */
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  
+  /* Interações */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  
+  /* Efeito de brilho */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.7s ease;
+  }
+  
+  /* Efeito ripple */
+  &::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.4s;
+  }
+  
+  /* Estados de hover e active */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 32px rgba(59, 130, 246, 0.4),
+      0 4px 12px rgba(59, 130, 246, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.1s;
+  }
+  
+  /* Animação de clique */
+  &:active::after {
+    transform: scale(3);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+  }
+  
+  /* Estado desabilitado */
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ====== EFEITOS EXTRAS PARA MODERNIDADE ====== */
+
+/* Partículas flutuantes no fundo (opcional) */
+#chatTemaModal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: floatElement 20s ease-in-out infinite;
+}
+
+/* Efeito de entrada para cada label */
+.chat-tema-content label {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: modalContentSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.chat-tema-content label:nth-child(1) { animation-delay: 0.2s; }
+.chat-tema-content label:nth-child(2) { animation-delay: 0.3s; }
+#salvarTemaBtn { animation-delay: 0.4s; }
+
+/* ====== MODAL PARA TEMA ESCURO ====== */
+body.tema-escuro #chatTemaModal {
+  background: rgba(15, 23, 42, 0.8);
+  
+  .chat-tema-content {
+    background: linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 0.95) 0%,
+      rgba(30, 41, 59, 0.98) 100%
+    );
+    color: #f1f5f9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    h3 {
+      background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    label {
+      color: #cbd5e1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      
+      &:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.1) 0%,
+          rgba(139, 92, 246, 0.1) 100%
+        );
+        color: #f1f5f9;
+      }
+      
+      &::before {
+        border-color: #475569;
+        background: #1e293b;
+      }
+      
+      &:has(input:checked) {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.15) 0%,
+          rgba(139, 92, 246, 0.15) 100%
+        );
+        color: #f1f5f9;
+        
+        &::before {
+          box-shadow: 
+            0 0 0 4px rgba(59, 130, 246, 0.25),
+            0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+      }
+    }
+  }
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 480px) {
+  #chatTemaModal {
+    padding: 16px;
+    
+    .chat-tema-content {
+      border-radius: 20px;
+      
+      h3 {
+        padding: 24px 24px 16px;
+        font-size: 20px;
+      }
+      
+      label {
+        padding: 16px 24px;
+        font-size: 15px;
+      }
+      
+      #salvarTemaBtn {
+        margin: 20px 24px 24px;
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+/* ====== ANIMAÇÃO DE NOTIFICAÇÃO ====== */
+@keyframes notificationPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Adicionar classe para highlight */
+.chat-tema-content.highlight {
+  animation: notificationPulse 2s infinite;
+}
+
+/* ====== EFEITO DE CARREGAMENTO NO BOTÃO ====== */
+#salvarTemaBtn.loading {
+  position: relative;
+  color: transparent;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,100 @@
+/* ==============================================
+// AJUSTE DE FONTES - login.php
+// ==============================================*/
+
+/* BOTÃO DE PREFERÊNCIAS — SEMPRE VISÍVEL */
+#btn-preferencias {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    color: white;
+
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+
+    z-index: 999999 !important;
+    transition: 0.2s ease;
+}
+
+#btn-preferencias:hover {
+    background: rgba(0, 0, 0, 0.75);
+    transform: scale(1.05);
+}
+
+/* MENU LATERAL */
+#menu-preferencias {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: 320px;
+    height: 100%;
+    background: #1e293b;
+    color: white;
+    padding: 25px;
+    box-shadow: 3px 0 12px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+    z-index: 999998;
+}
+
+#menu-preferencias.open {
+    transform: translateX(0);
+}
+
+#menu-preferencias h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+/* Sliders */
+.pref-item {
+    margin: 18px 0;
+}
+
+.pref-item label {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pref-item input[type="range"] {
+    width: 100%;
+}
+
+.valor-preview {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Botão Reset */
+#btnReset {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #ef4444;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s ease;
+}
+
+#btnReset:hover {
+    background: #dc2626;
+}
