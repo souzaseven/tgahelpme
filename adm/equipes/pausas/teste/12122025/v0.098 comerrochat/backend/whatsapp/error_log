@@ -1,0 +1,26 @@
+[13-Dec-2025 09:12:05 America/Fortaleza] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nome' in 'field list' in /home4/tgamea80/public_html/adm/equipes/pausas/76/v0.098/backend/whatsapp/enviar_teste.php:28
+Stack trace:
+#0 /home4/tgamea80/public_html/adm/equipes/pausas/76/v0.098/backend/whatsapp/enviar_teste.php(28): PDO->prepare('\n    SELECT \n  ...')
+#1 {main}
+  thrown in /home4/tgamea80/public_html/adm/equipes/pausas/76/v0.098/backend/whatsapp/enviar_teste.php on line 28
+[13-Dec-2025 10:02:08 America/Fortaleza] PHP Warning:  require(/home4/tgamea80/public_html/adm/equipes/pausas/80/v0.098/backend/whatsapp/zapi_config.php): Failed to open stream: No such file or directory in /home4/tgamea80/public_html/adm/equipes/pausas/80/v0.098/backend/whatsapp/zapi_client.php on line 3
+[13-Dec-2025 10:07:38 America/Fortaleza] PHP Warning:  require_once(/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php): Failed to open stream: No such file or directory in /home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/enviar_teste.php on line 16
+[13-Dec-2025 10:07:38 America/Fortaleza] [WHATSAPP TESTE] ERRO FATAL: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear')
+[13-Dec-2025 10:08:01 America/Fortaleza] PHP Warning:  require_once(/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php): Failed to open stream: No such file or directory in /home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/enviar_teste.php on line 16
+[13-Dec-2025 10:08:01 America/Fortaleza] [WHATSAPP TESTE] ERRO FATAL: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear')
+[13-Dec-2025 10:11:29 America/Fortaleza] PHP Warning:  require_once(/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php): Failed to open stream: No such file or directory in /home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/enviar_teste.php on line 13
+[13-Dec-2025 10:11:29 America/Fortaleza] [WHATSAPP TESTE] ERRO FATAL: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/../../conexao.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear')
+[13-Dec-2025 10:15:43 America/Fortaleza] PHP Warning:  require(/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/zapi_config.php): Failed to open stream: No such file or directory in /home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/zapi_client.php on line 3
+[13-Dec-2025 10:15:43 America/Fortaleza] [WHATSAPP TESTE] ERRO FATAL: Failed opening required '/home4/tgamea80/public_html/adm/equipes/pausas/81/v0.098/backend/whatsapp/zapi_config.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear')
+[13-Dec-2025 11:15:22 America/Fortaleza] [WHATSAPP TESTE] Script iniciado
+[13-Dec-2025 11:15:22 America/Fortaleza] [WHATSAPP TESTE] Enviando para 556599452676
+[13-Dec-2025 11:15:22 America/Fortaleza] [WHATSAPP TESTE] Retorno Z-API: {"success":true,"httpCode":200,"response":{"zaapId":"019B1810F24979E2BD71EB07605C5A7C","messageId":"3EB0DF1B441A16606F578A","id":"3EB0DF1B441A16606F578A"},"raw":"{\"zaapId\":\"019B1810F24979E2BD71EB07605C5A7C\",\"messageId\":\"3EB0DF1B441A16606F578A\",\"id\":\"3EB0DF1B441A16606F578A\"}"}
+[13-Dec-2025 11:15:22 America/Fortaleza] [WHATSAPP TESTE] Erro ao gravar log: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'evento' in 'field list'
+[13-Dec-2025 11:33:06 America/Fortaleza] [WHATSAPP TESTE] Script iniciado
+[13-Dec-2025 11:33:06 America/Fortaleza] [WHATSAPP TESTE] Enviando para 5565993363949
+[13-Dec-2025 11:33:07 America/Fortaleza] [WHATSAPP TESTE] Retorno Z-API: {"success":true,"httpCode":200,"response":{"zaapId":"019B1821313970EAB61A8EA8E110DF3C","messageId":"64B2FD21C53ACBACF6E4","id":"64B2FD21C53ACBACF6E4"},"raw":"{\"zaapId\":\"019B1821313970EAB61A8EA8E110DF3C\",\"messageId\":\"64B2FD21C53ACBACF6E4\",\"id\":\"64B2FD21C53ACBACF6E4\"}"}
+[13-Dec-2025 11:33:07 America/Fortaleza] [WHATSAPP TESTE] Erro ao gravar log: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'evento' in 'field list'
+[13-Dec-2025 11:38:40 America/Fortaleza] [WHATSAPP TESTE] Script iniciado
+[13-Dec-2025 11:38:40 America/Fortaleza] [WHATSAPP TESTE] Enviando para 65996897658
+[13-Dec-2025 11:38:41 America/Fortaleza] [WHATSAPP TESTE] Retorno Z-API: {"success":true,"httpCode":200,"response":{"zaapId":"019B1826499B75E3A422072C905AF581","messageId":"3EB09362E37E9ACC47526C","id":"3EB09362E37E9ACC47526C"},"raw":"{\"zaapId\":\"019B1826499B75E3A422072C905AF581\",\"messageId\":\"3EB09362E37E9ACC47526C\",\"id\":\"3EB09362E37E9ACC47526C\"}"}
+[13-Dec-2025 11:38:41 America/Fortaleza] [WHATSAPP TESTE] Erro ao gravar log: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'evento' in 'field list'
