@@ -1,0 +1,4 @@
+[13-Dec-2025 08:11:54 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to undefined function b() in /home4/tgamea80/public_html/adm/equipes/pausas/73/v0.098/backend/salvar_preferencias.php:39
+Stack trace:
+#0 {main}
+  thrown in /home4/tgamea80/public_html/adm/equipes/pausas/73/v0.098/backend/salvar_preferencias.php on line 39
