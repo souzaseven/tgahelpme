@@ -1,0 +1,365 @@
+/* ============================================================
+   decidir.css — Modal "Decidir na fila de espera"
+   Design System Moderno com Variáveis CSS
+   Compatível com decidir.js FASE 9 (arrastável + ESC)
+   Visual premium e altamente profissional
+============================================================ */
+
+:root {
+  --modal-bg: #0f172a;
+  --modal-surface: #1e293b;
+  --modal-elevated: #334155;
+  --modal-border: rgba(255, 255, 255, 0.1);
+  --modal-glass: rgba(15, 23, 42, 0.95);
+  --modal-backdrop: rgba(2, 8, 23, 0.85);
+  
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #10b981;
+  --success-hover: #059669;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+  --border-radius: 20px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------------------- OVERLAY COM GLASS MORPHISM ---------------------- */
+#decidirOverlay {
+  position: fixed;
+  inset: 0;
+  background: var(--modal-backdrop);
+  backdrop-filter: blur(8px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99990;
+  padding: 24px;
+  transition: opacity 0.3s ease;
+}
+
+#decidirOverlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------- MODAL PRINCIPAL ---------------------- */
+#decidirBox {
+  position: relative;
+  background: var(--modal-glass);
+  border-radius: var(--border-radius);
+  padding: 0;
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid var(--modal-border);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+/* Efeito de brilho sutil */
+#decidirBox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(600px circle at top, rgba(59, 130, 246, 0.15), transparent 70%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ====================== HEADER ARRASTÁVEL ====================== */
+.decidir-topo {
+  width: 100%;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, var(--modal-surface) 0%, var(--modal-elevated) 100%);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  cursor: grab;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  user-select: none;
+  border-bottom: 1px solid var(--modal-border);
+  position: relative;
+}
+
+.decidir-topo:active { 
+  cursor: grabbing; 
+}
+
+/* Indicador visual de arrasto */
+.decidir-topo::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: var(--text-muted);
+  border-radius: 2px;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.decidir-topo:hover::after {
+  opacity: 0.8;
+  width: 60px;
+}
+
+/* Botão fechar moderno */
+.decidir-topo .fechar-btn {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.decidir-topo .fechar-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ====================== CONTEÚDO PRINCIPAL ====================== */
+#decidirOpcoes {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------------------- BOTÕES MODERNOS ---------------------- */
+.decidir-btn {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--modal-border);
+  background: var(--modal-surface);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho ao hover */
+.decidir-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.decidir-btn:hover::before {
+  left: 100%;
+}
+
+.decidir-btn:hover {
+  background: var(--modal-elevated);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.decidir-btn i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.decidir-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* Botão principal (Entrar em pausa) */
+.decidir-btn.principal {
+  background: linear-gradient(135deg, var(--success), var(--success-hover));
+  border-color: var(--success);
+  color: white;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+
+.decidir-btn.principal:hover {
+  background: linear-gradient(135deg, var(--success-hover), var(--success));
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Botão sair da espera */
+.decidir-btn.sair {
+  background: linear-gradient(135deg, var(--danger), var(--danger-hover));
+  border-color: var(--danger);
+  color: white;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+}
+
+.decidir-btn.sair:hover {
+  background: linear-gradient(135deg, var(--danger-hover), var(--danger));
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.6);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ---------------------- ESTADOS DE FEEDBACK ---------------------- */
+.decidir-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.decidir-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ---------------------- MENSAGENS DE STATUS ---------------------- */
+.decidir-erro {
+  color: #fca5a5;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--danger);
+}
+
+.decidir-info {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+/* ---------------------- ANIMAÇÕES AVANÇADAS ---------------------- */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação para conteúdo interno */
+#decidirOpcoes > * {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+#decidirOpcoes > *:nth-child(1) { animation-delay: 0.1s; }
+#decidirOpcoes > *:nth-child(2) { animation-delay: 0.2s; }
+#decidirOpcoes > *:nth-child(3) { animation-delay: 0.3s; }
+
+/* ---------------------- RESPONSIVIDADE AVANÇADA ---------------------- */
+@media (max-width: 768px) {
+  :root {
+    --border-radius: 16px;
+  }
+  
+  #decidirOverlay {
+    padding: 16px;
+    backdrop-filter: blur(12px) saturate(200%);
+  }
+  
+  #decidirBox {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+  
+  .decidir-topo {
+    padding: 16px 20px;
+    font-size: 17px;
+  }
+  
+  #decidirOpcoes {
+    padding: 24px 20px;
+    gap: 14px;
+  }
+  
+  .decidir-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #decidirBox {
+    max-width: 100%;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-bottom: 0;
+  }
+  
+  .decidir-topo::after {
+    display: none;
+  }
+  
+  #decidirOpcoes {
+    padding: 20px 16px;
+  }
+}
+
+/* ---------------------- DARK MODE REFINEMENT ---------------------- */
+@media (prefers-color-scheme: dark) {
+  #decidirBox {
+    background: rgba(15, 23, 42, 0.98);
+  }
+}
+
+/* ---------------------- ACESSIBILIDADE ---------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visível para acessibilidade */
+.decidir-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+}
