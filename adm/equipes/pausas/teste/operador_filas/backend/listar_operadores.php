@@ -2,7 +2,13 @@
 require_once __DIR__ . '/../conexao.php';
 
 $stmt = $pdo->query("
-  SELECT id, nome, fila, lider, evolux_agent_id
+  SELECT
+    id,
+    nome,
+    fila,
+    lider,
+    evolux_agent_id,
+    link
   FROM operadores
   ORDER BY lider, nome
 ");
