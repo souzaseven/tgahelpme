@@ -1,0 +1,225 @@
+/* ============================================================================
+   responsive.css — Ajustes Responsivos
+   Painel Gerenciamento de Filas • Evolux
+============================================================================ */
+
+/* ================= DESKTOP MÉDIO (≤ 1280px) ================= */
+
+@media (max-width: 1280px) {
+
+  .container,
+  .header-content,
+  .bulk-content {
+    max-width: 1100px;
+  }
+
+  .summary-cards {
+    gap: 1rem;
+  }
+
+}
+
+/* ================= NOTEBOOK / TABLET LANDSCAPE (≤ 1024px) ================= */
+
+@media (max-width: 1024px) {
+
+  .container {
+    padding: 1.5rem 1.25rem 3rem;
+  }
+
+  /* HEADER */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* SUMMARY CARDS */
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* TEAM HEADER */
+  .team-header {
+    padding: 12px 14px;
+  }
+
+  .operator-row {
+    padding: 12px 14px;
+  }
+
+}
+
+/* ================= TABLET / MOBILE GRANDE (≤ 768px) ================= */
+
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .logo-area h1 {
+    font-size: 1.1rem;
+  }
+
+  .logo-area .subtitle {
+    font-size: .75rem;
+  }
+
+  /* SUMMARY CARDS */
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .status-card {
+    padding: 1.25rem;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+  }
+
+  .view-controls {
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+  }
+
+  .view-controls button {
+    flex: 1;
+  }
+
+  /* OPERADORES */
+  .operator-row {
+    grid-template-columns: 24px 1fr;
+    grid-template-areas:
+      "check info"
+      "check actions";
+    row-gap: .5rem;
+  }
+
+  .operator-row input[type="checkbox"] {
+    grid-area: check;
+    margin-top: .2rem;
+  }
+
+  .operator-info {
+    grid-area: info;
+  }
+
+  .operator-actions {
+    grid-area: actions;
+    justify-content: flex-start;
+  }
+
+  .operator-actions button,
+  .operator-actions a {
+    padding: .45rem .6rem;
+  }
+
+  /* FILA EDITOR */
+  .fila-editor {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+  }
+
+}
+
+/* ================= MOBILE (≤ 480px) ================= */
+
+@media (max-width: 480px) {
+
+  body {
+    font-size: .9rem;
+  }
+
+  /* HEADER */
+  .main-header {
+    position: relative;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+  }
+
+  .btn-refresh {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* SUMMARY */
+  .status-info h3 {
+    font-size: 1.2rem;
+  }
+
+  /* TEAM HEADER */
+  .team-title {
+    font-size: .85rem;
+  }
+
+  .team-actions button {
+    font-size: .65rem;
+    padding: .25rem .45rem;
+  }
+
+  /* OP IDS */
+  .op-ids {
+    display: block;
+    margin-left: 0;
+    margin-top: .15rem;
+  }
+
+  /* BULK ACTIONS */
+  .bulk-actions-bar {
+    padding: .6rem .75rem;
+  }
+
+  .bulk-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+  }
+
+  .bulk-controls {
+    display: flex;
+    gap: .5rem;
+  }
+
+  .bulk-controls select,
+  .bulk-controls button {
+    flex: 1;
+  }
+
+}
+
+/* ================= MOBILE MUITO PEQUENO (≤ 360px) ================= */
+
+@media (max-width: 360px) {
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-area h1 {
+    font-size: 1rem;
+  }
+
+  .status-card {
+    gap: .75rem;
+  }
+
+  .status-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+}
