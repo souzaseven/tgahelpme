@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Operadores • Evolux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!--<link rel="stylesheet" href="../css/painel.css">-->
+    <link rel="stylesheet" href="./css/agente.css">
+</head>
+<body>
+
+<header class="topo">
+    <div class="topo-flex">
+        <h1>Operadores</h1>
+        <button class="btn-primary" onclick="window.location.href='criar.html'">
+            + Criar Operador
+        </button>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="barra-filtros">
+        <input
+            type="text"
+            id="buscaAgente"
+            placeholder="Buscar por nome, login ou fila"
+            onkeyup="filtrarAgentes()"
+        >
+    </div>
+
+    <table class="tabela-operadores">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Login</th>
+                <th>Autenticação multifator</th>
+                <th>Filas</th>
+                <th>Status</th>
+                <th>Último login</th>
+                <th class="acoes">Ações</th>
+            </tr>
+        </thead>
+        <tbody id="lista-agentes">
+            <tr>
+                <td colspan="7">Carregando operadores...</td>
+            </tr>
+        </tbody>
+    </table>
+
+</main>
+
+<footer style="text-align:center; font-size:12px; color:#888; margin-top:20px;">
+    TGA – Versão 2025.12.22.04
+    <br><br>
+    <img alt="visitas"
+         src="https://hits.sh/tgameajuda.com/teste-22122025.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
+</footer>
+
+<script src="./js/agente_listar.js"></script>
+
+<script>
+(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</body>
+</html>

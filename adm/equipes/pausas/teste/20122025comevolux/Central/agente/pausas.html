@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Supervisor • Pausas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS base do painel -->
+  <link rel="stylesheet" href="../css/painel.css">
+  <link rel="stylesheet" href="css/pausas.css">
+</head>
+<body>
+
+<header class="topo">
+  <h1>Pausas</h1>
+  <span class="sub">Monitoramento em tempo real dos agentes</span>
+</header>
+
+<main class="container">
+
+  <!-- 🔹 TOPO SUPERVISOR (filtro / contadores / ranking)
+       É criado dinamicamente pelo JS -->
+  
+  <!-- 🔹 LISTA DE PAUSAS ATIVAS -->
+  <section class="card">
+    <h2>Agentes em Pausa</h2>
+
+    <div id="lista-pausas">
+      <p class="muted">Carregando agentes em pausa...</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  TGA • Supervisor de Pausas • 2025
+</footer>
+
+<!-- JS SUPERVISOR -->
+<script src="js/agente_pausas.js"></script>
+
+</body>
+</html>

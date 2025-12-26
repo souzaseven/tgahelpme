@@ -1,0 +1,319 @@
+/* =================================================== */
+/* PAUSAS.CSS - Módulo de Gerenciamento de Pausas      */
+/* Estilos modernos e profissionais para painel de pausas */
+/* =================================================== */
+
+/* =============== VARIÁVEIS CSS =============== */
+:root {
+  /* Cores principais */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-success: #10b981;
+  --color-success-hover: #059669;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  
+  /* Tons de neutros */
+  --color-bg-dark: #1e293b;
+  --color-bg-card: #334155;
+  --color-bg-card-hover: #475569;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-border: #475569;
+  
+  /* Espaçamentos */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Bordas */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* =============== LISTA DE PAUSAS =============== */
+#lista-pausas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Estado vazio */
+#lista-pausas:empty::before {
+  content: "Nenhuma pausa configurada para este agente.";
+  display: block;
+  width: 100%;
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* =============== CARDS DE PAUSA =============== */
+.pausa-card {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  
+  /* Estilo */
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  
+  /* Tipografia */
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+  
+  /* Interatividade */
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  
+  /* Efeitos visuais */
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho no hover */
+.pausa-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.pausa-card:hover::before {
+  left: 100%;
+}
+
+/* Estados dos cards */
+.pausa-card:hover:not(.ativa) {
+  background: var(--color-bg-card-hover);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.pausa-card:active:not(.ativa) {
+  transform: translateY(0);
+  transition: transform var(--transition-fast);
+}
+
+.pausa-card.ativa {
+  background: linear-gradient(135deg, var(--color-success), #0ea472);
+  cursor: default;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  animation: pulse 2s infinite;
+}
+
+/* Efeito de pulsação para pausa ativa */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+
+/* Badge para pausa ativa */
+.pausa-card.ativa::after {
+  content: 'ATIVA';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+/* =============== STATUS BOX =============== */
+.status-box {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Indicador de status */
+.status-box::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: blink 2s infinite;
+}
+
+.status-box strong {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+/* Animação para indicador de status ativo */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* =============== TEXTOS =============== */
+.muted {
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: var(--spacing-xl);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(148, 163, 184, 0.05);
+}
+
+/* =============== ANIMAÇÕES =============== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =============== RESPONSIVIDADE =============== */
+@media (max-width: 768px) {
+  #lista-pausas {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .pausa-card {
+    min-width: 100%;
+    padding: var(--spacing-md);
+  }
+  
+  .status-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .pausa-card {
+    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .pausa-card.ativa::after {
+    top: 4px;
+    right: 4px;
+    font-size: 0.6rem;
+  }
+}
+
+/* =============== ESTADOS DE DESABILITADO =============== */
+.pausa-card:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.pausa-card:disabled:hover {
+  background: var(--color-bg-card);
+  border-color: transparent;
+}
+
+/* =============== FOCO ACESSÍVEL =============== */
+.pausa-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* =============== CARREGAMENTO =============== */
+#lista-pausas.loading {
+  position: relative;
+  min-height: 120px;
+}
+
+#lista-pausas.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.pausa-card.alerta {
+  border: 2px solid #ef4444;
+  background: rgba(239,68,68,0.15);
+}
+
+.supervisor-topo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+#ranking-pausas {
+  font-size: 13px;
+  color: #e5e7eb;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- =====================================================
+         METADADOS BÁSICOS
+         ===================================================== -->
+    <meta charset="UTF-8">
+    <title>Criar Agente • Evolux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- =====================================================
+         ESTILOS PRINCIPAIS
+         ===================================================== -->
+    <link rel="stylesheet" href="css/agente.css">
+    <link rel="stylesheet" href="css/criar.css">
+
+    <!-- =====================================================
+         FONTES
+         ===================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =====================================================
+         FAVICON
+         ===================================================== -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<!-- =========================================================
+     CONTEÚDO PRINCIPAL
+     ========================================================= -->
+<main class="container">
+
+    <!-- =====================================================
+         CABEÇALHO DA PÁGINA
+         ===================================================== -->
+    <section class="page-header">
+        <h2>Criar Novo Agente</h2>
+        <p>Preencha os dados abaixo para cadastrar um novo operador no sistema.</p>
+    </section>
+
+    <!-- =====================================================
+         FORMULÁRIO DE CRIAÇÃO DE AGENTE
+         ===================================================== -->
+    <section class="form-section">
+        <form id="form-criar-agente" class="form-premium">
+
+            <!-- GRID DO FORMULÁRIO -->
+            <div class="form-grid">
+
+                <!-- NOME COMPLETO -->
+                <div class="form-group full">
+                    <label for="nome">
+                        <span class="label-text">Nome Completo *</span>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Digite o nome completo do agente"
+                            required
+                            autocomplete="name"
+                        >
+                        <span class="error-message" id="nome-error">
+                            Por favor, insira um nome válido
+                        </span>
+                    </label>
+                </div>
+
+                <!-- LOGIN -->
+                <div class="form-group">
+                    <label for="login">
+                        <span class="label-text">Login *</span>
+                        <input
+                            type="text"
+                            id="login"
+                            name="login"
+                            placeholder="usuario.exemplo"
+                            required
+                            autocomplete="username"
+                        >
+                        <span class="error-message" id="login-error">
+                            Login é obrigatório
+                        </span>
+                    </label>
+                </div>
+
+                <!-- RAMAL -->
+                <div class="form-group">
+                    <label for="ramal">
+                        <span class="label-text">Ramal</span>
+                        <input
+                            type="tel"
+                            id="ramal"
+                            name="ramal"
+                            placeholder="Ex: 1001"
+                            pattern="[0-9]*"
+                            inputmode="numeric"
+                        >
+                        <span class="error-message" id="ramal-error">
+                            Apenas números são permitidos
+                        </span>
+                    </label>
+                </div>
+
+                <!-- FILA (DINÂMICA VIA BACKEND) -->
+                <div class="form-group full">
+                    <label for="fila">
+                        <span class="label-text">Fila de Atendimento *</span>
+                        <select id="fila" name="fila" required>
+                            <!-- As opções serão carregadas via JavaScript -->
+                            <option value="">Carregando filas...</option>
+                        </select>
+                        <span class="error-message" id="fila-error">
+                            Selecione uma fila
+                        </span>
+                    </label>
+                </div>
+
+              
+            </div>
+
+            <!-- =================================================
+                 AÇÕES DO FORMULÁRIO
+                 ================================================= -->
+            <div class="form-actions">
+
+                <!-- BOTÃO CRIAR -->
+                <button type="submit" class="btn-primary" id="btn-criar">
+                    <span class="btn-text">Criar Agente</span>
+                    <span class="btn-loading" style="display: none;">
+                        <svg
+                            class="spinner"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                        Processando...
+                    </span>
+                </button>
+
+                <!-- BOTÃO CANCELAR -->
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="window.location.href='index.html'"
+                >
+                    Cancelar
+                </button>
+            </div>
+
+            <!-- =================================================
+                 MENSAGENS DE RESULTADO
+                 ================================================= -->
+            <div
+                id="resultado-criacao"
+                class="result-message"
+                style="display: none;"
+            ></div>
+
+        </form>
+
+        <!-- =====================================================
+             AJUDA AO USUÁRIO
+             ===================================================== -->
+        <div class="form-help">
+            <details>
+                <summary>Precisa de ajuda?</summary>
+                <div class="help-content">
+                    <p><strong>Campos obrigatórios:</strong> Nome, Login e Fila.</p>
+                    <p><strong>Login:</strong> Deve ser único no sistema.</p>
+                    <p><strong>Ramal:</strong> Opcional, apenas números.</p>
+                    <p><strong>Fila:</strong> Define a equipe do agente.</p>
+                </div>
+            </details>
+        </div>
+
+    </section>
+</main>
+
+<!-- =========================================================
+     RODAPÉ
+     ========================================================= -->
+<footer class="site-footer">
+    <div class="footer-content">
+
+        <div class="version-info">
+            TGA – Versão 2025.12.22.04
+        </div>
+
+        <div class="footer-stats">
+            <img
+                alt="visitas"
+                src="https://hits.sh/tgameajuda.com/teste-22122025.html.svg?color=007ced&label=visitas&labelColor=FFFFFF"
+                loading="lazy"
+                onerror="this.style.display='none'"
+            >
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">
+                ← Voltar para Operadores
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+<!-- =========================================================
+     JAVASCRIPT PRINCIPAL
+     ========================================================= -->
+<script src="js/agente_criar.js"></script>
+
+<!-- =========================================================
+     ANALYTICS / TAGS (mantidos conforme original)
+     ========================================================= -->
+<script>
+(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E7ZNTJSRYR');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+</body>
+</html>

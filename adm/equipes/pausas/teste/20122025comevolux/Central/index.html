@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Evolux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/painel.css">
+
+  <!-- ✅ Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');
+  </script>
+
+  <!-- ✅ Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+    crossorigin="anonymous"></script>
+
+  <!-- ✅ Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7ZNTJSRYR');
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+</head>
+
+<body>
+
+  <!-- Contador de visitas -->
+  <img alt="visitas"
+    src="https://hits.sh/tgameajuda.com/painelapi0.html.svg?color=007ced&label=visitas&labelColor=FFFFFF">
+
+  <header class="topo">
+    <h1>Painel de Controle</h1>
+    <span class="sub">Módulos • Integração Evolux</span>
+  </header>
+
+  <main class="container">
+
+    <!-- 🔹 MÓDULOS ATIVOS -->
+    <section>
+      <h2>✅ Módulos Ativos</h2>
+      <div id="lista-ativos" class="grid"></div>
+    </section>
+
+    <!-- 🔹 MÓDULOS FUTUROS -->
+    <section style="margin-top:40px">
+      <h2>🕓 Módulos Futuros / Planejados</h2>
+      <div id="lista-futuros" class="grid"></div>
+    </section>
+
+  </main>
+
+<script src="js/painel.js?v=3"></script>
+
+</body>
+</html>

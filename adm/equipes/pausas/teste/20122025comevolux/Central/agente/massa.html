@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Ações em Massa • Evolux</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/massa.css">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Ações em Massa</h1>
+    <span class="sub">Controle coletivo de agentes</span>
+</header>
+
+<main class="container">
+
+<!-- FILTROS -->
+<section class="card">
+    <div class="filtros-massa">
+
+        <input
+            id="filtro-texto"
+            type="text"
+            placeholder="Filtrar por nome ou login"
+        >
+
+        <select id="filtro-fila">
+            <option value="">Todas as filas</option>
+        </select>
+
+        <select id="filtro-status">
+            <option value="">Todos os status</option>
+            <option value="ativo">Ativo</option>
+            <option value="paus">Pausado</option>
+            <option value="off">Offline</option>
+            <option value="deslog">Deslogado</option>
+        </select>
+
+
+        <!-- AGRUPAMENTO -->
+        <select id="agrupamento">
+            <option value="">Sem agrupamento</option>
+            <option value="fila">Agrupar por fila</option>
+            <option value="status">Agrupar por status</option>
+        </select>
+
+    </div>
+</section>
+
+<!-- AÇÕES EM MASSA -->
+<section class="card barra-massa">
+    <div class="contador">
+        Selecionados:
+        <strong id="contador-selecionados">0</strong>
+    </div>
+
+    <div class="acoes">
+        <button class="btn-warning" onclick="abrirModalPausa()">Pausar</button>
+        <button class="btn-success" onclick="despausarSelecionados()">Despausar</button>
+        <button class="btn-danger" onclick="logoffSelecionados()">Logoff</button>
+        <button class="btn-sec" onclick="limparSelecao()">Limpar</button>
+    </div>
+</section>
+
+<!-- TABELA -->
+<section class="card">
+<table class="tabela">
+    <thead>
+        <tr>
+            <th>
+                <input type="checkbox" onclick="toggleTodos(this)">
+            </th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Fila</th>
+            <th>Status</th>
+          
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody id="tbody-agentes"></tbody>
+</table>
+</section>
+
+</main>
+
+<!-- OVERLAY DO MODAL -->
+<div id="overlay-pausa" class="overlay hidden"></div>
+
+<!-- MODAL DE PAUSA -->
+<div id="modal-pausa" class="modal hidden">
+    <div class="modal-box">
+        <h3>Selecionar motivo da pausa</h3>
+
+        <select id="pause-type">
+            <option value="">Selecione o motivo</option>
+            <option value="lanche_manha">Lanche da manhã</option>
+            <option value="almoço">Almoço</option>
+            <option value="lanche_tarde">Lanche da tarde</option>
+        </select>
+
+        <div class="modal-actions">
+            <button class="btn-warning" onclick="confirmarPausa()">Confirmar</button>
+            <button class="btn-sec" onclick="fecharModalPausa()">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    TGA • 2025
+</footer>
+
+<script src="js/agente_massa.js"></script>
+</body>
+</html>

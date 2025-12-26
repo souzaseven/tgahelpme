@@ -1,0 +1,1031 @@
+/* =====================================================
+   agente.css - Estilos Premium para Gerenciamento de Operadores
+   Versão: 2.0.0 | Data: 2025.12.22
+   Descrição: Interface premium com foco em experiência de usuário
+   ===================================================== */
+
+/* =====================================================
+   1.0 DESIGN SYSTEM PREMIUM
+   ===================================================== */
+:root {
+  /* Cores Primárias - Tema Azul Profissional */
+  --primary-50: #f0f4ff;
+  --primary-100: #d9e2ff;
+  --primary-200: #b8c8ff;
+  --primary-300: #8ca5ff;
+  --primary-400: #667fff;
+  --primary-500: #4f46e5;
+  --primary-600: #4338ca;
+  --primary-700: #372fa5;
+  --primary-800: #2d2883;
+  --primary-900: #24216b;
+  
+  /* Cores Neutras - Tons mais suaves */
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  
+  /* Cores Semânticas - Mais vibrantes */
+  --success-50: #ecfdf5;
+  --success-100: #d1fae5;
+  --success-500: #10b981;
+  --success-600: #059669;
+  --success-700: #047857;
+  
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  
+  --danger-50: #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+  --danger-700: #b91c1c;
+  
+  --info-50: #eff6ff;
+  --info-100: #dbeafe;
+  --info-500: #3b82f6;
+  --info-600: #2563eb;
+  --info-700: #1d4ed8;
+  
+  /* Gradientes Premium */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  --gradient-header: linear-gradient(135deg, var(--gray-900) 0%, var(--primary-900) 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, var(--gray-50) 100%);
+  
+  /* Espaçamentos - Sistema 8px */
+  --spacing-xxs: 0.125rem;  /* 2px */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 2rem;       /* 32px */
+  --spacing-2xl: 3rem;      /* 48px */
+  --spacing-3xl: 4rem;      /* 64px */
+  
+  /* Bordas - Mais suaves */
+  --radius-sm: 0.375rem;    /* 6px */
+  --radius-md: 0.75rem;     /* 12px */
+  --radius-lg: 1rem;        /* 16px */
+  --radius-xl: 1.5rem;      /* 24px */
+  --radius-full: 9999px;
+  
+  /* Elevações - Mais profundidade */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.05), 0 1px 3px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 16px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 32px -8px rgba(0, 0, 0, 0.12), 0 8px 16px -8px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.16), 0 12px 24px -12px rgba(0, 0, 0, 0.08);
+  
+  /* Transições - Suaves */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Tipografia - Mais elegante */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, 'Helvetica Neue', sans-serif;
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 0.9375rem;  /* 15px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  
+  /* Container */
+  --container-max-width: 1440px;
+  --container-padding: var(--spacing-xl);
+}
+
+/* =====================================================
+   2.0 RESET E BASE AVANÇADO
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 50%, #ffffff 100%);
+  color: var(--gray-800);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================================
+   3.0 LAYOUT PRINCIPAL PREMIUM
+   ===================================================== */
+
+/* 3.1 Container Principal */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--container-padding);
+  animation: fadeIn var(--transition-base);
+}
+
+/* 3.2 Header Premium */
+.topo {
+  background: var(--gradient-header);
+  padding: var(--spacing-xl) var(--container-padding);
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topo-flex {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.topo h1 {
+  color: white;
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.topo h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-400), white);
+  border-radius: var(--radius-full);
+}
+
+/* 3.3 Botão Primário Premium */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary::after {
+  content: '+';
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+/* =====================================================
+   4.0 COMPONENTES DE FILTRO PREMIUM
+   ===================================================== */
+
+/* 4.1 Barra de Filtros Premium */
+.barra-filtros {
+  background: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.barra-filtros::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+/* 4.2 Campo de Busca Premium */
+#buscaAgente {
+  width: 100%;
+  max-width: 480px;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  transition: all var(--transition-base);
+  background: var(--gray-50);
+  color: var(--gray-800);
+  font-family: var(--font-family-sans);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+#buscaAgente::placeholder {
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+#buscaAgente:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  background: white;
+  box-shadow: 
+    0 0 0 4px rgba(79, 70, 229, 0.1),
+    var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+#buscaAgente:hover:not(:focus) {
+  border-color: var(--gray-300);
+  background: white;
+}
+
+/* Ícone de busca (opcional) */
+#buscaAgente {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left var(--spacing-md) center;
+  padding-left: calc(var(--spacing-xl) + 28px);
+  background-size: 20px;
+}
+
+/* =====================================================
+   5.0 TABELA DE OPERADORES PREMIUM
+   ===================================================== */
+
+/* 5.1 Container da Tabela Premium */
+.tabela-operadores-container {
+  background: white;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  animation: slideUp var(--transition-base);
+  position: relative;
+}
+
+.tabela-operadores-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary-500), transparent);
+}
+
+/* 5.2 Tabela Premium */
+.tabela-operadores {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}
+
+/* 5.3 Cabeçalho da Tabela Premium */
+.tabela-operadores thead {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+}
+
+.tabela-operadores thead th {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: left;
+  font-weight: 600;
+  color: var(--gray-700);
+  border-bottom: 2px solid var(--gray-200);
+  white-space: nowrap;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+
+.tabela-operadores thead th:hover {
+  background-color: var(--gray-100);
+}
+
+.tabela-operadores thead th::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
+}
+
+.tabela-operadores thead th:hover::after {
+  width: 100%;
+}
+
+/* 5.4 Linhas da Tabela Premium */
+.tabela-operadores tbody tr {
+  transition: all var(--transition-base);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.tabela-operadores tbody tr::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background-color var(--transition-base);
+}
+
+.tabela-operadores tbody tr:hover::before {
+  background: var(--gradient-primary);
+}
+
+.tabela-operadores tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabela-operadores tbody tr:hover {
+  background: linear-gradient(90deg, var(--primary-50) 0%, transparent 100%);
+  transform: translateX(2px);
+}
+
+/* 5.5 Células Premium */
+.tabela-operadores td {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  color: var(--gray-700);
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.tabela-operadores tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Destaque para primeira coluna (Nome) */
+.tabela-operadores td:first-child {
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+/* 5.6 Coluna de Ações Premium */
+.acoes {
+  width: 220px;
+  text-align: right;
+}
+
+.acoes-linha {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.tabela-operadores tbody tr:hover .acoes-linha {
+  opacity: 1;
+}
+
+/* =====================================================
+   6.0 COMPONENTES DE STATUS PREMIUM
+   ===================================================== */
+
+/* 6.1 Badge de Status Premium */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: var(--shadow-xs);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* 6.2 Estados de Status Premium */
+.status.ativo {
+  background: linear-gradient(135deg, var(--success-50) 0%, var(--success-100) 100%);
+  color: var(--success-700);
+  border-color: var(--success-200);
+}
+
+.status.ativo::before {
+  background: var(--success-500);
+  animation: pulseSuccess 2s infinite;
+}
+
+.status.pausa {
+  background: linear-gradient(135deg, var(--warning-50) 0%, var(--warning-100) 100%);
+  color: var(--warning-700);
+  border-color: var(--warning-200);
+}
+
+.status.pausa::before {
+  background: var(--warning-500);
+  animation: pulseWarning 2s infinite;
+}
+
+.status.inativo {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+  color: var(--gray-700);
+  border-color: var(--gray-200);
+}
+
+.status.inativo::before {
+  background: var(--gray-500);
+}
+
+.status.bloqueado {
+  background: linear-gradient(135deg, var(--danger-50) 0%, var(--danger-100) 100%);
+  color: var(--danger-700);
+  border-color: var(--danger-200);
+}
+
+.status.bloqueado::before {
+  background: var(--danger-500);
+  animation: pulseDanger 2s infinite;
+}
+
+.status.arquivado {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+  color: var(--gray-600);
+  border-color: var(--gray-300);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.status.arquivado::before {
+  background: var(--gray-400);
+}
+
+/* =====================================================
+   7.0 BOTÕES DE AÇÃO PREMIUM
+   ===================================================== */
+
+/* 7.1 Botão Editar Premium */
+.acoes a.editar {
+  background: linear-gradient(135deg, var(--info-50) 0%, var(--info-100) 100%);
+  color: var(--info-700);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  transition: all var(--transition-base);
+  border: 1px solid var(--info-200);
+  box-shadow: var(--shadow-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.acoes a.editar::before {
+  content: '✏️';
+  font-size: 0.9em;
+}
+
+.acoes a.editar:hover {
+  background: linear-gradient(135deg, var(--info-100) 0%, var(--info-200) 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--info-300);
+}
+
+.acoes a.editar:active {
+  transform: translateY(0) scale(1);
+}
+
+/* 7.2 Botão Arquivar Premium */
+.acoes a.arquivar {
+  background: linear-gradient(135deg, var(--danger-50) 0%, var(--danger-100) 100%);
+  color: var(--danger-700);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  transition: all var(--transition-base);
+  border: 1px solid var(--danger-200);
+  box-shadow: var(--shadow-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.acoes a.arquivar::before {
+  content: '🗄️';
+  font-size: 0.9em;
+}
+
+.acoes a.arquivar:hover {
+  background: linear-gradient(135deg, var(--danger-100) 0%, var(--danger-200) 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--danger-300);
+}
+
+.acoes a.arquivar:active {
+  transform: translateY(0) scale(1);
+}
+
+/* =====================================================
+   8.0 ESTADOS ESPECIAIS PREMIUM
+   ===================================================== */
+
+/* 8.1 Estado de Carregamento Premium */
+.loading-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--gray-500);
+  position: relative;
+}
+
+.loading-state::before {
+  content: '';
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--primary-500);
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto var(--spacing-lg);
+  animation: spin 1s linear infinite;
+}
+
+/* 8.2 Estado Vazio Premium */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--gray-500);
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-lg);
+}
+
+.empty-state::before {
+  content: '👥';
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+/* =====================================================
+   9.0 FOOTER PREMIUM
+   ===================================================== */
+footer {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--gray-500);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-3xl);
+  border-top: 1px solid var(--gray-200);
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+footer img {
+  margin-top: var(--spacing-md);
+  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs);
+  background: var(--gray-100);
+}
+
+footer img:hover {
+  filter: none;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =====================================================
+   10.0 RESPONSIVIDADE PREMIUM
+   ===================================================== */
+
+/* 10.1 Desktops Grandes */
+@media (min-width: 1600px) {
+  :root {
+    --container-max-width: 1600px;
+    --container-padding: var(--spacing-2xl);
+  }
+}
+
+/* 10.2 Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: var(--spacing-lg);
+  }
+  
+  .tabela-operadores {
+    font-size: var(--font-size-sm);
+  }
+  
+  .tabela-operadores td,
+  .tabela-operadores th {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .acoes-linha {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  .acoes {
+    width: 160px;
+  }
+}
+
+/* 10.3 Dispositivos Móveis (até 768px) */
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 0.875rem;
+  }
+  
+  .topo-flex {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: var(--spacing-md);
+  }
+  
+  .topo h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .topo h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Tabela responsiva com scroll horizontal suave */
+  .tabela-operadores-container {
+    border-radius: var(--radius-lg);
+    margin: 0 calc(-1 * var(--container-padding));
+    width: calc(100% + 2 * var(--container-padding));
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tabela-operadores {
+    min-width: 800px;
+  }
+  
+  #buscaAgente {
+    max-width: 100%;
+    background-position: left var(--spacing-md) center;
+    padding-left: calc(var(--spacing-lg) + 28px);
+  }
+}
+
+/* 10.4 Telas Muito Pequenas (até 480px) */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: var(--spacing-md);
+    --spacing-xl: 1.5rem;
+  }
+  
+  .container {
+    padding: var(--spacing-lg) var(--container-padding);
+  }
+  
+  .barra-filtros {
+    padding: var(--spacing-lg);
+  }
+  
+  .status {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+  }
+  
+  .acoes a {
+    font-size: var(--font-size-xs);
+    padding: 0.375rem 0.75rem;
+  }
+}
+
+/* =====================================================
+   11.0 ANIMAÇÕES PREMIUM
+   ===================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseSuccess {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulseWarning {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes pulseDanger {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* =====================================================
+   12.0 UTILITÁRIOS PREMIUM
+   ===================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gray-100) 0%,
+    var(--gray-200) 50%,
+    var(--gray-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Highlighter para dados importantes */
+.highlight {
+  background: linear-gradient(120deg, rgba(79, 70, 229, 0.1) 0%, transparent 100%);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+/* =====================================================
+   13.0 ACESSIBILIDADE E ESTADOS DE FOCO
+   ===================================================== */
+:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Suporte para alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-500: #0000ff;
+    --success-500: #008000;
+    --warning-500: #ffa500;
+    --danger-500: #ff0000;
+  }
+  
+  .status {
+    border-width: 2px;
+  }
+}
+
+/* Dark Mode Otimizado */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-50: #0f172a;
+    --gray-100: #1e293b;
+    --gray-200: #334155;
+    --gray-300: #475569;
+    --gray-400: #64748b;
+    --gray-500: #94a3b8;
+    --gray-600: #cbd5e1;
+    --gray-700: #e2e8f0;
+    --gray-800: #f1f5f9;
+    --gray-900: #f8fafc;
+    
+    --primary-500: #818cf8;
+    --primary-600: #6366f1;
+    --primary-700: #4f46e5;
+  }
+  
+  body {
+    background: linear-gradient(135deg, var(--gray-50) 0%, #0a0a0a 100%);
+  }
+  
+  .tabela-operadores-container,
+  .barra-filtros {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+  }
+  
+  .topo {
+    background: linear-gradient(135deg, #000000 0%, var(--primary-900) 100%);
+  }
+  
+  #buscaAgente {
+    background-color: var(--gray-200);
+    color: var(--gray-800);
+  }
+  
+  #buscaAgente:focus {
+    background-color: var(--gray-100);
+  }
+}
+
+/* =====================================================
+   14.0 OTIMIZAÇÕES DE PERFORMANCE
+   ===================================================== */
+@media (prefers-reduced-transparency: reduce) {
+  .topo {
+    backdrop-filter: none;
+  }
+  
+  .tabela-operadores thead {
+    backdrop-filter: none;
+  }
+}
+
+/* Suporte para impressão */
+@media print {
+  .topo,
+  .barra-filtros,
+  .acoes,
+  footer {
+    display: none;
+  }
+  
+  .tabela-operadores-container {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .tabela-operadores tbody tr {
+    break-inside: avoid;
+  }
+}

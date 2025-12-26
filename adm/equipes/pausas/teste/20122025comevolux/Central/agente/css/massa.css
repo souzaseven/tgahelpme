@@ -1,0 +1,786 @@
+/* ==========================================================
+   massa.css — Ações em Massa (Premium) - Versão Atualizada
+   ==========================================================
+
+   Estrutura:
+   1. VARIÁVEIS
+   2. LAYOUT BASE
+   3. FILTROS
+   4. BARRA SUPERIOR
+   5. PREVIEW STATUS
+   6. TABELA
+   7. AGRUPAMENTOS
+   8. ESTADOS (STATUS)
+   9. AÇÕES E BOTÕES
+   10. RESPONSIVIDADE
+   ========================================================== */
+
+/* 1. VARIÁVEIS CSS */
+:root {
+  /* Cores */
+  --color-bg-primary: #020617;
+  --color-bg-secondary: rgba(2, 6, 23, 0.35);
+  --color-bg-hover: rgba(59, 130, 246, 0.06);
+  --color-bg-selected: rgba(59, 130, 246, 0.15);
+  --color-bg-card: rgba(15, 23, 42, 0.7);
+  --color-bg-group: rgba(30, 41, 59, 0.5);
+  
+  --color-border: #334155;
+  --color-border-selected: rgba(96, 165, 250, 0.4);
+  --color-border-divider: #1e293b;
+  --color-border-group: rgba(59, 130, 246, 0.3);
+  
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #94a3b8;
+  --color-text-accent: #38bdf8;
+  --color-text-muted: #64748b;
+  
+  /* Status colors */
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.2);
+  
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.2);
+  
+  --color-error: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.2);
+  
+  /* Botões */
+  --color-btn-success: #10b981;
+  --color-btn-warning: #f59e0b;
+  --color-btn-danger: #ef4444;
+  --color-btn-secondary: #475569;
+  --color-btn-primary: #3b82f6;
+  
+  /* Checkbox */
+  --color-checkbox: #3b82f6;
+  
+  /* Espaçamentos */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  
+  /* Raio das bordas */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 999px;
+  
+  /* Tamanhos */
+  --checkbox-size: 18px;
+  --checkbox-cell-width: 44px;
+  
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+/* 2. LAYOUT BASE */
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* Cabeçalho */
+.topo {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-xl);
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-accent);
+}
+
+.topo .sub {
+  display: block;
+  margin-top: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Cartões */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. FILTROS */
+.filtros-massa {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filtros-massa input[type="text"],
+.filtros-massa select {
+  padding: 10px var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  flex: 1;
+  min-width: 200px;
+}
+
+.filtros-massa input[type="text"] {
+  background: var(--color-bg-primary);
+}
+
+.filtros-massa input[type="text"]::placeholder {
+  color: var(--color-text-muted);
+}
+
+.filtros-massa input[type="text"]:hover,
+.filtros-massa select:hover {
+  border-color: var(--color-text-accent);
+}
+
+.filtros-massa input[type="text"]:focus,
+.filtros-massa select:focus {
+  outline: 2px solid var(--color-checkbox);
+  outline-offset: 2px;
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 4. BARRA SUPERIOR */
+.barra-massa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.barra-massa .contador {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  padding: 10px 18px;
+  border-radius: var(--radius-xl);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.barra-massa .contador:hover {
+  border-color: var(--color-text-accent);
+  transform: translateY(-1px);
+}
+
+.barra-massa .contador strong {
+  color: var(--color-text-accent);
+  font-size: 1.25rem;
+  font-weight: 700;
+  min-width: 2ch;
+  text-align: center;
+}
+
+/* Área de botões de ação */
+.barra-massa .acoes {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* 5. PREVIEW STATUS */
+.preview-status {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+}
+
+.preview-status strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-right: var(--spacing-xs);
+}
+
+.preview-status strong:first-child { color: var(--color-success); }
+.preview-status strong:nth-child(2) { color: var(--color-warning); }
+.preview-status strong:nth-child(3) { color: var(--color-error); }
+.preview-status strong:nth-child(4) { color: var(--color-text-accent); }
+
+/* 6. TABELA */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tabela thead {
+  background: var(--color-bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tabela thead th:first-child {
+  border-top-left-radius: var(--radius-md);
+}
+
+.tabela thead th:last-child {
+  border-top-right-radius: var(--radius-md);
+}
+
+.tabela th,
+.tabela td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-divider);
+  font-size: 14px;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+.tabela th {
+  color: var(--color-text-secondary);
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.tabela tbody tr {
+  transition: all var(--transition-fast);
+}
+
+.tabela tbody tr:hover {
+  background: var(--color-bg-hover);
+  transform: translateY(-1px);
+}
+
+.tabela tbody tr.selected {
+  background: var(--color-bg-selected);
+  outline: 2px solid var(--color-border-selected);
+  position: relative;
+  z-index: 1;
+}
+
+/* Linhas ocultas (grupos recolhidos) */
+.tabela tbody tr.hidden {
+  display: none;
+}
+
+/* Mensagens de estado */
+.tabela .muted {
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: var(--spacing-2xl) !important;
+}
+
+/* Célula do checkbox */
+.tabela td.checkbox {
+  width: var(--checkbox-cell-width);
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Estilização do checkbox */
+.tabela input[type="checkbox"] {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  accent-color: var(--color-checkbox);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabela input[type="checkbox"]:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.tabela input[type="checkbox"]:focus {
+  outline: 2px solid var(--color-checkbox);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 7. AGRUPAMENTOS */
+.grupo-header {
+  background: var(--color-bg-group) !important;
+  border-top: 2px solid var(--color-border-group);
+  border-bottom: 2px solid var(--color-border-group);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.grupo-header:hover {
+  background: rgba(30, 41, 59, 0.7) !important;
+}
+
+.grupo-header.collapsed .toggle::before {
+  content: '▶';
+}
+
+.grupo-header td {
+  border-bottom: none !important;
+  font-size: 15px;
+  padding: var(--spacing-md) !important;
+}
+
+.grupo-header strong {
+  color: var(--color-text-accent);
+  margin-right: var(--spacing-sm);
+}
+
+.grupo-header .badge {
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-xl);
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: var(--spacing-sm);
+}
+
+.grupo-header .toggle {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-left: var(--spacing-sm);
+  transition: transform var(--transition-normal);
+}
+
+.grupo-header.collapsed .toggle {
+  transform: rotate(-90deg);
+}
+
+/* 8. ESTADOS (STATUS) */
+.status {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-xl);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status.ativo {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  box-shadow: 0 1px 3px rgba(16, 185, 129, 0.2);
+}
+
+.status.pausado {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.2);
+}
+
+.status.off,
+.status.deslog,
+.status.offline,
+.status.deslogado {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+  box-shadow: 0 1px 3px rgba(239, 68, 68, 0.2);
+}
+
+/* 9. AÇÕES E BOTÕES */
+.row-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.row-actions button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.row-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.row-actions button:active {
+  transform: translateY(0);
+}
+
+.row-actions button:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Botões da barra de ações */
+.barra-massa .acoes button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  min-width: 120px;
+}
+
+.barra-massa .acoes button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cores dos botões */
+.btn-success {
+  background: var(--color-btn-success);
+  color: white;
+}
+
+.btn-warning {
+  background: var(--color-btn-warning);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--color-btn-danger);
+  color: white;
+}
+
+.btn-sec {
+  background: var(--color-btn-secondary);
+  color: white;
+}
+
+.btn-primary {
+  background: var(--color-btn-primary);
+  color: white;
+}
+
+/* Efeitos hover específicos */
+.btn-success:hover { background: #0da271; }
+.btn-warning:hover { background: #dd8c08; }
+.btn-danger:hover { background: #dc2626; }
+.btn-sec:hover { background: #374151; }
+.btn-primary:hover { background: #2563eb; }
+
+/* 10. RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .barra-massa {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+  
+  .barra-massa .acoes {
+    justify-content: center;
+  }
+  
+  .barra-massa .acoes button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .topo {
+    padding: var(--spacing-lg) var(--spacing-md);
+    text-align: center;
+  }
+  
+  .topo h1 {
+    font-size: 1.5rem;
+  }
+  
+  .filtros-massa {
+    flex-direction: column;
+  }
+  
+  .filtros-massa input[type="text"],
+  .filtros-massa select {
+    width: 100%;
+    min-width: 0;
+  }
+  
+  .tabela {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tabela th,
+  .tabela td {
+    padding: var(--spacing-sm);
+    font-size: 13px;
+    min-width: 100px;
+  }
+  
+  .tabela td.checkbox {
+    min-width: 50px;
+    width: 50px;
+  }
+  
+  .row-actions {
+    flex-direction: column;
+    min-width: 120px;
+  }
+  
+  .row-actions button {
+    width: 100%;
+  }
+  
+  .status {
+    min-width: 70px;
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--spacing-md);
+  }
+  
+  .barra-massa .contador {
+    justify-content: center;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  
+  .barra-massa .contador strong {
+    font-size: 1.1rem;
+  }
+  
+  .preview-status {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .grupo-header td {
+    font-size: 14px;
+  }
+  
+  .grupo-header .badge {
+    display: none;
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-2xl);
+}
+/* ===============================
+   MODAL E OVERLAY - ESTILOS MELHORADOS
+   =============================== */
+
+/* OVERLAY */
+#overlay-pausa.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#overlay-pausa.overlay:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* MODAL */
+#modal-pausa.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  width: 90%;
+  max-width: 400px;
+  z-index: 10000;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#modal-pausa.modal:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Conteúdo do modal */
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.modal-box h3 {
+  margin: 0;
+  color: var(--color-text-accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Select do modal */
+#pause-type {
+  width: 100%;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-md) center;
+  background-size: 16px;
+  padding-right: calc(var(--spacing-md) * 2 + 16px);
+}
+
+#pause-type:hover {
+  border-color: var(--color-text-accent);
+}
+
+#pause-type:focus {
+  outline: 2px solid var(--color-checkbox);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+#pause-type option {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  padding: var(--spacing-md);
+}
+
+/* Botões do modal */
+.modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  margin-top: var(--spacing-md);
+}
+
+.modal-actions button {
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 120px;
+}
+
+.modal-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-actions button:active {
+  transform: translateY(0);
+}
+
+.modal-actions button:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Classe hidden */
+.hidden {
+  display: none;
+}
+
+/* ===============================
+   FIX CURSOR (consistente com o restante)
+   =============================== */
+html, body {
+  cursor: default !important;
+}
+
+button, input[type="checkbox"], select, .grupo-header {
+  cursor: pointer !important;
+}
+
+input[type="text"], table, tr, td, th {
+  cursor: default !important;
+}
+
+/* Elementos do modal */
+#modal-pausa {
+  cursor: default;
+}
+
+#modal-pausa select,
+#modal-pausa button {
+  cursor: pointer;
+}
+
+.motivo-pausa {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-warning);
+}

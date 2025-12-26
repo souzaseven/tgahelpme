@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.topo {
+  padding: 16px 20px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.topo h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.topo .sub {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.container {
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.card .descricao {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.card .objetivo {
+  font-size: 12px;
+  color: #cbd5f5;
+  margin-bottom: 10px;
+}
+
+.card.ativo {
+  border-color: #22c55e;
+}
+
+.card.inativo {
+  opacity: 0.9;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.card button {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.card.ativo button {
+  background: #16a34a;
+  color: #fff;
+}
+
+.card.inativo button {
+  background: #334155;
+  color: #e5e7eb;
+}
+
+.btn-sec,
+.btn-doc {
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.btn-sec {
+  background: #1e40af;
+  color: #fff;
+}
+
+.btn-doc {
+  background: #334155;
+  color: #e5e7eb;
+}
+
+.btn-sec:hover {
+  background: #1d4ed8;
+}
+
+.btn-doc:hover {
+  background: #475569;
+}

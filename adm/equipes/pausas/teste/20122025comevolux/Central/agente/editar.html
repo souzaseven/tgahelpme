@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Agente • Evolux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/agente.css">
+    <link rel="stylesheet" href="css/editar.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+    <!-- ✅ Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- ✅ Google Ads (AdSense Global) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+
+    <!-- ✅ Google Analytics - Tag 1 (G-E7ZNTJSRYR) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+
+    <!-- ✅ Google Analytics - Tag 2 (G-S8EC5C2WTG) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+
+
+</head>
+<body>
+
+<header class="page-header">
+    <h1>Editar Agente</h1>
+    <p>Selecione um agente na lista e edite seus dados cadastrais.</p>
+</header>
+
+<main class="container">
+
+    <!-- LISTA / FILTROS -->
+    <section class="card">
+
+        <div class="lista-header">
+            <h2>👥 Agentes</h2>
+
+            <button
+                type="button"
+                class="btn-sec"
+                onclick="toggleAgruparFila()"
+            >
+                Agrupar por fila
+            </button>
+        </div>
+
+        <!-- FILTROS PRINCIPAIS -->
+        <div class="filtros-row">
+            <input
+                type="text"
+                id="busca"
+                placeholder="Filtrar por nome ou login"
+                autocomplete="off"
+            >
+
+            <select id="filtro-fila">
+                <option value="">Todas as filas</option>
+            </select>
+        </div>
+
+        <!-- FILTROS AVANÇADOS -->
+        <div class="filtros-avancados">
+            <label class="check">
+                <input type="checkbox" id="filtro-arquivados">
+                Mostrar arquivados
+            </label>
+
+<label class="check">
+    <input
+        type="checkbox"
+        id="filtro-offline"
+        checked
+        onchange="aplicarFiltros()"
+    >
+    Mostrar offline / deslogados
+</label>
+
+        </div>
+
+        <!-- CONTADOR -->
+        <div id="contador-filas" class="muted"></div>
+
+        <!-- LISTA -->
+        <div id="lista-agentes" class="lista-agentes">
+            <p class="muted">Carregando agentes...</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- MODAL OVERLAY -->
+<div id="modal-overlay" class="modal-overlay hidden"></div>
+
+<!-- MODAL EDIÇÃO -->
+<div id="modal-edicao" class="modal hidden">
+    <div class="modal-card">
+
+        <header class="modal-header">
+            <h2>✏️ Editar Agente</h2>
+            <button type="button" class="modal-close" onclick="fecharModal()">×</button>
+        </header>
+
+        <form id="form-editar-agente">
+
+            <div class="form-grid">
+                <div class="full">
+                    <label>
+                        Nome Completo
+                        <input type="text" id="nome" required>
+                    </label>
+                </div>
+
+                <label>
+                    Login
+                    <input type="text" id="login" required>
+                </label>
+
+
+                <div class="full">
+                    <label>
+                        Fila
+                        <input type="text" id="fila">
+                    </label>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="submit">Salvar Alterações</button>
+                <button type="button" class="btn-sec" onclick="fecharModal()">Cancelar</button>
+            </div>
+
+            <div id="resultado-edicao"></div>
+        </form>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <div>TGA • Versão 2025.12.22.04</div>
+</footer>
+
+    <!-- Contador de visitas -->
+    <img alt="visitas"
+        src="https://hits.sh/tgameajuda.com/teste.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
+
+<script src="js/agente_editar.js"></script>
+</body>
+</html>
