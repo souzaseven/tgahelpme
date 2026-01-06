@@ -1,0 +1,358 @@
+/* ===== VARIÁVEIS E CONFIGURAÇÕES GERAIS ===== */
+:root {
+  /* Cores principais */
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-success: #10b981;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-border: #334155;
+  
+  /* Sombras */
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  --shadow-button: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-input: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  
+  /* Bordas */
+  --radius-card: 16px;
+  --radius-input: 10px;
+  --radius-button: 10px;
+  
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ===== RESET E ESTILOS BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg-primary);
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Efeito de gradiente sutil no fundo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+  width: 100%;
+  max-width: 440px;
+  margin: 20px auto;
+  padding: 40px 32px;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+}
+
+.container:hover {
+  transform: translateY(-4px);
+}
+
+/* Elemento decorativo no topo do container */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+}
+
+/* ===== TIPOGRAFIA ===== */
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--color-text-primary), var(--color-text-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* ===== FORMULÁRIOS E INPUTS ===== */
+.form-group {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+input, select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--color-border);
+  background: rgba(30, 41, 59, 0.7);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-input);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background: rgba(30, 41, 59, 0.9);
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-button);
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+/* Ícone no botão (opcional) */
+button::after {
+  content: '→';
+  font-size: 18px;
+  opacity: 0.8;
+  transition: transform var(--transition-fast);
+}
+
+button:hover::after {
+  transform: translateX(4px);
+}
+
+/* ===== LINKS ===== */
+a {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--color-success);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: #34d399;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-success);
+  transition: width var(--transition-normal);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* ===== MENSAGENS DE STATUS ===== */
+.message {
+  padding: 14px 16px;
+  border-radius: var(--radius-input);
+  margin-bottom: 24px;
+  font-size: 14px;
+  display: none;
+}
+
+.message.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  display: block;
+}
+
+.message.error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: block;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 32px 24px;
+    margin: 10px auto;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  input, select, button {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 24px 20px;
+  }
+  
+  h1 {
+    font-size: 22px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ===== ESTILOS ADICIONAIS PARA ELEMENTOS ESPECÍFICOS ===== */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.divider span {
+  padding: 0 16px;
+}
+
+.social-login {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.social-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.social-btn:hover {
+  background: rgba(30, 41, 59, 1);
+}
+
+/* ===== UTILITÁRIOS ===== */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+
+/* Info de dimensão */
+#originalSize {
+  font-size: 14px;
+}
+
+/* Checkbox alinhado melhor */
+input[type="checkbox"] {
+  accent-color: var(--color-primary);
+}
