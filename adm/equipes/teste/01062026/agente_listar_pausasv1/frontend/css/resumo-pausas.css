@@ -1,0 +1,119 @@
+/* ===================================================
+   RESUMO DE PAUSAS — EVOLUX
+   Arquivo isolado de estilo
+   =================================================== */
+
+/* Container principal */
+.resumo-pausas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  padding: 14px 16px;
+  margin-bottom: 22px;
+}
+
+/* Item de pausa */
+.resumo-pausas .pausa-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+
+  padding: 8px 12px;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text);
+
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+/* Hover */
+.resumo-pausas .pausa-item:hover {
+  transform: translateY(-1px);
+  border-color: #334155;
+}
+
+/* Quantidade */
+.resumo-pausas .pausa-item strong {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* Ícone */
+.resumo-pausas .pausa-item .icon {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Estado vazio */
+.resumo-pausas .pausa-vazia {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* ===============================
+   VARIAÇÕES VISUAIS (opcional)
+=============================== */
+
+/* Almoço */
+.resumo-pausas .pausa-almoco {
+  border-left: 3px solid #16a34a;
+}
+
+/* Lanche */
+.resumo-pausas .pausa-lanche {
+  border-left: 3px solid #f59e0b;
+}
+
+/* Outros */
+.resumo-pausas .pausa-outros {
+  border-left: 3px solid #2563eb;
+}
+
+/* ===============================
+   RESPONSIVO
+=============================== */
+@media (max-width: 600px) {
+  .resumo-pausas {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .resumo-pausas .pausa-item {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+/* ===============================
+   ALERTA DE LIMITE ESTOURADO
+=============================== */
+.pausa-alerta {
+  border-left: 4px solid #dc2626 !important;
+  animation: alertaPulse 1.5s infinite;
+}
+
+.pausa-alerta .icon {
+  color: #dc2626;
+}
+
+.pausa-alerta .alerta-txt {
+  margin-left: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+@keyframes alertaPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); }
+  100% { box-shadow: 0 0 0 10px rgba(220,38,38,0); }
+}
