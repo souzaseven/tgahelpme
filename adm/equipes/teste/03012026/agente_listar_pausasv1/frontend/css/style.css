@@ -1,0 +1,375 @@
+/* ===================================================
+   PAINEL DE PAUSAS — EVOLUX
+   Versão atualizada | 2026
+   =================================================== */
+
+:root {
+  --bg: #0b1020;
+  --card: #111827;
+  --card-soft: #0f172a;
+  --border: #1f2937;
+
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+
+  --primary: #2563eb;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617 60%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* CARD PRINCIPAL */
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--card), var(--card-soft));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 26px 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* CONTADOR */
+.contador-status {
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  opacity: 0.9;
+}
+
+/* FILTROS */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  align-items: center;
+}
+
+.filtros input[type="text"],
+.filtros select {
+  background: #020617;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.filtros input::placeholder {
+  color: var(--muted);
+}
+
+.filtros label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* CONTAINER DAS FILAS */
+#painelFilas {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* BLOCO DE FILA */
+.fila {
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+}
+
+.fila h2 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #c7d2fe;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fila h2::before {
+  content: "📂";
+  font-size: 1rem;
+}
+
+/* GRID DE AGENTES */
+.agentes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+/* CARD DO AGENTE */
+.agente {
+  background: linear-gradient(160deg, #020617, #020617);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border 0.2s, transform 0.15s;
+}
+
+.agente:hover {
+  transform: translateY(-2px);
+  border-color: #334155;
+}
+
+/* NOME */
+.agente .nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* STATUS TEXTO */
+.agente .status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
+
+/* TEMPO PAUSA */
+.agente .tempo {
+  font-size: 0.75rem;
+  color: var(--warning);
+}
+
+/* STATUS VISUAL */
+.agente[data-status="online"] {
+  box-shadow: inset 0 0 0 1px rgba(22, 163, 74, 0.35);
+}
+
+.agente[data-status="paused"] {
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.45);
+  opacity: 0.85;
+}
+
+.agente[data-status="offline"] {
+  box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.45);
+  opacity: 0.6;
+}
+
+/* BOTÃO */
+.agente button {
+  margin-top: auto;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+/* ONLINE */
+.agente[data-status="online"] button {
+  background: linear-gradient(180deg, var(--success), #15803d);
+}
+
+/* PAUSADO */
+.agente[data-status="paused"] button {
+  background: linear-gradient(180deg, var(--warning), #d97706);
+}
+
+/* DESABILITADO */
+.agente button:disabled,
+.agente[data-status="offline"] button {
+  background: linear-gradient(180deg, #374151, #1f2937);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* DESTAQUE DE MUDANÇA */
+.highlight-status {
+  animation: pulse 1.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(59,130,246,0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(59,130,246,0); }
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .card {
+    padding: 18px;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .agentes {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 22px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.modal h3 {
+  margin-bottom: 14px;
+}
+
+.radio {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.radio input {
+  accent-color: #f59e0b;
+}
+
+.modal .acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.confirmar {
+  background: #16a34a;
+  color: #fff;
+}
+
+.btn.cancelar {
+  background: #374151;
+  color: #fff;
+}
+/* ===============================
+   TOAST (TOPO DIREITO)
+=============================== */
+.toast {
+  position: fixed;
+  top: -80px;          /* começa escondido */
+  right: 24px;
+  z-index: 9999;
+
+  background: #020617;
+  color: #e5e7eb;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid #1f2937;
+
+  opacity: 0;
+  transition: top 0.35s ease, opacity 0.35s ease;
+}
+
+/* Quando aparece */
+.toast.show {
+  top: 24px;
+  opacity: 1;
+}
+
+/* Tipos */
+.toast.success {
+  border-left: 4px solid #16a34a;
+}
+
+.toast.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast.info {
+  border-left: 4px solid #2563eb;
+}
+
+.agente .btn-despausar {
+  background: linear-gradient(180deg, #16a34a, #15803d);
+}
+/* ===============================
+   AGENTE — PAUSA ESTOURADA
+=============================== */
+.agente.pausa-estourada {
+  border: 1px solid #dc2626 !important;
+  box-shadow: 0 0 0 2px rgba(220,38,38,0.4);
+  animation: agenteAlerta 1.5s infinite;
+}
+
+.agente.pausa-estourada::after {
+  content: "⚠ ESTOURADO";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+@keyframes agenteAlerta {
+  0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(220,38,38,0); }
+}
