@@ -1,0 +1,319 @@
+<?php
+require_once __DIR__ . '/backend/conexao.php';
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+// CSRF já é gerado no seu conexao.php
+$csrf = $_SESSION['csrf_token'] ?? '';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel Unificado - Clientes Web (v2)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-icon">🧩</div>
+        <div class="brand-text">
+          <strong>Clientes Web</strong>
+          <span>Controle Interno</span>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-item active" data-tab="dashboard">
+          <span class="mi-ico">📊</span>
+          <span class="mi-label">Dashboard</span>
+        </button>
+
+        <button class="menu-item" data-tab="logins">
+          <span class="mi-ico">🔐</span>
+          <span class="mi-label">Logins Web</span>
+        </button>
+
+        <button class="menu-item" data-tab="conexoes">
+          <span class="mi-ico">🌐</span>
+          <span class="mi-label">Conexões / API</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="hint">
+          <span class="dot"></span>
+          <span>v2 • UI moderna</span>
+        </div>
+
+        <button class="btn ghost" id="btnToggleTheme" type="button">🌙 Alternar tema</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="icon-btn" id="btnToggleSidebar" title="Menu">☰</button>
+
+        <div class="topbar-title">
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Visão geral e saúde dos acessos</p>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn" id="btnRefresh" type="button">↻ Atualizar</button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+
+        <!-- DASHBOARD -->
+        <div class="view" id="view-dashboard">
+          <div class="grid kpis">
+            <div class="card kpi">
+              <div class="kpi-head">
+                <span class="kpi-ico">🔐</span>
+                <span class="kpi-title">Logins Ativos</span>
+              </div>
+              <div class="kpi-value" id="kpiLoginsAtivos">—</div>
+              <div class="kpi-sub" id="kpiLoginsTotal">—</div>
+            </div>
+
+            <div class="card kpi">
+              <div class="kpi-head">
+                <span class="kpi-ico">🧷</span>
+                <span class="kpi-title">Conexões ON</span>
+              </div>
+              <div class="kpi-value" id="kpiConexoesOn">—</div>
+              <div class="kpi-sub" id="kpiConexoesTotal">—</div>
+            </div>
+
+            <div class="card kpi">
+              <div class="kpi-head">
+                <span class="kpi-ico">⚙️</span>
+                <span class="kpi-title">APIs</span>
+              </div>
+              <div class="kpi-value" id="kpiApis">—</div>
+              <div class="kpi-sub" id="kpiApisSub">—</div>
+            </div>
+
+            <div class="card kpi">
+              <div class="kpi-head">
+                <span class="kpi-ico">📱</span>
+                <span class="kpi-title">Mobile</span>
+              </div>
+              <div class="kpi-value" id="kpiMobile">—</div>
+              <div class="kpi-sub" id="kpiMobileSub">—</div>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <div class="card-head">
+                <h3>Últimos logins cadastrados</h3>
+                <span class="muted">Top 8</span>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="tblDashLogins">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Cliente</th>
+                      <th>Versão</th>
+                      <th>Status</th>
+                      <th>Criado</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h3>Últimas conexões cadastradas</h3>
+                <span class="muted">Top 8</span>
+              </div>
+              <div class="table-wrap">
+                <table class="table" id="tblDashConexoes">
+                  <thead>
+                    <tr>
+                      <th>Cód.</th>
+                      <th>Cliente</th>
+                      <th>Servidor</th>
+                      <th>Tipo</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOGINS -->
+        <div class="view hidden" id="view-logins">
+          <div class="toolbar">
+            <div class="search">
+              <input id="qLogins" type="text" placeholder="Buscar por código, nome, caminho, versão..." />
+              <span class="search-ico">⌕</span>
+            </div>
+
+            <div class="filters">
+              <select id="fLoginStatus">
+                <option value="">Status: Todos</option>
+                <option value="ATIVO">ATIVO</option>
+                <option value="INATIVO">INATIVO</option>
+                <option value="BLOQUEADO">BLOQUEADO</option>
+              </select>
+
+              <select id="fLoginLimit">
+                <option value="10">10 / pág</option>
+                <option value="20">20 / pág</option>
+                <option value="50">50 / pág</option>
+              </select>
+
+              <button class="btn primary" id="btnNovoLogin" type="button">＋ Novo Login</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table class="table" id="tblLogins">
+                <thead>
+                  <tr>
+                    <th style="width:90px;">ID</th>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>Caminho</th>
+                    <th>Versão</th>
+                    <th>Status</th>
+                    <th style="width:170px;">Ações</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="pager">
+              <div class="muted" id="loginsInfo">—</div>
+              <div class="pager-actions">
+                <button class="btn ghost" id="loginsPrev">←</button>
+                <span class="badge" id="loginsPage">1</span>
+                <button class="btn ghost" id="loginsNext">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONEXOES -->
+        <div class="view hidden" id="view-conexoes">
+          <div class="toolbar">
+            <div class="search">
+              <input id="qConexoes" type="text" placeholder="Buscar por código, cliente, servidor..." />
+              <span class="search-ico">⌕</span>
+            </div>
+
+            <div class="filters">
+              <select id="fConTipo">
+                <option value="">Tipo: Todos</option>
+                <option value="API">API</option>
+                <option value="FV_MOBILE_ON">FV_MOBILE_ON</option>
+                <option value="MOBILE_OFF">MOBILE_OFF</option>
+              </select>
+
+              <select id="fConStatus">
+                <option value="">Status: Todos</option>
+                <option value="ON">ON</option>
+                <option value="OFF">OFF</option>
+                <option value="ERRO">ERRO</option>
+              </select>
+
+              <select id="fConLimit">
+                <option value="10">10 / pág</option>
+                <option value="20">20 / pág</option>
+                <option value="50">50 / pág</option>
+              </select>
+
+              <button class="btn primary" id="btnNovaConexao" type="button">＋ Nova Conexão</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-wrap">
+              <table class="table" id="tblConexoes">
+                <thead>
+                  <tr>
+                    <th style="width:90px;">ID</th>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>Servidor</th>
+                    <th>Porta</th>
+                    <th>Tipo</th>
+                    <th>Status</th>
+                    <th style="width:170px;">Ações</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+
+            <div class="pager">
+              <div class="muted" id="conInfo">—</div>
+              <div class="pager-actions">
+                <button class="btn ghost" id="conPrev">←</button>
+                <span class="badge" id="conPage">1</span>
+                <button class="btn ghost" id="conNext">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <h2 id="modalTitle">—</h2>
+        <button class="icon-btn" id="btnCloseModal" title="Fechar">✕</button>
+      </div>
+
+      <form id="modalForm">
+        <input type="hidden" id="mEntity" value="">
+        <input type="hidden" id="mId" value="">
+
+        <div class="form-grid" id="modalFields"></div>
+
+        <div class="modal-actions">
+          <button class="btn ghost" id="btnCancelModal" type="button">Cancelar</button>
+          <button class="btn primary" id="btnSaveModal" type="submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div class="toasts" id="toasts"></div>
+
+  <script>
+    window.__CSRF__ = <?php echo json_encode($csrf); ?>;
+  </script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
