@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Pausas - Evolux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS PRINCIPAL -->
+  <link rel="stylesheet" href="frontend/css/style.css">
+
+  <!-- CSS RESUMO DE PAUSAS -->
+  <link rel="stylesheet" href="frontend/css/resumo-pausas.css">
+
+  <!-- ✅ Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2XFNTVZ');
+  </script>
+
+  <!-- Google Ads -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7ZNTJSRYR');
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+</head>
+
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <div class="card">
+
+    <h1>Painel de Pausas de Agentes</h1>
+    <p>Agentes, status e motivos de pausa • atualização automática</p>
+
+    <!-- 🔢 CONTADOR -->
+    <div id="contadorStatus" class="contador-status">
+      🟢 0 online • 🔴 0 offline • ⏸ 0 em pausa
+    </div>
+
+    <!-- ⏸ RESUMO DE PAUSAS -->
+    <div id="resumoPausas" class="resumo-pausas">
+      <!-- preenchido via JS -->
+    </div>
+
+    <!-- 🔎 FILTROS -->
+    <div class="filtros">
+
+      <input
+        type="text"
+        id="buscaAgente"
+        placeholder="🔍 Buscar agente por nome ou login"
+      >
+
+      <select id="filtroFila">
+        <option value="all">Todas as filas</option>
+      </select>
+
+      <label>
+        <input type="checkbox" id="chkInativos">
+        Mostrar inativos
+      </label>
+
+      <label>
+        <input type="checkbox" id="chkOffline">
+        Mostrar offline
+      </label>
+
+      <label>
+        <input type="checkbox" id="chkArquivados">
+        Mostrar arquivados
+      </label>
+
+    </div>
+
+    <!-- 📂 PAINEL -->
+    <div id="painelFilas"></div>
+
+  </div>
+
+  <!-- JS PRINCIPAL -->
+  <script src="frontend/js/despausar.js" defer></script>
+  <script src="frontend/js/pausar.js" defer></script>
+
+  <!-- JS RESUMO DE PAUSAS -->
+  <script src="frontend/js/resumo-pausas.js" defer></script>
+
+</body>
+</html>
