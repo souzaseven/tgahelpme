@@ -1,0 +1,45 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CADASTRAR LANÇAMENTO FINANCEIRO – **A RECEBER**
+-----------------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o módulo **Financeiro**.
+2. Vá em **Movimentos → Contas a Pagar / Receber**.
+3. Selecione **Cadastrar Lançamento (F7)**.
+
+   * Você também pode usar o **atalho F7** ou o **ícone azul “+”** para inclusão rápida.
+4. Escolha o **tipo de operação**: **Receber**.
+5. Informe os **dados principais**:
+
+   * **Tipo de Documento** (ex.: Boleto, Transferência, Cartão etc.)
+   * **Número do Documento**
+   * **Parcela/Total** (se aplicável)
+   * **Cliente** (ou **Fornecedor**, conforme o processo)
+6. Preencha as **datas**:
+
+   * **Emissão**
+   * **Vencimento**
+7. Informe o **Valor Original** e, se houver, **Juros ao Dia**, **Descontos** ou **Multa**.
+8. (Opcional) Complete os campos:
+
+   * **Centro de Custos**
+   * **Departamento**
+9. **Histórico:** descreva o motivo/observação do lançamento.
+10. **Funcionário Responsável** (opcional).
+11. Revise as informações e clique em **Salvar** para concluir.
+
+---
+
+**Observações**
+
+* Use este procedimento para lançamentos **manuais** que não foram gerados automaticamente por notas ou movimentos.
+* Manter **descrição clara** e **datas corretas** facilita o controle, a conferência e a rastreabilidade dos recebimentos.
+
+---

@@ -1,0 +1,25 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CONSULTAR EXTRATOS NA MANUTENÇÃO DE EXTRATO
+-------------------------------------------
+
+**Passos para Solução**
+
+1. No módulo **Financeiro**, acesse o menu **Movimentos → Extrato de Caixa → Manutenção de Extrato**.
+2. Informe a **Conta Caixa** desejada.
+3. Defina o **Período de Pesquisa**, preenchendo as datas de **Início** e **Fim**.
+4. Clique em **Filtrar** para exibir os registros conforme os critérios informados.
+
+---
+
+**Observações**
+
+* A tela exibirá todos os extratos que correspondem aos filtros selecionados.
+* Essa consulta é útil para acompanhar e verificar movimentações financeiras registradas por conta e período.
+
+---

@@ -1,0 +1,27 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+EXCLUIR EXTRATO NA MANUTENÇÃO DE EXTRATO
+----------------------------------------
+
+**Passos para Solução**
+
+1. No módulo **Financeiro**, acesse o menu **Movimentos → Extrato de Caixa → Manutenção de Extrato**.
+2. Informe a **Conta Caixa** que deseja consultar.
+3. Defina a **Data de Início** e **Data de Fim** para o período que deseja pesquisar.
+4. Clique em **Filtrar** para exibir os registros correspondentes.
+5. Selecione o extrato que deseja excluir e clique em **Excluir**.
+6. Confirme a exclusão quando solicitado pelo sistema.
+
+---
+
+**Observações**
+
+* A tela exibirá todos os extratos que correspondem aos filtros selecionados.
+* Tenha **atenção redobrada** ao escolher o extrato para exclusão, pois essa ação **remove definitivamente** o registro do sistema.
+
+---

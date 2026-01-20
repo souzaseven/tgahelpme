@@ -1,0 +1,47 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CADASTRAR LANÇAMENTO FINANCEIRO AVULSO
+--------------------------------------
+
+**Passos para Solução**
+
+1. No módulo **Financeiro**, acesse o menu **Movimentos → Cadastrar Lançamentos**.
+2. Clique no botão **“Novo”** para iniciar o cadastro.
+3. Selecione o tipo do lançamento:
+
+   * **A Pagar**
+   * **A Receber**
+4. Escolha o **Tipo de Documento** correspondente.
+5. Informe o **Número do Documento**.
+
+   * Caso não possua, insira um número para identificação.
+6. Selecione o **Cliente** ou **Fornecedor** responsável pelo lançamento.
+7. Informe as **Datas**:
+
+   * **Data de Emissão**
+   * **Data de Vencimento**
+8. Informe o **Valor Principal** (sem juros ou multa).
+9. Caso existam encargos, preencha os campos de **Juros** e/ou **Multa** (valor ou porcentagem).
+10. Caso aplicável, preencha o **Centro de Custo**.
+11. No campo **Histórico**, descreva o motivo ou observação do lançamento.
+12. Após revisar todas as informações, clique em **Salvar** para concluir o cadastro.
+
+---
+
+**Observações**
+
+* O **cadastro de lançamento financeiro avulso** é utilizado para registrar movimentações **não vinculadas a notas fiscais** ou **documentos automáticos** do sistema.
+* Essa funcionalidade permite o controle de obrigações e direitos financeiros **de forma manual**, garantindo o registro completo de transações avulsas.
+
+Essa operação contribui para:
+
+* Manter a **organização financeira** em transações fora do fluxo padrão;
+* Garantir a **rastreabilidade** dos lançamentos avulsos;
+* Facilitar o **controle de contas a pagar e a receber**.
+
+---

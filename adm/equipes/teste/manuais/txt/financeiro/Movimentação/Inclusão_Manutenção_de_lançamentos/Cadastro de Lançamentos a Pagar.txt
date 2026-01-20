@@ -1,0 +1,47 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CADASTRAR LANÇAMENTO FINANCEIRO MANUALMENTE
+-------------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o módulo **Financeiro**.
+2. Vá em **Movimentos → Contas a Pagar / Receber**.
+3. Selecione **Cadastrar Lançamento (F7)**.
+
+   * Você também pode utilizar o **atalho F7** ou clicar no **ícone azul com o símbolo “+”** para inclusão rápida.
+4. Escolha o **tipo de operação**:
+
+   * **Pagar**
+5. Informe os **dados principais**:
+
+   * **Tipo de Documento** (ex: Boleto, Transferência, Cartão, etc.)
+   * **Número do Documento**
+   * **Parcela / Total** (se aplicável)
+   * **Cliente ou Fornecedor** envolvido
+6. Preencha as **datas**:
+
+   * **Emissão**
+   * **Vencimento**
+7. Informe o **Valor Original**, além de **Juros ao Dia**, **Descontos** ou **Multa** (se aplicável).
+8. Caso utilizados, preencha os campos:
+
+   * **Centro de Custos**
+   * **Departamento**
+9. No campo **Histórico**, descreva o motivo ou observação do lançamento.
+10. Informe o **Funcionário Responsável** (opcional).
+11. Após revisar todas as informações, clique em **Salvar** para concluir o lançamento.
+
+---
+
+**Observações**
+
+* Esse procedimento permite o cadastro manual de lançamentos financeiros que não foram gerados automaticamente por notas fiscais ou outros movimentos do sistema.
+* Manter as informações completas facilita o controle financeiro e a rastreabilidade das transações.
+
+---

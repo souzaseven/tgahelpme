@@ -1,0 +1,42 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CADASTRAR EXTRATO
+-----------------
+
+**Passos para Solução**
+
+1. No módulo **Financeiro**, acesse o menu **Movimentos → Extrato de Caixa**.
+2. Clique no botão **“Novo”** para iniciar o cadastro.
+3. No campo **Operação**, selecione o tipo desejado:
+
+   * **Depósito**
+   * **Saque**
+   * **Transferência**
+4. Informe a **Filial** correspondente à movimentação.
+5. Selecione a **Forma de Pagamento** utilizada.
+6. Escolha a **Conta/Caixa** relacionada à operação.
+7. Informe a **Data do Extrato**.
+8. Preencha o **Valor** da movimentação.
+9. Caso aplicável, selecione o **Centro de Custo**.
+10. No campo **Histórico**, descreva o motivo ou observação do extrato.
+11. Após preencher todas as informações, clique em **Salvar** para concluir o cadastro.
+
+---
+
+**Observações**
+
+* O cadastro de extratos tem como objetivo registrar e controlar todas as movimentações financeiras de **entrada e saída**, garantindo **transparência** e **organização** no fluxo de caixa.
+* Com isso, é possível identificar facilmente **depósitos, saques e transferências**, além de manter o acompanhamento detalhado das transações por **conta** e **forma de pagamento**.
+
+Essa funcionalidade contribui para:
+
+* Melhorar o **controle financeiro diário**;
+* Facilitar a **conciliação bancária** e o **fechamento de caixa**;
+* Disponibilizar **informações precisas** para relatórios financeiros e auditorias.
+
+---

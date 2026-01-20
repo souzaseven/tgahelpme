@@ -1,0 +1,33 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+LANÇAMENTO FINANCEIRO – VERIFICAR CONTAS A PAGAR E A RECEBER
+------------------------------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o módulo **Financeiro (F8)**.
+2. Vá em **Movimento → Manutenção de Lançamento**.
+3. Utilize os **filtros disponíveis** para localizar as informações desejadas (**Contas a Pagar** ou **Contas a Receber**).
+4. Em **Competência**, são exibidas todas as contas lançadas no sistema — tanto **a pagar** quanto **a receber**.
+5. Em **Extratos**, são apresentadas todas as **movimentações monetárias** registradas no sistema.
+
+**Tipos de Movimentação:**
+
+* **Dinheiro:** valor físico em espécie.
+* **Cartão:** documento ainda não compensado.
+* **PIX:** dinheiro recebido diretamente na conta bancária.
+* **Cheque:** documento ainda não compensado.
+
+---
+
+**Observações**
+
+* A tela de lançamentos é ideal para consultar, de forma geral, todas as contas financeiras registradas no sistema.
+* Recomenda-se verificar periodicamente o **extrato**, garantindo o controle adequado das **movimentações monetárias**.
+
+---

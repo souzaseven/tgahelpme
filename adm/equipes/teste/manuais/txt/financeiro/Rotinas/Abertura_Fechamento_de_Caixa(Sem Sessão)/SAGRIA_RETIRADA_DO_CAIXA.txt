@@ -1,0 +1,25 @@
+﻿Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+SAGRIA/RETIDADA DE VALORES DO CAIXA
+---
+Passos para Solução
+1. Acesse opção Movimentos.
+2. Extrato de Caixa.
+3. Cadastrar Extrato.
+4. Na janela que abriu clique em "Novo" primeiro botão da esquerda para direita.
+5. Em Operação clique na setinha a direita e Selecione opção Saque (-).
+6. Em Forma de Pagto clique na mão segurando a cifra $ e Selecione opção Dinheiro, para inserir o valor da retirada do caixa.
+7. No campo Conta/Caixa Selecione o caixa que você utiliza para movimentação diária, em grande maioria é o Caixa Diário.
+8. O Campo Data da Emissão é o dia que está abrindo o caixa.
+9. Em Compensado é o dia que foi efetivado a entrada do valor, para abertura do caixa é o mesmo dia da Emissão.
+10. Numero documento fica ao seu critério preencher.
+11. Em Valor é o valor do troco/Abertura do caixa que tem em mãos.
+12. Centro de custo e departamento não é obrigatório, mas pode criar e preencher os mesmos.
+13. Em Histórico é o local da descrição do Extrato Ex: Retirada para comprar Agua.
+14. Por Fim clique em "Salvar" e Depois "Fechar".
+---
+Observações
+- Depois de realizar a sangria/retirada é importante tirar um relatório de caixa, para verificar se  ocorreu da maneira esperada.
+---

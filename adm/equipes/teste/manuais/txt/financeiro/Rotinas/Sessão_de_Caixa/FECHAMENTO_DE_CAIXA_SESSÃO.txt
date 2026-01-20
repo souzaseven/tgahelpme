@@ -1,0 +1,20 @@
+Módulo do Sistema
+ESTOQUE
+---
+Objetivo
+FECHAMENTO DE CAIXA SESSÃO.
+---
+Passos para Solução
+    1. No menu principal, acesse a opção “Movimento” →  “Gerenciar Sessão de Caixa”.
+    2. Clique em “Fechar”.
+    3. Na tela exibida, localize a coluna “Informado” → Nesse campo vai inserir o valor total contabilizado. Vai repetir esse processo para Cartão, Pix. Etc...
+    4. Confira os lançamentos e valores registrados durante a sessão.
+    5. Clique em “Fechar Caixa”.
+    6. Na janela seguinte clique em  “Sim” para confirmar a operação.
+    7. Caso necessário, emita o relatório de fechamento para conferência clicando na opção “Imprimir”.
+---
+Observações
+    • O fechamento de caixa deve ser feito obrigatoriamente no final do expediente para garantir o controle financeiro.
+    • É recomendada a conferência entre o saldo do sistema e o valor físico em caixa antes de finalizar.
+    • Após o fechamento, o caixa só poderá ser reaberto iniciando uma nova sessão.
+    • Se abrir novamente o caixa, o anterior não poderá ser editado.

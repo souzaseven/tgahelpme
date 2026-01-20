@@ -1,0 +1,46 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+MANUTENÇÃO DE LANÇAMENTOS FINANCEIROS
+-------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o módulo **Financeiro**.
+2. Vá em **Movimentos → Contas a Pagar / Receber**.
+3. Selecione **Manutenção de Lançamentos (F8)**.
+
+   * Você também pode usar o **atalho F8** ou clicar no **ícone azul com setas** para acessar rapidamente.
+4. No **Painel de Lançamentos Financeiros**, aplique os filtros conforme necessidade:
+
+   * **Filtro de Datas:** escolha uma opção de filtragem:
+
+     * **Vencimento**
+     * **Baixa**
+     * **Emissão**
+     * **Digitação**
+     * **Cancelamento**
+     * **Estorno**, entre outras.
+   * Informe a **Data de Início** e **Data de Fim** do período desejado.
+5. Logo abaixo, selecione os **Filtros de Situação**:
+
+   * **A Pagar**
+   * **A Receber**
+   * **Baixados**
+   * **Abertos**
+   * **Cancelados (X)**
+6. Após configurar todos os filtros, clique em **Filtrar** para exibir os lançamentos conforme os critérios selecionados.
+
+---
+
+**Observações**
+
+* A manutenção de lançamentos permite **consultar, revisar e acompanhar** todos os registros financeiros do sistema.
+* Utilize os filtros de forma estratégica para **análises específicas**, como lançamentos em aberto, baixados ou cancelados.
+* Essa funcionalidade é essencial para **controle e conferência** das movimentações financeiras.
+
+---

@@ -1,0 +1,31 @@
+Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+Baixar um lançamento via cartão.
+---
+Passos para Solução.
+1. Abrir a tela de baixa
+Acesse: Movimentos -> Contas a Pagar / Receber -> Manutenção de Lançamentos.
+Localize o documento desejado pelos filtros: número, cliente, data, etc.
+
+2. Selecionar o documento
+Clique sobre o lançamento que será baixado.
+Em seguida clique no botão Baixar.
+
+3. Abrir a aba de recebimento
+Na janela que abrir, vá para a aba 2 – Recebimento.
+
+4. Inserir o recebimento
+Clique em Novo para incluir a forma de pagamento.
+No campo Forma Pgto, escolha a opção de Cartão (Crédito ou Débito) conforme o cliente informou.
+Em Conta/Caixa, selecione onde o valor “cai” na baixa (geralmente Caixa Diário).
+Confira: Valor Recebido, Data de Vencimento.
+
+5. Confirmar a baixa
+Clique em Salvar.
+Depois finalize clicando em Baixar.
+---
+Observações
+- Antes de finalizar a baixa, confirme se a forma de pagamento e o Caixa selecionado estão corretos. Caso a baixa seja feita no caixa errado.
+---

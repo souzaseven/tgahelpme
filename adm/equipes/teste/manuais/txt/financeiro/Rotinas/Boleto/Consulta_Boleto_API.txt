@@ -1,0 +1,36 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+VERIFICAR SE O BOLETO FOI REGISTRADO
+------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o caminho **Movimentos → Contas a Pagar / Receber → Manutenção de Lançamentos**, ou utilize o **atalho F8** para abrir a tela rapidamente.
+2. Localize o **boleto** que deseja consultar na **tela de lançamentos**.
+3. Para verificar se o boleto foi registrado, observe a **coluna “Boleto”**:
+
+   * Se houver **numeração**, significa que o boleto **foi registrado**.
+   * Se o campo estiver **em branco**, o boleto **ainda não foi registrado**.
+4. Outra forma de verificar é utilizando a função **Consulta Boleto API**:
+
+   * Clique com o **botão direito do mouse** sobre o lançamento desejado.
+   * No menu que se abrir, selecione **Consulta Boleto API**.
+5. Na janela que será exibida, verifique o campo **Status**:
+
+   * Se houver **numeração do boleto**, ele **foi registrado** com sucesso.
+   * Se aparecer a mensagem **“Boleto não registrado”**, o boleto ainda **não foi registrado**.
+
+---
+
+**Observações**
+
+* A verificação via **Consulta Boleto API** é a forma mais confiável para confirmar o status real do boleto junto ao banco.
+* Caso o boleto não esteja registrado, utilize a rotina de **Remessa - Cobrança Eletrônica (API)** para efetuar o registro.
+* Recomenda-se sempre validar o status antes de enviar boletos aos clientes para evitar inconsistências.
+
+---
