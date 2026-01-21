@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Clientes TGA Web | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="frontend/css/style.css">
+
+  <link rel="shortcut icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+
+  <!-- GTM -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2XFNTVZ');
+  </script>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>
+      Clientes <a href="https://sweb.tgasistemas.com.br/" target="_blank">TGA WEB</a>
+    </h1>
+    <span>Painel administrativo</span>
+  </div>
+
+  <div class="actions">
+    <button id="btnNovo">+ Novo</button>
+    <button id="btnExportCSV">Exportar CSV</button>
+<button id="btnImportar">Importar CSV</button>
+
+  </div>
+</header>
+
+<!-- 📊 CARDS DE RESUMO -->
+<section class="cards-resumo">
+  <div class="card-info">
+    <span class="card-title">Total de Clientes</span>
+    <strong id="cardTotal">0</strong>
+  </div>
+
+  <div class="card-info fb25">
+    <span class="card-title">Firebird 2.5</span>
+    <strong id="cardFB25">0</strong>
+  </div>
+
+  <div class="card-info fb50">
+    <span class="card-title">Firebird 5.0</span>
+    <strong id="cardFB50">0</strong>
+  </div>
+</section>
+
+<!-- 🔍 FILTROS AVANÇADOS -->
+<section class="filters">
+
+  <input id="fCodigo" placeholder="Código TGA">
+  <input id="fEmpresa" placeholder="Empresa">
+  <input id="fCnpj" placeholder="CNPJ">
+
+  <select id="fVersao">
+    <option value="">Versão</option>
+    <option value="26.01">26.01</option>
+    <option value="25.12">25.12</option>
+    <option value="25.11">25.11</option>
+    <option value="25.10">25.10</option>
+    <option value="25.09">25.09</option>
+    <option value="25.08">25.08</option>
+  </select>
+
+  <select id="fFirebird">
+    <option value="">Firebird</option>
+    <option value="2.5">2.5</option>
+    <option value="5.0">5.0</option>
+  </select>
+
+  <select id="fInfo">
+    <option value="">Info</option>
+    <option value="migrado">Migrado</option>
+    <option value="manual">Manual</option>
+  </select>
+
+  <input type="number" id="fUsuarios" placeholder="Qtd usuários">
+
+  <!-- 📄 REGISTROS POR PÁGINA -->
+  <select id="fLimit">
+    <option value="10">10 por página</option>
+    <option value="25">25 por página</option>
+    <option value="50">50 por página</option>
+    <option value="100">100 por página</option>
+    <option value="all">Tudo</option>
+  </select>
+
+  <button id="btnFiltrar">Filtrar</button>
+</section>
+
+<main class="content">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Empresa</th>
+        <th>CNPJ</th>
+        <th>Versão</th>
+        <th>Firebird</th>
+        <th>Info</th>
+        <th>Usuários</th>
+        <th>Senha</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="listaClientes"></tbody>
+  </table>
+</main>
+
+<!-- 📑 PAGINAÇÃO -->
+<div class="pagination" id="paginacao"></div>
+
+<footer class="rodape">
+  <span>© TGA Sistemas v2026.01.08.20</span>
+</footer>
+
+<!-- ===============================
+     MODAL MODERNO
+================================ -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal-card modal-lg">
+
+    <div class="modal-header modern">
+      <div>
+        <h2 id="modalTitulo">Cadastro de Cliente</h2>
+        <span class="modal-sub">Gerenciamento de empresas TGA Web</span>
+      </div>
+      <button class="modal-close" onclick="fecharModal()">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-grid modern">
+
+        <div class="field">
+          <label>Código TGA</label>
+          <input id="mCodigo">
+        </div>
+
+        <div class="field">
+          <label>Empresa</label>
+          <input id="mEmpresa">
+        </div>
+
+        <div class="field">
+          <label>CNPJ</label>
+          <input id="mCnpj">
+        </div>
+
+        <div class="field">
+          <label>Versão</label>
+          <select id="mVersao">
+            <option value="">Selecione</option>
+            <option>26.01</option>
+            <option>25.12</option>
+            <option>25.11</option>
+            <option>25.10</option>
+            <option>25.09</option>
+            <option>25.08</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Firebird</label>
+          <select id="mFirebird">
+            <option value="">Selecione</option>
+            <option value="2.5">2.5</option>
+            <option value="5.0">5.0</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Qtd Usuários</label>
+          <input id="mUsuarios" type="number">
+        </div>
+
+        <div class="field full">
+          <label>Informação adicional</label>
+          <textarea id="mInfo"></textarea>
+        </div>
+
+        <div class="field full">
+          <label>Senha padrão</label>
+          <input id="mSenha">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-footer modern">
+      <button class="btn-danger" id="btnExcluir">Excluir</button>
+      <div>
+        <button class="btn-sec" onclick="fecharModal()">Cancelar</button>
+        <button class="btn-pri" id="btnSalvar">Salvar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===============================
+     MODAL IMPORTAR CSV
+================================ -->
+<div class="modal-backdrop" id="modalImportar">
+  <div class="modal-card">
+
+    <div class="modal-header modern">
+      <div>
+        <h2>Importar Clientes</h2>
+        <span class="modal-sub">Arquivo CSV no padrão TGA Web</span>
+      </div>
+      <button class="modal-close" onclick="fecharModalImportar()">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <input type="file" id="arquivoCSV" accept=".csv">
+      <small>
+        Campos esperados:<br><br>
+        codigotga, nome_empresa, cnpj, versao, firebird, info_adicional, qntusuarios, senhapadrao
+      </small>
+    </div>
+
+    <div class="modal-footer modern">
+      <button class="btn-sec" onclick="fecharModalImportar()">Cancelar</button>
+      <button class="btn-pri" id="btnEnviarCSV">Importar</button>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="frontend/js/app.js"></script>
+<script src="frontend/js/importar.js"></script>
+
+</body>
+</html>
