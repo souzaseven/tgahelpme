@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>TGA • Acesso ao Painel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilo -->
+  <link rel="stylesheet" href="assets/css/login.css">
+
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+
+  <!-- ✅ Google Tag Manager -->
+<!---->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2XFNTVZ');
+  </script>
+
+  <!-- ✅ Google Ads -->
+<!---->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+    crossorigin="anonymous"></script>
+
+  <!-- ✅ Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7ZNTJSRYR');
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+  <div class="login-card">
+
+    <div class="login-header">
+      <img src="https://tgameajuda.com/img/principal/bot-tga.webp" alt="TGA">
+      <h1>Clientes Web</h1>
+      <p>Acesso restrito</p>
+    </div>
+
+    <form id="loginForm" autocomplete="off">
+
+      <div class="form-group">
+        <label for="usuario">Usuário</label>
+        <input
+          type="text"
+          id="usuario"
+          name="usuario"
+          placeholder="Digite seu usuário"
+          required
+          autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          placeholder="••••••••"
+          required>
+      </div>
+
+      <button type="submit" class="btn-login">
+        Entrar
+      </button>
+
+      <div class="login-msg" id="loginMsg"></div>
+
+    </form>
+
+    <footer class="login-footer">
+      TGA Sistemas • 2026
+    </footer>
+
+  </div>
+
+</div>
+
+<script src="assets/js/login.js"></script>
+</body>
+</html>
