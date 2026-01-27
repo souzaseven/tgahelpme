@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+ /* background: linear-gradient(135deg, #0f172a, #020617);*/
+background-image: url('https://sweb.tgasistemas.com.br/papeldeparede.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+margin-top: 10%;
+}
+
+.login-card {
+  background: rgba(15,23,42,.95);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-header img {
+  width: 64px;
+  margin-bottom: 10px;
+}
+
+.login-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.login-header p {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 12px;
+  color: #9ca3af;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(2,6,23,.8);
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56,189,248,.2);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 13px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+  color: #fff;
+  margin-top: 10px;
+  transition: .2s;
+}
+
+.btn-login:hover {
+  opacity: .9;
+  transform: translateY(-1px);
+}
+
+.login-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  color: #ef4444;
+  min-height: 18px;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 26px;
+  font-size: 11px;
+  color: #6b7280;
+}
