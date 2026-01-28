@@ -1,0 +1,313 @@
+/* =====================================================
+   Painel de Ligações – Evolux
+   CSS Principal (FINAL) - LIMPO
+===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 20px;
+}
+
+/* ================= HEADER ================= */
+
+.topbar {
+  margin-bottom: 16px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* ================= KPIs ================= */
+
+.kpis {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.kpi {
+  flex: 1;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.kpi span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.kpi label {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* ================= FILTROS ================= */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.filter-group input,
+.filter-group select {
+  background: #020617;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.filter-group input::placeholder {
+  color: #64748b;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.filter-group.action {
+  justify-content: flex-end;
+}
+
+#btnBuscar {
+  background: #0284c7;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#btnBuscar:hover {
+  background: #0369a1;
+}
+
+/* ================= TABELA ================= */
+
+.results {
+  overflow: hidden;
+}
+
+.results table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #020617;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+}
+
+.results thead {
+  background: #020617;
+}
+
+.results th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px;
+  color: #94a3b8;
+  border-bottom: 1px solid #1e293b;
+  white-space: nowrap;
+}
+
+.results td {
+  padding: 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #1e293b;
+  vertical-align: middle;
+}
+
+.results tbody tr:hover {
+  background: #0b1220;
+}
+
+.results .empty {
+  text-align: center;
+  color: #64748b;
+  padding: 30px;
+}
+
+/* ================= PAGINAÇÃO ================= */
+
+.footer {
+  margin-top: 14px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+#paginationInfo {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* ================= PLAYER DE ÁUDIO ================= */
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 220px;
+}
+
+.btn-audio {
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #38bdf8;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-audio.playing {
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.audio-progress {
+  width: 120px;
+  height: 4px;
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+.audio-time {
+  font-size: 11px;
+  color: #9ca3af;
+  min-width: 92px;
+}
+
+.audio-speed {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-speed {
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #9ca3af;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.btn-speed.active {
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+/* ================= DOWNLOAD ================= */
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #38bdf8;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-download:hover {
+  border-color: #38bdf8;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media (max-width: 900px) {
+  .kpis {
+    flex-direction: column;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .results {
+    overflow-x: auto;
+    border-radius: 10px;
+  }
+
+  .results table {
+    min-width: 900px;
+  }
+
+  .audio-player {
+    flex-wrap: wrap;
+  }
+}
+
+
