@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-K2XFNTVZ');</script>
+
+<!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Acesso TGA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <meta name="description" content="Área de acesso ao TGA Me Ajuda. Suporte técnico e login para clientes e equipe.">
+
+
+
+    <!--souza system-->
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+
+        crossorigin="anonymous"></script>
+
+<link rel="icon" href="./img/principal/bot-tga.webp" type="image/x-icon">
+
+<link rel="preload" as="image" href="https://tgameajuda.com/img/principal/helpdesktga.webp" fetchpriority="high" />
+
+
+
+
+
+  <style>
+
+    :root {
+
+      --azul-tga: #007ced;
+
+      --azul-claro: #66bfff;
+
+      --azul-escuro: #003e7e;
+
+      --white-glass: rgba(255, 255, 255, 0.07);
+
+    }
+
+
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+/*
+
+    body {
+
+      margin: 0;
+
+      font-family: 'Outfit', sans-serif;
+
+      height: 100vh;/*
+
+      background: radial-gradient(circle at top, #007ced 0%, #0d1a2d 80%);
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      color: white;
+
+      overflow: hidden;
+
+    }
+
+*/
+
+html, body {
+
+  margin: 0;
+
+  padding: 0;
+
+  font-family: 'Outfit', sans-serif;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  position: relative;
+
+  color: white;
+
+  z-index: 0;
+
+}
+
+
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  background-image:url(https://tgameajuda.com/img/principal/helpdesktga.webp);
+
+  transition: background-image 0.3s ease-in-out;
+
+
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  z-index: -1;
+
+}
+
+
+
+
+
+
+
+    .login-box {
+
+      /*background: var(--white-glass);*/
+
+      background: black;
+
+      backdrop-filter: blur(20px);
+
+      border-radius: 20px;
+
+      padding: 45px 40px;
+
+      box-shadow: 0 0 25px rgba(0, 124, 237, 0.3);
+
+      text-align: center;
+
+      width: 100%;
+
+      max-width: 420px;
+
+      animation: fadeIn 0.8s ease-out;
+
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      position: relative;
+
+margin-top: 170px;
+
+    }
+
+
+
+    h2 {
+
+      font-size: 1.9em;
+
+      margin-bottom: 30px;
+
+      background: linear-gradient(90deg, #66bfff, #fff);
+
+      -webkit-background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+    }
+
+
+
+    .login-box button, .login-box input {
+
+      padding: 14px;
+
+      width: 100%;
+
+      border: none;
+
+      border-radius: 12px;
+
+      font-size: 16px;
+
+      font-family: 'Outfit', sans-serif;
+
+      margin-top: 12px;
+
+      transition: all 0.3s ease;
+
+    }
+
+
+
+    button {
+
+      background: var(--azul-tga);
+
+      color: white;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+    }
+
+
+
+    button:hover {
+
+      background: var(--azul-claro);
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 0 8px var(--azul-claro);
+
+    }
+
+
+
+    input {
+
+      background: rgba(255, 255, 255, 0.1);
+
+      color: white;
+
+      border: 1px solid rgba(255, 255, 255, 0.2);
+
+    }
+
+
+
+    input::placeholder {
+
+      color: #bbb;
+
+    }
+
+
+
+    #formSuporte {
+
+      display: none;
+
+      margin-top: 20px;
+
+      animation: fadeIn 0.5s ease;
+
+    }
+
+
+
+    .erro {
+
+      color: #ff6b6b;
+
+      font-size: 0.9em;
+
+      margin-top: 6px;
+
+    }
+
+
+
+    .icon {
+
+      width: 18px;
+
+      height: 18px;
+
+    }
+
+
+
+    @keyframes fadeIn {
+
+      from { opacity: 0; transform: translateY(-10px); }
+
+      to { opacity: 1; transform: translateY(0); }
+
+    }
+
+
+
+    @media (max-width: 500px) {
+
+      .login-box {
+
+        padding: 30px 20px;
+
+        margin: 0 20px;
+
+      }
+
+    }
+
+    
+
+@media (max-width: 600px) {
+
+  body::before {
+
+    background-image: url("https://tgameajuda.com/img/principal/helpdesktga-small.webp");
+
+  }
+
+}
+
+
+
+
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+  <div class="login-box">
+
+<h2><a href="https://tgameajuda.com/adm/painel/index.php" style="color: #007ced;" aria-label="Acesso administrativo TGA"><i data-lucide="lock"></i></a> TGA ME AJUDA</h2>
+
+
+
+    <button onclick="acessarComoCliente()">
+
+      <i data-lucide="user" class="icon"></i> Sou Cliente
+
+    </button>
+
+    <button onclick="mostrarLoginSuporte()">
+
+      <i data-lucide="shield" class="icon"></i> Sou Suporte
+
+    </button>
+
+<div style="display: flex; justify-content: center; margin: 10px 0;">
+
+<img alt="visitas" src="https://hits.sh/tgameajuda.com/login.html.svg?color=007ced&amp;label=visitas&amp;labelColor=FFFFFF&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
+
+</div>
+
+    <div id="formSuporte">
+
+      <input type="text" id="usuarioSuporte" placeholder="Usuário" value="SUPORTE" disabled>
+
+      <input type="password" id="senhaSuporte" placeholder="Senha do mês">
+
+      <button onclick="validarSuporte()">
+
+        <i data-lucide="log-in" class="icon"></i> Entrar
+
+      </button>
+
+      <p class="erro" id="erroSuporte"></p>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+<script>
+// ====================================
+// INICIALIZAÇÃO
+// ====================================
+lucide.createIcons();
+
+// Detecta Enter dentro do campo de senha
+document.getElementById("senhaSuporte").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        validarSuporte();
+    }
+});
+
+// ====================================
+// FUNÇÕES PRINCIPAIS
+// ====================================
+
+/**
+ * Acesso como cliente - Remove acesso de suporte e redireciona
+ */
+function acessarComoCliente() {
+    localStorage.removeItem('acesso');  // Remove qualquer acesso anterior
+    location.href = "cliente-tga.html";
+}
+
+/**
+ * Exibe formulário de login do suporte
+ */
+function mostrarLoginSuporte() {
+    document.getElementById("formSuporte").style.display = "block";
+}
+
+/**
+ * Valida senha do suporte e redireciona
+ */
+function validarSuporte() {
+    const senha = document.getElementById("senhaSuporte").value;
+    const erroElement = document.getElementById("erroSuporte");
+    
+    // Obter URL de redirecionamento
+    const urlParams = new URLSearchParams(window.location.search);
+    let redirectUrl = urlParams.get('redirect');
+    
+    // Se não tem na URL, verificar no sessionStorage
+    if (!redirectUrl) {
+        redirectUrl = sessionStorage.getItem('redirect_after_login');
+        if (redirectUrl) {
+            sessionStorage.removeItem('redirect_after_login');
+        }
+    }
+    
+    console.log('🔍 DEBUG - URL de redirecionamento encontrada:', redirectUrl);
+    
+    // Preparar dados para enviar
+    const formData = new FormData();
+    formData.append('senha', senha);
+    
+    if (redirectUrl) {
+        formData.append('redirect_url', redirectUrl);
+        console.log('🔍 DEBUG - Enviando redirect_url:', redirectUrl);
+    }
+    
+    console.log('🔍 DEBUG - Fazendo requisição para verifica_suporte.php...');
+    
+    // Requisição ao servidor
+    fetch("verifica_suporte.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(r => {
+        console.log('🔍 DEBUG - Status da resposta:', r.status);
+        if (!r.ok) throw new Error('Erro na requisição');
+        return r.text(); // Pega como texto para debug
+    })
+    .then(text => {
+        console.log('🔍 DEBUG - Resposta BRUTA do servidor:', text);
+        
+        try {
+            const d = JSON.parse(text);
+            console.log('🔍 DEBUG - Resposta PARSED:', d);
+            
+            if (d.sucesso) {
+                localStorage.setItem("acesso", "suporte");
+                
+                // Redirecionar para URL retornada pelo servidor
+                const urlDestino = d.redirecionar_para || "index.html";
+                console.log('✅ DEBUG - Redirecionando para:', urlDestino);
+                location.href = urlDestino;
+                
+            } else {
+                erroElement.textContent = d.erro || "Senha incorreta.";
+            }
+        } catch (e) {
+            console.error('❌ ERRO - Não é JSON válido:', e);
+            console.error('❌ Conteúdo recebido:', text);
+            erroElement.textContent = "Erro no servidor. Tente novamente.";
+        }
+    })
+    .catch(error => {
+        console.error('❌ ERRO - Falha na requisição:', error);
+        erroElement.textContent = "Erro de conexão. Tente novamente.";
+    });
+}
+
+// ====================================
+// EVENTOS DO DOCUMENTO
+// ====================================
+
+// Salvar parâmetro de redirect quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectParam = urlParams.get('redirect');
+    
+    if (redirectParam && !sessionStorage.getItem('redirect_after_login')) {
+        sessionStorage.setItem('redirect_after_login', redirectParam);
+        console.log('💾 DEBUG - Redirect salvo no sessionStorage:', redirectParam);
+    }
+    
+    // Debug inicial
+    console.log('🔍 DEBUG INICIAL - URL Params redirect:', redirectParam);
+    console.log('🔍 DEBUG INICIAL - SessionStorage redirect:', sessionStorage.getItem('redirect_after_login'));
+});
+</script>
+
+
+
+</body>
+
+</html>
+
