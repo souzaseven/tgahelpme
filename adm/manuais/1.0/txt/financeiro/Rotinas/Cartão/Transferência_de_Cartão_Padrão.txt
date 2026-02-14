@@ -1,0 +1,34 @@
+Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+Tranferência de Cartão.
+---
+Passos para Solução.
+1. Abrir a tela de transferência
+Acesse: Movimentos -> Extrato de Caixa -> Transferência de Documentos.
+
+2. Selecionar o caixa de origem
+No campo Conta/Caixa Origem, informe o caixa onde a baixa do cartão foi feita (ex: Caixa Diário).
+
+3. Filtrar os cartões baixados
+Defina Data Inicial e Data Final (geralmente o dia da baixa).
+Clique no ícone MasterCard para listar somente documentos de cartão.
+
+4. Selecionar os documentos
+Clique nos cartões que deseja transferir.
+Para selecionar todos: Ctrl + A.
+Depois clique em Avançar.
+
+5. Escolher o destino
+Na próxima tela:
+Em Data Transferência, coloque a data que o cartão deve ser transferido (geralmente a mesma data).
+Em Conta/Caixa Destino, selecione Caixa Cartão.
+
+6. Concluir
+Clique em Concluir.
+---
+Observações
+- Se o documento de cartão não aparecer para transferência, verifique se foi usado o filtro de cartões (ícone da MasterCard) e se as datas estão corretas. 
+- A transferência só funciona para documentos BAIXADOS previamente.
+---

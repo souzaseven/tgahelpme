@@ -1,0 +1,51 @@
+Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+Bloquear Clientes inadimplentes.
+---
+Passos para Solução
+1. Acessar a tela de Bloqueio de Clientes Inadimplentes
+Para iniciar o processo, acesse no menu superior:
+Utilitários → Bloquear Clientes Inadimplentes
+Essa tela permite identificar clientes com títulos vencidos e aplicar bloqueios ou restrições conforme a necessidade do estabelecimento.
+
+2. Filtrar clientes por dias de atraso
+No campo “Em atraso a mais de ___ dias”, informe a quantidade mínima de dias que deseja considerar.
+Exemplos: 30, 60 ou 180 dias
+Após preencher, clique em Filtrar.
+O sistema exibirá automaticamente os clientes que possuem títulos vencidos acima do período informado.
+
+3. Visualizar os títulos do cliente
+Se quiser consultar os títulos que deixaram o cliente inadimplente:
+Clique em Mostrar Títulos.
+Uma nova tela abrirá listando todos os documentos vencidos do cliente selecionado, facilitando a conferência antes de aplicar qualquer ação.
+
+4. Editar o cadastro do cliente
+Se for necessário ajustar informações do cliente:
+Clique em Editar.
+O sistema abrirá o cadastro completo do cliente, permitindo alterações como dados de contato, informações adicionais, situação cadastral etc.
+
+5. Selecionar clientes desejados
+Podemos dar dois cliques em cada cliente para selecioná-lo individualmente, ou
+Clicar no X ao lado da colula “Código” para selecionar todos os clientes listados ao mesmo tempo.
+
+6. Atribuir um conceito
+Na seção Atribuir Conceito, selecione o conceito desejado para os clientes (ex.: RUIM, REGULAR, BLOQUEADO).
+Use a lupa ao lado do campo para escolher um conceito já cadastrado.
+
+7. Opções adicionais
+Abaixo, existem três opções que podem ser marcadas conforme a necessidade:
+ - Inativar Títulos?
+ - Inativar Cadastro do Cliente?
+ - Vender somente à Vista?
+
+8. Executar as ações aplicadas
+Após selecionar os clientes, definir o conceito e escolher as opções desejadas:
+Clique em Executar.
+O sistema aplicará automaticamente todas as ações selecionadas nos clientes marcados.
+---
+Observações
+- Antes de aplicar qualquer bloqueio, sempre confira o filtro de dias em atraso, visualize os títulos do cliente quando necessário e verifique se o conceito e as ações marcadas estão corretos.
+- As opções de inativar títulos, inativar o cadastro ou permitir apenas vendas à vista interferem diretamente no funcionamento do cliente no sistema e devem ser usadas com atenção.
+---

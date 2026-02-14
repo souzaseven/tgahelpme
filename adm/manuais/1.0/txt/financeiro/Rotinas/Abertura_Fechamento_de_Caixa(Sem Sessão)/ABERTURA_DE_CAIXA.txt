@@ -1,0 +1,25 @@
+Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+ABRIR CAIXA
+---
+Passos para Solução
+1. Acesse opção Movimentos.
+2. Extrato de Caixa.
+3. Cadastrar Extrato.
+4. Na janela que abriu clique em "Novo" primeiro botão da esquerda para direita.
+5. Em Operação clique na setinha a direita e Selecione opção Deposito.
+6. Em Forma de Pagto clique na mão segurando a cifra $ e Selecione opção Dinheiro, para inserir o valor do troco para abertura do caixa.
+7. No campo Conta/Caixa Selecione o caixa que você utiliza para movimentação diaria, em grande maioria é o Caixa Diario.
+8. O Campo Data da Emissão é o dia que está abrindo o caixa.
+9. Em Compensado é o dia que foi efetivado a entrada do valor, para abertura do caixa é o mesmo dia da Emissão.
+10. numero documento fica ao seu criterio preencher.
+11. Em Valor é o valor do troco/Abertura do caixa que tem em mãos.
+12. Centro de custo e departamento não é obrigatorio, mas pode criar e preencher os mesmos.
+13. Em Histórico é o local da descrição do Extrato Ex: Abertura de Caixa.
+14. Por Fim clique em "Salvar" e Depois "Fechar".
+---
+Observações
+- Depois de realizar abertura é importante tirar um relatorio de caixa, para verificar s eabertura ocorreu da maneira esperada.
+---

@@ -1,0 +1,39 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CADASTRAR LANÇAMENTO FINANCEIRO – **PAGAR OU RECEBER**
+------------------------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o módulo **Financeiro**.
+2. Vá em **Movimentos → Contas a Pagar / Receber**.
+3. Selecione **Cadastrar Lançamento (F7)**.
+
+   * Você também pode usar o **atalho F7** ou clicar no **ícone azul com o símbolo “+”** para inclusão rápida.
+4. Escolha o **tipo de operação**: **Receber** ou **Pagar**.
+5. Informe os **dados principais**:
+
+   * **Tipo de Documento**
+   * **Número do Documento**
+   * **Cliente / Fornecedor**
+   * **Valor**
+   * **Histórico** (descrição do motivo ou observação do lançamento)
+6. Clique no botão **“Lancto Padrão”**.
+7. Informe a **quantidade de parcelas** desejada.
+8. Caso necessário, **altere a data de vencimento** de cada parcela.
+9. Após revisar todas as informações, clique em **OK** para concluir o lançamento.
+
+---
+
+**Observações**
+
+* Essa rotina é utilizada para **lançamentos manuais** de contas a pagar ou receber, não gerados automaticamente por movimentações.
+* Utilize o **Lancto Padrão** quando houver parcelamento, facilitando a geração automática das parcelas com base no valor total.
+* Sempre revise as datas e valores antes de confirmar o lançamento.
+
+---

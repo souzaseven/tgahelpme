@@ -1,0 +1,34 @@
+Módulo do Sistema:
+FINANCEIRO
+---
+Objetivo
+Compensação de Cartão.
+---
+Passos para Solução.
+1. Abrir manutenção de extratos
+Acesse: Movimentos -> Extrato de Caixa -> Manutenção de Extratos.
+
+2. Filtrar o Caixa Cartão
+Em Conta/Caixa, selecione Caixa Cartão.
+Informe a Data Inicial e Final para localizar o cartão transferido.
+
+3. Selecionar o cartão
+Clique duas vezes no extrato OU selecione e clique em Compensar.
+
+4. Informar o destino
+Na tela de compensação:
+Data Compensação: data que o valor realmente caiu.
+Conta/Caixa Destino: selecione Caixa Cofre ou Conta Bancária onde o dinheiro caiu de verdade.
+
+5. Aplicar as taxas e valores
+Uma nova janelinha abrirá com taxa e valor líquido.
+Em Valor Recebido, informe o valor real depositado pela operadora.
+Clique em Aplicar -> OK.
+
+6. Finalizar
+Clique em Compensar para concluir.
+---
+Observações
+- A compensação deve ser feita somente quando o valor realmente cair na conta. Informe sempre o valor líquido recebido e a conta correta de destino.
+- Compensações feitas antes do recebimento real deixam o extrato incorreto.
+---

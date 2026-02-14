@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Conhecimento - Sistema ERP</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #1c2128;
+            --bg-card: #21262d;
+            --bg-hover: #30363d;
+            --accent-primary: #58a6ff;
+            --accent-secondary: #1f6feb;
+            --accent-success: #3fb950;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --border-color: #30363d;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-tertiary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-hover: #f6f8fa;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --text-muted: #6e7781;
+            --border-color: #d0d7de;
+            --shadow: 0 8px 24px rgba(31, 35, 40, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(22, 27, 34, 0.9);
+        }
+
+        .light-mode header {
+            background: rgba(246, 248, 250, 0.9);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+        }
+
+        .btn-icon {
+            padding: 10px;
+            aspect-ratio: 1;
+            transition: all 0.3s ease;
+        }
+
+        #reloadBtn {
+            transition: transform 0.3s ease;
+        }
+
+        main {
+            padding: 48px 0 80px;
+        }
+
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .search-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 24px 14px 48px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-size: 15px;
+            transition: all 0.15s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: var(--bg-secondary);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            padding: 9px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-chip:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .filter-chip.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+            background: var(--bg-card);
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+
+        .tab.active {
+            color: var(--text-primary);
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .manual-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .manual-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent-primary);
+        }
+
+        .manual-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        .manual-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .manual-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .manual-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .manual-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .manual-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .manual-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .icon-btn {
+            padding: 8px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+            font-size: 16px;
+        }
+
+        .icon-btn:hover {
+            background: var(--bg-hover);
+            color: var(--accent-primary);
+        }
+
+        .icon-btn.favorited {
+            color: #fbbf24;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            animation: modalSlideUp 0.25s ease;
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 28px 32px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-title-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .modal-title-section p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .modal-body {
+            padding: 32px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        .manual-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .manual-content h1,
+        .manual-content h2,
+        .manual-content h3 {
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .manual-content h2 {
+            font-size: 24px;
+        }
+
+        .manual-content h3 {
+            font-size: 19px;
+        }
+
+        .manual-content p {
+            margin-bottom: 16px;
+        }
+
+        .manual-content ul,
+        .manual-content ol {
+            margin-left: 28px;
+            margin-bottom: 16px;
+        }
+
+        .manual-content li {
+            margin-bottom: 8px;
+        }
+
+        .manual-content code {
+            background: var(--bg-tertiary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Courier New', monospace;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .manual-content strong {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .manual-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">📚</div>
+                    <div class="logo-text">
+                        <h1>Base de Conhecimento</h1>
+                        <p>Sistema ERP</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-icon" id="reloadBtn" title="Recarregar manuais">🔄</button>
+                    <button class="btn btn-icon" id="themeToggle" title="Alternar tema">🌓</button>
+                    <button class="btn btn-primary" onclick="window.location.href='manuais-admin.html'">
+                        ⚙️ Administração
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h2 class="page-title">Encontre o manual que você precisa</h2>
+                <p class="page-subtitle">Acesse tutoriais e documentações do sistema</p>
+            </div>
+
+            <div class="search-section">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput"
+                        placeholder="Pesquisar manuais por título, descrição ou conteúdo..."
+                    >
+                </div>
+                <div class="filters">
+                    <div class="filter-chip active" data-filter="todos">📋 Todos</div>
+                    <div class="filter-chip" data-filter="Financeiro">💰 Financeiro</div>
+                    <div class="filter-chip" data-filter="Estoque">📦 Estoque</div>
+                    <div class="filter-chip" data-filter="Vendas">🛒 Vendas</div>
+                    <div class="filter-chip" data-filter="Compras">🛍️ Compras</div>
+                    <div class="filter-chip" data-filter="Relatórios">📊 Relatórios</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="todos">Todos os Manuais</button>
+                <button class="tab" data-tab="favoritos">⭐ Favoritos</button>
+                <button class="tab" data-tab="recentes">🕒 Recentes</button>
+            </div>
+
+            <div class="manual-grid" id="manualGrid"></div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">📭</div>
+                <h3>Nenhum manual encontrado</h3>
+                <p>Tente ajustar os filtros ou termos de busca</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="manualModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-section">
+                    <h2 id="modalTitle">Título do Manual</h2>
+                    <p id="modalMeta">Módulo • Data</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="icon-btn" id="modalFavorite" title="Favoritar">⭐</button>
+                    <button class="icon-btn" id="modalDownload" title="Baixar">⬇️</button>
+                    <button class="icon-btn" id="modalCopy" title="Copiar">📋</button>
+                    <button class="icon-btn" id="modalPrint" title="Imprimir">🖨️</button>
+                    <button class="icon-btn" id="modalClose" title="Fechar">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="manual-content" id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carregar manuais do localStorage ou usar dados padrão
+        let manuais = JSON.parse(localStorage.getItem('manuais') || '[]');
+        
+        // Se não houver manuais, criar dados padrão
+        if (manuais.length === 0) {
+            manuais = [
+                {
+                    id: 1,
+                    titulo: "Como lançar uma nota fiscal",
+                    descricao: "Aprenda a cadastrar e lançar notas fiscais no sistema de forma rápida e eficiente",
+                    modulo: "Financeiro",
+                    conteudo: `
+                    <h2>Lançamento de Nota Fiscal</h2>
+                    <p>Este manual irá guiá-lo através do processo completo de lançamento de notas fiscais no sistema ERP.</p>
+                    
+                    <h3>Passo 1: Acessar o Módulo</h3>
+                    <p>Navegue até <strong>Financeiro → Notas Fiscais → Nova Nota</strong></p>
+                    
+                    <h3>Passo 2: Preencher Dados</h3>
+                    <ul>
+                        <li>Número da nota fiscal</li>
+                        <li>Data de emissão</li>
+                        <li>Fornecedor/Cliente</li>
+                        <li>Valor total</li>
+                        <li>Itens da nota</li>
+                    </ul>
+                    
+                    <h3>Passo 3: Validar e Salvar</h3>
+                    <p>Revise todos os dados inseridos e clique em <code>Salvar</code> para confirmar o lançamento.</p>
+                    
+                    <h3>Observações Importantes</h3>
+                    <p>⚠️ Certifique-se de que todos os campos obrigatórios estejam preenchidos antes de salvar.</p>
+                `,
+                    icone: "📄",
+                    data: "2024-01-15",
+                    visualizacoes: 245
+                },
+                {
+                    id: 2,
+                    titulo: "Controle de estoque - Entrada de produtos",
+                    descricao: "Procedimento para registrar entrada de mercadorias no estoque",
+                    modulo: "Estoque",
+                    conteudo: `
+                    <h2>Entrada de Produtos no Estoque</h2>
+                    <p>Guia completo para registrar a entrada de mercadorias no sistema.</p>
+                    
+                    <h3>Quando usar</h3>
+                    <p>Utilize este procedimento sempre que receber produtos de fornecedores ou transferências.</p>
+                    
+                    <h3>Passo a passo</h3>
+                    <ol>
+                        <li>Acesse <strong>Estoque → Movimentações → Nova Entrada</strong></li>
+                        <li>Selecione o tipo de entrada (compra, transferência, devolução)</li>
+                        <li>Informe o fornecedor ou origem</li>
+                        <li>Adicione os produtos e quantidades</li>
+                        <li>Confirme o lote e validade (se aplicável)</li>
+                        <li>Salve a movimentação</li>
+                    </ol>
+                    
+                    <h3>Dicas importantes</h3>
+                    <p>💡 Sempre confira a quantidade física antes de confirmar no sistema.</p>
+                `,
+                    icone: "📦",
+                    data: "2024-01-20",
+                    visualizacoes: 189
+                },
+                {
+                    id: 3,
+                    titulo: "Configuração de plano de contas",
+                    descricao: "Como estruturar e configurar o plano de contas contábil",
+                    modulo: "Financeiro",
+                    conteudo: `
+                    <h2>Configuração do Plano de Contas</h2>
+                    <p>Tutorial para configurar corretamente o plano de contas no sistema.</p>
+                    
+                    <h3>Estrutura do Plano</h3>
+                    <p>O plano de contas é organizado em níveis hierárquicos:</p>
+                    <ul>
+                        <li>Nível 1: Grupo (Ativo, Passivo, Receitas, Despesas)</li>
+                        <li>Nível 2: Subgrupo</li>
+                        <li>Nível 3: Conta analítica</li>
+                    </ul>
+                    
+                    <h3>Como criar uma nova conta</h3>
+                    <ol>
+                        <li>Vá em <strong>Configurações → Plano de Contas</strong></li>
+                        <li>Clique em "Nova Conta"</li>
+                        <li>Defina o código e descrição</li>
+                        <li>Selecione a conta superior (pai)</li>
+                        <li>Marque se é analítica ou sintética</li>
+                        <li>Salve as configurações</li>
+                    </ol>
+                `,
+                    icone: "💼",
+                    data: "2024-02-01",
+                    visualizacoes: 156
+                },
+                {
+                    id: 4,
+                    titulo: "Inventário de estoque",
+                    descricao: "Procedimento para realizar contagem e ajuste de inventário",
+                    modulo: "Estoque",
+                    conteudo: `
+                    <h2>Inventário de Estoque</h2>
+                    <p>Guia para realizar inventário e ajustes de estoque.</p>
+                    
+                    <h3>Preparação</h3>
+                    <p>Antes de iniciar o inventário:</p>
+                    <ul>
+                        <li>Organize o estoque fisicamente</li>
+                        <li>Imprima a lista de produtos</li>
+                        <li>Separe equipes para contagem</li>
+                    </ul>
+                    
+                    <h3>Processo de Contagem</h3>
+                    <ol>
+                        <li>Acesse <strong>Estoque → Inventário → Novo</strong></li>
+                        <li>Selecione a data do inventário</li>
+                        <li>Escolha os produtos ou categorias</li>
+                        <li>Insira as quantidades contadas</li>
+                        <li>O sistema calculará automaticamente as diferenças</li>
+                        <li>Revise e confirme os ajustes</li>
+                    </ol>
+                    
+                    <h3>Ajustes</h3>
+                    <p>As diferenças encontradas gerarão movimentações de ajuste automaticamente.</p>
+                `,
+                    icone: "📋",
+                    data: "2024-02-05",
+                    visualizacoes: 203
+                },
+                {
+                    id: 5,
+                    titulo: "Geração de relatórios financeiros",
+                    descricao: "Como gerar e exportar relatórios do módulo financeiro",
+                    modulo: "Relatórios",
+                    conteudo: `
+                    <h2>Relatórios Financeiros</h2>
+                    <p>Tutorial para gerar relatórios financeiros no sistema.</p>
+                    
+                    <h3>Tipos de Relatórios</h3>
+                    <ul>
+                        <li>DRE (Demonstração do Resultado)</li>
+                        <li>Fluxo de Caixa</li>
+                        <li>Contas a Pagar/Receber</li>
+                        <li>Balancete</li>
+                    </ul>
+                    
+                    <h3>Como gerar</h3>
+                    <ol>
+                        <li>Navegue até <strong>Relatórios → Financeiro</strong></li>
+                        <li>Selecione o tipo de relatório</li>
+                        <li>Defina o período (data inicial e final)</li>
+                        <li>Aplique filtros adicionais se necessário</li>
+                        <li>Clique em "Gerar"</li>
+                    </ol>
+                    
+                    <h3>Exportação</h3>
+                    <p>Os relatórios podem ser exportados em: <code>PDF</code>, <code>Excel</code> ou <code>CSV</code></p>
+                `,
+                    icone: "📊",
+                    data: "2024-02-10",
+                    visualizacoes: 178
+                },
+                {
+                    id: 6,
+                    titulo: "Cadastro de fornecedores",
+                    descricao: "Passo a passo para cadastrar novos fornecedores no sistema",
+                    modulo: "Compras",
+                    conteudo: `
+                    <h2>Cadastro de Fornecedores</h2>
+                    <p>Aprenda a cadastrar fornecedores de forma completa e organizada.</p>
+                    
+                    <h3>Informações Necessárias</h3>
+                    <ul>
+                        <li>Razão Social e Nome Fantasia</li>
+                        <li>CNPJ/CPF</li>
+                        <li>Inscrição Estadual</li>
+                        <li>Endereço completo</li>
+                        <li>Dados de contato (telefone, e-mail)</li>
+                        <li>Dados bancários</li>
+                    </ul>
+                    
+                    <h3>Procedimento</h3>
+                    <ol>
+                        <li>Acesse <strong>Cadastros → Fornecedores → Novo</strong></li>
+                        <li>Preencha a aba "Dados Gerais"</li>
+                        <li>Complete a aba "Endereço"</li>
+                        <li>Adicione contatos na aba "Contatos"</li>
+                        <li>Insira dados bancários na aba "Financeiro"</li>
+                        <li>Salve o cadastro</li>
+                    </ol>
+                `,
+                    icone: "🏢",
+                    data: "2024-02-12",
+                    visualizacoes: 134
+                }
+            ];
+            // Salvar dados padrão
+            localStorage.setItem('manuais', JSON.stringify(manuais));
+        }
+
+        let favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
+        let recentes = JSON.parse(localStorage.getItem('recentes') || '[]');
+        let filtroAtual = 'todos';
+        let tabAtual = 'todos';
+        let buscaAtual = '';
+        let manualAtual = null;
+
+        // Recarregar manuais do localStorage quando a página ganhar foco
+        window.addEventListener('focus', function() {
+            manuais = JSON.parse(localStorage.getItem('manuais') || '[]');
+            renderManuais();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderManuais();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('reloadBtn').addEventListener('click', function() {
+                manuais = JSON.parse(localStorage.getItem('manuais') || '[]');
+                renderManuais();
+                // Feedback visual
+                this.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+            
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                buscaAtual = e.target.value.toLowerCase();
+                renderManuais();
+            });
+
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    filtroAtual = this.dataset.filter;
+                    renderManuais();
+                });
+            });
+
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    tabAtual = this.dataset.tab;
+                    renderManuais();
+                });
+            });
+
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('manualModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            document.getElementById('modalFavorite').addEventListener('click', toggleFavoriteModal);
+            document.getElementById('modalDownload').addEventListener('click', downloadManual);
+            document.getElementById('modalCopy').addEventListener('click', copyManual);
+            document.getElementById('modalPrint').addEventListener('click', printManual);
+        }
+
+        function renderManuais() {
+            let manuaisFiltrados = manuais;
+
+            if (filtroAtual !== 'todos') {
+                manuaisFiltrados = manuaisFiltrados.filter(m => m.modulo === filtroAtual);
+            }
+
+            if (tabAtual === 'favoritos') {
+                manuaisFiltrados = manuaisFiltrados.filter(m => favoritos.includes(m.id));
+            } else if (tabAtual === 'recentes') {
+                manuaisFiltrados = manuaisFiltrados.filter(m => recentes.includes(m.id));
+            }
+
+            if (buscaAtual) {
+                manuaisFiltrados = manuaisFiltrados.filter(m => 
+                    m.titulo.toLowerCase().includes(buscaAtual) ||
+                    m.descricao.toLowerCase().includes(buscaAtual) ||
+                    m.conteudo.toLowerCase().includes(buscaAtual)
+                );
+            }
+
+            const grid = document.getElementById('manualGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            if (manuaisFiltrados.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+            } else {
+                grid.style.display = 'grid';
+                emptyState.style.display = 'none';
+                grid.innerHTML = manuaisFiltrados.map(manual => createManualCard(manual)).join('');
+            }
+        }
+
+        function createManualCard(manual) {
+            const isFavorito = favoritos.includes(manual.id);
+            return `
+                <div class="manual-card" onclick="openManual(${manual.id})">
+                    <div class="manual-icon">${manual.icone}</div>
+                    <h3 class="manual-title">${manual.titulo}</h3>
+                    <p class="manual-description">${manual.descricao}</p>
+                    <div class="manual-footer">
+                        <div class="manual-meta">
+                            <span>📁 ${manual.modulo}</span>
+                            <span>👁️ ${manual.visualizacoes}</span>
+                        </div>
+                        <div class="manual-actions">
+                            <button class="icon-btn ${isFavorito ? 'favorited' : ''}" onclick="event.stopPropagation(); toggleFavorite(${manual.id})" title="Favoritar">
+                                ⭐
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function openManual(id) {
+            const manual = manuais.find(m => m.id === id);
+            if (!manual) return;
+
+            manualAtual = manual;
+
+            if (!recentes.includes(id)) {
+                recentes.unshift(id);
+                if (recentes.length > 10) recentes.pop();
+                localStorage.setItem('recentes', JSON.stringify(recentes));
+            }
+
+            manual.visualizacoes++;
+            
+            // Salvar visualizações no localStorage
+            localStorage.setItem('manuais', JSON.stringify(manuais));
+
+            document.getElementById('modalTitle').textContent = manual.titulo;
+            document.getElementById('modalMeta').textContent = `${manual.modulo} • ${manual.data}`;
+            document.getElementById('modalContent').innerHTML = manual.conteudo;
+            
+            const favBtn = document.getElementById('modalFavorite');
+            if (favoritos.includes(id)) {
+                favBtn.classList.add('favorited');
+            } else {
+                favBtn.classList.remove('favorited');
+            }
+
+            document.getElementById('manualModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('manualModal').classList.remove('active');
+            manualAtual = null;
+        }
+
+        function toggleFavorite(id) {
+            const index = favoritos.indexOf(id);
+            if (index > -1) {
+                favoritos.splice(index, 1);
+            } else {
+                favoritos.push(id);
+            }
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            renderManuais();
+        }
+
+        function toggleFavoriteModal() {
+            if (!manualAtual) return;
+            toggleFavorite(manualAtual.id);
+            const favBtn = document.getElementById('modalFavorite');
+            if (favoritos.includes(manualAtual.id)) {
+                favBtn.classList.add('favorited');
+            } else {
+                favBtn.classList.remove('favorited');
+            }
+        }
+
+        function downloadManual() {
+            if (!manualAtual) return;
+            const blob = new Blob([manualAtual.conteudo.replace(/<[^>]*>/g, '')], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${manualAtual.titulo}.txt`;
+            a.click();
+        }
+
+        function copyManual() {
+            if (!manualAtual) return;
+            const texto = manualAtual.conteudo.replace(/<[^>]*>/g, '');
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('Manual copiado para a área de transferência!');
+            });
+        }
+
+        function printManual() {
+            if (!manualAtual) return;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<html><head><title>' + manualAtual.titulo + '</title>');
+            printWindow.document.write('<style>body{font-family:Arial;padding:20px;} h2,h3{color:#00e5ff;}</style>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write('<h1>' + manualAtual.titulo + '</h1>');
+            printWindow.document.write(manualAtual.conteudo);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        }
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
+</body>
+</html>

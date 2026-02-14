@@ -1,0 +1,29 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+BAIXAR BOLETOS NA TELA DE RETORNO – **BOLETO API**
+--------------------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o menu **Movimentos → Integração Bancária → Retorno - Cobrança Eletrônica**.
+2. Será exibida a **tela de Retorno de Cobrança Eletrônica**.
+3. Selecione o **Portador** configurado para utilização da **API de Cobrança**.
+4. Informe as **datas** ou outros parâmetros necessários para consulta.
+5. Clique em **Processar** para que o sistema exiba os **boletos com títulos em aberto**.
+6. Após o processamento, **clique duas vezes** sobre os boletos que deseja **baixar**.
+7. O sistema exibirá a mensagem: **“Baixas processadas com sucesso.”**
+
+---
+
+**Observações**
+
+* A baixa automática via **Boleto API** atualiza os títulos no sistema conforme o retorno bancário.
+* Certifique-se de selecionar o **portador correto** e de que a **integração com a API de Cobrança** esteja devidamente configurada.
+* Após a baixa, recomenda-se verificar os títulos quitados na **tela de Manutenção de Lançamentos** para conferência.
+
+---

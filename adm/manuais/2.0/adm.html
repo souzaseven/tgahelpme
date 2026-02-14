@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Manuais - Sistema ERP</title>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #12151f;
+            --bg-tertiary: #1a1f2e;
+            --bg-card: #1e2433;
+            --bg-hover: #252b3d;
+            --accent-primary: #00e5ff;
+            --accent-secondary: #6366f1;
+            --accent-success: #10b981;
+            --accent-danger: #ef4444;
+            --text-primary: #e4e7eb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border-color: #2d3348;
+        }
+
+        .light-mode {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-hover: #f3f4f6;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .btn:hover {
+            background: var(--bg-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--accent-success);
+            border: none;
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--accent-danger);
+            border: none;
+            color: white;
+        }
+
+        .btn-icon {
+            padding: 10px;
+            aspect-ratio: 1;
+        }
+
+        main {
+            padding: 32px 0 80px;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .sidebar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .folder-tree {
+            list-style: none;
+        }
+
+        .folder-item {
+            margin-bottom: 4px;
+        }
+
+        .folder-label {
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            color: var(--text-primary);
+        }
+
+        .folder-label:hover {
+            background: var(--bg-hover);
+        }
+
+        .folder-label.active {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(99, 102, 241, 0.1));
+            color: var(--accent-primary);
+        }
+
+        .main-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .editor-container {
+            display: none;
+        }
+
+        .editor-container.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 400px;
+            font-family: 'Courier New', monospace;
+            resize: vertical;
+        }
+
+        select.form-input {
+            cursor: pointer;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-btn {
+            padding: 8px 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-primary);
+        }
+
+        .toolbar-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .manual-list {
+            list-style: none;
+        }
+
+        .manual-list-item {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            background: var(--bg-tertiary);
+        }
+
+        .manual-list-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(4px);
+        }
+
+        .manual-info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .manual-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .manual-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            padding: 8px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 16px;
+        }
+
+        .icon-btn:hover {
+            background: var(--bg-hover);
+            color: var(--accent-primary);
+        }
+
+        .icon-btn.danger:hover {
+            color: var(--accent-danger);
+        }
+
+        .preview-container {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin-top: 20px;
+        }
+
+        .preview-container h2,
+        .preview-container h3 {
+            color: var(--accent-primary);
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .preview-container p {
+            margin-bottom: 12px;
+        }
+
+        .preview-container ul,
+        .preview-container ol {
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            padding: 24px;
+            animation: modalSlideUp 0.3s ease;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--bg-tertiary);
+        }
+
+        .file-upload:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-hover);
+        }
+
+        .file-upload-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">⚙️</div>
+                    <div class="logo-text">
+                        <h1>Administração de Manuais</h1>
+                        <p>Gerenciar base de conhecimento</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-icon" id="themeToggle" title="Alternar tema">🌓</button>
+                    <button class="btn" onclick="window.location.href='manuais-consulta.html'">
+                        👁️ Ver Página de Consulta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalManuaisAdmin">0</div>
+                    <div class="stat-label">Total de Manuais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalViewsAdmin">0</div>
+                    <div class="stat-label">Visualizações Totais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPastas">6</div>
+                    <div class="stat-label">Pastas Criadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="ultimaAtualizacao">-</div>
+                    <div class="stat-label">Última Atualização</div>
+                </div>
+            </div>
+
+            <div class="admin-layout">
+                <aside class="sidebar">
+                    <div class="sidebar-title">Organização</div>
+                    <ul class="folder-tree" id="folderTree">
+                        <li class="folder-item">
+                            <div class="folder-label active" data-folder="todos">
+                                📋 Todos os Manuais
+                            </div>
+                        </li>
+                        <li class="folder-item">
+                            <div class="folder-label" data-folder="Financeiro">
+                                💰 Financeiro
+                            </div>
+                        </li>
+                        <li class="folder-item">
+                            <div class="folder-label" data-folder="Estoque">
+                                📦 Estoque
+                            </div>
+                        </li>
+                        <li class="folder-item">
+                            <div class="folder-label" data-folder="Vendas">
+                                🛒 Vendas
+                            </div>
+                        </li>
+                        <li class="folder-item">
+                            <div class="folder-label" data-folder="Compras">
+                                🛍️ Compras
+                            </div>
+                        </li>
+                        <li class="folder-item">
+                            <div class="folder-label" data-folder="Relatórios">
+                                📊 Relatórios
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success" style="width: 100%; margin-top: 16px;" id="novaPastaBtn">
+                        ➕ Nova Pasta
+                    </button>
+                </aside>
+
+                <div class="main-content">
+                    <div id="listView">
+                        <div class="content-header">
+                            <h2>Manuais</h2>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-primary" id="novoManualBtn">
+                                    ➕ Novo Manual
+                                </button>
+                                <button class="btn" id="importarBtn">
+                                    📤 Importar .txt
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="manual-list" id="manualListAdmin"></ul>
+                    </div>
+
+                    <div id="editorView" class="editor-container">
+                        <div class="content-header">
+                            <h2 id="editorTitle">Novo Manual</h2>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn" id="previewBtn">👁️ Pré-visualizar</button>
+                                <button class="btn btn-success" id="salvarBtn">💾 Salvar</button>
+                                <button class="btn btn-danger" id="cancelarBtn">✕ Cancelar</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Título do Manual</label>
+                            <input type="text" class="form-input" id="tituloInput" placeholder="Ex: Como lançar uma nota fiscal">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Descrição Breve</label>
+                            <input type="text" class="form-input" id="descricaoInput" placeholder="Resumo do que o manual ensina">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Módulo</label>
+                            <select class="form-input" id="moduloSelect">
+                                <option value="Financeiro">💰 Financeiro</option>
+                                <option value="Estoque">📦 Estoque</option>
+                                <option value="Vendas">🛒 Vendas</option>
+                                <option value="Compras">🛍️ Compras</option>
+                                <option value="Relatórios">📊 Relatórios</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ícone (Emoji)</label>
+                            <input type="text" class="form-input" id="iconeInput" placeholder="📄" maxlength="2">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Conteúdo (HTML)</label>
+                            <div class="toolbar">
+                                <button class="toolbar-btn" onclick="insertText('<h2>', '</h2>')">H2</button>
+                                <button class="toolbar-btn" onclick="insertText('<h3>', '</h3>')">H3</button>
+                                <button class="toolbar-btn" onclick="insertText('<p>', '</p>')">P</button>
+                                <button class="toolbar-btn" onclick="insertText('<strong>', '</strong>')">Negrito</button>
+                                <button class="toolbar-btn" onclick="insertText('<ul>\n<li>', '</li>\n</ul>')">Lista</button>
+                                <button class="toolbar-btn" onclick="insertText('<ol>\n<li>', '</li>\n</ol>')">Lista Num.</button>
+                                <button class="toolbar-btn" onclick="insertText('<code>', '</code>')">Código</button>
+                            </div>
+                            <textarea class="form-input" id="conteudoInput" placeholder="Digite o conteúdo do manual em HTML..."></textarea>
+                        </div>
+
+                        <div id="previewContainer" class="preview-container" style="display: none;">
+                            <h3>Pré-visualização</h3>
+                            <div id="previewContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="novaPastaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Nova Pasta</h3>
+                <button class="icon-btn" onclick="closeModal('novaPastaModal')">✕</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nome da Pasta</label>
+                <input type="text" class="form-input" id="nomePastaInput" placeholder="Ex: RH">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Ícone (emoji)</label>
+                <input type="text" class="form-input" id="iconePastaInput" placeholder="👥" maxlength="2">
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('novaPastaModal')">Cancelar</button>
+                <button class="btn btn-primary" id="criarPastaBtn">Criar Pasta</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="importarModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Importar Arquivo .txt</h3>
+                <button class="icon-btn" onclick="closeModal('importarModal')">✕</button>
+            </div>
+            <input type="file" id="fileInput" accept=".txt" style="display: none;">
+            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                <div class="file-upload-icon">📄</div>
+                <p>Clique para selecionar um arquivo .txt</p>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">O conteúdo será importado como texto puro</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('importarModal')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let manuais = JSON.parse(localStorage.getItem('manuais') || '[]');
+        if (manuais.length === 0) {
+            manuais = [
+                {
+                    id: 1,
+                    titulo: "Como lançar uma nota fiscal",
+                    descricao: "Aprenda a cadastrar e lançar notas fiscais no sistema de forma rápida e eficiente",
+                    modulo: "Financeiro",
+                    conteudo: `<h2>Lançamento de Nota Fiscal</h2>
+<p>Este manual irá guiá-lo através do processo completo de lançamento de notas fiscais no sistema ERP.</p>
+
+<h3>Passo 1: Acessar o Módulo</h3>
+<p>Navegue até <strong>Financeiro → Notas Fiscais → Nova Nota</strong></p>
+
+<h3>Passo 2: Preencher Dados</h3>
+<ul>
+<li>Número da nota fiscal</li>
+<li>Data de emissão</li>
+<li>Fornecedor/Cliente</li>
+<li>Valor total</li>
+</ul>`,
+                    icone: "📄",
+                    data: new Date().toISOString().split('T')[0],
+                    visualizacoes: 0
+                }
+            ];
+            localStorage.setItem('manuais', JSON.stringify(manuais));
+        }
+
+        let pastas = JSON.parse(localStorage.getItem('pastas') || '[]');
+        let pastaAtual = 'todos';
+        let manualEditando = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderManuaisAdmin();
+            renderPastas();
+            updateStatsAdmin();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('novoManualBtn').addEventListener('click', showEditor);
+            document.getElementById('importarBtn').addEventListener('click', () => openModal('importarModal'));
+            document.getElementById('novaPastaBtn').addEventListener('click', () => openModal('novaPastaModal'));
+            document.getElementById('criarPastaBtn').addEventListener('click', criarPasta);
+            document.getElementById('salvarBtn').addEventListener('click', salvarManual);
+            document.getElementById('cancelarBtn').addEventListener('click', hideEditor);
+            document.getElementById('previewBtn').addEventListener('click', togglePreview);
+
+            document.getElementById('fileInput').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('conteudoInput').value = event.target.result;
+                        closeModal('importarModal');
+                        alert('Arquivo importado com sucesso!');
+                    };
+                    reader.readAsText(file);
+                }
+            });
+
+            document.querySelectorAll('.folder-label').forEach(label => {
+                label.addEventListener('click', function() {
+                    document.querySelectorAll('.folder-label').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    pastaAtual = this.dataset.folder;
+                    renderManuaisAdmin();
+                });
+            });
+        }
+
+        function renderManuaisAdmin() {
+            let manuaisFiltrados = manuais;
+            if (pastaAtual !== 'todos') {
+                manuaisFiltrados = manuais.filter(m => m.modulo === pastaAtual);
+            }
+
+            const list = document.getElementById('manualListAdmin');
+            if (manuaisFiltrados.length === 0) {
+                list.innerHTML = '<li style="text-align: center; padding: 40px; color: var(--text-secondary);">Nenhum manual nesta pasta</li>';
+                return;
+            }
+
+            list.innerHTML = manuaisFiltrados.map(manual => `
+                <li class="manual-list-item">
+                    <div class="manual-info">
+                        <h4>${manual.icone} ${manual.titulo}</h4>
+                        <p>${manual.modulo} • ${manual.data} • ${manual.visualizacoes} visualizações</p>
+                    </div>
+                    <div class="manual-actions">
+                        <button class="icon-btn" onclick="editarManual(${manual.id})" title="Editar">✏️</button>
+                        <button class="icon-btn danger" onclick="confirmarExcluir(${manual.id})" title="Excluir">🗑️</button>
+                    </div>
+                </li>
+            `).join('');
+        }
+
+        function renderPastas() {
+            const tree = document.getElementById('folderTree');
+            pastas.forEach(pasta => {
+                const li = document.createElement('li');
+                li.className = 'folder-item';
+                li.innerHTML = `
+                    <div class="folder-label" data-folder="${pasta.nome}">
+                        ${pasta.icone} ${pasta.nome}
+                    </div>
+                `;
+                tree.appendChild(li);
+
+                li.querySelector('.folder-label').addEventListener('click', function() {
+                    document.querySelectorAll('.folder-label').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    pastaAtual = pasta.nome;
+                    renderManuaisAdmin();
+                });
+            });
+        }
+
+        function updateStatsAdmin() {
+            document.getElementById('totalManuaisAdmin').textContent = manuais.length;
+            document.getElementById('totalViewsAdmin').textContent = manuais.reduce((sum, m) => sum + m.visualizacoes, 0);
+            document.getElementById('totalPastas').textContent = pastas.length + 6;
+            
+            const ultimaData = manuais.length > 0 ? manuais[manuais.length - 1].data : '-';
+            document.getElementById('ultimaAtualizacao').textContent = ultimaData;
+        }
+
+        function showEditor(manual = null) {
+            document.getElementById('listView').style.display = 'none';
+            document.getElementById('editorView').classList.add('active');
+
+            if (manual) {
+                manualEditando = manual;
+                document.getElementById('editorTitle').textContent = 'Editar Manual';
+                document.getElementById('tituloInput').value = manual.titulo;
+                document.getElementById('descricaoInput').value = manual.descricao;
+                document.getElementById('moduloSelect').value = manual.modulo;
+                document.getElementById('iconeInput').value = manual.icone;
+                document.getElementById('conteudoInput').value = manual.conteudo;
+            } else {
+                manualEditando = null;
+                document.getElementById('editorTitle').textContent = 'Novo Manual';
+                document.getElementById('tituloInput').value = '';
+                document.getElementById('descricaoInput').value = '';
+                document.getElementById('moduloSelect').value = 'Financeiro';
+                document.getElementById('iconeInput').value = '📄';
+                document.getElementById('conteudoInput').value = '';
+            }
+            document.getElementById('previewContainer').style.display = 'none';
+        }
+
+        function hideEditor() {
+            document.getElementById('editorView').classList.remove('active');
+            document.getElementById('listView').style.display = 'block';
+            manualEditando = null;
+        }
+
+        function editarManual(id) {
+            const manual = manuais.find(m => m.id === id);
+            if (manual) showEditor(manual);
+        }
+
+        function salvarManual() {
+            const titulo = document.getElementById('tituloInput').value;
+            const descricao = document.getElementById('descricaoInput').value;
+            const modulo = document.getElementById('moduloSelect').value;
+            const icone = document.getElementById('iconeInput').value;
+            const conteudo = document.getElementById('conteudoInput').value;
+
+            if (!titulo || !descricao || !conteudo) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            if (manualEditando) {
+                const index = manuais.findIndex(m => m.id === manualEditando.id);
+                manuais[index] = {
+                    ...manualEditando,
+                    titulo,
+                    descricao,
+                    modulo,
+                    icone,
+                    conteudo,
+                    data: new Date().toISOString().split('T')[0]
+                };
+            } else {
+                const novoManual = {
+                    id: Date.now(),
+                    titulo,
+                    descricao,
+                    modulo,
+                    icone,
+                    conteudo,
+                    data: new Date().toISOString().split('T')[0],
+                    visualizacoes: 0
+                };
+                manuais.push(novoManual);
+            }
+
+            localStorage.setItem('manuais', JSON.stringify(manuais));
+            hideEditor();
+            renderManuaisAdmin();
+            updateStatsAdmin();
+            alert('Manual salvo com sucesso!');
+        }
+
+        function confirmarExcluir(id) {
+            if (confirm('Tem certeza que deseja excluir este manual?')) {
+                manuais = manuais.filter(m => m.id !== id);
+                localStorage.setItem('manuais', JSON.stringify(manuais));
+                renderManuaisAdmin();
+                updateStatsAdmin();
+            }
+        }
+
+        function togglePreview() {
+            const preview = document.getElementById('previewContainer');
+            const conteudo = document.getElementById('conteudoInput').value;
+            
+            if (preview.style.display === 'none') {
+                document.getElementById('previewContent').innerHTML = conteudo;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        function insertText(before, after) {
+            const textarea = document.getElementById('conteudoInput');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            const selectedText = text.substring(start, end);
+            
+            textarea.value = text.substring(0, start) + before + selectedText + after + text.substring(end);
+            textarea.focus();
+            textarea.selectionStart = start + before.length;
+            textarea.selectionEnd = start + before.length + selectedText.length;
+        }
+
+        function criarPasta() {
+            const nome = document.getElementById('nomePastaInput').value;
+            const icone = document.getElementById('iconePastaInput').value;
+
+            if (!nome) {
+                alert('Digite um nome para a pasta!');
+                return;
+            }
+
+            pastas.push({ nome, icone: icone || '📁' });
+            localStorage.setItem('pastas', JSON.stringify(pastas));
+            
+            closeModal('novaPastaModal');
+            location.reload();
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        }
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
+</body>
+</html>

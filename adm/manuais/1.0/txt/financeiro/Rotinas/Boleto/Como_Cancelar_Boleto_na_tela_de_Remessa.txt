@@ -1,0 +1,29 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+CANCELAR BOLETO VIA API DE COBRANÇA
+-----------------------------------
+
+**Passos para Solução**
+
+1. Acesse o menu **Movimentos → Integração Bancária → Remessa - Cobrança Eletrônica**.
+2. Selecione o **Portador** configurado para utilização da **API de Cobrança**.
+3. Informe a **Data de Emissão** ou **Data de Vencimento** dos boletos que deseja consultar.
+4. No campo **Tipo de Ocorrência**, altere para **Baixar**.
+5. Clique em **Filtrar** para que o sistema exiba os **boletos gerados via API**.
+6. Marque os boletos que deseja **cancelar**.
+7. Clique em **Enviar** ou **Gerar** (o nome do botão pode variar conforme a versão do sistema).
+8. Os boletos selecionados serão processados e **cancelados automaticamente**.
+
+---
+
+**Observações**
+
+* Após o envio, verifique na **tela de Manutenção de Boletos** se o cancelamento foi realizado corretamente.
+* É possível também confirmar o cancelamento diretamente no **aplicativo ou portal do banco** vinculado à cobrança.
+
+---

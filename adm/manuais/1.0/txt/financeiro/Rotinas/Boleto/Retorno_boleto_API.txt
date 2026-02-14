@@ -1,0 +1,40 @@
+---
+
+**Módulo do Sistema:**
+FINANCEIRO
+----------
+
+**Objetivo**
+PROCESSAR RETORNO DE BOLETOS VIA API
+------------------------------------
+
+**Passos para Solução**
+
+1. Acesse o menu **Movimentos**.
+2. Clique em **Integração Bancária**.
+3. Selecione **Retorno - Cobrança Eletrônica**.
+4. No campo **Portador**, informe o portador dos boletos que deseja processar.
+5. Defina o filtro de data desejado — por **Data de Emissão** ou **Data de Vencimento**.
+6. Informe a **Data Inicial** e a **Data Final** para a consulta.
+7. No campo **Consulta**:
+
+   * Se o portador for **Banco do Brasil**, selecione a opção **Lista**.
+   * Para outros bancos, selecione a opção **Detalhado**.
+8. No campo **Ocorrência**, escolha a opção desejada:
+
+   * **Pode Baixar:** para buscar boletos **pagos**.
+   * **Não Pode Baixar:** para listar boletos **em aberto**.
+   * **Todos:** para exibir **todas as situações**.
+9. Selecione a **Forma de Pagamento** correspondente.
+10. Escolha a **Conta/Caixa** para onde o valor será baixado.
+11. Clique em **Baixar** (localizado no canto inferior direito da tela) para processar os lançamentos.
+
+---
+
+**Observações**
+
+* **Não é necessário marcar manualmente** os boletos pagos: ao clicar em **Baixar**, o sistema processa **apenas os títulos realmente pagos**, mantendo os demais inalterados.
+* Caso o campo **Conta/Caixa** não seja preenchido, o valor será lançado automaticamente na **conta configurada no cadastro do portador**.
+* Essa rotina garante que os títulos sejam atualizados conforme o **retorno bancário da API**, mantendo o controle financeiro preciso e atualizado.
+
+---

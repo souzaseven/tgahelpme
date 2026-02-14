@@ -1,0 +1,22 @@
+Módulo do Sistema
+ESTOQUE
+---
+Objetivo
+ABERTURA DE CAIXA SESSÃO.
+---
+Passos para Solução
+    1. No menu principal, acesse a opção “Movimento” →  “Gerenciar Sessão de Caixa”.
+    2. Clique em “Abrir”.
+    3. Preencha os seguintes campos:
+        ◦ Conta/Caixa de Abertura → Insira ou confirme o caixa que será utilizado.
+        ◦ Operador → Insira ou confirme o Colaborador que vai usar o caixa.
+        ◦ Conta/Caixa Origem da Transferência → Insira ou confirme o caixa que será enviado os movimentos quando fechar o caixa.
+        ◦ # Caixa → preenchimento opcional, pode ser usado para controle interno.
+        ◦ Valor → informe o valor inicial em dinheiro disponível no caixa (troco/abertura).
+    4. Após preencher todos os dados, clique em “Abrir Sessão”.
+---
+Observações
+    • É fundamental que o valor informado seja exatamente o disponível no caixa físico no momento da abertura.
+    • Esse processo garante o controle de movimentações durante a sessão de vendas.
+    • Recomenda-se imprimir o extrato após a abertura para conferência.
+
