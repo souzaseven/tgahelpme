@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Devocionais</title>
+
+  <link rel="icon" href="https://github.com/souzaseven/tgahelpme/blob/Desafios/iniciododia/Devocional/biblia%20fundo%20redond.jpg?raw=true" type="image/x-icon">
+
+  <!--souza system-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+  <!--meajudatga-->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7ZNTJSRYR');
+  </script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <main class="main-content">
+      <article>
+        <header class="header">
+          <h1>📖 Devocionais Semanais</h1>
+          <div class="actions">
+            <input type="text" id="searchInput" placeholder="Buscar por tema, texto ou data..." aria-label="Buscar devocionais" class="hidden">
+            <button id="newDevocionalBtn" aria-label="Adicionar novo devocional">
+              <span class="material-icons">add</span>
+              <span>Novo Devocional</span>
+            </button>
+            <button id="toggleDarkMode" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+              <span class="material-icons">brightness_6</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="devocional-do-dia" id="devocionalDia" aria-live="polite">
+          <h2>Devocional da Semana</h2>
+          <div id="infoDevocional">Carregando devocional...</div>
+        </section>
+ 
+        <div class="devocional-painel">
+          <h3><i class="fas fa-book"></i> Devocionais</h3>
+          <div class="devocional-grid">
+            <div class="devocional-item">
+              <span class="devocional-rotulo">Anterior</span>
+              <span id="devocionalAnterior" class="devocional-valor">Carregando...</span>
+            </div>
+            <div class="devocional-item atual">
+              <span class="devocional-rotulo">Da Semana</span>
+              <span id="devocionalAtual" class="devocional-valor">Carregando...</span>
+            </div>
+            <div class="devocional-item">
+              <span class="devocional-rotulo">Próxima</span>
+              <span id="devocionalProximo" class="devocional-valor">Carregando...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ SEÇÃO DE HISTÓRICO MODIFICADA ============ -->
+<!-- Painel de Filtros -->
+<div class="filtros-historico">
+  <div class="filtros-row">
+    <div class="filtro-item">
+      <label for="filtroDataInicio">
+        <span class="material-icons">event</span>
+        Data Início
+      </label>
+      <input type="date" id="filtroDataInicio" class="filtro-input">
+    </div>
+
+    <div class="filtro-item">
+      <label for="filtroDataFim">
+        <span class="material-icons">event</span>
+        Data Fim
+      </label>
+      <input type="date" id="filtroDataFim" class="filtro-input">
+    </div>
+
+    <div class="filtro-item">
+      <label for="filtroBuscaTexto">
+        <span class="material-icons">search</span>
+        Buscar
+      </label>
+      <input type="text" id="filtroBuscaTexto" class="filtro-input" placeholder="Tema ou texto...">
+    </div>
+
+    <div class="filtro-item">
+      <label for="filtroMinistrante">
+        <span class="material-icons">person</span>
+        Ministrante
+      </label>
+      <select id="filtroMinistrante" class="filtro-input">
+        <option value="">Todos</option>
+        <option value="Maicon">Maicon</option>
+        <option value="Daniel Feix">Daniel Feix</option>
+        <option value="Antônio">Antônio</option>
+        <option value="outros">Outros</option>
+      </select>
+    </div>
+
+    <div class="filtro-acoes">
+      <button id="btnLimparFiltros" class="btn-filtro btn-secondary">
+        <span class="material-icons">clear</span>
+        Limpar
+      </button>
+    </div>
+  </div>
+
+  <div class="filtros-info">
+    <span id="resultadosFiltro">Mostrando devocionais do mês atual</span>
+  </div>
+</div>
+
+          <!-- Container de Resultados -->
+          <div class="historico-container" role="list">
+            <!-- O conteúdo será inserido aqui pelo JavaScript -->
+          </div>
+
+          <!-- Paginação -->
+          <div class="paginacao-historico">
+            <div class="paginacao-info">
+              <span id="paginacaoTexto">Página 1 de 1</span>
+            </div>
+            <div class="paginacao-controles">
+              <button id="btnPaginaAnterior" class="btn-paginacao" disabled>
+                <span class="material-icons">chevron_left</span>
+              </button>
+              <div id="numeroPaginas" class="paginas-numeros">
+                <!-- Números serão inseridos aqui -->
+              </div>
+              <button id="btnPaginaProxima" class="btn-paginacao">
+                <span class="material-icons">chevron_right</span>
+              </button>
+            </div>
+            <div class="paginacao-tamanho">
+              <label for="itensPorPagina">Itens:</label>
+              <select id="itensPorPagina">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </div>
+        </section>
+        <!-- ============ FIM DA SEÇÃO MODIFICADA ============ -->
+
+      </article>
+    </main>
+  </div>
+
+  <!-- ============ MODAIS ORIGINAIS (SEM ALTERAÇÃO) ============ -->
+
+  <!-- Modal Novo/Editar Devocional -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-content expanded">
+      <div class="modal-header">
+        <h2 id="modal-titulo">Novo Devocional</h2>
+        <p class="modal-subtitle">Preencha as informações do devocional</p>
+      </div>
+
+      <div class="form-grid-expanded">
+        <!-- Linha 1: Data e Tema lado a lado -->
+        <div class="form-row">
+          <div class="form-group expanded">
+            <label for="inputData" class="form-label">
+              <span class="material-icons">calendar_today</span>
+              Data do Devocional
+              <span class="required">*</span>
+            </label>
+            <input type="date" id="inputData" class="form-control" required aria-label="Data do devocional">
+          </div>
+
+          <div class="form-group expanded">
+            <label for="inputTema" class="form-label">
+              <span class="material-icons">title</span>
+              Tema do Devocional
+              <span class="required">*</span>
+            </label>
+            <input type="text" id="inputTema" class="form-control" placeholder="Digite o tema do devocional" required aria-label="Tema do devocional">
+          </div>
+        </div>
+
+        <!-- Linha 2: Texto e Ministrado Por lado a lado -->
+        <div class="form-row">
+          <div class="form-group expanded full-height">
+            <label for="inputTexto" class="form-label">
+              <span class="material-icons">article</span>
+              Texto do Devocional
+            </label>
+            <textarea id="inputTexto" class="form-control full-height" placeholder="Digite o texto do devocional..." required aria-label="Texto do devocional" rows="8"></textarea>
+          </div>
+
+          <div class="form-group expanded full-height">
+            <label class="form-label">
+              <span class="material-icons">person</span>
+              Ministrado Por
+            </label>
+            <div class="radio-group full-height">
+              <div class="radio-options-grid">
+                <label class="radio-option">
+                  <input type="radio" name="ministradoPor" value="Maicon">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Maicon</span>
+                </label>
+                
+                <label class="radio-option">
+                  <input type="radio" name="ministradoPor" value="Daniel Feix">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Daniel Feix</span>
+                </label>
+                
+                <label class="radio-option">
+                  <input type="radio" name="ministradoPor" value="Antônio">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Antônio</span>
+                </label>
+                
+                <label class="radio-option">
+                  <input type="radio" name="ministradoPor" value="outro" id="radioOutro">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Outro</span>
+                </label>
+
+                <label class="radio-option">
+                  <input type="radio" name="ministradoPor" value="" id="radioVazio">
+                  <span class="radio-checkmark"></span>
+                  <span class="radio-label">Nenhum</span>
+                </label>
+              </div>
+              
+              <div class="outro-input-container">
+                <input type="text" id="inputMinistradoPor" class="form-control" placeholder="Digite o nome do ministrante..." disabled aria-label="Nome do ministrante personalizado">
+              </div>
+
+              <div class="ministrante-info">
+                <span class="material-icons">info</span>
+                <span>Se não souber quem ministrou, selecione "Nenhum"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelarBtn" class="btn btn-secondary" aria-label="Cancelar">
+          <span class="material-icons">close</span>
+          <span>Cancelar</span>
+        </button>
+        
+        <button id="salvarBtn" class="btn btn-primary" aria-label="Salvar devocional">
+          <span class="material-icons">check</span>
+          <span>Salvar Devocional</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para visualização do texto completo -->
+  <div id="modalTexto" class="modal hidden" role="dialog" aria-labelledby="modalTexto-titulo">
+    <div class="modal-content">
+      <h2 id="modalTexto-titulo">Texto Completo</h2>
+      <p id="modalTextoConteudo">Nenhum texto disponível.</p>
+      <div class="modal-actions">
+        <button id="fecharTextoBtn" class="fechar-texto-btn" aria-label="Fechar texto completo">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de login -->
+  <div id="loginModal" class="modal hidden" role="dialog" aria-labelledby="loginModal-titulo">
+    <div class="modal-content">
+      <h2 id="loginModal-titulo">Autenticação</h2>
+      <input type="text" id="usuarioLogin" name="usuarioLogin" autocomplete="off" aria-label="Usuário" placeholder="Usuário">
+      <input type="password" id="senhaLogin" placeholder="Senha" aria-label="Senha">
+      <div class="modal-actions">
+        <button id="confirmarLogin" aria-label="Confirmar login">Confirmar</button>
+        <button id="cancelarLoginBtn" aria-label="Cancelar login">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmação de exclusão -->
+  <div id="confirmarExclusaoModal" class="modal hidden" role="dialog" aria-labelledby="exclusaoModal-titulo">
+    <div class="modal-content">
+      <h2 id="exclusaoModal-titulo">Confirmar Exclusão</h2>
+      <p>Tem certeza que deseja excluir este devocional?</p>
+      <div class="modal-actions">
+        <button id="cancelarExclusaoBtn" aria-label="Cancelar exclusão">Cancelar</button>
+        <button id="confirmarExclusaoBtn" aria-label="Confirmar exclusão">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="contagem">
+    <div style="display: flex; justify-content: center; margin: 10px 0;">
+      <img alt="visitas" src="https://hits.sh/tgameajuda.com/devocionaisv6.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8542251167876044" data-ad-slot="7622049777"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
+        data-ad-format="fluid" data-ad-client="ca-pub-8542251167876044" data-ad-slot="3993704063"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-8542251167876044" data-ad-slot="1743677769"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-8542251167876044"
+        data-ad-slot="9430596092"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</body>
+</html>

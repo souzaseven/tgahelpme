@@ -1,0 +1,2108 @@
+:root {
+  --primary-color: #007ced;
+  --secondary-color: #3399ff;
+  --accent-color: #ffb400;
+  --danger-color: #e71d36;
+  --success-color: #2ec4b6;
+  --background-light: #f8f9fa;
+  --background-dark: #121212;
+  --text-light: #2b2d42;
+  --text-dark: #edf2f4;
+  --card-light: #ffffff;
+  --card-dark: #1e1e1e;
+  --border-light: #dee2e6;
+  --border-dark: #333;
+  --month-header-light: #e9ecef;
+  --month-header-dark: #2d2d2d;
+}
+
+/* ============ ESTILOS BASE ============ */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--background-light);
+  color: var(--text-light);
+  transition: all 0.4s ease;
+  margin: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+body.dark {
+  background: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* ============ LAYOUT PRINCIPAL ============ */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 40px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.main-content {
+  max-width: 1600px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+/* ============ CABEÇALHO ============ */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  background: var(--background-light);
+  padding: 15px 0;
+  z-index: 100;
+}
+
+body.dark .header {
+  background: var(--background-dark);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actions input {
+  padding: 10px 15px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  width: 280px;
+  font-size: 14px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+body.dark .actions input {
+  border-color: var(--border-dark);
+  background: #2d2d2d;
+  color: var(--text-dark);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.actions button {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.actions button:hover {
+  background: #3a5a8c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.actions button#toggleDarkMode {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--border-light);
+  box-shadow: none;
+}
+
+body.dark .actions button#toggleDarkMode {
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+/* ============ DEVOCIONAL DO DIA ============ */
+.devocional-do-dia {
+  background: var(--card-light);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+body.dark .devocional-do-dia {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#infoDevocional h3 {
+  font-size: 26px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+#infoDevocional p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+#infoDevocional p strong {
+  color: var(--accent-color);
+}
+/* ============ HISTÓRICO DE DEVOCIONAIS ============ */
+.historico-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Remove os estilos de grid que não são mais necessários */
+@media (min-width: 1400px) {
+  .historico-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1800px) {
+  .historico-container {
+    width: 100%;
+  }
+}
+
+/* Mantém estilos de month-section para compatibilidade com código antigo */
+.month-section {
+  background: var(--card-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+body.dark .month-section {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.month-header {
+  background: var(--month-header-light);
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.dark .month-header {
+  background: var(--month-header-dark);
+}
+
+.month-content {
+  padding: 0;
+}
+
+.month-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.month-list li {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  border-bottom: 1px solid var(--border-light);
+}
+
+body.dark .month-list li {
+  border-bottom-color: var(--border-dark);
+}
+
+.month-list li:last-child {
+  border-bottom: none;
+}
+
+.month-list li:hover {
+  background: rgba(74, 111, 165, 0.05);
+}
+
+body.dark .month-list li:hover {
+  background: rgba(74, 111, 165, 0.1);
+}
+
+.devocional-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.devocional-date {
+  font-size: 13px;
+  color: var(--secondary-color);
+  margin-bottom: 5px;
+}
+
+body.dark .devocional-date {
+  color: #8fb3d9;
+}
+
+.devocional-tema {
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.devocional-texto-preview {
+  font-size: 14px;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
+
+body.dark .devocional-texto-preview {
+  color: #aaa;
+}
+
+/* ============ BOTÕES DE AÇÃO (mantidos para compatibilidade) ============ */
+.botoes-acao {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.botoes-acao button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ver-texto-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ver-texto-btn:hover {
+  background-color: #1a7acc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.edit-btn {
+  background-color: var(--accent-color);
+  color: #333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.edit-btn:hover {
+  background-color: #e6a200;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ============ PAINEL DEVOCIONAL ============ */
+.devocional-painel {
+  background-color: var(--card-light);
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 3px solid var(--primary-color);
+  margin-bottom: 18px;
+}
+
+body.dark .devocional-painel {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.devocional-painel h3 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.devocional-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.devocional-item {
+  flex: 1 1 30%;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+body.dark .devocional-item {
+  border-color: var(--border-dark);
+}
+
+.devocional-item:hover {
+  background-color: var(--hover-color, rgba(0, 123, 255, 0.05));
+}
+
+.devocional-rotulo {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--secondary-color);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.devocional-valor {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+body.dark .devocional-valor {
+  color: var(--text-dark);
+}
+
+.devocional-item.atual {
+  background-color: rgba(0, 123, 255, 0.1);
+  border-color: var(--primary-color);
+}
+
+/* Ocultar campo de pesquisa */
+#searchInput {
+  display: none;
+}
+
+/* ============ MODAIS GERAIS ============ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--card-light);
+  padding: 0;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 1024px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 1px solid var(--border-light);
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body.dark .modal-content {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Header do Modal */
+.modal-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 30px 30px 0 30px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body.dark .modal-subtitle {
+  color: #aaa;
+}
+
+/* Form Grid */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+body.dark .form-label {
+  color: var(--text-dark);
+}
+
+.form-label .material-icons {
+  font-size: 18px;
+  color: var(--primary-color);
+  opacity: 0.9;
+}
+
+.required {
+  color: var(--danger-color);
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Inputs */
+.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+body.dark .form-control {
+  background: #2d2d2d;
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 124, 237, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-control:hover {
+  border-color: var(--secondary-color);
+}
+
+.form-control::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+body.dark .form-control::placeholder {
+  color: #666;
+}
+
+.modal-content textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  position: relative;
+}
+
+body.dark .radio-option {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+}
+
+.radio-option:hover {
+  border-color: var(--secondary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-light);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+body.dark .radio-checkmark {
+  border-color: var(--border-dark);
+}
+
+.radio-option input[type="radio"]:checked + .radio-checkmark {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+}
+
+.radio-option input[type="radio"]:checked + .radio-checkmark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.radio-label {
+  font-size: 14px;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+body.dark .radio-label {
+  color: var(--text-dark);
+}
+
+/* Campo "Outro" */
+.outro-input-container {
+  margin-top: 8px;
+  animation: fadeIn 0.3s ease;
+}
+
+.outro-input-container .form-control {
+  margin-top: 8px;
+}
+
+/* Ações do Modal */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding: 24px 30px 30px 30px;
+  border-top: 1px solid var(--border-light);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+body.dark .modal-actions {
+  border-top-color: var(--border-dark);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.btn {
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  text-transform: none;
+  letter-spacing: normal;
+  min-height: 48px;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.btn-primary {
+  background: var(--success-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(46, 196, 182, 0.3);
+}
+
+.btn-primary:hover {
+  background: #25a99a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 196, 182, 0.4);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ============ MODAL EXPANDIDO PREMIUM ============ */
+.modal-content.expanded .form-grid-expanded {
+   flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px 80px; /* Lateral de 80px - máximo espaçamento */
+    overflow-y: auto;
+  background: var(--card-light);
+}
+
+/* Ajustar os blocos internos para aproveitar o espaço lateral aumentado */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px; /* Aumentado de 20px */
+  align-items: start;
+  margin: 0 -10px; /* Compensa o padding interno */
+}
+
+.form-group.expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* Aumentado de 8px */
+  padding: 0 10px; /* Adiciona espaçamento interno */
+}
+
+/* Ajustar os inputs para preencher melhor o espaço */
+.modal-content.expanded .form-control {
+  padding: 14px 16px; /* Aumentado de 12px 14px */
+  border: 2px solid var(--border-light);
+  border-radius: 10px; /* Aumentado de 8px */
+  font-size: 15px; /* Aumentado de 14px */
+  transition: all 0.3s ease;
+  background: #121212;
+  width: 100%; /* Garante que ocupe todo o espaço disponível */
+}
+
+/* Ajustar radio groups para melhor aproveitamento do espaço */
+.radio-group.full-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Aumentado de 12px */
+  padding: 15px; /* Aumentado de 12px */
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px; /* Aumentado de 10px */
+  border: 2px solid var(--border-light);
+  margin: 0 10px; /* Adiciona margem lateral */
+}
+
+.radio-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px; /* Aumentado de 8px */
+  flex: 1;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Aumentado de 8px */
+  padding: 12px 15px; /* Aumentado de 10px 12px */
+  border: 2px solid var(--border-light);
+  border-radius: 10px; /* Aumentado de 8px */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  position: relative;
+}
+
+/* Textarea com melhor aproveitamento de espaço */
+.form-group.expanded.full-height textarea.form-control {
+  min-height: 220px; /* Aumentado de 200px */
+  height: 100%;
+  resize: vertical;
+  line-height: 1.6;
+  padding: 16px 18px; /* Aumentado de 12px 14px */
+  font-size: 15px; /* Aumentado de 14px */
+  border: 2px solid var(--border-light);
+  border-radius: 12px; /* Aumentado de 10px */
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CORREÇÃO: Adicionar modo escuro para o form-grid-expanded */
+body.dark .modal-content.expanded .form-grid-expanded {
+  background: var(--card-dark);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; /* Reduzido de 25px */
+  align-items: start;
+}
+
+.form-group.expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* Reduzido de 10px */
+}
+
+.form-group.expanded.full-height {
+  height: 100%;
+  min-height: 250px; /* Reduzido de 280px */
+}
+
+/* Textarea premium */
+.form-group.expanded.full-height textarea.form-control {
+  min-height: 200px; /* Reduzido de 220px */
+  height: 100%;
+  resize: vertical;
+  line-height: 1.6;
+  padding: 12px 14px; /* Reduzido de 14px 16px */
+  font-size: 14px;
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CORREÇÃO: Adicionar modo escuro para textarea */
+body.dark .form-group.expanded.full-height textarea.form-control {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+/* Radio group premium */
+.radio-group.full-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Reduzido de 15px */
+  padding: 12px; /* Reduzido de 15px */
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  border: 2px solid var(--border-light);
+}
+
+/* CORREÇÃO: Adicionar modo escuro para radio group */
+body.dark .radio-group.full-height {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--border-dark);
+}
+
+.radio-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px; /* Reduzido de 10px */
+  flex: 1;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduzido de 10px */
+  padding: 10px 12px; /* Reduzido de 12px 14px */
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--card-light);
+  position: relative;
+}
+
+.ministrante-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px; /* Reduzido de 12px 14px */
+  background: rgba(0, 124, 237, 0.1);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--primary-color);
+  margin-top: 10px; /* Reduzido de 12px */
+  border-left: 3px solid var(--primary-color);
+}
+
+/* Ações do modal expandido */
+.modal-content.expanded .modal-actions {
+  padding: 15px 30px 20px 30px; /* Reduzido de 20px 35px 25px 35px */
+  margin-top: auto;
+  flex-shrink: 0;
+  background: var(--card-light);
+  border-top: 1px solid var(--border-light);
+}
+
+/* CORREÇÃO: Adicionar modo escuro para ações do modal */
+body.dark .modal-content.expanded .modal-actions {
+  background: var(--card-dark);
+  border-top-color: var(--border-dark);
+}
+
+/* ============ MODAL DE LOGIN ============ */
+#loginModal .modal-content {
+  max-width: 400px;
+  padding: 40px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+#loginModal h2 {
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#loginModal input[type="text"],
+#loginModal input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  background: var(--card-light);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+body.dark #loginModal input[type="text"],
+body.dark #loginModal input[type="password"] {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+#loginModal input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 124, 237, 0.1);
+  transform: translateY(-1px);
+}
+
+#loginModal .modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 25px;
+  padding: 0;
+  border-top: none;
+  background: transparent;
+}
+
+#loginModal button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  min-height: auto;
+}
+
+#confirmarLogin {
+  background: var(--success-color);
+  color: white;
+}
+
+#confirmarLogin:hover {
+  background: #25a99a;
+  transform: translateY(-2px);
+}
+
+#cancelarLoginBtn {
+  background: var(--danger-color);
+  color: white;
+}
+
+#cancelarLoginBtn:hover {
+  background: #c91126;
+  transform: translateY(-2px);
+}
+
+/* ============ MODAL DE TEXTO COMPLETO ============ */
+#modalTexto .modal-content {
+  max-width: 700px;
+  padding: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+#modalTexto .modal-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: white;
+  padding: 30px 40px;
+  margin: 0;
+  text-align: center;
+}
+
+#modalTexto .modal-header h2 {
+  color: white;
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+}
+
+#modalTextoConteudo {
+  padding: 35px 40px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-light);
+  background: var(--card-light);
+  max-height: 60vh;
+  overflow-y: auto;
+  margin: 0;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+body.dark #modalTextoConteudo {
+  color: var(--text-dark);
+  background: var(--card-dark);
+}
+
+#modalTexto .modal-actions {
+  padding: 25px 40px 30px;
+  margin-top: 0;
+  border-top: 1px solid var(--border-light);
+  background: var(--card-light);
+  justify-content: center;
+}
+
+body.dark #modalTexto .modal-actions {
+  border-top-color: var(--border-dark);
+  background: var(--card-dark);
+}
+
+.fechar-texto-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: auto;
+}
+
+.fechar-texto-btn:hover {
+  background: #3a5a8c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============ MODAL DE CONFIRMAÇÃO DE EXCLUSÃO ============ */
+#confirmarExclusaoModal .modal-content {
+  max-width: 500px;
+  padding: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  border: 2px solid var(--danger-color);
+}
+
+#confirmarExclusaoModal .modal-header {
+  background: linear-gradient(135deg, var(--danger-color) 0%, #c91126 100%);
+  color: white;
+  padding: 30px 40px;
+  margin: 0;
+  text-align: center;
+}
+
+#confirmarExclusaoModal .modal-header h2 {
+  color: white;
+  font-size: 26px;
+  margin: 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#confirmarExclusaoModal .modal-header h2::before {
+  content: "⚠️";
+  font-size: 24px;
+}
+
+#confirmarExclusaoModal p {
+  padding: 30px 40px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-light);
+  background: var(--card-light);
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+body.dark #confirmarExclusaoModal p {
+  color: var(--text-dark);
+  background: var(--card-dark);
+}
+
+#confirmarExclusaoModal .modal-actions {
+  padding: 25px 40px 30px;
+  margin-top: 0;
+  border-top: 1px solid var(--border-light);
+  background: var(--card-light);
+  justify-content: center;
+  gap: 15px;
+}
+
+body.dark #confirmarExclusaoModal .modal-actions {
+  border-top-color: var(--border-dark);
+  background: var(--card-dark);
+}
+
+#cancelarExclusaoBtn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: auto;
+}
+
+#cancelarExclusaoBtn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#confirmarExclusaoBtn {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: auto;
+}
+
+#confirmarExclusaoBtn:hover {
+  background: #c91126;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 992px) {
+  .main-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px 0;
+    position: static;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .actions input {
+    width: 100%;
+  }
+  
+  .devocional-do-dia {
+    padding: 20px;
+  }
+  
+  #infoDevocional h3 {
+    font-size: 22px;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+  
+  .modal-content {
+    padding: 0;
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 0 20px;
+  }
+  
+  .form-grid {
+    padding: 0 20px;
+  }
+  
+  .modal-actions {
+    padding: 20px 20px 20px 20px;
+    flex-direction: column-reverse;
+  }
+  
+  .modal-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .radio-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .devocional-grid {
+    flex-direction: column;
+  }
+  
+  /* Modal expandido responsivo */
+  .modal-content.expanded {
+    width: 98%;
+    margin: 10px;
+    max-height: 90vh;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .modal-content.expanded .form-grid-expanded {
+    padding: 25px 25px;
+    gap: 25px;
+  }
+  
+  .modal-content.expanded .modal-header {
+    padding: 25px 25px 0 25px;
+  }
+  
+  .modal-content.expanded .modal-actions {
+    padding: 20px 25px 25px 25px;
+  }
+  
+  .radio-options-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.expanded.full-height {
+    min-height: 250px;
+  }
+  
+  .form-group.expanded.full-height textarea.form-control {
+    min-height: 200px;
+  }
+  
+  /* Login modal responsivo */
+  #loginModal .modal-content {
+    padding: 30px 25px;
+    margin: 20px;
+  }
+  
+  #loginModal .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  #loginModal button {
+    width: 100%;
+  }
+  
+  /* Modal de texto responsivo */
+  #modalTexto .modal-content {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+  }
+  
+  #modalTexto .modal-header {
+    padding: 25px 25px;
+  }
+  
+  #modalTextoConteudo {
+    padding: 25px 25px;
+    max-height: 50vh;
+  }
+  
+  #modalTexto .modal-actions {
+    padding: 20px 25px 25px;
+  }
+  
+  /* Modal de exclusão responsivo */
+  #confirmarExclusaoModal .modal-content {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+  }
+  
+  #confirmarExclusaoModal .modal-header {
+    padding: 25px 25px;
+  }
+  
+  #confirmarExclusaoModal p {
+    padding: 25px 25px;
+  }
+  
+  #confirmarExclusaoModal .modal-actions {
+    padding: 20px 25px 25px;
+    flex-direction: column;
+  }
+  
+  #cancelarExclusaoBtn,
+  #confirmarExclusaoBtn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .devocional-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .devocional-info {
+    margin-right: 10px;
+  }
+  
+  .modal-content {
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+  
+  .form-grid {
+    gap: 20px;
+  }
+  
+  .radio-option {
+    padding: 10px 14px;
+  }
+  
+  .btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+  
+  /* Modal expandido mobile */
+  .modal-content.expanded {
+    width: calc(100% - 20px);
+    margin: 10px;
+    border-radius: 16px;
+  }
+  
+  .modal-content.expanded .form-grid-expanded {
+    padding: 20px 15px;
+  }
+  
+  .modal-content.expanded .modal-header {
+    padding: 20px 15px 0 15px;
+  }
+  
+  .modal-content.expanded .modal-header h2 {
+    font-size: 24px;
+  }
+  
+  /* Login modal mobile */
+  #loginModal .modal-content {
+    padding: 25px 20px;
+    margin: 10px;
+  }
+  
+  #loginModal h2 {
+    font-size: 22px;
+  }
+  
+  /* Modal de texto mobile */
+  #modalTexto .modal-content {
+    margin: 15px;
+    max-width: calc(100% - 30px);
+    border-radius: 16px;
+  }
+  
+  #modalTexto .modal-header {
+    padding: 20px 20px;
+  }
+  
+  #modalTexto .modal-header h2 {
+    font-size: 24px;
+  }
+  
+  #modalTextoConteudo {
+    padding: 20px 20px;
+    font-size: 15px;
+    max-height: 45vh;
+  }
+  
+  #modalTexto .modal-actions {
+    padding: 15px 20px 20px;
+  }
+  
+  .fechar-texto-btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  
+  /* Modal de exclusão mobile */
+  #confirmarExclusaoModal .modal-content {
+    margin: 15px;
+    max-width: calc(100% - 30px);
+    border-radius: 16px;
+  }
+  
+  #confirmarExclusaoModal .modal-header {
+    padding: 20px 20px;
+  }
+  
+  #confirmarExclusaoModal .modal-header h2 {
+    font-size: 22px;
+  }
+  
+  #confirmarExclusaoModal p {
+    padding: 20px 20px;
+    font-size: 15px;
+  }
+  
+  #confirmarExclusaoModal .modal-actions {
+    padding: 15px 20px 20px;
+  }
+  
+  #cancelarExclusaoBtn,
+  #confirmarExclusaoBtn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
+
+/* ============ FILTROS E PAGINAÇÃO DO HISTÓRICO ============ */
+
+/* Painel de Filtros */
+.filtros-historico {
+  background: var(--card-light);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+body.dark .filtros-historico {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.filtros-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filtro-item label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+body.dark .filtro-item label {
+  color: var(--text-dark);
+}
+
+.filtro-item label .material-icons {
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.filtro-input {
+  padding: 10px 12px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  background: var(--card-light);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+body.dark .filtro-input {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.filtro-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 124, 237, 0.1);
+}
+
+.filtro-input:hover {
+  border-color: var(--secondary-color);
+}
+
+.filtro-acoes {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.btn-filtro {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-filtro .material-icons {
+  font-size: 18px;
+}
+
+.btn-filtro.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 124, 237, 0.2);
+}
+
+.btn-filtro.btn-primary:hover {
+  background: #0066cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 124, 237, 0.3);
+}
+
+.btn-filtro.btn-secondary {
+  background: #6c757d;
+  color: white;
+  box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
+}
+
+.btn-filtro.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+.filtros-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-light);
+  font-size: 13px;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+body.dark .filtros-info {
+  border-top-color: var(--border-dark);
+  color: #8fb3d9;
+}
+
+/* Paginação */
+.paginacao-historico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 20px;
+  background: var(--card-light);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+body.dark .paginacao-historico {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.paginacao-info {
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+body.dark .paginacao-info {
+  color: var(--text-dark);
+}
+
+.paginacao-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-paginacao {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-light);
+  background: var(--card-light);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-light);
+}
+
+body.dark .btn-paginacao {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.btn-paginacao:hover:not(:disabled) {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-paginacao:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-paginacao .material-icons {
+  font-size: 20px;
+}
+
+.paginas-numeros {
+  display: flex;
+  gap: 6px;
+}
+
+.pagina-numero {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border-light);
+  background: var(--card-light);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: var(--text-light);
+}
+
+body.dark .pagina-numero {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.pagina-numero:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.pagina-numero.ativa {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.paginacao-tamanho {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.paginacao-tamanho label {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+body.dark .paginacao-tamanho label {
+  color: var(--text-dark);
+}
+
+.paginacao-tamanho select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  background: var(--card-light);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark .paginacao-tamanho select {
+  background: #2d2d2d;
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.paginacao-tamanho select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 124, 237, 0.1);
+}
+
+/* Ajuste no ministrado-por */
+.ministrado-por {
+  font-size: 12px;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+body.dark .ministrado-por {
+  color: #8fb3d9;
+}
+
+/* Mensagem vazia no histórico */
+.historico-container .mensagem-vazia {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-size: 16px;
+  grid-column: 1 / -1;
+}
+
+body.dark .historico-container .mensagem-vazia {
+  color: #666;
+}
+
+/* Responsividade dos filtros */
+@media (max-width: 1024px) {
+  .filtros-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .filtro-acoes {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .filtros-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .filtro-acoes {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-filtro {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .paginacao-historico {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .paginacao-controles {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .paginacao-info,
+  .paginacao-tamanho {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros-historico {
+    padding: 15px;
+  }
+  
+  .filtro-item label {
+    font-size: 12px;
+  }
+  
+  .filtro-input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .btn-filtro {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  
+  .paginas-numeros {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  
+  .paginacao-historico {
+    padding: 15px;
+  }
+}
+
+
+/* ============ VISUALIZAÇÃO TABELA ESTILO EXCEL ============ */
+
+.tabela-excel-container {
+  background: var(--card-light);
+  border-radius: 12px;
+  overflow-x: auto; /* Permite scroll horizontal */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-light);
+  width: 100%; /* Garante que ocupe toda a largura */
+}
+
+body.dark .tabela-excel-container {
+  background: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.tabela-excel {
+  width: 100%;
+  min-width: 900px; /* Garante largura mínima para todas as colunas */
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabela-excel thead {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tabela-excel thead th {
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap; /* Evita quebra de linha */
+}
+
+.tabela-excel thead th:nth-child(1) {
+  width: 120px; /* Data */
+}
+
+.tabela-excel thead th:nth-child(2) {
+  width: auto; /* Tema - ocupa espaço flexível */
+  min-width: 250px;
+}
+
+.tabela-excel thead th:nth-child(3) {
+  width: 180px; /* Ministrado Por */
+}
+
+.tabela-excel thead th:nth-child(4) {
+  width: 280px; /* Ações */
+}
+
+.tabela-excel thead th:last-child {
+  border-right: none;
+}
+
+.tabela-excel tbody tr {
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.2s ease;
+}
+
+body.dark .tabela-excel tbody tr {
+  border-bottom-color: var(--border-dark);
+}
+
+.tabela-excel tbody tr:hover {
+  background: rgba(0, 124, 237, 0.05);
+}
+
+body.dark .tabela-excel tbody tr:hover {
+  background: rgba(0, 124, 237, 0.1);
+}
+
+.tabela-excel tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabela-excel tbody td {
+  padding: 16px 20px;
+  color: var(--text-light);
+  vertical-align: middle;
+  border-right: 1px solid var(--border-light);
+}
+
+body.dark .tabela-excel tbody td {
+  color: var(--text-dark);
+  border-right-color: var(--border-dark);
+}
+
+.tabela-excel tbody td:last-child {
+  border-right: none;
+}
+
+.tabela-excel-data {
+  font-weight: 600;
+  color: var(--primary-color);
+  white-space: nowrap;
+}
+
+.tabela-excel-tema {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tabela-excel-ministrado {
+  color: var(--secondary-color);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+body.dark .tabela-excel-ministrado {
+  color: #8fb3d9;
+}
+
+.tabela-excel-acoes {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Permite quebra se necessário */
+}
+
+.tabela-excel-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tabela-excel-btn .material-icons {
+  font-size: 16px;
+}
+
+.tabela-excel-btn-ver {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.tabela-excel-btn-ver:hover {
+  background: #1a7acc;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.tabela-excel-btn-editar {
+  background: var(--accent-color);
+  color: #333;
+}
+
+.tabela-excel-btn-editar:hover {
+  background: #e6a200;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.tabela-excel-btn-excluir {
+  background: var(--danger-color);
+  color: white;
+}
+
+.tabela-excel-btn-excluir:hover {
+  background: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Responsivo para tablets */
+@media (max-width: 1200px) {
+  .tabela-excel {
+    min-width: 1000px; /* Mantém scroll horizontal em telas menores */
+  }
+}
+
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+  .tabela-excel-container {
+    border-radius: 8px;
+  }
+  
+  .tabela-excel {
+    min-width: 800px;
+  }
+  
+  .tabela-excel thead th,
+  .tabela-excel tbody td {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+  
+  .tabela-excel-acoes {
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  .tabela-excel-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  
+  .tabela-excel-btn .material-icons {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabela-excel {
+    min-width: 700px;
+  }
+}
