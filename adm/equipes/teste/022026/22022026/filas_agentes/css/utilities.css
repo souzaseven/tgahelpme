@@ -1,0 +1,146 @@
+/* ============================================================================
+   utilities.css — Classes Auxiliares
+   Painel Gerenciamento de Filas • Evolux
+   Utilitários visuais e de layout
+============================================================================ */
+
+/* ================= VISIBILIDADE ================= */
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.opacity-50 {
+  opacity: .5 !important;
+}
+
+/* ================= FLEX / GRID ================= */
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-xs { gap: .25rem; }
+.gap-sm { gap: .5rem; }
+.gap-md { gap: .75rem; }
+.gap-lg { gap: 1rem; }
+
+/* ================= TEXTO ================= */
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-success {
+  color: var(--success) !important;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.text-small {
+  font-size: .8rem;
+}
+
+/* ================= MARGENS ================= */
+
+.mt-xs { margin-top: .25rem; }
+.mt-sm { margin-top: .5rem; }
+.mt-md { margin-top: .75rem; }
+.mt-lg { margin-top: 1.25rem; }
+
+.mb-xs { margin-bottom: .25rem; }
+.mb-sm { margin-bottom: .5rem; }
+.mb-md { margin-bottom: .75rem; }
+.mb-lg { margin-bottom: 1.25rem; }
+
+/* ================= PADDING ================= */
+
+.p-xs { padding: .25rem; }
+.p-sm { padding: .5rem; }
+.p-md { padding: .75rem; }
+.p-lg { padding: 1rem; }
+
+/* ================= TAMANHOS ================= */
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+/* ================= CURSOR ================= */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+/* ================= BORDAS / SOMBRAS ================= */
+
+.rounded-sm {
+  border-radius: 6px;
+}
+
+.rounded-md {
+  border-radius: 10px;
+}
+
+.rounded-lg {
+  border-radius: 14px;
+}
+
+.shadow-soft {
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+
+/* ================= TRANSIÇÕES ================= */
+
+.transition {
+  transition: all .2s ease;
+}
+
+/* ================= Z-INDEX ================= */
+
+.z-top {
+  z-index: 9999;
+}
