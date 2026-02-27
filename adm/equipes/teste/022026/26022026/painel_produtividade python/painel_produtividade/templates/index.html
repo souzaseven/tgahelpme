@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Produtividade — Evolux</title>
+
+    <!-- Google Fonts: Display + Mono para visual de dashboard técnico -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ════════════════════════════════════════════════
+           VARIÁVEIS & RESET
+        ════════════════════════════════════════════════ */
+        :root {
+            --bg:          #070b14;
+            --surface:     #0d1526;
+            --surface2:    #111d35;
+            --border:      #1e3052;
+            --accent:      #00d4ff;
+            --accent2:     #0066ff;
+            --green:       #00e5a0;
+            --yellow:      #ffd84d;
+            --red:         #ff4d6d;
+            --text:        #e2eaf5;
+            --muted:       #5a7299;
+            --font-ui:     'Syne', sans-serif;
+            --font-mono:   'Space Mono', monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-ui);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ════════════════════════════════════════════════
+           FUNDO COM GRADE TÉCNICA
+        ════════════════════════════════════════════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ════════════════════════════════════════════════
+           HEADER
+        ════════════════════════════════════════════════ */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 28px 40px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(7,11,20,.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: .03em;
+            color: var(--text);
+        }
+
+        .logo-text span {
+            font-family: var(--font-mono);
+            font-size: .68rem;
+            color: var(--accent);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .header-badge {
+            font-family: var(--font-mono);
+            font-size: .7rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: .3; }
+        }
+
+        /* ════════════════════════════════════════════════
+           LAYOUT PRINCIPAL
+        ════════════════════════════════════════════════ */
+        main {
+            position: relative;
+            z-index: 5;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 32px 40px 60px;
+        }
+
+        /* ════════════════════════════════════════════════
+           CARD BASE
+        ════════════════════════════════════════════════ */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .card-title {
+            font-size: .7rem;
+            font-family: var(--font-mono);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: '';
+            display: block;
+            width: 3px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* ════════════════════════════════════════════════
+           FORMULÁRIO DE FILTROS
+        ════════════════════════════════════════════════ */
+        .filter-card {
+            margin-bottom: 28px;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr 1fr auto;
+            gap: 14px;
+            align-items: end;
+        }
+
+        .field label {
+            display: block;
+            font-size: .68rem;
+            font-family: var(--font-mono);
+            color: var(--muted);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: var(--font-mono);
+            font-size: .82rem;
+            transition: border-color .2s, box-shadow .2s;
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0,212,255,.1);
+        }
+
+        .field select option {
+            background: var(--surface2);
+        }
+
+        .btn-consult {
+            padding: 11px 28px;
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: #fff;
+            font-family: var(--font-ui);
+            font-weight: 700;
+            font-size: .9rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            letter-spacing: .04em;
+            transition: transform .15s, box-shadow .2s;
+            white-space: nowrap;
+        }
+
+        .btn-consult:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0,102,255,.35);
+        }
+
+        /* ════════════════════════════════════════════════
+           KPI CARDS
+        ════════════════════════════════════════════════ */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .kpi-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+
+        .kpi-card.blue::after   { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+        .kpi-card.green::after  { background: var(--green); }
+        .kpi-card.yellow::after { background: var(--yellow); }
+        .kpi-card.red::after    { background: var(--red); }
+
+        .kpi-label {
+            font-size: .68rem;
+            font-family: var(--font-mono);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .kpi-sub {
+            font-size: .72rem;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* ════════════════════════════════════════════════
+           TABELA
+        ════════════════════════════════════════════════ */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .84rem;
+        }
+
+        thead tr {
+            background: var(--surface2);
+        }
+
+        th {
+            padding: 13px 16px;
+            text-align: left;
+            font-family: var(--font-mono);
+            font-size: .65rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        th:first-child { border-radius: 8px 0 0 0; }
+        th:last-child  { border-radius: 0 8px 0 0; }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(30,48,82,.6);
+            transition: background .15s;
+        }
+
+        tbody tr:hover {
+            background: rgba(0,212,255,.04);
+        }
+
+        td {
+            padding: 13px 16px;
+            font-family: var(--font-mono);
+            font-size: .8rem;
+            vertical-align: middle;
+        }
+
+        .agent-name {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: .88rem;
+        }
+
+        .agent-login {
+            font-family: var(--font-mono);
+            font-size: .72rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* Badges de ocupação */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: .72rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .badge-low    { background: rgba(0,229,160,.12); color: var(--green); }
+        .badge-mid    { background: rgba(255,216,77,.12); color: var(--yellow); }
+        .badge-high   { background: rgba(255,77,109,.12); color: var(--red); }
+
+        /* ════════════════════════════════════════════════
+           ESTADO VAZIO / ERRO
+        ════════════════════════════════════════════════ */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: .4;
+        }
+
+        .empty-state h3 {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        .empty-state p {
+            font-size: .83rem;
+            color: var(--muted);
+            opacity: .7;
+        }
+
+        .alert-error {
+            background: rgba(255,77,109,.1);
+            border: 1px solid rgba(255,77,109,.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            color: var(--red);
+            font-family: var(--font-mono);
+            font-size: .8rem;
+            margin-bottom: 24px;
+        }
+
+        /* ════════════════════════════════════════════════
+           RESPONSIVO
+        ════════════════════════════════════════════════ */
+        @media (max-width: 1100px) {
+            .filter-grid { grid-template-columns: 1fr 1fr; }
+            .kpi-row     { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 680px) {
+            main         { padding: 20px 16px 40px; }
+            .filter-grid { grid-template-columns: 1fr; }
+            .kpi-row     { grid-template-columns: 1fr; }
+        }
+
+        /* Animação entrada da tabela */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-section {
+            animation: fadeUp .35s ease;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════ -->
+<header>
+    <div class="logo-block">
+        <div class="logo-icon">📊</div>
+        <div class="logo-text">
+            <h1>Painel Produtividade</h1>
+            <span>Evolux — Operadores &amp; Filas</span>
+        </div>
+    </div>
+    <div class="header-badge">
+        <div class="dot"></div>
+        SISTEMA ATIVO
+    </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════
+     CONTEÚDO PRINCIPAL
+════════════════════════════════════════════ -->
+<main>
+
+    <!-- ───── FORMULÁRIO DE FILTROS ───── -->
+    <div class="card filter-card">
+        <div class="card-title">Filtros de Consulta</div>
+
+        <form method="POST">
+            <div class="filter-grid">
+
+                <!-- Data Inicial -->
+                <div class="field">
+                    <label>Data Inicial</label>
+                    <input
+                        type="datetime-local"
+                        name="start_date"
+                        value="{{ params_used.get('start_date', '') }}"
+                        required
+                    >
+                </div>
+
+                <!-- Data Final -->
+                <div class="field">
+                    <label>Data Final</label>
+                    <input
+                        type="datetime-local"
+                        name="end_date"
+                        value="{{ params_used.get('end_date', '') }}"
+                        required
+                    >
+                </div>
+
+                <!-- Filas -->
+                <div class="field">
+                    <label>Filas (IDs separados por vírgula ou "all")</label>
+                    <input
+                        type="text"
+                        name="queue_ids"
+                        placeholder="Ex: 108,85,136  ou  all"
+                        value="{{ params_used.get('queue_ids', 'all') }}"
+                    >
+                </div>
+
+                <!-- Agente -->
+                <div class="field">
+                    <label>Agente ID (ou "all")</label>
+                    <input
+                        type="text"
+                        name="agent_ids"
+                        placeholder="all"
+                        value="{{ params_used.get('agent_ids', 'all') }}"
+                    >
+                </div>
+
+                <!-- Botão -->
+                <div class="field">
+                    <button type="submit" class="btn-consult">Consultar →</button>
+                </div>
+
+            </div>
+        </form>
+
+        {% if queues %}
+        <p style="margin-top:14px; font-family:var(--font-mono); font-size:.7rem; color:var(--muted);">
+            💡 Filas disponíveis:
+            {% for q in queues %}
+                <strong style="color:var(--accent)">{{ q.id }}</strong> {{ q.name }}{% if not loop.last %} &nbsp;·&nbsp; {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <!-- ───── ERRO ───── -->
+    {% if error %}
+    <div class="alert-error">
+        ⚠ Erro na consulta: {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- ───── RESULTADOS ───── -->
+    {% if data is not none %}
+    <div class="results-section">
+
+        <!-- KPI CARDS -->
+        <div class="kpi-row">
+            <div class="kpi-card blue">
+                <div class="kpi-label">Total Operadores</div>
+                <div class="kpi-value">{{ data|length }}</div>
+                <div class="kpi-sub">retornados na consulta</div>
+            </div>
+
+            <div class="kpi-card green">
+                <div class="kpi-label">Total Ligações Recebidas</div>
+                <div class="kpi-value">{{ data | sum(attribute='total_in_calls') }}</div>
+                <div class="kpi-sub">chamadas inbound</div>
+            </div>
+
+            <div class="kpi-card yellow">
+                <div class="kpi-label">Ligações Realizadas</div>
+                <div class="kpi-value">{{ data | sum(attribute='total_out_completed_calls') }}</div>
+                <div class="kpi-sub">chamadas outbound completadas</div>
+            </div>
+
+            <div class="kpi-card red">
+                <div class="kpi-label">Ligações Campanha</div>
+                <div class="kpi-value">{{ data | sum(attribute='total_campaign_calls') }}</div>
+                <div class="kpi-sub">chamadas de campanha</div>
+            </div>
+        </div>
+
+        <!-- TABELA DETALHADA -->
+        <div class="card">
+            <div class="card-title">Produtividade Detalhada por Operador</div>
+
+            {% if data %}
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operador</th>
+                            <th>Logado</th>
+                            <th>Ocioso</th>
+                            <th>% Ocupado</th>
+                            <th>Pausa Total</th>
+                            <th>Pausa Prod.</th>
+                            <th>Pausa Improd.</th>
+                            <th>In Calls</th>
+                            <th>TMA In</th>
+                            <th>Out Comp.</th>
+                            <th>TMA Out</th>
+                            <th>Out N/Comp.</th>
+                            <th>Campanha</th>
+                            <th>Taxa Descon.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for op in data %}
+                        <tr>
+                            <!-- Nome + login -->
+                            <td>
+                                <div class="agent-name">{{ op.name }}</div>
+                                <div class="agent-login">{{ op.login }}</div>
+                            </td>
+
+                            <td>{{ op.logon }}</td>
+                            <td>{{ op.idleness }}</td>
+
+                            <!-- Badge de % ocupado -->
+                            <td>
+                                {% set pct = op.percentage_occupied | replace('%','') | float %}
+                                {% if pct < 30 %}
+                                    <span class="badge badge-low">{{ op.percentage_occupied }}</span>
+                                {% elif pct < 70 %}
+                                    <span class="badge badge-mid">{{ op.percentage_occupied }}</span>
+                                {% else %}
+                                    <span class="badge badge-high">{{ op.percentage_occupied }}</span>
+                                {% endif %}
+                            </td>
+
+                            <td>{{ op.pause_total }}</td>
+                            <td>{{ op.productive_pause }}</td>
+                            <td>{{ op.unproductive_pause }}</td>
+
+                            <td>{{ op.total_in_calls }}</td>
+                            <td>{{ op.att }}</td>
+
+                            <td>{{ op.total_out_completed_calls }}</td>
+                            <td>{{ op.out_completed_att }}</td>
+
+                            <td>{{ op.total_out_not_completed_calls }}</td>
+                            <td>{{ op.total_campaign_calls }}</td>
+
+                            <!-- Badge taxa desconexão -->
+                            <td>
+                                {% set drate = op.disconnection_rate | replace('%','') | float %}
+                                {% if drate < 20 %}
+                                    <span class="badge badge-low">{{ op.disconnection_rate }}</span>
+                                {% elif drate < 50 %}
+                                    <span class="badge badge-mid">{{ op.disconnection_rate }}</span>
+                                {% else %}
+                                    <span class="badge badge-high">{{ op.disconnection_rate }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">🔍</div>
+                <h3>Nenhum dado encontrado</h3>
+                <p>Tente ajustar os filtros de data ou fila.</p>
+            </div>
+            {% endif %}
+        </div>
+
+    </div><!-- /results-section -->
+
+    {% elif not error %}
+    <!-- Estado inicial — nenhuma consulta ainda -->
+    <div class="card">
+        <div class="empty-state">
+            <div class="empty-icon">📡</div>
+            <h3>Aguardando Consulta</h3>
+            <p>Selecione o período e clique em <strong>Consultar</strong> para carregar os dados.</p>
+        </div>
+    </div>
+    {% endif %}
+
+</main>
+
+</body>
+</html>

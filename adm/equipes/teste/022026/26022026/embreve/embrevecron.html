@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Em Breve — Página em Desenvolvimento</title>
+<meta name="description" content="Estamos trabalhando em algo incrível. Em breve novidades!">
+<meta property="og:title" content="Em Breve — Página em Desenvolvimento">
+<meta property="og:description" content="Estamos trabalhando em algo incrível. Cadastre seu e-mail e seja o primeiro a saber!">
+<meta property="og:type" content="website">
+
+<!-- Favicon inline SVG -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+}
+
+/* Grid de fundo */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 191, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 191, 255, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+/* Canvas partículas */
+#canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+/* Container principal */
+.container {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+    max-width: 480px;
+    width: 100%;
+}
+
+/* Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(0, 191, 255, 0.08);
+    border: 1px solid rgba(0, 191, 255, 0.2);
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00bfff;
+    margin-bottom: 32px;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #00bfff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #00bfff;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Engrenagem SVG */
+.gear-wrapper {
+    width: 86px;
+    height: 86px;
+    margin: 0 auto 28px auto;
+    position: relative;
+}
+
+.gear-wrapper svg {
+    width: 100%;
+    height: 100%;
+    animation: spin 8s linear infinite;
+    filter: drop-shadow(0 0 12px rgba(0, 191, 255, 0.5));
+    overflow: visible;
+}
+
+/* Glow pulsante na engrenagem */
+.gear-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,191,255,0.12) 0%, transparent 70%);
+    animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Título */
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+/* Texto */
+p {
+    opacity: .55;
+    margin-bottom: 36px;
+    line-height: 1.7;
+    font-size: 0.92rem;
+}
+
+/* Contador regressivo */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+
+.count-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 14px 16px 10px;
+    min-width: 68px;
+}
+
+.count-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00bfff;
+    display: block;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(0,191,255,0.4);
+}
+
+.count-label {
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.35;
+    display: block;
+    margin-top: 6px;
+}
+
+.count-sep {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(0,191,255,0.3);
+    align-self: flex-start;
+    padding-top: 14px;
+    line-height: 1;
+}
+
+/* Barra de progresso */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0055ff, #00bfff, #38bdf8);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 1.8s linear infinite;
+    width: 50%;
+}
+
+@keyframes shimmer {
+    from { transform: translateX(-200%); }
+    to   { transform: translateX(400%); }
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    opacity: 0.3;
+    letter-spacing: 1px;
+    margin-bottom: 36px;
+}
+
+/* Campo de e-mail */
+.email-section {
+    margin-bottom: 36px;
+}
+
+.email-title {
+    font-size: 0.8rem;
+    opacity: 0.45;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.email-form {
+    display: flex;
+    gap: 8px;
+}
+
+.email-input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.email-input::placeholder { color: rgba(255,255,255,0.25); }
+
+.email-input:focus {
+    border-color: rgba(0, 191, 255, 0.4);
+    background: rgba(0, 191, 255, 0.05);
+}
+
+.email-btn {
+    background: #00bfff;
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.email-btn:hover {
+    background: #38bdf8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0,191,255,0.35);
+}
+
+.email-btn:active { transform: translateY(0); }
+
+/* Mensagem de sucesso */
+.success-msg {
+    display: none;
+    font-size: 0.82rem;
+    color: #34d399;
+    margin-top: 10px;
+    animation: fadeIn 0.4s ease;
+}
+
+.success-msg.show { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Ícones flutuando */
+.icon {
+    position: fixed;
+    font-size: 2rem;
+    opacity: .3;
+    animation: float 6s ease-in-out infinite;
+    user-select: none;
+    z-index: 1;
+}
+
+.icon:nth-child(1) { top: 10%; left: 12%;  animation-delay: 0s;   font-size: 2rem; }
+.icon:nth-child(2) { top: 72%; left: 83%;  animation-delay: 2s;   font-size: 1.8rem; opacity: .2; }
+.icon:nth-child(3) { top: 38%; left: 4%;   animation-delay: 4s;   font-size: 1.5rem; opacity: .18; }
+.icon:nth-child(4) { top: 18%; right: 12%; animation-delay: 1s;   font-size: 1.4rem; opacity: .18; }
+.icon:nth-child(5) { bottom: 18%; left: 28%; animation-delay: 3s; font-size: 1.3rem; opacity: .15; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33%       { transform: translateY(-18px) rotate(4deg); }
+    66%       { transform: translateY(-8px) rotate(-3deg); }
+}
+
+/* Rodapé */
+.footer {
+    font-size: .72rem;
+    opacity: .25;
+    letter-spacing: 0.5px;
+}
+
+/* Engrenagem spin */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    h1 { font-size: 1.75rem; }
+    .count-block { min-width: 56px; padding: 12px 10px 8px; }
+    .count-value { font-size: 1.5rem; }
+    .email-form { flex-direction: column; }
+    .email-btn { width: 100%; padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="icon" aria-hidden="true">🚧</div>
+<div class="icon" aria-hidden="true">⚙️</div>
+<div class="icon" aria-hidden="true">🔧</div>
+<div class="icon" aria-hidden="true">🛠️</div>
+<div class="icon" aria-hidden="true">⚡</div>
+
+<div class="container">
+
+    <div class="badge">
+        <span class="badge-dot"></span>
+        Em breve
+    </div>
+
+    <!-- Engrenagem SVG precisa -->
+    <div class="gear-wrapper" role="img" aria-label="Engrenagem girando">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#00bfff" d="
+                M43.3 3.4L40 13.8a37 37 0 0 0-7.8 3.2l-9.8-4.1-9.4 9.4 4.1 9.8A37 37 0 0 0 13.8 40L3.4 43.3v13.4L13.8 60a37 37 0 0 0 3.2 7.8l-4.1 9.8 9.4 9.4 9.8-4.1A37 37 0 0 0 40 86.2l3.3 10.4h13.4L60 86.2a37 37 0 0 0 7.8-3.2l9.8 4.1 9.4-9.4-4.1-9.8A37 37 0 0 0 86.2 60l10.4-3.3V43.3L86.2 40a37 37 0 0 0-3.2-7.8l4.1-9.8-9.4-9.4-9.8 4.1A37 37 0 0 0 60 13.8L56.7 3.4H43.3z
+                M50 32a18 18 0 1 1 0 36 18 18 0 0 1 0-36z
+            "/>
+        </svg>
+    </div>
+
+    <h1>Estamos em Construção</h1>
+    <p>Esta página está sendo desenvolvida com cuidado.<br>
+    Em breve teremos novidades incríveis 🚀</p>
+
+    <!-- Contador regressivo -->
+    <div class="countdown" aria-label="Contagem regressiva para o lançamento">
+        <div class="count-block">
+            <span class="count-value" id="cd-days">00</span>
+            <span class="count-label">Dias</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+            <span class="count-value" id="cd-hours">00</span>
+            <span class="count-label">Horas</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+            <span class="count-value" id="cd-min">00</span>
+            <span class="count-label">Min</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+            <span class="count-value" id="cd-sec">00</span>
+            <span class="count-label">Seg</span>
+        </div>
+    </div>
+
+    <!-- Barra de progresso -->
+    <div class="progress-container" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do desenvolvimento">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+    <div class="progress-label">
+        <span>Progresso do desenvolvimento</span>
+        <span id="pct">0%</span>
+    </div>
+
+    <!-- Campo e-mail -->
+    <div class="email-section">
+        <p class="email-title">Quer ser avisado quando lançarmos?</p>
+        <div class="email-form">
+            <input
+                type="email"
+                class="email-input"
+                id="emailInput"
+                placeholder="seu@email.com"
+                aria-label="Seu e-mail para notificação de lançamento"
+            />
+            <button class="email-btn" onclick="handleEmail()">Avisar-me</button>
+        </div>
+        <p class="success-msg" id="successMsg">✅ Perfeito! Você será o primeiro a saber 🎉</p>
+    </div>
+
+    <div class="footer">
+        © <span id="year"></span> — Todos os direitos reservados
+    </div>
+</div>
+
+<script>
+    // Ano
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Partículas
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * W;
+            this.y = Math.random() * H;
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.alpha = Math.random() * 0.35 + 0.05;
+            this.r = Math.random() * 1.2 + 0.4;
+        }
+        update() {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0,191,255,${this.alpha})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+    function loop() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Barra de progresso — vai até 68% e para
+    let current = 0;
+    const target = 68;
+    const bar = document.getElementById("progress");
+    const pctEl = document.getElementById("pct");
+
+    const iv = setInterval(() => {
+        if (current >= target) { clearInterval(iv); return; }
+        current += 0.5;
+        bar.style.width = current + "%";
+        pctEl.textContent = Math.round(current) + "%";
+    }, 22);
+
+    // Contador regressivo — data alvo: 30 dias a partir de hoje
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 30);
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+        const diff = launchDate - new Date();
+        if (diff <= 0) {
+            document.querySelector('.countdown').innerHTML = '<span style="color:#00bfff;font-family:Syne,sans-serif;font-size:1.2rem;font-weight:700">🚀 Lançamos!</span>';
+            return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000) / 60000);
+        const secs  = Math.floor((diff % 60000) / 1000);
+
+        document.getElementById('cd-days').textContent  = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-min').textContent   = pad(mins);
+        document.getElementById('cd-sec').textContent   = pad(secs);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // E-mail
+    function handleEmail() {
+        const input = document.getElementById('emailInput');
+        const msg = document.getElementById('successMsg');
+        const email = input.value.trim();
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!valid) {
+            input.style.borderColor = 'rgba(255,80,80,0.5)';
+            input.focus();
+            setTimeout(() => input.style.borderColor = '', 1500);
+            return;
+        }
+
+        input.value = '';
+        input.disabled = true;
+        document.querySelector('.email-btn').disabled = true;
+        document.querySelector('.email-btn').style.opacity = '0.5';
+        msg.classList.add('show');
+    }
+
+    // Enter no input dispara o botão
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleEmail();
+    });
+</script>
+
+</body>
+</html>
