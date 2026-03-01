@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema em Desenvolvimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #00f5ff;
+    --green: #00ff88;
+    --bg: #030a0f;
+    --surface: #050e17;
+    --border: rgba(0,245,255,0.15);
+    --glow: rgba(0,245,255,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: #c8e6ff;
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Scanlines overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 8s ease-in-out infinite;
+  }
+
+  @keyframes gridPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Corner decorations */
+  .corners {
+    position: fixed;
+    inset: 20px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .corners::before, .corners::after,
+  .corners span::before, .corners span::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--cyan);
+    border-style: solid;
+    opacity: 0.6;
+  }
+
+  .corners::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
+  .corners::after  { top: 0; right: 0; border-width: 2px 2px 0 0; }
+  .corners span::before { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+  .corners span::after  { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+  /* Canvas for particles */
+  #canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  /* Main content */
+  .main {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+  }
+
+  /* Status badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,245,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 6px 18px;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 50px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: blink 1.2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  /* Hexagon icon */
+  .hex-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 40px;
+  }
+
+  .hex-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(0,245,255,0.2);
+    border-radius: 50%;
+    animation: spinSlow 12s linear infinite;
+  }
+
+  .hex-ring::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--cyan);
+  }
+
+  .hex-ring-2 {
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(0,245,255,0.1);
+    border-radius: 50%;
+    animation: spinSlow 8s linear infinite reverse;
+  }
+
+  .hex-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+  }
+
+  @keyframes spinSlow {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Title */
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.6rem, 5vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--cyan) 60%, #0080ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glitch effect */
+  h1 {
+    position: relative;
+  }
+
+  /* Subtitle */
+  .subtitle {
+    font-size: 0.85rem;
+    color: rgba(200, 230, 255, 0.55);
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    line-height: 1.8;
+  }
+
+  /* Terminal block */
+  .terminal {
+    background: rgba(0, 15, 25, 0.8);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 28px;
+    text-align: left;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .terminal::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t-dot:nth-child(1) { background: #ff5f57; }
+  .t-dot:nth-child(2) { background: #febc2e; }
+  .t-dot:nth-child(3) { background: #28c840; }
+
+  .t-title {
+    margin-left: auto;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+  }
+
+  .log-line {
+    font-size: 0.78rem;
+    margin-bottom: 7px;
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .log-line.visible { opacity: 1; transform: translateX(0); }
+
+  .log-time { color: rgba(0,245,255,0.4); flex-shrink: 0; }
+  .log-ok { color: var(--green); }
+  .log-warn { color: #ffd700; }
+  .log-info { color: var(--cyan); }
+  .log-text { color: rgba(200,230,255,0.7); }
+
+  .cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--cyan);
+    vertical-align: middle;
+    animation: blink 0.8s step-end infinite;
+    margin-left: 4px;
+  }
+
+  /* Progress section */
+  .progress-section { margin-bottom: 50px; }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: rgba(0,245,255,0.5);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .prog-bar-wrap {
+    height: 4px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .prog-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    position: relative;
+    transition: width 0.8s cubic-bezier(.4,0,.2,1);
+  }
+
+  .prog-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: -1px; top: 50%;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px currentColor;
+    background: currentColor;
+  }
+
+  .bar-cyan .prog-bar-fill { background: var(--cyan); color: var(--cyan); }
+  .bar-green .prog-bar-fill { background: var(--green); color: var(--green); }
+  .bar-blue .prog-bar-fill { background: #4d8fff; color: #4d8fff; }
+
+  /* Stats row */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 45px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0,245,255,0.4);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: rgba(200,230,255,0.35);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: rgba(0,245,255,0.1);
+    align-self: stretch;
+  }
+
+  /* Footer */
+  .footer-line {
+    font-size: 0.65rem;
+    color: rgba(200,230,255,0.2);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* Floating elements */
+  .float-el {
+    position: fixed;
+    font-size: 1.4rem;
+    opacity: 0.06;
+    animation: floatDrift 10s ease-in-out infinite;
+    user-select: none;
+  }
+
+  @keyframes floatDrift {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-25px) rotate(5deg); }
+    66% { transform: translateY(10px) rotate(-3deg); }
+  }
+
+  @media (max-width: 500px) {
+    .stats { gap: 20px; }
+    .stat-value { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<canvas id="canvas"></canvas>
+
+<div class="corners"><span></span></div>
+
+<!-- Floating decorative elements -->
+<div class="float-el" style="top:8%;left:12%;animation-delay:0s">⬡</div>
+<div class="float-el" style="top:75%;left:5%;animation-delay:3s">◈</div>
+<div class="float-el" style="top:20%;right:8%;animation-delay:1.5s">⬡</div>
+<div class="float-el" style="top:65%;right:10%;animation-delay:5s">◈</div>
+<div class="float-el" style="bottom:10%;left:40%;animation-delay:2s;font-size:2rem">⬡</div>
+
+<div class="main">
+
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Sistema online — Build ativo
+  </div>
+
+  <div class="hex-wrapper">
+    <div class="hex-ring"></div>
+    <div class="hex-ring-2"></div>
+    <div class="hex-icon">⚙️</div>
+  </div>
+
+  <h1>Em Desenvolvimento</h1>
+  <p class="subtitle">
+    Nossos sistemas estão sendo calibrados.<br>
+    Algo extraordinário está sendo construído.
+  </p>
+
+  <!-- Terminal log -->
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="t-dot"></div>
+      <div class="t-dot"></div>
+      <div class="t-dot"></div>
+      <span class="t-title">dev.log — live output</span>
+    </div>
+    <div id="logs"></div>
+    <div style="font-size:0.78rem;color:rgba(0,245,255,0.4)">
+      $ aguardando módulos<span class="cursor-blink"></span>
+    </div>
+  </div>
+
+  <!-- Progress bars -->
+  <div class="progress-section">
+    <div class="prog-bar-wrap bar-cyan">
+      <div class="progress-label" style="position:relative;height:0">
+        <span style="position:absolute;top:-22px;left:0">Backend API</span>
+        <span id="p1-val" style="position:absolute;top:-22px;right:0">0%</span>
+      </div>
+      <div class="prog-bar-fill" id="bar1" style="width:0%"></div>
+    </div>
+    <div style="margin-bottom:30px"></div>
+
+    <div class="prog-bar-wrap bar-green">
+      <div class="progress-label" style="position:relative;height:0">
+        <span style="position:absolute;top:-22px;left:0">Interface UI</span>
+        <span id="p2-val" style="position:absolute;top:-22px;right:0">0%</span>
+      </div>
+      <div class="prog-bar-fill" id="bar2" style="width:0%"></div>
+    </div>
+    <div style="margin-bottom:30px"></div>
+
+    <div class="prog-bar-wrap bar-blue">
+      <div class="progress-label" style="position:relative;height:0">
+        <span style="position:absolute;top:-22px;left:0">Infraestrutura</span>
+        <span id="p3-val" style="position:absolute;top:-22px;right:0">0%</span>
+      </div>
+      <div class="prog-bar-fill" id="bar3" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-value" id="stat-commits">0</span>
+      <span class="stat-label">Commits</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-value" id="stat-bugs">0</span>
+      <span class="stat-label">Bugs Fixados</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-value" id="stat-days">0</span>
+      <span class="stat-label">Dias Ativos</span>
+    </div>
+  </div>
+
+  <div class="footer-line">© <span id="year"></span> — Todos os direitos reservados</div>
+</div>
+
+<script>
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Particle canvas
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.alpha = Math.random() * 0.4 + 0.05;
+    this.r = Math.random() * 1.5 + 0.5;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,245,255,${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0,245,255,${0.06 * (1 - dist/120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function loop() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawConnections();
+  requestAnimationFrame(loop);
+}
+loop();
+
+// Terminal logs
+const logData = [
+  { time: '09:12:03', type: 'ok',   text: 'Servidor de desenvolvimento inicializado' },
+  { time: '09:12:05', type: 'info', text: 'Módulos de autenticação carregados' },
+  { time: '09:12:09', type: 'warn', text: 'Database migration pendente — aguardando' },
+  { time: '09:12:14', type: 'ok',   text: 'Pipeline CI/CD ativo e monitorando' },
+  { time: '09:12:19', type: 'info', text: 'Deploy em staging programado para breve' },
+];
+
+const logsEl = document.getElementById('logs');
+
+logData.forEach((log, i) => {
+  const line = document.createElement('div');
+  line.className = 'log-line';
+  const typeClass = log.type === 'ok' ? 'log-ok' : log.type === 'warn' ? 'log-warn' : 'log-info';
+  const typeLabel = log.type === 'ok' ? '[OK]  ' : log.type === 'warn' ? '[WARN]' : '[INFO]';
+  line.innerHTML = `
+    <span class="log-time">${log.time}</span>
+    <span class="${typeClass}">${typeLabel}</span>
+    <span class="log-text">${log.text}</span>
+  `;
+  logsEl.appendChild(line);
+
+  setTimeout(() => line.classList.add('visible'), 400 + i * 350);
+});
+
+// Animate progress bars
+function animateBar(id, valId, target, delay) {
+  let val = 0;
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      if (val >= target) { clearInterval(iv); return; }
+      val += 0.8;
+      document.getElementById(id).style.width = val + '%';
+      document.getElementById(valId).textContent = Math.round(val) + '%';
+    }, 20);
+  }, delay);
+}
+
+animateBar('bar1', 'p1-val', 78, 600);
+animateBar('bar2', 'p2-val', 62, 900);
+animateBar('bar3', 'p3-val', 45, 1200);
+
+// Count-up stats
+function countUp(id, target, delay, suffix = '') {
+  let val = 0;
+  const el = document.getElementById(id);
+  setTimeout(() => {
+    const step = Math.ceil(target / 60);
+    const iv = setInterval(() => {
+      val = Math.min(val + step, target);
+      el.textContent = val + suffix;
+      if (val >= target) clearInterval(iv);
+    }, 25);
+  }, delay);
+}
+
+countUp('stat-commits', 247, 800);
+countUp('stat-bugs',    83,  1000);
+countUp('stat-days',    21,  1200);
+</script>
+</body>
+</html>

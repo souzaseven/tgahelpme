@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Em Construção</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0d0d;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Fundo com listras diagonais de obra */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 180, 0, 0.025) 40px,
+      rgba(255, 180, 0, 0.025) 80px
+    );
+    pointer-events: none;
+  }
+
+  /* Faixa de obra no topo e base */
+  .stripe-top, .stripe-bottom {
+    position: fixed;
+    left: 0; right: 0;
+    height: 14px;
+    background: repeating-linear-gradient(
+      90deg,
+      #ffb800 0px,
+      #ffb800 30px,
+      #1a1a1a 30px,
+      #1a1a1a 60px
+    );
+    z-index: 10;
+  }
+  .stripe-top { top: 0; }
+  .stripe-bottom { bottom: 0; }
+
+  /* Container central */
+  .card {
+    text-align: center;
+    padding: 60px 50px;
+    max-width: 520px;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Cena de construção SVG */
+  .scene {
+    width: 260px;
+    height: 170px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  /* Chão */
+  .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 14px;
+    background: #2a2a2a;
+    border-radius: 4px;
+  }
+
+  /* Prédio sendo construído */
+  .building {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .floor {
+    width: 100%;
+    height: 22px;
+    border-radius: 3px;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    animation: buildFloor 0.5s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+
+  .floor:nth-child(1) { background: #3a3a3a; animation-delay: 0.2s; }
+  .floor:nth-child(2) { background: #333; animation-delay: 0.7s; width: 95%; }
+  .floor:nth-child(3) { background: #2e2e2e; animation-delay: 1.2s; width: 88%; }
+  .floor:nth-child(4) {
+    background: repeating-linear-gradient(90deg, #ffb80033 0, #ffb80033 8px, transparent 8px, transparent 16px);
+    border: 2px dashed #ffb80066;
+    animation-delay: 1.7s;
+    width: 80%;
+  }
+
+  @keyframes buildFloor {
+    to { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* Janelas do prédio */
+  .windows {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 66px; /* 3 andares * 22 + 2 gaps */
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3px;
+    pointer-events: none;
+  }
+
+  .win-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    height: 22px;
+    align-items: center;
+  }
+
+  .win {
+    width: 12px;
+    height: 13px;
+    border-radius: 2px;
+    background: #ffb800;
+    opacity: 0;
+    animation: winOn 0.3s ease forwards;
+    box-shadow: 0 0 8px #ffb80088;
+  }
+
+  .win:nth-child(1) { animation-delay: 0.9s; }
+  .win:nth-child(2) { animation-delay: 1.0s; }
+  .win:nth-child(3) { animation-delay: 1.1s; }
+
+  .win-row:nth-child(2) .win:nth-child(1) { animation-delay: 1.4s; }
+  .win-row:nth-child(2) .win:nth-child(2) { animation-delay: 1.5s; }
+  .win-row:nth-child(2) .win:nth-child(3) { animation-delay: 1.6s; }
+
+  .win-row:nth-child(3) .win:nth-child(1) { animation-delay: 1.9s; }
+  .win-row:nth-child(3) .win:nth-child(2) { animation-delay: 2.0s; }
+  .win-row:nth-child(3) .win:nth-child(3) { animation-delay: 2.1s; }
+
+  @keyframes winOn {
+    to { opacity: 1; }
+  }
+
+  /* Guindaste */
+  .crane {
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+    width: 80px;
+    height: 155px;
+  }
+
+  /* Torre do guindaste */
+  .crane-tower {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    width: 8px;
+    height: 130px;
+    background: #ffb800;
+    border-radius: 2px;
+  }
+
+  /* Braço horizontal */
+  .crane-arm {
+    position: absolute;
+    top: 0;
+    left: -48px;
+    width: 90px;
+    height: 6px;
+    background: #ffb800;
+    border-radius: 2px;
+  }
+
+  /* Contrapeso */
+  .crane-counter {
+    position: absolute;
+    top: 6px;
+    right: -10px;
+    width: 18px;
+    height: 10px;
+    background: #cc9200;
+    border-radius: 2px;
+  }
+
+  /* Cabo + carga */
+  .crane-cable {
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    width: 2px;
+    background: #888;
+    transform-origin: top center;
+    animation: swing 3s ease-in-out infinite;
+    border-radius: 1px;
+  }
+
+  .crane-load {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 14px;
+    background: #555;
+    border-radius: 2px;
+    border: 2px solid #ffb800;
+  }
+
+  @keyframes swing {
+    0%, 100% { transform: rotate(-8deg); height: 55px; }
+    50%       { transform: rotate(8deg);  height: 40px; }
+  }
+
+  /* Capacete */
+  .helmet {
+    position: absolute;
+    bottom: 14px;
+    left: 22px;
+    font-size: 1.6rem;
+    animation: helmetBob 1.5s ease-in-out infinite;
+  }
+
+  @keyframes helmetBob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+  }
+
+  /* Poeira / partículas */
+  .dust {
+    position: absolute;
+    bottom: 14px;
+    left: 120px;
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+  }
+
+  .dust-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #555;
+    animation: dustPop 1.2s ease-in-out infinite;
+  }
+
+  .dust-dot:nth-child(1) { animation-delay: 0s; }
+  .dust-dot:nth-child(2) { animation-delay: 0.2s; width: 7px; height: 7px; }
+  .dust-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes dustPop {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(-12px); opacity: 0.7; }
+  }
+
+  /* Título */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  h1 span { color: #ffb800; }
+
+  p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 38px;
+  }
+
+  /* Barra de progresso */
+  .prog-wrap {
+    background: #1e1e1e;
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .prog-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff8c00, #ffb800, #ffe066);
+    width: 0%;
+    transition: width 0.5s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Reflexo na barra */
+  .prog-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    animation: shimmer 1.8s linear infinite;
+    width: 60%;
+  }
+
+  @keyframes shimmer {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(300%); }
+  }
+
+  .prog-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 45px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe-top"></div>
+<div class="stripe-bottom"></div>
+
+<div class="card">
+
+  <!-- Cena animada -->
+  <div class="scene">
+    <div class="ground"></div>
+
+    <!-- Prédio -->
+    <div class="building">
+      <div class="floor"></div>
+      <div class="floor"></div>
+      <div class="floor"></div>
+      <div class="floor"></div>
+    </div>
+
+    <!-- Janelas -->
+    <div class="windows">
+      <div class="win-row">
+        <div class="win"></div>
+        <div class="win"></div>
+        <div class="win"></div>
+      </div>
+      <div class="win-row">
+        <div class="win"></div>
+        <div class="win"></div>
+        <div class="win"></div>
+      </div>
+      <div class="win-row">
+        <div class="win"></div>
+        <div class="win"></div>
+        <div class="win"></div>
+      </div>
+    </div>
+
+    <!-- Capacete do trabalhador -->
+    <div class="helmet">👷</div>
+
+    <!-- Poeira -->
+    <div class="dust">
+      <div class="dust-dot"></div>
+      <div class="dust-dot"></div>
+      <div class="dust-dot"></div>
+    </div>
+
+    <!-- Guindaste -->
+    <div class="crane">
+      <div class="crane-arm">
+        <div class="crane-counter"></div>
+        <div class="crane-cable">
+          <div class="crane-load"></div>
+        </div>
+      </div>
+      <div class="crane-tower"></div>
+    </div>
+  </div>
+
+  <!-- Texto -->
+  <h1>Em <span>Construção</span></h1>
+  <p>
+    Estamos trabalhando duro para entregar<br>
+    algo incrível em breve. Aguarde!
+  </p>
+
+  <!-- Progresso -->
+  <div class="prog-wrap">
+    <div class="prog-fill" id="bar"></div>
+  </div>
+  <div class="prog-label">
+    <span>Progresso</span>
+    <span id="pct">0%</span>
+  </div>
+
+  <div class="footer">© <span id="year"></span> — Todos os direitos reservados</div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Barra de progresso animada (vai e volta)
+  let pct = 0, dir = 1;
+  const bar = document.getElementById('bar');
+  const pctEl = document.getElementById('pct');
+
+  // Vai até 72% e fica pulsando levemente
+  let target = 72, current = 0;
+
+  function fill() {
+    if (current < target) {
+      current += 0.6;
+      bar.style.width = current + '%';
+      pctEl.textContent = Math.round(current) + '%';
+      requestAnimationFrame(fill);
+    }
+  }
+
+  setTimeout(fill, 300);
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página em Desenvolvimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+}
+
+/* Container principal */
+.container {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+}
+
+/* Engrenagem SVG */
+.gear-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 28px auto;
+    position: relative;
+}
+
+.gear-wrapper svg {
+    width: 100%;
+    height: 100%;
+    animation: spin 6s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.4));
+}
+
+.gear-wrapper svg path {
+    fill: #00bfff;
+}
+
+/* Título */
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+/* Texto */
+p {
+    opacity: .6;
+    margin-bottom: 32px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Barra de progresso */
+.progress-container {
+    width: 300px;
+    height: 8px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0 auto 14px auto;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0080ff, #00bfff, #38bdf8);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer na barra */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 1.6s linear infinite;
+    width: 50%;
+}
+
+@keyframes shimmer {
+    from { transform: translateX(-200%); }
+    to   { transform: translateX(400%); }
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0 auto 32px auto;
+    font-size: 0.72rem;
+    opacity: 0.35;
+    letter-spacing: 1px;
+}
+
+/* Ícones flutuando */
+.icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: .35;
+    animation: float 6s ease-in-out infinite;
+    user-select: none;
+}
+
+.icon:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.icon:nth-child(2) { top: 70%; left: 82%; animation-delay: 2s; }
+.icon:nth-child(3) { top: 40%; left: 5%;  animation-delay: 4s; }
+.icon:nth-child(4) { top: 20%; right: 15%; animation-delay: 1s; font-size: 1.5rem; opacity: .2; }
+.icon:nth-child(5) { bottom: 15%; left: 30%; animation-delay: 3s; font-size: 1.5rem; opacity: .2; }
+
+/* Rodapé */
+.footer {
+    font-size: .78rem;
+    opacity: .35;
+}
+
+/* Animações */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%       { transform: translateY(-15px) rotate(3deg); }
+    66%       { transform: translateY(-8px) rotate(-2deg); }
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    h1 { font-size: 1.7rem; }
+    .progress-container,
+    .progress-label { width: 260px; }
+}
+</style>
+</head>
+<body>
+
+<div class="icon">🚧</div>
+<div class="icon">⚙️</div>
+<div class="icon">🔧</div>
+<div class="icon">🛠️</div>
+<div class="icon">⚡</div>
+
+<div class="container">
+
+    <!-- Engrenagem SVG real -->
+    <div class="gear-wrapper">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="
+                M43.3 5l-3.2 9.6a34 34 0 0 0-8.4 3.5L22 14.2l-9.4 9.4 3.9 9.7a34 34 0 0 0-3.5 8.4L3.4 44.9v13.2l9.6 3.2a34 34 0 0 0 3.5 8.4l-3.9 9.7 9.4 9.4 9.7-3.9a34 34 0 0 0 8.4 3.5l3.2 9.6h13.2l3.2-9.6a34 34 0 0 0 8.4-3.5l9.7 3.9 9.4-9.4-3.9-9.7a34 34 0 0 0 3.5-8.4l9.6-3.2V43.3l-9.6-3.2a34 34 0 0 0-3.5-8.4l3.9-9.7-9.4-9.4-9.7 3.9a34 34 0 0 0-8.4-3.5L56.7 3.4H43.3z
+                M50 33a17 17 0 1 1 0 34 17 17 0 0 1 0-34z
+            " fill="#00bfff"/>
+        </svg>
+    </div>
+
+    <h1>Estamos em Construção</h1>
+    <p>Esta página está sendo desenvolvida.<br>
+    Em breve teremos novidades incríveis 🚀</p>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+    <div class="progress-label">
+        <span>Em desenvolvimento</span>
+        <span id="pct">0%</span>
+    </div>
+
+    <div class="footer">
+        © <span id="year"></span> — Todos os direitos reservados
+    </div>
+</div>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Barra vai até 68% e para (não reinicia)
+    let current = 0;
+    const target = 68;
+    const bar = document.getElementById("progress");
+    const pct = document.getElementById("pct");
+
+    const iv = setInterval(() => {
+        if (current >= target) { clearInterval(iv); return; }
+        current += 0.5;
+        bar.style.width = current + "%";
+        pct.textContent = Math.round(current) + "%";
+    }, 25);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Em Desenvolvimento | Tech Innovate</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #00f2fe;
+    --secondary: #4facfe;
+    --dark: #0b0c10;
+    --darker: #050607;
+    --text: #e5e9f0;
+    --accent: #ff0055;
+    --grid-size: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--darker);
+    color: var(--text);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Grid Animado de Fundo */
+.background-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(79, 172, 254, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 172, 254, 0.05) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    animation: gridPulse 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* Partículas Flutuantes */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: particleFloat 20s linear infinite;
+}
+
+/* Container Principal */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card Principal com efeito Glass */
+.glass-card {
+    background: rgba(10, 15, 25, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    border-radius: 40px;
+    padding: 4rem 3rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(79, 172, 254, 0.1) inset,
+                0 0 30px rgba(0, 242, 254, 0.2);
+    animation: cardGlow 4s ease-in-out infinite;
+    text-align: center;
+    width: 100%;
+}
+
+/* Cabeçalho com ícones animados */
+.header-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.1), rgba(79, 172, 254, 0.05));
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: iconPulse 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+}
+
+.icon-circle:nth-child(2) { animation-delay: 0.5s; }
+.icon-circle:nth-child(3) { animation-delay: 1s; }
+
+/* Título */
+.glitch-text {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--primary);
+    animation: glitch 5s infinite;
+    letter-spacing: 5px;
+}
+
+.glitch-text span {
+    display: inline-block;
+    animation: glitchSpan 3s infinite;
+}
+
+/* Subtítulo com efeito gradiente */
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #a8ede0, #fed6e3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+/* Status Card */
+.status-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+    border: 1px solid rgba(0, 242, 254, 0.15);
+}
+
+/* Medidor de Progresso Tecnológico */
+.progress-tech {
+    margin-bottom: 2rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+}
+
+.progress-bar-container {
+    height: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 3px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    position: relative;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+/* Informações Técnicas */
+.tech-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    gap: 1rem;
+}
+
+.info-item {
+    flex: 1;
+    padding: 1rem;
+    background: rgba(0, 242, 254, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 242, 254, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
+}
+
+.info-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.info-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Botão de Notificação */
+.notify-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    color: var(--dark);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin: 2rem 0 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.notify-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.notify-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--primary);
+}
+
+.notify-btn:hover::before {
+    left: 100%;
+}
+
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer span {
+    color: var(--primary);
+}
+
+/* Loader Circular */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.loader-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: loaderDot 1.5s ease-in-out infinite;
+}
+
+.loader-dot:nth-child(2) { animation-delay: 0.2s; }
+.loader-dot:nth-child(3) { animation-delay: 0.4s; }
+.loader-dot:nth-child(4) { animation-delay: 0.6s; }
+.loader-dot:nth-child(5) { animation-delay: 0.8s; }
+
+/* Keyframes */
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(0, 242, 254, 0.6);
+    }
+}
+
+@keyframes glitch {
+    0%, 100% { text-shadow: 0.05em 0 0 var(--accent), -0.05em -0.025em 0 var(--primary); }
+    25% { text-shadow: -0.05em -0.025em 0 var(--accent), 0.025em 0.05em 0 var(--primary); }
+    50% { text-shadow: 0.025em 0.05em 0 var(--accent), 0.05em 0 0 var(--primary); }
+    75% { text-shadow: -0.025em 0 0 var(--accent), -0.025em -0.05em 0 var(--primary); }
+}
+
+@keyframes glitchSpan {
+    0%, 100% { transform: translate(0); }
+    5% { transform: translate(-2px, 1px); }
+    10% { transform: translate(2px, -1px); }
+    15% { transform: translate(-1px, 2px); }
+    20% { transform: translate(1px, -2px); }
+    25% { transform: translate(0); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes loaderDot {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: scale(1.5);
+        opacity: 1;
+        background: var(--secondary);
+    }
+}
+
+@keyframes cardGlow {
+    0%, 100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(79, 172, 254, 0.1) inset, 0 0 30px rgba(0, 242, 254, 0.2); }
+    50% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(79, 172, 254, 0.3) inset, 0 0 50px rgba(0, 242, 254, 0.4); }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .glass-card {
+        padding: 2rem 1.5rem;
+        border-radius: 30px;
+    }
+    
+    .glitch-text {
+        font-size: 2.5rem;
+    }
+    
+    .tech-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Grid Animado -->
+<div class="background-grid"></div>
+
+<!-- Partículas -->
+<div class="particles" id="particles"></div>
+
+<div class="container">
+    <div class="glass-card">
+        <!-- Ícones Animados -->
+        <div class="header-icons">
+            <div class="icon-circle">⚡</div>
+            <div class="icon-circle">🔮</div>
+            <div class="icon-circle">💫</div>
+        </div>
+
+        <!-- Título com efeito glitch -->
+        <h1 class="glitch-text">
+            <span>E</span>
+            <span>M</span>
+            <span>&nbsp;</span>
+            <span>D</span>
+            <span>E</span>
+            <span>S</span>
+            <span>E</span>
+            <span>N</span>
+            <span>V</span>
+            <span>.</span>
+        </h1>
+
+        <div class="subtitle">Sistema em desenvolvimento ativo</div>
+
+        <!-- Status Card -->
+        <div class="status-card">
+            <!-- Loader Dots -->
+            <div class="loader-container">
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+                <div class="loader-dot"></div>
+            </div>
+
+            <!-- Progresso -->
+            <div class="progress-tech">
+                <div class="progress-header">
+                    <span>Progresso de Desenvolvimento</span>
+                    <span id="percentage">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress"></div>
+                </div>
+            </div>
+
+            <!-- Informações Técnicas -->
+            <div class="tech-info">
+                <div class="info-item">
+                    <div class="info-label">Versão</div>
+                    <div class="info-value">2.5.0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Sprint</div>
+                    <div class="info-value">#23</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Uptime</div>
+                    <div class="info-value">99.9%</div>
+                </div>
+            </div>
+
+            <!-- Mensagem -->
+            <p style="color: rgba(255,255,255,0.7); margin: 1rem 0; font-size: 0.95rem;">
+                Estamos preparando algo extraordinário para você.<br>
+                <span style="color: var(--primary);">Tecnologia de ponta • Design inovador • Performance</span>
+            </p>
+
+            <!-- Botão -->
+            <button class="notify-btn" onclick="alert('🔔 Você será notificado quando lançarmos!')">
+                📡 Notificar-me
+            </button>
+
+            <!-- Previsão de Lançamento -->
+            <div style="margin-top: 1.5rem; font-size: 0.8rem; opacity: 0.6;">
+                <span>⚡ Previsão de lançamento: </span>
+                <span style="color: var(--primary);" id="launchDate"></span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>© <span id="year"></span></span>
+            <span>•</span>
+            <span>Tech Innovate</span>
+            <span>•</span>
+            <span>v2.5.0-beta</span>
+        </div>
+    </div>
+</div>
+
+<script>
+// Gerar partículas
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Posição aleatória
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 20) + 's';
+        
+        // Tamanho aleatório
+        const size = Math.random() * 3 + 1;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Ano atual
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Data de lançamento (3 meses a partir de agora)
+const launchDate = new Date();
+launchDate.setMonth(launchDate.getMonth() + 3);
+document.getElementById('launchDate').textContent = launchDate.toLocaleDateString('pt-BR', { 
+    month: 'long', 
+    year: 'numeric' 
+});
+
+// Progresso animado
+let progress = 0;
+const bar = document.getElementById('progress');
+const percentageSpan = document.getElementById('percentage');
+
+function animateProgress() {
+    // Progresso mais realista (não linear)
+    const increment = Math.random() * 2;
+    
+    if (progress < 100) {
+        progress = Math.min(progress + increment, 100);
+        bar.style.width = progress + '%';
+        percentageSpan.textContent = progress.toFixed(1) + '%';
+    } else {
+        // Reinicia quando chega a 100%
+        setTimeout(() => {
+            progress = 0;
+        }, 1000);
+    }
+}
+
+// Animar progresso a cada 50ms
+setInterval(animateProgress, 50);
+
+// Efeito de digitação no título (opcional)
+const titleSpans = document.querySelectorAll('.glitch-text span');
+titleSpans.forEach((span, index) => {
+    span.style.animationDelay = (index * 0.1) + 's';
+});
+
+// Inicializar partículas
+createParticles();
+
+// Redimensionar partículas quando a janela for redimensionada (opcional)
+window.addEventListener('resize', () => {
+    document.getElementById('particles').innerHTML = '';
+    createParticles();
+});
+
+// Efeito de mouse tracking (opcional)
+document.addEventListener('mousemove', (e) => {
+    const card = document.querySelector('.glass-card');
+    const mouseX = e.clientX / window.innerWidth - 0.5;
+    const mouseY = e.clientY / window.innerHeight - 0.5;
+    
+    // Pequeno movimento de parallax
+    card.style.transform = `translate(${mouseX * 10}px, ${mouseY * 10}px)`;
+});
+</script>
+
+</body>
+</html>

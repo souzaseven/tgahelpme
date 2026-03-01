@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Controle de Contas do Mês</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">💰</div>
+        <div>
+          <h1>Controle de Contas</h1>
+          <p>Organize receitas, despesas e pagamentos por mês</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="btn primary" id="btnNova">+ Nova conta</button>
+      </div>
+    </header>
+
+    <section class="kpis">
+      <div class="kpi">
+        <div class="kpi-label">Receitas</div>
+        <div class="kpi-value" id="kpiReceitas">R$ 0,00</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Despesas</div>
+        <div class="kpi-value" id="kpiDespesas">R$ 0,00</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Saldo</div>
+        <div class="kpi-value" id="kpiSaldo">R$ 0,00</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Pendentes</div>
+        <div class="kpi-value" id="kpiPendente">R$ 0,00</div>
+      </div>
+    </section>
+
+    <section class="filters">
+      <div class="field">
+        <label>Mês</label>
+        <input type="month" id="fMes"/>
+      </div>
+      <div class="field">
+        <label>Busca</label>
+        <input type="text" id="fQ" placeholder="Título, observação, forma..." />
+      </div>
+      <div class="field">
+        <label>Tipo</label>
+        <select id="fTipo">
+          <option value="">Todos</option>
+          <option value="despesa">Despesa</option>
+          <option value="receita">Receita</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <select id="fPago">
+          <option value="">Todos</option>
+          <option value="0">Pendente</option>
+          <option value="1">Pago</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Categoria</label>
+        <select id="fCategoria">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Ordenação</label>
+        <select id="fOrdem">
+          <option value="vencimento_asc">Vencimento ↑</option>
+          <option value="vencimento_desc">Vencimento ↓</option>
+          <option value="valor_desc">Maior valor</option>
+          <option value="valor_asc">Menor valor</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn" id="btnLimpar">Limpar</button>
+        <button class="btn primary" id="btnFiltrar">Aplicar</button>
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Vencimento</th>
+            <th>Valor</th>
+            <th class="right">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <div class="empty" id="empty" style="display:none;">
+        <div class="empty-icon">📭</div>
+        <h3>Nenhuma conta encontrada</h3>
+        <p>Tente ajustar os filtros ou cadastre uma nova conta.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="modalTitle">Nova Conta</h2>
+        <button class="icon-btn" id="btnFechar">✕</button>
+      </div>
+
+      <form id="form">
+        <input type="hidden" id="mId" />
+
+        <div class="grid">
+          <div class="field">
+            <label>Título *</label>
+            <input type="text" id="mTitulo" required maxlength="120" placeholder="Ex: Internet, Aluguel..." />
+          </div>
+          <div class="field">
+            <label>Categoria</label>
+            <input type="text" id="mCategoria" maxlength="60" placeholder="Ex: Casa, Transporte..." />
+          </div>
+
+          <div class="field">
+            <label>Tipo *</label>
+            <select id="mTipo" required>
+              <option value="despesa">Despesa</option>
+              <option value="receita">Receita</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Valor (R$) *</label>
+            <input type="number" id="mValor" required min="0.01" step="0.01" placeholder="0,00" />
+          </div>
+
+          <div class="field">
+            <label>Vencimento *</label>
+            <input type="date" id="mVenc" required />
+          </div>
+
+          <div class="field inline">
+            <label class="check">
+              <input type="checkbox" id="mPago" />
+              <span>Pago</span>
+            </label>
+          </div>
+
+          <div class="field">
+            <label>Forma de pagamento</label>
+            <input type="text" id="mForma" maxlength="40" placeholder="PIX, Cartão, Boleto..." />
+          </div>
+
+          <div class="field">
+            <label>Data pagamento</label>
+            <input type="date" id="mDataPag" />
+          </div>
+
+          <div class="field col2">
+            <label>Observação</label>
+            <textarea id="mObs" rows="3" placeholder="Detalhes extras..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn" id="btnCancelar">Cancelar</button>
+          <button type="submit" class="btn primary" id="btnSalvar">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
