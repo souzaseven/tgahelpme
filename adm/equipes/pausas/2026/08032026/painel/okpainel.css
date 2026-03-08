@@ -1,0 +1,750 @@
+/* ============================================================
+   painel.css — FASE 7 FINAL (base FASE 6)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   GLOBAL
+------------------------------------------------------------ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+h1, h2, h3, h4 { margin: 0; }
+p { margin: 4px 0; }
+
+/* ============================================================
+   TOPO
+============================================================ */
+.painel-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.titulo-sistema h1 {
+    color: #38bdf8;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.titulo-sistema p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.info-operador {
+    text-align: right;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+.card {
+    background: #1e293b;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #38bdf8;
+}
+
+.card-participantes {
+    margin-top: 14px;
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================================================
+   GRID SUPERIOR
+============================================================ */
+.painel-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media(max-width: 800px){
+    .painel-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   LISTAS DE PARTICIPANTES
+============================================================ */
+.lista-participantes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.lista-vazia {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+@media(max-width: 768px){
+    .lista-participantes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================================
+   CARTÃO DO OPERADOR
+============================================================ */
+.linha-participante {
+    background: #0f172a;
+    padding: 10px 12px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.linha-participante:hover {
+    background: #1e293b;
+}
+
+.nome {
+    font-weight: 600;
+}
+
+.bolinha-estado {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+/* operador logado */
+.linha-participante.atual {
+    border-color: #38bdf8;
+    background: #1e3a8a;
+}
+
+/* ============================================================
+   BOTÕES FASE 6
+============================================================ */
+.op-botoes {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.op-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #1e293b;
+    color: #e2e8f0;
+    border: none;
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.op-btn:hover {
+    transform: translateY(-2px);
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.op-btn.op-espera {
+    background: #f59e0b;
+    color: #1f2933;
+}
+.op-btn.op-espera:hover {
+    background: #fbbf24;
+}
+
+.op-btn.op-voltar {
+    background: #22c55e;
+    color: #0f172a;
+}
+
+/* ============================================================
+   CORES DE STATUS
+============================================================ */
+.bolinha-estado.ativo { background: #22c55e; }
+.bolinha-estado.espera { background: #f59e0b; }
+.bolinha-estado.pausa { background: #fbbf24; }
+.bolinha-estado.expirado { background: #ef4444; }
+
+#listaFila.lista-participantes {
+    grid-template-columns: 1fr !important;
+}
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.sidebar {
+    width: 65px;
+    background: #1e293b;
+    border-right: 2px solid #334155;
+    padding-top: 10px;
+    transition: width 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+}
+
+/* ===== MODO FECHADO (.collapsed) ===== */
+.sidebar.collapsed {
+    width: 65px !important;
+    align-items: end !important;
+}
+
+/* Centraliza perfeitamente os itens */
+.sidebar.collapsed .sidebar-item {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Centraliza os ícones */
+.sidebar.collapsed .sidebar-item i {
+    width: 40px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+/* Oculta o texto */
+.sidebar.collapsed .texto-item {
+    display: none !important;
+}
+
+/* ===== MODO ABERTO (.expanded) ===== */
+.sidebar.expanded {
+    width: 220px !important;
+    align-items: flex-start !important;
+    padding-left: 10px;
+}
+
+.sidebar.expanded .sidebar-item {
+    justify-content: flex-start !important;
+}
+
+.sidebar.expanded .texto-item {
+    display: inline-block !important;
+    opacity: 1;
+}
+
+/* ===== ESTILOS DOS ITENS ===== */
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #cbd5e1;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.sidebar-item:hover {
+    background: #334155;
+}
+
+.sidebar-item i {
+    font-size: 20px;
+    width: 35px;
+    text-align: center;
+}
+
+.texto-item {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+/* ============================================================
+   WRAPPER
+============================================================ */
+.layout-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.painel-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* ============================================================
+   TODAS EQUIPES
+============================================================ */
+.conteudo-extra {
+    margin-top: 25px;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+}
+
+.todas-equipes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card-equipe {
+    background: #0f172a;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #334155;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.card-equipe:hover {
+    transform: translateY(-4px);
+    border-color: #38bdf8;
+}
+
+.card-equipe h3 {
+    color: #38bdf8;
+    margin-bottom: 14px;
+}
+
+.lista-simples p {
+    background: #1e293b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 5px 0;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+@media(max-width: 900px) {
+    .todas-equipes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   TELA DE PREFERÊNCIAS — FASE 7
+============================================================ */
+.tela-preferencias {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #0f172a;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.tela-preferencias.hidden {
+    display: none !important;
+}
+
+.titulo-pref {
+    font-size: 28px;
+    color: #38bdf8;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.pref-item {
+    background: #1e293b;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-voltar-pref {
+    margin-top: 25px;
+    padding: 12px 16px;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-voltar-pref:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   LEGENDA DE STATUS (Ativo / Fila / Pausa / Expirado)
+============================================================ */
+.legenda-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 12px;
+    font-size: 12px;
+    color: #94a3b8;
+    flex-wrap: wrap;
+}
+
+.legenda-status .bolinha {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+/* cores da legenda */
+.legenda-status .bolinha.ativo {
+    background-color: #22c55e; /* verde */
+}
+.legenda-status .bolinha.espera {
+    background-color: #fbbf24; /* amarelo */
+}
+.legenda-status .bolinha.pausa {
+    background-color: #38bdf8; /* azul */
+}
+.legenda-status .bolinha.expirado {
+    background-color: #a855f7; /* roxo */
+}
+
+
+/* ============================================================
+   Fila de Espera — posição + tempo
+============================================================ */
+.topo-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.pos-fila {
+    font-weight: 700;
+    color: #fbbf24;
+    font-size: 13px;
+}
+
+.info-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #e2e8f0;
+    margin-top: 2px;
+}
+
+.tempo-fila {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   FILA — POSIÇÃO + TEMPO
+============================================================ */
+.linha-fila-topo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+.posicao-fila {
+    font-weight: 700;
+    color: #38bdf8;
+    font-size: 13px;
+}
+
+.linha-fila-tempo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.tempo-fila {
+    font-family: "Consolas", "Roboto Mono", monospace;
+    font-size: 13px;
+}
+
+/* Fila em 1 coluna */
+#listaFila.lista-participantes {
+    grid-template-columns: 1fr !important;
+}
+
+/* Linha da fila com posição + tempo */
+.linha-fila-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.posicao-fila {
+    background: #0f172a;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #38bdf8;
+    border: 1px solid #334155;
+}
+
+.linha-fila-tempo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #cbd5e1;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+.linha-fila-tempo i {
+    font-size: 12px;
+}
+
+.tempo-fila {
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* LISTA DE PAUSA EM COLUNA (UM ABAIXO DO OUTRO) */
+#listaPausa {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#listaPausa .linha-participante {
+    width: 100%;
+}
+
+
+/* --- Quando passar de 20 minutos de pausa --- */
+.pausa-expirada {
+    animation: piscar 1s infinite;
+    border-left: 4px solid #ff4d4d !important;
+    background: rgba(255, 0, 0, 0.08);
+}
+
+@keyframes piscar {
+    0%   { background-color: rgba(255, 0, 0, 0.15); }
+    50%  { background-color: rgba(255, 0, 0, 0.35); }
+    100% { background-color: rgba(255, 0, 0, 0.15); }
+}
+
+/* cronômetro extra */
+.linha-fila-tempo.excedido {
+    margin-top: 4px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.conteudo-extra.hidden,
+.conteudo-supervisao.hidden {
+    display: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+
+.abas-equipes {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #1e293b;
+    border-bottom: 2px solid #334155;
+}
+
+.aba-equipe {
+    background: #334155;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.aba-equipe.active {
+    background: #38bdf8;
+    font-weight: bold;
+}
+
+.aba-equipe .fechar {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #f87171;
+}
+
+.painel-equipes-internas {
+    display: flex;
+    flex-direction: column;
+}
+
+.painel-equipe {
+    display: none;
+    padding: 20px;
+}
+
+.painel-equipe.active {
+    display: block;
+}
+
+
+.aba-equipe {
+    padding: 6px 12px;
+    margin: 4px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.aba-equipe.ativa {
+    background: #1e90ff;
+}
+.painel-equipe {
+    margin-top: 10px;
+    padding: 10px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+/* Abas internas */
+#abasEquipes {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    background: #1f2937;
+}
+
+.aba-equipe {
+    padding: 6px 12px;
+    background: #374151;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+}
+
+.aba-equipe.active {
+    background: #2563eb;
+}
+
+.aba-equipe .fechar {
+    margin-left: 6px;
+    color: #fee2e2;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+#painelPrincipal.hidden {
+    display: none;
+}
+/*
+.abas-equipes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}*/
+
+.aba-equipe {
+    background: #1f2937;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+}
+
+.aba-equipe.active {
+    background: #2563eb;
+}
+
+.painel-equipes-internas {
+    width: 100%;
+}
+
+.painel-equipe {
+    display: none;
+}
+
+.painel-equipe:not(.hidden) {
+    display: block;
+}
+
+
+.toast-aviso {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1f2937;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .3s ease;
+    z-index: 9999;
+}
+.toast-aviso.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.toast-aviso.warning { background: #b45309; }
+.toast-aviso.success { background: #15803d; }
+.toast-aviso.info    { background: #0369a1; }
+
+
+.tempo-pausa {
+    font-size: 12px;
+    color: #fbbf24;
+    font-family: "JetBrains Mono", monospace;
+    margin-left: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.painel-equipe h2 {
+    color: #38bdf8;
+    margin-bottom: 16px;
+    font-size: 20px;
+}

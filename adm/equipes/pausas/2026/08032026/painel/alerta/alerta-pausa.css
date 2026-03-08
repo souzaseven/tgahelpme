@@ -1,0 +1,40 @@
+/* ============================================================
+   ALERTA DE PAUSA EXCEDIDA
+============================================================ */
+
+@keyframes alertaPiscando {
+    0%   { box-shadow: 0 0 0 rgba(255,0,0,0); }
+    50%  { box-shadow: 0 0 15px rgba(255,0,0,0.9); }
+    100% { box-shadow: 0 0 0 rgba(255,0,0,0); }
+}
+
+.alerta-pausa {
+    border: 2px solid #ff2e2e !important;
+    animation: alertaPiscando 1s infinite;
+}
+
+.alerta-pausa-nome {
+    color: #ff2e2e !important;
+    font-weight: bold;
+}
+
+/* Botão WhatsApp */
+.btn-alerta-whatsapp {
+    margin-top: 6px;
+    padding: 6px 10px;
+    background: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-alerta-whatsapp:hover {
+    background: #1ebe5d;
+}
+
+.btn-whatsapp-enviado {
+    background: #16a34a !important;
+    cursor: default;
+}
