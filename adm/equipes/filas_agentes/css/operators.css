@@ -1,0 +1,231 @@
+/* ============================================================================
+   operators.css — Equipes e Operadores (Accordion)
+   Painel Gerenciamento de Filas • Evolux
+   Versão modernizada (dashboard corporativo)
+============================================================================ */
+
+/* ================= GRID DE EQUIPES ================= */
+
+.teams-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ================= TEAM BLOCK ================= */
+
+.team-block {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 26, 46, .9),
+    rgba(11, 18, 32, .9)
+  );
+
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, .06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.team-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .45);
+}
+
+/* ================= HEADER CLICÁVEL ================= */
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+  cursor: pointer;
+
+  background: linear-gradient(
+    180deg,
+    rgba(30, 144, 255, .18),
+    rgba(30, 144, 255, .08)
+  );
+
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.team-title {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ================= AÇÕES DO HEADER ================= */
+
+.team-actions {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.team-actions button {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: var(--text-muted);
+
+  padding: .35rem .6rem;
+  border-radius: 999px;
+
+  font-size: .7rem;
+  cursor: pointer;
+
+  transition: background .2s ease, color .2s ease;
+}
+
+.team-actions button:hover {
+  background: rgba(255, 255, 255, .12);
+  color: var(--text-main);
+}
+
+.btn-toggle i {
+  transition: transform .25s ease;
+}
+
+.team-block.expanded .btn-toggle i {
+  transform: rotate(180deg);
+}
+
+/* ================= BODY (ACCORDION) ================= */
+
+.team-body {
+  background: rgba(11, 18, 32, .95);
+
+  max-height: 0;
+  overflow: hidden;
+
+  transition: max-height .45s ease;
+}
+
+.team-block.expanded .team-body {
+  max-height: 4000px;
+}
+
+/* ================= OPERADOR ================= */
+
+.operator-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 14px;
+
+  padding: 14px 18px;
+
+  align-items: center;
+
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+
+  transition: background .2s ease;
+}
+
+.operator-row:last-child {
+  border-bottom: none;
+}
+
+.operator-row:hover {
+  background: rgba(255, 255, 255, .04);
+}
+
+/* ================= INFO DO OPERADOR ================= */
+
+.operator-info {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.operator-name {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.op-ids {
+  margin-left: .35rem;
+  font-size: .7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.operator-fila {
+  margin-top: .15rem;
+  display: inline-block;
+
+  font-size: .7rem;
+  font-weight: 600;
+
+  padding: .25rem .6rem;
+  border-radius: 999px;
+
+  background: rgba(30, 144, 255, .15);
+  color: var(--primary);
+
+  width: fit-content;
+}
+
+/* ================= AÇÕES DO OPERADOR ================= */
+
+.operator-actions {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.operator-actions button,
+.operator-actions a {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+
+  color: var(--text-muted);
+
+  padding: .35rem .55rem;
+  border-radius: 10px;
+
+  font-size: .75rem;
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: background .2s ease, color .2s ease;
+}
+
+.operator-actions button:hover,
+.operator-actions a:hover {
+  background: rgba(255, 255, 255, .14);
+  color: var(--text-main);
+}
+
+/* ================= EDITOR DE FILA ================= */
+
+.fila-editor {
+  background: rgba(15, 23, 42, .95);
+  padding: .75rem 1rem;
+
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+
+  border-top: 1px dashed rgba(255, 255, 255, .12);
+}
+
+.fila-editor.hidden {
+  display: none;
+}
+
+/* ================= CHECKBOX ================= */
+
+.operator-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
