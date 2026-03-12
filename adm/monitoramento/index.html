@@ -1,0 +1,167 @@
+<!-- =========================================================
+MONITORAMENTO DE SUPORTE
+Página principal do painel
+========================================================= -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<!-- =========================================================
+META TAGS
+========================================================= -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Monitoramento de Suporte</title>
+
+<!-- =========================================================
+GOOGLE FONTS
+========================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- =========================================================
+CSS DO SISTEMA
+========================================================= -->
+<link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+
+<body>
+
+<!-- =========================================================
+LOADING OVERLAY
+Exibido apenas no primeiro carregamento da página
+========================================================= -->
+<div id="loading-overlay">
+  <div class="spinner"></div>
+  <span class="loading-text">Carregando dados…</span>
+</div>
+
+
+
+<!-- =========================================================
+TÍTULO DA PÁGINA
+========================================================= -->
+<h1 class="page-title">Monitoramento de Suporte</h1>
+
+
+
+<!-- =========================================================
+CARDS DE INDICADORES
+========================================================= -->
+<div class="cards">
+
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">🎧</span>
+      <span class="card-label">Suportes Ativos</span>
+    </div>
+    <div class="card-value" id="card_ativos">—</div>
+  </div>
+
+  <div class="card gold">
+    <div class="card-header">
+      <span class="card-icon">⏸</span>
+      <span class="card-label">Suportes Pausados</span>
+    </div>
+    <div class="card-value" id="card_pausados">2</div>
+  </div>
+
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">🖥</span>
+      <span class="card-label">Tickets Abertos</span>
+    </div>
+    <div class="card-value" id="card_tickets">746</div>
+  </div>
+
+  <div class="card red">
+    <div class="card-header">
+      <span class="card-icon">⚠️</span>
+      <span class="card-label">Tickets Vencidos</span>
+    </div>
+    <div class="card-value" id="card_vencidos">405</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-header">
+      <span class="card-icon">📞</span>
+      <span class="card-label">Fila Tel.</span>
+    </div>
+    <div class="card-value" id="card_tel">—</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-header">
+      <span class="card-icon">💬</span>
+      <span class="card-label">Fila Chat</span>
+    </div>
+    <div class="card-value" id="card_chat">—</div>
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+FILTROS
+========================================================= -->
+<div class="filters">
+
+  <label>Status:</label>
+  <select id="filter_status">
+    <option value="all">Todos</option>
+    <option value="online">Somente Online</option>
+    <option value="offline">Somente Offline</option>
+  </select>
+
+  <label>Fila:</label>
+  <select id="filter_queue">
+    <option value="all">Todas</option>
+  </select>
+
+</div>
+
+
+
+<!-- =========================================================
+TABELA DE AGENTES
+========================================================= -->
+<div class="table-wrap">
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Suporte</th>
+        <th>Status</th>
+        <th>Fila</th>
+        <th>Total Hoje</th>
+        <th>Feitas</th>
+        <th>Recebidas</th>
+        <th>Atendidas</th>
+        <th>Tempo Médio</th>
+        <th>Tickets</th>
+        <th>Vencidos</th>
+      </tr>
+    </thead>
+
+    <tbody id="agents-body">
+    </tbody>
+
+  </table>
+
+</div>
+
+
+
+<!-- =========================================================
+SCRIPT JS
+========================================================= -->
+<script src="./assets/js/app.js"></script>
+
+</body>
+</html>
