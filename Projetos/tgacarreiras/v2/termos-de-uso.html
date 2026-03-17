@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Termos de Uso — TGA Carreiras</title>
+<meta name="robots" content="index,follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --bg:        #060c18;
+  --bg1:       #0a1224;
+  --bg2:       #0e192f;
+  --surface:   rgba(255,255,255,.045);
+  --surfaceHi: rgba(255,255,255,.08);
+  --border:    rgba(255,255,255,.09);
+  --borderHi:  rgba(255,170,60,.30);
+  --tx:        #e8f0ff;
+  --txs:       #8da4cc;
+  --txm:       #4a6080;
+  --accent:    #f59e0b;
+  --accent2:   #fbbf24;
+  --blue:      #3d9eff;
+  --teal:      #2dd4bf;
+  --danger:    #ef4444;
+  --max:       920px;
+  --ff-head:   'Syne', sans-serif;
+  --ff-body:   'DM Sans', sans-serif;
+  --ease:      cubic-bezier(.25,.46,.45,.94);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--tx);
+  line-height: 1.7;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.4;
+}
+
+a { color:var(--accent2); text-decoration:none; transition:color .2s }
+a:hover { color:#fff; text-decoration:underline }
+
+/* ─────────────────────────────────────────
+   ORBS — tom âmbar/laranja para diferenciar da PP
+───────────────────────────────────────── */
+.orbs { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden }
+.orb  { position:absolute; border-radius:50%; filter:blur(80px); opacity:.16; animation:drift 22s ease-in-out infinite alternate }
+.orb1 { width:600px;height:600px; background:radial-gradient(circle,#7c3a10,transparent 70%); top:-200px;left:-100px; animation-delay:0s }
+.orb2 { width:500px;height:500px; background:radial-gradient(circle,#4a2a00,transparent 70%); bottom:-150px;right:-80px;  animation-delay:-8s }
+.orb3 { width:280px;height:280px; background:radial-gradient(circle,#0a4a5a,transparent 70%); top:45%;left:58%;           animation-delay:-15s }
+
+@keyframes drift {
+  0%   { transform:translate(0,0) scale(1) }
+  100% { transform:translate(40px,30px) scale(1.08) }
+}
+
+/* ─────────────────────────────────────────
+   PROGRESS BAR
+───────────────────────────────────────── */
+#progress {
+  position:fixed; top:0; left:0; z-index:200;
+  height:2px; width:0%;
+  background:linear-gradient(90deg,var(--accent),#f97316);
+  box-shadow:0 0 8px var(--accent);
+  transition:width .1s linear;
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+header {
+  position:sticky; top:0; z-index:100;
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px) saturate(1.4);
+  background:rgba(6,12,24,.75);
+}
+.hdr-inner {
+  max-width:var(--max); margin:0 auto; padding:0 24px;
+  height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.brand { display:flex; align-items:center; gap:12px }
+.logo-mark {
+  width:36px; height:36px; border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#f97316);
+  display:flex; align-items:center; justify-content:center; font-size:18px;
+  box-shadow:0 0 20px rgba(245,158,11,.35); flex-shrink:0;
+}
+.brand-copy { display:flex; flex-direction:column; line-height:1.2 }
+.brand-name { font-family:var(--ff-head); font-size:14px; font-weight:700; color:var(--tx); letter-spacing:.5px }
+.brand-sub  { font-size:11px; color:var(--txs); font-weight:300; letter-spacing:.3px }
+
+.hdr-actions { display:flex; gap:8px; align-items:center }
+.btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 14px; border-radius:8px;
+  border:1px solid var(--border); background:var(--surface);
+  color:var(--txs); font-family:var(--ff-body); font-size:12px; font-weight:500;
+  cursor:pointer; transition:all .2s var(--ease); white-space:nowrap;
+}
+.btn:hover { background:var(--surfaceHi); color:var(--tx); border-color:var(--borderHi) }
+.btn svg { flex-shrink:0 }
+.btn-primary {
+  background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(249,115,22,.1));
+  border-color:rgba(245,158,11,.4); color:var(--accent2);
+}
+.btn-primary:hover { background:linear-gradient(135deg,rgba(245,158,11,.3),rgba(249,115,22,.18)); color:#fff }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.page {
+  position:relative; z-index:1;
+  max-width:var(--max); margin:0 auto; padding:40px 24px 80px;
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  position:relative; padding:48px 48px 40px;
+  border:1px solid var(--border); border-radius:20px;
+  background:linear-gradient(135deg,rgba(14,25,47,.9),rgba(10,18,36,.9));
+  overflow:hidden; margin-bottom:32px;
+  animation:fadeUp .6s var(--ease) both;
+}
+.hero::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:320px; height:320px;
+  background:radial-gradient(circle,rgba(245,158,11,.1),transparent 65%);
+  pointer-events:none;
+}
+.hero::after {
+  content:''; position:absolute; bottom:-40px; left:30%;
+  width:200px; height:200px;
+  background:radial-gradient(circle,rgba(249,115,22,.07),transparent 65%);
+  pointer-events:none;
+}
+
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:5px 12px; border-radius:999px;
+  border:1px solid rgba(245,158,11,.25);
+  background:rgba(245,158,11,.08);
+  color:var(--accent2); font-size:11px; font-weight:600;
+  letter-spacing:.8px; text-transform:uppercase; margin-bottom:20px;
+}
+.hero-eyebrow::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--accent2); box-shadow:0 0 8px var(--accent2);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.hero h1 {
+  font-family:var(--ff-head); font-size:clamp(28px,4vw,42px);
+  font-weight:800; letter-spacing:-.5px; line-height:1.1; color:#fff; margin-bottom:14px;
+}
+.hero h1 span {
+  background:linear-gradient(90deg,var(--accent),#f97316);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero-desc { color:var(--txs); font-size:15px; font-weight:300; max-width:520px; line-height:1.65; margin-bottom:28px }
+.hero-pills { display:flex; flex-wrap:wrap; gap:8px }
+.pill {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:8px;
+  border:1px solid var(--border); background:rgba(255,255,255,.04);
+  color:var(--txs); font-size:12px; font-weight:400;
+}
+.pill strong { color:var(--tx); font-weight:500 }
+.pill-icon { font-size:13px }
+
+/* ─────────────────────────────────────────
+   IDENTIDADE
+───────────────────────────────────────── */
+.id-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; animation:fadeUp .6s var(--ease) .1s both }
+.id-card {
+  padding:22px 24px; border:1px solid var(--border); border-radius:16px;
+  background:var(--surface); transition:border-color .2s,background .2s;
+  position:relative; overflow:hidden;
+}
+.id-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.id-card:hover::before { opacity:1 }
+.id-card:hover { border-color:var(--borderHi); background:var(--surfaceHi) }
+.id-label {
+  font-family:var(--ff-head); font-size:10px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1.2px; color:var(--accent2);
+  margin-bottom:12px; display:flex; align-items:center; gap:8px;
+}
+.id-label::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,rgba(245,158,11,.3),transparent) }
+.id-line { font-size:13px; color:var(--txs); line-height:1.8 }
+.id-line strong { color:var(--tx); font-weight:500 }
+
+/* ─────────────────────────────────────────
+   TOC
+───────────────────────────────────────── */
+.toc-block {
+  padding:24px 28px; border:1px solid var(--border); border-radius:16px;
+  background:rgba(245,158,11,.03); margin-bottom:40px;
+  animation:fadeUp .6s var(--ease) .2s both;
+}
+.toc-title { font-family:var(--ff-head); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--txm); margin-bottom:16px }
+.toc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:6px }
+.toc-item {
+  display:flex; align-items:center; gap:10px; padding:8px 12px;
+  border-radius:8px; border:1px solid transparent;
+  color:var(--txs); font-size:13px; transition:all .18s; text-decoration:none;
+}
+.toc-item:hover { background:rgba(245,158,11,.08); border-color:rgba(245,158,11,.18); color:var(--accent2); text-decoration:none }
+.toc-num { font-family:var(--ff-head); font-size:10px; font-weight:700; color:var(--accent); min-width:18px; opacity:.7 }
+
+/* ─────────────────────────────────────────
+   SECTIONS
+───────────────────────────────────────── */
+.sections { display:flex; flex-direction:column }
+.section { padding:36px 0; border-bottom:1px solid var(--border); animation:fadeUp .5s var(--ease) both }
+.section:last-child { border-bottom:none }
+
+.sec-header { display:flex; align-items:flex-start; gap:16px; margin-bottom:18px }
+.sec-num {
+  font-family:var(--ff-head); font-size:11px; font-weight:800;
+  color:var(--accent); background:rgba(245,158,11,.1);
+  border:1px solid rgba(245,158,11,.2); border-radius:6px;
+  padding:4px 9px; flex-shrink:0; margin-top:3px; letter-spacing:.5px;
+}
+.sec-header h2 { font-family:var(--ff-head); font-size:18px; font-weight:700; color:#fff; letter-spacing:-.2px; line-height:1.3 }
+
+p { color:var(--txs); font-size:14.5px; font-weight:300; margin-bottom:12px }
+p strong { color:var(--tx); font-weight:500 }
+p:last-child { margin-bottom:0 }
+
+ul { list-style:none; margin:0 0 12px; padding:0; display:flex; flex-direction:column; gap:8px }
+li { display:flex; align-items:flex-start; gap:10px; color:var(--txs); font-size:14.5px; font-weight:300; line-height:1.6 }
+li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; margin-top:8px; opacity:.7 }
+li strong { color:var(--tx); font-weight:500 }
+
+/* callouts */
+.callout { padding:18px 20px; border-radius:12px; margin:16px 0; font-size:14px; font-weight:300; line-height:1.65 }
+.callout-warn  { background:rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.2);  color:rgba(251,191,36,.85) }
+.callout-warn strong { color:var(--accent2) }
+.callout-info  { background:rgba(61,158,255,.07); border:1px solid rgba(61,158,255,.18);  color:var(--txs) }
+.callout-info strong { color:#60a5fa }
+.callout-danger{ background:rgba(239,68,68,.07);  border:1px solid rgba(239,68,68,.18);  color:rgba(252,165,165,.85) }
+.callout-danger strong { color:#f87171 }
+
+/* highlight row */
+.highlight-row {
+  display:flex; align-items:center; gap:12px; padding:14px 18px;
+  border-radius:10px; border:1px solid rgba(245,158,11,.2);
+  background:rgba(245,158,11,.06); margin:12px 0; font-size:14px; color:var(--txs);
+}
+.highlight-row .hl-icon { font-size:18px; flex-shrink:0 }
+.highlight-row strong { color:var(--tx) }
+
+/* role cards */
+.roles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0 }
+.role-card {
+  padding:16px; border:1px solid var(--border); border-radius:12px;
+  background:var(--surface); transition:all .2s;
+}
+.role-card:hover { border-color:rgba(245,158,11,.3); background:var(--surfaceHi) }
+.role-icon  { font-size:22px; margin-bottom:8px }
+.role-name  { font-family:var(--ff-head); font-size:11px; font-weight:700; color:var(--accent2); margin-bottom:6px; text-transform:uppercase; letter-spacing:.5px }
+.role-desc  { font-size:12px; color:var(--txs); font-weight:300; line-height:1.5 }
+
+/* proibições */
+.prohibit-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0 }
+.prohibit-card {
+  display:flex; align-items:flex-start; gap:10px; padding:14px 16px;
+  border:1px solid rgba(239,68,68,.15); border-radius:10px;
+  background:rgba(239,68,68,.04);
+}
+.prohibit-card .p-icon { font-size:16px; flex-shrink:0; margin-top:1px }
+.prohibit-card .p-txt  { font-size:13px; color:rgba(252,165,165,.8); font-weight:300; line-height:1.5 }
+.prohibit-card .p-txt strong { color:#fca5a5; font-weight:500 }
+
+/* contato */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0 }
+.contact-card {
+  display:flex; align-items:center; gap:14px; padding:16px 20px;
+  border:1px solid var(--border); border-radius:12px;
+  background:var(--surface); text-decoration:none; transition:all .2s;
+}
+.contact-card:hover { border-color:var(--borderHi); background:var(--surfaceHi); text-decoration:none }
+.contact-ico { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0 }
+.c-amber { background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.2) }
+.c-blue  { background:rgba(61,158,255,.1);  border:1px solid rgba(61,158,255,.2)  }
+.contact-info .clabel { font-size:11px; color:var(--txm); font-weight:500; text-transform:uppercase; letter-spacing:.6px; margin-bottom:2px }
+.contact-info .cval   { font-size:13px; color:var(--accent2); font-weight:400 }
+
+/* nota corporativa */
+.corp-note {
+  margin-top:40px; padding:20px 24px; border-radius:14px;
+  border:1px solid rgba(245,158,11,.18);
+  background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(245,158,11,.02));
+  display:flex; gap:16px; align-items:flex-start; animation:fadeUp .5s var(--ease) both;
+}
+.corp-note-ico  { font-size:20px; flex-shrink:0; margin-top:1px }
+.corp-note-body { font-size:13px; color:rgba(251,191,36,.7); line-height:1.65; font-weight:300 }
+.corp-note-body strong { color:var(--accent2); font-weight:600 }
+
+/* footer */
+footer {
+  margin-top:60px; padding-top:28px; border-top:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+}
+.ft-left  { font-size:13px; color:var(--txm); font-weight:300 }
+.ft-left strong { color:var(--txs); font-weight:500 }
+.ft-right { display:flex; gap:8px }
+.ft-badge { padding:5px 10px; border-radius:6px; border:1px solid var(--border); background:var(--surface); font-size:11px; color:var(--txm) }
+
+/* link política de privacidade */
+.pp-link {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:8px;
+  border:1px solid rgba(61,158,255,.25);
+  background:rgba(61,158,255,.07);
+  color:#60a5fa; font-size:13px; font-weight:500;
+  text-decoration:none; transition:all .2s;
+}
+.pp-link:hover { border-color:rgba(61,158,255,.4); background:rgba(61,158,255,.14); color:#93c5fd; text-decoration:none }
+
+/* animation */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.section:nth-child(1)  { animation-delay:.05s }
+.section:nth-child(2)  { animation-delay:.09s }
+.section:nth-child(3)  { animation-delay:.12s }
+.section:nth-child(4)  { animation-delay:.15s }
+.section:nth-child(5)  { animation-delay:.18s }
+.section:nth-child(6)  { animation-delay:.21s }
+.section:nth-child(7)  { animation-delay:.24s }
+.section:nth-child(8)  { animation-delay:.27s }
+.section:nth-child(9)  { animation-delay:.30s }
+.section:nth-child(10) { animation-delay:.33s }
+.section:nth-child(11) { animation-delay:.36s }
+.section:nth-child(12) { animation-delay:.39s }
+.section:nth-child(13) { animation-delay:.42s }
+
+/* responsive */
+@media(max-width:720px){
+  .hero{padding:32px 24px 28px}
+  .id-grid,.roles-grid,.prohibit-grid,.contact-grid{grid-template-columns:1fr}
+  .toc-grid{grid-template-columns:1fr 1fr}
+  .hdr-inner{padding:0 16px}
+  .page{padding:28px 16px 60px}
+  footer{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .toc-grid{grid-template-columns:1fr}
+  .roles-grid{grid-template-columns:1fr 1fr}
+  .hdr-actions .btn span{display:none}
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="hdr-inner">
+    <div class="brand">
+      <div class="logo-mark">📋</div>
+      <div class="brand-copy">
+        <span class="brand-name">TGA Carreiras</span>
+        <span class="brand-sub">Termos de Uso</span>
+      </div>
+    </div>
+    <div class="hdr-actions">
+      <button class="btn" onclick="copyLink()">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copiar link</span>
+      </button>
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Salvar PDF</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ PAGE ══════════ -->
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Versão 1.0 — 2026</div>
+    <h1>Termos de<br><span>Uso</span></h1>
+    <p class="hero-desc">Condições para utilização da plataforma TGA Carreiras — direitos, deveres e responsabilidades de Candidatos, Empresas e Administradores.</p>
+    <div class="hero-pills">
+      <span class="pill"><span class="pill-icon">📅</span> <strong>Atualização:</strong>&nbsp; ___/___/2026</span>
+      <span class="pill"><span class="pill-icon">📋</span> <strong>Versão:</strong>&nbsp; 1.0</span>
+      <span class="pill"><span class="pill-icon">👥</span> <strong>Aplica-se a:</strong>&nbsp; Candidatos, Empresas e Administrador</span>
+    </div>
+  </div>
+
+  <!-- IDENTIDADE -->
+  <div class="id-grid">
+    <div class="id-card">
+      <div class="id-label">Operador / Responsável</div>
+      <div class="id-line">
+        <strong>[RAZÃO SOCIAL]</strong><br>
+        CNPJ: [CNPJ]<br>
+        [ENDEREÇO COMPLETO]<br>
+        <a href="mailto:[EMAIL_CONTATO]">[EMAIL_CONTATO]</a>
+      </div>
+    </div>
+    <div class="id-card">
+      <div class="id-label">Escopo da plataforma</div>
+      <div class="id-line">
+        Intermediação tecnológica de recrutamento: publicação de vagas, candidaturas, triagem e comunicação entre candidatos e empresas.
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-block">
+    <div class="toc-title">Navegação rápida</div>
+    <div class="toc-grid">
+      <a href="#s1"  class="toc-item"><span class="toc-num">01</span> Aceitação</a>
+      <a href="#s2"  class="toc-item"><span class="toc-num">02</span> Definições</a>
+      <a href="#s3"  class="toc-item"><span class="toc-num">03</span> Finalidade</a>
+      <a href="#s4"  class="toc-item"><span class="toc-num">04</span> Cadastro</a>
+      <a href="#s5"  class="toc-item"><span class="toc-num">05</span> Regras de uso</a>
+      <a href="#s6"  class="toc-item"><span class="toc-num">06</span> Conteúdo</a>
+      <a href="#s7"  class="toc-item"><span class="toc-num">07</span> Privacidade</a>
+      <a href="#s8"  class="toc-item"><span class="toc-num">08</span> Prop. Intelectual</a>
+      <a href="#s9"  class="toc-item"><span class="toc-num">09</span> Responsabilidade</a>
+      <a href="#s10" class="toc-item"><span class="toc-num">10</span> Suspensão</a>
+      <a href="#s11" class="toc-item"><span class="toc-num">11</span> Alterações</a>
+      <a href="#s12" class="toc-item"><span class="toc-num">12</span> Foro</a>
+      <a href="#s13" class="toc-item"><span class="toc-num">13</span> Contato</a>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections">
+
+    <!-- 1 -->
+    <div class="section" id="s1">
+      <div class="sec-header">
+        <span class="sec-num">01</span>
+        <h2>Aceitação dos Termos</h2>
+      </div>
+      <p>Ao acessar, navegar, cadastrar-se ou utilizar quaisquer funcionalidades da plataforma <strong>TGA Carreiras</strong>, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso e com a Política de Privacidade.</p>
+      <div class="callout callout-warn">
+        <strong>⚠️ Atenção:</strong> Caso não concorde com qualquer disposição destes Termos, recomenda-se não utilizar a plataforma. O uso continuado implica aceitação das condições vigentes.
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="section" id="s2">
+      <div class="sec-header">
+        <span class="sec-num">02</span>
+        <h2>Definições</h2>
+      </div>
+      <p>Para os fins destes Termos, os termos a seguir possuem os seguintes significados:</p>
+      <div class="roles-grid">
+        <div class="role-card">
+          <div class="role-icon">🌐</div>
+          <div class="role-name">Plataforma</div>
+          <div class="role-desc">Ambiente digital acessível pelo domínio tgacarreiras.com.br ou outros domínios oficiais.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">👤</div>
+          <div class="role-name">Candidato</div>
+          <div class="role-desc">Pessoa física cadastrada para concorrer a vagas de emprego disponíveis na plataforma.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🏢</div>
+          <div class="role-name">Empresa</div>
+          <div class="role-desc">Pessoa jurídica que publica vagas, gerencia processos seletivos e acessa candidaturas.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">🛡️</div>
+          <div class="role-name">Administrador</div>
+          <div class="role-desc">Perfil com permissões ampliadas para manutenção, auditoria e administração do sistema.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">📄</div>
+          <div class="role-name">Conteúdo</div>
+          <div class="role-desc">Informações inseridas ou geradas no uso: vagas, currículos, mensagens, documentos e dados.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">👥</div>
+          <div class="role-name">Usuário</div>
+          <div class="role-desc">Qualquer pessoa que utilize a plataforma, independente do perfil ou funcionalidade acessada.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="section" id="s3">
+      <div class="sec-header">
+        <span class="sec-num">03</span>
+        <h2>Finalidade e natureza do serviço</h2>
+      </div>
+      <p>A TGA Carreiras fornece infraestrutura tecnológica para recrutamento e seleção.</p>
+      <div class="highlight-row">
+        <span class="hl-icon">ℹ️</span>
+        <span>A plataforma <strong>não é empregadora</strong> e não participa do processo decisório de contratação. Não se responsabiliza por propostas, negociações, acordos ou vínculos trabalhistas firmados entre Candidatos e Empresas.</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="section" id="s4">
+      <div class="sec-header">
+        <span class="sec-num">04</span>
+        <h2>Cadastro, veracidade e segurança da conta</h2>
+      </div>
+      <p>Algumas funcionalidades exigem cadastro. Ao criar uma conta, o Usuário se compromete a:</p>
+      <ul>
+        <li>Fornecer dados <strong>verdadeiros, completos e atualizados</strong>;</li>
+        <li>Manter <strong>sigilo das credenciais</strong> de acesso (login e senha);</li>
+        <li>Responder por qualquer atividade realizada em sua conta;</li>
+        <li>Notificar imediatamente a plataforma sobre suspeita de acesso indevido.</li>
+      </ul>
+      <div class="callout callout-info">
+        <strong>📎 Observação:</strong> o envio de currículo (PDF) pode ser obrigatório para candidaturas, conforme configuração de cada vaga.
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="section" id="s5">
+      <div class="sec-header">
+        <span class="sec-num">05</span>
+        <h2>Regras de uso e condutas proibidas</h2>
+      </div>
+      <p>É estritamente vedado ao Usuário:</p>
+      <div class="prohibit-grid">
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Vagas falsas ou enganosas</strong> que violem a legislação trabalhista ou induzam candidatos a erro.</div>
+        </div>
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Informações fraudulentas, discriminatórias</strong> ou ilícitas em perfis, vagas ou comunicações.</div>
+        </div>
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Coleta indevida de dados</strong> pessoais de terceiros sem base legal adequada (LGPD).</div>
+        </div>
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Exploração de vulnerabilidades</strong>, invasão de contas ou comprometimento da segurança da plataforma.</div>
+        </div>
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Automações indevidas (bots)</strong> que prejudiquem a disponibilidade, desempenho ou integridade do serviço.</div>
+        </div>
+        <div class="prohibit-card">
+          <span class="p-icon">🚫</span>
+          <div class="p-txt"><strong>Uso comercial não autorizado</strong> de dados, funcionalidades ou conteúdo da plataforma.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="section" id="s6">
+      <div class="sec-header">
+        <span class="sec-num">06</span>
+        <h2>Conteúdo inserido por usuários</h2>
+      </div>
+      <p>O Usuário é o único responsável pelo Conteúdo que publica, envia ou compartilha na plataforma — incluindo vagas, descrições, currículos e mensagens.</p>
+      <p>A TGA Carreiras poderá <strong>remover ou restringir conteúdos</strong> que violem estes Termos ou a legislação vigente, inclusive mediante denúncia de terceiros, sem necessidade de aviso prévio.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="section" id="s7">
+      <div class="sec-header">
+        <span class="sec-num">07</span>
+        <h2>Privacidade e proteção de dados</h2>
+      </div>
+      <p>O tratamento de Dados Pessoais é realizado em conformidade com a legislação aplicável, especialmente a <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.</p>
+      <p>Para detalhes completos sobre coleta, bases legais, finalidades, compartilhamento e direitos do titular, consulte nossa:</p>
+      <div style="margin-top:12px">
+        <a href="politica-de-privacidade.html" class="pp-link">
+          🔒 Política de Privacidade
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="section" id="s8">
+      <div class="sec-header">
+        <span class="sec-num">08</span>
+        <h2>Propriedade intelectual</h2>
+      </div>
+      <p>Marcas, layout, identidade visual, código-fonte, bases de dados e demais elementos da plataforma são protegidos pelas leis de propriedade intelectual vigentes.</p>
+      <div class="callout callout-danger">
+        <strong>🚫 Proibido:</strong> reprodução, modificação, engenharia reversa, redistribuição ou exploração comercial de qualquer elemento da plataforma sem autorização expressa e por escrito da TGA Carreiras.
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="section" id="s9">
+      <div class="sec-header">
+        <span class="sec-num">09</span>
+        <h2>Limitação de responsabilidade</h2>
+      </div>
+      <p>A TGA Carreiras envida esforços para manter a disponibilidade e a segurança da plataforma, porém não garante funcionamento ininterrupto. Não se responsabiliza por:</p>
+      <ul>
+        <li>Decisões de contratação, condições de vaga, remuneração ou acordos entre Usuários;</li>
+        <li>Conteúdo publicado por Candidatos e Empresas na plataforma;</li>
+        <li>Falhas de conectividade, indisponibilidades de terceiros ou eventos de força maior;</li>
+        <li>Danos decorrentes do uso indevido das credenciais pelo próprio Usuário.</li>
+      </ul>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="s10">
+      <div class="sec-header">
+        <span class="sec-num">10</span>
+        <h2>Suspensão, encerramento e medidas</h2>
+      </div>
+      <p>A TGA Carreiras poderá <strong>suspender ou encerrar contas</strong>, limitar funcionalidades ou adotar medidas técnicas e legais quando houver:</p>
+      <ul>
+        <li>Indícios de fraude ou uso indevido da plataforma;</li>
+        <li>Violação destes Termos ou da legislação aplicável;</li>
+        <li>Incidentes de segurança que exijam ação imediata;</li>
+        <li>Descumprimento de obrigações legais ou regulatórias.</li>
+      </ul>
+      <p>O Usuário pode solicitar a exclusão de sua conta a qualquer momento, conforme descrito na Política de Privacidade.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="s11">
+      <div class="sec-header">
+        <span class="sec-num">11</span>
+        <h2>Alterações e atualizações</h2>
+      </div>
+      <p>Estes Termos podem ser alterados a qualquer momento para refletir mudanças legais, técnicas ou operacionais. A <strong>data de última atualização</strong> será sempre indicada no topo deste documento. Recomendamos consulta periódica.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="s12">
+      <div class="sec-header">
+        <span class="sec-num">12</span>
+        <h2>Legislação aplicável e foro</h2>
+      </div>
+      <p>Aplica-se integralmente a <strong>legislação brasileira</strong>. Fica eleito o foro da comarca de <strong>[CIDADE/UF]</strong>, com renúncia expressa a qualquer outro, por mais privilegiado que seja, para dirimir controvérsias decorrentes da utilização da plataforma.</p>
+    </div>
+
+    <!-- 13 -->
+    <div class="section" id="s13">
+      <div class="sec-header">
+        <span class="sec-num">13</span>
+        <h2>Fale conosco</h2>
+      </div>
+      <p>Em caso de dúvidas, sugestões, solicitações ou denúncia de incidentes de segurança:</p>
+      <div class="contact-grid">
+        <a href="mailto:[EMAIL_CONTATO]" class="contact-card">
+          <div class="contact-ico c-amber">✉️</div>
+          <div class="contact-info">
+            <div class="clabel">Contato geral</div>
+            <div class="cval">[EMAIL_CONTATO]</div>
+          </div>
+        </a>
+        <a href="mailto:[EMAIL_DPO]" class="contact-card">
+          <div class="contact-ico c-blue">🛡️</div>
+          <div class="contact-info">
+            <div class="clabel">Canal LGPD / DPO</div>
+            <div class="cval">[EMAIL_DPO]</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /sections -->
+
+  <!-- NOTA CORPORATIVA -->
+  <div class="corp-note">
+    <span class="corp-note-ico">⚠️</span>
+    <div class="corp-note-body">
+      <strong>Nota corporativa:</strong> Este documento é um modelo profissional. Recomenda-se validação jurídica conforme o regime de negócios, integrações e bases de tratamento efetivamente implementadas antes de publicação oficial.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-left">© 2026 <strong>TGA Carreiras</strong>. Todos os direitos reservados.</div>
+    <div class="ft-right">
+      <span class="ft-badge">Lei BR</span>
+      <span class="ft-badge">v1.0</span>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+// Progresso de leitura
+(function(){
+  var bar = document.getElementById('progress');
+  function upd(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+})();
+
+// Copiar link
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href)
+    .then(function(){ alert('Link copiado com sucesso!'); })
+    .catch(function(){ alert('Copie manualmente o link da barra de endereço.'); });
+}
+
+// Highlight ativo no TOC
+(function(){
+  var items = document.querySelectorAll('.toc-item');
+  var secs  = document.querySelectorAll('.section[id]');
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active  = null;
+    secs.forEach(function(s){ if(s.offsetTop <= scrollY) active = s.id; });
+    items.forEach(function(a){
+      var href = a.getAttribute('href').replace('#','');
+      a.style.background  = href === active ? 'rgba(245,158,11,.1)' : '';
+      a.style.color       = href === active ? 'var(--accent2)' : '';
+      a.style.borderColor = href === active ? 'rgba(245,158,11,.22)' : '';
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+</body>
+</html>

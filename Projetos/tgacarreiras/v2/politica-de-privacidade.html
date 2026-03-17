@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Política de Privacidade — TGA Carreiras</title>
+<meta name="robots" content="index,follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --bg:        #060c18;
+  --bg1:       #0a1224;
+  --bg2:       #0e192f;
+  --surface:   rgba(255,255,255,.045);
+  --surfaceHi: rgba(255,255,255,.08);
+  --border:    rgba(255,255,255,.09);
+  --borderHi:  rgba(99,179,255,.30);
+  --tx:        #e8f0ff;
+  --txs:       #8da4cc;
+  --txm:       #4a6080;
+  --accent:    #3d9eff;
+  --accent2:   #60c4ff;
+  --teal:      #2dd4bf;
+  --warn:      #fbbf24;
+  --max:       920px;
+  --ff-head:   'Syne', sans-serif;
+  --ff-body:   'DM Sans', sans-serif;
+  --ease:      cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ─────────────────────────────────────────
+   RESET / BASE
+───────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--tx);
+  line-height: 1.7;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+/* noise texture overlay */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.4;
+}
+
+a { color:var(--accent2); text-decoration:none; transition:color .2s }
+a:hover { color:#fff; text-decoration:underline }
+
+/* ─────────────────────────────────────────
+   BG ORBS
+───────────────────────────────────────── */
+.orbs {
+  position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+}
+.orb {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.18;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+.orb1 { width:600px;height:600px;background:radial-gradient(circle,#1a5ca8,transparent 70%); top:-200px;left:-100px; animation-delay:0s }
+.orb2 { width:500px;height:500px;background:radial-gradient(circle,#0e3d6e,transparent 70%); bottom:-150px;right:-100px; animation-delay:-7s }
+.orb3 { width:300px;height:300px;background:radial-gradient(circle,#0a4a5a,transparent 70%); top:40%;left:55%; animation-delay:-14s }
+
+@keyframes drift {
+  0%   { transform:translate(0,0) scale(1) }
+  100% { transform:translate(40px,30px) scale(1.08) }
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+header {
+  position:sticky; top:0; z-index:100;
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px) saturate(1.4);
+  background:rgba(6,12,24,.75);
+}
+
+.hdr-inner {
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 24px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-mark {
+  width:36px; height:36px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--teal));
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+  box-shadow:0 0 20px rgba(61,158,255,.3);
+  flex-shrink:0;
+}
+
+.brand-copy {
+  display:flex;
+  flex-direction:column;
+  line-height:1.2;
+}
+.brand-name {
+  font-family:var(--ff-head);
+  font-size:14px; font-weight:700;
+  color:var(--tx);
+  letter-spacing:.5px;
+}
+.brand-sub {
+  font-size:11px;
+  color:var(--txs);
+  font-weight:300;
+  letter-spacing:.3px;
+}
+
+.hdr-actions { display:flex; gap:8px; align-items:center }
+
+.btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--txs);
+  font-family:var(--ff-body);
+  font-size:12px; font-weight:500;
+  cursor:pointer;
+  transition:all .2s var(--ease);
+  white-space:nowrap;
+}
+.btn:hover { background:var(--surfaceHi); color:var(--tx); border-color:var(--borderHi) }
+.btn svg { flex-shrink:0 }
+
+.btn-primary {
+  background:linear-gradient(135deg,rgba(61,158,255,.2),rgba(96,196,255,.1));
+  border-color:rgba(61,158,255,.4);
+  color:var(--accent2);
+}
+.btn-primary:hover { background:linear-gradient(135deg,rgba(61,158,255,.32),rgba(96,196,255,.18)); color:#fff }
+
+/* ─────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────── */
+.page {
+  position:relative; z-index:1;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:40px 24px 80px;
+}
+
+/* ─────────────────────────────────────────
+   HERO BLOCK
+───────────────────────────────────────── */
+.hero {
+  position:relative;
+  padding:48px 48px 40px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(135deg, rgba(14,25,47,.9) 0%, rgba(10,18,36,.9) 100%);
+  overflow:hidden;
+  margin-bottom:32px;
+  animation:fadeUp .6s var(--ease) both;
+}
+
+.hero::before {
+  content:'';
+  position:absolute;
+  top:-60px; right:-60px;
+  width:320px; height:320px;
+  background:radial-gradient(circle,rgba(61,158,255,.12),transparent 65%);
+  pointer-events:none;
+}
+.hero::after {
+  content:'';
+  position:absolute;
+  bottom:-40px; left:30%;
+  width:200px; height:200px;
+  background:radial-gradient(circle,rgba(45,212,191,.08),transparent 65%);
+  pointer-events:none;
+}
+
+.hero-eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 12px;
+  border-radius:999px;
+  border:1px solid rgba(61,158,255,.25);
+  background:rgba(61,158,255,.08);
+  color:var(--accent2);
+  font-size:11px; font-weight:600;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero-eyebrow::before {
+  content:'';
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--accent2);
+  box-shadow:0 0 8px var(--accent2);
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1 }
+  50%      { opacity:.3 }
+}
+
+.hero h1 {
+  font-family:var(--ff-head);
+  font-size:clamp(28px,4vw,42px);
+  font-weight:800;
+  letter-spacing:-.5px;
+  line-height:1.1;
+  color:#fff;
+  margin-bottom:14px;
+}
+
+.hero h1 span {
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-desc {
+  color:var(--txs);
+  font-size:15px; font-weight:300;
+  max-width:520px;
+  line-height:1.65;
+  margin-bottom:28px;
+}
+
+.hero-pills {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.pill {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--txs);
+  font-size:12px; font-weight:400;
+}
+.pill strong { color:var(--tx); font-weight:500 }
+.pill-icon { font-size:13px }
+
+/* ─────────────────────────────────────────
+   IDENTIDADE BLOCK
+───────────────────────────────────────── */
+.id-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:32px;
+  animation:fadeUp .6s var(--ease) .1s both;
+}
+
+.id-card {
+  padding:22px 24px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--surface);
+  transition:border-color .2s, background .2s;
+  position:relative;
+  overflow:hidden;
+}
+.id-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0;
+  transition:opacity .3s;
+}
+.id-card:hover::before { opacity:1 }
+.id-card:hover { border-color:var(--borderHi); background:var(--surfaceHi) }
+
+.id-label {
+  font-family:var(--ff-head);
+  font-size:10px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1.2px;
+  color:var(--accent2);
+  margin-bottom:12px;
+  display:flex; align-items:center; gap:8px;
+}
+.id-label::after {
+  content:'';
+  flex:1; height:1px;
+  background:linear-gradient(90deg,rgba(61,158,255,.3),transparent);
+}
+
+.id-line {
+  font-size:13px;
+  color:var(--txs);
+  line-height:1.8;
+}
+.id-line strong { color:var(--tx); font-weight:500 }
+
+/* ─────────────────────────────────────────
+   TOC
+───────────────────────────────────────── */
+.toc-block {
+  padding:24px 28px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:rgba(61,158,255,.04);
+  margin-bottom:40px;
+  animation:fadeUp .6s var(--ease) .2s both;
+}
+
+.toc-title {
+  font-family:var(--ff-head);
+  font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:1px;
+  color:var(--txm);
+  margin-bottom:16px;
+}
+
+.toc-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:6px;
+}
+
+.toc-item {
+  display:flex; align-items:center; gap:10px;
+  padding:8px 12px;
+  border-radius:8px;
+  border:1px solid transparent;
+  color:var(--txs);
+  font-size:13px;
+  transition:all .18s;
+  text-decoration:none;
+}
+.toc-item:hover {
+  background:rgba(61,158,255,.08);
+  border-color:rgba(61,158,255,.18);
+  color:var(--accent2);
+  text-decoration:none;
+}
+.toc-num {
+  font-family:var(--ff-head);
+  font-size:10px; font-weight:700;
+  color:var(--accent);
+  min-width:18px;
+  opacity:.7;
+}
+
+/* ─────────────────────────────────────────
+   SECTIONS
+───────────────────────────────────────── */
+.sections { display:flex; flex-direction:column; gap:0 }
+
+.section {
+  padding:36px 0;
+  border-bottom:1px solid var(--border);
+  animation:fadeUp .5s var(--ease) both;
+}
+.section:last-child { border-bottom:none }
+
+.sec-header {
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.sec-num {
+  font-family:var(--ff-head);
+  font-size:11px; font-weight:800;
+  color:var(--accent);
+  background:rgba(61,158,255,.1);
+  border:1px solid rgba(61,158,255,.2);
+  border-radius:6px;
+  padding:4px 9px;
+  flex-shrink:0;
+  margin-top:3px;
+  letter-spacing:.5px;
+}
+
+.sec-header h2 {
+  font-family:var(--ff-head);
+  font-size:18px; font-weight:700;
+  color:#fff;
+  letter-spacing:-.2px;
+  line-height:1.3;
+}
+
+p {
+  color:var(--txs);
+  font-size:14.5px;
+  font-weight:300;
+  margin-bottom:12px;
+}
+p strong { color:var(--tx); font-weight:500 }
+p:last-child { margin-bottom:0 }
+
+ul {
+  list-style:none;
+  margin:0 0 12px 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+li {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  color:var(--txs);
+  font-size:14.5px;
+  font-weight:300;
+  line-height:1.6;
+}
+li::before {
+  content:'';
+  width:5px; height:5px;
+  border-radius:50%;
+  background:var(--accent);
+  flex-shrink:0;
+  margin-top:8px;
+  opacity:.7;
+}
+li strong { color:var(--tx); font-weight:500 }
+
+/* callout boxes */
+.callout {
+  padding:18px 20px;
+  border-radius:12px;
+  margin:16px 0;
+  font-size:14px;
+  font-weight:300;
+  line-height:1.65;
+}
+.callout-info {
+  background:rgba(61,158,255,.07);
+  border:1px solid rgba(61,158,255,.18);
+  color:var(--txs);
+}
+.callout-info strong { color:var(--accent2) }
+.callout-warn {
+  background:rgba(251,191,36,.06);
+  border:1px solid rgba(251,191,36,.18);
+  color:rgba(251,191,36,.8);
+}
+.callout-teal {
+  background:rgba(45,212,191,.06);
+  border:1px solid rgba(45,212,191,.18);
+  color:rgba(45,212,191,.85);
+}
+
+/* highlight row */
+.highlight-row {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  border-radius:10px;
+  border:1px solid rgba(61,158,255,.2);
+  background:rgba(61,158,255,.06);
+  margin:12px 0;
+  font-size:14px;
+  color:var(--txs);
+}
+.highlight-row .hl-icon { font-size:18px; flex-shrink:0 }
+.highlight-row strong { color:var(--tx) }
+
+/* bases legais grid */
+.bases-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:16px 0;
+}
+.base-card {
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--surface);
+  font-size:13px;
+}
+.base-card .base-name {
+  font-family:var(--ff-head);
+  font-size:12px; font-weight:700;
+  color:var(--accent2);
+  margin-bottom:4px;
+}
+.base-card .base-desc { color:var(--txs); font-weight:300; line-height:1.5 }
+
+/* direitos grid */
+.rights-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:16px 0;
+}
+.right-card {
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--surface);
+  text-align:center;
+  font-size:12px;
+  color:var(--txs);
+  transition:all .2s;
+}
+.right-card:hover { border-color:var(--borderHi); background:var(--surfaceHi) }
+.right-icon { font-size:22px; margin-bottom:8px; display:block }
+.right-name { font-family:var(--ff-head); font-size:11px; font-weight:700; color:var(--tx); margin-bottom:4px }
+
+/* ─────────────────────────────────────────
+   CONTACT BLOCK
+───────────────────────────────────────── */
+.contact-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:16px 0;
+}
+.contact-card {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 20px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--surface);
+  text-decoration:none;
+  transition:all .2s;
+}
+.contact-card:hover {
+  border-color:var(--borderHi);
+  background:var(--surfaceHi);
+  text-decoration:none;
+}
+.contact-ico {
+  width:40px; height:40px;
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px;
+  flex-shrink:0;
+}
+.contact-ico-blue  { background:rgba(61,158,255,.12);border:1px solid rgba(61,158,255,.2) }
+.contact-ico-teal  { background:rgba(45,212,191,.1); border:1px solid rgba(45,212,191,.2) }
+.contact-info .clabel { font-size:11px; color:var(--txm); font-weight:500; text-transform:uppercase; letter-spacing:.6px; margin-bottom:2px }
+.contact-info .cval   { font-size:13px; color:var(--accent2); font-weight:400 }
+
+/* ─────────────────────────────────────────
+   NOTE CORPORATIVA
+───────────────────────────────────────── */
+.corp-note {
+  margin-top:40px;
+  padding:20px 24px;
+  border-radius:14px;
+  border:1px solid rgba(251,191,36,.18);
+  background:linear-gradient(135deg,rgba(251,191,36,.05),rgba(251,191,36,.02));
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  animation:fadeUp .5s var(--ease) both;
+}
+.corp-note-ico { font-size:20px; flex-shrink:0; margin-top:1px }
+.corp-note-body { font-size:13px; color:rgba(251,191,36,.7); line-height:1.65; font-weight:300 }
+.corp-note-body strong { color:var(--warn); font-weight:600 }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  margin-top:60px;
+  padding-top:28px;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.ft-left {
+  font-size:13px; color:var(--txm); font-weight:300;
+}
+.ft-left strong { color:var(--txs); font-weight:500 }
+.ft-right {
+  display:flex; gap:8px;
+}
+.ft-badge {
+  padding:5px 10px;
+  border-radius:6px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  font-size:11px; color:var(--txm);
+}
+
+/* ─────────────────────────────────────────
+   ANIMATIONS
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px) }
+  to   { opacity:1; transform:translateY(0) }
+}
+
+.section:nth-child(1)  { animation-delay:.05s }
+.section:nth-child(2)  { animation-delay:.10s }
+.section:nth-child(3)  { animation-delay:.13s }
+.section:nth-child(4)  { animation-delay:.16s }
+.section:nth-child(5)  { animation-delay:.19s }
+.section:nth-child(6)  { animation-delay:.22s }
+.section:nth-child(7)  { animation-delay:.25s }
+.section:nth-child(8)  { animation-delay:.28s }
+.section:nth-child(9)  { animation-delay:.31s }
+.section:nth-child(10) { animation-delay:.34s }
+.section:nth-child(11) { animation-delay:.37s }
+.section:nth-child(12) { animation-delay:.40s }
+
+/* progress de leitura */
+#progress {
+  position:fixed; top:0; left:0; z-index:200;
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+  width:0%;
+  transition:width .1s linear;
+  box-shadow:0 0 8px var(--accent);
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:720px) {
+  .hero { padding:32px 24px 28px }
+  .id-grid, .bases-grid, .rights-grid, .contact-grid { grid-template-columns:1fr }
+  .toc-grid { grid-template-columns:1fr 1fr }
+  .hdr-inner { padding:0 16px }
+  .page { padding:28px 16px 60px }
+  footer { flex-direction:column; align-items:flex-start }
+}
+@media(max-width:480px) {
+  .toc-grid { grid-template-columns:1fr }
+  .rights-grid { grid-template-columns:1fr 1fr }
+  .hdr-actions .btn span { display:none }
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+<div class="orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="hdr-inner">
+    <div class="brand">
+      <div class="logo-mark">🎯</div>
+      <div class="brand-copy">
+        <span class="brand-name">TGA Carreiras</span>
+        <span class="brand-sub">Política de Privacidade</span>
+      </div>
+    </div>
+    <div class="hdr-actions">
+      <button class="btn" onclick="copyLink()">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copiar link</span>
+      </button>
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>Salvar PDF</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ PAGE ══════════ -->
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">LGPD — Lei nº 13.709/2018</div>
+    <h1>Política de<br><span>Privacidade</span></h1>
+    <p class="hero-desc">Transparência total sobre quais dados coletamos, por que coletamos e como você pode exercer seus direitos como titular.</p>
+    <div class="hero-pills">
+      <span class="pill"><span class="pill-icon">📅</span> <strong>Atualização:</strong>&nbsp; ___/___/2026</span>
+      <span class="pill"><span class="pill-icon">📋</span> <strong>Versão:</strong>&nbsp; 1.0</span>
+      <span class="pill"><span class="pill-icon">🔒</span> <strong>Base legal:</strong>&nbsp; LGPD</span>
+    </div>
+  </div>
+
+  <!-- IDENTIDADE -->
+  <div class="id-grid">
+    <div class="id-card">
+      <div class="id-label">Controlador</div>
+      <div class="id-line">
+        <strong>[RAZÃO SOCIAL]</strong><br>
+        CNPJ: [CNPJ]<br>
+        [ENDEREÇO COMPLETO]<br>
+        <a href="mailto:[EMAIL_CONTATO]">[EMAIL_CONTATO]</a>
+      </div>
+    </div>
+    <div class="id-card">
+      <div class="id-label">Encarregado (DPO)</div>
+      <div class="id-line">
+        <strong>[DPO_NOME]</strong><br>
+        Canal LGPD / ANPD<br>
+        <a href="mailto:[EMAIL_DPO]">[EMAIL_DPO]</a><br>
+        &nbsp;
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-block">
+    <div class="toc-title">Navegação rápida</div>
+    <div class="toc-grid">
+      <a href="#s1"  class="toc-item"><span class="toc-num">01</span> Aplicação</a>
+      <a href="#s2"  class="toc-item"><span class="toc-num">02</span> Dados coletados</a>
+      <a href="#s3"  class="toc-item"><span class="toc-num">03</span> Finalidades</a>
+      <a href="#s4"  class="toc-item"><span class="toc-num">04</span> Bases legais</a>
+      <a href="#s5"  class="toc-item"><span class="toc-num">05</span> Compartilhamento</a>
+      <a href="#s6"  class="toc-item"><span class="toc-num">06</span> Segurança</a>
+      <a href="#s7"  class="toc-item"><span class="toc-num">07</span> Retenção</a>
+      <a href="#s8"  class="toc-item"><span class="toc-num">08</span> Direitos do titular</a>
+      <a href="#s9"  class="toc-item"><span class="toc-num">09</span> Cookies</a>
+      <a href="#s10" class="toc-item"><span class="toc-num">10</span> Transf. Internacional</a>
+      <a href="#s11" class="toc-item"><span class="toc-num">11</span> Alterações</a>
+      <a href="#s12" class="toc-item"><span class="toc-num">12</span> Contato</a>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections">
+
+    <!-- 1 -->
+    <div class="section" id="s1">
+      <div class="sec-header">
+        <span class="sec-num">01</span>
+        <h2>A quem esta Política se aplica</h2>
+      </div>
+      <p>Esta Política se aplica a todos os usuários da plataforma <strong>TGA Carreiras</strong> — incluindo Candidatos, Empresas e visitantes. Também abrange terceiros que, por qualquer meio, tratem dados pessoais em nome da TGA Carreiras (operadores e prestadores de serviço).</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="section" id="s2">
+      <div class="sec-header">
+        <span class="sec-num">02</span>
+        <h2>Quais dados coletamos</h2>
+      </div>
+      <p>Os dados coletados variam conforme o perfil do usuário na plataforma:</p>
+      <ul>
+        <li><strong>Identificação e contato:</strong> nome completo, e-mail, telefone.</li>
+        <li><strong>Dados profissionais:</strong> histórico de experiência, formação acadêmica e habilidades.</li>
+        <li><strong>Documentos:</strong> currículo em PDF quando exigido para candidatura.</li>
+        <li><strong>Logs e acesso:</strong> endereço IP, data/hora, navegador e registros de autenticação para segurança e auditoria.</li>
+        <li><strong>Dados empresariais:</strong> razão social, CNPJ, dados do responsável e informações de vagas publicadas.</li>
+      </ul>
+    </div>
+
+    <!-- 3 -->
+    <div class="section" id="s3">
+      <div class="sec-header">
+        <span class="sec-num">03</span>
+        <h2>Para que usamos os dados</h2>
+      </div>
+      <ul>
+        <li>Disponibilizar cadastro, login e funcionalidades essenciais da plataforma.</li>
+        <li>Permitir candidatura e gestão completa de processos seletivos.</li>
+        <li>Possibilitar que empresas avaliem candidatos de forma estruturada.</li>
+        <li>Garantir segurança, prevenção a fraudes e rastreabilidade de ações.</li>
+        <li>Cumprir obrigações legais e regulatórias aplicáveis.</li>
+        <li>Melhorar continuamente a experiência e o desempenho da plataforma.</li>
+      </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="section" id="s4">
+      <div class="sec-header">
+        <span class="sec-num">04</span>
+        <h2>Bases legais (LGPD)</h2>
+      </div>
+      <p>O tratamento de dados pessoais é realizado com fundamento nas seguintes bases, conforme o art. 7º da LGPD:</p>
+      <div class="bases-grid">
+        <div class="base-card">
+          <div class="base-name">Execução de contrato</div>
+          <div class="base-desc">Necessário para uso da plataforma e prestação dos serviços.</div>
+        </div>
+        <div class="base-card">
+          <div class="base-name">Obrigação legal</div>
+          <div class="base-desc">Cumprimento de normas regulatórias e legais aplicáveis.</div>
+        </div>
+        <div class="base-card">
+          <div class="base-name">Legítimo interesse</div>
+          <div class="base-desc">Segurança, prevenção a fraudes e melhoria dos serviços, dentro dos limites legais.</div>
+        </div>
+        <div class="base-card">
+          <div class="base-name">Consentimento</div>
+          <div class="base-desc">Quando exigido por lei, como em comunicações específicas ao titular.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="section" id="s5">
+      <div class="sec-header">
+        <span class="sec-num">05</span>
+        <h2>Compartilhamento de dados</h2>
+      </div>
+      <ul>
+        <li><strong>Com empresas contratantes:</strong> currículos e informações do candidato são disponibilizados às empresas nas vagas em que o candidato se candidatou.</li>
+        <li><strong>Com operadores e fornecedores:</strong> serviços de hospedagem, e-mail, armazenamento e tecnologia, sob contrato e dever de confidencialidade.</li>
+        <li><strong>Com autoridades:</strong> mediante obrigação legal, ordem judicial ou requisição legítima de autoridade competente.</li>
+      </ul>
+      <div class="callout callout-teal">
+        <strong>🚫 Não vendemos dados.</strong> A TGA Carreiras não realiza a venda ou comercialização de dados pessoais de candidatos ou empresas.
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="section" id="s6">
+      <div class="sec-header">
+        <span class="sec-num">06</span>
+        <h2>Segurança da informação</h2>
+      </div>
+      <p>Adotamos medidas técnicas e administrativas para proteger dados pessoais contra acessos não autorizados, vazamentos, perdas e alterações indevidas.</p>
+      <div class="highlight-row">
+        <span class="hl-icon">🔐</span>
+        <span>Senhas são armazenadas exclusivamente com <strong>hash bcrypt</strong>. O acesso é restrito a pessoas autorizadas, com base no princípio do menor privilégio.</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="section" id="s7">
+      <div class="sec-header">
+        <span class="sec-num">07</span>
+        <h2>Retenção e eliminação</h2>
+      </div>
+      <p>Os dados são armazenados:</p>
+      <ul>
+        <li>Enquanto a conta estiver ativa e for necessário para as finalidades declaradas.</li>
+        <li>Pelo tempo necessário ao cumprimento de obrigações legais e exercício de direitos em processos.</li>
+        <li>Após solicitação de exclusão, mediante anonimização e/ou eliminação segura, salvo obrigação de retenção prevista em lei.</li>
+      </ul>
+    </div>
+
+    <!-- 8 -->
+    <div class="section" id="s8">
+      <div class="sec-header">
+        <span class="sec-num">08</span>
+        <h2>Direitos do titular</h2>
+      </div>
+      <p>Nos termos da LGPD (art. 18), você pode solicitar a qualquer momento:</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <span class="right-icon">👁️</span>
+          <div class="right-name">Acesso</div>
+          <div>Confirmação e acesso aos seus dados</div>
+        </div>
+        <div class="right-card">
+          <span class="right-icon">✏️</span>
+          <div class="right-name">Correção</div>
+          <div>Dados incompletos ou inexatos</div>
+        </div>
+        <div class="right-card">
+          <span class="right-icon">🗑️</span>
+          <div class="right-name">Eliminação</div>
+          <div>Anonimização ou exclusão</div>
+        </div>
+        <div class="right-card">
+          <span class="right-icon">📦</span>
+          <div class="right-name">Portabilidade</div>
+          <div>Quando tecnicamente aplicável</div>
+        </div>
+        <div class="right-card">
+          <span class="right-icon">🔗</span>
+          <div class="right-name">Compartilhamento</div>
+          <div>Informações sobre terceiros</div>
+        </div>
+        <div class="right-card">
+          <span class="right-icon">↩️</span>
+          <div class="right-name">Revogação</div>
+          <div>Consentimento, quando aplicável</div>
+        </div>
+      </div>
+      <div class="callout callout-info">
+        Para exercer qualquer direito, entre em contato via: <strong><a href="mailto:[EMAIL_DPO]">[EMAIL_DPO]</a></strong>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="section" id="s9">
+      <div class="sec-header">
+        <span class="sec-num">09</span>
+        <h2>Cookies e tecnologias similares</h2>
+      </div>
+      <p>Podemos utilizar cookies e tecnologias similares para funcionamento do site, segurança, desempenho e melhoria da experiência do usuário. Você pode gerenciar e revogar cookies diretamente nas configurações do seu navegador.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="s10">
+      <div class="sec-header">
+        <span class="sec-num">10</span>
+        <h2>Transferência internacional</h2>
+      </div>
+      <p>Alguns fornecedores podem operar infraestrutura fora do território brasileiro. Nesses casos, adotamos medidas contratuais e de segurança para garantir nível de proteção adequado, em conformidade com a LGPD e diretrizes da ANPD.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="s11">
+      <div class="sec-header">
+        <span class="sec-num">11</span>
+        <h2>Mudanças nesta Política</h2>
+      </div>
+      <p>Esta Política poderá ser atualizada a qualquer momento. A versão vigente sempre conterá a data de última atualização indicada no topo do documento. Recomendamos consulta periódica para manter-se informado.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="s12">
+      <div class="sec-header">
+        <span class="sec-num">12</span>
+        <h2>Fale conosco</h2>
+      </div>
+      <p>Para dúvidas, solicitações ou exercício de direitos relacionados a esta Política:</p>
+      <div class="contact-grid">
+        <a href="mailto:[EMAIL_CONTATO]" class="contact-card">
+          <div class="contact-ico contact-ico-blue">✉️</div>
+          <div class="contact-info">
+            <div class="clabel">Contato geral</div>
+            <div class="cval">[EMAIL_CONTATO]</div>
+          </div>
+        </a>
+        <a href="mailto:[EMAIL_DPO]" class="contact-card">
+          <div class="contact-ico contact-ico-teal">🛡️</div>
+          <div class="contact-info">
+            <div class="clabel">Canal LGPD / DPO</div>
+            <div class="cval">[EMAIL_DPO]</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /sections -->
+
+  <!-- NOTA CORPORATIVA -->
+  <div class="corp-note">
+    <span class="corp-note-ico">⚠️</span>
+    <div class="corp-note-body">
+      <strong>Nota corporativa:</strong> Este documento descreve o padrão de governança de privacidade da TGA Carreiras. Recomenda-se revisão e ajuste conforme integrações, provedores e fluxos reais efetivamente utilizados (ex.: serviços de e-mail transacional, armazenamento em nuvem, analytics e sistemas de log).
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-left">© 2026 <strong>TGA Carreiras</strong>. Todos os direitos reservados.</div>
+    <div class="ft-right">
+      <span class="ft-badge">LGPD</span>
+      <span class="ft-badge">v1.0</span>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+// Barra de progresso de leitura
+(function(){
+  var bar = document.getElementById('progress');
+  function upd(){
+    var h = document.documentElement;
+    var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = Math.min(pct,100) + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+})();
+
+// Copiar link
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href)
+    .then(function(){ alert('Link copiado com sucesso!'); })
+    .catch(function(){ alert('Copie manualmente o link da barra de endereço.'); });
+}
+
+// Highlight seção ativa no TOC
+(function(){
+  var items = document.querySelectorAll('.toc-item');
+  var secs  = document.querySelectorAll('.section[id]');
+  function onScroll(){
+    var scrollY = window.scrollY + 120;
+    var active = null;
+    secs.forEach(function(s){ if(s.offsetTop <= scrollY) active = s.id; });
+    items.forEach(function(a){
+      var href = a.getAttribute('href').replace('#','');
+      a.style.background = href === active ? 'rgba(61,158,255,.12)' : '';
+      a.style.color       = href === active ? 'var(--accent2)' : '';
+      a.style.borderColor = href === active ? 'rgba(61,158,255,.22)' : '';
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+</body>
+</html>
