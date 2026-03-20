@@ -1,0 +1,673 @@
+/* =========================================================
+TEMA BASE
+========================================================= */
+
+body{
+
+background:#080d14;
+
+color:#cdd9e8;
+
+font-family:'IBM Plex Mono', monospace;
+
+padding:24px;
+
+}
+
+
+
+/* =========================================================
+TITULO
+========================================================= */
+
+.page-title{
+
+font-family:'Rajdhani';
+
+font-size:28px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+
+
+/* =========================================================
+CARDS
+========================================================= */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(6,1fr);
+
+gap:12px;
+
+margin-bottom:20px;
+
+}
+
+.card{
+
+background:#0e1621;
+
+border:1px solid #1e2f45;
+
+border-radius:8px;
+
+padding:14px;
+
+position: relative;
+overflow: hidden;
+
+}
+
+/* Barra colorida no topo de cada card */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Azul — Suportes Ativos e Tickets Abertos */
+.card.blue {
+    background: linear-gradient(135deg, #0e1a2e 0%, #0e1621 100%);
+}
+.card.blue::after {
+    background: #2a7fff;
+    box-shadow: 0 0 8px #2a7fff;
+}
+.card.blue .card-value {
+    color: #5ab4ff;
+}
+
+/* Dourado — Suportes Pausados */
+.card.gold {
+    background: linear-gradient(135deg, #1a1206 0%, #0e1621 100%);
+}
+.card.gold::after {
+    background: #d4a017;
+    box-shadow: 0 0 8px #d4a017;
+}
+.card.gold .card-value {
+    color: #e8b83a;
+}
+
+/* Vermelho — Tickets Vencidos */
+.card.red {
+    background: linear-gradient(135deg, #2a0808 0%, #0e1621 100%);
+}
+.card.red::after {
+    background: #e84040;
+    box-shadow: 0 0 8px #e84040;
+}
+.card.red .card-value {
+    color: #ff6060;
+}
+
+/* Teal — Filas */
+.card.teal {
+    background: linear-gradient(135deg, #071a1a 0%, #0e1621 100%);
+}
+.card.teal::after {
+    background: #00c8b4;
+    box-shadow: 0 0 8px #00c8b4;
+}
+.card.teal .card-value {
+    color: #00c8b4;
+}
+
+.card-header{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+margin-bottom:8px;
+
+}
+
+.card-icon{ font-size:16px; opacity:0.8; }
+
+.card-label{
+
+font-family:'Rajdhani';
+
+font-size:12px;
+
+font-weight:500;
+
+letter-spacing:1px;
+
+color:#5a7898;
+
+text-transform:uppercase;
+
+}
+
+.card-value{
+
+font-family:'Rajdhani';
+
+font-size:38px;
+
+font-weight:700;
+
+line-height:1;
+
+color:#cdd9e8;
+
+}
+
+
+
+/* =========================================================
+TABELA
+========================================================= */
+
+.table-wrap{
+
+background:#0e1621;
+
+border:1px solid #1e2f45;
+
+border-radius:8px;
+
+overflow:hidden;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#0a1320;
+
+padding:12px;
+
+text-transform:uppercase;
+
+font-family:'Rajdhani';
+white-space: nowrap;
+}
+
+/* Colunas sortáveis */
+th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+th[data-sort]:hover {
+    background: #0f1e30;
+    color: #a8d0f0;
+}
+
+.sort-icon {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 11px;
+    vertical-align: middle;
+    transition: color 0.15s;
+}
+
+.sort-idle   { color: #3a5570; }
+.sort-active { color: #00c8b4; }
+
+td{
+
+padding:10px;
+
+text-align:center;
+
+}
+
+/* Linha offline apagada */
+tbody tr.row-offline {
+    opacity: 0.4;
+    filter: grayscale(0.5);
+}
+
+tbody tr.row-offline:hover {
+    opacity: 0.65;
+}
+
+/* Célula vazia */
+.empty-row {
+    text-align: center !important;
+    padding: 32px !important;
+    color: #5a7898;
+}
+
+
+.th-group {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #5a7898;
+    padding: 6px 12px 4px;
+    background: #080d14;
+    border-bottom: 1px solid #1e2f45;
+}
+
+thead tr:first-child th:not(.th-group) {
+    background: #080d14;
+    border-bottom: none;
+    padding: 6px 0 4px;
+}
+
+
+
+.th-group {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #5a7898;
+    padding: 6px 12px 4px;
+    background: #080d14;
+    border-bottom: 1px solid #1e2f45;
+}
+
+thead tr:first-child th:not(.th-group) {
+    background: #080d14;
+    border-bottom: none;
+    padding: 6px 0 4px;
+}
+/* =========================================================
+FILTROS
+========================================================= */
+
+.filters{
+
+display:flex;
+align-items:center;
+
+gap:10px;
+
+margin-bottom:15px;
+
+font-family:'Rajdhani';
+
+}
+
+.filters select{
+
+background:#0e1621;
+
+border:1px solid #1e2f45;
+
+color:#cdd9e8;
+
+padding:6px 10px;
+
+border-radius:6px;
+
+}
+
+
+/* Campo de busca */
+.search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #0e1621;
+    border: 1px solid #1e2f45;
+    border-radius: 6px;
+    padding: 5px 10px;
+    transition: border-color 0.15s;
+}
+ 
+.search-wrap:focus-within {
+    border-color: #2a7fff;
+}
+ 
+.search-icon { font-size: 13px; opacity: 0.6; }
+ 
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #cdd9e8;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    width: 160px;
+}
+ 
+.search-input::placeholder { color: #3a5570; }
+
+/* =========================================================
+BARRA DE SINCRONIZAÇÃO
+========================================================= */
+ 
+.sync-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    background: #0e1621;
+    border: 1px solid #1e2f45;
+    border-radius: 8px;
+    padding: 5px 14px;
+}
+ 
+.sync-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+ 
+.sync-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5a7898;
+    letter-spacing: 0.5px;
+}
+ 
+.sync-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3a8fbf;
+    min-width: 28px;
+    text-align: right;
+    transition: color 0.3s;
+}
+ 
+.sync-badge.countdown-urgente {
+    color: #00c8b4;
+    animation: pulse 0.6s infinite;
+}
+ 
+.sync-divider {
+    width: 1px;
+    height: 18px;
+    background: #1e2f45;
+}
+
+/* =========================================================
+LOADING OVERLAY
+========================================================= */
+
+#loading-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(8, 13, 20, 0.88);
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(30, 144, 255, 0.15);
+    border-top-color: #1e90ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #5a7898;
+    text-transform: uppercase;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* =========================================================
+CÉLULA DO AGENTE (avatar + nome)
+========================================================= */
+
+.agent-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.avatar-online {
+    background: #0d2e1a;
+    color: #22d35a;
+    border: 1.5px solid rgba(34, 211, 90, 0.35);
+    box-shadow: 0 0 8px rgba(34, 211, 90, 0.12);
+}
+
+.avatar-offline {
+    background: #171f2a;
+    color: #4a5a6a;
+    border: 1.5px solid rgba(74, 90, 106, 0.3);
+}
+
+.agent-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #d4e6f8;
+    letter-spacing: 0.5px;
+}
+
+.agent-ramal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #3a6a8a;
+    line-height: 1;
+}
+ 
+/* Ícone de ligação ativa */
+.ligacao-badge {
+    margin-left: auto;
+    font-size: 14px;
+    animation: pulse 1.5s infinite;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+CÉLULA DE STATUS (badge + tempo)
+========================================================= */
+ 
+.status-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+ 
+.status-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #3a5570;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+BADGES DE STATUS
+========================================================= */
+
+.badge-online,
+.badge-offline,
+.badge-paused {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.badge-online::before,
+.badge-offline::before,
+.badge-paused::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.badge-online  { color: #22d35a; }
+.badge-online::before {
+    background: #22d35a;
+    box-shadow: 0 0 6px #22d35a;
+    animation: pulse 2s infinite;
+}
+
+.badge-offline { color: #4a5a6a; }
+.badge-offline::before { background: #3a4a5a; }
+
+.badge-paused  { color: #d4a017; }
+.badge-paused::before {
+    background: #d4a017;
+    box-shadow: 0 0 6px #d4a017;
+    animation: pulse 2s infinite;
+}
+
+
+/* =========================================================
+CHIP DE FILA
+========================================================= */
+
+.queue-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    background: rgba(0, 200, 180, 0.1);
+    color: #00c8b4;
+    border: 1px solid rgba(0, 200, 180, 0.2);
+}
+
+
+/* =========================================================
+STATS DE LIGAÇÕES NA TABELA
+========================================================= */
+
+.stat-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #d4e6f8;
+}
+
+.stat-tempo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #00c8b4;
+}
+
+
+/* =========================================================
+ANIMAÇÕES
+========================================================= */
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+
+/* =========================================================
+BARRA DE SINCRONIZAÇÃO
+========================================================= */
+
+.sync-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    background: #0e1621;
+    border: 1px solid #1e2f45;
+    border-radius: 8px;
+    padding: 5px 14px;
+}
+
+.sync-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.sync-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5a7898;
+    letter-spacing: 0.5px;
+}
+
+.sync-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3a8fbf;
+    min-width: 28px;
+    text-align: right;
+    transition: color 0.3s;
+}
+
+.sync-badge.countdown-urgente {
+    color: #00c8b4;
+    animation: pulse 0.6s infinite;
+}
+
+.sync-divider {
+    width: 1px;
+    height: 18px;
+    background: #1e2f45;
+}
+
+
+
+.stat-prod            { font-family: 'Rajdhani'; font-weight: 700; font-size: 14px; color: #00c8b4; }
+.stat-prod.prod-baixa { color: #ff6060; }
+
+
+
+.agent-pausas {
+    display: block;
+    font-size: 10px;
+    color: #e8b83a;
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 2px;
+    line-height: 1.6;
+}

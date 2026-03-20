@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monitoramento de Suporte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-deep:     #080d14;
+      --bg-panel:    #0e1621;
+      --bg-row:      #111a27;
+      --bg-row-alt:  #0d1520;
+      --border:      #1e2f45;
+      --text-main:   #cdd9e8;
+      --text-muted:  #5a7898;
+      --text-head:   #8aafc8;
+      --green:       #22d35a;
+      --green-dim:   #0f3020;
+      --gold:        #d4a017;
+      --gold-dim:    #2a1f06;
+      --red:         #e84040;
+      --red-dim:     #2a0a0a;
+      --blue:        #2a7fff;
+      --blue-dim:    #071a38;
+      --teal:        #00c8b4;
+      --accent:      #1e90ff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      min-height: 100vh;
+      padding: 24px 28px 40px;
+      background-image:
+        radial-gradient(ellipse 80% 40% at 50% -10%, rgba(30,144,255,0.07) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(30,144,255,0.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(30,144,255,0.02) 40px);
+    }
+
+    /* ── TITLE ── */
+    .page-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #e8f2ff;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 2px;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    /* ── SUMMARY CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeSlideIn 0.5s ease both;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      border-radius: 8px 8px 0 0;
+    }
+    .card.blue::after   { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+    .card.gold::after   { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+    .card.red::after    { background: var(--red);  box-shadow: 0 0 8px var(--red);  }
+    .card.teal::after   { background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+
+    .card.blue  { background: linear-gradient(135deg, #0e1a2e 0%, var(--bg-panel) 100%); }
+    .card.gold  { background: linear-gradient(135deg, #1a1206 0%, var(--bg-panel) 100%); }
+    .card.red   { background: linear-gradient(135deg, #1c0808 0%, var(--bg-panel) 100%); }
+    .card.teal  { background: linear-gradient(135deg, #071a1a 0%, var(--bg-panel) 100%); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .card-icon {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    .card-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .card-value {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .card.blue  .card-value { color: #5ab4ff; }
+    .card.gold  .card-value { color: #e8b83a; }
+    .card.red   .card-value { color: #ff6060; }
+    .card.teal  .card-value { color: var(--teal); }
+
+    /* ── TABLE ── */
+    .table-wrap {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadeSlideIn 0.6s ease 0.2s both;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: #0a1320;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-head);
+      padding: 13px 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th:not(:first-child) { text-align: center; }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(30,47,69,0.5);
+      transition: background 0.15s;
+    }
+    tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+    tbody tr:nth-child(odd)  { background: var(--bg-row); }
+    tbody tr:hover { background: #152032; }
+
+    td {
+      padding: 11px 14px;
+      text-align: center;
+      color: var(--text-main);
+    }
+    td:first-child { text-align: left; }
+
+    /* agent cell */
+    .agent-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.08);
+    }
+    .agent-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #d4e6f8;
+      letter-spacing: 0.5px;
+    }
+
+    /* status badge */
+    .badge-online {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--green);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .badge-online::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    /* queue chip */
+    .queue-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .queue-chat { background: rgba(0,200,180,0.1); color: var(--teal); border: 1px solid rgba(0,200,180,0.2); }
+    .queue-tel  { background: rgba(42,127,255,0.1); color: #7ab8ff; border: 1px solid rgba(42,127,255,0.2); }
+
+    /* rating */
+    .rating-high { color: var(--green); font-weight: 600; }
+    .rating-mid  { color: var(--gold);  font-weight: 600; }
+    .rating-low  { color: var(--red);   font-weight: 600; }
+
+    /* overdue */
+    .vencidos-high { color: #ff6060; font-weight: 700; }
+    .vencidos-mid  { color: #e8b83a; font-weight: 600; }
+    .vencidos-low  { color: var(--text-muted); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--green); }
+      50%       { opacity: 0.5; box-shadow: 0 0 2px var(--green); }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.10s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.20s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.30s; }
+
+    /* responsive fallback */
+    @media (max-width: 1100px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title">Monitoramento de Suporte</h1>
+
+  <!-- SUMMARY CARDS -->
+  <div class="cards">
+    <div class="card blue">
+      <div class="card-header">
+        <span class="card-icon">🎧</span>
+        <span class="card-label">Suportes Ativos</span>
+      </div>
+      <div class="card-value">38</div>
+    </div>
+    <div class="card gold">
+      <div class="card-header">
+        <span class="card-icon">⏸</span>
+        <span class="card-label">Suportes Pausados</span>
+      </div>
+      <div class="card-value">2</div>
+    </div>
+    <div class="card blue">
+      <div class="card-header">
+        <span class="card-icon">🖥</span>
+        <span class="card-label">Tickets Abertos</span>
+      </div>
+      <div class="card-value">746</div>
+    </div>
+    <div class="card red">
+      <div class="card-header">
+        <span class="card-icon">⚠️</span>
+        <span class="card-label">Tickets Vencidos</span>
+      </div>
+      <div class="card-value">405</div>
+    </div>
+    <div class="card teal">
+      <div class="card-header">
+        <span class="card-icon">📞</span>
+        <span class="card-label">Fila Tel.</span>
+      </div>
+      <div class="card-value">17</div>
+    </div>
+    <div class="card teal">
+      <div class="card-header">
+        <span class="card-icon">💬</span>
+        <span class="card-label">Fila Chat</span>
+      </div>
+      <div class="card-value">16</div>
+    </div>
+  </div>
+
+  <!-- AGENTS TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Suporte</th>
+          <th>Status</th>
+          <th>Qtd Hoje</th>
+          <th>Fila</th>
+          <th>Tempo Médio</th>
+          <th>Avaliação</th>
+          <th>Tickets</th>
+          <th>Vencidos</th>
+          <th>Atend. Semana</th>
+          <th>Atend. Mês</th>
+        </tr>
+      </thead>
+      <tbody id="agents-body"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const agents = [
+      { name: "Joao.Silva",      queue: "Chat", qty: 10, avg: "4 min", rating: 4.9, tickets: 22, overdue: 14, week: 70,  month: 300 },
+      { name: "Maria.Costa",     queue: "Tel.", qty: 19, avg: "8 min", rating: 4.9, tickets: 30, overdue: 24, week: 133, month: 570 },
+      { name: "Lucas.Almeida",   queue: "Chat", qty: 6,  avg: "8 min", rating: 4.0, tickets: 27, overdue: 11, week: 42,  month: 180 },
+      { name: "Pedro.Santos",    queue: "Chat", qty: 7,  avg: "7 min", rating: 4.1, tickets: 32, overdue: 21, week: 49,  month: 210 },
+      { name: "Ana.Rocha",       queue: "Chat", qty: 21, avg: "4 min", rating: 4.3, tickets: 4,  overdue: 1,  week: 147, month: 630 },
+      { name: "Marcos.Lima",     queue: "Chat", qty: 6,  avg: "5 min", rating: 4.0, tickets: 6,  overdue: 4,  week: 42,  month: 180 },
+      { name: "Julia.Ferreira",  queue: "Tel.", qty: 15, avg: "8 min", rating: 4.8, tickets: 4,  overdue: 1,  week: 105, month: 450 },
+      { name: "Bruno.Araujo",    queue: "Tel.", qty: 5,  avg: "5 min", rating: 4.2, tickets: 12, overdue: 4,  week: 35,  month: 150 },
+      { name: "Carla.Martins",   queue: "Chat", qty: 16, avg: "4 min", rating: 4.2, tickets: 21, overdue: 2,  week: 112, month: 480 },
+      { name: "Paulo.Souza",     queue: "Chat", qty: 14, avg: "8 min", rating: 4.9, tickets: 5,  overdue: 2,  week: 98,  month: 420 },
+      { name: "Fernanda.Gomes",  queue: "Chat", qty: 9,  avg: "4 min", rating: 4.1, tickets: 8,  overdue: 6,  week: 63,  month: 270 },
+      { name: "Diego.Ribeiro",   queue: "Tel.", qty: 13, avg: "8 min", rating: 4.3, tickets: 6,  overdue: 1,  week: 91,  month: 390 },
+    ];
+
+    // Deterministic avatar colors based on name
+    const avatarPalettes = [
+      ['#1a3a5c','#5ab4ff'], ['#1a2e1a','#4cde7a'], ['#2e1a1a','#ff7070'],
+      ['#2a1a3a','#b07aff'], ['#1a2e2e','#00c8b4'], ['#2e2a1a','#e8b83a'],
+      ['#1a1e30','#7ab8ff'], ['#2e1a2a','#ff80c0'], ['#1a2818','#72e890'],
+      ['#28201a','#ffb060'], ['#181a2e','#80a8ff'], ['#2a2a18','#d4d060'],
+    ];
+
+    function initials(name) {
+      return name.split('.').map(p => p[0]).join('').toUpperCase().slice(0,2);
+    }
+
+    function ratingClass(r) {
+      if (r >= 4.7) return 'rating-high';
+      if (r >= 4.2) return 'rating-mid';
+      return 'rating-low';
+    }
+
+    function overdueClass(v) {
+      if (v >= 15) return 'vencidos-high';
+      if (v >= 5)  return 'vencidos-mid';
+      return 'vencidos-low';
+    }
+
+    const tbody = document.getElementById('agents-body');
+    agents.forEach((a, i) => {
+      const [bg, fg] = avatarPalettes[i % avatarPalettes.length];
+      const isChat = a.queue === 'Chat';
+      const queueIcon = isChat ? '💬' : '📞';
+      const queueClass = isChat ? 'queue-chat' : 'queue-tel';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="agent-cell">
+            <div class="avatar" style="background:${bg};color:${fg}">${initials(a.name)}</div>
+            <span class="agent-name">${a.name}</span>
+          </div>
+        </td>
+        <td><span class="badge-online">Online</span></td>
+        <td>${a.qty}</td>
+        <td><span class="queue-chip ${queueClass}">${queueIcon} ${a.queue}</span></td>
+        <td>${a.avg}</td>
+        <td class="${ratingClass(a.rating)}">${a.rating.toFixed(1)}</td>
+        <td>${a.tickets}</td>
+        <td class="${overdueClass(a.overdue)}">${a.overdue}</td>
+        <td>${a.week}</td>
+        <td>${a.month}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

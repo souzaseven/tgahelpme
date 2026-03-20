@@ -1,0 +1,248 @@
+<!-- =========================================================
+MONITORAMENTO DE SUPORTE
+Página principal do painel
+========================================================= -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!--  Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');
+    </script>
+    <!-- End Google Tag Manager -->
+
+   <!--souza system-->
+    <!--  Google Ads (AdSense Global) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+
+    <!--  Google Analytics - Tag 1 (G-E7ZNTJSRYR) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+
+    <!--  Google Analytics - Tag 2 (G-S8EC5C2WTG) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+
+<link rel="icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+
+
+<!-- =========================================================
+META TAGS
+========================================================= -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Monitoramento de Suporte</title>
+
+<!-- =========================================================
+GOOGLE FONTS
+========================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- =========================================================
+CSS DO SISTEMA
+========================================================= -->
+<link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+
+<body>
+
+<!-- =========================================================
+LOADING OVERLAY
+Exibido apenas no primeiro carregamento da página
+========================================================= -->
+<div id="loading-overlay">
+  <div class="spinner"></div>
+  <span class="loading-text">Carregando dados…</span>
+</div>
+
+
+
+<!-- =========================================================
+TÍTULO DA PÁGINA
+========================================================= -->
+<h1 class="page-title">Monitoramento de Suporte</h1>
+
+
+<!-- =========================================================
+ CONTAGEM REGRESSIVA 
+========================================================= -->
+
+  <div class="sync-bar">
+    <div class="sync-item">
+      <span class="sync-label">🔄 Agentes</span>
+      <span class="sync-badge" id="countdown-agentes">5s</span>
+    </div>
+    <div class="sync-divider"></div>
+    <div class="sync-item">
+      <span class="sync-label">📊 Ligações</span>
+      <span class="sync-badge" id="countdown-ligacoes">60s</span>
+    </div>
+  </div>
+
+
+<!-- =========================================================
+CARDS DE INDICADORES
+========================================================= -->
+<div class="cards">
+
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">🎧</span>
+      <span class="card-label">Suportes Ativos</span>
+    </div>
+    <div class="card-value" id="card_ativos">—</div>
+  </div>
+
+  <div class="card gold">
+    <div class="card-header">
+      <span class="card-icon">⏸</span>
+      <span class="card-label">Suportes Pausados</span>
+    </div>
+    <div class="card-value" id="card_pausados">2</div>
+  </div>
+
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">🖥</span>
+      <span class="card-label">Tickets Abertos</span>
+    </div>
+    <div class="card-value" id="card_tickets">746</div>
+  </div>
+
+  <div class="card red">
+    <div class="card-header">
+      <span class="card-icon">⚠️</span>
+      <span class="card-label">Tickets Vencidos</span>
+    </div>
+    <div class="card-value" id="card_vencidos">405</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-header">
+      <span class="card-icon">📞</span>
+      <span class="card-label">Fila Tel.</span>
+    </div>
+    <div class="card-value" id="card_tel">—</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-header">
+      <span class="card-icon">💬</span>
+      <span class="card-label">Fila Chat</span>
+    </div>
+    <div class="card-value" id="card_chat">—</div>
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+FILTROS
+========================================================= -->
+<div class="filters">
+
+  <label>Status:</label>
+  <select id="filter_status">
+    <option value="all">Todos</option>
+     <option value="ativos">Somente Ativos</option>
+    <option value="online">Somente Online</option>
+    <option value="offline">Somente Offline</option>
+    <option value="pausado">Somente Pausados</option><!--
+<option value="ligacao">Somente Em Ligação</option>-->
+  </select>
+
+<label>Fila:</label>
+<select id="filter_queue">
+  <option value="all">Todas</option>
+</select>
+
+<label>Filas Multiplas:</label>
+<div class="multi-select-wrap" id="multi-queue-wrap">
+  <div class="multi-select-trigger" id="multi-queue-trigger">
+    <span id="multi-queue-label">Todas</span>
+    <span class="multi-arrow">▾</span>
+  </div>
+  <div class="multi-select-dropdown" id="multi-queue-dropdown"></div>
+</div>
+
+</div>
+<!-- =========================================================
+BUSCA POR NOME 
+========================================================= -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="filter_nome" class="search-input" placeholder="Buscar agente…" autocomplete="off">
+  </div>
+  
+
+<!-- =========================================================
+TABELA DE AGENTES
+========================================================= -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+<th colspan="8" class="th-group">LIGAÇÕES EVOLUX</th>
+<th colspan="4" class="th-group th-group-movidesk">ATENDIMENTOS MOVIDESK</th>
+      </tr>
+      <tr>
+        <th data-sort="nome">Suporte <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="status">Status <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="fila">Fila <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="total">Total Hoje <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="feitas">Feitas <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="recebidas">Recebidas <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="atendidas">Atendidas <span class="sort-icon sort-idle">⇅</span></th>
+        <th data-sort="tempo">Tempo Médio <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="dur_chamadas">Dur. Chamadas <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="dur_pausas">Dur. Pausas <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="produtividade" title="Cálculo: Dur. Chamadas ÷ (Tempo Logado − Dur. Pausas) × 100">Produtividade <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="tickets"       class="col-movidesk">Tickets <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="vencidos"      class="col-movidesk">Vencidos <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="atend_semana"  class="col-movidesk">Atend.Semana <span class="sort-icon sort-idle">⇅</span></th>
+<th data-sort="atend_mes"     class="col-movidesk">Atend.Mês <span class="sort-icon sort-idle">⇅</span></th>
+      </tr>
+    </thead>
+<tbody id="agents-body"></tbody>
+    <tfoot id="agents-footer"></tfoot>
+  </table>
+</div>
+
+
+<!-- =========================================================
+SCRIPT JS
+========================================================= -->
+<script src="./assets/js/app.js"></script>
+
+<!-- =========================================================
+AVISO EM TELA QUANDO MUDA STATUS
+========================================================= -->
+<div id="toast-container"></div>
+</body>
+</html>
