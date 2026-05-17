@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGA Versões</title>
+
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/tgahelpme/Desafios/icon%20bot%20tga.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- verifica acesso -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S8EC5C2WTG');
+    </script>
+
+    <!-- anuncios -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg:        #0f172a;
+            --surface:   #1e293b;
+            --border:    #334155;
+            --text:      #e2e8f0;
+            --muted:     #64748b;
+            --accent:    #0ea5e9;
+            --accent2:   #3b82f6;
+            --yellow:    #fbbf24;
+            --bh:        72px; /* banner height */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════
+           BANNER FIXO — CONTAGEM
+        ═══════════════════════════════ */
+        #banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 999;
+            background: linear-gradient(135deg, #0c2340 0%, #0369a1 100%);
+            padding: 10px 24px 0;
+            box-shadow: 0 2px 24px rgba(0,0,0,.6);
+        }
+
+        .banner-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .b-icon { font-size: 16px; color: rgba(255,255,255,.6); }
+        .b-text { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.9); }
+
+        #count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,.3);
+            border: 2px solid var(--yellow);
+            border-radius: 50%;
+            width: 46px; height: 46px;
+            font-size: 22px; font-weight: 800;
+            color: var(--yellow);
+            flex-shrink: 0;
+            animation: beat 1s ease-in-out infinite;
+        }
+
+        @keyframes beat {
+            0%,100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(251,191,36,.45); }
+            50%      { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(251,191,36,0);   }
+        }
+
+        .prog-track { height: 4px; background: rgba(255,255,255,.12); }
+        #prog { height: 100%; width: 100%; background: linear-gradient(90deg, var(--yellow), #f59e0b); }
+
+        /* ═══════════════════════════════
+           LAYOUT PRINCIPAL
+        ═══════════════════════════════ */
+        .page {
+            padding-top: var(--bh);
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        /* Grid 3 colunas: lateral | centro | lateral */
+        .grid {
+            display: grid;
+            grid-template-columns: 230px 1fr 230px;
+            gap: 16px;
+            padding: 20px 16px;
+            align-items: start;
+        }
+
+        /* ── Sidebars ── */
+        .sidebar {
+            position: sticky;
+            top: calc(var(--bh) + 16px);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* ── Centro ── */
+        .center {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            padding: 28px 16px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .logo-ring {
+            width: 66px; height: 66px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px; color: #fff;
+            margin-bottom: 14px;
+            box-shadow: 0 6px 28px rgba(14,165,233,.38);
+        }
+
+        h1 {
+            font-size: clamp(22px, 2.5vw, 36px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 7px; height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: blink 1.2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: .2; }
+        }
+
+        /* ── Cards de anuncio ── */
+        .ad-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 12px 8px;
+            overflow: hidden;
+        }
+
+        .ad-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ── Rodape de anuncios (largura total) ── */
+        .footer-ads {
+            padding: 0 16px 16px;
+        }
+
+        .footer-ads .ad-card {
+            border-radius: 12px;
+        }
+
+        /* ── Divisor visual entre areas ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 6px 0;
+        }
+
+        /* ── Contador de visitas ── */
+        .hits {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px 36px;
+            opacity: .5;
+        }
+
+        /* ═══════════════════════════════
+           RESPONSIVO
+        ═══════════════════════════════ */
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: 190px 1fr 190px; }
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+
+        @media (max-width: 480px) {
+            .b-text { font-size: 12px; }
+            #count  { width: 40px; height: 40px; font-size: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ BANNER DE CONTAGEM ═══ -->
+    <div id="banner">
+        <div class="banner-row">
+            <span class="b-icon"><i class="fas fa-bullhorn"></i></span>
+            <span class="b-text">Anúncios por</span>
+            <span id="count">5</span>
+            <span class="b-text">segundos — depois você será redirecionado &nbsp;<i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="prog-track"><div id="prog"></div></div>
+    </div>
+
+    <div class="page">
+
+        <!-- ═══ GRID 3 COLUNAS ═══ -->
+        <div class="grid">
+
+            <!-- ── SIDEBAR ESQUERDA ── -->
+            <aside class="sidebar">
+
+                <!-- Anuncio E1: Multiplex Vertical -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="autorelaxed"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="2700845219"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Anuncio E2: In-feed Imagem Lado -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-fb+5w+4e-db+86"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="4573982472"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+            </aside>
+
+            <!-- ── CENTRO ── -->
+            <main class="center">
+
+                <!-- Header -->
+                <header class="header">
+                    <div class="logo-ring">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h1>TGA VERSÕES</h1>
+                    <p class="tagline">
+                        <span class="dot"></span>
+                        Aguarde, você será redirecionado em instantes...
+                    </p>
+                </header>
+
+                <!-- Anuncio C1: Display Horizontal -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="8209975152"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Anuncio C2: In-feed Imagem Acima -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-6t+ed+2i-1n-4w"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="7559238469"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Anuncio C3: In-feed Titulo Acima -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-ef+6k-30-ac+ty"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="6246156790"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+            </main>
+
+            <!-- ── SIDEBAR DIREITA ── -->
+            <aside class="sidebar">
+
+                <!-- Anuncio D1: In-feed Somente Texto -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="fluid"
+                        data-ad-layout-key="-gw-3+1f-3d+2z"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="5176617700"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Anuncio D2: Multiplex Horizontal (adaptado para coluna) -->
+                <div class="ad-card">
+                    <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-format="autorelaxed"
+                        data-ad-client="ca-pub-8542251167876044"
+                        data-ad-slot="8216895775"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- ═══ RODAPE — ANUNCIO LARGURA TOTAL ═══ -->
+        <div class="footer-ads">
+            <div class="ad-card">
+                <div class="ad-tag"><i class="fas fa-ad"></i> Publicidade</div>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-8542251167876044"
+                    data-ad-slot="8209975152"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+
+        <!-- Contador de visitas -->
+        <div class="hits">
+            <img alt="visitas" src="https://hits.sh/tgameajuda.com/NovidadesVersao/novidadeversaov0.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico" />
+        </div>
+
+    </div>
+
+    <!-- ═══ SCRIPT: CONTAGEM + REDIRECT ═══ -->
+    <script>
+        const REDIRECT_URL = 'https://tgameajuda.com/NovidadesVersao/index.php';
+        let timeLeft = 5;
+
+        const countEl = document.getElementById('count');
+        const prog    = document.getElementById('prog');
+
+        // Inicia barra de progresso (dois rAF para garantir transicao CSS)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                prog.style.transition = 'width 5s linear';
+                prog.style.width = '0%';
+            });
+        });
+
+        // Contagem regressiva + redirect
+        const timer = setInterval(() => {
+            timeLeft--;
+            countEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                window.location.href = REDIRECT_URL;
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
