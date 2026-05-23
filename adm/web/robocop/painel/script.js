@@ -57,6 +57,9 @@
             } else if (val === 'hotel') {
                 desc = 'Listar pastas que têm Hotel.exe';
                 cmd = 'for /d %i in (S:\\TGA\\C*) do @if exist "%i\\TGA\\Hotel.exe" echo %i';
+            } else if (val === 'atualiza') {
+                desc = 'Executar Atualiza.exe em loop (50x)';
+                cmd = 'for /l %i in (1,1,50) do start "" "S:\\TGA\\TGA\\VERSOES\\26_05\\TGA\\Atualiza.exe"';
             }
             if (cmd) {
                 codesList.innerHTML = '';
