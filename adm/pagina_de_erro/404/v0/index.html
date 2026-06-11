@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — TGA Me Ajuda</title>
+
+  <style>
+    /* =====================================================
+       VARIÁVEIS CSS — PALETA, TIPOGRAFIA E ESPAÇAMENTOS
+       ===================================================== */
+    :root {
+      /* Cores de fundo — tema escuro TGA */
+      --bg-primary:   #212529;
+      --bg-secondary: #1a1e22;
+      --bg-card:      #2c3034;
+
+      /* Cor primária TGA */
+      --accent:       #007bff;
+      --accent-light: #4da6ff;
+      --accent-glow:  rgba(0, 123, 255, 0.4);
+
+      /* Cores funcionais */
+      --danger:       #dc3545;
+      --warning:      #ffc107;
+      --success:      #28a745;
+      --gold:         #ffc107;
+      --gold-light:   #ffe083;
+
+      /* Texto */
+      --text-primary:   #f8f9fa;
+      --text-secondary: #adb5bd;
+      --text-muted:     #6c757d;
+
+      /* Bordas */
+      --border: #3d4349;
+
+      /* Tipografia */
+      --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+
+      /* Raios de borda */
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 32px;
+
+      /* Transições */
+      --ease:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =====================================================
+       RESET & BASE
+       ===================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* =====================================================
+       CANVAS DE PARTÍCULAS FLUTUANTES (camada base)
+       ===================================================== */
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =====================================================
+       TELA 1 — ERRO 404 ELEGANTE
+       ===================================================== */
+    #screen-404 {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px 20px 80px;
+      z-index: 10;
+      overflow-y: auto;
+      background:
+        radial-gradient(ellipse at 50% 25%, rgba(0, 123, 255, 0.14) 0%, transparent 65%),
+        radial-gradient(ellipse at 80% 80%, rgba(220,  53,  69, 0.07) 0%, transparent 55%),
+        var(--bg-primary);
+      transition: opacity var(--ease-slow), transform var(--ease-slow);
+    }
+
+    /* Estado: saindo de cena */
+    #screen-404.hidden {
+      opacity: 0;
+      transform: scale(0.96) translateY(-16px);
+      pointer-events: none;
+    }
+
+    /* --- Ícone de lupa animado --- */
+    .search-icon-wrap {
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 0.2s,
+                 float 3.5s ease-in-out infinite 1.2s;
+    }
+
+    .search-icon-wrap img,
+    .search-icon-wrap svg {
+      filter: drop-shadow(0 0 16px var(--accent-glow));
+    }
+
+    /* --- 404 com efeito glitch --- */
+    .error-number {
+      font-size: clamp(80px, 18vw, 180px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: var(--text-primary);
+      position: relative;
+      margin-bottom: 14px;
+      text-shadow: 0 0 60px rgba(0, 123, 255, 0.25);
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 0.5s, glitch 5s infinite 2.5s;
+    }
+
+    /* Camadas do glitch (pseudo-elementos) */
+    .error-number::before,
+    .error-number::after {
+      content: '404';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .error-number::before {
+      color: var(--accent);
+      animation: glitch-top 5s infinite 2.5s;
+      clip-path: polygon(0 0, 100% 0, 100% 42%, 0 42%);
+    }
+
+    .error-number::after {
+      color: var(--danger);
+      animation: glitch-bot 5s infinite 2.5s;
+      clip-path: polygon(0 58%, 100% 58%, 100% 100%, 0 100%);
+    }
+
+    /* --- Subtítulo --- */
+    .error-subtitle {
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 0.7s;
+    }
+
+    /* --- Descrição --- */
+    .error-desc {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 0.9s;
+    }
+
+    /* --- Chips de causas possíveis --- */
+    .hint-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 1.1s;
+    }
+
+    .hint-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 5px 14px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hint-chip .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      flex-shrink: 0;
+    }
+
+    /* --- Botões da tela 1 --- */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 1.3s;
+    }
+
+    /* =====================================================
+       COMPONENTE BOTÃO (reutilizável)
+       ===================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--ease);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Ripple de brilho no hover */
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: var(--ease);
+    }
+
+    .btn:hover::after  { background: rgba(255, 255, 255, 0.07); }
+    .btn:active::after { background: rgba(255, 255, 255, 0.14); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-light);
+    }
+
+    .btn-pix {
+      background: linear-gradient(135deg, #00c29a, #00897b);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0, 194, 154, 0.3);
+    }
+
+    .btn-pix:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 194, 154, 0.45);
+    }
+
+    .btn-warning {
+      background: var(--danger);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-warning:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+    }
+
+    /* --- Barra de countdown no rodapé da tela 1 --- */
+    #countdown-bar {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeSlideUp 0.7s ease forwards 1.6s;
+      white-space: nowrap;
+    }
+
+    .countdown-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .countdown-track {
+      width: 200px;
+      height: 3px;
+      background: var(--bg-card);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .countdown-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      border-radius: 99px;
+      width: 0%;
+    }
+
+    /* =====================================================
+       TELA 2 — REVELAÇÃO HUMORÍSTICA
+       ===================================================== */
+    #screen-fun {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      z-index: 9;
+      overflow-y: auto;
+      background:
+        radial-gradient(ellipse at 50% 15%, rgba(0, 123, 255, 0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 85%, rgba(220,  53, 69, 0.07) 0%, transparent 55%),
+        var(--bg-primary);
+      opacity: 0;
+      transform: scale(1.04) translateY(20px);
+      pointer-events: none;
+      transition: opacity var(--ease-slow), transform var(--ease-slow);
+    }
+
+    #screen-fun.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: all;
+    }
+
+    /* =====================================================
+       FASE A — DIAGNÓSTICO FALSO
+       ===================================================== */
+    #phase-diagnosis {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #phase-diagnosis.hidden { display: none; }
+
+    .diag-spinner {
+      font-size: 56px;
+      animation: spin-slow 2.5s linear infinite;
+      display: inline-block;
+    }
+
+    .diag-title {
+      font-size: clamp(18px, 3.5vw, 24px);
+      font-weight: 700;
+      color: var(--warning);
+      text-align: center;
+    }
+
+    /* Terminal de log falso */
+    .diag-log {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      text-align: left;
+      min-height: 128px;
+      line-height: 2;
+    }
+
+    .log-line {
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .log-line.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Barra de progresso do diagnóstico */
+    .progress-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-card);
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--warning), var(--gold-light));
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+    /* =====================================================
+       FASE B — REVELAÇÃO HUMORÍSTICA
+       ===================================================== */
+    #phase-reveal {
+      width: 100%;
+      max-width: 560px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+    }
+
+    #phase-reveal.visible { display: flex; }
+
+    .alert-badge {
+      background: var(--danger);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: var(--radius-xl);
+    }
+
+    .reveal-heading {
+      font-size: clamp(20px, 4vw, 30px);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .reveal-sub {
+      font-size: clamp(13px, 2vw, 15px);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* Três pontinhos de pausa dramática */
+    .dramatic-pause {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .dramatic-pause.visible { opacity: 1; }
+
+    .dot-anim {
+      width: 9px;
+      height: 9px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: dot-bounce 1.4s ease-in-out infinite;
+    }
+
+    .dot-anim:nth-child(2) { animation-delay: 0.18s; }
+    .dot-anim:nth-child(3) { animation-delay: 0.36s; }
+
+    /* A grande revelação: "Faltou verba." */
+    .big-reveal {
+      font-size: clamp(38px, 9vw, 86px);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--warning));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      transform: scale(0.75);
+      transition: opacity 0.7s, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .big-reveal.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* =====================================================
+       CARD DE DETALHES (cofrinho + contador + botões)
+       ===================================================== */
+    .budget-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 18px;
+      box-shadow: 0 0 48px rgba(251, 191, 36, 0.06);
+    }
+
+    .budget-card.visible { display: flex; }
+
+    .budget-card p {
+      font-size: clamp(13px, 1.8vw, 15px);
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* Cofrinho animado */
+    .piggy-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .piggy {
+      font-size: 58px;
+      display: inline-block;
+      cursor: pointer;
+      user-select: none;
+      animation: piggy-rock 0.6s ease-in-out infinite alternate;
+    }
+
+    .piggy-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Contador falso de arrecadação */
+    .fundraiser {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .fundraiser-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+    }
+
+    .fundraiser-amount {
+      font-size: 26px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--gold);
+    }
+
+    .fundraiser-goal {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .fundraiser-track {
+      height: 5px;
+      background: var(--bg-secondary);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+
+    .fundraiser-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 99px;
+      width: 0.001%;
+      transition: width 0.5s ease;
+    }
+
+    /* Linha de botões da tela 2 */
+    .btn-row-fun {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      /* herda opacity: 1 (não precisa de fade-in aqui) */
+    }
+
+    /* =====================================================
+       MOEDAS CAINDO (geradas dinamicamente via JS)
+       ===================================================== */
+    .coin {
+      position: fixed;
+      pointer-events: none;
+      user-select: none;
+      z-index: 200;
+      animation: coin-fall linear forwards;
+    }
+
+    /* =====================================================
+       TOAST DE NOTIFICAÇÃO
+       ===================================================== */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--danger);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      font-size: 14px;
+      color: var(--text-primary);
+      line-height: 1.5;
+      z-index: 1000;
+      max-width: 400px;
+      width: calc(100% - 40px);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    #toast small {
+      display: block;
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* =====================================================
+       ANIMAÇÕES CSS
+       ===================================================== */
+
+    /* Entrada: fade + slide vindo de baixo */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* Levitação suave */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px);   }
+      50%       { transform: translateY(-11px); }
+    }
+
+    /* Glitch: tremor do elemento pai */
+    @keyframes glitch {
+      0%, 88%, 100% { transform: none; }
+      89% { transform: skewX(-2deg) translateX(-3px); }
+      90% { transform: skewX(2deg)  translateX(3px);  }
+      91% { transform: none; }
+    }
+
+    /* Glitch: camada superior (roxo) */
+    @keyframes glitch-top {
+      0%, 88%, 100% { transform: none; opacity: 0; }
+      89% { transform: translateX(-5px); opacity: 0.8; }
+      90% { transform: translateX(5px);  opacity: 0.8; }
+      91% { transform: translateX(-2px) skewX(1deg); opacity: 0.4; }
+      92% { opacity: 0; }
+    }
+
+    /* Glitch: camada inferior (vermelho) */
+    @keyframes glitch-bot {
+      0%, 88%, 100% { transform: none; opacity: 0; }
+      89% { transform: translateX(5px);  opacity: 0.8; }
+      90% { transform: translateX(-5px); opacity: 0.8; }
+      91% { transform: translateX(2px) skewX(-1deg); opacity: 0.4; }
+      92% { opacity: 0; }
+    }
+
+    /* Rotação lenta para ícone de carregamento */
+    @keyframes spin-slow {
+      from { transform: rotate(0deg);   }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Pulsação dos três pontinhos de suspense */
+    @keyframes dot-bounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.35; }
+      40%            { transform: scale(1.2); opacity: 1.00; }
+    }
+
+    /* Balanço do cofrinho */
+    @keyframes piggy-rock {
+      from { transform: rotate(-5deg); }
+      to   { transform: rotate(5deg);  }
+    }
+
+    /* Queda de moedas: de cima para baixo com rotação */
+    @keyframes coin-fall {
+      0%   { transform: translateY(-60px) rotate(0deg);   opacity: 1;   }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+    }
+
+    /* Shake de chacoalhar (cofrinho) */
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg);   }
+      15%       { transform: rotate(-14deg); }
+      30%       { transform: rotate(14deg);  }
+      45%       { transform: rotate(-10deg); }
+      60%       { transform: rotate(10deg);  }
+      75%       { transform: rotate(-6deg);  }
+      90%       { transform: rotate(6deg);   }
+    }
+
+    /* =====================================================
+       RESPONSIVIDADE
+       ===================================================== */
+
+    /* Smartphones e telas pequenas */
+    @media (max-width: 480px) {
+      .btn-row,
+      .btn-row-fun {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hint-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #countdown-bar { bottom: 16px; }
+    }
+
+    /* Landscape em celular (altura reduzida) */
+    @media (max-height: 560px) {
+      .search-icon-wrap { margin-bottom: 12px; }
+      .error-number     { font-size: clamp(56px, 12vw, 100px); }
+      .budget-card      { padding: 16px; gap: 10px; }
+      .piggy            { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas de partículas flutuantes — renderizado no fundo -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ====================================================
+       TELA 1 — ERRO 404 ELEGANTE
+       ==================================================== -->
+  <section id="screen-404" role="main" aria-label="Página não encontrada">
+
+    <!-- Logo do bot TGA -->
+    <div class="search-icon-wrap" aria-hidden="true">
+      <img src="./img/principal/bot-tga.webp"
+           alt="Bot TGA"
+           width="80" height="80"
+           style="border-radius: 50%; object-fit: cover;"
+           onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';" />
+      <!-- Fallback caso a imagem não carregue -->
+      <svg id="fallback-icon" width="80" height="80" viewBox="0 0 80 80" fill="none"
+           xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <circle cx="33" cy="33" r="22" stroke="#4da6ff" stroke-width="5"/>
+        <line x1="25" y1="25" x2="41" y2="41" stroke="#dc3545" stroke-width="4" stroke-linecap="round"/>
+        <line x1="41" y1="25" x2="25" y2="41" stroke="#dc3545" stroke-width="4" stroke-linecap="round"/>
+        <line x1="49" y1="49" x2="70" y2="70" stroke="#4da6ff" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Nome da marca -->
+    <p style="font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+              color: var(--accent-light); margin-bottom: 4px; opacity: 0;
+              animation: fadeSlideUp 0.7s ease forwards 0.1s;">
+      TGA ME AJUDA
+    </p>
+
+    <!-- Número 404 com efeito glitch -->
+    <h1 class="error-number" aria-label="Erro 404">404</h1>
+
+    <!-- Subtítulo principal -->
+    <h2 class="error-subtitle">Ops! Não encontramos o arquivo solicitado.</h2>
+
+    <!-- Descrição explicativa -->
+    <p class="error-desc">
+      O arquivo pode ter sido removido, renomeado ou simplesmente nunca existiu.<br>
+      Mas não se preocupe — nossos especialistas já estão investigando o caso.
+    </p>
+
+    <!-- Chips com possíveis causas do erro -->
+    <div class="hint-row" aria-label="Possíveis causas">
+      <div class="hint-chip"><span class="dot"></span>Arquivo removido</div>
+      <div class="hint-chip"><span class="dot"></span>Endereço incorreto</div>
+      <div class="hint-chip"><span class="dot"></span>Página movida</div>
+      <div class="hint-chip"><span class="dot"></span>Conteúdo indisponível</div>
+    </div>
+
+    <!-- Botões de navegação -->
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goHome()">
+        ← Voltar ao início
+      </button>
+      <button class="btn btn-secondary" onclick="retryPage()">
+        ↻ Tentar novamente
+      </button>
+    </div>
+
+    <!-- Barra de contagem regressiva para o diagnóstico automático -->
+    <div id="countdown-bar" aria-live="polite">
+      <span class="countdown-label">
+        Iniciando diagnóstico avançado em <strong id="countdown-sec">6</strong>s…
+      </span>
+      <div class="countdown-track">
+        <div class="countdown-fill" id="countdown-fill"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================
+       TELA 2 — DIAGNÓSTICO E REVELAÇÃO HUMORÍSTICA
+       ==================================================== -->
+  <section id="screen-fun" aria-label="Revelação do verdadeiro problema">
+
+    <!-- FASE A: Terminal de diagnóstico falso -->
+    <div id="phase-diagnosis">
+      <span class="diag-spinner" aria-hidden="true">🔍</span>
+      <p class="diag-title">Investigando o problema com tecnologia de ponta…</p>
+
+      <!-- Terminal de log simulado -->
+      <div class="diag-log" id="diag-log" role="log" aria-live="polite">
+        <!-- Linhas inseridas dinamicamente pelo JavaScript -->
+      </div>
+
+      <!-- Barra de progresso do diagnóstico -->
+      <div class="progress-wrap">
+        <div class="progress-labels">
+          <span>Análise Avançada™ em andamento</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE B: Revelação cômica -->
+    <div id="phase-reveal">
+      <span class="alert-badge" role="alert">⚠ Situação Crítica</span>
+
+      <h2 class="reveal-heading">
+        Foi mal, galera. 😬
+      </h2>
+
+      <p class="reveal-sub">
+        A gente foi lá verificar tudo com muito cuidado e encontrou o problema.
+      </p>
+
+      <!-- Pausa dramática: três pontinhos animados -->
+      <div class="dramatic-pause" id="dramatic-pause" aria-hidden="true">
+        <div class="dot-anim"></div>
+        <div class="dot-anim"></div>
+        <div class="dot-anim"></div>
+      </div>
+
+      <!-- A grande revelação cômica -->
+      <div class="big-reveal" id="big-reveal" role="alert">
+        Sem patrocínio. 🫙
+      </div>
+
+      <!-- Card com os detalhes humorísticos -->
+      <div class="budget-card" id="budget-card">
+
+        <!-- Cofrinho animado e interativo -->
+        <div class="piggy-wrap">
+          <span class="piggy" id="piggy"
+                onclick="shakePiggy()"
+                role="button"
+                tabindex="0"
+                aria-label="Cofrinho vazio"
+                title="Completamente vazio">🪙</span>
+          <span class="piggy-hint">← patrocínio: nenhum até o momento</span>
+        </div>
+
+        <!-- Mensagem principal -->
+        <p style="font-size: clamp(15px, 2.5vw, 18px); color: var(--text-primary); font-weight: 600;">
+          o <strong>tgameajuda</strong> ainda não tem patrocínio.
+        </p>
+
+        <p>
+          A gente tá aqui, cheio de boa vontade, mas o patrocínio ainda não apareceu.
+          Quando tiver, essa página vai ser a primeira a saber. Promessa.
+        </p>
+
+        <p style="color: var(--text-muted); font-size: 13px;">
+          Por enquanto… <em>volte depois.</em> 👋
+        </p>
+
+        <!-- Botões -->
+        <div class="btn-row-fun">
+          <button class="btn btn-primary" onclick="goHome()">
+            ← Voltar ao início
+          </button>
+          <button class="btn btn-secondary" onclick="retryPage()">
+            ↻ Tentar de novo
+          </button>
+        </div>
+
+      </div><!-- /.budget-card -->
+    </div><!-- /#phase-reveal -->
+
+  </section><!-- /#screen-fun -->
+
+  <!-- Notificação pop-up (toast) -->
+  <div id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ====================================================
+       JAVASCRIPT — LÓGICA PRINCIPAL
+       ==================================================== -->
+  <script>
+    'use strict';
+
+    /* ======================================================
+       1. PARTÍCULAS — Canvas API
+       Campo de partículas flutuantes no fundo da página.
+       ====================================================== */
+    (function initParticles() {
+      const canvas = document.getElementById('particles-canvas');
+      const ctx    = canvas.getContext('2d');
+      let particles = [];
+      let W, H;
+
+      /** Ajusta o canvas ao tamanho atual da janela */
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+      }
+
+      /** Cria uma partícula com atributos aleatórios */
+      function makeParticle() {
+        /* Alterna entre azul primario e azul claro TGA */
+        const rgb = Math.random() > 0.5 ? '0, 123, 255' : '77, 166, 255';
+        return {
+          x:     Math.random() * W,
+          y:     Math.random() * H,
+          r:     Math.random() * 2 + 0.4,        /* raio entre 0.4 e 2.4 px */
+          vx:    (Math.random() - 0.5) * 0.35,    /* velocidade horizontal */
+          vy:    (Math.random() - 0.5) * 0.35,    /* velocidade vertical   */
+          alpha: Math.random() * 0.45 + 0.08,     /* transparência         */
+          rgb,
+        };
+      }
+
+      /** Preenche o pool com N partículas */
+      function buildPool(n) {
+        particles = Array.from({ length: n }, makeParticle);
+      }
+
+      /** Loop de animação via requestAnimationFrame */
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (const p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.rgb}, ${p.alpha})`;
+          ctx.fill();
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          /* Rebate suavemente ao atingir as bordas */
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      buildPool(90);
+      draw();
+      window.addEventListener('resize', () => { resize(); buildPool(90); });
+    })();
+
+    /* ======================================================
+       2. COUNTDOWN — Contagem regressiva para a transição
+       Dura 6 segundos; ao término, chama transitionToFun().
+       ====================================================== */
+    (function initCountdown() {
+      const TOTAL_MS  = 6000;
+      const fillEl    = document.getElementById('countdown-fill');
+      const secEl     = document.getElementById('countdown-sec');
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / TOTAL_MS, 1);
+        const secsLeft = Math.max(Math.ceil((TOTAL_MS - elapsed) / 1000), 0);
+
+        fillEl.style.width  = `${progress * 100}%`;
+        secEl.textContent   = secsLeft;
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          transitionToFun(); /* Inicia a transição para a tela cômica */
+        }
+      }
+
+      requestAnimationFrame(tick);
+    })();
+
+    /* ======================================================
+       3. TRANSIÇÃO ENTRE TELAS
+       Fade out da tela 1 + fade in da tela 2.
+       ====================================================== */
+    function transitionToFun() {
+      document.getElementById('screen-404').classList.add('hidden');
+
+      setTimeout(() => {
+        document.getElementById('screen-fun').classList.add('visible');
+        startDiagnosis();
+      }, 700); /* Aguarda o fade-out antes de mostrar a tela 2 */
+    }
+
+    /* ======================================================
+       4. DIAGNÓSTICO FALSO — Log de terminal + barra
+       Exibe linhas de log uma a uma e avança a barra.
+       ====================================================== */
+    const LOG_ENTRIES = [
+      { text: '> Verificando integridade dos arquivos…',       color: '#22c55e' },
+      { text: '> Consultando banco de dados…     [VAZIO]',     color: '#22c55e' },
+      { text: '> Pingando servidores…            [TIMEOUT]',   color: '#f59e0b' },
+      { text: '> Executando algoritmo de IA…     [SEM CRÉDITO]', color: '#f59e0b' },
+      { text: '> Localizando arquivos deletados… [DELETADOS MESMO]', color: '#ef4444' },
+      { text: '> Diagnóstico concluído. Causa raiz encontrada.', color: '#a78bfa' },
+    ];
+
+    function startDiagnosis() {
+      const logEl  = document.getElementById('diag-log');
+      const fillEl = document.getElementById('progress-fill');
+      const pctEl  = document.getElementById('progress-pct');
+
+      let currentPct = 0;
+      const STEP_MS  = 520; /* Delay entre cada linha do log */
+
+      /**
+       * Anima a barra de progresso de `from` até `to` em `durationMs`.
+       * Chama onDone ao terminar (opcional).
+       */
+      function animateProg(from, to, durationMs, onDone) {
+        const t0 = performance.now();
+
+        (function step(now) {
+          const t   = Math.min((now - t0) / durationMs, 1);
+          const pct = from + (to - from) * t;
+
+          fillEl.style.width = `${pct}%`;
+          pctEl.textContent  = `${Math.round(pct)}%`;
+
+          if (t < 1) {
+            requestAnimationFrame(step);
+          } else {
+            currentPct = to;
+            if (onDone) onDone();
+          }
+        })(performance.now());
+      }
+
+      /* Insere cada linha com delay acumulado */
+      LOG_ENTRIES.forEach((entry, i) => {
+        setTimeout(() => {
+          /* Cria o elemento da linha de log */
+          const line = document.createElement('div');
+          line.className   = 'log-line';
+          line.textContent = entry.text;
+          line.style.color = entry.color;
+          logEl.appendChild(line);
+
+          /* Força reflow para que a transição CSS seja aplicada */
+          void line.offsetWidth;
+          line.classList.add('visible');
+
+          /* Avança a barra proporcionalmente ao número de linhas */
+          const target = ((i + 1) / LOG_ENTRIES.length) * 100;
+          animateProg(currentPct, target, STEP_MS - 60);
+
+          /* Última linha: dispara a revelação após pausa */
+          if (i === LOG_ENTRIES.length - 1) {
+            setTimeout(showReveal, 800);
+          }
+        }, i * STEP_MS);
+      });
+    }
+
+    /* ======================================================
+       5. REVELAÇÃO HUMORÍSTICA — Sequência com timings
+       ====================================================== */
+    function showReveal() {
+      const diagnosis  = document.getElementById('phase-diagnosis');
+      const reveal     = document.getElementById('phase-reveal');
+      const pause      = document.getElementById('dramatic-pause');
+      const bigReveal  = document.getElementById('big-reveal');
+      const budgetCard = document.getElementById('budget-card');
+
+      /* Troca a fase: esconde diagnóstico, exibe revelação */
+      diagnosis.classList.add('hidden');
+      reveal.classList.add('visible');
+
+      /* 1.6s — aparece a pausa dramática (três pontos) */
+      setTimeout(() => pause.classList.add('visible'), 1600);
+
+      /* 4.2s — oculta pontos e exibe "Faltou verba." */
+      setTimeout(() => {
+        pause.style.display = 'none';
+        bigReveal.classList.add('visible');
+      }, 4200);
+
+      /* 5.8s — exibe o card e inicia efeitos visuais */
+      setTimeout(() => {
+        budgetCard.classList.add('visible');
+        startFundraiser();
+        startCoinShower();
+      }, 5800);
+    }
+
+    /* ======================================================
+       6. CONTADOR FALSO DE ARRECADAÇÃO
+       Incrementa lentamente (de forma cômica) em direção à meta.
+       Às vezes recua um pouco para humor adicional.
+       ====================================================== */
+    function startFundraiser() {
+      const amountEl = document.getElementById('fundraiser-amount');
+      const fillEl   = document.getElementById('fundraiser-fill');
+      const GOAL     = 1_000_000;
+      let amount     = 0;
+
+      function tick() {
+        /* Incremento ridiculamente pequeno — sobe muito devagar */
+        amount = Math.min(amount + Math.random() * 0.45, GOAL);
+
+        /* Com 4% de chance, recua levemente (humor extra) */
+        if (Math.random() < 0.04) {
+          amount = Math.max(amount - Math.random() * 0.9, 0);
+        }
+
+        /* Formatação como moeda brasileira (BRL) */
+        amountEl.textContent = 'R$ ' + amount
+          .toFixed(2)
+          .replace('.', ',')
+          .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        fillEl.style.width = `${(amount / GOAL) * 100}%`;
+
+        setTimeout(tick, 180 + Math.random() * 350);
+      }
+
+      tick();
+    }
+
+    /* ======================================================
+       7. CHUVA DE MOEDAS E NOTAS
+       Cria elementos que caem do topo com rotação.
+       ====================================================== */
+    function startCoinShower() {
+      const ICONS = ['🪙', '💰', '💵', '💴', '💶', '🤑', '💸', '💷'];
+      let spawned = 0;
+      const MAX   = 32;
+
+      function spawnCoin() {
+        if (spawned >= MAX) return;
+        spawned++;
+
+        const el = document.createElement('span');
+        el.className = 'coin';
+        el.textContent = ICONS[Math.floor(Math.random() * ICONS.length)];
+        el.setAttribute('aria-hidden', 'true');
+
+        const size = 14 + Math.random() * 24;
+        const dur  = 2.5 + Math.random() * 3;
+
+        el.style.cssText = `
+          left: ${Math.random() * 100}%;
+          top: -60px;
+          font-size: ${size}px;
+          animation-duration: ${dur}s;
+        `;
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000 + 200);
+      }
+
+      const iv = setInterval(() => {
+        spawnCoin();
+        if (spawned >= MAX) clearInterval(iv);
+      }, 320);
+    }
+
+    /* ======================================================
+       8. COFRINHO — Chacoalhar ao clicar
+       ====================================================== */
+    function shakePiggy() {
+      const piggy = document.getElementById('piggy');
+
+      /* Substitui a animação de balanço pelo shake */
+      piggy.style.animation = 'shake 0.65s ease';
+
+      piggy.addEventListener('animationend', () => {
+        piggy.style.animation = ''; /* Retoma o balanço suave */
+        showToast(
+          '🪙 <strong>Aqui não tem nada mesmo.</strong>',
+          'tgameajuda: zero patrocinadores, muita vontade. É o que tem pra hoje.'
+        );
+      }, { once: true });
+    }
+
+    /* Suporte a teclado para o cofrinho (acessibilidade) */
+    document.getElementById('piggy').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        shakePiggy();
+      }
+    });
+
+    /* ======================================================
+       10. SISTEMA DE TOAST (notificações pop-up)
+       ====================================================== */
+    let toastTimer = null;
+
+    /**
+     * Exibe um toast com título e corpo opcionais.
+     * @param {string} title  - HTML do título (suporta tags como <strong>)
+     * @param {string} [body] - Texto secundário exibido em fonte menor
+     */
+    function showToast(title, body = '') {
+      const toast = document.getElementById('toast');
+      toast.innerHTML = title + (body ? `<small>${body}</small>` : '');
+      toast.classList.add('show');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 4800);
+    }
+
+    /* ======================================================
+       11. BOTÕES DE NAVEGAÇÃO
+       ====================================================== */
+
+    /** Redireciona para a raiz do site */
+    function goHome() { window.location.href = '/'; }
+
+    /** Recarrega a página atual */
+    function retryPage() { location.reload(); }
+
+    /* ======================================================
+       12. EASTER EGG — Konami Code 🎮
+       ↑ ↑ ↓ ↓ ← → ← → B A
+       Para os curiosos de plantão.
+       ====================================================== */
+    (function initKonamiCode() {
+      const SEQ = [
+        'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+        'b', 'a',
+      ];
+      let pos = 0;
+
+      document.addEventListener('keydown', (e) => {
+        pos = (e.key === SEQ[pos]) ? pos + 1 : 0;
+
+        if (pos === SEQ.length) {
+          pos = 0;
+          showToast(
+            '🎮 <strong>Konami Code ativado!</strong>',
+            'Parabéns pela descoberta! Infelizmente não temos verba nem para o prêmio especial.'
+          );
+          /* Dupla chuva de moedas como "recompensa" */
+          startCoinShower();
+          setTimeout(startCoinShower, 700);
+        }
+      });
+    })();
+
+    /* ======================================================
+       EFEITOS SONOROS (comentados — descomente para ativar)
+       Requer arquivos de áudio locais em /sounds/
+       ====================================================== */
+
+    /*
+    const SFX = {
+      coin:   new Audio('sounds/coin.mp3'),
+      error:  new Audio('sounds/error.mp3'),
+      reveal: new Audio('sounds/reveal.mp3'),
+    };
+
+    // Exemplo de uso ao spawnar moeda:
+    //   SFX.coin.currentTime = 0;
+    //   SFX.coin.volume = 0.3;
+    //   SFX.coin.play().catch(() => {});  // catch: política de autoplay
+
+    // Exemplo de uso ao revelar "Faltou verba.":
+    //   SFX.reveal.play().catch(() => {});
+    */
+  </script>
+
+</body>
+</html>
