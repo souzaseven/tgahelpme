@@ -1,0 +1,377 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background-image: url('https://sweb.tgasistemas.com.br/papeldeparede.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* ─── Partículas de fundo ─── */
+.bg-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-particles span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-up 8s infinite ease-in;
+}
+
+.bg-particles span:nth-child(1) { left: 10%; width: 6px;  height: 6px;  background: rgba(56,189,248,.35); animation-delay: 0s;   animation-duration: 9s; }
+.bg-particles span:nth-child(2) { left: 30%; width: 4px;  height: 4px;  background: rgba(56,189,248,.2);  animation-delay: 2s;   animation-duration: 7s; }
+.bg-particles span:nth-child(3) { left: 55%; width: 8px;  height: 8px;  background: rgba(56,189,248,.25); animation-delay: 4s;   animation-duration: 11s; }
+.bg-particles span:nth-child(4) { left: 70%; width: 5px;  height: 5px;  background: rgba(56,189,248,.3);  animation-delay: 1s;   animation-duration: 8s; }
+.bg-particles span:nth-child(5) { left: 85%; width: 3px;  height: 3px;  background: rgba(56,189,248,.2);  animation-delay: 5.5s; animation-duration: 10s; }
+.bg-particles span:nth-child(6) { left: 45%; width: 7px;  height: 7px;  background: rgba(56,189,248,.15); animation-delay: 3s;   animation-duration: 12s; }
+
+@keyframes float-up {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: .5; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ─── Wrapper ─── */
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  margin-top: 10%;
+  /* Entrada suave da tela */
+  animation: card-in .55s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(28px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ─── Card ─── */
+.login-card {
+  background: rgba(15,23,42,.95);
+  border-radius: 18px;
+  padding: 36px 32px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+  border: 1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(12px);
+}
+
+/* ─── Header / Logo ─── */
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,.12) 0%, transparent 70%);
+  border: 1px solid rgba(56,189,248,.2);
+  margin-bottom: 14px;
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,.15); }
+  50%       { box-shadow: 0 0 0 10px rgba(56,189,248,.0); }
+}
+
+.logo-ring img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.login-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.3px;
+}
+
+.login-header p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* ─── Grupos de campo ─── */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 12px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+
+.form-group label svg {
+  width: 13px;
+  height: 13px;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+/* input-wrap: para posicionar o botão de olho */
+.input-wrap {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(2,6,23,.8);
+  color: #e5e7eb;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.input-wrap input {
+  padding-right: 44px; /* espaço pro botão de olho */
+}
+
+.form-group input::placeholder {
+  color: #4b5563;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56,189,248,.15);
+  background: rgba(2,6,23,1);
+}
+
+/* estado de erro no campo */
+.form-group.has-error input {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.12);
+}
+
+/* ─── Botão mostrar/ocultar senha ─── */
+.toggle-senha {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color .2s;
+}
+
+.toggle-senha:hover {
+  color: #38bdf8;
+}
+
+.toggle-senha svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ─── Mensagens de erro inline ─── */
+.field-error {
+  display: block;
+  font-size: 11px;
+  color: #ef4444;
+  margin-top: 5px;
+  min-height: 16px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .2s, transform .2s;
+}
+
+.form-group.has-error .field-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Botão Entrar ─── */
+.btn-login {
+  width: 100%;
+  padding: 13px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+  color: #fff;
+  margin-top: 10px;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-login::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.12) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+
+.btn-login:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-login:hover:not(:disabled) {
+  opacity: .92;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(2,132,199,.35);
+}
+
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login:disabled {
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+/* Spinner de loading */
+.btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-login.loading .btn-text {
+  opacity: .7;
+}
+
+.btn-login.loading .btn-spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Mensagem global ─── */
+.login-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+  transition: all .25s;
+}
+
+.login-msg.error {
+  color: #ef4444;
+  animation: shake .35s ease;
+}
+
+.login-msg.success {
+  color: #34d399;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* ─── Footer ─── */
+.login-footer {
+  text-align: center;
+  margin-top: 26px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  .login-wrapper {
+    margin-top: 0;
+  }
+}
+
+/* ─── Containers de anúncios ─────────────────────────────
+   position: fixed → completamente fora do fluxo do card.
+   z-index: 0 → ficam atrás do card (z-index: 1).
+───────────────────────────────────────────────────────── */
+.ad-lateral {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.ad-lateral-esq { left: 0; }
+.ad-lateral-dir { right: 0; }
+
+.ad-rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.ad-rodape > * {
+  pointer-events: auto;
+}
+
+/* Oculta laterais em telas menores que 1200px */
+@media (max-width: 1199px) {
+  .ad-lateral { display: none; }
+}
+
+/* Oculta rodapé em telas menores que 600px */
+@media (max-width: 599px) {
+  .ad-rodape { display: none; }
+}
