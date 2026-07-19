@@ -1,0 +1,23 @@
+{
+    "modo": "automatico",
+    "manual": {
+        "subtitulo": "Semana de 20\/04\/2026 a 26\/04\/2026",
+        "aviso_resumo": "⚠️ *Observação:*\r\nAs folgas retornam ao normal a partir da semana do dia *27\/04\/2026*.\r\n\r\n* A equipe do *Alex Sandro Braulio* ficará responsável pelas ligações.\r\n* A equipe do *Daniel Feix* fará a compensação de horas e, consequentemente, folgará no sábado.",
+        "telefone": [
+            "* Pedro",
+            "* Matheus Moreira",
+            "* Matsushita",
+            "* Andrey",
+            "* Max",
+            "* Marcio",
+            "* Rodrigo",
+            "* Renan",
+            "* Lindomar Junior"
+        ],
+        "chat": [
+            "Restante da equipe"
+        ],
+        "folga": [],
+        "compensacao": []
+    }
+}

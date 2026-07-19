@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login – Controle de Telefone Fila | Sistema Administrativo</title>
+<meta name="description" content="Sistema administrativo para controle de telefone em fila e gerenciamento de semanas de telefone.">
+
+<!-- FAVICON -->
+<link rel="shortcut icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GOOGLE TAG MANAGER -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2XFNTVZ');
+</script>
+
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-E7ZNTJSRYR');
+gtag('config', 'G-S8EC5C2WTG');
+</script>
+
+<!-- GOOGLE ADS -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --bg:#0f172a;
+  --card:#111827;
+  --input:#1f2937;
+  --text:#fff;
+  --muted:#94a3b8;
+  --error:#ef4444;
+  --radius:12px;
+  --shadow:0 20px 40px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  font-family:'Poppins',Arial,sans-serif;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:1200px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* ESTRUTURA (sem estilo visual de anúncios) */
+.ad-top,
+.ad-bottom{
+  width:100%;
+}
+
+.ad-left,
+.ad-right{
+  width:200px;
+}
+
+.main-content{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+}
+
+/* LOGIN */
+.login-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:40px;
+  width:100%;
+  max-width:420px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+.logo span{font-size:48px}
+.logo h1{font-size:24px;margin-top:8px}
+.logo p{font-size:14px;color:var(--muted)}
+
+.form-group{margin-bottom:18px}
+label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:var(--radius);
+  border:2px solid transparent;
+  background:var(--input);
+  color:#fff;
+  font-size:15px;
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(37,99,235,.25);
+}
+
+.password-container{position:relative}
+
+.toggle-password{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  color:var(--muted);
+}
+
+.submit-btn{
+  width:100%;
+  padding:15px;
+  margin-top:10px;
+  border:none;
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.error-message{
+  display:none;
+  margin-top:14px;
+  padding:12px;
+  border-radius:8px;
+  background:rgba(239,68,68,.12);
+  color:var(--error);
+  text-align:center;
+  font-size:14px;
+}
+
+@media(max-width:1100px){
+  .ad-left,.ad-right{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<div class="container">
+
+<!-- TOPO -->
+<div class="ad-top">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-8542251167876044"
+       data-ad-slot="8209975152"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="main-content">
+
+  <!-- LATERAL ESQUERDA -->
+  <div class="ad-left">
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-8542251167876044"
+         data-ad-slot="8872320133"
+         data-ad-format="auto"></ins>
+  </div>
+
+  <!-- LOGIN -->
+  <div class="login-card">
+    <div class="logo">
+      <span>📞</span>
+      <h1>Controle de Telefone Fila</h1>
+      <p>Sistema administrativo de semanas de telefone</p>
+    </div>
+
+    <form id="formLogin">
+      <div class="form-group">
+        <label>Usuário</label>
+        <input type="text" name="usuario" id="usuario" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <div class="password-container">
+          <input type="password" name="senha" id="senha" required>
+          <button type="button" class="toggle-password" id="togglePassword">👁️</button>
+        </div>
+      </div>
+
+      <button class="submit-btn">Entrar no Sistema</button>
+      <div class="error-message" id="erroLogin"></div>
+    </form>
+  </div>
+
+  <!-- LATERAL DIREITA -->
+  <div class="ad-right">
+    <ins class="adsbygoogle"
+         data-ad-client="ca-pub-8542251167876044"
+         data-ad-slot="2700845219"
+         data-ad-format="autorelaxed"></ins>
+  </div>
+
+</div>
+
+<!-- RODAPÉ -->
+<div class="ad-bottom">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-8542251167876044"
+       data-ad-slot="8216895775"
+       data-ad-format="autorelaxed"></ins>
+</div>
+
+</div>
+
+<script>
+document.getElementById('togglePassword').onclick = () => {
+  const i = document.getElementById('senha');
+  i.type = i.type === 'password' ? 'text' : 'password';
+};
+
+document.getElementById('formLogin').addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const btn = document.querySelector('.submit-btn');
+  const erro = document.getElementById('erroLogin');
+  erro.style.display='none';
+
+  btn.textContent='Autenticando...';
+  btn.disabled=true;
+
+  try{
+    const res = await fetch('login.php',{method:'POST',body:new FormData(e.target)});
+    const json = await res.json();
+
+    if(json.success){
+      btn.textContent='Login realizado!';
+      setTimeout(()=>location.href='telefone.php',700);
+    }else{
+      erro.textContent=json.message || 'Erro ao autenticar';
+      erro.style.display='block';
+    }
+  }catch{
+    erro.textContent='Erro de conexão com o servidor';
+    erro.style.display='block';
+  }finally{
+    btn.disabled=false;
+  }
+});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  (adsbygoogle = window.adsbygoogle || []).push({});
+});
+</script>
+
+</body>
+</html>
