@@ -1,0 +1,23 @@
+/*
+ * Estilos globais do TGA Academy.
+ * O sistema de design definitivo (paleta, tipografia, componentes)
+ * será definido na etapa de UI/UX. Por ora, apenas um reset mínimo
+ * para as páginas placeholder não ficarem sem estilo nenhum.
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #1a1a1a;
+    background: #fafafa;
+}
+
+.placeholder-page {
+    max-width: 720px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
