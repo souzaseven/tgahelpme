@@ -1,0 +1,12 @@
+{
+  "name": "tga-erp-portal-conhecimento",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portal de Conhecimento e Teste de Conhecimento do TGA ERP (HTML/CSS/JS puro, sem build).",
+  "scripts": {
+    "test": "node tests/smoke.test.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.0"
+  }
+}
