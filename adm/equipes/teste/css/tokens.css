@@ -1,0 +1,97 @@
+/* ============================================================
+   TGA — Design Tokens
+   Fonte única de cores, tipografia, espaçamento e sombras
+   reutilizada por todas as telas do sistema (login, painel...).
+   Tema padrão: escuro (mantém a aparência atual em produção).
+   Alternância manual via atributo [data-theme] no <html>,
+   controlada por assets/js/theme-toggle.js.
+============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap");
+
+:root {
+    /* ---------- Tipografia ---------- */
+    --font-base: "Outfit", "Segoe UI", sans-serif;
+
+    --fs-xs: 0.8rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-md: 1.05rem;
+    --fs-lg: 1.3rem;
+    --fs-xl: 1.75rem;
+    --fs-2xl: 2.1rem;
+
+    /* ---------- Espaçamento ---------- */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+
+    /* ---------- Raio de borda ---------- */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
+    --radius-full: 999px;
+
+    /* ---------- Transições ---------- */
+    --transition-fast: 0.16s ease;
+    --transition-base: 0.22s ease;
+    --transition-slow: 0.35s ease;
+
+    /* ---------- Paleta (padrão = escuro, igual à versão atual em produção) ---------- */
+    --bg-0: #050a14;
+    --bg-1: #0a1325;
+    --bg-2: #0b162d;
+
+    --surface: rgba(9, 18, 36, 0.82);
+    --surface-strong: rgba(16, 28, 51, 0.95);
+    --surface-border: rgba(148, 163, 184, 0.2);
+
+    --text: #e6edf8;
+    --text-soft: #a6b7d4;
+
+    --primary: #22d3ee;
+    --primary-strong: #06b6d4;
+    --accent: #3b82f6;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #fb7185;
+
+    --shadow-sm: 0 8px 20px rgba(2, 6, 23, 0.35);
+    --shadow-md: 0 16px 40px rgba(2, 6, 23, 0.5);
+    --shadow-lg: 0 24px 60px rgba(2, 6, 23, 0.6);
+
+    --bg-noise-image: url("https://tgameajuda.com/img/principal/bannerpausa3.png");
+}
+
+/* ---------- Tema claro (opt-in via botão de alternância) ---------- */
+:root[data-theme="light"] {
+    --bg-0: #f8fafc;
+    --bg-1: #eef2f9;
+    --bg-2: #e7ecf5;
+
+    --surface: rgba(255, 255, 255, 0.86);
+    --surface-strong: rgba(255, 255, 255, 0.97);
+    --surface-border: rgba(15, 23, 42, 0.1);
+
+    --text: #0f172a;
+    --text-soft: #475569;
+
+    --primary: #2563eb;
+    --primary-strong: #1d4ed8;
+    --accent: #0ea5e9;
+
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+
+    --shadow-sm: 0 8px 20px rgba(15, 23, 42, 0.08);
+    --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
