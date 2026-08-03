@@ -1,0 +1,26 @@
+{
+  "problems": [
+    "Linha 160: </div> SEM abertura correspondente na pilha",
+    "Linha 256: </div> SEM abertura correspondente na pilha",
+    "Linha 692: </div> SEM abertura correspondente na pilha",
+    "Linha 1706: </div> SEM abertura correspondente na pilha",
+    "Linha 3803: </div> SEM abertura correspondente na pilha",
+    "Linha 3805: </div> SEM abertura correspondente na pilha",
+    "Linha 3906: </div> SEM abertura correspondente na pilha",
+    "Linha 3908: </div> SEM abertura correspondente na pilha",
+    "Linha 4136: </div> SEM abertura correspondente na pilha",
+    "Linha 4247: </div> SEM abertura correspondente na pilha",
+    "Linha 4444: </div> SEM abertura correspondente na pilha",
+    "Linha 4526: </div> SEM abertura correspondente na pilha",
+    "Linha 4635: </div> SEM abertura correspondente na pilha",
+    "Linha 4637: </div> SEM abertura correspondente na pilha",
+    "Linha 4759: </div> SEM abertura correspondente na pilha",
+    "Linha 4816: </div> SEM abertura correspondente na pilha",
+    "Linha 4818: </div> SEM abertura correspondente na pilha",
+    "Linha 4893: </div> SEM abertura correspondente na pilha",
+    "Linha 4895: </div> SEM abertura correspondente na pilha",
+    "Linha 4977: </div> SEM abertura correspondente na pilha",
+    "Linha 5787: </section> SEM abertura correspondente na pilha"
+  ],
+  "stillOpen": []
+}
