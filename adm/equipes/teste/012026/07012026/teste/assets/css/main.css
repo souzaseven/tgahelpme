@@ -1,0 +1,1125 @@
+/* ============================================================
+   Controle Financeiro — Design System
+   ============================================================ */
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg-900);
+    color: var(--text-100);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+input, select, textarea { font: inherit; }
+ul { list-style: none; }
+
+/* Anel de foco visível para navegação por teclado — só aparece em
+   :focus-visible (Tab), não em clique de mouse, e cobre todo elemento
+   interativo (botões, links, itens de menu) que hoje só herdava o
+   outline padrão do navegador, pouco visível no tema escuro. */
+:focus-visible {
+    outline: 2px solid var(--indigo);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* ── Acessibilidade: pular para o conteúdo ────────────────────── */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--indigo);
+    color: #fff;
+    padding: .6rem 1rem;
+    border-radius: var(--radius);
+    font-size: .85rem;
+    font-weight: 600;
+    transition: top .15s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+    --sidebar-w:           240px;
+    --sidebar-collapsed-w: 62px;
+    --header-h:            60px;
+
+    --bg-900:  #0f172a;
+    --bg-800:  #1e293b;
+    --bg-700:  #293548;
+    --bg-600:  #334155;
+    --bg-500:  #475569;
+
+    --text-100: #f8fafc;
+    --text-200: #e2e8f0;
+    --text-400: #94a3b8;
+    --text-500: #7c8ba1;
+    --text-600: #64748b;
+
+    --indigo:      #6366f1;
+    --indigo-h:    #4f46e5;
+    --indigo-bg:   #1e1b4b;
+    --indigo-soft: rgba(99,102,241,.15);
+
+    --emerald:     #10b981;
+    --emerald-bg:  #064e3b;
+    --emerald-soft:rgba(16,185,129,.15);
+
+    --rose:        #f43f5e;
+    --rose-bg:     #4c0519;
+    --rose-soft:   rgba(244,63,94,.15);
+
+    --amber:       #f59e0b;
+    --amber-bg:    #451a03;
+    --amber-soft:  rgba(245,158,11,.15);
+
+    --cyan:        #06b6d4;
+    --cyan-bg:     #083344;
+    --cyan-soft:   rgba(6,182,212,.15);
+
+    --violet:      #8b5cf6;
+    --violet-bg:   #2e1065;
+    --violet-soft: rgba(139,92,246,.15);
+
+    --border:       rgba(255,255,255,.07);
+    --border-focus: var(--indigo);
+
+    --radius-sm: .375rem;
+    --radius:    .75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    --shadow:    0 4px 16px rgba(0,0,0,.35);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,.45);
+
+    --ease: .2s ease;
+}
+
+/* ── Layout Principal ────────────────────────────────────────── */
+.layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    grid-template-rows: 1fr;
+    min-height: 100vh;
+    transition: grid-template-columns .25s cubic-bezier(.4,0,.2,1);
+}
+.layout.sidebar-collapsed {
+    grid-template-columns: var(--sidebar-collapsed-w) 1fr;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+.sidebar {
+    background: var(--bg-800);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: visible;   /* visible para os tooltips aparecerem no modo colapsado */
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-600) transparent;
+    z-index: 100;
+    width: var(--sidebar-w);
+    transition: width .25s cubic-bezier(.4,0,.2,1);
+}
+/* Quando expandida, volta a esconder overflow-x normalmente */
+.sidebar:not(.collapsed) { overflow-x: hidden; }
+
+/* ── Sidebar: modo recolhido ─────────────────────────────────── */
+.sidebar.collapsed { width: var(--sidebar-collapsed-w); }
+
+.sidebar.collapsed .sidebar-section,
+.sidebar.collapsed .sidebar-footer,
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .logo-ver  { display: none; }
+
+.sidebar.collapsed .sidebar-logo {
+    justify-content: center;
+    padding: .875rem .5rem;
+}
+
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+    padding: .6rem 0;
+    margin: .1rem auto;
+    width: calc(var(--sidebar-collapsed-w) - 16px);
+}
+.sidebar.collapsed .nav-item i { width: auto; font-size: .95rem; }
+
+/* Tooltip ao passar o mouse no modo recolhido */
+.sidebar.collapsed .nav-item {
+    position: relative;
+    overflow: visible;
+}
+.sidebar.collapsed .nav-item::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-600);
+    color: var(--text-100);
+    padding: .3rem .7rem;
+    border-radius: var(--radius-sm);
+    font-size: .78rem;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .15s .05s;
+    z-index: 500;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+.sidebar.collapsed .nav-item:hover::after { opacity: 1; }
+
+/* Badge vira ponto no modo recolhido */
+.sidebar.collapsed .nav-badge {
+    position: absolute;
+    top: 4px; right: 4px;
+    min-width: 8px; height: 8px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+}
+
+/* Botão toggle */
+.sidebar-toggle {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--bg-700);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-400);
+    font-size: .65rem;
+    cursor: pointer;
+    transition: var(--ease);
+    flex-shrink: 0;
+    margin-left: auto;
+}
+.sidebar-toggle:hover { background: var(--indigo-soft); color: var(--indigo); }
+.sidebar.collapsed .sidebar-toggle { margin: 0 auto; }
+.sidebar.collapsed .sidebar-toggle i { transform: rotate(180deg); }
+
+.sidebar-logo {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    border-bottom: 1px solid var(--border);
+    min-height: var(--header-h);
+}
+.sidebar-logo .logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .875rem; color: #fff; flex-shrink: 0;
+}
+.sidebar-logo .logo-text { font-weight: 700; font-size: 1.05rem; letter-spacing: -.02em; }
+.sidebar-logo .logo-ver  { font-size: .65rem; color: var(--text-600); margin-top: .1rem; }
+
+.sidebar-section {
+    padding: 1rem .75rem .25rem;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-600);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .6rem .75rem;
+    margin: .1rem .5rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-400);
+    font-size: .875rem;
+    font-weight: 500;
+    transition: var(--ease);
+    position: relative;
+}
+.nav-item:hover { background: var(--bg-700); color: var(--text-200); }
+.nav-item.active {
+    background: var(--indigo-soft);
+    color: var(--indigo);
+}
+.nav-item.active::before {
+    content: '';
+    position: absolute; left: -.5rem;
+    top: 50%; transform: translateY(-50%);
+    width: 3px; height: 60%;
+    background: var(--indigo);
+    border-radius: 0 2px 2px 0;
+}
+.nav-item i { width: 18px; text-align: center; font-size: .9rem; flex-shrink: 0; }
+.nav-label  { transition: opacity .2s; }
+.sidebar.collapsed .nav-label { display: none; }
+.sidebar.collapsed .sidebar-logo .sidebar-logo-info { display: none; }
+.nav-badge {
+    margin-left: auto;
+    background: var(--rose);
+    color: #fff;
+    font-size: .65rem;
+    font-weight: 700;
+    padding: .1rem .35rem;
+    border-radius: 999px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: .8rem;
+    color: var(--text-600);
+    text-align: center;
+}
+
+/* ── Área principal ──────────────────────────────────────────── */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.header {
+    height: var(--header-h);
+    background: var(--bg-800);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.header-title { font-weight: 600; font-size: 1rem; flex: 1; }
+.header-breadcrumb { font-size: .8rem; color: var(--text-600); }
+.header-breadcrumb span { color: var(--text-400); }
+
+.header-actions { display: flex; align-items: center; gap: .75rem; }
+
+.btn-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-700);
+    color: var(--text-400);
+    font-size: .875rem;
+    transition: var(--ease);
+    position: relative;
+}
+.btn-icon:hover { background: var(--bg-600); color: var(--text-100); }
+.btn-icon .dot {
+    position: absolute; top: 6px; right: 6px;
+    width: 7px; height: 7px;
+    background: var(--rose);
+    border-radius: 50%;
+    border: 2px solid var(--bg-800);
+}
+
+.avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--indigo), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: .8rem;
+    color: #fff; flex-shrink: 0;
+}
+
+/* ── Conteúdo ────────────────────────────────────────────────── */
+.content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.page-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
+.page-sub   { font-size: .825rem; color: var(--text-400); margin-top: .2rem; }
+
+/* ── Grid de KPIs ───────────────────────────────────────────── */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.kpi-card {
+    background: var(--bg-800);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    transition: var(--ease);
+    position: relative;
+    overflow: hidden;
+    /* Sombra sutil já em repouso — sem isso os cards ficam "colados" no
+       fundo da página no tema escuro, só ganhando presença no hover.
+       [data-theme="light"] .kpi-card sobrescreve com uma sombra mais leve
+       (fundo já é claro, uma sombra escura forte destoaria). */
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+}
+.kpi-card.indigo::before { background: var(--indigo); }
+.kpi-card.emerald::before { background: var(--emerald); }
+.kpi-card.rose::before   { background: var(--rose); }
+.kpi-card.amber::before  { background: var(--amber); }
+.kpi-card.violet::before { background: var(--violet); }
+.kpi-card.cyan::before   { background: var(--cyan); }
+/* Neutro — pra métricas que não são "boas" nem "ruins" (ex.: contagem de
+   lançamentos), sem disputar destaque com o indigo do botão de ação
+   primária da página (ex.: "+ Nova Despesa"). */
+.kpi-card.slate::before { background: var(--text-600); }
+
+.kpi-card:hover { border-color: var(--bg-600); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+.kpi-header { display: flex; align-items: center; justify-content: space-between; }
+.kpi-label  { font-size: .75rem; font-weight: 600; color: var(--text-400); text-transform: uppercase; letter-spacing: .05em; }
+
+.kpi-icon {
+    width: 34px; height: 34px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem;
+}
+.kpi-icon.indigo { background: var(--indigo-soft); color: var(--indigo); }
+.kpi-icon.emerald{ background: var(--emerald-soft);color: var(--emerald);}
+.kpi-icon.rose   { background: var(--rose-soft);   color: var(--rose);   }
+.kpi-icon.amber  { background: var(--amber-soft);  color: var(--amber);  }
+.kpi-icon.violet { background: var(--violet-soft); color: var(--violet); }
+.kpi-icon.cyan   { background: var(--cyan-soft);   color: var(--cyan);   }
+.kpi-icon.slate  { background: var(--bg-600);      color: var(--text-400); }
+
+.kpi-value  { font-size: 1.75rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; }
+.kpi-trend  { display: flex; align-items: center; gap: .35rem; font-size: .75rem; }
+.kpi-trend.up   { color: var(--emerald); }
+.kpi-trend.down { color: var(--rose); }
+.kpi-trend.neutral { color: var(--text-600); }
+/* good/bad são independentes de up/down: numa despesa, "subir" é ruim
+   (vermelho) e numa receita, "subir" é bom (verde) — a seta mostra a
+   direção real, a cor usa o significado certo pro contexto. */
+.kpi-trend.good { color: var(--emerald); }
+.kpi-trend.bad  { color: var(--rose); }
+
+/* ── Grid de gráficos e cards ────────────────────────────────── */
+.dash-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.dash-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.dash-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+/* ── Card genérico ──────────────────────────────────────────── */
+.card {
+    background: var(--bg-800);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+.card-header {
+    padding: 1rem 1.25rem .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+.card-title    { font-size: .9rem; font-weight: 600; }
+.card-subtitle { font-size: .75rem; color: var(--text-400); margin-top: .15rem; }
+.card-body  { padding: 1.25rem; }
+.card-footer {
+    padding: .75rem 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: .8rem;
+    color: var(--text-400);
+}
+
+/* ── Gráficos ────────────────────────────────────────────────── */
+.chart-wrap { position: relative; }
+.chart-wrap canvas { width: 100% !important; }
+
+/* ── Tabela ──────────────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th {
+    padding: .625rem 1rem;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-600);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+/* ── Cabeçalho ordenável ─────────────────────────────────────── */
+thead th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: color .15s;
+}
+thead th.sortable:hover { color: var(--text-200); }
+thead th.sortable .sort-ic {
+    opacity: .25;
+    margin-left: .3rem;
+    transition: opacity .15s, color .15s;
+}
+thead th.sortable.sort-ativo { color: var(--indigo); }
+thead th.sortable.sort-ativo .sort-ic { opacity: 1; color: var(--indigo); }
+tbody td {
+    padding: .75rem 1rem;
+    font-size: .875rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+tbody tr:last-child td { border-bottom: none; }
+/* Zebra bem sutil — ajuda o olho a seguir a linha em tabelas longas sem
+   competir com o hover (que vem depois no cascade e sempre vence). */
+tbody tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+tbody tr:hover td { background: var(--bg-700); }
+
+/* Ações da linha (editar/excluir/etc.) ficam sempre visíveis, mas discretas
+   (opacidade reduzida) quando há mouse — só ganham destaque total no hover
+   da linha, sem nunca sumir de vez. Em touch (hover:none) ficam sempre em
+   opacidade cheia, já que não existe gesto de hover pra "revelar" nada lá. */
+@media (hover: hover) {
+    .row-actions { opacity: .55; transition: opacity .12s ease; }
+    tr:hover .row-actions, tr:focus-within .row-actions { opacity: 1; }
+}
+
+/* ── Badge / Pílula ─────────────────────────────────────────── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 600;
+}
+.badge.receita  { background: var(--emerald-soft); color: var(--emerald); }
+.badge.despesa  { background: var(--rose-soft);    color: var(--rose); }
+.badge.pago     { background: var(--emerald-soft); color: var(--emerald); }
+.badge.pendente { background: var(--amber-soft);   color: var(--amber); }
+.badge.cancelado{ background: var(--bg-600);       color: var(--text-400); }
+.badge.info     { background: var(--cyan-soft);    color: var(--cyan); }
+
+/* ── Progress ────────────────────────────────────────────────── */
+.progress-wrap { display: flex; flex-direction: column; gap: .4rem; }
+.progress-header { display: flex; justify-content: space-between; font-size: .8rem; }
+.progress-label { color: var(--text-200); font-weight: 500; }
+.progress-pct   { color: var(--text-400); }
+.progress-bar-bg {
+    height: 6px;
+    background: var(--bg-700);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width .6s ease;
+}
+.progress-bar-fill.emerald { background: var(--emerald); }
+.progress-bar-fill.indigo  { background: var(--indigo); }
+.progress-bar-fill.amber   { background: var(--amber); }
+.progress-bar-fill.rose    { background: var(--rose); }
+.progress-bar-fill.violet  { background: var(--violet); }
+.progress-bar-fill.cyan    { background: var(--cyan); }
+
+/* ── Botões ──────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: .875rem;
+    font-weight: 500;
+    transition: var(--ease);
+    white-space: nowrap;
+}
+.btn-primary   { background: var(--indigo);  color: #fff; }
+.btn-primary:hover  { background: var(--indigo-h); }
+.btn-success   { background: var(--emerald); color: #fff; }
+.btn-success:hover  { opacity: .85; }
+.btn-danger    { background: var(--rose);    color: #fff; }
+.btn-danger:hover   { opacity: .85; }
+.btn-ghost     { background: var(--bg-700);  color: var(--text-200); }
+.btn-ghost:hover    { background: var(--bg-600); }
+.btn-outline   { border: 1px solid var(--border); background: transparent; color: var(--text-200); }
+.btn-outline:hover  { background: var(--bg-700); }
+.btn-sm { padding: .35rem .75rem; font-size: .8rem; }
+.btn-lg { padding: .75rem 1.5rem; font-size: 1rem; }
+
+/* ── Forms ───────────────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: .4rem; }
+.form-label { font-size: .8rem; font-weight: 500; color: var(--text-400); }
+.form-control {
+    background: var(--bg-900);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-100);
+    padding: .55rem .85rem;
+    font-size: .875rem;
+    transition: var(--ease);
+    width: 100%;
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px var(--indigo-soft);
+}
+.form-control::placeholder { color: var(--text-600); }
+select.form-control { cursor: pointer; }
+.form-grid { display: grid; gap: 1rem; }
+.form-grid-2 { grid-template-columns: 1fr 1fr; }
+.form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ── Alert ───────────────────────────────────────────────────── */
+.alert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .75rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: .5rem;
+    font-size: .825rem;
+}
+.alert-item:last-child { margin-bottom: 0; }
+.alert-item.urgente { background: var(--rose-bg);  border-left: 3px solid var(--rose); }
+.alert-item.aviso   { background: var(--amber-bg); border-left: 3px solid var(--amber); }
+.alert-item.info    { background: var(--cyan-bg);  border-left: 3px solid var(--cyan); }
+.alert-icon { margin-top: .1rem; flex-shrink: 0; }
+.alert-title { font-weight: 600; margin-bottom: .15rem; }
+.alert-msg   { color: var(--text-400); font-size: .775rem; }
+
+/* ── Cartão de crédito mini ─────────────────────────────────── */
+.cc-card {
+    background: linear-gradient(135deg, var(--bg-700), var(--bg-600));
+    border-radius: var(--radius);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    border: 1px solid var(--border);
+    transition: var(--ease);
+}
+.cc-card:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.cc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.cc-nome { font-weight: 600; font-size: .9rem; }
+.cc-digitos { font-size: .75rem; color: var(--text-400); }
+.cc-bandeira { font-size: 1.1rem; }
+.cc-limite-label { font-size: .7rem; color: var(--text-400); }
+.cc-limite-val { font-size: .875rem; font-weight: 600; }
+
+/* ── Meta card ───────────────────────────────────────────────── */
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding-bottom: .875rem;
+    border-bottom: 1px solid var(--border);
+}
+.meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+.meta-top { display: flex; align-items: center; gap: .75rem; }
+.meta-icon {
+    width: 32px; height: 32px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; flex-shrink: 0;
+}
+.meta-nome  { font-size: .875rem; font-weight: 600; }
+.meta-vals  { font-size: .75rem; color: var(--text-400); }
+
+/* ── Valor formatado ─────────────────────────────────────────── */
+.val-positive { color: var(--emerald); }
+.val-negative { color: var(--rose); }
+.val-neutral  { color: var(--text-100); }
+
+/* ── Ícone de transação ──────────────────────────────────────── */
+.tx-icon {
+    width: 34px; height: 34px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; flex-shrink: 0;
+}
+
+/* ── Semáforo / Score ────────────────────────────────────────── */
+.score-ring { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.score-val  { position: absolute; font-size: 1.4rem; font-weight: 700; }
+.score-label{ font-size: .7rem; color: var(--text-400); margin-top: .25rem; text-align: center; }
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-600); border-radius: 999px; }
+
+/* ── Utilitários ─────────────────────────────────────────────── */
+.d-flex   { display: flex; }
+.d-grid   { display: grid; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: .5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.mt-1  { margin-top: .5rem; }
+.mt-2  { margin-top: 1rem; }
+.mt-3  { margin-top: 1.5rem; }
+.mb-1  { margin-bottom: .5rem; }
+.mb-2  { margin-bottom: 1rem; }
+.text-sm    { font-size: .825rem; }
+.text-xs    { font-size: .75rem; }
+.text-muted { color: var(--text-400); }
+.text-right { text-align: right; }
+.fw-600 { font-weight: 600; }
+.fw-700 { font-weight: 700; }
+.text-emerald { color: var(--emerald); }
+.text-rose    { color: var(--rose); }
+.text-amber   { color: var(--amber); }
+.text-indigo  { color: var(--indigo); }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.w-full { width: 100%; }
+
+/* ── Botão hambúrguer (visível só no mobile) ─────────────────── */
+.btn-hamburguer {
+    display: none;
+    width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--bg-700);
+    color: var(--text-200);
+    font-size: .95rem;
+    flex-shrink: 0;
+    transition: var(--ease);
+}
+.btn-hamburguer:hover { background: var(--bg-600); color: var(--text-100); }
+
+/* ── Overlay escuro ao abrir sidebar mobile ──────────────────── */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 150;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    animation: fadeIn .2s ease;
+}
+.sidebar-overlay.open { display: block; }
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+/* Bloqueia scroll do body quando sidebar aberta */
+body.sidebar-aberta { overflow: hidden; }
+
+/* ── Tema Claro ─────────────────────────────────────────────────────── */
+[data-theme="light"] {
+    --bg-900: #f1f5f9;
+    --bg-800: #ffffff;
+    --bg-700: #f8fafc;
+    --bg-600: #e2e8f0;
+    --border: #cbd5e1;
+    --text-100: #0f172a;
+    --text-200: #1e293b;
+    --text-400: #475569;
+    --text-500: #64748b;
+    --text-600: #94a3b8;
+    --shadow-lg: 0 10px 40px rgba(0,0,0,.08);
+}
+
+[data-theme="light"] .skel {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 200% auto;
+    animation: sk-shimmer 1.5s linear infinite;
+}
+
+[data-theme="light"] .kpi-card  { box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+[data-theme="light"] .badge     { border: 1px solid rgba(0,0,0,.06); }
+[data-theme="light"] tbody tr:nth-child(even) td { background: rgba(15,23,42,.02); }
+
+/* ── Barra de filtros: base visual ────────────────────────────────
+   Antes duplicada quase byte-a-byte em 5 páginas de pages/*.php.
+   A variante mobile-recolhível (com botão .filters-toggle) só existe
+   em despesas.php/receitas.php e continua local a elas — forçar esse
+   comportamento aqui esconderia os filtros no mobile das páginas que
+   não têm o botão de alternância. */
+.filters-bar {
+    background: var(--bg-800);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: flex-end;
+}
+.filter-group { display: flex; flex-direction: column; gap: .35rem; }
+.filter-label {
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--text-600);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+/* ── Filtros secundários (recolhíveis) ────────────────────────────
+   Usado em despesas.php/receitas.php: Conta, Cartão, Valor mín/máx e Tag
+   ficam atrás de "Mais filtros" em vez de sempre visíveis — reduz de
+   ~11 campos simultâneos pra só os mais usados (Mês/Ano, Categoria,
+   Status, Pessoa, Buscar). width:100% força quebra de linha dentro do
+   .filters-bar (que é flex-wrap), então isso aparece como uma "2ª linha"
+   só quando expandido, sem precisar de markup extra fora da barra. */
+.filters-secondary {
+    display: none;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: .75rem;
+    padding-top: .75rem;
+    margin-top: .1rem;
+    border-top: 1px dashed var(--border);
+}
+.filters-secondary.open { display: flex; }
+
+.filters-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem .7rem;
+    font-size: .78rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-400);
+    cursor: pointer;
+    transition: var(--ease);
+    white-space: nowrap;
+}
+.filters-more-btn:hover  { border-color: var(--bg-600); color: var(--text-100); }
+.filters-more-btn.active { border-color: var(--indigo); color: var(--indigo); }
+.filters-more-btn .fa-chevron-down { transition: transform .15s ease; }
+.filters-more-btn.active .fa-chevron-down { transform: rotate(180deg); }
+
+.filters-more-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 .3rem;
+    border-radius: 999px;
+    background: var(--indigo);
+    color: #fff;
+    font-size: .65rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* ── Modais: base visual + layout global ─────────────────────────
+   Antes duplicado quase byte-a-byte em ~13 páginas de pages/*.php;
+   centralizado aqui para que uma mudança visual não exija editar
+   cada página. Onde uma tela precisa de largura diferente, usa
+   .modal-box.sm/.lg ou style="max-width:...px" pontual, como já é
+   feito em alguns modais secundários (ex.: pages/despesas.php). */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+    background: var(--bg-800);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    animation: modalIn .18s ease;
+}
+.modal-box.sm { max-width: 420px; }
+.modal-box.lg { max-width: 760px; }
+@keyframes modalIn {
+    from { opacity:0; transform:translateY(-10px) scale(.97); }
+    to   { opacity:1; transform:none; }
+}
+.modal-header {
+    padding: 1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+.modal-title { font-size: 1rem; font-weight: 700; }
+.modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    gap: .75rem;
+    flex-shrink: 0;
+}
+/* ── Utilitários reaproveitados entre páginas ────────────────────
+   Extraídos de padrões repetidos como style="..." inline em
+   pages/despesas.php e pages/receitas.php. */
+.empty-state { text-align: center; padding: 2rem; color: var(--text-600); }
+.empty-state.lg { padding: 3rem; }
+.empty-state.sm { padding: 1.5rem; }
+.avatar-sm   { width: 28px; height: 28px; font-size: .75rem; }
+
+/* Variante "rica" do empty-state: ícone grande + título + texto de apoio,
+   usada em estados vazios de tabela/lista (ex.: "Nenhuma despesa neste
+   período", "Nenhum responsável cadastrado"). Antes cada página remontava
+   essas 3 regras (opacity/cor do ícone, peso/cor do título, cor do texto)
+   em style="..." inline a cada ocorrência. */
+.empty-state-icon  { display: block; margin-bottom: 1rem; opacity: .3; color: var(--text-400); }
+.empty-state-title { font-weight: 700; font-size: 1rem; color: var(--text-200); margin-bottom: .4rem; }
+.empty-state-sub   { font-size: .85rem; color: var(--text-600); margin-bottom: 1.5rem; }
+.empty-state-sub:last-child { margin-bottom: 0; }
+
+/* ── Paginação: reticências entre os números de página ───────────── */
+.pag-ellipsis { padding: 0 .2rem; }
+
+/* min-height:0 é obrigatório para que flex items respeitem max-height do pai */
+.modal-box > form,
+.modal-box > .modal-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+.modal-box .modal-body,
+.modal-body { padding: 1.5rem; flex: 1; overflow-y: auto; min-height: 0; }
+
+/* ── Barra de ação em lote (seleção múltipla) ─────────────────────
+   Antes duplicada quase byte-a-byte (estilo inline) em despesas.php,
+   receitas.php e terceiros.php. O JS de cada página continua
+   controlando show/hide via style.display diretamente — só a
+   aparência (cores, bordas, espaçamento) foi centralizada aqui. */
+.bulk-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 400;
+    background: var(--bg-900);
+    border-top: 2px solid var(--indigo);
+    padding: .65rem 1.25rem;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.35);
+}
+.bulk-bar-count { font-size: .85rem; font-weight: 700; color: var(--text-100); }
+.bulk-bar-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .35rem .85rem; font-size: .8rem; font-weight: 600;
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: transparent; color: var(--text-200);
+    cursor: pointer; transition: var(--ease);
+}
+.bulk-bar-btn.danger { border: none; background: var(--rose); color: #fff; }
+.bulk-bar-btn.ghost   { color: var(--text-500); }
+
+.bulk-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.65);
+    z-index: 500;
+    align-items: center; justify-content: center;
+}
+.bulk-modal-box {
+    background: var(--bg-800);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    width: 300px;
+    max-width: 90vw;
+}
+
+/* Variante do modal de lote para edição de vários campos ao mesmo tempo
+   (despesas.php e receitas.php) — cada campo só é enviado ao backend se
+   o usuário marcar o checkbox correspondente.
+   Layout em 3 partes (header / body rolável / footer fixo) pra caber em
+   telas baixas: o footer com os botões nunca some atrás do scroll, e os
+   campos ficam em grid de 2 colunas pra reduzir a altura total. */
+.bulk-edit-box {
+    width: 560px; max-width: 94vw;
+    max-height: 88vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.bulk-edit-header { padding: 1.1rem 1.4rem .85rem; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.bulk-edit-title  { font-size: .95rem; font-weight: 700; color: var(--text-100); margin-bottom: .2rem; }
+.bulk-edit-hint    { font-size: .75rem; color: var(--text-500); line-height: 1.4; }
+.bulk-edit-body {
+    padding: 1rem 1.4rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+    align-content: start;
+}
+.bulk-edit-footer {
+    padding: .8rem 1.4rem;
+    border-top: 1px solid var(--border);
+    display: flex; gap: .5rem; justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+.bulk-field-row { display: block; margin-bottom: .8rem; min-width: 0; }
+.bulk-field-row.bulk-field-full { grid-column: 1 / -1; }
+.bulk-field-row .bulk-field-check {
+    display: flex; align-items: center; gap: .4rem; margin-bottom: .3rem;
+    font-size: .76rem; font-weight: 600; color: var(--text-400); cursor: pointer;
+}
+.bulk-field-row .bulk-field-check input[type=checkbox] {
+    width: 13px; height: 13px; accent-color: var(--indigo); cursor: pointer; flex-shrink: 0;
+}
+.bulk-field-row:has(.bulk-toggle:checked) .bulk-field-check { color: var(--indigo); }
+.bulk-field-row .form-control { font-size: .8rem; padding: .4rem .55rem; }
+.bulk-field-row .form-control:disabled { opacity: .4; cursor: not-allowed; }
+.bulk-field-row textarea.form-control { resize: vertical; min-height: 2.2rem; }
+.bulk-field-row .bulk-subrow { display: flex; gap: .4rem; }
+.bulk-field-row .bulk-subrow select { flex: 0 0 112px; }
+.bulk-field-row .bulk-subrow input { flex: 1; min-width: 0; }
+
+@media (max-width: 560px) {
+    .bulk-edit-body { grid-template-columns: 1fr; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1280px) {
+    .kpi-grid   { grid-template-columns: repeat(2, 1fr); }
+    .dash-grid  { grid-template-columns: 1fr; }
+    .dash-grid-3{ grid-template-columns: 1fr 1fr; }
+}
+
+/* Laptop / tela média — sidebar recolhe automaticamente na 1ª visita (via JS) */
+@media (max-width: 1100px) {
+    .header-date { display: none; }
+}
+
+@media (max-width: 768px) {
+    /* ── Layout: sidebar sai do fluxo normal ── */
+    .layout { display: block; }
+
+    .sidebar {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform .26s cubic-bezier(.4,0,.2,1);
+        z-index: 200;
+    }
+    .sidebar.aberta { transform: translateX(0); }
+
+    /* ── Header ── */
+    .btn-hamburguer { display: flex; }
+    .header { padding: 0 1rem; gap: .6rem; }
+    .header-breadcrumb { display: none; }
+    .header-date { display: none; }
+    #buscaKbdHint { display: none; }
+
+    /* ── Grids ── */
+    .kpi-grid    { grid-template-columns: 1fr 1fr; }
+    .dash-grid,
+    .dash-grid-3,
+    .dash-grid-2 { grid-template-columns: 1fr; }
+    .form-grid-2,
+    .form-grid-3,
+    .form-grid-4 { grid-template-columns: 1fr; }
+
+    /* ── Conteúdo ── */
+    .content    { padding: 1rem .875rem; }
+    .kpi-value  { font-size: 1.25rem; }
+    .page-title { font-size: 1.1rem; }
+    .page-sub   { font-size: .78rem; }
+
+    /* ── Tabelas: scroll suave ── */
+    .table-wrap { -webkit-overflow-scrolling: touch; }
+
+    /* ── Modais: sobem da base no mobile ── */
+    .modal-overlay {
+        align-items: flex-end !important;
+        padding: 0 !important;
+    }
+    .modal-box {
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+        max-height: 92vh !important;
+        animation: slideUp .22s ease !important;
+    }
+    @keyframes slideUp {
+        from { transform: translateY(100%) }
+        to   { transform: translateY(0) }
+    }
+}
+
+@media (max-width: 480px) {
+    .kpi-grid   { grid-template-columns: 1fr 1fr; }
+    .kpi-value  { font-size: 1.05rem; }
+    .content    { padding: .875rem .75rem; }
+
+    /* Empilha botões do page-header em telas muito pequenas */
+    .page-header .d-flex { flex-wrap: wrap; }
+
+    /* Oculta colunas secundárias em telas muito estreitas */
+    .col-hide-xs { display: none !important; }
+}
