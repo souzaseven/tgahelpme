@@ -4,56 +4,56 @@
 
 <head>
 
-    <!-- Google Tag Manager -->
+  <!-- Google Tag Manager -->
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
 
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
 
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
 
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 
-})(window,document,'script','dataLayer','GTM-K2XFNTVZ');</script>
+    })(window, document, 'script', 'dataLayer', 'GTM-K2XFNTVZ');</script>
 
-<!-- End Google Tag Manager -->
+  <!-- End Google Tag Manager -->
 
   <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Acesso TGA</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 
 
-  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <script src="https://unpkg.com/lucide@1.31.0"></script>
 
   <meta name="description" content="Área de acesso ao TGA Me Ajuda. Suporte técnico e login para clientes e equipe.">
 
 
 
-    <!--souza system-->
+  <!--souza system-->
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+    crossorigin="anonymous"></script>
 
-        crossorigin="anonymous"></script>
+  <link rel="icon" href="./img/principal/bot-tga.webp" type="image/x-icon">
 
-<link rel="icon" href="./img/principal/bot-tga.webp" type="image/x-icon">
-
-<link rel="preload" as="image" href="https://tgameajuda.com/img/principal/helpdesktga.webp" fetchpriority="high" />
-
+  <link rel="preload" as="image" href="https://tgameajuda.com/img/principal/helpdesktga7.webp" fetchpriority="high" />
 
 
 
 
   <style>
-
     :root {
 
       --azul-tga: #007ced;
@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     }
 
-/*
+    /*
 
     body {
 
@@ -100,65 +100,121 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 */
 
-html, body {
+    html,
+    body {
 
-  margin: 0;
+      margin: 0;
 
-  padding: 0;
+      padding: 0;
 
-  font-family: 'Outfit', sans-serif;
+      font-family: 'Outfit', sans-serif;
 
-  width: 100vw;
+      width: 100vw;
 
-  height: 100vh;
+      height: 100vh;
 
-  overflow: hidden;
+      overflow: hidden;
 
-  display: flex;
+      display: flex;
 
-  justify-content: center;
+      justify-content: center;
 
-  align-items: center;
+      align-items: center;
 
-  position: relative;
+      position: relative;
 
-  color: white;
+      color: white;
 
-  z-index: 0;
+      z-index: 0;
 
-}
-
-
-
-body::before {
-
-  content: "";
-
-  position: fixed;
-
-  top: 0;
-
-  left: 0;
-
-  width: 100vw;
-
-  height: 100vh;
-
-  background-image:url(https://tgameajuda.com/img/principal/helpdesktga.webp);
-
-  transition: background-image 0.3s ease-in-out;
+    }
 
 
 
-  background-size: cover;
+    /* Camada de fundo: cópia borrada/escurecida da mesma imagem, esticada tipo "cover",
+   preenchendo as laterais que sobram do contain (em vez de ficar azul liso). */
+    body::before {
 
-  background-position: center;
+      content: "";
 
-  background-repeat: no-repeat;
+      position: fixed;
 
-  z-index: -1;
+      top: 0;
 
-}
+      left: 0;
+
+      width: 100vw;
+
+      height: 100vh;
+
+      background-color: #010a25;
+
+      background-image:
+        linear-gradient(rgba(1, 10, 37, 0.6), rgba(1, 10, 37, 0.6)),
+        url(https://tgameajuda.com/img/principal/helpdesktga7.webp);
+
+      background-size: cover, cover;
+
+      background-position: 78% center, 78% center;
+
+      background-repeat: no-repeat, no-repeat;
+
+      filter: blur(30px) saturate(110%);
+
+      transform: scale(1.12);
+
+      z-index: -2;
+
+    }
+
+
+
+    /* Camada nítida: a imagem inteira sem corte (contain) + vinheta escura atrás do card. */
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      top: var(--frame-inset-v, 0px);
+
+      bottom: var(--frame-inset-v, 0px);
+
+      left: 0;
+
+      width: 100vw;
+
+      background-image:
+        radial-gradient(ellipse at center, rgba(1, 10, 37, 0.72) 0%, rgba(1, 10, 37, 0.35) 45%, rgba(1, 10, 37, 0.05) 75%),
+        url(https://tgameajuda.com/img/principal/helpdesktga7.webp);
+
+      transition: background-image 0.3s ease-in-out;
+
+
+
+      background-size: cover, 100% 100%;
+
+      background-position: center, center;
+
+      background-repeat: no-repeat, no-repeat;
+
+      z-index: -1;
+
+    }
+
+
+
+    /* Em telas grandes, cria uma folga (moldura) em cima e embaixo do banner
+   em vez de deixá-lo colado nas bordas — evita o corte excessivo em monitores largos. */
+    @media (min-width: 1200px) {
+
+      :root {
+
+        --frame-inset-v: 0.4vh;
+
+      }
+
+    }
 
 
 
@@ -168,17 +224,17 @@ body::before {
 
     .login-box {
 
-      /*background: var(--white-glass);*/
+      background: linear-gradient(160deg, rgba(14, 20, 40, 0.78), rgba(4, 7, 16, 0.9));
 
-      background: black;
+      backdrop-filter: blur(24px) saturate(160%);
 
-      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
 
-      border-radius: 20px;
+      border-radius: 24px;
 
       padding: 45px 40px;
 
-      box-shadow: 0 0 25px rgba(0, 124, 237, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(0, 124, 237, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
       text-align: center;
 
@@ -188,11 +244,11 @@ body::before {
 
       animation: fadeIn 0.8s ease-out;
 
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
 
       position: relative;
 
-margin-top: 170px;
+      margin-top: -150px;
 
     }
 
@@ -204,6 +260,8 @@ margin-top: 170px;
 
       margin-bottom: 30px;
 
+      letter-spacing: 0.3px;
+
       background: linear-gradient(90deg, #66bfff, #fff);
 
       -webkit-background-clip: text;
@@ -214,7 +272,8 @@ margin-top: 170px;
 
 
 
-    .login-box button, .login-box input {
+    .login-box button,
+    .login-box input {
 
       padding: 14px;
 
@@ -222,7 +281,7 @@ margin-top: 170px;
 
       border: none;
 
-      border-radius: 12px;
+      border-radius: 14px;
 
       font-size: 16px;
 
@@ -230,7 +289,7 @@ margin-top: 170px;
 
       margin-top: 12px;
 
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
 
     }
 
@@ -238,7 +297,7 @@ margin-top: 170px;
 
     button {
 
-      background: var(--azul-tga);
+      background: linear-gradient(135deg, var(--azul-tga), var(--azul-escuro));
 
       color: white;
 
@@ -253,6 +312,8 @@ margin-top: 170px;
       justify-content: center;
 
       gap: 10px;
+
+      box-shadow: 0 4px 14px rgba(0, 124, 237, 0.25);
 
     }
 
@@ -324,11 +385,147 @@ margin-top: 170px;
 
 
 
+    /* Estado desabilitado (usado no botão Entrar durante a requisição e durante o cooldown) */
+    button:disabled {
+
+      opacity: 0.6;
+
+      pointer-events: none;
+
+    }
+
+
+
+    /* Ícone de carregamento do botão Entrar */
+    .spin {
+
+      animation: girar 0.8s linear infinite;
+
+    }
+
+
+
+    @keyframes girar {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+
+    /* Wrapper do campo de senha, pra encaixar o botão de mostrar/ocultar senha dentro do input */
+    .campo-senha {
+
+      position: relative;
+
+      margin-top: 12px;
+
+    }
+
+
+
+    .campo-senha input {
+
+      margin-top: 0;
+
+    }
+
+
+
+    /* Oculto por enquanto — a lógica de mostrar/ocultar senha continua
+   funcionando via alternarSenha(), só o botão não é exibido. */
+    .login-box .toggle-senha {
+
+      display: none;
+
+      position: absolute;
+
+      right: 6px;
+
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: auto;
+
+      margin-top: 0;
+
+      padding: 6px;
+
+      background: none;
+
+      box-shadow: none;
+
+      color: #bbb;
+
+    }
+
+
+
+    .login-box .toggle-senha:hover {
+
+      background: rgba(255, 255, 255, 0.1);
+
+      transform: translateY(-50%);
+
+      box-shadow: none;
+
+    }
+
+
+
+    /* Link "Voltar" exibido dentro do formulário de suporte */
+    .login-box .btn-voltar {
+
+      width: auto;
+
+      background: none;
+
+      box-shadow: none;
+
+      color: #9db8d9;
+
+      font-size: 0.85em;
+
+      font-weight: 500;
+
+      padding: 6px 4px;
+
+      margin: 0 0 8px 0;
+
+      justify-content: flex-start;
+
+    }
+
+
+
+    .login-box .btn-voltar:hover {
+
+      background: none;
+
+      color: #fff;
+
+      transform: none;
+
+      box-shadow: none;
+
+    }
+
+
+
     @keyframes fadeIn {
 
-      from { opacity: 0; transform: translateY(-10px); }
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
 
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
     }
 
@@ -346,75 +543,98 @@ margin-top: 170px;
 
     }
 
-    
-
-@media (max-width: 600px) {
-
-  body::before {
-
-    background-image: url("https://tgameajuda.com/img/principal/helpdesktga-small.webp");
-
-  }
-
-}
 
 
+    @media (max-width: 600px) {
 
+      body::before {
 
+        background-image: url("https://tgameajuda.com/img/principal/helpdesktga7.webp");
 
+      }
+
+    }
   </style>
 
 </head>
 
 <body>
 
-<!-- Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
 
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<!-- End Google Tag Manager (noscript) -->
+  <!-- End Google Tag Manager (noscript) -->
 
 
 
   <div class="login-box">
 
-<h2><a href="https://tgameajuda.com/adm/painel/index.php" style="color: #007ced;" aria-label="Acesso administrativo TGA"><i data-lucide="lock"></i></a> TGA ME AJUDA</h2>
+    <h2><a href="https://tgameajuda.com/adm/painel/index.php" style="color: #007ced;"
+        aria-label="Acesso administrativo TGA"><i data-lucide="lock"></i></a> TGA ME AJUDA</h2>
 
 
 
-    <button onclick="acessarComoCliente()">
+    <div id="opcoesAcesso">
 
-      <i data-lucide="user" class="icon"></i> Sou Cliente
+      <button type="button" onclick="acessarComoCliente()">
 
-    </button>
-
-    <button onclick="mostrarLoginSuporte()">
-
-      <i data-lucide="shield" class="icon"></i> Sou Suporte
-
-    </button>
-
-<div style="display: flex; justify-content: center; margin: 10px 0;">
-
-<img alt="visitas" src="https://hits.sh/tgameajuda.com/login.html.svg?color=007ced&amp;label=visitas&amp;labelColor=FFFFFF&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
-
-</div>
-
-    <div id="formSuporte">
-
-      <input type="text" id="usuarioSuporte" placeholder="Usuário" value="SUPORTE" disabled>
-
-      <input type="password" id="senhaSuporte" placeholder="Senha do mês">
-
-      <button onclick="validarSuporte()">
-
-        <i data-lucide="log-in" class="icon"></i> Entrar
+        <i data-lucide="user" class="icon"></i> Sou Cliente
 
       </button>
 
-      <p class="erro" id="erroSuporte"></p>
+      <button type="button" onclick="mostrarLoginSuporte()">
+
+        <i data-lucide="shield" class="icon"></i> Sou Suporte
+
+      </button>
+
+      <div style="display: flex; justify-content: center; margin: 10px 0;">
+
+        <img alt="visitas"
+          src="https://hits.sh/tgameajuda.com/login.html.svg?color=007ced&amp;label=visitas&amp;labelColor=FFFFFF&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico">
+
+      </div>
+
+    </div>
+
+    <div id="formSuporte">
+
+      <button type="button" class="btn-voltar" onclick="voltarOpcoes()">
+
+        <i data-lucide="arrow-left" class="icon"></i> Voltar
+
+      </button>
+
+      <input type="text" id="usuarioSuporte" placeholder="Usuário" value="SUPORTE" disabled>
+
+      <div class="campo-senha">
+
+        <input type="password" id="senhaSuporte" placeholder="Senha do mês" aria-label="Senha do mês">
+
+        <button type="button" class="toggle-senha" id="btnToggleSenha" onclick="alternarSenha()"
+          aria-label="Mostrar senha">
+
+          <i data-lucide="eye" class="icon" id="iconOlhoAberto"></i>
+
+          <i data-lucide="eye-off" class="icon" id="iconOlhoFechado" style="display:none;"></i>
+
+        </button>
+
+      </div>
+
+      <button type="button" id="btnEntrar" onclick="validarSuporte()">
+
+        <i data-lucide="log-in" class="icon" id="iconEntrar"></i>
+
+        <i data-lucide="loader-circle" class="icon spin" id="iconCarregando" style="display:none;"></i>
+
+        <span id="textoEntrar">Entrar</span>
+
+      </button>
+
+      <p class="erro" id="erroSuporte" role="alert" aria-live="polite" aria-atomic="true"></p>
 
     </div>
 
@@ -427,134 +647,261 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-<script>
-// ====================================
-// INICIALIZAÇÃO
-// ====================================
-lucide.createIcons();
+  <script>
+    // ====================================
+    // INICIALIZAÇÃO
+    // ====================================
+    lucide.createIcons();
 
-// Detecta Enter dentro do campo de senha
-document.getElementById("senhaSuporte").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
+    // Detecta Enter dentro do campo de senha
+    document.getElementById("senhaSuporte").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
         event.preventDefault();
         validarSuporte();
+      }
+    });
+
+    // ====================================
+    // RATE LIMIT (cooldown de tentativas) - só client-side, complementa uma
+    // eventual proteção no servidor, não substitui.
+    // ====================================
+    const CHAVE_COOLDOWN = 'suporte_bloqueado_ate';
+    const CHAVE_TENTATIVAS = 'suporte_tentativas';
+    const TENTATIVAS_LIVRES = 3;      // erros permitidos antes de bloquear
+    const COOLDOWN_BASE_MS = 30000;   // 30s no primeiro bloqueio
+    const COOLDOWN_MAX_MS = 5 * 60000; // teto de 5min
+
+    let intervalCooldown = null;
+
+    function msRestantesCooldown() {
+      const ate = parseInt(sessionStorage.getItem(CHAVE_COOLDOWN) || '0', 10);
+      const restante = ate - Date.now();
+      return restante > 0 ? restante : 0;
     }
-});
 
-// ====================================
-// FUNÇÕES PRINCIPAIS
-// ====================================
+    function registrarTentativaFalha() {
+      const tentativas = parseInt(sessionStorage.getItem(CHAVE_TENTATIVAS) || '0', 10) + 1;
+      sessionStorage.setItem(CHAVE_TENTATIVAS, tentativas);
 
-/**
- * Acesso como cliente - Remove acesso de suporte e redireciona
- */
-function acessarComoCliente() {
-    localStorage.removeItem('acesso');  // Remove qualquer acesso anterior
-    location.href = "cliente-tga.html";
-}
+      if (tentativas >= TENTATIVAS_LIVRES) {
+        const excedente = tentativas - TENTATIVAS_LIVRES;
+        const cooldownMs = Math.min(COOLDOWN_BASE_MS * Math.pow(2, excedente), COOLDOWN_MAX_MS);
+        sessionStorage.setItem(CHAVE_COOLDOWN, String(Date.now() + cooldownMs));
+      }
+    }
 
-/**
- * Exibe formulário de login do suporte
- */
-function mostrarLoginSuporte() {
-    document.getElementById("formSuporte").style.display = "block";
-}
+    function limparTentativas() {
+      sessionStorage.removeItem(CHAVE_TENTATIVAS);
+      sessionStorage.removeItem(CHAVE_COOLDOWN);
+    }
 
-/**
- * Valida senha do suporte e redireciona
- */
-function validarSuporte() {
-    const senha = document.getElementById("senhaSuporte").value;
-    const erroElement = document.getElementById("erroSuporte");
-    
-    // Obter URL de redirecionamento
-    const urlParams = new URLSearchParams(window.location.search);
-    let redirectUrl = urlParams.get('redirect');
-    
-    // Se não tem na URL, verificar no sessionStorage
-    if (!redirectUrl) {
+    /**
+     * Bloqueia o botão Entrar e mostra a contagem regressiva enquanto o
+     * cooldown estiver ativo.
+     */
+    function iniciarCooldown(erroElement, btnEntrar) {
+      if (intervalCooldown) clearInterval(intervalCooldown);
+      definirCarregando(false); // garante que não fique preso no estado "Entrando..."
+      btnEntrar.disabled = true;
+
+      const tick = () => {
+        const restante = msRestantesCooldown();
+        if (restante <= 0) {
+          clearInterval(intervalCooldown);
+          intervalCooldown = null;
+          btnEntrar.disabled = false;
+          erroElement.textContent = "";
+          limparTentativas(); // libera um novo ciclo de tentativas
+          return;
+        }
+        const segundos = Math.ceil(restante / 1000);
+        erroElement.textContent = `Muitas tentativas incorretas. Tente novamente em ${segundos}s.`;
+      };
+
+      tick();
+      intervalCooldown = setInterval(tick, 250);
+    }
+
+    // ====================================
+    // FUNÇÕES PRINCIPAIS
+    // ====================================
+
+    /**
+     * Acesso como cliente - Remove acesso de suporte e redireciona
+     */
+    function acessarComoCliente() {
+      localStorage.removeItem('acesso');  // Remove qualquer acesso anterior
+      location.href = "cliente-tga.html";
+    }
+
+    /**
+     * Exibe formulário de login do suporte
+     */
+    function mostrarLoginSuporte() {
+      document.getElementById("opcoesAcesso").style.display = "none";
+      document.getElementById("formSuporte").style.display = "block";
+      document.getElementById("senhaSuporte").focus();
+
+      // Se ainda estiver em cooldown de uma tentativa anterior, já mostra a contagem
+      if (msRestantesCooldown() > 0) {
+        iniciarCooldown(document.getElementById("erroSuporte"), document.getElementById("btnEntrar"));
+      }
+    }
+
+    /**
+     * Volta para a tela de escolha (Sou Cliente / Sou Suporte)
+     */
+    function voltarOpcoes() {
+      document.getElementById("formSuporte").style.display = "none";
+      document.getElementById("opcoesAcesso").style.display = "block";
+      document.getElementById("erroSuporte").textContent = "";
+    }
+
+    /**
+     * Alterna a visibilidade da senha digitada
+     */
+    function alternarSenha() {
+      const input = document.getElementById("senhaSuporte");
+      const olhoAberto = document.getElementById("iconOlhoAberto");
+      const olhoFechado = document.getElementById("iconOlhoFechado");
+      const btn = document.getElementById("btnToggleSenha");
+
+      const estaMostrando = input.type === "text";
+      input.type = estaMostrando ? "password" : "text";
+      olhoAberto.style.display = estaMostrando ? "" : "none";
+      olhoFechado.style.display = estaMostrando ? "none" : "";
+      btn.setAttribute("aria-label", estaMostrando ? "Mostrar senha" : "Ocultar senha");
+    }
+
+    /**
+     * Alterna o botão Entrar entre o estado normal e o estado "carregando"
+     */
+    function definirCarregando(carregando) {
+      const btnEntrar = document.getElementById("btnEntrar");
+      const iconEntrar = document.getElementById("iconEntrar");
+      const iconCarregando = document.getElementById("iconCarregando");
+      const texto = document.getElementById("textoEntrar");
+
+      btnEntrar.disabled = carregando;
+      iconEntrar.style.display = carregando ? "none" : "";
+      iconCarregando.style.display = carregando ? "" : "none";
+      texto.textContent = carregando ? "Entrando..." : "Entrar";
+    }
+
+    /**
+     * Valida senha do suporte e redireciona
+     */
+    function validarSuporte() {
+      const senha = document.getElementById("senhaSuporte").value;
+      const erroElement = document.getElementById("erroSuporte");
+      const btnEntrar = document.getElementById("btnEntrar");
+
+      // Bloqueado por excesso de tentativas incorretas
+      if (msRestantesCooldown() > 0) {
+        iniciarCooldown(erroElement, btnEntrar);
+        return;
+      }
+
+      // Obter URL de redirecionamento
+      const urlParams = new URLSearchParams(window.location.search);
+      let redirectUrl = urlParams.get('redirect');
+
+      // Se não tem na URL, verificar no sessionStorage
+      if (!redirectUrl) {
         redirectUrl = sessionStorage.getItem('redirect_after_login');
         if (redirectUrl) {
-            sessionStorage.removeItem('redirect_after_login');
+          sessionStorage.removeItem('redirect_after_login');
         }
-    }
-    
-    console.log('🔍 DEBUG - URL de redirecionamento encontrada:', redirectUrl);
-    
-    // Preparar dados para enviar
-    const formData = new FormData();
-    formData.append('senha', senha);
-    
-    if (redirectUrl) {
+      }
+
+      console.log('🔍 DEBUG - URL de redirecionamento encontrada:', redirectUrl);
+
+      // Preparar dados para enviar
+      const formData = new FormData();
+      formData.append('senha', senha);
+
+      if (redirectUrl) {
         formData.append('redirect_url', redirectUrl);
         console.log('🔍 DEBUG - Enviando redirect_url:', redirectUrl);
-    }
-    
-    console.log('🔍 DEBUG - Fazendo requisição para verifica_suporte.php...');
-    
-    // Requisição ao servidor
-    fetch("verifica_suporte.php", {
+      }
+
+      console.log('🔍 DEBUG - Fazendo requisição para verifica_suporte.php...');
+
+      erroElement.textContent = "";
+      definirCarregando(true);
+
+      // Requisição ao servidor
+      fetch("verifica_suporte.php", {
         method: "POST",
         body: formData
-    })
-    .then(r => {
-        console.log('🔍 DEBUG - Status da resposta:', r.status);
-        if (!r.ok) throw new Error('Erro na requisição');
-        return r.text(); // Pega como texto para debug
-    })
-    .then(text => {
-        console.log('🔍 DEBUG - Resposta BRUTA do servidor:', text);
-        
-        try {
+      })
+        .then(r => {
+          console.log('🔍 DEBUG - Status da resposta:', r.status);
+          if (!r.ok) throw new Error('Erro na requisição');
+          return r.text(); // Pega como texto para debug
+        })
+        .then(text => {
+          console.log('🔍 DEBUG - Resposta BRUTA do servidor:', text);
+
+          try {
             const d = JSON.parse(text);
             console.log('🔍 DEBUG - Resposta PARSED:', d);
-            
+
             if (d.sucesso) {
-                localStorage.setItem("acesso", "suporte");
-                
-                // Redirecionar para URL retornada pelo servidor
-                const urlDestino = d.redirecionar_para || "index.html";
-                console.log('✅ DEBUG - Redirecionando para:', urlDestino);
-                location.href = urlDestino;
-                
+              limparTentativas();
+              localStorage.setItem("acesso", "suporte");
+
+              // Redirecionar para URL retornada pelo servidor
+              const urlDestino = d.redirecionar_para || "index.html";
+              console.log('✅ DEBUG - Redirecionando para:', urlDestino);
+              location.href = urlDestino;
+
             } else {
-                erroElement.textContent = d.erro || "Senha incorreta.";
+              erroElement.textContent = d.erro || "Senha incorreta.";
+              registrarTentativaFalha();
+
+              if (msRestantesCooldown() > 0) {
+                iniciarCooldown(erroElement, btnEntrar);
+              } else {
+                definirCarregando(false);
+              }
             }
-        } catch (e) {
+          } catch (e) {
             console.error('❌ ERRO - Não é JSON válido:', e);
             console.error('❌ Conteúdo recebido:', text);
             erroElement.textContent = "Erro no servidor. Tente novamente.";
-        }
-    })
-    .catch(error => {
-        console.error('❌ ERRO - Falha na requisição:', error);
-        erroElement.textContent = "Erro de conexão. Tente novamente.";
-    });
-}
+            definirCarregando(false);
+          }
+        })
+        .catch(error => {
+          console.error('❌ ERRO - Falha na requisição:', error);
+          erroElement.textContent = "Erro de conexão. Tente novamente.";
+          definirCarregando(false);
+        });
+    }
 
-// ====================================
-// EVENTOS DO DOCUMENTO
-// ====================================
+    // ====================================
+    // EVENTOS DO DOCUMENTO
+    // ====================================
 
-// Salvar parâmetro de redirect quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectParam = urlParams.get('redirect');
-    
-    if (redirectParam && !sessionStorage.getItem('redirect_after_login')) {
+    // Salvar parâmetro de redirect quando a página carregar
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectParam = urlParams.get('redirect');
+
+      if (redirectParam && !sessionStorage.getItem('redirect_after_login')) {
         sessionStorage.setItem('redirect_after_login', redirectParam);
         console.log('💾 DEBUG - Redirect salvo no sessionStorage:', redirectParam);
-    }
-    
-    // Debug inicial
-    console.log('🔍 DEBUG INICIAL - URL Params redirect:', redirectParam);
-    console.log('🔍 DEBUG INICIAL - SessionStorage redirect:', sessionStorage.getItem('redirect_after_login'));
-});
-</script>
+      }
+
+      // Debug inicial
+      console.log('🔍 DEBUG INICIAL - URL Params redirect:', redirectParam);
+      console.log('🔍 DEBUG INICIAL - SessionStorage redirect:', sessionStorage.getItem('redirect_after_login'));
+    });
+  </script>
 
 
 
 </body>
 
 </html>
-
