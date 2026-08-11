@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TGA Carreiras — Design System</title>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<style>
+    /* Estilos exclusivos desta página de guia — não fazem parte do Design System. */
+    .ds-section { padding: var(--space-10) 0; border-bottom: 1px solid var(--color-border); }
+    .ds-section:last-child { border-bottom: none; }
+    .ds-section__title { margin-bottom: var(--space-2); }
+    .ds-section__desc { color: var(--color-text-muted); margin-bottom: var(--space-6); max-width: 640px; }
+    .ds-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-bottom: var(--space-4); }
+    .ds-swatch { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+    .ds-swatch__color { width: 5rem; height: 3rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
+    .ds-swatch__label { font-size: var(--font-size-xs); color: var(--color-text-muted); }
+    .ds-type-row { display: flex; align-items: baseline; gap: var(--space-4); margin-bottom: var(--space-3); }
+    .ds-type-row span.label { width: 5rem; flex-shrink: 0; font-size: var(--font-size-xs); color: var(--color-text-muted); }
+    .ds-space-row { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-2); }
+    .ds-space-row .bar { background: var(--color-primary-300); height: 1rem; }
+    .ds-space-row .label { width: 4rem; font-size: var(--font-size-xs); color: var(--color-text-muted); }
+    .ds-preview-dark { background: var(--color-gray-900); border-radius: var(--radius-md); overflow: hidden; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container navbar__inner">
+        <a class="navbar__brand" href="/">TGA Carreiras</a>
+        <ul class="navbar__nav">
+            <li><a href="#tokens">Tokens</a></li>
+            <li><a href="#botoes">Botões</a></li>
+            <li><a href="#formularios">Formulários</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#dados">Dados</a></li>
+            <li><a href="#layout">Layout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="container" style="padding-top: var(--space-10);">
+    <h1>Design System</h1>
+    <p class="text-muted">
+        Guia vivo dos componentes visuais do TGA Carreiras — FASE 2. Toda tela
+        do sistema (pública, candidato, empresa, admin) deve ser construída a
+        partir destes elementos, sem CSS próprio por página.
+    </p>
+</header>
+
+<main class="container">
+
+    <!-- ============================== TOKENS ============================== -->
+    <section class="ds-section" id="tokens">
+        <h2 class="ds-section__title">Tokens</h2>
+        <p class="ds-section__desc">Cores, tipografia e espaçamento — a única fonte de verdade (definidos em <code>tokens.css</code>).</p>
+
+        <h3>Cor de marca</h3>
+        <div class="ds-row">
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-primary-500)"></div><span class="ds-swatch__label">primary-500</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-primary-600)"></div><span class="ds-swatch__label">primary-600</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-primary-700)"></div><span class="ds-swatch__label">primary-700</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-accent-500)"></div><span class="ds-swatch__label">accent-500</span></div>
+        </div>
+
+        <h3>Semânticas</h3>
+        <div class="ds-row">
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-success-500)"></div><span class="ds-swatch__label">success</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-warning-500)"></div><span class="ds-swatch__label">warning</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-danger-500)"></div><span class="ds-swatch__label">danger</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-info-500)"></div><span class="ds-swatch__label">info</span></div>
+        </div>
+
+        <h3>Neutros</h3>
+        <div class="ds-row">
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-gray-100)"></div><span class="ds-swatch__label">gray-100</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-gray-300)"></div><span class="ds-swatch__label">gray-300</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-gray-500)"></div><span class="ds-swatch__label">gray-500</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-gray-700)"></div><span class="ds-swatch__label">gray-700</span></div>
+            <div class="ds-swatch"><div class="ds-swatch__color" style="background:var(--color-gray-900)"></div><span class="ds-swatch__label">gray-900</span></div>
+        </div>
+
+        <h3>Tipografia</h3>
+        <div class="ds-type-row"><span class="label">4xl</span><span style="font-size:var(--font-size-4xl)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">3xl / h1</span><span style="font-size:var(--font-size-3xl)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">2xl / h2</span><span style="font-size:var(--font-size-2xl)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">xl / h3</span><span style="font-size:var(--font-size-xl)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">md</span><span style="font-size:var(--font-size-md)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">base</span><span style="font-size:var(--font-size-base)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">sm</span><span style="font-size:var(--font-size-sm)">TGA Carreiras</span></div>
+        <div class="ds-type-row"><span class="label">xs</span><span style="font-size:var(--font-size-xs)">TGA Carreiras</span></div>
+
+        <h3>Espaçamento</h3>
+        <div class="ds-space-row"><span class="label">space-2</span><div class="bar" style="width:var(--space-2)"></div></div>
+        <div class="ds-space-row"><span class="label">space-4</span><div class="bar" style="width:var(--space-4)"></div></div>
+        <div class="ds-space-row"><span class="label">space-6</span><div class="bar" style="width:var(--space-6)"></div></div>
+        <div class="ds-space-row"><span class="label">space-8</span><div class="bar" style="width:var(--space-8)"></div></div>
+        <div class="ds-space-row"><span class="label">space-12</span><div class="bar" style="width:var(--space-12)"></div></div>
+    </section>
+
+    <!-- ============================== BOTÕES ============================== -->
+    <section class="ds-section" id="botoes">
+        <h2 class="ds-section__title">Botões</h2>
+        <p class="ds-section__desc">Variantes, tamanhos e estados.</p>
+
+        <div class="ds-row">
+            <button class="btn btn--primary">Primário</button>
+            <button class="btn btn--secondary">Secundário</button>
+            <button class="btn btn--outline">Outline</button>
+            <button class="btn btn--ghost">Ghost</button>
+            <button class="btn btn--danger">Perigo</button>
+        </div>
+        <div class="ds-row">
+            <button class="btn btn--primary btn--sm">Pequeno</button>
+            <button class="btn btn--primary">Padrão</button>
+            <button class="btn btn--primary btn--lg">Grande</button>
+        </div>
+        <div class="ds-row">
+            <button class="btn btn--primary" disabled>Desabilitado</button>
+            <button class="btn btn--primary btn--loading">Carregando</button>
+        </div>
+
+        <h3>Badges</h3>
+        <div class="ds-row">
+            <span class="badge">Padrão</span>
+            <span class="badge badge--primary">Primário</span>
+            <span class="badge badge--success">Aprovado</span>
+            <span class="badge badge--warning">Em análise</span>
+            <span class="badge badge--danger">Reprovado</span>
+            <span class="badge badge--info">Novo</span>
+        </div>
+    </section>
+
+    <!-- ============================== FORMULÁRIOS ============================== -->
+    <section class="ds-section" id="formularios">
+        <h2 class="ds-section__title">Formulários</h2>
+        <p class="ds-section__desc">Todo formulário do sistema usa estes campos — validação de erro sempre próxima ao campo.</p>
+
+        <div class="card" style="max-width: 480px;">
+            <div class="card__body">
+                <div class="form-field">
+                    <label class="form-label" for="ds-nome">Nome completo <span class="required">*</span></label>
+                    <input class="form-input" type="text" id="ds-nome" placeholder="Seu nome">
+                </div>
+                <div class="form-field">
+                    <label class="form-label" for="ds-email">E-mail <span class="required">*</span></label>
+                    <input class="form-input" type="email" id="ds-email" placeholder="voce@email.com">
+                    <p class="form-help">Usaremos para enviar atualizações da sua candidatura.</p>
+                </div>
+                <div class="form-field form-field--error">
+                    <label class="form-label" for="ds-senha">Senha <span class="required">*</span></label>
+                    <input class="form-input" type="password" id="ds-senha">
+                    <p class="form-error">A senha precisa ter no mínimo 8 caracteres.</p>
+                </div>
+                <div class="form-field">
+                    <label class="form-label" for="ds-estado">Estado</label>
+                    <select class="form-select" id="ds-estado">
+                        <option>Selecione...</option>
+                        <option>São Paulo</option>
+                        <option>Rio de Janeiro</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label class="form-label" for="ds-bio">Bio</label>
+                    <textarea class="form-textarea" id="ds-bio" placeholder="Conte um pouco sobre você"></textarea>
+                </div>
+                <button class="btn btn--primary btn--block">Enviar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== FEEDBACK ============================== -->
+    <section class="ds-section" id="feedback">
+        <h2 class="ds-section__title">Feedback</h2>
+        <p class="ds-section__desc">Alertas, toasts, modal, skeleton e empty state.</p>
+
+        <h3>Alertas</h3>
+        <div class="stack" style="margin-bottom: var(--space-8);">
+            <div class="alert alert--info"><span class="alert__icon">ℹ</span><div class="alert__body">Seu perfil está 85% completo.</div></div>
+            <div class="alert alert--success"><span class="alert__icon">✓</span><div class="alert__body">Candidatura enviada com sucesso!</div></div>
+            <div class="alert alert--warning"><span class="alert__icon">⚠</span><div class="alert__body">Sua vaga expira em 2 dias.</div></div>
+            <div class="alert alert--danger"><span class="alert__icon">✕</span><div class="alert__body">Não foi possível enviar. Tente novamente.</div></div>
+        </div>
+
+        <h3>Toast</h3>
+        <div class="ds-row">
+            <button class="btn btn--secondary" onclick="mostrarToast('Candidatura enviada com sucesso!', 'success')">Mostrar toast de sucesso</button>
+            <button class="btn btn--secondary" onclick="mostrarToast('Não foi possível salvar.', 'danger')">Mostrar toast de erro</button>
+        </div>
+
+        <h3>Modal</h3>
+        <div class="ds-row">
+            <button class="btn btn--primary" data-modal-open="ds-modal-exemplo">Abrir modal</button>
+        </div>
+        <div class="modal-overlay" id="ds-modal-exemplo" hidden>
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ds-modal-titulo">
+                <div class="modal__header">
+                    <h3 class="modal__title" id="ds-modal-titulo">Confirmar ação</h3>
+                    <button class="modal__close" data-modal-close aria-label="Fechar">&times;</button>
+                </div>
+                <div class="modal__body">
+                    <p>Tem certeza que deseja encerrar esta vaga? Candidatos não poderão mais se candidatar.</p>
+                </div>
+                <div class="modal__footer">
+                    <button class="btn btn--secondary" data-modal-close>Cancelar</button>
+                    <button class="btn btn--danger" data-modal-close>Encerrar vaga</button>
+                </div>
+            </div>
+        </div>
+
+        <h3>Dropdown</h3>
+        <div class="ds-row">
+            <div class="dropdown">
+                <button class="btn btn--secondary" data-dropdown-toggle aria-haspopup="true" aria-expanded="false">Ações ▾</button>
+                <div class="dropdown__menu" hidden>
+                    <button class="dropdown__item">Ver perfil</button>
+                    <button class="dropdown__item">Baixar currículo</button>
+                    <button class="dropdown__item dropdown__item--danger">Reprovar</button>
+                </div>
+            </div>
+        </div>
+
+        <h3>Skeleton (carregamento)</h3>
+        <div class="card" style="max-width: 320px; margin-bottom: var(--space-8);">
+            <div class="card__body">
+                <div class="skeleton skeleton--avatar" style="margin-bottom: var(--space-3);"></div>
+                <div class="skeleton skeleton--title"></div>
+                <div class="skeleton skeleton--text"></div>
+                <div class="skeleton skeleton--text" style="width: 80%;"></div>
+            </div>
+        </div>
+        <div class="ds-row"><span class="spinner" aria-label="Carregando"></span></div>
+
+        <h3>Empty state</h3>
+        <div class="card">
+            <div class="empty-state">
+                <div class="empty-state__icon" aria-hidden="true">📭</div>
+                <div class="empty-state__title">Nenhuma candidatura ainda</div>
+                <p class="empty-state__description">Encontre vagas compatíveis com seu perfil e comece a se candidatar.</p>
+                <button class="btn btn--primary">Explorar vagas</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== DADOS ============================== -->
+    <section class="ds-section" id="dados">
+        <h2 class="ds-section__title">Cards e tabelas</h2>
+        <p class="ds-section__desc">Blocos de conteúdo e listagens tabulares.</p>
+
+        <h3>Card</h3>
+        <div class="grid-cards" style="margin-bottom: var(--space-8); max-width: 640px;">
+            <div class="card card--hoverable">
+                <div class="card__header">
+                    <h4 class="card__title">Desenvolvedor(a) Backend PHP</h4>
+                    <span class="badge badge--success">Ativa</span>
+                </div>
+                <div class="card__body">
+                    <p class="text-muted" style="margin:0;">TGA Tecnologia · São Paulo, SP · Remoto</p>
+                </div>
+                <div class="card__footer">
+                    <span class="text-muted" style="font-size: var(--font-size-xs);">Publicada há 3 dias</span>
+                </div>
+            </div>
+        </div>
+
+        <h3>Tabela</h3>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr><th>Candidato</th><th>Vaga</th><th>Status</th><th>Data</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Anderson Souza</td><td>Dev Backend PHP</td><td><span class="badge badge--warning">Em análise</span></td><td>10/08/2026</td></tr>
+                    <tr><td>Maria Oliveira</td><td>Analista de RH</td><td><span class="badge badge--success">Aprovado</span></td><td>08/08/2026</td></tr>
+                    <tr><td>João Pereira</td><td>Dev Backend PHP</td><td><span class="badge badge--danger">Reprovado</span></td><td>05/08/2026</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Paginação</h3>
+        <ul class="pagination">
+            <li class="pagination__item pagination__item--disabled"><span>‹</span></li>
+            <li class="pagination__item pagination__item--active"><a href="#">1</a></li>
+            <li class="pagination__item"><a href="#">2</a></li>
+            <li class="pagination__item"><a href="#">3</a></li>
+            <li class="pagination__item"><a href="#">›</a></li>
+        </ul>
+    </section>
+
+    <!-- ============================== LAYOUT ============================== -->
+    <section class="ds-section" id="layout">
+        <h2 class="ds-section__title">Layout de dashboard</h2>
+        <p class="ds-section__desc">Estrutura usada nas áreas do candidato, empresa e admin (Fases 5, 6 e 8).</p>
+
+        <div class="ds-preview-dark" style="height: 360px; overflow: hidden;">
+            <div class="dashboard-shell" style="height: 360px; min-height: 0;">
+                <aside class="sidebar">
+                    <div class="sidebar__brand">TGA Carreiras</div>
+                    <ul class="sidebar__nav">
+                        <li><a class="sidebar__link" href="#" aria-current="page">Dashboard</a></li>
+                        <li><a class="sidebar__link" href="#">Perfil</a></li>
+                        <li><a class="sidebar__link" href="#">Candidaturas</a></li>
+                        <li><a class="sidebar__link" href="#">Configurações</a></li>
+                    </ul>
+                </aside>
+                <div class="dashboard-content" style="background: var(--color-bg); overflow: auto;">
+                    <div class="dashboard-header">
+                        <div>
+                            <h3 style="margin-bottom: var(--space-1);">Olá, Anderson</h3>
+                            <p class="text-muted" style="margin:0;">Perfil 85% completo</p>
+                        </div>
+                        <button class="btn btn--primary">Completar perfil</button>
+                    </div>
+                    <p class="text-muted">Exemplo de conteúdo do dashboard dentro do shell.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="container" style="padding: var(--space-10) 0; color: var(--color-text-muted); font-size: var(--font-size-sm);">
+    TGA Carreiras — Design System (FASE 2). Página de referência interna, não indexada.
+</footer>
+
+<script src="assets/js/modal.js"></script>
+<script src="assets/js/toast.js"></script>
+<script src="assets/js/ui.js"></script>
+</body>
+</html>

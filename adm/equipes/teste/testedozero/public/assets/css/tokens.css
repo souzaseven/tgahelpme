@@ -1,0 +1,132 @@
+/**
+ * TGA Carreiras — Design Tokens
+ * FASE 2 — Design System
+ *
+ * Única fonte de verdade para cores, tipografia, espaçamento, raio de
+ * borda, sombra e outros valores visuais. Nenhum componente deve usar
+ * valores "soltos" (hex, px fixos) — sempre referenciar uma variável daqui.
+ *
+ * Identidade: azul confiante (profissionalismo/confiança) + âmbar
+ * (energia/oportunidade), inspirado em plataformas de RH modernas, mas
+ * sem copiar visualmente nenhuma delas.
+ */
+
+:root {
+    /* ---- Cor de marca ---------------------------------------------- */
+    --color-primary-50:  #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #818cf8;
+    --color-primary-500: #4f5fe0;
+    --color-primary-600: #3c4bcf;
+    --color-primary-700: #2f3ba8;
+    --color-primary-800: #262f85;
+    --color-primary-900: #1f2769;
+
+    --color-accent-50:  #fffbeb;
+    --color-accent-100: #fef3c7;
+    --color-accent-300: #fcd34d;
+    --color-accent-500: #f59e0b;
+    --color-accent-600: #d97706;
+    --color-accent-700: #b45309;
+
+    /* ---- Neutros ------------------------------------------------------ */
+    --color-gray-0:   #ffffff;
+    --color-gray-50:  #f8f9fb;
+    --color-gray-100: #f1f2f6;
+    --color-gray-200: #e4e6ec;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+
+    /* ---- Semânticas ---------------------------------------------------- */
+    --color-success-50:  #ecfdf3;
+    --color-success-500: #16a34a;
+    --color-success-700: #15803d;
+
+    --color-warning-50:  #fffbeb;
+    --color-warning-500: #d97706;
+    --color-warning-700: #92400e;
+
+    --color-danger-50:  #fef2f2;
+    --color-danger-500: #dc2626;
+    --color-danger-700: #b91c1c;
+
+    --color-info-50:  #eff6ff;
+    --color-info-500: #2563eb;
+    --color-info-700: #1d4ed8;
+
+    /* ---- Papéis de cor (usar estes nos componentes, não os da paleta) - */
+    --color-bg:            var(--color-gray-50);
+    --color-surface:       var(--color-gray-0);
+    --color-border:        var(--color-gray-200);
+    --color-text:          var(--color-gray-900);
+    --color-text-muted:    var(--color-gray-500);
+    --color-text-inverse:  var(--color-gray-0);
+    --color-focus-ring:    var(--color-primary-400);
+
+    /* ---- Tipografia ------------------------------------------------ */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+
+    --font-size-xs:   0.75rem;   /* 12px */
+    --font-size-sm:   0.875rem;  /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-md:   1.125rem;  /* 18px */
+    --font-size-lg:   1.25rem;   /* 20px */
+    --font-size-xl:   1.5rem;    /* 24px */
+    --font-size-2xl:  1.875rem;  /* 30px */
+    --font-size-3xl:  2.25rem;   /* 36px */
+    --font-size-4xl:  3rem;      /* 48px */
+
+    --font-weight-regular:  400;
+    --font-weight-medium:   500;
+    --font-weight-semibold: 600;
+    --font-weight-bold:     700;
+
+    --line-height-tight:  1.25;
+    --line-height-normal: 1.5;
+    --line-height-loose:  1.75;
+
+    /* ---- Espaçamento (escala base 4px) ------------------------------ */
+    --space-1:  0.25rem; /* 4px  */
+    --space-2:  0.5rem;  /* 8px  */
+    --space-3:  0.75rem; /* 12px */
+    --space-4:  1rem;    /* 16px */
+    --space-5:  1.25rem; /* 20px */
+    --space-6:  1.5rem;  /* 24px */
+    --space-8:  2rem;    /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+    --space-12: 3rem;    /* 48px */
+    --space-16: 4rem;    /* 64px */
+
+    /* ---- Raio de borda ---------------------------------------------- */
+    --radius-sm:   0.375rem; /* 6px  */
+    --radius-md:   0.625rem; /* 10px */
+    --radius-lg:   1rem;     /* 16px */
+    --radius-full: 999px;
+
+    /* ---- Sombra ------------------------------------------------------- */
+    --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+    --shadow-md: 0 4px 12px rgba(17, 24, 39, 0.08);
+    --shadow-lg: 0 12px 32px rgba(17, 24, 39, 0.12);
+
+    /* ---- Transição --------------------------------------------------- */
+    --transition-fast: 120ms ease;
+    --transition-base: 200ms ease;
+
+    /* ---- Camadas (z-index) ------------------------------------------- */
+    --z-dropdown: 100;
+    --z-sticky:   200;
+    --z-overlay:  300;
+    --z-modal:    310;
+    --z-toast:    400;
+
+    /* ---- Largura de conteúdo ------------------------------------------ */
+    --container-max-width: 1200px;
+}

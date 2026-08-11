@@ -1,0 +1,174 @@
+/**
+ * TGA Carreiras — Layout
+ * FASE 2 — Design System
+ *
+ * Estruturas de página reutilizáveis: container, navbar (topo público) e
+ * sidebar + shell de dashboard (candidato/empresa/admin). Telas reais
+ * (Fases 5/6/8) devem montar sua página a partir destas classes, sem
+ * recriar layout do zero.
+ */
+
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+}
+
+@media (max-width: 640px) {
+    .container { padding-inline: var(--space-4); }
+}
+
+/* =========================================================================
+   Navbar (área pública)
+   ========================================================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    height: 4rem;
+}
+
+.navbar__brand {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-900);
+}
+.navbar__brand:hover { text-decoration: none; }
+
+.navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar__nav a {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+.navbar__nav a:hover,
+.navbar__nav a[aria-current="page"] {
+    color: var(--color-primary-600);
+    text-decoration: none;
+}
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* =========================================================================
+   Dashboard shell (sidebar + conteúdo) — candidato / empresa / admin
+   ========================================================================= */
+
+.dashboard-shell {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    min-height: 100vh;
+}
+
+@media (max-width: 900px) {
+    .dashboard-shell {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sidebar {
+    background: var(--color-gray-900);
+    color: var(--color-gray-200);
+    padding: var(--space-6) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+/* Em telas estreitas, a sidebar vira um painel deslizante controlado por
+   [data-sidebar-toggle] (ver ui.js), em vez de ocupar uma coluna fixa. */
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        inset: 0 25% 0 0;
+        z-index: var(--z-overlay);
+        transform: translateX(-100%);
+        transition: transform var(--transition-base);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .sidebar.sidebar--aberta {
+        transform: translateX(0);
+    }
+}
+
+.sidebar__brand {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-0);
+    padding: 0 var(--space-2);
+}
+
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--color-gray-300);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+.sidebar__link:hover { background: rgba(255, 255, 255, 0.06); color: var(--color-gray-0); text-decoration: none; }
+.sidebar__link[aria-current="page"] { background: var(--color-primary-600); color: var(--color-gray-0); }
+
+.dashboard-content {
+    padding: var(--space-8) var(--space-8);
+}
+
+@media (max-width: 640px) {
+    .dashboard-content { padding: var(--space-5) var(--space-4); }
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+}
+
+/* =========================================================================
+   Utilitários mínimos de layout (usar com moderação)
+   ========================================================================= */
+
+.stack { display: flex; flex-direction: column; gap: var(--space-4); }
+.cluster { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-5);
+}
