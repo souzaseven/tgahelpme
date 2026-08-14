@@ -1,0 +1,542 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-image: url('https://sweb.tgasistemas.com.br/papeldeparede.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* ─── Véu escuro sobre a imagem: garante contraste e leitura do card ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 12%, rgba(56,189,248,.14), transparent 42%),
+    radial-gradient(circle at 88% 84%, rgba(2,132,199,.12), transparent 45%),
+    rgba(6,10,20,.55);
+}
+
+/* ─── Partículas de fundo ─── */
+.bg-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-particles span {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: 0;
+  animation: float-up 8s infinite ease-in;
+}
+
+.bg-particles span:nth-child(1) { left: 10%; width: 6px;  height: 6px;  background: rgba(56,189,248,.35); animation-delay: 0s;   animation-duration: 9s; }
+.bg-particles span:nth-child(2) { left: 30%; width: 4px;  height: 4px;  background: rgba(56,189,248,.2);  animation-delay: 2s;   animation-duration: 7s; }
+.bg-particles span:nth-child(3) { left: 55%; width: 8px;  height: 8px;  background: rgba(56,189,248,.25); animation-delay: 4s;   animation-duration: 11s; }
+.bg-particles span:nth-child(4) { left: 70%; width: 5px;  height: 5px;  background: rgba(56,189,248,.3);  animation-delay: 1s;   animation-duration: 8s; }
+.bg-particles span:nth-child(5) { left: 85%; width: 3px;  height: 3px;  background: rgba(56,189,248,.2);  animation-delay: 5.5s; animation-duration: 10s; }
+.bg-particles span:nth-child(6) { left: 45%; width: 7px;  height: 7px;  background: rgba(56,189,248,.15); animation-delay: 3s;   animation-duration: 12s; }
+
+@keyframes float-up {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: .5; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ─── Wrapper ─── */
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 470px;
+  padding: 20px;
+  margin-top: 4%;
+  animation: card-in .55s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(28px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ─── Card ─── */
+.login-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(20,28,45,.92), rgba(12,18,32,.96));
+  border-radius: 22px;
+  padding: 42px 34px 30px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.55),
+    0 0 0 1px rgba(148,163,184,.08),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  border: 1px solid rgba(148,163,184,.10);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+/* garante que o conteúdo real fique acima da camada de nuvens */
+.login-card > .login-header,
+.login-card > form,
+.login-card > .login-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Nuvens decorativas dentro do card ─── */
+.login-clouds {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.cloud,
+.cloud::before,
+.cloud::after {
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud {
+  position: absolute;
+  filter: blur(2px);
+  will-change: transform;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+}
+
+.cloud--1 {
+  top: 14%;
+  left: 0;
+  width: 90px;
+  height: 30px;
+  border-radius: 40px;
+  opacity: .16;
+  animation: drift-cloud 24s linear infinite;
+}
+.cloud--1::before { width: 46px; height: 46px; top: -22px; left: 10px; }
+.cloud--1::after  { width: 34px; height: 34px; top: -14px; left: 48px; }
+
+.cloud--2 {
+  top: 46%;
+  left: 0;
+  width: 68px;
+  height: 24px;
+  border-radius: 32px;
+  opacity: .12;
+  animation: drift-cloud 32s linear infinite;
+  animation-delay: -12s;
+}
+.cloud--2::before { width: 34px; height: 34px; top: -16px; left: 8px; }
+.cloud--2::after  { width: 26px; height: 26px; top: -11px; left: 34px; }
+
+.cloud--3 {
+  top: 80%;
+  left: 0;
+  width: 56px;
+  height: 20px;
+  border-radius: 28px;
+  opacity: .10;
+  animation: drift-cloud 27s linear infinite;
+  animation-delay: -6s;
+}
+.cloud--3::before { width: 28px; height: 28px; top: -13px; left: 6px; }
+.cloud--3::after  { width: 20px; height: 20px; top: -9px;  left: 28px; }
+
+@keyframes drift-cloud {
+  from { transform: translateX(-140px); }
+  to   { transform: translateX(460px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud { animation: none; }
+}
+
+/* linha de acento animada no topo do card */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7, #38bdf8);
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Header / Logo ─── */
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56,189,248,.16) 0%, transparent 70%);
+  border: 1px solid rgba(56,189,248,.25);
+  box-shadow: 0 0 0 6px rgba(56,189,248,.05), 0 10px 26px rgba(2,132,199,.25);
+  margin-bottom: 16px;
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(56,189,248,.05), 0 10px 26px rgba(2,132,199,.25); }
+  50%      { box-shadow: 0 0 0 12px rgba(56,189,248,0),  0 10px 26px rgba(2,132,199,.25); }
+}
+
+.logo-ring img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.login-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -.4px;
+  background: linear-gradient(90deg, #f8fafc, #cbd5e1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.login-header p {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  background: rgba(56,189,248,.08);
+  border: 1px solid rgba(56,189,248,.18);
+  border-radius: 999px;
+}
+
+.login-header p::before {
+  content: '🔒';
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* ─── Grupos de campo ─── */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 12px;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+
+.form-group label svg {
+  width: 13px;
+  height: 13px;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+/* input-wrap: para posicionar o botão de olho */
+.input-wrap {
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12.5px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(148,163,184,.14);
+  background: rgba(2,6,23,.85);
+  color: #e5e7eb;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.input-wrap input {
+  padding-right: 44px; /* espaço pro botão de olho */
+}
+
+.form-group input::placeholder {
+  color: #4b5563;
+}
+
+.form-group input:hover {
+  border-color: rgba(148,163,184,.28);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56,189,248,.15);
+  background: rgba(2,6,23,1);
+}
+
+/* Corrige o autofill do navegador para manter o tema escuro
+   (Chrome/Edge forçam fundo claro por padrão nos campos preenchidos) */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e5e7eb;
+  -webkit-box-shadow: 0 0 0 1000px rgba(2,6,23,.95) inset;
+          box-shadow: 0 0 0 1000px rgba(2,6,23,.95) inset;
+  transition: background-color 9999s ease-in-out 0s;
+  caret-color: #e5e7eb;
+}
+
+/* estado de erro no campo */
+.form-group.has-error input {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.12);
+}
+
+/* ─── Botão mostrar/ocultar senha ─── */
+.toggle-senha {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color .2s;
+}
+
+.toggle-senha:hover {
+  color: #38bdf8;
+}
+
+.toggle-senha svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ─── Mensagens de erro inline ─── */
+.field-error {
+  display: block;
+  font-size: 11px;
+  color: #ef4444;
+  margin-top: 5px;
+  min-height: 16px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .2s, transform .2s;
+}
+
+.form-group.has-error .field-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Botão Entrar ─── */
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  letter-spacing: .3px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+  color: #fff;
+  margin-top: 12px;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(2,132,199,.25);
+}
+
+.btn-login::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.14) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+
+.btn-login:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(2,132,199,.4);
+}
+
+.btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-login:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.btn-login:disabled {
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+/* Spinner de loading */
+.btn-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-login.loading .btn-text {
+  opacity: .7;
+}
+
+.btn-login.loading .btn-spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Mensagem global ─── */
+.login-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+  transition: all .25s;
+}
+
+.login-msg.error {
+  color: #ef4444;
+  animation: shake .35s ease;
+}
+
+.login-msg.success {
+  color: #34d399;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* ─── Footer ─── */
+.login-footer {
+  text-align: center;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(148,163,184,.08);
+  font-size: 11px;
+  letter-spacing: .3px;
+  color: #64748b;
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 32px 24px 26px;
+  }
+
+  .login-wrapper {
+    margin-top: 0;
+  }
+}
+
+/* ─── Containers de anúncios ─────────────────────────────
+   position: fixed → completamente fora do fluxo do card.
+   z-index: 0 → ficam atrás do card (z-index: 1).
+───────────────────────────────────────────────────────── */
+.ad-lateral {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.ad-lateral-esq { left: 0; }
+.ad-lateral-dir { right: 0; }
+
+.ad-rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.ad-rodape > * {
+  pointer-events: auto;
+}
+
+/* Oculta laterais em telas menores que 1200px */
+@media (max-width: 1199px) {
+  .ad-lateral { display: none; }
+}
+
+/* Oculta rodapé em telas menores que 600px */
+@media (max-width: 599px) {
+  .ad-rodape { display: none; }
+}

@@ -1,0 +1,387 @@
+/* =============================================
+   MODAL DE FILTROS DE LOGINS
+   =============================================
+   Estilos específicos para o modal de filtros
+   Integrado com o HTML/JS fornecido
+   ============================================= */
+
+:root {
+  /* Cores - Tema Escuro */
+  --modal-bg: #1e293b;
+  --modal-surface: #334155;
+  --modal-text: #ffffff;
+  --modal-text-secondary: #cbd5e1;
+  --modal-border: #475569;
+  
+  /* Cores de Ação */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #22c55e;
+  --success-hover: #16a34a;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  
+  /* Espaçamentos */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 24px;
+  
+  /* Bordas */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ======================
+   ESTILOS BASE DO MODAL
+   ====================== */
+.modal-relat {
+  /* Posicionamento: centralizado com clamp para nunca sair da tela */
+  position: fixed;
+  top: clamp(8px, 50%, calc(100vh - 8px));
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 1000;
+
+  /* Dimensões */
+  width: 380px;
+  max-width: calc(100vw - 16px);
+  max-height: min(85vh, 85dvh);
+
+  /* Estilização */
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  /* Tipografia */
+  color: var(--modal-text);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+
+  /* Animações */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow),
+    visibility var(--transition-slow);
+}
+
+/* Estado ativo - corrigido para integração com JS */
+.modal-relat.ativo {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  animation: modalEntrada 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Backdrop */
+.modal-relat::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.modal-relat.ativo::before {
+  opacity: 1;
+}
+
+/* ======================
+   CONTEÚDO DO MODAL
+   ====================== */
+
+/* Cabeçalho */
+.modal-relat h3 {
+  margin: 0 0 var(--spacing-xl) 0;
+  padding-bottom: var(--spacing-md);
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--modal-border);
+  position: relative;
+}
+
+.modal-relat h3::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--primary);
+}
+
+/* Formulário */
+#formFiltros {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+/* Grupos de campos */
+.modal-relat .campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Labels */
+.modal-relat label {
+  display: block;
+  font-weight: 500;
+  color: var(--modal-text-secondary);
+  font-size: 14px;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Campos de entrada */
+.modal-relat input[type="text"],
+.modal-relat input[type="date"],
+.modal-relat select {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--modal-surface);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--radius-sm);
+  color: var(--modal-text);
+  font-family: inherit;
+  font-size: 15px;
+  transition: all var(--transition-fast);
+}
+
+/* Foco nos campos */
+.modal-relat input:focus,
+.modal-relat select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(30, 41, 59, 0.8);
+}
+
+/* Grupo de datas lado a lado */
+.modal-relat .grupo-datas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* Container de botões - atualizado para o HTML */
+.modal-relat form > div[style*="margin-top"] {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl) !important;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--modal-border);
+}
+
+/* Botões */
+.modal-relat button {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+/* Botão de busca (submit) */
+.modal-relat button[type="submit"] {
+  background: linear-gradient(135deg, var(--success), var(--success-hover));
+  color: white;
+}
+
+.modal-relat button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.modal-relat button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Botão de fechar (type="button") */
+.modal-relat button[type="button"] {
+  background: linear-gradient(135deg, var(--danger), var(--danger-hover));
+  color: white;
+}
+
+.modal-relat button[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Ícones nos botões */
+.modal-relat button i {
+  font-size: 14px;
+}
+
+/* Placeholder personalizado */
+.modal-relat input::placeholder {
+  color: #94a3b8;
+  opacity: 0.7;
+}
+
+/* Select customizado */
+.modal-relat select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* ======================
+   ANIMAÇÕES
+   ====================== */
+@keyframes modalEntrada {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-50%, -50%) translateX(-3px); }
+  75% { transform: translate(-50%, -50%) translateX(3px); }
+}
+
+/* ======================
+   RESPONSIVIDADE
+   ====================== */
+@media (max-width: 480px) {
+  .modal-relat {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    max-height: calc(100dvh - 32px);
+    /* Reposiciona para evitar corte no topo em telas muito pequenas */
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: var(--radius-md);
+  }
+
+  .modal-relat.ativo {
+    transform: translate(-50%, -50%) scale(1);
+    animation: none;
+  }
+
+  #formFiltros {
+    padding: var(--spacing-sm);
+  }
+
+  .modal-relat .grupo-datas {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .modal-relat form > div[style*="margin-top"] {
+    flex-direction: column;
+  }
+
+  .modal-relat button {
+    width: 100%;
+  }
+}
+
+/* Zoom elevado: garante que o modal não ultrapasse a viewport */
+@media (max-height: 500px) {
+  .modal-relat {
+    top: 50%;
+    max-height: calc(100dvh - 16px);
+  }
+}
+
+/* ======================
+   UTILITÁRIOS
+   ====================== */
+
+/* Classe para campos obrigatórios */
+.campo-obrigatorio label::after {
+  content: " *";
+  color: var(--danger);
+}
+
+/* Validação */
+.campo-invalido {
+  border-color: var(--danger) !important;
+  animation: shake 0.5s ease;
+}
+
+.campo-valido {
+  border-color: var(--success) !important;
+}
+
+/* Loading no botão */
+.modal-relat button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.modal-relat button.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar personalizada */
+.modal-relat {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--modal-surface);
+}
+
+.modal-relat::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-relat::-webkit-scrollbar-track {
+  background: var(--modal-surface);
+  border-radius: var(--radius-sm);
+}
+
+.modal-relat::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+}
