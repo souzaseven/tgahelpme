@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel WhatsApp · API Brasil</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <span class="topbar__logo">🟢</span>
+    <div>
+      <h1>Painel WhatsApp</h1>
+      <p>Integração via API Brasil (WPP)</p>
+    </div>
+  </div>
+  <div class="topbar__status">
+    <span id="status-dot" class="status-dot status-dot--idle"></span>
+    <span id="status-label">Desconectado</span>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="card" id="card-connect">
+    <h2>Conexão</h2>
+    <p class="card__hint">Informe o nome da sessão e gere o QR Code para parear o WhatsApp.</p>
+
+    <form id="form-connect" class="form">
+      <label for="session">Nome da sessão</label>
+      <input type="text" id="session" name="session" value="painel_whatsapp" required>
+
+      <button type="submit" id="btn-connect" class="btn btn--primary">
+        Conectar / Gerar QR Code
+      </button>
+    </form>
+
+    <div id="qrcode-area" class="qrcode-area" hidden>
+      <img id="qrcode-image" alt="QR Code de pareamento do WhatsApp">
+      <p id="qrcode-text" class="qrcode-text"></p>
+    </div>
+
+    <p id="connect-feedback" class="feedback" role="status"></p>
+  </section>
+
+  <section class="card" id="card-send">
+    <h2>Enviar mensagem</h2>
+    <p class="card__hint">Envie uma mensagem de texto para um número já conectado.</p>
+
+    <form id="form-send" class="form">
+      <label for="number">Número (com DDI e DDD)</label>
+      <input type="text" id="number" name="number" placeholder="5511999999999" required>
+
+      <label for="message">Mensagem</label>
+      <textarea id="message" name="message" rows="4" placeholder="Digite a mensagem..." required></textarea>
+
+      <button type="submit" id="btn-send" class="btn btn--primary">Enviar</button>
+    </form>
+
+    <p id="send-feedback" class="feedback" role="status"></p>
+  </section>
+
+  <section class="card card--wide" id="card-log">
+    <h2>Últimos eventos</h2>
+    <ul id="message-log" class="message-log">
+      <li class="message-log__empty">Nenhum evento ainda.</li>
+    </ul>
+  </section>
+
+</main>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Baileys — APIBrasil</title>
+  <style>
+    :root {
+      /* Paleta inspirada na identidade visual do WhatsApp (verde/teal + azul de "lido" + preto/branco) */
+      --bg: #f0f2f5;
+      --bg-glow: radial-gradient(600px circle at 15% -10%, rgba(37, 211, 102, 0.14), transparent 60%);
+      --surface: #ffffff;
+      --surface-2: #f7f8fa;
+      --border: #e9edef;
+      --border-strong: #cfd8dc;
+      --text: #111b21;
+      --text-muted: #667781;
+      --text-faint: #8696a0;
+      --primary: #128c7e;
+      --primary-2: #25d366;
+      --primary-text: #ffffff;
+      --success: #1da851;
+      --success-bg: rgba(37, 211, 102, 0.12);
+      --danger: #d1373f;
+      --danger-bg: rgba(209, 55, 63, 0.08);
+      --warning: #0a7ea6;
+      --warning-bg: rgba(52, 183, 241, 0.14);
+      --neutral-dot: #9c9ca8;
+      --code-bg: #0b141a;
+      --code-text: #d7e0e4;
+      --code-border: #1f2c33;
+      --shadow: 0 1px 2px rgba(17, 27, 33, 0.05), 0 8px 24px -8px rgba(17, 27, 33, 0.12);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b141a;
+        --bg-glow: radial-gradient(700px circle at 15% -10%, rgba(0, 168, 132, 0.18), transparent 60%);
+        --surface: #111b21;
+        --surface-2: #202c33;
+        --border: #2a3942;
+        --border-strong: #3b4a54;
+        --text: #e9edef;
+        --text-muted: #8696a0;
+        --text-faint: #667781;
+        --primary: #00a884;
+        --primary-2: #25d366;
+        --primary-text: #ffffff;
+        --success: #00a884;
+        --success-bg: rgba(0, 168, 132, 0.16);
+        --danger: #f2555f;
+        --danger-bg: rgba(242, 85, 95, 0.12);
+        --warning: #53bdeb;
+        --warning-bg: rgba(83, 189, 235, 0.14);
+        --neutral-dot: #667781;
+        --code-bg: #060a0d;
+        --code-text: #d7e0e4;
+        --code-border: #1c262c;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 32px -12px rgba(0, 0, 0, 0.65);
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0b141a;
+      --bg-glow: radial-gradient(700px circle at 15% -10%, rgba(0, 168, 132, 0.18), transparent 60%);
+      --surface: #111b21;
+      --surface-2: #202c33;
+      --border: #2a3942;
+      --border-strong: #3b4a54;
+      --text: #e9edef;
+      --text-muted: #8696a0;
+      --text-faint: #667781;
+      --primary: #00a884;
+      --primary-2: #25d366;
+      --primary-text: #ffffff;
+      --success: #00a884;
+      --success-bg: rgba(0, 168, 132, 0.16);
+      --danger: #f2555f;
+      --danger-bg: rgba(242, 85, 95, 0.12);
+      --warning: #53bdeb;
+      --warning-bg: rgba(83, 189, 235, 0.14);
+      --neutral-dot: #667781;
+      --code-bg: #060a0d;
+      --code-text: #d7e0e4;
+      --code-border: #1c262c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 32px -12px rgba(0, 0, 0, 0.65);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+      background: var(--bg-glow), var(--bg);
+      color: var(--text);
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    /* ---------- Header ---------- */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px -4px rgba(18, 140, 126, 0.5);
+    }
+
+    .brand-mark svg { width: 22px; height: 22px; }
+
+    h1 { font-size: 1.15rem; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+
+    .subtitle { margin: 1px 0 0; font-size: 0.8rem; color: var(--text-muted); }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s ease, transform 0.1s ease;
+    }
+    .icon-btn:hover { border-color: var(--border-strong); }
+    .icon-btn:active { transform: scale(0.94); }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ---------- Buttons ---------- */
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      font-size: 0.87rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: filter 0.12s ease, transform 0.08s ease, opacity 0.12s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: var(--primary-text);
+      box-shadow: 0 4px 14px -6px rgba(18, 140, 126, 0.55);
+    }
+    .btn-primary:hover:not(:disabled) { filter: brightness(1.08); }
+
+    .btn-outline {
+      background: var(--surface-2);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover:not(:disabled) { border-color: var(--border-strong); }
+
+    .btn-danger {
+      background: var(--danger-bg);
+      border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+      color: var(--danger);
+    }
+    .btn-danger:hover:not(:disabled) { filter: brightness(1.1); }
+
+    .spinner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Status ---------- */
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neutral-dot);
+      flex-shrink: 0;
+    }
+    .status-dot.pulse { animation: pulse 1.4s ease-in-out infinite; }
+    .status-dot.success { background: var(--success); }
+    .status-dot.danger { background: var(--danger); }
+    /* "warning" aqui é o azul do WhatsApp (status "conectando"/em progresso) */
+    .status-dot.warning { background: var(--warning); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+      50% { box-shadow: 0 0 0 4px transparent; opacity: 0.6; }
+    }
+
+    .status-badge {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* ---------- QR ---------- */
+    .qr-card {
+      margin-top: 18px;
+      padding: 20px;
+      text-align: center;
+      background: var(--surface-2);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-md);
+    }
+
+    .qr-card img {
+      max-width: 220px;
+      width: 100%;
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    .qr-hint {
+      margin: 12px 0 0;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .qr-countdown {
+      margin: 4px 0 0;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      color: var(--text-faint);
+    }
+
+    /* ---------- Banner de sucesso ---------- */
+    .banner {
+      margin-top: 16px;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: fade-in 0.25s ease;
+    }
+    .banner-success {
+      background: var(--success-bg);
+      border: 1px solid color-mix(in srgb, var(--success) 40%, transparent);
+      color: var(--success);
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- Bloco de resultado (JSON) ---------- */
+    .result-block {
+      margin-top: 16px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--code-border);
+    }
+
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 7px 12px;
+      background: var(--code-border);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-faint);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+    }
+    .copy-btn:hover { color: var(--code-text); }
+
+    pre {
+      margin: 0;
+      padding: 12px;
+      background: var(--code-bg);
+      color: var(--code-text);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    /* ---------- Formulário ---------- */
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-2);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.92rem;
+      transition: border-color 0.12s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn-block { width: 100%; justify-content: center; margin-top: 16px; padding: 11px; }
+
+    .page-footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-faint);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.14 2 11.25c0 2.6 1.16 4.94 3.05 6.62L4 22l4.35-1.14A10.6 10.6 0 0 0 12 21c5.52 0 10-4.14 10-9.25S17.52 2 12 2Z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M8.5 10.2c.4 2.3 2 3.9 4.3 4.3" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <h1>WhatsApp Baileys</h1>
+        <p class="subtitle">Integração via APIBrasil</p>
+      </div>
+    </div>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Alternar tema" title="Alternar tema claro/escuro">🌙</button>
+  </header>
+
+  <section class="card" id="device-panel">
+    <div class="card-header">
+      <span class="eyebrow">🔌 Dispositivo</span>
+    </div>
+
+    <div class="actions">
+      <button id="btn-connect" class="btn btn-primary" type="button"><span>📷</span> Gerar QR Code</button>
+      <button id="btn-status" class="btn btn-outline" type="button"><span>🔄</span> Verificar status</button>
+      <button id="btn-restart" class="btn btn-outline" type="button"><span>♻️</span> Reiniciar</button>
+      <button id="btn-logout" class="btn btn-danger" type="button"><span>⏻</span> Desconectar</button>
+    </div>
+
+    <div class="status-row">
+      <span id="status-dot" class="status-dot"></span>
+      <span id="status-badge" class="status-badge">status desconhecido</span>
+    </div>
+
+    <div id="qrcode-wrapper" class="qr-card" style="display:none;">
+      <img id="qrcode-img" alt="QR Code para parear o WhatsApp">
+      <p class="qr-hint">Escaneie com WhatsApp → Aparelhos conectados → Conectar um aparelho.</p>
+      <p class="qr-countdown" id="qr-countdown"></p>
+    </div>
+
+    <div id="success-banner" class="banner banner-success" style="display:none;">
+      <span>✅</span>
+      <span>Dispositivo conectado com sucesso!</span>
+    </div>
+
+    <div class="result-block" id="device-result-wrapper" style="display:none;">
+      <div class="result-header">
+        <span>Resposta</span>
+        <button type="button" class="copy-btn" id="copy-device-result">Copiar</button>
+      </div>
+      <pre id="device-result"></pre>
+    </div>
+  </section>
+
+  <section class="card" id="message-panel">
+    <div class="card-header">
+      <span class="eyebrow">💬 Enviar mensagem</span>
+    </div>
+
+    <form id="send-form">
+      <label for="number">Número (DDI+DDD+Número)</label>
+      <input type="text" id="number" name="number" placeholder="5531994359434" required>
+
+      <label for="text">Mensagem</label>
+      <textarea id="text" name="text" rows="4" required></textarea>
+
+      <button type="submit" id="btn-send" class="btn btn-primary btn-block"><span>📨</span> Enviar</button>
+    </form>
+
+    <div class="result-block" id="send-result-wrapper" style="display:none;">
+      <div class="result-header">
+        <span>Resultado</span>
+      </div>
+      <pre id="send-result"></pre>
+    </div>
+  </section>
+
+  <p class="page-footer">Baileys × APIBrasil</p>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
