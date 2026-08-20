@@ -50,8 +50,8 @@ swagger/
 └── README.md
 ```
 
-Não há backend próprio além do `include` de controle de acesso no topo do
-`index.php` — o app fala direto com `api.tgasistemas.io` (CORS liberado pela
+Não uso backend próprio além do `include` de controle de acesso no topo do
+`index.php` — falo direto com `api.tgasistemas.io` (CORS liberado pela
 própria API).
 
 ### Como adicionar um novo endpoint
@@ -79,18 +79,18 @@ Basta adicionar um objeto ao array `TGA_ENDPOINTS` em
 }
 ```
 
-Um `category`/`categoryLabel` novo já cria um grupo sozinho na sidebar. O
-motor em [js/explorer.js](js/explorer.js) cuida do resto: form, header
-`Authorization`, request/response viewer, histórico e tratamento de 401.
-Endpoints com corpo (POST/PUT) ou parâmetro na URL não precisam de tratamento
-especial — o motor valida os campos obrigatórios e o JSON do corpo antes de
-disparar a requisição, e mostra o aviso "grava dados reais" automaticamente
+Um `category`/`categoryLabel` novo já cria um grupo sozinho na sidebar. Deixo
+o motor em [js/explorer.js](js/explorer.js) cuidar do resto: form, header
+`Authorization`, request/response viewer, histórico e tratamento de 401. Não
+preciso de tratamento especial para endpoints com corpo (POST/PUT) ou
+parâmetro na URL — valido os campos obrigatórios e o JSON do corpo antes de
+disparar a requisição, e mostro o aviso "grava dados reais" automaticamente
 sempre que `method !== 'GET'`.
 
 ## Como rodar localmente
 
-O `index.php` inclui `../../verifica_acesso.php` (controle de acesso do
-sistema principal), então precisa mesmo de PHP para rodar — não dá para abrir
+Meu `index.php` inclui `../../verifica_acesso.php` (controle de acesso do
+sistema principal), então preciso mesmo de PHP para rodar — não dá para abrir
 direto por `file://` nem servir só como estático:
 
 ```bash
@@ -111,11 +111,11 @@ alcançável em `../../`.
 - **`GET /v1/status`** não exige token na prática (mesmo o spec listando
   `security` pra essa rota) — por isso é usado tanto no teste de
   conectividade quanto como endpoint público de exemplo.
-- **CORS está liberado** (`access-control-allow-origin: *`), então o app
-  funciona inteiramente client-side, sem proxy — só usar `fetch` simples
-  (sem `OPTIONS`) para não disparar preflight à toa.
+- **CORS está liberado** (`access-control-allow-origin: *`), então fiz tudo
+  client-side, sem proxy — só uso `fetch` simples (sem `OPTIONS`) para não
+  disparar preflight à toa.
 
-## Segurança — o que foi aplicado
+## Segurança — o que apliquei
 
 - Nenhuma credencial fixa no código.
 - Senha nunca é impressa no console nem persistida (nem `sessionStorage`,
@@ -129,5 +129,5 @@ alcançável em `../../`.
 
 - Favoritar endpoints usados com frequência (persistir em `localStorage`).
 - Suporte a mais endpoints com corpo/parâmetro de URL fora do padrão de
-  listagem simples (o motor genérico hoje cobre GET com paginação; rotas
-  fora desse padrão exigem estender a config em `js/endpoints.js`).
+  listagem simples (hoje meu motor genérico só cobre GET com paginação; para
+  rotas fora desse padrão preciso estender a config em `js/endpoints.js`).
