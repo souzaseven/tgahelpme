@@ -176,11 +176,11 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 24px;
-  max-width: 1240px;
+  max-width: 1900px;
   margin: 0 auto;
-  padding: 24px 24px 60px;
+  padding: 24px 32px 60px;
   align-items: start;
 }
 
@@ -744,6 +744,30 @@ body {
 
 .record-field__label { color: var(--text-faint); white-space: nowrap; }
 .record-field__value { color: var(--text); text-align: right; font-weight: 500; overflow-wrap: anywhere; }
+
+/* Campo de imagem (ex.: foto do produto vinda em Base64): título em cima,
+   miniatura clicável embaixo, em vez do layout label↔valor lado a lado. */
+.record-field--image { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+.record-field__image {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  object-fit: contain;
+}
+
+/* Miniatura de imagem dentro de uma célula da aba Tabela. */
+.response-table__thumb {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  object-fit: cover;
+}
 
 /* ---------------- Gerador de código ---------------- */
 

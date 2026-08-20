@@ -214,6 +214,10 @@ const TgaUi = {
     const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const cell = (v) => {
       if (v === undefined || v === null) return '';
+      const imgSrc = this.detectBase64Image(v);
+      if (imgSrc) {
+        return `<a href="${imgSrc}" target="_blank" rel="noopener" title="Abrir imagem em tamanho real"><img src="${imgSrc}" alt="imagem" class="response-table__thumb" loading="lazy"></a>`;
+      }
       return esc(typeof v === 'object' ? JSON.stringify(v) : v);
     };
 
@@ -275,6 +279,29 @@ const TgaUi = {
     status: 'Status', message: 'Mensagem', code: 'Código',
   },
 
+  /**
+   * Assinaturas conhecidas (primeiros bytes do arquivo, já em Base64) usadas
+   * para reconhecer campos como "IMAGEM" que a API devolve como uma string
+   * Base64 pura (sem o prefixo "data:image/...;base64,").
+   */
+  IMAGE_BASE64_SIGNATURES: [
+    { mime: 'image/jpeg', re: /^\/9j\// },
+    { mime: 'image/png', re: /^iVBORw0KGgo/ },
+    { mime: 'image/gif', re: /^R0lGOD/ },
+    { mime: 'image/webp', re: /^UklGR/ },
+  ],
+
+  /**
+   * Se `value` for uma imagem em Base64 (com ou sem o prefixo data URI),
+   * devolve uma data URI pronta para usar em <img src>. Caso contrário, null.
+   */
+  detectBase64Image(value) {
+    if (typeof value !== 'string' || value.length < 100) return null;
+    if (/^data:image\//.test(value)) return value;
+    const match = this.IMAGE_BASE64_SIGNATURES.find(sig => sig.re.test(value));
+    return match ? `data:${match.mime};base64,${value}` : null;
+  },
+
   /** Converte NOMEDOCAMPO em algo legível — usa o dicionário acima, com um fallback genérico. */
   humanizeLabel(key) {
     if (this.FIELD_LABELS[key]) return this.FIELD_LABELS[key];
@@ -303,7 +330,7 @@ const TgaUi = {
   pickTitleKey(keys, record) {
     const priority = ['NOME', 'NOMEFANTASIA', 'NOMECONSUMIDOR', 'DESCRICAO', 'STATUS', 'STATUSOS'];
     for (const k of priority) if (keys.includes(k) && record[k]) return k;
-    return keys.find(k => typeof record[k] === 'string' && record[k].trim() !== '') || null;
+    return keys.find(k => typeof record[k] === 'string' && record[k].trim() !== '' && !this.detectBase64Image(record[k])) || null;
   },
 
   /** Decide qual campo vira o selo (badge) ao lado do título — geralmente um código. */
@@ -341,6 +368,18 @@ const TgaUi = {
     const fieldsHtml = keys
       .filter(k => k !== titleKey && k !== badgeKey)
       .map(k => {
+        const imgSrc = this.detectBase64Image(record[k]);
+        if (imgSrc) {
+          const label = esc(this.humanizeLabel(k));
+          return `
+            <div class="record-field record-field--image">
+              <span class="record-field__label">${label}</span>
+              <a href="${imgSrc}" target="_blank" rel="noopener" title="Abrir imagem em tamanho real">
+                <img src="${imgSrc}" alt="${label}" class="record-field__image" loading="lazy">
+              </a>
+            </div>
+          `;
+        }
         const formatted = this.formatFieldValue(k, record[k]);
         if (formatted === null) return '';
         return `<div class="record-field"><span class="record-field__label">${esc(this.humanizeLabel(k))}</span><span class="record-field__value">${esc(formatted)}</span></div>`;
