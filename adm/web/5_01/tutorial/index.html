@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial ADM — QLoudMe / TGA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0f1117;
+      --surface:     #1a1d27;
+      --surface2:    #22263a;
+      --border:      #2e3348;
+      --accent:      #007ced;
+      --accent-glow: #007ced28;
+      --text:        #e2e8f0;
+      --muted:       #8892a4;
+      --success:     #34d399;
+      --warn:        #fbbf24;
+      --danger:      #f87171;
+      --code-bg:     #141720;
+      --sidebar-w:   270px;
+      --header-h:    60px;
+      --radius:      10px;
+      --font-sans:   'Segoe UI', system-ui, sans-serif;
+      --font-mono:   'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* ── Header ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--header-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: .6rem;
+      font-weight: 700; font-size: 1.05rem; color: var(--text);
+      text-decoration: none; cursor: pointer;
+    }
+
+    .logo .badge {
+      background: var(--accent); color: #fff;
+      font-size: .65rem; font-weight: 800;
+      padding: 2px 8px; border-radius: 99px;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+
+    .btn-menu {
+      display: none;
+      background: none; border: 1px solid var(--border);
+      color: var(--text); border-radius: var(--radius);
+      padding: .4rem .75rem; cursor: pointer; font-size: 1.1rem;
+    }
+
+    /* ── Layout ── */
+    .layout { display: flex; padding-top: var(--header-h); min-height: 100vh; }
+
+    /* ── Sidebar ── */
+    nav.sidebar {
+      position: fixed;
+      top: var(--header-h); left: 0;
+      width: var(--sidebar-w);
+      height: calc(100vh - var(--header-h));
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 1.25rem 1rem;
+      transition: transform .3s ease;
+      z-index: 90;
+    }
+
+    nav.sidebar.hidden { transform: translateX(-100%); }
+
+    .nav-section { margin-bottom: 1.4rem; }
+
+    .nav-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0 .5rem; margin-bottom: .4rem; display: block;
+    }
+
+    .nav-item {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .45rem .75rem; border-radius: 8px;
+      color: var(--muted); font-size: .88rem; cursor: pointer;
+      transition: background .15s, color .15s;
+      border: none; background: none; width: 100%; text-align: left;
+    }
+
+    .nav-item:hover { background: var(--surface2); color: var(--text); }
+    .nav-item.active { background: var(--accent-glow); color: var(--accent); font-weight: 600; }
+    .nav-item .icon { flex-shrink: 0; }
+
+    .progress-info {
+      display: flex; align-items: center; gap: .75rem;
+      background: var(--surface2); border-radius: var(--radius);
+      padding: .7rem; margin-bottom: 1rem;
+    }
+
+    .progress-ring { width: 36px; height: 36px; flex-shrink: 0; }
+    .progress-ring circle { fill: none; stroke-width: 3; }
+    .progress-ring .track  { stroke: var(--border); }
+    .progress-ring .fill   {
+      stroke: var(--accent); stroke-linecap: round;
+      transition: stroke-dashoffset .5s ease;
+    }
+
+    .pct { font-size: .85rem; color: var(--text); }
+    .pct strong { color: var(--accent); }
+
+    /* ── Main ── */
+    main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      max-width: 880px;
+      padding: 2.5rem 2.2rem 5rem;
+      transition: margin-left .3s;
+    }
+
+    /* ── Seções ── */
+    .section { display: none; animation: fadeIn .3s ease; }
+    .section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Tipografia ── */
+    h1 {
+      font-size: 1.9rem; font-weight: 800; line-height: 1.2;
+      background: linear-gradient(135deg, #e0f0ff 10%, #007ced 60%, #00b4fc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: .4rem;
+    }
+
+    h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); margin: 2rem 0 .65rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.4rem 0 .4rem; }
+
+    p { color: var(--text); margin-bottom: .9rem; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ul, ol { margin: 0 0 1rem 1.4rem; }
+    li { margin-bottom: .35rem; color: var(--text); }
+
+    strong { color: #fff; font-weight: 700; }
+    em     { color: var(--warn); font-style: normal; }
+
+    .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1.75rem; }
+
+    /* ── Callouts ── */
+    .callout {
+      border-left: 3px solid;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: .85rem 1rem; margin: 1.1rem 0;
+      display: flex; gap: .7rem; align-items: flex-start;
+    }
+
+    .callout .ci { font-size: 1.05rem; flex-shrink: 0; margin-top: .15rem; }
+    .callout p   { margin: 0; font-size: .92rem; }
+
+    .callout.info    { border-color: var(--accent); background: var(--accent-glow); }
+    .callout.success { border-color: var(--success); background: #34d39920; }
+    .callout.warn    { border-color: var(--warn);    background: #fbbf2420; }
+    .callout.danger  { border-color: var(--danger);  background: #f8717120; }
+
+    /* ── Link card ── */
+    .link-card {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem; margin-bottom: .75rem;
+      transition: border-color .2s;
+      text-decoration: none;
+    }
+
+    .link-card:hover { border-color: var(--accent); text-decoration: none; }
+    .link-card .lc-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .link-card .lc-title { font-weight: 700; color: var(--text); font-size: .95rem; }
+    .link-card .lc-url   { font-size: .78rem; color: var(--accent); font-family: var(--font-mono); }
+    .link-card .lc-desc  { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── Tabela ── */
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.25rem; }
+
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: .875rem;
+    }
+
+    th {
+      background: var(--surface2);
+      color: var(--muted); font-size: .72rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .6rem .85rem; border-bottom: 2px solid var(--border);
+      text-align: left;
+    }
+
+    td {
+      padding: .6rem .85rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    tr:hover td { background: var(--surface2); }
+
+    /* ── Badges de ação ── */
+    .action-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .78rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .ab-blue   { background: var(--accent-glow); color: var(--accent); }
+    .ab-red    { background: #f8717120; color: var(--danger); }
+    .ab-green  { background: #34d39920; color: var(--success); }
+    .ab-yellow { background: #fbbf2420; color: var(--warn); }
+
+    /* ── Cards ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1rem; margin: 1.1rem 0;
+    }
+
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1rem;
+      transition: border-color .2s, transform .15s;
+    }
+
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card .card-icon { font-size: 1.5rem; margin-bottom: .45rem; }
+    .card h3 { margin: 0 0 .25rem; font-size: .93rem; }
+    .card p  { margin: 0; font-size: .82rem; color: var(--muted); }
+
+    /* ── Servidor cards ── */
+    .server-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: .75rem; margin: 1rem 0 1.5rem;
+    }
+
+    .server-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .8rem 1rem;
+    }
+
+    .server-card .sc-name { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .server-card .sc-desc { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ── Steps ── */
+    .steps { counter-reset: step; margin: 1rem 0; }
+
+    .step { display: flex; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      counter-increment: step;
+      min-width: 30px; height: 30px;
+      background: var(--accent); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    .step-num::before { content: counter(step); }
+    .step-body h3 { margin: 0 0 .3rem; font-size: .97rem; }
+    .step-body p  { margin: 0; font-size: .88rem; color: var(--muted); }
+
+    /* ── Quiz ── */
+    .quiz {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem; margin: 1.5rem 0;
+    }
+
+    .quiz h3 { margin: 0 0 .85rem; font-size: 1rem; }
+
+    .quiz-options { display: flex; flex-direction: column; gap: .45rem; }
+
+    .quiz-option {
+      display: flex; align-items: center; gap: .7rem;
+      padding: .6rem .85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer;
+      transition: border-color .15s, background .15s;
+      font-size: .9rem;
+    }
+
+    .quiz-option:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .quiz-option.correct   { border-color: var(--success); background: #34d39920; }
+    .quiz-option.incorrect { border-color: var(--danger);  background: #f8717120; }
+    .quiz-option input { display: none; }
+
+    .quiz-feedback {
+      margin-top: .7rem; font-size: .87rem;
+      padding: .45rem .7rem; border-radius: 6px; display: none;
+    }
+
+    .quiz-feedback.show { display: block; }
+    .quiz-feedback.ok   { background: #34d39920; color: var(--success); }
+    .quiz-feedback.err  { background: #f8717120; color: var(--danger); }
+
+    /* ── Nav inferior ── */
+    .nav-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 2.75rem; padding-top: 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .55rem 1.15rem; border-radius: var(--radius);
+      font-size: .88rem; font-weight: 600; cursor: pointer;
+      transition: background .15s, transform .1s;
+      border: none; text-decoration: none;
+    }
+
+    .btn:active { transform: scale(.97); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #0069cc; text-decoration: none; }
+    .btn-ghost { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .btn-ghost.disabled { opacity: .3; pointer-events: none; }
+
+    /* ── Tags / pills ── */
+    .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0 1rem; }
+
+    .pill {
+      font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+      padding: 3px 10px; border-radius: 99px; text-transform: uppercase;
+    }
+
+    .pill-accent  { background: var(--accent-glow); color: var(--accent); }
+    .pill-success { background: #34d39920; color: var(--success); }
+    .pill-warn    { background: #fbbf2420; color: var(--warn); }
+    .pill-danger  { background: #f8717120; color: var(--danger); }
+
+    /* ── Hero ── */
+    .hero { text-align: center; padding: 1.5rem 0 2rem; }
+    .hero h1 { font-size: 2.2rem; margin-bottom: .65rem; }
+    .hero .subtitle { max-width: 520px; margin: 0 auto 1.75rem; font-size: 1rem; }
+    .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 1.75rem 0; }
+
+    /* ── Responsivo ── */
+    @media (max-width: 700px) {
+      nav.sidebar { transform: translateX(-100%); width: 270px; }
+      nav.sidebar.open { transform: translateX(0); }
+      main { margin-left: 0 !important; padding: 1.25rem 1rem 4rem; }
+      .btn-menu { display: block; }
+      h1 { font-size: 1.5rem; }
+      .hero h1 { font-size: 1.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header>
+  <span class="logo" onclick="goTo('inicio')">
+    🖥️ ADM Suporte <span class="badge">TGA / QLoudMe</span>
+  </span>
+  <div>
+    <button class="btn-menu" onclick="toggleSidebar()">☰</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar" id="sidebar">
+
+    <div class="progress-info">
+      <svg class="progress-ring" viewBox="0 0 36 36">
+        <circle class="track" cx="18" cy="18" r="15.5"/>
+        <circle class="fill" id="prog-circle" cx="18" cy="18" r="15.5"
+          stroke-dasharray="97.4" stroke-dashoffset="97.4"
+          transform="rotate(-90 18 18)"/>
+      </svg>
+      <div class="pct"><strong id="prog-pct">0%</strong> concluído</div>
+    </div>
+
+    <div class="nav-section">
+      <span class="nav-label">Início</span>
+      <button class="nav-item active" onclick="goTo('inicio')">
+        <span class="icon">🏠</span> Apresentação
+      </button>
+    </div>
+
+    <div class="nav-section">
+      <span class="nav-label">Módulos</span>
+      <button class="nav-item" onclick="goTo('modulo1')">
+        <span class="icon">👥</span> 1 · Controle de Usuários
+      </button>
+      <button class="nav-item" onclick="goTo('modulo2')">
+        <span class="icon">⚙️</span> 2 · Serviços Windows
+      </button>
+      <button class="nav-item" onclick="goTo('modulo3')">
+        <span class="icon">🖥️</span> 3 · Sessões &amp; Perfis
+      </button>
+      <button class="nav-item" onclick="goTo('modulo4')">
+        <span class="icon">🗄️</span> 4 · Servidores &amp; Auditoria
+      </button>
+    </div>
+
+    <div class="nav-section">
+      <span class="nav-label">Encerramento</span>
+      <button class="nav-item" onclick="goTo('conclusao')">
+        <span class="icon">🏁</span> Conclusão
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- ── Main ── -->
+  <main id="main">
+
+    <!-- ════════════════════════════════════
+         APRESENTAÇÃO
+    ════════════════════════════════════ -->
+    <section class="section active" id="sec-inicio">
+      <div class="hero">
+        <h1>Tutorial de Suporte ADM</h1>
+        <p class="subtitle">
+          Guia prático para novatos no suporte ao sistema TGA e infraestrutura QLoudMe.
+          Aprenda a gerenciar usuários, serviços, sessões e servidores.
+        </p>
+        <div class="tag-row" style="justify-content:center">
+          <span class="pill pill-accent">Iniciante</span>
+          <span class="pill pill-success">Uso interno</span>
+          <span class="pill pill-warn">4 Módulos</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="goTo('modulo1')">Começar agora →</button>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>Links e acessos principais</h2>
+      <p>Abaixo os três sistemas que você vai usar no dia a dia. Guarde esses endereços.</p>
+
+      <a class="link-card" href="https://tgameajuda.com/adm/cliente_web/index.php#logins" target="_blank">
+        <span class="lc-icon">📋</span>
+        <div>
+          <div class="lc-title">Controle Interno de Cadastros</div>
+          <div class="lc-url">tgameajuda.com/adm/cliente_web/index.php#logins</div>
+          <div class="lc-desc">Painel interno com a listagem de logins e cadastros do sistema.</div>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://tga.qloudme.com.br/" target="_blank">
+        <span class="lc-icon">🔐</span>
+        <div>
+          <div class="lc-title">Painel QLoudMe — Controle de Usuários e Acessos</div>
+          <div class="lc-url">tga.qloudme.com.br</div>
+          <div class="lc-desc">Controle total de usuários, reset de senha, desativação de contas, sessões ativas e servidores.</div>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://monitoramento.qloudme.com.br/welcome.htm" target="_blank">
+        <span class="lc-icon">📡</span>
+        <div>
+          <div class="lc-title">Monitoramento em Tempo Real</div>
+          <div class="lc-url">monitoramento.qloudme.com.br</div>
+          <div class="lc-desc">Exibe todos os sensores de status dos servidores. Se algum serviço parar, aparece aqui imediatamente.</div>
+        </div>
+      </a>
+
+      <hr class="divider" />
+
+      <h2>O que você vai aprender</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <h3>Módulo 1</h3>
+          <p>Gerenciar usuários: consultar, resetar senha e desativar cadastros.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>Módulo 2</h3>
+          <p>Reiniciar os serviços Windows do servidor principal TGA.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🖥️</div>
+          <h3>Módulo 3</h3>
+          <p>Monitorar sessões TSPlus, atuar em travamentos e limpar perfis.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗄️</div>
+          <h3>Módulo 4</h3>
+          <p>Navegar pelo Data Center, acessar servidores TGA e checar auditoria.</p>
+        </div>
+      </div>
+
+      <div class="nav-bottom">
+        <span></span>
+        <button class="btn btn-primary" onclick="goTo('modulo1')">Módulo 1 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         MÓDULO 1 — Controle de Usuários
+    ════════════════════════════════════ -->
+    <section class="section" id="sec-modulo1">
+      <div class="tag-row">
+        <span class="pill pill-accent">Módulo 1</span>
+        <span class="pill pill-success">Usuários</span>
+      </div>
+      <h1>Controle de Usuários</h1>
+      <p class="subtitle">Como consultar, redefinir senhas e desativar cadastros no painel QLoudMe.</p>
+
+      <h2>Acessando o painel</h2>
+      <p>
+        Acesse <a href="https://tga.qloudme.com.br/" target="_blank">tga.qloudme.com.br</a> e vá até a seção
+        <strong>Usuários</strong>. Nela você visualiza todos os cadastros ativos e inativos do sistema.
+      </p>
+
+      <h2>Informações disponíveis na listagem</h2>
+      <p>A tabela exibe as seguintes colunas para cada usuário:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>O que mostra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Username</strong></td><td>Login do usuário no sistema</td></tr>
+            <tr><td><strong>Nome Completo</strong></td><td>Nome cadastrado</td></tr>
+            <tr><td><strong>Cliente</strong></td><td>Empresa / cliente vinculado</td></tr>
+            <tr><td><strong>Email</strong></td><td>E-mail de contato</td></tr>
+            <tr><td><strong>OU</strong></td><td>Unidade organizacional</td></tr>
+            <tr><td><strong>Status</strong></td><td>Ativo ou inativo</td></tr>
+            <tr><td><strong>Data Criação</strong></td><td>Quando o cadastro foi criado</td></tr>
+            <tr><td><strong>Data Desativação</strong></td><td>Quando foi desativado (se aplicável)</td></tr>
+            <tr><td><strong>Ações</strong></td><td>Botões de reset de senha e desativação</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Ações disponíveis</h2>
+
+      <h3>
+        <span class="action-badge ab-blue">🔑 Botão da Chave — Resetar Senha</span>
+      </h3>
+      <p>
+        Clique no ícone de <strong>chave</strong> ao lado do usuário para redefinir a senha.
+        Você pode usar a <strong>senha padrão</strong> do sistema ou escolher uma
+        <strong>senha personalizada</strong> para aquele usuário.
+      </p>
+
+      <h3>
+        <span class="action-badge ab-red">✖ Botão X Vermelho — Desativar Cadastro</span>
+      </h3>
+      <p>
+        Clique no <strong>X vermelho</strong> para <em>inativar</em> o cadastro do usuário.
+        O usuário perde o acesso imediatamente, mas o registro permanece no sistema para consulta.
+      </p>
+
+      <div class="callout warn">
+        <span class="ci">⚠️</span>
+        <p>Desativar um cadastro é diferente de excluir. O histórico fica registrado e o acesso pode ser reativado se necessário. Confirme sempre antes de clicar no X.</p>
+      </div>
+
+      <div class="callout info">
+        <span class="ci">💡</span>
+        <p>Para localizar um usuário rapidamente, use o campo de busca no topo da listagem e pesquise pelo username ou nome do cliente.</p>
+      </div>
+
+      <!-- Quiz 1 -->
+      <div class="quiz">
+        <h3>✅ Teste rápido — Módulo 1</h3>
+        <p style="color:var(--muted);font-size:.87rem;margin-bottom:.9rem">
+          Qual botão você usa para redefinir a senha de um usuário?
+        </p>
+        <div class="quiz-options">
+          <label class="quiz-option" onclick="answer(this,'m1',false)">
+            <input type="radio" name="q-m1" /> O botão X vermelho
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m1',true)">
+            <input type="radio" name="q-m1" /> ✓ O botão da chave
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m1',false)">
+            <input type="radio" name="q-m1" /> O botão de auditoria
+          </label>
+        </div>
+        <div class="quiz-feedback" id="fb-m1"></div>
+      </div>
+
+      <div class="nav-bottom">
+        <button class="btn btn-ghost" onclick="goTo('inicio')">← Início</button>
+        <button class="btn btn-primary" onclick="goTo('modulo2')">Módulo 2 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         MÓDULO 2 — Serviços Windows
+    ════════════════════════════════════ -->
+    <section class="section" id="sec-modulo2">
+      <div class="tag-row">
+        <span class="pill pill-accent">Módulo 2</span>
+        <span class="pill pill-warn">Serviços</span>
+      </div>
+      <h1>Serviços Windows</h1>
+      <p class="subtitle">Como reiniciar os serviços do servidor principal TGA pelo painel QLoudMe.</p>
+
+      <h2>Onde fica?</h2>
+      <p>
+        No painel <a href="https://tga.qloudme.com.br/" target="_blank">tga.qloudme.com.br</a>,
+        acesse a seção <strong>Serviços Windows</strong>.
+        É nessa área que você reinicia os serviços do servidor principal quando necessário.
+      </p>
+
+      <h2>Serviços disponíveis</h2>
+      <p>Os quatro serviços principais que você vai gerenciar são:</p>
+
+      <div class="server-grid">
+        <div class="server-card">
+          <div class="sc-name">TGA — Server API WEB</div>
+          <div class="sc-desc">Responsável pela comunicação via API do sistema web.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">TGA — Server Cloud</div>
+          <div class="sc-desc">Serviço principal da nuvem TGA.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">TGA — Server Integrador PDV</div>
+          <div class="sc-desc">Integração com sistemas de ponto de venda.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">TGA — Server WhatsApp</div>
+          <div class="sc-desc">Serviço de comunicação via WhatsApp.</div>
+        </div>
+      </div>
+
+      <h2>Quando reiniciar?</h2>
+      <p>
+        Reinicie um serviço quando o cliente relatar que aquela funcionalidade específica
+        parou de responder. Por exemplo: se o WhatsApp parou de enviar mensagens, reinicie
+        o <strong>TGA — Server WhatsApp</strong>.
+      </p>
+
+      <div class="callout danger">
+        <span class="ci">🚨</span>
+        <p>
+          Reiniciar um serviço interrompe brevemente a funcionalidade para todos os usuários.
+          Evite fazer isso em horário de pico sem necessidade. Verifique primeiro o site de
+          monitoramento para confirmar que o serviço realmente está com problema.
+        </p>
+      </div>
+
+      <h2>Passo a passo para reiniciar</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>Confirme o problema</h3>
+            <p>Acesse o monitoramento em <a href="https://monitoramento.qloudme.com.br/welcome.htm" target="_blank">monitoramento.qloudme.com.br</a> e verifique qual serviço está com sinal de erro.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>Acesse Serviços Windows</h3>
+            <p>No painel QLoudMe, clique em <strong>Serviços Windows</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>Reinicie o serviço correto</h3>
+            <p>Localize o serviço que está com problema e clique em <strong>Reiniciar</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num"></div>
+          <div class="step-body">
+            <h3>Verifique o monitoramento</h3>
+            <p>Aguarde alguns segundos e confira se o sensor voltou ao verde no painel de monitoramento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout success">
+        <span class="ci">✅</span>
+        <p>Se o sensor voltar ao verde e o cliente confirmar que funcionou, o atendimento está encerrado para esse caso.</p>
+      </div>
+
+      <!-- Quiz 2 -->
+      <div class="quiz">
+        <h3>✅ Teste rápido — Módulo 2</h3>
+        <p style="color:var(--muted);font-size:.87rem;margin-bottom:.9rem">
+          O cliente relata que o envio de mensagens pelo WhatsApp parou de funcionar.
+          Qual serviço você reinicia?
+        </p>
+        <div class="quiz-options">
+          <label class="quiz-option" onclick="answer(this,'m2',false)">
+            <input type="radio" name="q-m2" /> TGA — Server Cloud
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m2',false)">
+            <input type="radio" name="q-m2" /> TGA — Server API WEB
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m2',true)">
+            <input type="radio" name="q-m2" /> ✓ TGA — Server WhatsApp
+          </label>
+        </div>
+        <div class="quiz-feedback" id="fb-m2"></div>
+      </div>
+
+      <div class="nav-bottom">
+        <button class="btn btn-ghost" onclick="goTo('modulo1')">← Módulo 1</button>
+        <button class="btn btn-primary" onclick="goTo('modulo3')">Módulo 3 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         MÓDULO 3 — Sessões & Perfis
+    ════════════════════════════════════ -->
+    <section class="section" id="sec-modulo3">
+      <div class="tag-row">
+        <span class="pill pill-accent">Módulo 3</span>
+        <span class="pill pill-success">Sessões</span>
+      </div>
+      <h1>Usuários Conectados e Limpeza de Perfil</h1>
+      <p class="subtitle">Monitore sessões TSPlus, aja em travamentos e limpe perfis corrompidos.</p>
+
+      <h2>Usuários Conectados — Monitor de Sessões TSPlus</h2>
+      <p>
+        Na seção <strong>Usuários Conectados</strong> do painel QLoudMe, você acessa o
+        <strong>Monitor de Sessões TSPlus</strong>. Nele é possível:
+      </p>
+      <ul>
+        <li>Ver o <strong>status de cada farm</strong> (online / offline)</li>
+        <li>Ver a <strong>quantidade de clientes</strong> conectados em cada farm</li>
+        <li>Buscar em qual servidor um cliente específico está pesquisando — basta digitar o <strong>código do cliente</strong> no campo de busca</li>
+      </ul>
+
+      <h2>Ações disponíveis em cada sessão</h2>
+      <p>
+        Clicando em <strong>Detalhes da Farm</strong> e depois em <strong>Ações</strong>,
+        você tem três opções para cada sessão ativa:
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ação</th>
+              <th>O que faz</th>
+              <th>Quando usar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="action-badge ab-blue">👁 Visualizar Tela</span></td>
+              <td>Abre a visualização da tela do cliente em tempo real</td>
+              <td>Para ver o que o cliente está vendo e ajudar remotamente</td>
+            </tr>
+            <tr>
+              <td><span class="action-badge ab-yellow">🔌 Desconectar Acesso</span></td>
+              <td>Desconecta a sessão do usuário</td>
+              <td>Quando o cliente está travado mas a sessão ainda existe</td>
+            </tr>
+            <tr>
+              <td><span class="action-badge ab-red">✖ Encerrar Sessão</span></td>
+              <td>Finaliza a sessão completamente</td>
+              <td>Muito usada quando o usuário trava e fica com <strong>tela preta</strong> ao tentar logar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <span class="ci">⚠️</span>
+        <p>
+          <strong>Tela preta ao logar</strong> é um dos problemas mais comuns. A solução é
+          encerrar a sessão ativa do usuário nessa tela — ele conseguirá logar normalmente
+          em seguida.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>Limpeza de Perfil de Usuário</h2>
+      <p>
+        A seção <strong>Limpeza de Perfil de Usuário</strong> é usada em casos específicos:
+        quando o usuário <em>perde a base de dados configurada</em> e precisa ficar
+        adicionando novamente toda vez que faz login.
+      </p>
+
+      <div class="callout info">
+        <span class="ci">💡</span>
+        <p>
+          Esse recurso é usado <strong>raramente</strong>. Só acione quando o cliente
+          relatar que as configurações somem a cada novo login. Limpar o perfil força
+          a recriação do perfil do usuário no servidor, resolvendo a perda de base.
+        </p>
+      </div>
+
+      <!-- Quiz 3 -->
+      <div class="quiz">
+        <h3>✅ Teste rápido — Módulo 3</h3>
+        <p style="color:var(--muted);font-size:.87rem;margin-bottom:.9rem">
+          Um cliente liga dizendo que ao tentar logar aparece apenas uma tela preta.
+          Qual a ação correta?
+        </p>
+        <div class="quiz-options">
+          <label class="quiz-option" onclick="answer(this,'m3',false)">
+            <input type="radio" name="q-m3" /> Reiniciar o serviço TGA — Server Cloud
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m3',false)">
+            <input type="radio" name="q-m3" /> Fazer limpeza de perfil do usuário
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m3',true)">
+            <input type="radio" name="q-m3" /> ✓ Encerrar a sessão ativa do usuário no Monitor TSPlus
+          </label>
+        </div>
+        <div class="quiz-feedback" id="fb-m3"></div>
+      </div>
+
+      <div class="nav-bottom">
+        <button class="btn btn-ghost" onclick="goTo('modulo2')">← Módulo 2</button>
+        <button class="btn btn-primary" onclick="goTo('modulo4')">Módulo 4 →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         MÓDULO 4 — Servidores & Auditoria
+    ════════════════════════════════════ -->
+    <section class="section" id="sec-modulo4">
+      <div class="tag-row">
+        <span class="pill pill-accent">Módulo 4</span>
+        <span class="pill pill-danger">Servidores</span>
+      </div>
+      <h1>Servidores TGA, Data Center e Auditoria</h1>
+      <p class="subtitle">Entenda a infraestrutura, acesse servidores de clientes e consulte o histórico de logins.</p>
+
+      <h2>Acesso Servidor TGA (Mobile / FV)</h2>
+      <p>
+        A seção <strong>Acesso Servidor TGA</strong> lista todos os clientes que utilizam o
+        <strong>tgafv</strong> (mobile on-smart / cliente web). Cada cliente com o mobile ativado
+        possui um <strong>servidor exclusivo</strong> dedicado a ele e ao serviço do FV.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Botão</th>
+              <th>O que faz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="action-badge ab-blue">🔗 Conectar</span></td>
+              <td>Acessa diretamente o servidor do cliente para fazer ajustes, reiniciar serviço e similares</td>
+            </tr>
+            <tr>
+              <td><span class="action-badge ab-yellow">📡 Testar</span></td>
+              <td>Testa a comunicação com o servidor. Se der erro, o mobile do cliente também vai parar de funcionar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout danger">
+        <span class="ci">🚨</span>
+        <p>
+          Se o botão <strong>Testar</strong> retornar erro, o aplicativo mobile do cliente
+          para de funcionar imediatamente. Use o botão <strong>Conectar</strong> para
+          acessar o servidor e investigar o problema.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>Data Center QLoudMe</h2>
+      <p>
+        A seção <strong>Data Center QLoudMe</strong> lista todos os servidores da infraestrutura.
+        Conheça cada um:
+      </p>
+
+      <div class="server-grid">
+        <div class="server-card">
+          <div class="sc-name">FIREBIRD &amp; BASECLIENTE</div>
+          <div class="sc-desc">Armazena todos os bancos de dados e configurações dos clientes.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">FARM 1 a 9</div>
+          <div class="sc-desc">Servidores da farm onde os usuários se conectam via TSPlus.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">RONDONÓPOLIS — REVENDA</div>
+          <div class="sc-desc">Servidor dedicado à revenda de Rondonópolis.</div>
+        </div>
+        <div class="server-card">
+          <div class="sc-name">GATEWAY TSPLUS SECURITY</div>
+          <div class="sc-desc">Firewall responsável por liberar clientes bloqueados por IP ou acesso indevido.</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="ci">🔥</span>
+        <p>
+          Se um cliente relatar que está sendo <strong>bloqueado ao tentar acessar</strong>,
+          verifique o <strong>Gateway TSPlus Security</strong> para liberar o IP dele.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>Auditoria de Logins</h2>
+      <p>
+        Na seção <strong>Auditoria de Logins</strong> você consegue consultar a
+        <strong>última vez que um usuário fez login</strong> pelo sistema web.
+        É útil para:
+      </p>
+      <ul>
+        <li>Confirmar se um usuário de fato acessou o sistema recentemente</li>
+        <li>Investigar reclamações de acesso negado ou conta inativa</li>
+        <li>Verificar se o usuário não está usando o acesso há tempo</li>
+      </ul>
+
+      <!-- Quiz 4 -->
+      <div class="quiz">
+        <h3>✅ Teste rápido — Módulo 4</h3>
+        <p style="color:var(--muted);font-size:.87rem;margin-bottom:.9rem">
+          Um cliente reclama que o aplicativo mobile dele parou de funcionar.
+          Qual o primeiro passo para investigar?
+        </p>
+        <div class="quiz-options">
+          <label class="quiz-option" onclick="answer(this,'m4',false)">
+            <input type="radio" name="q-m4" /> Reiniciar o TGA — Server WhatsApp
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m4',true)">
+            <input type="radio" name="q-m4" /> ✓ Usar o botão Testar no servidor do cliente em Acesso Servidor TGA
+          </label>
+          <label class="quiz-option" onclick="answer(this,'m4',false)">
+            <input type="radio" name="q-m4" /> Verificar a Auditoria de Logins
+          </label>
+        </div>
+        <div class="quiz-feedback" id="fb-m4"></div>
+      </div>
+
+      <div class="nav-bottom">
+        <button class="btn btn-ghost" onclick="goTo('modulo3')">← Módulo 3</button>
+        <button class="btn btn-primary" onclick="goTo('conclusao')">Conclusão →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         CONCLUSÃO
+    ════════════════════════════════════ -->
+    <section class="section" id="sec-conclusao">
+      <div style="text-align:center;padding:1.5rem 0 2rem">
+        <div style="font-size:3.5rem;margin-bottom:.75rem">🏁</div>
+        <h1>Tutorial Concluído!</h1>
+        <p class="subtitle" style="margin:0 auto;max-width:500px">
+          Parabéns! Agora você conhece as principais ferramentas e fluxos de suporte
+          do sistema TGA e da infraestrutura QLoudMe.
+        </p>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>Resumo do que você aprendeu</h2>
+      <ul>
+        <li><strong>Módulo 1:</strong> Consultar usuários, resetar senhas com o botão da chave e desativar cadastros com o X vermelho.</li>
+        <li><strong>Módulo 2:</strong> Identificar e reiniciar os 4 serviços Windows do servidor TGA quando necessário.</li>
+        <li><strong>Módulo 3:</strong> Monitorar sessões TSPlus, encerrar sessões travadas (tela preta) e limpar perfis corrompidos.</li>
+        <li><strong>Módulo 4:</strong> Navegar pelo Data Center, testar/conectar nos servidores TGA e consultar auditoria de logins.</li>
+      </ul>
+
+      <hr class="divider" />
+
+      <h2>Links de acesso rápido</h2>
+
+      <a class="link-card" href="https://tgameajuda.com/adm/cliente_web/index.php#logins" target="_blank">
+        <span class="lc-icon">📋</span>
+        <div>
+          <div class="lc-title">Controle Interno de Cadastros</div>
+          <div class="lc-url">tgameajuda.com/adm/cliente_web/index.php#logins</div>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://tga.qloudme.com.br/" target="_blank">
+        <span class="lc-icon">🔐</span>
+        <div>
+          <div class="lc-title">Painel QLoudMe</div>
+          <div class="lc-url">tga.qloudme.com.br</div>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://monitoramento.qloudme.com.br/welcome.htm" target="_blank">
+        <span class="lc-icon">📡</span>
+        <div>
+          <div class="lc-title">Monitoramento em Tempo Real</div>
+          <div class="lc-url">monitoramento.qloudme.com.br</div>
+        </div>
+      </a>
+
+      <div class="callout success">
+        <span class="ci">🎉</span>
+        <p>
+          Você está pronto para começar! Em caso de dúvida, releia o módulo específico ou
+          peça ajuda a um colega mais experiente.
+        </p>
+      </div>
+
+      <div class="nav-bottom">
+        <button class="btn btn-ghost" onclick="goTo('modulo4')">← Módulo 4</button>
+        <button class="btn btn-primary" onclick="goTo('inicio')">🏠 Recomeçar</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const PAGES   = ['inicio','modulo1','modulo2','modulo3','modulo4','conclusao'];
+  const MODULES = ['modulo1','modulo2','modulo3','modulo4','conclusao'];
+  const visited = new Set();
+
+  function goTo(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+
+    const sec = document.getElementById('sec-' + id);
+    if (sec) { sec.classList.add('active'); window.scrollTo(0, 0); }
+
+    document.querySelectorAll('.nav-item').forEach(b => {
+      const txt = b.textContent.toLowerCase();
+      if (id === 'inicio' && txt.includes('apresenta')) b.classList.add('active');
+      else if (id !== 'inicio' && txt.includes(id.replace('modulo','').trim())) {
+        // fallback por número
+      }
+      if (b.getAttribute('onclick') === `goTo('${id}')`) b.classList.add('active');
+    });
+
+    visited.add(id);
+    updateProgress();
+
+    if (window.innerWidth <= 700)
+      document.getElementById('sidebar').classList.remove('open');
+  }
+
+  function updateProgress() {
+    const done = MODULES.filter(m => visited.has(m)).length;
+    const pct  = Math.round((done / MODULES.length) * 100);
+    const circ = document.getElementById('prog-circle');
+    const total = 97.4;
+    circ.style.strokeDashoffset = total - (total * pct / 100);
+    document.getElementById('prog-pct').textContent = pct + '%';
+  }
+
+  function answer(el, id, correct) {
+    const container = el.closest('.quiz');
+    container.querySelectorAll('.quiz-option').forEach(o => {
+      o.classList.remove('correct', 'incorrect');
+      o.style.pointerEvents = 'none';
+    });
+    el.classList.add(correct ? 'correct' : 'incorrect');
+
+    const fb = document.getElementById('fb-' + id);
+    fb.classList.add('show', correct ? 'ok' : 'err');
+    fb.textContent = correct
+      ? '✅ Correto! Boa resposta.'
+      : '❌ Não exatamente. Releia a seção acima e tente de novo.';
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>
