@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- ===== CONFIGURAÇÕES BÁSICAS DA PÁGINA ===== -->
+    <meta charset="UTF-8"> <!-- Define codificação de caracteres para português -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura viewport para responsividade -->
+    <meta name="description" content="Valide gratuitamente a linha digitável ou o código de barras de boletos de cobrança e documentos de arrecadação: confira os dígitos verificadores, banco, valor e vencimento, direto no navegador."> <!-- Descrição usada por buscadores e ao compartilhar o link -->
+    <title>Validador de Boleto</title> <!-- Título da página na aba do navegador -->
+
+
+    <!-- ===== IMPORTAÇÕES DE RECURSOS EXTERNOS ===== -->
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Ícone da página (favicon) -->
+    <link rel="icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/webp">
+
+    <!-- ===== GOOGLE ANALYTICS ===== -->
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <!-- Configuração do Google Analytics para rastreamento -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- ===== CONTAINER PRINCIPAL ===== -->
+    <div class="container">
+
+        <!-- ===== CABEÇALHO ===== -->
+        <div class="header">
+            <h1>Validador de Boleto</h1>
+            <p class="subtitle">Analise e valide linha digitável e código de barras de boletos de cobrança e documentos de arrecadação.</p>
+        </div>
+
+        <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+        <div class="content">
+
+            <!-- ===== AVISO DE PRIVACIDADE ===== -->
+            <div class="privacy-note">
+                <i class="fas fa-lock"></i>
+                Toda a análise acontece localmente no seu navegador. Nada do que você cola aqui é enviado a servidores.
+            </div>
+
+            <!-- ===== CARD DE ENTRADA ===== -->
+            <div class="card" id="input-card">
+                <h2 class="card-title"><i class="fas fa-barcode"></i> Linha digitável ou código de barras</h2>
+
+                <div class="form-group">
+                    <label for="codigo-input">Cole a linha digitável ou código de barras do boleto</label>
+                    <textarea id="codigo-input" rows="2" placeholder="Ex.: 34191.23454 67890.123457 67890.123457 8 07000000123456"></textarea>
+                    <div id="contador" class="contador" aria-live="polite">0 dígitos</div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" id="btn-colar">
+                        <i class="fas fa-paste"></i> Colar
+                    </button>
+                    <button type="button" class="btn btn-danger" id="btn-limpar">
+                        <i class="fas fa-trash-alt"></i> Limpar
+                    </button>
+                </div>
+                <button type="button" class="btn-link" id="btn-exemplo">Usar um exemplo válido</button>
+            </div>
+
+            <!-- ===== CARD DE RESULTADO ===== -->
+            <div class="card result-container" id="resultado-card">
+                <h2 class="card-title"><i class="fas fa-chart-bar"></i> Resultado</h2>
+
+                <div id="status-banner" class="status-banner status-vazio" aria-live="polite"></div>
+
+                <div class="result-grid" id="resumo-grid"></div>
+
+                <button type="button" class="btn-small" id="btn-detalhes" hidden aria-expanded="false" aria-controls="detalhes-panel">
+                    Ver detalhes técnicos
+                </button>
+
+                <div id="detalhes-panel" hidden>
+                    <h3 class="detalhes-subtitulo">Estrutura</h3>
+                    <div class="campo-blocks" id="campo-blocks"></div>
+
+                    <h3 class="detalhes-subtitulo">Validação</h3>
+                    <div class="table-scroll">
+                        <table class="diagnostic-table" id="diagnostic-table"></table>
+                    </div>
+
+                    <h3 class="detalhes-subtitulo">Campo livre</h3>
+                    <div id="campo-livre-info"></div>
+
+                    <div id="codigo-barras-row"></div>
+                </div>
+            </div>
+
+            <!-- ===== AVISO DE SEGURANÇA (sempre visível) ===== -->
+            <div class="security-banner">
+                <i class="fas fa-shield-alt"></i>
+                <span>Este validador confere apenas a <strong>estrutura e os dígitos verificadores</strong> do código.
+                Um código matematicamente válido não garante que a cobrança seja legítima — confirme sempre o
+                beneficiário no aplicativo do seu banco antes de pagar.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER FORA DO CONTAINER ===== -->
+    <div class="footer">
+        <div class="visitor-counter">
+            <img src="https://hits.sh/tgameajuda.com/diversos/validaboleto.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"
+                 alt="Contador de visitas">
+        </div>
+    </div>
+
+    <!-- ===== TOAST DE FEEDBACK (copiar etc.) ===== -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- ===== SCRIPTS DA APLICAÇÃO (ordem importa: dados -> boleto -> script) ===== -->
+    <script src="./js/dados.js"></script>
+    <script src="./js/boleto.js"></script>
+    <script src="./js/script.js"></script>
+
+
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8542251167876044" data-ad-slot="7622049777"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article"
+        data-ad-format="fluid" data-ad-client="ca-pub-8542251167876044" data-ad-slot="3993704063"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-8542251167876044" data-ad-slot="1743677769"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-8542251167876044"
+        data-ad-slot="9430596092"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</body>
+</html>
