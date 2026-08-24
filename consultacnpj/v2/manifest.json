@@ -1,0 +1,20 @@
+{
+  "name": "Consulta CNPJ tgameaajuda",
+  "short_name": "CNPJ tgameaajuda",
+  "description": "Consulte dados cadastrais de empresas brasileiras por CNPJ, com dados da BrasilAPI.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "background_color": "#f4f8fc",
+  "theme_color": "#007ced",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

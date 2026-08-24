@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta CNPJ tgameaajuda — Dados cadastrais de empresas</title>
+<meta name="description" content="Consulte dados cadastrais de empresas brasileiras por CNPJ, com dados da BrasilAPI: razão social, situação, endereço, atividades e sócios.">
+<meta name="theme-color" content="#007ced">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="apple-touch-icon" href="icons/icon.svg">
+<link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+<header class="app-header">
+  <div class="container header-row">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">🏢</span>
+      <div>
+        <div class="brand-title-row">
+          <h1>Consulta CNPJ tgameaajuda</h1>
+          <h6 class="brand-tagline">com BrasilAPI</h6>
+        </div>
+        <p class="subtitle">Consulte dados cadastrais de empresas brasileiras.</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" id="themeToggle" class="icon-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro/automático">
+        <span id="themeIcon" aria-hidden="true">🌓</span>
+        <span id="themeLabel" class="theme-label">Automático</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="container">
+
+  <!-- FORMULÁRIO DE CONSULTA -->
+  <section class="search-card" aria-labelledby="searchTitle">
+    <h2 id="searchTitle" class="sr-only">Consultar CNPJ</h2>
+    <form id="searchForm" class="search-form" autocomplete="off" novalidate>
+      <div class="field-group">
+        <label for="cnpjInput">CNPJ</label>
+        <div class="input-row">
+          <input
+            type="text"
+            id="cnpjInput"
+            name="cnpj"
+            inputmode="text"
+            placeholder="00.000.000/0000-00"
+            aria-describedby="cnpjHint cnpjError"
+            maxlength="18"
+            autofocus
+          >
+          <button type="submit" id="searchBtn" class="btn btn-primary">
+            <span id="searchBtnLabel">Consultar</span>
+          </button>
+        </div>
+        <p id="cnpjHint" class="field-hint">Digite com ou sem pontuação. Colar do documento também funciona.</p>
+        <p id="cnpjError" class="field-error" role="alert" hidden></p>
+      </div>
+    </form>
+  </section>
+
+  <div class="layout">
+
+    <!-- COLUNA PRINCIPAL: RESULTADO -->
+    <div class="main-col">
+
+      <!-- LIVE REGION para leitores de tela -->
+      <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+
+      <!-- ESTADO: VAZIO (antes da 1ª consulta) -->
+      <section id="emptyState" class="state-panel">
+        <div class="state-icon" aria-hidden="true">🔎</div>
+        <h2>Digite um CNPJ para consultar os dados da empresa.</h2>
+        <p class="state-text">Os dados exibidos vêm da BrasilAPI, um agregador público de fontes oficiais.</p>
+      </section>
+
+      <!-- ESTADO: CARREGANDO -->
+      <section id="loadingState" class="state-panel state-panel--loading" hidden aria-busy="true">
+        <div class="skeleton-block" aria-hidden="true">
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-line skeleton-line--title"></div>
+          <div class="skeleton skeleton-line skeleton-line--sub"></div>
+          <div class="skeleton-grid">
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </div>
+        <p id="loadingText" class="state-text">Consultando empresa...</p>
+      </section>
+
+      <!-- ESTADO: ERRO -->
+      <section id="errorState" class="state-panel state-panel--error" hidden role="alert">
+        <div class="state-icon" aria-hidden="true">⚠️</div>
+        <h2 id="errorTitle">Não foi possível consultar o CNPJ.</h2>
+        <p id="errorText" class="state-text"></p>
+        <div class="state-actions">
+          <button type="button" id="retryBtn" class="btn btn-secondary">Tentar novamente</button>
+          <button type="button" id="clearErrorBtn" class="btn btn-ghost">Limpar consulta</button>
+        </div>
+      </section>
+
+      <!-- ESTADO: NÃO ENCONTRADO -->
+      <section id="notFoundState" class="state-panel" hidden>
+        <div class="state-icon" aria-hidden="true">🗂️</div>
+        <h2>Nenhuma empresa encontrada para este CNPJ.</h2>
+        <p class="state-text">Confira se o número foi digitado corretamente.</p>
+        <div class="state-actions">
+          <button type="button" id="tryAgainBtn" class="btn btn-secondary">Conferir número</button>
+          <button type="button" id="clearNotFoundBtn" class="btn btn-ghost">Limpar consulta</button>
+        </div>
+      </section>
+
+      <!-- RESULTADO -->
+      <section id="resultState" class="result-wrap" hidden aria-labelledby="resultCompanyName">
+
+        <!-- Cabeçalho exibido só no PDF/impressão (a ficha não é um documento oficial) -->
+        <div class="print-header" aria-hidden="true">
+          <strong>Consulta CNPJ tgameaajuda</strong> — Ficha de consulta (BrasilAPI)
+          <span id="printGeneratedAt"></span>
+        </div>
+
+        <!-- Faixa de identificação -->
+        <div class="result-header card">
+          <div class="result-header-main">
+            <span id="statusBadge" class="status-badge">—</span>
+            <h2 id="resultCompanyName">—</h2>
+            <p id="resultFantasyName" class="fantasy-name"></p>
+            <p id="resultCnpjLine" class="cnpj-line"></p>
+          </div>
+          <div class="result-header-actions">
+            <button type="button" id="favoriteBtn" class="icon-btn" title="Favoritar" aria-label="Favoritar" aria-pressed="false">
+              <span aria-hidden="true">☆</span>
+            </button>
+            <button type="button" id="generatePdfBtn" class="btn btn-secondary" title="Gera um PDF da ficha usando a impressão do navegador">
+              📄 Gerar PDF
+            </button>
+            <div class="dropdown">
+              <button type="button" id="quickActionsBtn" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false">
+                Ações rápidas ▾
+              </button>
+              <div id="quickActionsMenu" class="dropdown-menu" hidden role="menu">
+                <button type="button" class="dropdown-item" data-action="copy-cnpj" role="menuitem">Copiar CNPJ</button>
+                <button type="button" class="dropdown-item" data-action="copy-razao" role="menuitem">Copiar razão social</button>
+                <button type="button" class="dropdown-item" data-action="copy-fantasia" role="menuitem">Copiar nome fantasia</button>
+                <button type="button" class="dropdown-item" data-action="copy-endereco" role="menuitem">Copiar endereço</button>
+                <button type="button" class="dropdown-item" data-action="copy-completo" role="menuitem">Copiar dados completos</button>
+                <button type="button" class="dropdown-item" data-action="copy-json" role="menuitem">Copiar JSON</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Abas -->
+        <div class="tabs" role="tablist" aria-label="Visualização do resultado">
+          <button class="tab-btn is-active" id="tabBtnCards" role="tab" aria-selected="true" aria-controls="tabCards">Resumo</button>
+          <button class="tab-btn" id="tabBtnJson" role="tab" aria-selected="false" aria-controls="tabJson">JSON</button>
+          <button class="tab-btn" id="tabBtnTech" role="tab" aria-selected="false" aria-controls="tabTech">Detalhes técnicos</button>
+        </div>
+
+        <!-- PAINEL: CARDS -->
+        <div id="tabCards" class="tab-panel" role="tabpanel" aria-labelledby="tabBtnCards">
+          <div class="cards-grid">
+
+            <article class="card" id="cardEmpresa">
+              <h3 class="card-title">Empresa</h3>
+              <dl class="def-list" id="dlEmpresa"></dl>
+            </article>
+
+            <article class="card" id="cardSituacao">
+              <h3 class="card-title">Situação cadastral</h3>
+              <dl class="def-list" id="dlSituacao"></dl>
+            </article>
+
+            <article class="card" id="cardEndereco">
+              <div class="card-title-row">
+                <h3 class="card-title">Endereço</h3>
+                <div class="card-title-actions">
+                  <button type="button" id="copyAddressBtn" class="link-btn">Copiar endereço</button>
+                  <a id="mapLink" class="link-btn" href="#" target="_blank" rel="noopener noreferrer">Abrir no mapa</a>
+                </div>
+              </div>
+              <dl class="def-list" id="dlEndereco"></dl>
+            </article>
+
+            <article class="card" id="cardContato">
+              <h3 class="card-title">Contato</h3>
+              <dl class="def-list" id="dlContato"></dl>
+            </article>
+
+            <article class="card card-span" id="cardAtividades">
+              <h3 class="card-title">Atividades</h3>
+              <div class="activity-main">
+                <span class="activity-label">Atividade principal</span>
+                <p id="cnaePrincipal" class="activity-item"></p>
+              </div>
+              <details id="cnaeSecundariosWrap" class="activity-details">
+                <summary>Atividades secundárias (<span id="cnaeSecundariosCount">0</span>)</summary>
+                <ul id="cnaeSecundariosList" class="activity-list"></ul>
+              </details>
+            </article>
+
+            <article class="card card-span" id="cardSocios">
+              <h3 class="card-title">Sócios e administradores</h3>
+              <div id="sociosWrap" class="table-scroll">
+                <table class="data-table" id="sociosTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Qualificação</th>
+                      <th scope="col">Faixa etária</th>
+                      <th scope="col">Entrada</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sociosTableBody"></tbody>
+                </table>
+              </div>
+              <p id="sociosEmpty" class="state-text-inline" hidden>Nenhum sócio informado no retorno da API.</p>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- PAINEL: JSON -->
+        <div id="tabJson" class="tab-panel" role="tabpanel" aria-labelledby="tabBtnJson" hidden>
+          <div class="card">
+            <div class="card-title-row">
+              <h3 class="card-title">Resposta original (JSON)</h3>
+              <button type="button" id="copyJsonBtn" class="link-btn">Copiar JSON</button>
+            </div>
+            <pre id="jsonOutput" class="json-output"></pre>
+          </div>
+        </div>
+
+        <!-- PAINEL: TÉCNICO -->
+        <div id="tabTech" class="tab-panel" role="tabpanel" aria-labelledby="tabBtnTech" hidden>
+          <div class="card">
+            <h3 class="card-title">Detalhes técnicos da requisição</h3>
+            <dl class="def-list" id="dlTech"></dl>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          Os dados exibidos são fornecidos pela BrasilAPI, um projeto público que agrega fontes oficiais.
+          Esta ferramenta não substitui validações oficiais nem análises fiscais ou jurídicas.
+        </p>
+      </section>
+
+    </div>
+
+    <!-- COLUNA LATERAL: HISTÓRICO E FAVORITOS -->
+    <aside class="side-col">
+
+      <section class="card side-card" aria-labelledby="favTitle">
+        <div class="card-title-row">
+          <h2 id="favTitle" class="card-title">Favoritos</h2>
+        </div>
+        <ul id="favoritesList" class="side-list"></ul>
+        <p id="favoritesEmpty" class="state-text-inline">Nenhuma empresa favoritada ainda.</p>
+      </section>
+
+      <section class="card side-card" aria-labelledby="recentTitle">
+        <div class="card-title-row">
+          <h2 id="recentTitle" class="card-title">Recentes</h2>
+          <button type="button" id="clearHistoryBtn" class="link-btn">Limpar histórico</button>
+        </div>
+        <ul id="recentList" class="side-list"></ul>
+        <p id="recentEmpty" class="state-text-inline">Nenhuma consulta recente.</p>
+      </section>
+
+    </aside>
+
+  </div>
+</main>
+
+<footer class="app-footer">
+  <div class="container">
+    <p>Dados fornecidos pela <a href="https://brasilapi.com.br" target="_blank" rel="noopener noreferrer">BrasilAPI</a>. Ferramenta informativa — não substitui fontes oficiais.</p>
+    <p class="visit-counter">
+      <a href="https://hits.sh/consulta-cnpj-tgameaajuda.souza-dev/visitas/" target="_blank" rel="noopener noreferrer" title="Ver estatísticas de visitas">
+        <img
+          src="https://hits.sh/consulta-cnpj-tgameaajuda.souza-dev/visitas.svg?style=flat-square&label=visitas&color=007ced&labelColor=1a2233"
+          alt="Contador de visitas desta página"
+          width="104"
+          height="20"
+          loading="lazy"
+        >
+      </a>
+    </p>
+  </div>
+</footer>
+
+<!-- TOASTS -->
+<div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<script src="js/utils.js?v=4"></script>
+<script src="js/storage.js?v=4"></script>
+<script src="js/api.js?v=4"></script>
+<script src="js/ui.js?v=4"></script>
+<script src="js/app.js?v=4"></script>
+</body>
+</html>

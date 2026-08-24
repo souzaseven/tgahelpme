@@ -1,0 +1,16 @@
+{
+  "name": "consulta-cnpj",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ferramenta de consulta de CNPJ (BrasilAPI), com proxy próprio para evitar bloqueio de CORS e reduzir o risco de atingir o limite de requisições (429) da API pública.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

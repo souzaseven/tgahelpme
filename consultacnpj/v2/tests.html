@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testes — Consulta CNPJ tgameaajuda</title>
+<meta name="description" content="Testes automatizados das funções de normalização, validação e formatação usadas pela Consulta CNPJ.">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<style>
+  :root {
+    --bg: #f4f8fc; --card: #fff; --border: #dde6f0; --text: #101b2d; --muted: #55647a;
+    --brand: #007ced; --ok-bg: #e5f7ee; --ok-text: #12805a; --fail-bg: #fdedf0; --fail-text: #b8283f;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0a1220; --card: #111b2d; --border: #253750; --text: #eef3fa; --muted: #a3b1c7;
+      --ok-bg: #10321f; --ok-text: #66e0a2; --fail-bg: #391520; --fail-text: #ff92a6; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); padding: 24px 16px 60px; }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p.lead { color: var(--muted); font-size: 13.5px; margin: 0 0 20px; }
+  .summary {
+    display: flex; gap: 12px; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--card); margin-bottom: 18px; font-weight: 700; font-size: 14px; align-items: center;
+  }
+  .summary.all-pass { border-color: var(--ok-text); }
+  .summary.has-fail { border-color: var(--fail-text); }
+  .group { margin-bottom: 18px; }
+  .group h2 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);
+    margin: 0 0 8px; font-weight: 700;
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li {
+    display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--card); margin-bottom: 6px; font-size: 13px;
+  }
+  .badge {
+    flex-shrink: 0; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .badge.pass { background: var(--ok-bg); color: var(--ok-text); }
+  .badge.fail { background: var(--fail-bg); color: var(--fail-text); }
+  .desc { flex: 1; }
+  .error { display: block; color: var(--fail-text); font-family: Consolas, monospace; font-size: 11.5px; margin-top: 3px; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Testes — Consulta CNPJ tgameaajuda</h1>
+  <p class="lead">
+    Testes automatizados das funções puras de <code>js/utils.js</code> (normalização, validação e
+    formatação). Não faz nenhuma chamada de rede — roda inteiramente offline, abrindo este arquivo
+    direto no navegador. <a href="index.html">← Voltar para a ferramenta</a>
+  </p>
+
+  <div id="summary" class="summary">Rodando testes...</div>
+
+  <div id="results"></div>
+</div>
+
+<script src="js/utils.js"></script>
+<script>
+(() => {
+  const results = [];
+  let currentGroup = "";
+  const groups = [];
+
+  function group(name) {
+    currentGroup = name;
+    groups.push(name);
+  }
+
+  function test(desc, fn) {
+    try {
+      fn();
+      results.push({ group: currentGroup, desc, pass: true });
+    } catch (err) {
+      results.push({ group: currentGroup, desc, pass: false, error: err.message });
+    }
+  }
+
+  function assertEqual(actual, expected, label) {
+    const a = JSON.stringify(actual);
+    const e = JSON.stringify(expected);
+    if (a !== e) {
+      throw new Error(`${label ? label + " — " : ""}esperado ${e}, obtido ${a}`);
+    }
+  }
+
+  function assertMatch(actual, regex, label) {
+    if (!regex.test(String(actual))) {
+      throw new Error(`${label ? label + " — " : ""}"${actual}" não bate com ${regex}`);
+    }
+  }
+
+  // ---------- normalizeCnpj ----------
+  group("normalizeCnpj");
+  test("remove pontuação e barra", () => {
+    assertEqual(Utils.normalizeCnpj("12.345.678/0001-90"), "12345678000190");
+  });
+  test("remove espaços nas pontas", () => {
+    assertEqual(Utils.normalizeCnpj("  12345678000190  "), "12345678000190");
+  });
+  test("já normalizado permanece igual", () => {
+    assertEqual(Utils.normalizeCnpj("12345678000190"), "12345678000190");
+  });
+  test("string vazia retorna vazio", () => {
+    assertEqual(Utils.normalizeCnpj(""), "");
+  });
+  test("null retorna vazio (não quebra)", () => {
+    assertEqual(Utils.normalizeCnpj(null), "");
+  });
+  test("converte letras para maiúsculas (prep. formato alfanumérico)", () => {
+    assertEqual(Utils.normalizeCnpj("ab12cd"), "AB12CD");
+  });
+
+  // ---------- isPlausibleCnpj ----------
+  group("isPlausibleCnpj");
+  test("14 dígitos com máscara é plausível", () => {
+    assertEqual(Utils.isPlausibleCnpj("12.345.678/0001-90"), true);
+  });
+  test("menos de 14 caracteres não é plausível", () => {
+    assertEqual(Utils.isPlausibleCnpj("123"), false);
+  });
+  test("mais de 14 caracteres não é plausível", () => {
+    assertEqual(Utils.isPlausibleCnpj("1234567800019099"), false);
+  });
+  test("14 caracteres alfanuméricos (formato futuro) é plausível", () => {
+    assertEqual(Utils.isPlausibleCnpj("12AB345601DE35"), true);
+  });
+
+  // ---------- extractCnpjFromText ----------
+  group("extractCnpjFromText");
+  test("extrai CNPJ mascarado de dentro de uma frase", () => {
+    assertEqual(Utils.extractCnpjFromText("CNPJ: 12.345.678/0001-90 - Empresa X"), "12345678000190");
+  });
+  test("extrai CNPJ sem máscara de dentro de uma frase", () => {
+    assertEqual(Utils.extractCnpjFromText("Segue 19131243000197 obrigado"), "19131243000197");
+  });
+  test("texto sem nenhum CNPJ retorna null", () => {
+    assertEqual(Utils.extractCnpjFromText("nenhum numero aqui"), null);
+  });
+  test("texto vazio ou nulo retorna null (não quebra)", () => {
+    assertEqual(Utils.extractCnpjFromText(""), null);
+    assertEqual(Utils.extractCnpjFromText(null), null);
+  });
+
+  // ---------- isValidCnpjChecksum ----------
+  group("isValidCnpjChecksum");
+  test("CNPJ real válido (Banco do Brasil)", () => {
+    assertEqual(Utils.isValidCnpjChecksum("00000000000191"), true);
+  });
+  test("CNPJ real válido (Open Knowledge Brasil)", () => {
+    assertEqual(Utils.isValidCnpjChecksum("19131243000197"), true);
+  });
+  test("todos os dígitos iguais é inválido", () => {
+    assertEqual(Utils.isValidCnpjChecksum("11111111111111"), false);
+  });
+  test("dígito verificador errado é inválido", () => {
+    assertEqual(Utils.isValidCnpjChecksum("00000000000192"), false);
+  });
+  test("formato alfanumérico não é validado aqui (passa para a API decidir)", () => {
+    assertEqual(Utils.isValidCnpjChecksum("12AB345601DE35"), true);
+  });
+
+  // ---------- maskCnpj ----------
+  group("maskCnpj");
+  test("aplica máscara completa", () => {
+    assertEqual(Utils.maskCnpj("12345678000190"), "12.345.678/0001-90");
+  });
+  test("aplica máscara parcial enquanto digita", () => {
+    assertEqual(Utils.maskCnpj("12345"), "12.345");
+  });
+  test("ignora caracteres além do 14º", () => {
+    assertEqual(Utils.maskCnpj("123456780001909999"), "12.345.678/0001-90");
+  });
+
+  // ---------- formatCnpjDisplay ----------
+  group("formatCnpjDisplay");
+  test("formata CNPJ normalizado de 14 dígitos", () => {
+    assertEqual(Utils.formatCnpjDisplay("12345678000190"), "12.345.678/0001-90");
+  });
+  test("valor vazio retorna travessão", () => {
+    assertEqual(Utils.formatCnpjDisplay(""), "—");
+    assertEqual(Utils.formatCnpjDisplay(null), "—");
+  });
+  test("comprimento diferente de 14 retorna como veio", () => {
+    assertEqual(Utils.formatCnpjDisplay("123"), "123");
+  });
+
+  // ---------- formatCurrencyBRL ----------
+  group("formatCurrencyBRL");
+  test("null/undefined/vazio retornam null", () => {
+    assertEqual(Utils.formatCurrencyBRL(null), null);
+    assertEqual(Utils.formatCurrencyBRL(undefined), null);
+    assertEqual(Utils.formatCurrencyBRL(""), null);
+  });
+  test("zero formata como R$ 0,00", () => {
+    assertMatch(Utils.formatCurrencyBRL(0), /^R\$\s*0,00$/);
+  });
+  test("valor grande formata com separador de milhar", () => {
+    assertMatch(Utils.formatCurrencyBRL(120000000000), /120\.000\.000\.000,00/);
+  });
+  test("valor não numérico retorna null (não quebra)", () => {
+    assertEqual(Utils.formatCurrencyBRL("abc"), null);
+  });
+
+  // ---------- formatDateBR ----------
+  group("formatDateBR");
+  test("converte YYYY-MM-DD para DD/MM/YYYY", () => {
+    assertEqual(Utils.formatDateBR("2023-05-17"), "17/05/2023");
+  });
+  test("aceita data com hora embutida (ISO completo)", () => {
+    assertEqual(Utils.formatDateBR("2023-05-17T00:00:00Z"), "17/05/2023");
+  });
+  test("null retorna null", () => {
+    assertEqual(Utils.formatDateBR(null), null);
+  });
+  test("texto que não é data retorna como veio (não quebra)", () => {
+    assertEqual(Utils.formatDateBR("não é data"), "não é data");
+  });
+
+  // ---------- formatPhone ----------
+  group("formatPhone");
+  test("formata telefone fixo (8 dígitos + DDD)", () => {
+    assertEqual(Utils.formatPhone(null, "6134939002"), "(61) 3493-9002");
+  });
+  test("formata celular (9 dígitos + DDD)", () => {
+    assertEqual(Utils.formatPhone(null, "61999714633"), "(61) 99971-4633");
+  });
+  test("número vazio ou nulo retorna null", () => {
+    assertEqual(Utils.formatPhone(null, null), null);
+    assertEqual(Utils.formatPhone(null, ""), null);
+  });
+
+  // ---------- formatCep ----------
+  group("formatCep");
+  test("formata CEP de 8 dígitos", () => {
+    assertEqual(Utils.formatCep("70040912"), "70040-912");
+  });
+  test("CEP já formatado permanece formatado", () => {
+    assertEqual(Utils.formatCep("70040-912"), "70040-912");
+  });
+  test("null retorna null", () => {
+    assertEqual(Utils.formatCep(null), null);
+  });
+
+  // ---------- orNotInformed ----------
+  group("orNotInformed");
+  test("null e undefined viram 'Não informado'", () => {
+    assertEqual(Utils.orNotInformed(null), "Não informado");
+    assertEqual(Utils.orNotInformed(undefined), "Não informado");
+  });
+  test("string vazia ou só espaços vira 'Não informado'", () => {
+    assertEqual(Utils.orNotInformed(""), "Não informado");
+    assertEqual(Utils.orNotInformed("   "), "Não informado");
+  });
+  test("valor preenchido é mantido", () => {
+    assertEqual(Utils.orNotInformed("Ativa"), "Ativa");
+  });
+  test("número zero é mantido (não é tratado como vazio)", () => {
+    assertEqual(Utils.orNotInformed(0), 0);
+  });
+
+  // ---------- isEmptyValue ----------
+  group("isEmptyValue");
+  test("null, undefined e string vazia são vazios", () => {
+    assertEqual(Utils.isEmptyValue(null), true);
+    assertEqual(Utils.isEmptyValue(undefined), true);
+    assertEqual(Utils.isEmptyValue(""), true);
+    assertEqual(Utils.isEmptyValue("   "), true);
+  });
+  test("zero e false não são tratados como vazios", () => {
+    assertEqual(Utils.isEmptyValue(0), false);
+    assertEqual(Utils.isEmptyValue(false), false);
+  });
+  test("texto preenchido não é vazio", () => {
+    assertEqual(Utils.isEmptyValue("x"), false);
+  });
+
+  // ---------- escapeHtml ----------
+  group("escapeHtml");
+  test("escapa tags", () => {
+    assertEqual(Utils.escapeHtml("<script>"), "&lt;script&gt;");
+  });
+  test("escapa aspas e & comercial", () => {
+    assertEqual(Utils.escapeHtml(`a "b" & 'c'`), "a &quot;b&quot; &amp; &#039;c&#039;");
+  });
+  test("null retorna string vazia (não quebra)", () => {
+    assertEqual(Utils.escapeHtml(null), "");
+  });
+
+  // ---------- RENDERIZAÇÃO ----------
+  const passed = results.filter((r) => r.pass).length;
+  const failed = results.length - passed;
+
+  const summaryEl = document.getElementById("summary");
+  summaryEl.className = "summary " + (failed === 0 ? "all-pass" : "has-fail");
+  summaryEl.textContent = failed === 0
+    ? `✅ Todos os ${results.length} testes passaram.`
+    : `❌ ${failed} de ${results.length} testes falharam.`;
+
+  const resultsEl = document.getElementById("results");
+  groups.forEach((groupName) => {
+    const groupResults = results.filter((r) => r.group === groupName);
+    const section = document.createElement("div");
+    section.className = "group";
+    const h2 = document.createElement("h2");
+    const groupFailed = groupResults.filter((r) => !r.pass).length;
+    h2.textContent = `${groupName} (${groupResults.length - groupFailed}/${groupResults.length})`;
+    section.appendChild(h2);
+
+    const ul = document.createElement("ul");
+    groupResults.forEach((r) => {
+      const li = document.createElement("li");
+      const badge = document.createElement("span");
+      badge.className = "badge " + (r.pass ? "pass" : "fail");
+      badge.textContent = r.pass ? "ok" : "falhou";
+      const descWrap = document.createElement("span");
+      descWrap.className = "desc";
+      descWrap.textContent = r.desc;
+      if (!r.pass) {
+        const errEl = document.createElement("span");
+        errEl.className = "error";
+        errEl.textContent = r.error;
+        descWrap.appendChild(errEl);
+      }
+      li.appendChild(badge);
+      li.appendChild(descWrap);
+      ul.appendChild(li);
+    });
+    section.appendChild(ul);
+    resultsEl.appendChild(section);
+  });
+
+  console.log(`Testes: ${passed} passaram, ${failed} falharam, de ${results.length} no total.`);
+})();
+</script>
+</body>
+</html>
