@@ -1,0 +1,682 @@
+/* ==========================================================
+   style.css — Central de Configuração de Boletos via API
+   Paleta neutra corporativa; cada banco recebe apenas um
+   detalhe discreto (--accent) definido em ui.js/bancos.js.
+   ========================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --bg-elevado: #ffffff;
+  --borda: #e2e6ec;
+  --texto: #1c2430;
+  --texto-suave: #5b6472;
+  --texto-fraco: #8890a0;
+  --primaria: #2450c7;
+  --primaria-escura: #1a3a99;
+  --ok: #1a8a53;
+  --ok-bg: #e7f6ee;
+  --alerta: #b3730a;
+  --alerta-bg: #fdf2df;
+  --info: #2450c7;
+  --info-bg: #e8eefc;
+  --pendente: #6b7280;
+  --pendente-bg: #eceef1;
+  --critico: #b3261e;
+  --critico-bg: #fce9e8;
+  --sidebar-bg: #111827;
+  --sidebar-texto: #cbd3e1;
+  --sidebar-texto-fraco: #7c8798;
+  --raio: 10px;
+  --sombra: 0 1px 2px rgba(20, 25, 35, 0.06), 0 4px 14px rgba(20, 25, 35, 0.05);
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Inter", Roboto, Arial, sans-serif;
+}
+
+/* Modo escuro — segue a preferência do sistema por padrão; o botão de
+   alternância na sidebar grava a escolha explícita em data-theme
+   (ver js/tema.js), que sempre tem prioridade sobre o sistema. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10141c;
+    --bg-elevado: #181e29;
+    --borda: #2a3140;
+    --texto: #e7eaf0;
+    --texto-suave: #a7b0c0;
+    --texto-fraco: #7c8798;
+    --primaria: #6a95f5;
+    --primaria-escura: #9ab4f7;
+    --ok: #4fd394;
+    --ok-bg: rgba(79, 211, 148, 0.14);
+    --alerta: #e0a544;
+    --alerta-bg: rgba(224, 165, 68, 0.14);
+    --info: #6a95f5;
+    --info-bg: rgba(106, 149, 245, 0.16);
+    --pendente: #9aa3b2;
+    --pendente-bg: rgba(154, 163, 178, 0.14);
+    --critico: #ef7069;
+    --critico-bg: rgba(239, 112, 105, 0.14);
+    --sombra: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 0, 0, 0.28);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10141c;
+  --bg-elevado: #181e29;
+  --borda: #2a3140;
+  --texto: #e7eaf0;
+  --texto-suave: #a7b0c0;
+  --texto-fraco: #7c8798;
+  --primaria: #6a95f5;
+  --primaria-escura: #9ab4f7;
+  --ok: #4fd394;
+  --ok-bg: rgba(79, 211, 148, 0.14);
+  --alerta: #e0a544;
+  --alerta-bg: rgba(224, 165, 68, 0.14);
+  --info: #6a95f5;
+  --info-bg: rgba(106, 149, 245, 0.16);
+  --pendente: #9aa3b2;
+  --pendente-bg: rgba(154, 163, 178, 0.14);
+  --critico: #ef7069;
+  --critico-bg: rgba(239, 112, 105, 0.14);
+  --sombra: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--texto);
+  font-size: 15px;
+  line-height: 1.5;
+}
+a { color: inherit; text-decoration: none; }
+code {
+  background: var(--borda);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+input[type="search"], input[type="text"] {
+  font-family: inherit;
+  font-size: 15px;
+}
+
+/* ---------- LAYOUT ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-texto);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar__marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 18px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sidebar__icone {
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--primaria);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.sidebar__marca strong { display: block; font-size: 14px; color: #fff; }
+.sidebar__marca small { color: var(--sidebar-texto-fraco); font-size: 12px; }
+
+.botao-tema {
+  margin-left: auto;
+  width: 32px; height: 32px;
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  color: var(--sidebar-texto);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+}
+.botao-tema:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.botao-tema:focus-visible { outline: 2px solid var(--primaria); outline-offset: 1px; }
+
+.menu-lateral { flex: 1; }
+.menu-lateral ul { list-style: none; margin: 0 0 6px; padding: 0; }
+.menu-lateral__grupo {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sidebar-texto-fraco);
+  margin: 18px 4px 6px;
+}
+.menu-lateral a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 13.5px;
+  color: var(--sidebar-texto);
+}
+.menu-lateral a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.menu-lateral a.ativo { background: var(--primaria); color: #fff; }
+
+.sidebar__rodape {
+  font-size: 11px;
+  color: var(--sidebar-texto-fraco);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.conteudo { padding: 28px 36px 60px; max-width: 1180px; }
+
+/* ---------- DASHBOARD ---------- */
+.dashboard__header h1 { margin: 0 0 4px; font-size: 26px; }
+.subtitulo { color: var(--texto-suave); margin: 0 0 22px; max-width: 640px; }
+
+.busca-global { position: relative; margin-bottom: 26px; }
+.busca-global input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--bg-elevado);
+  box-shadow: var(--sombra);
+}
+.busca-global input:focus { outline: 2px solid var(--primaria); outline-offset: 1px; }
+
+.resultado-busca {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  background: var(--bg-elevado);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 20;
+}
+.resultado-busca--aberto { display: block; }
+.resultado-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--borda);
+}
+.resultado-item:last-child { border-bottom: none; }
+.resultado-item:hover { background: var(--bg); }
+.resultado-item__tipo {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--primaria); font-weight: 600;
+}
+.resultado-item__titulo { font-size: 14px; font-weight: 600; }
+.resultado-item__contexto { font-size: 12.5px; color: var(--texto-suave); }
+.resultado-vazio { padding: 14px 16px; color: var(--texto-suave); font-size: 13.5px; }
+
+.mini-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.mini-card {
+  background: var(--bg-elevado);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 16px 18px;
+  box-shadow: var(--sombra);
+}
+.mini-card__numero { display: block; font-size: 24px; font-weight: 700; }
+.mini-card__label { font-size: 12.5px; color: var(--texto-suave); }
+
+.secao-titulo { font-size: 17px; margin: 0 0 14px; }
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card-banco {
+  background: var(--bg-elevado);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--accent, var(--primaria));
+  border-radius: var(--raio);
+  padding: 18px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card-banco:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(20,25,35,0.09); }
+.card-banco__top { display: flex; justify-content: space-between; align-items: center; }
+.card-banco__marca {
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  background: var(--accent, var(--primaria));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+}
+.card-banco__nome { margin: 6px 0 0; font-size: 17px; }
+.card-banco__codigo { margin: 0; font-size: 12px; color: var(--texto-fraco); }
+.card-banco__resumo { margin: 4px 0 0; font-size: 13px; color: var(--texto-suave); flex: 1; }
+.card-banco__cta { font-size: 13px; font-weight: 600; color: var(--primaria); margin-top: 6px; }
+
+/* ---------- BADGES / TAGS ---------- */
+.badge {
+  font-size: 11px; font-weight: 600;
+  padding: 3px 9px; border-radius: 999px;
+  white-space: nowrap;
+}
+.badge--ok { background: var(--ok-bg); color: var(--ok); }
+.badge--pending { background: var(--pendente-bg); color: var(--pendente); }
+.badge--info { background: var(--info-bg); color: var(--info); }
+
+.tag {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 600;
+  padding: 2px 8px; border-radius: 999px;
+  margin-right: 4px;
+}
+.tag--req { background: var(--critico-bg); color: var(--critico); }
+.tag--opt { background: var(--pendente-bg); color: var(--pendente); }
+.tag--critico { background: var(--alerta-bg); color: var(--alerta); }
+.tag--inferido { background: var(--info-bg); color: var(--info); cursor: help; }
+.tag--futuro { background: var(--pendente-bg); color: var(--pendente); font-size: 9.5px; margin-left: 4px; }
+
+/* ---------- PÁGINA DE BANCO ---------- */
+.pagina-banco__header {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 22px;
+}
+.voltar { font-size: 13px; color: var(--primaria); font-weight: 600; }
+.pagina-banco__titulo { display: flex; align-items: center; gap: 12px; }
+.pagina-banco__titulo h1 { margin: 0; font-size: 25px; border-left: 5px solid var(--accent, var(--primaria)); padding-left: 12px; }
+
+.painel-secao {
+  background: var(--bg-elevado);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  box-shadow: var(--sombra);
+}
+.painel-secao h2 { margin: 0 0 14px; font-size: 17px; }
+.painel-texto { color: var(--texto-suave); font-size: 14px; }
+.painel-resumo { font-size: 14px; }
+.painel-versao { font-size: 12px; color: var(--texto-fraco); margin-top: 10px; }
+
+.grid-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.grid-info > div { display: flex; flex-direction: column; gap: 2px; }
+.grid-info__label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--texto-fraco); }
+
+.alerta {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.alerta--warn { background: var(--alerta-bg); color: var(--alerta); }
+.alerta--info { background: var(--info-bg); color: var(--info); }
+
+.aviso-inline { font-size: 12.5px; color: var(--texto-fraco); margin: 0 0 10px; }
+.aviso-inline--origem { background: var(--alerta-bg); color: var(--alerta); padding: 8px 12px; border-radius: 8px; }
+
+.aba-portador { margin-bottom: 22px; }
+.aba-portador:last-child { margin-bottom: 0; }
+.aba-portador h4 { margin: 0 0 8px; font-size: 14.5px; color: var(--primaria-escura); }
+
+.campos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.campo-card {
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: var(--bg);
+}
+.campo-card--destaque { border-color: var(--accent, var(--primaria)); background: var(--bg-elevado); box-shadow: 0 0 0 1px var(--accent, var(--primaria)) inset; }
+.campo-card--api { background: var(--bg-elevado); }
+.campo-card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.campo-card__nome { font-weight: 700; font-size: 13.5px; }
+.campo-card__tipo { font-size: 11px; color: var(--texto-fraco); }
+.campo-card__tags { margin: 6px 0; }
+.campo-card__desc { font-size: 12.5px; color: var(--texto-suave); margin: 4px 0 0; }
+.campo-card__exemplo { font-size: 12px; margin-top: 6px; }
+.campo__opcoes { font-size: 12px; margin-top: 8px; color: var(--texto-suave); }
+
+.variaveis-box { margin-top: 14px; font-size: 13px; }
+.variaveis-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.variavel-tag { background: var(--bg); border: 1px solid var(--borda); border-radius: 6px; padding: 4px 8px; font-size: 12px; }
+
+.lista-check, .lista-checklist, .lista-passos { padding-left: 0; list-style: none; margin: 0; }
+.lista-check li, .lista-checklist li { padding: 7px 0; border-bottom: 1px dashed var(--borda); font-size: 13.5px; }
+.lista-check li:last-child, .lista-checklist li:last-child { border-bottom: none; }
+.lista-checklist label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.lista-passos { counter-reset: passo; }
+.lista-passos li { padding: 8px 0; border-bottom: 1px dashed var(--borda); font-size: 13.5px; }
+.lista-passos li:last-child { border-bottom: none; }
+
+.status-teste { font-size: 12px; font-weight: 600; }
+.status-teste--nao_testado { color: var(--alerta); }
+
+.erro-card {
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--critico);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+}
+.erro-card:last-child { margin-bottom: 0; }
+.erro-card h4 { margin: 0 0 8px; }
+.erro-card ul { margin: 4px 0 0; padding-left: 18px; }
+
+/* ---------- MOCKUP DO PORTADOR (réplica visual da tela real do ERP) ----------
+   Cores propositalmente FIXAS (não usam os tokens --bg/--texto do painel):
+   é para parecer com um print do sistema real, como referência visual,
+   e não com o resto do painel em modo claro/escuro. */
+.erp-mock {
+  border: 1px solid #9db8d6;
+  border-radius: 6px;
+  /* SEM overflow:hidden de propósito — cortaria as dicas (tooltips)
+     que aparecem acima dos campos do topo. Os cantos arredondados do
+     card são garantidos pelo border-radius do próprio elemento; só a
+     titlebar (primeiro filho, com fundo próprio) precisa arredondar
+     os cantos de cima manualmente, ver abaixo. */
+  font-size: 12.5px;
+  color: #26313f;
+  box-shadow: var(--sombra);
+  margin-bottom: 14px;
+  background: #eef1f5;
+}
+.erp-mock__titlebar {
+  background: linear-gradient(#eaf2fb, #cfe2f5);
+  border-bottom: 1px solid #9db8d6;
+  border-radius: 5px 5px 0 0;
+  padding: 7px 10px;
+  display: flex; align-items: center; gap: 7px;
+  font-weight: 700;
+  color: #16406e;
+}
+.erp-mock__titlebar-icone {
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  background: #2f6fb5;
+  color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+}
+.erp-mock__toolbar {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  background: #dbe6f2;
+  border-bottom: 1px solid #b9cbdf;
+  padding: 6px 8px;
+}
+.erp-mock__tbtn {
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 11.5px;
+  color: #29415c;
+}
+.erp-mock__tbtn--ativo { background: #2f6fb5; color: #fff; }
+.erp-mock__body { padding: 14px 16px; }
+.erp-mock__ident { font-weight: 700; font-size: 12px; color: #333; border-bottom: 1px solid #c8cfd8; padding-bottom: 5px; margin-bottom: 12px; }
+.erp-mock__linha-topo { display: flex; gap: 16px; align-items: flex-end; margin-bottom: 12px; flex-wrap: wrap; }
+
+.erp-mock__campo { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: #333; font-weight: 600; }
+.erp-mock__campo label { display: flex; align-items: center; gap: 4px; }
+.erp-mock__campo input, .erp-mock__campo select, .erp-mock__busca-inline input {
+  font: inherit;
+  font-weight: 400;
+  border: 1px solid #a9b4c2;
+  border-radius: 2px;
+  padding: 4px 6px;
+  background: #fff;
+  color: #333;
+  min-width: 60px;
+}
+.erp-mock__campo input:focus, .erp-mock__campo select:focus, .erp-mock__busca-inline input:focus {
+  outline: 2px solid #2f6fb5; outline-offset: 0;
+  border-color: #2f6fb5;
+}
+/* Único campo que fica desabilitado de propósito: na tela real o
+   sistema também não deixa editar o sequencial de remessa. */
+.erp-mock__campo input:disabled { background: #e7eaee; color: #8590a0; cursor: not-allowed; }
+
+.erp-mock__chk {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11.5px; font-weight: 600; color: #333;
+  margin-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+}
+.erp-mock__chk:last-child { margin-bottom: 0; }
+/* Checkbox real (funcional), só visualmente escondido — o quadrado
+   azul logo abaixo é quem aparece; clicar em qualquer parte do
+   rótulo alterna o estado normalmente (comportamento nativo de
+   <label> envolvendo um <input>). */
+.erp-mock__chk-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px; height: 1px;
+  pointer-events: none;
+}
+.erp-mock__chk-icone {
+  width: 13px; height: 13px;
+  border-radius: 2px;
+  border: 1px solid #8fa3ba;
+  background: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; line-height: 1;
+  flex: 0 0 auto;
+}
+.erp-mock__chk-input:checked + .erp-mock__chk-icone {
+  background: #2f6fb5;
+  border-color: #2f6fb5;
+  color: #fff;
+}
+/* Checkmark desenhado em CSS puro (borda em L rotacionada) em vez de
+   caractere/emoji — assim nunca depende de fonte de emoji do sistema
+   e nunca vira um "quadrado vazio" em nenhum ambiente. */
+.erp-mock__chk-input:checked + .erp-mock__chk-icone::after {
+  content: "";
+  width: 7px; height: 4px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+  margin-top: -2px;
+}
+.erp-mock__chk-input:focus-visible + .erp-mock__chk-icone { outline: 2px solid #2f6fb5; outline-offset: 2px; }
+.erp-mock__chk input[type="text"] { font-weight: 400; }
+
+.erp-mock__tabs { display: flex; gap: 2px; border-bottom: 1px solid #a9b4c2; margin-bottom: 14px; flex-wrap: wrap; }
+.erp-mock__tab {
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #4a5a6c;
+  background: #dde5ee;
+  border: 1px solid #a9b4c2;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+}
+.erp-mock__tab:hover { background: #e8eef5; }
+.erp-mock__tab--ativa { background: #fff; color: #16406e; position: relative; top: 1px; }
+
+.erp-mock__grid { display: flex; flex-direction: column; gap: 12px; }
+.erp-mock__linha { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+.erp-mock__duas-colunas { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.erp-mock__grupo { border: 1px solid #c3cbd6; border-radius: 4px; padding: 8px 10px; background: #f6f8fa; }
+.erp-mock__grupo-titulo { font-size: 10.5px; font-weight: 700; color: #333; margin-bottom: 6px; }
+.erp-mock__radios { display: flex; gap: 10px; font-size: 11px; align-items: center; font-weight: 400; }
+.erp-mock__radios label { display: flex; align-items: center; gap: 3px; }
+
+.erp-mock__busca-inline { display: flex; gap: 4px; align-items: center; }
+.erp-mock__busca-btn {
+  width: 23px; height: 23px;
+  border: 1px solid #a9b4c2; border-radius: 3px;
+  background: #e7edf3; color: #2f6fb5;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
+}
+.erp-mock__busca-btn--alerta { color: #b3730a; }
+
+.erp-mock__nota { font-size: 10.5px; color: #6b7280; font-style: italic; margin: 4px 0 0; }
+.erp-mock__aviso-campo {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #b3730a;
+  background: #fdf2df;
+  border: 1px solid #ecd6a8;
+  border-radius: 4px;
+  padding: 4px 7px;
+  margin: 7px 0 0;
+}
+.erp-mock__destaque { outline: 2px solid var(--accent, #2450c7); outline-offset: 2px; border-radius: 3px; }
+.erp-mock__campo--chave label { color: #16406e; }
+.erp-mock__tag-chave, .erp-mock__tag-inferido {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  padding: 1px 6px; border-radius: 999px;
+  background: #fff2d6; color: #8a5b00;
+}
+.erp-mock__tag-inferido { background: #dbe9ff; color: #1a4a9e; cursor: help; }
+
+.erp-mock__textarea-linhas { display: flex; flex-direction: column; gap: 5px; }
+.erp-mock__textarea-linhas input { width: 100%; }
+.erp-mock__lista-variaveis { font-size: 10.5px; color: #333; line-height: 1.7; font-weight: 400; }
+.erp-mock__lista-variaveis code { background: #e2e8f0; padding: 0 4px; }
+
+/* Sub-aba "Caminho Arquivo" / "Chave API" — troca sozinha conforme o
+   Tipo Cobrança API escolhido (ver js/portador-mockup.js). Só um
+   "rótulo de aba" decorativo (não clicável) acima de uma caixa. */
+.erp-mock__subtab-header { margin: 2px 0 0; }
+.erp-mock__subtab {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 11px; font-weight: 700;
+  color: #16406e;
+  background: #fff;
+  border: 1px solid #a9b4c2;
+  border-bottom: 2px solid #2f6fb5;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  top: 1px;
+}
+.erp-mock__subtab-body {
+  border: 1px solid #c3cbd6;
+  border-radius: 0 6px 6px 6px;
+  padding: 12px 14px 14px;
+  background: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.erp-mock__cert-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid #a9b4c2; border-radius: 4px;
+  background: #e7edf3; color: #2f6fb5;
+  padding: 6px 10px;
+  font: inherit; font-size: 11px; font-weight: 600;
+}
+.erp-mock__cert-btn:hover { background: #dbe6f2; }
+
+/* Dica ao passar o mouse sobre o rótulo de um campo — explica pra que
+   ele serve (texto vem de portadorCamposBase, mesma fonte da seção
+   "Ver explicação campo a campo"). Sublinhado pontilhado avisa que
+   tem dica ali antes mesmo de passar o mouse. */
+.erp-mock__dica {
+  border-bottom: 1px dotted #7c8798;
+  cursor: help;
+  position: relative;
+}
+.erp-mock__dica::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 7px);
+  background: #1c2430;
+  color: #f4f6f9;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  width: max-content;
+  max-width: 230px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  z-index: 60;
+}
+.erp-mock__dica::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: calc(100% + 2px);
+  border: 5px solid transparent;
+  border-top-color: #1c2430;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  pointer-events: none;
+  z-index: 60;
+}
+.erp-mock__dica:hover::after,
+.erp-mock__dica:hover::before {
+  opacity: 1;
+  transform: none;
+}
+
+.detalhe-campos { margin-top: 4px; }
+.detalhe-campos > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--primaria);
+  padding: 8px 0;
+}
+.detalhe-campos[open] > summary { margin-bottom: 6px; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; }
+  .conteudo { padding: 20px; }
+  .mini-dashboard { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .mini-dashboard { grid-template-columns: 1fr; }
+  .grid-cards { grid-template-columns: 1fr; }
+}

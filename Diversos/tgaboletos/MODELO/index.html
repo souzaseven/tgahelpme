@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Configuração de Boletos via API</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Aplica o tema salvo ANTES da primeira pintura da página, para não
+    // "piscar" claro e depois trocar para escuro (ou vice-versa).
+    // Sem escolha salva, a página segue a preferência do sistema (CSS).
+    (function () {
+      try {
+        var salvo = localStorage.getItem("central-boletos-tema");
+        if (salvo === "dark" || salvo === "light") {
+          document.documentElement.setAttribute("data-theme", salvo);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar__marca">
+        <span class="sidebar__icone">$</span>
+        <div>
+          <strong>Central de Boletos</strong>
+          <small>Configuração via API</small>
+        </div>
+        <button type="button" id="botao-tema" class="botao-tema" title="Alternar modo claro/escuro" aria-label="Alternar modo claro/escuro"></button>
+      </div>
+
+      <nav class="menu-lateral">
+        <ul>
+          <li><a href="#/">Início</a></li>
+        </ul>
+
+        <p class="menu-lateral__grupo">Bancos</p>
+        <ul id="menu-bancos"></ul>
+
+        <p class="menu-lateral__grupo">Documentação</p>
+        <ul>
+          <li><a href="#/portador">Modelo do Portador</a></li>
+          <li><a href="#/erros">Base de Erros</a></li>
+        </ul>
+
+        <p class="menu-lateral__grupo">Ferramentas</p>
+        <ul>
+          <li><a href="#/" title="Disponível em fase futura (comparador de bancos)">Comparador <span class="tag tag--futuro">em breve</span></a></li>
+          <li><a href="#/" title="Disponível em fase futura (painel administrativo)">Admin <span class="tag tag--futuro">em breve</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar__rodape">
+        Suporte interno · não substitui a documentação oficial de cada banco.
+      </div>
+    </aside>
+
+    <main id="app-root" class="conteudo"></main>
+  </div>
+
+  <script src="js/tema.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/busca.js"></script>
+  <script src="js/portador-mockup.js"></script>
+  <script src="js/bancos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
