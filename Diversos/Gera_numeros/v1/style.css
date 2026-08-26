@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #007ced; /* Fundo azul */
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Usa toda a altura da janela */
+    margin: 0;
+}
+
+h1 {
+    color: black; /* Define a cor do texto como preto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao texto */
+    font-style: italic; /* Torna o texto em itálico */
+}
+
+.container {
+    text-align: center;
+    background: #fff; /* Fundo branco para a área de entrada */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#canvas {
+    border: 1px solid #ddd;
+    max-width: 50vw; /* Ajusta o canvas para caber na tela */
+    max-height: 80vh; /* Ajusta o canvas para caber na tela */
+    background-color: transparent; /* Fundo transparente */
+    display: block;
+    margin-left: 20px; /* Espaço entre o canvas e os campos de entrada */
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007ced;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}

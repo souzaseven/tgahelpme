@@ -1,0 +1,733 @@
+*, *::before, *::after {
+    box-sizing: border-box; /* evita que padding/margin estourem a largura dos elementos */
+}
+
+:root {
+    --blue-900: #0b1f4d;
+    --blue-700: #123a8a;
+    --blue-600: #1c56c9;
+    --blue-100: #eaf2ff;
+    --gray-900: #111827;
+    --gray-600: #4b5563;
+    --gray-400: #9ca3af;
+    --gray-200: #e5e7eb;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    background-color: #007ced; /* Fundo azul */
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Usa ao menos toda a altura da janela, mas permite crescer */
+    margin: 0;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black; /* Define a cor do texto como preto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao texto */
+    font-style: italic; /* Torna o texto em itálico */
+}
+
+.sections-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%; /* largura definida: evita que o flex-shrink dos cards dependa do cálculo de conteúdo intrínseco */
+}
+
+.sections-row > .container {
+    width: auto;
+    flex: 1 1 380px;
+    max-width: 480px;
+    min-width: 0; /* permite encolher abaixo de 380px em telas estreitas, em vez de vazar */
+}
+
+.container {
+    text-align: center;
+    background: #fff; /* Fundo branco para a área de entrada */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 650px; /* reduzido de 800px: menos espaço vazio nas laterais */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-group input[type="color"] {
+    width: 60px;
+    padding: 4px;
+}
+
+#canvas {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: transparent; /* Fundo transparente */
+    display: block;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007ced;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #005bb5;
+}
+
+.btn:disabled {
+    background-color: #9bbfe0;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #007ced;
+    border: 1px solid #007ced;
+}
+
+.btn-secondary:hover {
+    background-color: #eaf5ff;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.icon-lg {
+    width: 24px;
+    height: 24px;
+}
+
+#useGeneratedBtn {
+    margin-bottom: 15px;
+}
+
+/* Gerador de Números */
+.generator-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden; /* recorta os cantos arredondados do header */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px;
+    background: linear-gradient(135deg, var(--blue-900), var(--blue-600));
+    text-align: left;
+}
+
+.card-header h1 {
+    justify-content: flex-start;
+    margin: 0;
+    font-size: 20px;
+    font-style: normal;
+    text-shadow: none;
+    color: #fff;
+}
+
+.header-subtitle {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 24px;
+    text-align: left;
+}
+
+.field-group {
+    width: 100%;
+}
+
+.field-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.field-row .field-group {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.field-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--gray-900);
+}
+
+.field-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--blue-100);
+    color: var(--blue-600);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.field-hint {
+    margin: 2px 0 0;
+    font-size: 12px;
+    font-weight: normal;
+    color: var(--gray-400);
+}
+
+.field-control {
+    position: relative;
+}
+
+.field-control input {
+    width: 100%;
+    padding: 10px 44px 10px 10px;
+    font-size: 16px;
+    border: 1px solid var(--gray-200);
+    border-radius: 5px;
+}
+
+/* Remove as setas nativas do input number: elas colidiam visualmente com o
+   ícone decorativo, deixando o campo com dois controles sobrepostos à direita. */
+.field-control input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.field-control input[type="number"]::-webkit-outer-spin-button,
+.field-control input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.field-decoration {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    color: var(--gray-400);
+    pointer-events: none;
+}
+
+.color-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.color-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.color-hex {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: var(--gray-600);
+}
+
+.chevron {
+    color: var(--gray-400);
+    flex-shrink: 0;
+}
+
+.color-input-hidden {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button-row .btn {
+    flex: 1 1 180px;
+    min-width: 0;
+}
+
+.btn-detailed {
+    justify-content: flex-start;
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.3;
+}
+
+.btn-text small {
+    font-weight: normal;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.card-body .preview-frame {
+    max-width: none;
+    aspect-ratio: auto;
+    height: 260px;
+}
+
+.preview-frame canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Conversor de Imagens */
+.converter-container {
+    justify-content: stretch;
+}
+
+.converter-panel {
+    width: 100%;
+    text-align: left;
+}
+
+.converter-panel .field-group {
+    margin-bottom: 20px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.panel-header h1 {
+    justify-content: flex-start;
+    margin: 0;
+    font-size: 20px;
+    font-style: normal;
+    text-shadow: none;
+    color: var(--gray-900);
+}
+
+.header-subtitle-dark {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--gray-400);
+}
+
+.panel-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--blue-600);
+    color: #fff;
+}
+
+.file-drop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+}
+
+.field-icon-sm {
+    width: 28px;
+    height: 28px;
+}
+
+.file-trigger {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: var(--blue-100);
+    color: var(--blue-600);
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.file-trigger:hover {
+    background: #dcebff;
+}
+
+.file-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--gray-600);
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-success {
+    flex-shrink: 0;
+    color: #1a7a4c;
+}
+
+.file-success[hidden] {
+    display: none; /* alguns navegadores não aplicam [hidden] em SVG por padrão */
+}
+
+.preview-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 16px;
+}
+
+.preview-info-row .preview-frame {
+    flex: 1 1 200px;
+    max-width: none;
+    min-width: 0;
+}
+
+.checkerboard {
+    background-color: #f7f9fb;
+    background-image:
+        linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+        linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-size: 16px 16px;
+}
+
+.info-panel {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    background: var(--blue-100);
+}
+
+.info-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: var(--blue-600);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.info-list {
+    display: grid;
+    row-gap: 10px;
+    margin: 0;
+}
+
+.info-list dt {
+    margin-bottom: 2px;
+    color: var(--gray-400);
+    font-size: 12px;
+}
+
+.info-list dd {
+    margin: 0;
+    color: var(--gray-900);
+    font-size: 14px;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.info-accent {
+    color: #1a7a4c !important;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--blue-600);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.preview-frame {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f7f9fb;
+}
+
+.preview-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.preview-placeholder {
+    color: #999;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+}
+
+.checkbox-group {
+    width: auto;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin: 0;
+}
+
+.triple-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.triple-row > .input-group {
+    flex: 1 1 90px;
+    min-width: 0; /* permite encolher abaixo do conteúdo intrínseco sem forçar quebra de linha */
+    width: auto;
+    margin-bottom: 0;
+}
+
+.triple-row > .btn {
+    flex: 1 1 90px;
+    min-width: 0;
+    width: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 0;
+}
+
+.status-message {
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.status-success {
+    background-color: #e6f7ee;
+    color: #1a7a4c;
+}
+
+.status-error {
+    background-color: #fdecea;
+    color: #c0392b;
+}
+
+.download-results {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    text-align: center;
+}
+
+.download-results li {
+    margin-bottom: 8px;
+}
+
+.download-results a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #007ced;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.download-results a:hover {
+    text-decoration: underline;
+}
+
+.download-error {
+    color: #c0392b;
+}
+
+/* Rodapé */
+.site-footer {
+    text-align: center;
+    color: #eaf4ff;
+    font-size: 13px;
+}
+
+.visit-badge {
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Toast de confirmação */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translate(-50%, 20px);
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 90vw;
+}
+
+.toast-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    .generator-card {
+        padding: 0; /* mantém o header do gerador colado nas bordas do card */
+    }
+
+    .card-header,
+    .card-body {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .card-header h1 {
+        font-size: 18px;
+    }
+}
