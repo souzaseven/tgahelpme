@@ -30,8 +30,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    gap: 20px;
+    padding: clamp(6px, 1.2vh, 20px) clamp(8px, 2vw, 20px);
+    gap: clamp(8px, 1.2vh, 20px);
     background-color: #007ced; /* Fundo azul */
     font-family: Arial, sans-serif;
     min-height: 100vh; /* Usa ao menos toda a altura da janela, mas permite crescer */
@@ -68,7 +68,7 @@ h1 {
     text-align: center;
     background: #fff; /* Fundo branco para a área de entrada */
     border-radius: 10px;
-    padding: 20px;
+    padding: clamp(12px, 1.8vh, 20px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 650px; /* reduzido de 800px: menos espaço vazio nas laterais */
     width: 100%;
@@ -117,14 +117,14 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: clamp(8px, 1.5vh, 10px) 20px;
     font-size: 16px;
     color: #fff;
     background-color: #007ced;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: clamp(6px, 1vh, 10px);
     width: 100%;
 }
 
@@ -159,7 +159,7 @@ h1 {
 }
 
 #useGeneratedBtn {
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 1.8vh, 15px);
 }
 
 /* Gerador de Números */
@@ -174,7 +174,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 22px 24px;
+    padding: clamp(10px, 1.8vh, 22px) clamp(16px, 2.5vw, 24px);
     background: linear-gradient(135deg, var(--blue-900), var(--blue-600));
     text-align: left;
 }
@@ -209,9 +209,9 @@ h1 {
 .card-body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: clamp(8px, 1.2vh, 20px);
     width: 100%;
-    padding: 24px;
+    padding: clamp(12px, 1.8vh, 24px);
     text-align: left;
 }
 
@@ -370,7 +370,7 @@ h1 {
 .card-body .preview-frame {
     max-width: none;
     aspect-ratio: auto;
-    height: 260px;
+    height: clamp(100px, 14vh, 260px);
 }
 
 .preview-frame canvas {
@@ -389,14 +389,14 @@ h1 {
 }
 
 .converter-panel .field-group {
-    margin-bottom: 20px;
+    margin-bottom: clamp(8px, 1.2vh, 20px);
 }
 
 .panel-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 24px;
+    margin-bottom: clamp(10px, 1.5vh, 24px);
 }
 
 .panel-header h1 {
@@ -430,8 +430,8 @@ h1 {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 14px;
-    margin-bottom: 12px;
+    padding: clamp(8px, 1.5vh, 10px) 14px;
+    margin-bottom: clamp(8px, 1.5vh, 12px);
     border: 1px solid var(--gray-200);
     border-radius: 10px;
 }
@@ -488,6 +488,7 @@ h1 {
 .preview-info-row .preview-frame {
     flex: 1 1 200px;
     max-width: none;
+    max-height: clamp(110px, 16vh, 320px);
     min-width: 0;
 }
 
@@ -505,7 +506,7 @@ h1 {
 .info-panel {
     flex: 1 1 180px;
     min-width: 0;
-    padding: 14px;
+    padding: clamp(10px, 1.8vh, 14px);
     border: 1px solid var(--gray-200);
     border-radius: 10px;
     background: var(--blue-100);
@@ -515,7 +516,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 1.5vh, 12px);
     color: var(--blue-600);
     font-size: 14px;
     font-weight: bold;
@@ -523,7 +524,7 @@ h1 {
 
 .info-list {
     display: grid;
-    row-gap: 10px;
+    row-gap: clamp(6px, 1.2vh, 10px);
     margin: 0;
 }
 
@@ -603,7 +604,7 @@ h1 {
     flex-wrap: wrap;
     align-items: flex-end;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: clamp(8px, 1.2vh, 20px);
     width: 100%;
 }
 
