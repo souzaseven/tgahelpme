@@ -1,0 +1,357 @@
+<script>
+// ========================
+// SISTEMA DE MONITORAMENTO COMPLETO E GARANTIDO
+// ========================
+
+// Injeta o CSS diretamente no documento
+(function injectToastStyles() {
+  const style = document.createElement("style");
+  style.textContent = `
+  #toastContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      max-width: 400px;
+  }
+
+  .toast {
+      background: white;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateX(400px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      border-left: 4px solid #4CAF50;
+      min-width: 300px;
+      position: relative;
+  }
+
+  .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+  }
+
+  .toast.hide {
+      transform: translateX(400px);
+      opacity: 0;
+  }
+
+  .toast.success { border-left-color: #4CAF50; }
+  .toast.error { border-left-color: #f44336; }
+  .toast.warning { border-left-color: #ff9800; }
+  .toast.info { border-left-color: #2196F3; }
+
+  .toast-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      font-weight: bold;
+  }
+
+  .toast.success .toast-icon { color: #4CAF50; }
+  .toast.error .toast-icon { color: #f44336; }
+  .toast.warning .toast-icon { color: #ff9800; }
+  .toast.info .toast-icon { color: #2196F3; }
+
+  .toast-content { flex: 1; text-align: left; }
+
+  .toast-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+  }
+
+  .toast-message {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.4;
+  }
+
+  .toast-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #999;
+      padding: 0;
+      margin: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+  }
+
+  .toast-close:hover {
+      background: #f5f5f5;
+      color: #333;
+  }
+
+  .toast-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: currentColor;
+      opacity: 0.3;
+      width: 100%;
+      transform-origin: left;
+      animation: progress 8s linear forwards;
+  }
+
+  @keyframes progress {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0); }
+  }
+
+  .dark-mode .toast {
+      background: #2d3748;
+      color: white;
+  }
+
+  .dark-mode .toast-title { color: white; }
+  .dark-mode .toast-message { color: #cbd5e0; }
+  .dark-mode .toast-close { color: #a0aec0; }
+  .dark-mode .toast-close:hover {
+      background: #4a5568;
+      color: white;
+  }
+
+  /* Botão de atualização */
+  .update-button {
+      background: #007ced;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 8px;
+      display: inline-block;
+      text-decoration: none;
+  }
+
+  .update-button:hover {
+      background: #005bb5;
+  }
+  `;
+  document.head.appendChild(style);
+})();
+
+class GlobalVersionMonitor {
+  constructor() {
+    this.phpEndpoint = "./version-monitor.php";
+    this.checkInterval = 30000; // Verificar a cada 30 segundos
+    this.currentLocalVersion = this.getLocalVersion();
+    this.lastNotifiedVersion = localStorage.getItem('lastNotifiedGlobalVersion');
+    
+    this.init();
+  }
+
+  init() {
+    this.initToastContainer();
+    this.startGlobalMonitoring();
+    this.startLocalMonitoring();
+    
+    // Verificação imediata ao carregar
+    setTimeout(() => this.checkGlobalVersion(), 2000);
+    
+    console.log("✅ Sistema de monitoramento GLOBAL iniciado");
+    console.log("📋 Versão local:", this.currentLocalVersion);
+  }
+
+  initToastContainer() {
+    if (!document.getElementById("toastContainer")) {
+      const container = document.createElement("div");
+      container.id = "toastContainer";
+      document.body.appendChild(container);
+    }
+  }
+
+  getLocalVersion() {
+    const el = document.getElementById("page-version");
+    return el ? el.textContent.trim() : null;
+  }
+
+  startLocalMonitoring() {
+    const el = document.getElementById("page-version");
+    if (!el) return;
+
+    // Monitorar mudanças no DOM
+    new MutationObserver(() => {
+      const newVersion = this.getLocalVersion();
+      if (newVersion && newVersion !== this.currentLocalVersion) {
+        console.log("🔄 Mudança local detectada:", this.currentLocalVersion, "→", newVersion);
+        this.currentLocalVersion = newVersion;
+        this.handleVersionChange(this.currentLocalVersion, newVersion, "Local");
+      }
+    }).observe(el, { childList: true, subtree: true });
+  }
+
+  async startGlobalMonitoring() {
+    // Verificação periódica com o servidor
+    setInterval(() => this.checkGlobalVersion(), this.checkInterval);
+  }
+
+  async checkGlobalVersion() {
+    try {
+      const response = await fetch(`${this.phpEndpoint}?action=latest&t=${Date.now()}`);
+      const data = await response.json();
+      
+      if (data.success && data.data.latest_version) {
+        const globalVersion = data.data.latest_version;
+        const localVersion = this.currentLocalVersion;
+
+        console.log("🌐 Versão global:", globalVersion, "| Versão local:", localVersion);
+
+        // Se a versão global é diferente da local E diferente da última notificada
+        if (globalVersion && localVersion && globalVersion !== localVersion && globalVersion !== this.lastNotifiedVersion) {
+          console.log("🚨 NOVA VERSÃO DISPONÍVEL NO SERVIDOR!");
+          this.handleGlobalUpdate(localVersion, globalVersion);
+        }
+      }
+    } catch (error) {
+      console.error("❌ Erro ao verificar versão global:", error);
+    }
+  }
+
+  handleGlobalUpdate(localVersion, globalVersion) {
+    // Marcar como notificado
+    this.lastNotifiedVersion = globalVersion;
+    localStorage.setItem('lastNotifiedGlobalVersion', globalVersion);
+    
+    // Mostrar notificação GLOBAL (para todos os usuários)
+    this.showGlobalUpdateNotification(localVersion, globalVersion);
+  }
+
+  handleVersionChange(oldVersion, newVersion, source) {
+    // Notificação para mudança local (apenas para este usuário)
+    this.showLocalUpdateNotification(oldVersion, newVersion, source);
+    
+    // Atualizar localStorage
+    localStorage.setItem('siteVersion', newVersion);
+  }
+
+  showGlobalUpdateNotification(oldVersion, newVersion) {
+    const title = "🎉 NOVA VERSÃO DO SISTEMA!";
+    const message = `
+      <strong>Uma atualização importante está disponível!</strong><br><br>
+      <strong>Versão atual:</strong> ${oldVersion}<br>
+      <strong>Nova versão:</strong> ${newVersion}<br><br>
+      
+      🔗 <strong>Recursos e melhorias:</strong><br>
+      • <a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/549816/novidades" target="_blank" style="color: #007ced;">Ver novidades no Movidesk</a><br>
+      • <a href="https://tgameajuda.com/NovidadesVersao/novidadeversao.html" target="_blank" style="color: #007ced;">Detalhes no TGA Ajuda</a><br><br>
+      
+      <button class="update-button" onclick="window.location.reload()">
+        🔄 Atualizar Página Agora
+      </button>
+    `;
+    
+    this.showToast("info", message, title, 15000); // 15 segundos
+    this.showSystemNotification("Nova Versão Disponível", `O sistema foi atualizado para ${newVersion}`);
+  }
+
+  showLocalUpdateNotification(oldVersion, newVersion, source) {
+    const title = "📦 Versão Atualizada";
+    const message = `Sua versão local foi atualizada de <strong>${oldVersion}</strong> para <strong>${newVersion}</strong>`;
+    this.showToast("success", message, title, 8000);
+  }
+
+  showToast(type, message, title, duration = 8000) {
+    const icons = { success: "✓", error: "✕", warning: "⚠", info: "ℹ" };
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <div class="toast-icon">${icons[type]}</div>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+        <div class="toast-progress"></div>
+      </div>
+      <button class="toast-close">×</button>
+    `;
+    
+    document.getElementById("toastContainer").appendChild(toast);
+    
+    setTimeout(() => toast.classList.add("show"), 50);
+    
+    // Fechar automaticamente
+    const autoClose = setTimeout(() => this.removeToast(toast), duration);
+    
+    // Fechar ao clicar no X
+    toast.querySelector(".toast-close").addEventListener("click", () => {
+      clearTimeout(autoClose);
+      this.removeToast(toast);
+    });
+  }
+
+  removeToast(toast) {
+    toast.classList.remove("show");
+    toast.classList.add("hide");
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+    }, 300);
+  }
+
+  showSystemNotification(title, message) {
+    if (!("Notification" in window)) return;
+    
+    if (Notification.permission === "granted") {
+      const n = new Notification(title, { 
+        body: message, 
+        icon: "./img/principal/bot-tga.webp",
+        tag: "version-update" // Agrupa notificações
+      });
+      
+      n.onclick = () => {
+        window.focus();
+        n.close();
+      };
+      
+    } else if (Notification.permission === "default") {
+      // Solicitar permissão de forma não intrusiva
+      setTimeout(() => {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            this.showSystemNotification(title, message);
+          }
+        });
+      }, 3000);
+    }
+  }
+}
+
+// Inicialização segura
+document.addEventListener("DOMContentLoaded", () => {
+  // Aguardar um pouco para garantir que tudo carregou
+  setTimeout(() => {
+    window.globalVersionMonitor = new GlobalVersionMonitor();
+  }, 1000);
+});
+
+// Função global para forçar verificação (útil para testes)
+window.checkForUpdates = function() {
+  if (window.globalVersionMonitor) {
+    window.globalVersionMonitor.checkGlobalVersion();
+  }
+};
+
+// Verificar quando a página ganha foco (usuário retorna à aba)
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden && window.globalVersionMonitor) {
+    // Verificar atualizações quando o usuário retorna à página
+    setTimeout(() => window.globalVersionMonitor.checkGlobalVersion(), 1000);
+  }
+});
+</script>

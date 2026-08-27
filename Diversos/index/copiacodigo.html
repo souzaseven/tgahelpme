@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos de Código para Páginas Web</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        .icon {
+            font-size: 1.8rem;
+        }
+        
+        .html-icon { color: #e34f26; }
+        .css-icon { color: #1572b6; }
+        .js-icon { color: #f7df1e; }
+        .notification-icon { color: #9b59b6; }
+        .ads-icon { color: #f39c12; }
+        .stats-icon { color: #9b59b6; }
+        
+        .code-container {
+            position: relative;
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-container pre {
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #2980b9;
+        }
+        
+        .ads-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .ad {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .ad:hover {
+            transform: scale(1.03);
+        }
+        
+        .ad h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .ad p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .ad-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-card {
+            background: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+        
+        <!-- Seção Notificação -->
+        <section class="section">
+            <div class="section-title">
+                <span class="icon notification-icon">🔔</span>
+                <h2>Envio de Notificação</h2>
+            </div>
+            <p>Sistema completo de notificações com toast e monitoramento de versão:</p>
+               <p> Script de notificação integrado css com js</p>
+            <div class="code-container">
+             
+    <button class="copy-btn" onclick="copyCode('monitoramento-script')">Copiar Código</button>
+    <pre id="monitoramento-script"><code>
+&lt;script&gt;
+// ========================
+// SISTEMA DE MONITORAMENTO UNIFICADO (CSS + JS)
+// ========================
+
+// Injeta o CSS diretamente no documento
+(function injectToastStyles() {
+  const style = document.createElement("style");
+  style.textContent = `
+  #toastContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      max-width: 400px;
+  }
+
+  .toast {
+      background: white;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateX(400px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      border-left: 4px solid #4CAF50;
+      min-width: 300px;
+      position: relative;
+  }
+
+  .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+  }
+
+  .toast.hide {
+      transform: translateX(400px);
+      opacity: 0;
+  }
+
+  .toast.success { border-left-color: #4CAF50; }
+  .toast.error { border-left-color: #f44336; }
+  .toast.warning { border-left-color: #ff9800; }
+  .toast.info { border-left-color: #2196F3; }
+
+  .toast-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      font-weight: bold;
+  }
+
+  .toast.success .toast-icon { color: #4CAF50; }
+  .toast.error .toast-icon { color: #f44336; }
+  .toast.warning .toast-icon { color: #ff9800; }
+  .toast.info .toast-icon { color: #2196F3; }
+
+  .toast-content { flex: 1; text-align: left; }
+
+  .toast-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #333;
+      font-size: 14px;
+  }
+
+  .toast-message {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.4;
+  }
+
+  .toast-close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #999;
+      padding: 0;
+      margin: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+  }
+
+  .toast-close:hover {
+      background: #f5f5f5;
+      color: #333;
+  }
+
+  .toast-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: currentColor;
+      opacity: 0.3;
+      width: 100%;
+      transform-origin: left;
+      animation: progress 5s linear forwards;
+  }
+
+  @keyframes progress {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0); }
+  }
+
+  .dark-mode .toast {
+      background: #2d3748;
+      color: white;
+  }
+
+  .dark-mode .toast-title { color: white; }
+  .dark-mode .toast-message { color: #cbd5e0; }
+  .dark-mode .toast-close { color: #a0aec0; }
+  .dark-mode .toast-close:hover {
+      background: #4a5568;
+      color: white;
+  }
+  `;
+  document.head.appendChild(style);
+})();
+
+// ========================
+// Lógica de Monitoramento
+// ========================
+
+class VersionMonitor {
+  constructor() {
+    this.currentVersion = null;
+    this.toastDuration = 5000;
+    this.phpEndpoint = "./version-monitor.php";
+    this.checkInterval = 30000;
+    this.init();
+  }
+
+  init() {
+    this.initToastContainer();
+    this.startPHPMonitoring();
+    this.startLocalMonitoring();
+    console.log("✅ Sistema de monitoramento iniciado");
+  }
+
+  initToastContainer() {
+    if (!document.getElementById("toastContainer")) {
+      const container = document.createElement("div");
+      container.id = "toastContainer";
+      document.body.appendChild(container);
+    }
+  }
+
+  startPHPMonitoring() {
+    this.checkPHPVersion();
+    setInterval(() => this.checkPHPVersion(), this.checkInterval);
+  }
+
+  async checkPHPVersion() {
+    try {
+      const response = await fetch(`${this.phpEndpoint}?action=check&t=${Date.now()}`);
+      const data = await response.json();
+      if (data.success && data.data.changes) {
+        this.processPHPChanges(data.data.changes);
+      }
+    } catch (error) {
+      console.error("❌ Erro ao checar versão PHP:", error);
+    }
+  }
+
+  processPHPChanges(changes) {
+    Object.values(changes).forEach(change => {
+      console.log(`🔄 ${change.file}: ${change.old} → ${change.new}`);
+      this.showVersionUpdateNotification(change.old, change.new, `PHP: ${change.file}`);
+      localStorage.setItem("siteVersion", change.new);
+    });
+  }
+
+  startLocalMonitoring() {
+    const el = document.getElementById("page-version");
+    if (!el) return;
+
+    new MutationObserver(() => this.checkVersionChange()).observe(el, { childList: true, subtree: true });
+    setInterval(() => this.checkVersionChange(), 10000);
+  }
+
+  getCurrentVersion() {
+    const el = document.getElementById("page-version");
+    return el ? el.textContent.trim() : null;
+  }
+
+  checkVersionChange() {
+    const newVersion = this.getCurrentVersion();
+    if (!newVersion) return;
+
+    const oldVersion = localStorage.getItem("siteVersion");
+    if (!oldVersion) {
+      localStorage.setItem("siteVersion", newVersion);
+      return;
+    }
+
+    if (oldVersion !== newVersion) {
+      console.log(`🔄 Local: ${oldVersion} → ${newVersion}`);
+      this.showVersionUpdateNotification(oldVersion, newVersion);
+      localStorage.setItem("siteVersion", newVersion);
+    }
+  }
+
+  showVersionUpdateNotification(oldVersion, newVersion, source = "Local") {
+    const title = "📦 Nova Versão Disponível!";
+    const message = `[${source}] ${oldVersion} → ${newVersion}`;
+    const links = `
+      🔗 &lt;strong&gt;Ver novidades:&lt;/strong&gt;&lt;br&gt;
+      • &lt;a href="https://atendimento.tgasistemas.com.br/kb/pt-br/article/549816/novidades" target="_blank"&gt;Movidesk&lt;/a&gt;&lt;br&gt;
+      • &lt;a href="https://tgameajuda.com/NovidadesVersao/novidadeversao.html" target="_blank"&gt;TGA Ajuda&lt;/a&gt;
+    `;
+    this.showToast("info", `${message}&lt;br&gt;&lt;br&gt;${links}`, title);
+    this.showSystemNotification(title, message);
+  }
+
+  showToast(type, message, title) {
+    const icons = { success: "✓", error: "✕", warning: "⚠", info: "ℹ" };
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      &lt;div class="toast-icon"&gt;${icons[type]}&lt;/div&gt;
+      &lt;div class="toast-content"&gt;
+        &lt;div class="toast-title"&gt;${title}&lt;/div&gt;
+        &lt;div class="toast-message"&gt;${message}&lt;/div&gt;
+        &lt;div class="toast-progress"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="toast-close"&gt;×&lt;/button&gt;
+    `;
+    document.getElementById("toastContainer").appendChild(toast);
+    setTimeout(() => toast.classList.add("show"), 50);
+    setTimeout(() => this.removeToast(toast), this.toastDuration);
+    toast.querySelector(".toast-close").addEventListener("click", () => this.removeToast(toast));
+  }
+
+  removeToast(toast) {
+    toast.classList.remove("show");
+    toast.classList.add("hide");
+    setTimeout(() => toast.remove(), 300);
+  }
+
+  showSystemNotification(title, message) {
+    if (!("Notification" in window)) return;
+    if (Notification.permission === "granted") {
+      const n = new Notification(title, { body: message, icon: "./img/principal/bot-tga.webp" });
+      n.onclick = () => window.open("https://tgameajuda.com/NovidadesVersao/novidadeversao.html", "_blank");
+    } else if (Notification.permission === "default") {
+      Notification.requestPermission();
+    }
+  }
+}
+
+// Inicializa
+document.addEventListener("DOMContentLoaded", () => {
+  window.versionMonitor = new VersionMonitor();
+});
+&lt;/script&gt;
+
+    </code></pre>
+</div>
+
+            
+            <h3>HTML</h3>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode('notification-html-code')">Copiar Código</button>
+                <pre id="notification-html-code"><code>&lt;!-- Container para toasts --&gt;
+&lt;div id="toastContainer"&gt;&lt;/div&gt;</code></pre>
+            </div>
+            
+            <h3>CSS</h3>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode('notification-css-code')">Copiar Código</button>
+                <pre id="notification-css-code"><code>/* Sistema de Notificações Automáticas */
+#toastContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    max-width: 400px;
+}
+
+.toast {
+    background: white;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-left: 4px solid #4CAF50;
+    min-width: 300px;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast.hide {
+    transform: translateX(400px);
+    opacity: 0;
+}
+
+.toast.success { border-left-color: #4CAF50; }
+.toast.error { border-left-color: #f44336; }
+.toast.warning { border-left-color: #ff9800; }
+.toast.info { border-left-color: #2196F3; }
+
+.toast-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.toast.success .toast-icon { color: #4CAF50; }
+.toast.error .toast-icon { color: #f44336; }
+.toast.warning .toast-icon { color: #ff9800; }
+.toast.info .toast-icon { color: #2196F3; }
+
+.toast-content {
+    flex: 1;
+    text-align: left;
+}
+
+.toast-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+    font-size: 14px;
+}
+
+.toast-message {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.toast-close:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.3;
+    width: 100%;
+    transform-origin: left;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from { transform: scaleX(1); }
+    to { transform: scaleX(0); }
+}
+
+/* Dark mode support */
+.dark-mode .toast {
+    background: #2d3748;
+    color: white;
+}
+
+.dark-mode .toast-title {
+    color: white;
+}
+
+.dark-mode .toast-message {
+    color: #cbd5e0;
+}
+
+.dark-mode .toast-close {
+    color: #a0aec0;
+}
+
+.dark-mode .toast-close:hover {
+    background: #4a5568;
+    color: white;
+}</code></pre>
+            </div>
+            
+            <h3>JavaScript</h3>
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode('notification-js-code')">Copiar Código</button>
+                <pre id="notification-js-code"><code>// =============================================
+// SISTEMA DE NOTIFICAÇÃO E TOAST - SIMPLIFICADO
+// =============================================
+
+class NotificationSystem {
+    constructor() {
+        this.toastDuration = 5000; // 5 segundos padrão
+        this.init();
+    }
+
+    init() {
+        this.initToastContainer();
+        this.startVersionMonitoring();
+        this.addDurationControls();
+        console.log('🔔 Sistema de notificação iniciado');
+    }
+
+    initToastContainer() {
+        if (!document.getElementById('toastContainer')) {
+            const container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 10000;
+                max-width: 400px;
+            `;
+            document.body.appendChild(container);
+        }
+    }
+
+    startVersionMonitoring() {
+        const versionElement = document.getElementById('page-version');
+        if (!versionElement) return;
+
+        // Monitorar mudanças na versão
+        const observer = new MutationObserver(() => {
+            this.checkVersionChange();
+        });
+
+        observer.observe(versionElement, {
+            characterData: true,
+            childList: true,
+            subtree: true
+        });
+
+        // Verificação inicial
+        this.checkVersionChange();
+
+        console.log('👀 Monitorando versão em tempo real');
+    }
+
+    checkVersionChange() {
+        const newVersion = this.getCurrentVersion();
+        if (!newVersion) return;
+
+        const oldVersion = localStorage.getItem('siteVersion');
+        
+        if (!oldVersion) {
+            localStorage.setItem('siteVersion', newVersion);
+            return;
+        }
+
+        if (oldVersion !== newVersion) {
+            console.log(`🔄 Nova versão: ${oldVersion} → ${newVersion}`);
+            this.showVersionUpdateNotification(oldVersion, newVersion);
+            localStorage.setItem('siteVersion', newVersion);
+        }
+    }
+
+    getCurrentVersion() {
+        const versionElement = document.getElementById('page-version');
+        return versionElement ? versionElement.textContent.trim() : null;
+    }
+
+    showVersionUpdateNotification(oldVersion, newVersion) {
+        const title = '📦 Nova Versão Disponível!';
+        const message = `Atualizado de ${oldVersion} para ${newVersion}`;
+        const urls = [
+            'https://atendimento.tgasistemas.com.br/kb/pt-br/article/549816/novidades',
+            'https://tgameajuda.com/NovidadesVersao/novidadeversao.html'
+        ];
+        
+        const toastMessage = `${message} 
+        
+🔗 &lt;strong&gt;Ver novidades:&lt;/strong&gt;
+• &lt;a href="${urls[0]}" target="_blank" style="color: #007ced; text-decoration: underline;"&gt;
+  Movidesk
+&lt;/a&gt;
+• &lt;a href="${urls[1]}" target="_blank" style="color: #007ced; text-decoration: underline;"&gt;
+  TGA Ajuda
+&lt;/a&gt;`;
+        
+        this.showToast('info', toastMessage, title, this.toastDuration);
+        this.showSystemNotification(title, message);
+    }
+
+    // 🎯 MÉTODO PRINCIPAL PARA MOSTRAR TOAST
+    showToast(type, message, title = null, duration = null) {
+        const actualDuration = duration || this.toastDuration;
+        
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        const icons = { success: '✓', error: '✕', warning: '⚠', info: 'ℹ' };
+        const titlesDefault = { success: 'Sucesso', error: 'Erro', warning: 'Aviso', info: 'Informação' };
+
+        toast.innerHTML = `
+            &lt;div class="toast-icon"&gt;${icons[type]}&lt;/div&gt;
+            &lt;div class="toast-content"&gt;
+                &lt;div class="toast-title"&gt;${title || titlesDefault[type]}&lt;/div&gt;
+                &lt;div class="toast-message"&gt;${message}&lt;/div&gt;
+                &lt;div class="toast-duration" style="font-size: 11px; color: #888; margin-top: 5px;"&gt;
+                    ⏱️ &lt;span class="countdown"&gt;${actualDuration/1000}&lt;/span&gt;s
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;button class="toast-close" onclick="this.parentElement.remove()"&gt;×&lt;/button&gt;
+            &lt;div class="toast-progress" style="animation-duration: ${actualDuration}ms"&gt;&lt;/div&gt;
+        `;
+
+        document.getElementById('toastContainer').appendChild(toast);
+        setTimeout(() => toast.classList.add('show'), 100);
+
+        // Contador regressivo
+        const countdownElement = toast.querySelector('.countdown');
+        let countdown = actualDuration / 1000;
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            if (countdownElement) countdownElement.textContent = countdown;
+        }, 1000);
+
+        // Auto-remove
+        setTimeout(() => {
+            this.removeToast(toast);
+            clearInterval(countdownInterval);
+        }, actualDuration);
+
+        // Clique para abrir links (se for notificação de versão)
+        if (title && title.includes('Nova Versão')) {
+            toast.style.cursor = 'pointer';
+            toast.addEventListener('click', (e) => {
+                if (!e.target.classList.contains('toast-close')) {
+                    const urls = [
+                        'https://atendimento.tgasistemas.com.br/kb/pt-br/article/549816/novidades',
+                        'https://tgameajuda.com/NovidadesVersao/novidadeversao.html'
+                    ];
+                    window.open(urls[0], '_blank');
+                    setTimeout(() => window.open(urls[1], '_blank'), 300);
+                    this.removeToast(toast);
+                }
+            });
+        }
+    }
+
+    removeToast(toast) {
+        toast.classList.remove('show');
+        toast.classList.add('hide');
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.remove();
+            }
+        }, 300);
+    }
+
+    // 🔔 NOTIFICAÇÃO DO SISTEMA
+    showSystemNotification(title, message) {
+        if (!("Notification" in window)) return;
+
+        const urls = [
+            'https://atendimento.tgasistemas.com.br/kb/pt-br/article/549816/novidades',
+            'https://tgameajuda.com/NovidadesVersao/novidadeversao.html'
+        ];
+
+        if (Notification.permission === "granted") {
+            const notification = new Notification(title, {
+                icon: './img/principal/bot-tga.webp',
+                body: message + '\n\n📋 Clique para ver novidades!',
+                tag: 'version-update'
+            });
+
+            notification.onclick = () => {
+                window.focus();
+                window.open(urls[0], '_blank');
+                setTimeout(() => window.open(urls[1], '_blank'), 500);
+                notification.close();
+            };
+
+            setTimeout(() => notification.close(), this.toastDuration);
+
+        } else if (Notification.permission === "default") {
+            Notification.requestPermission();
+        }
+    }
+
+    // ⚙️ CONTROLES DE CONFIGURAÇÃO
+    setToastDuration(durationMs) {
+        this.toastDuration = durationMs;
+        localStorage.setItem('toastDuration', durationMs);
+        this.showToast('success', `Duração: ${durationMs/1000}s`, 'Configuração Salva', 3000);
+    }
+
+    getToastDuration() {
+        return parseInt(localStorage.getItem('toastDuration')) || this.toastDuration;
+    }
+
+    addDurationControls() {
+        if (document.getElementById('toast-controls')) return;
+
+        const controls = document.createElement('div');
+        controls.id = 'toast-controls';
+        controls.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 9999;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            border-left: 4px solid #007ced;
+            max-width: 250px;
+        `;
+
+        controls.innerHTML = `
+            &lt;div style="margin-bottom: 10px; font-weight: bold; color: #007ced;"&gt;
+                ⚙️ Controle de Notificações
+            &lt;/div&gt;
+            &lt;div style="margin-bottom: 8px;"&gt;
+                &lt;label style="display: block; margin-bottom: 4px; font-size: 11px;"&gt;
+                    Duração do Toast:
+                &lt;/label&gt;
+                &lt;select id="durationSelect" style="width: 100%; padding: 4px; border: 1px solid #ddd; border-radius: 4px; font-size: 11px;"&gt;
+                    &lt;option value="3000"&gt;3 segundos&lt;/option&gt;
+                    &lt;option value="5000" selected&gt;5 segundos&lt;/option&gt;
+                    &lt;option value="10000"&gt;10 segundos&lt;/option&gt;
+                    &lt;option value="15000"&gt;15 segundos&lt;/option&gt;
+                    &lt;option value="30000"&gt;30 segundos&lt;/option&gt;
+                    &lt;option value="0"&gt;Não fechar&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;button onclick="notificationSystem.testNotification()" 
+                    style="width: 100%; padding: 6px; background: #007ced; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 11px;"&gt;
+                🔔 Testar Notificação
+            &lt;/button&gt;
+            &lt;button onclick="this.parentElement.style.display='none'" 
+                    style="width: 100%; padding: 4px; margin-top: 5px; background: #f0f0f0; border: none; border-radius: 4px; cursor: pointer; font-size: 10px;"&gt;
+                Fechar
+            &lt;/button&gt;
+        `;
+
+        document.body.appendChild(controls);
+
+        const select = document.getElementById('durationSelect');
+        select.value = this.getToastDuration();
+        select.addEventListener('change', (e) => {
+            this.setToastDuration(parseInt(e.target.value));
+        });
+    }
+
+    testNotification() {
+        this.showToast('info', 'Esta é uma notificação de teste!', '🔔 Teste', this.toastDuration);
+    }
+}
+
+// =============================================
+// INICIALIZAÇÃO
+// =============================================
+
+let notificationSystem;
+
+document.addEventListener("DOMContentLoaded", function () {
+    notificationSystem = new NotificationSystem();
+
+    // Função global para simular mudança de versão
+    window.simularMudancaVersao = function(novaVersao) {
+        const versionElement = document.getElementById('page-version');
+        if (versionElement) {
+            versionElement.textContent = ` ${novaVersao}`;
+            console.log(`🎭 Versão simulada: ${novaVersao}`);
+        }
+    };
+});
+
+// Funções globais para uso fácil
+function testarNotificacao() {
+    if (notificationSystem) notificationSystem.testNotification();
+}
+
+function alterarDuracaoToast(segundos) {
+    if (notificationSystem) notificationSystem.setToastDuration(segundos * 1000);
+}</code></pre>
+            </div>
+        </section>
+        
+        <!-- Seção Anúncios -->
+        <section class="section">
+            <div class="section-title">
+                <span class="icon ads-icon">$</span>
+                <h2>Anúncios</h2>
+            </div>
+            <p>Modelos de código para implementação de anúncios:</p>
+            <div class="ads-container">
+                <div class="ad">
+                    <h3>Google AdSense</h3>
+                    <p>Implementação básica do Google AdSense</p>
+                    <button class="ad-btn" onclick="copyCode('adsense-code')">Copiar</button>
+                    <div class="code-container" style="display: none;">
+                        <pre id="adsense-code"><code>&lt;script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"&gt;&lt;/script&gt;
+&lt;ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX"
+     data-ad-format="auto"&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div class="ad">
+                    <h3>Banner Estático</h3>
+                    <p>Código para banner de anúncio personalizado</p>
+                    <button class="ad-btn" onclick="copyCode('banner-code')">Copiar</button>
+                    <div class="code-container" style="display: none;">
+                        <pre id="banner-code"><code>&lt;div class="ad-banner"&gt;
+    &lt;a href="https://exemplo.com" target="_blank"&gt;
+        &lt;img src="banner.jpg" alt="Anúncio"&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.ad-banner {
+    width: 100%;
+    max-width: 728px;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.ad-banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+&lt;/style&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Estatísticas de Visitas -->
+        <section class="section">
+            <div class="section-title">
+                <span class="icon stats-icon">📊</span>
+                <h2>Estatísticas de Visitas</h2>
+            </div>
+            <p>Códigos para implementação de contadores e análises:</p>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">1.247</div>
+                    <div class="stat-label">Visitas Hoje</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8.562</div>
+                    <div class="stat-label">Visitas na Semana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">32.891</div>
+                    <div class="stat-label">Visitas no Mês</div>
+                </div>
+            </div>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyCode('stats-code')">Copiar Código</button>
+                <pre id="stats-code"><code>// Contador de visitas simples
+let visitCount = localStorage.getItem('visitCount') || 0;
+visitCount++;
+localStorage.setItem('visitCount', visitCount);
+
+// Exibir contador
+document.getElementById('visit-counter').textContent = visitCount;
+
+// Google Analytics (exemplo)
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+&lt;/script&gt;
+
+// Contador de tempo na página
+let startTime = new Date();
+window.addEventListener('beforeunload', function() {
+    let endTime = new Date();
+    let timeSpent = endTime - startTime;
+    
+    // Enviar dados para o servidor ou armazenar localmente
+    console.log('Tempo gasto na página: ' + timeSpent + 'ms');
+});</code></pre>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Recursos de Código para Páginas Web. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        // Função para copiar código
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const textArea = document.createElement('textarea');
+            textArea.value = codeElement.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Feedback visual
+            const originalText = event.target.textContent;
+            event.target.textContent = 'Copiado!';
+            event.target.style.background = '#2ecc71';
+            
+            setTimeout(() => {
+                event.target.textContent = originalText;
+                event.target.style.background = '';
+            }, 2000);
+        }
+        
+        // Simulação de dados de visitas
+        function updateStats() {
+            const today = Math.floor(Math.random() * 500) + 1000;
+            const week = today * 7 - Math.floor(Math.random() * 500);
+            const month = week * 4 - Math.floor(Math.random() * 1000);
+            
+            document.querySelectorAll('.stat-number')[0].textContent = today.toLocaleString();
+            document.querySelectorAll('.stat-number')[1].textContent = week.toLocaleString();
+            document.querySelectorAll('.stat-number')[2].textContent = month.toLocaleString();
+        }
+        
+        // Atualiza estatísticas a cada 5 segundos (simulação)
+        setInterval(updateStats, 5000);
+        updateStats(); // Chamada inicial
+    </script>
+</body>
+</html>
