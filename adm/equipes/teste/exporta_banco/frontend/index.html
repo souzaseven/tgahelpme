@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inspetor de Banco Firebird</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- ==================== TELA DE CONEXÃO ==================== -->
+<div id="tela-conexao" class="tela-conexao">
+  <form id="form-conexao" class="cartao-conexao">
+    <h1>🔥 Inspetor de Banco Firebird</h1>
+    <p class="subtitulo">Conecte-se a um banco .FDB para inspecionar sua estrutura.</p>
+
+    <div id="erro-conexao" class="alerta-erro" hidden></div>
+
+    <label>Banco de dados (caminho completo no servidor)
+      <div class="campo-com-botao">
+        <input type="text" name="database" id="input-database" value="C:\TGA\Dados\TGA.FDB" required />
+        <button type="button" id="btn-abrir-arquivo" class="botao-secundario">Abrir...</button>
+      </div>
+    </label>
+
+    <div class="linha">
+      <label class="flex2">Servidor
+        <input type="text" name="host" value="localhost" required />
+      </label>
+      <label class="flex1">Porta
+        <input type="number" name="port" value="3050" required />
+      </label>
+    </div>
+
+    <div class="linha">
+      <label class="flex1">Usuário
+        <input type="text" name="user" value="SYSDBA" required />
+      </label>
+      <label class="flex1">Senha
+        <input type="password" name="password" value="masterkey" />
+      </label>
+    </div>
+
+    <div class="linha">
+      <label class="flex1">Charset
+        <select name="charset">
+          <option value="UTF8">UTF8</option>
+          <option value="WIN1252" selected>WIN1252</option>
+          <option value="ISO8859_1">ISO8859_1</option>
+          <option value="NONE">NONE</option>
+        </select>
+      </label>
+      <label class="flex1">Role (opcional)
+        <input type="text" name="role" placeholder="" />
+      </label>
+    </div>
+
+    <div id="resultado-teste" class="resultado-teste" hidden></div>
+
+    <div class="linha-botoes">
+      <button type="button" id="btn-testar" class="botao-secundario">Testar conexão</button>
+      <button type="submit" class="botao-primario">Conectar</button>
+    </div>
+  </form>
+</div>
+
+<!-- ==================== MODAL: SELECIONAR ARQUIVO .FDB ==================== -->
+<div id="modal-arquivos" class="modal-overlay" hidden>
+  <div class="modal-caixa">
+    <div class="modal-cabecalho">
+      <h3>Selecionar banco de dados</h3>
+      <button type="button" id="btn-fechar-modal" class="botao-secundario">✕ Fechar</button>
+    </div>
+    <div class="modal-caminho" id="modal-caminho-atual">Unidades de disco</div>
+    <div class="modal-lista" id="modal-lista-arquivos"></div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: EXPANDIR RESULTADO ==================== -->
+<div id="modal-expandir" class="modal-overlay" hidden>
+  <div class="modal-caixa modal-caixa--grande">
+    <div class="modal-cabecalho">
+      <h3 id="modal-expandir-titulo">Dados</h3>
+      <button type="button" id="btn-fechar-modal-expandir" class="botao-secundario">✕ Fechar</button>
+    </div>
+    <div class="grade-dados-barra">
+      <input type="search" id="modal-expandir-busca" class="grade-dados-busca" placeholder="🔍 Filtrar nos resultados...">
+      <span id="modal-expandir-contagem" class="grade-dados-contagem"></span>
+    </div>
+    <div class="modal-expandir-tabela-wrap wrap-tabela" id="modal-expandir-tabela-wrap"></div>
+  </div>
+</div>
+
+<!-- ==================== APLICAÇÃO PRINCIPAL ==================== -->
+<div id="app" class="app" hidden>
+
+  <header class="topo">
+    <div class="topo-titulo">🔥 Inspetor de Banco Firebird</div>
+    <div class="topo-status">
+      <span id="status-conexao"></span>
+      <button id="btn-somente-numeros" class="botao-secundario" type="button" title="Esconde tabelas e rankings, mostra só os cards com números">🔢 Somente números</button>
+      <button id="btn-desconectar" class="botao-secundario">Desconectar</button>
+    </div>
+  </header>
+
+  <div class="corpo">
+
+    <!-- ---------- BARRA LATERAL ---------- -->
+    <aside class="lateral">
+      <input id="busca" type="search" placeholder="Buscar na estrutura... ( / )" title="Atalho: / ou Ctrl+K" />
+      <div id="resultado-busca" class="resultado-busca" hidden></div>
+
+      <nav class="abas-lateral">
+        <button class="aba-lateral ativa" data-aba="visaogeral">🏠 Visão Geral</button>
+        <button class="aba-lateral" data-aba="tabelas">📋 Tabelas &amp; Views</button>
+        <button class="aba-lateral" data-aba="procedures">⚙️ Procedures</button>
+        <button class="aba-lateral" data-aba="triggers">🔔 Triggers</button>
+        <button class="aba-lateral" data-aba="generators">🔢 Generators</button>
+        <button class="aba-lateral" data-aba="analise">💵 Análise Financeira</button>
+        <button class="aba-lateral" data-aba="analise-estoque">📦 Análise Estoque</button>
+        <button class="aba-lateral" data-aba="mudancas">🆕 Mudanças</button>
+        <button class="aba-lateral" data-aba="sql">🧪 Console SQL</button>
+      </nav>
+
+      <div id="lista-lateral" class="lista-lateral"></div>
+    </aside>
+
+    <!-- ---------- PAINEL PRINCIPAL ---------- -->
+    <main id="painel" class="painel">
+      <div class="painel-boas-vindas">
+        <h2>Visão geral do banco</h2>
+        <div class="grupo-cards">
+          <div id="cartoes-overview" class="cartoes-overview"></div>
+        </div>
+        <div id="secao-negocio"></div>
+        <p class="dica">Selecione um item na barra lateral para ver os detalhes, ou use a busca acima.</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
