@@ -1,0 +1,83 @@
+{% extends "shell.html" %}
+
+{% block title %}Usuários AD · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head">
+    <i class="bi bi-person-vcard" aria-hidden="true"></i>
+    <h1>Usuários Active Directory</h1>
+</header>
+
+<div class="toolbar">
+    <label class="search">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <span class="sr-only">Buscar usuário</span>
+        <input type="search" placeholder="Buscar usuário..."
+               data-filter-input data-filter-target="tabela-ad" autocomplete="off">
+    </label>
+    <select class="select" data-filter-select data-filter-target="tabela-ad" data-filter-column="status"
+            aria-label="Filtrar por status">
+        <option value="">Todos os Status</option>
+        <option value="Ativo">Ativo</option>
+        <option value="Desativado">Desativado</option>
+    </select>
+</div>
+
+<div class="table-card">
+    <div class="table-scroll">
+        <table class="grid" id="tabela-ad">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Nome Completo</th>
+                    <th>Cliente</th>
+                    <th>Email</th>
+                    <th>OU</th>
+                    <th>Status</th>
+                    <th>Data Criação</th>
+                    <th>Data Desativação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in usuarios %}
+                <tr data-status="{{ u.status }}">
+                    <td class="strong">{{ u.username }}</td>
+                    <td>{{ u.nome }}</td>
+                    <td>{{ u.cliente }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.ou }}</td>
+                    <td>
+                        <span class="badge {{ 'badge--ok' if u.status == 'Ativo' else 'badge--off' }}">{{ u.status }}</span>
+                    </td>
+                    <td>{{ u.criacao }}</td>
+                    <td>
+                        {% if u.desativacao %}
+                            <span class="text-danger">{{ u.desativacao.data }}</span><br>
+                            <span class="muted-note">por {{ u.desativacao.por }}</span>
+                        {% else %}-{% endif %}
+                    </td>
+                    <td class="nowrap">
+                        {% if u.status == 'Ativo' %}
+                            <button type="button" class="btn btn--sm btn--warn-outline" data-demo-action
+                                    title="Resetar senha"><i class="bi bi-key" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn--sm btn--danger-outline" data-demo-action
+                                    title="Desativar usuário"><i class="bi bi-x-circle" aria-hidden="true"></i></button>
+                        {% else %}
+                            <button type="button" class="btn btn--sm btn--ok-outline" data-demo-action>
+                                <i class="bi bi-check-circle" aria-hidden="true"></i> Ativar
+                            </button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p class="table-empty" hidden>Nenhum usuário encontrado.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

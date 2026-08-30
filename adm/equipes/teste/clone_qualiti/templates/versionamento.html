@@ -1,0 +1,93 @@
+{% extends "shell.html" %}
+
+{% block title %}Versionamento · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head page-head--between">
+    <div class="page-head__title">
+        <i class="bi bi-box-seam" aria-hidden="true"></i>
+        <div>
+            <h1>Versionamento de Aplicação</h1>
+            <p class="page-head__sub">
+                <i class="bi bi-clock" aria-hidden="true"></i>
+                Última varredura: {{ v.ultima_varredura }} por {{ v.por }}
+                &middot; <span class="text-warn"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> {{ v.aviso }}</span>
+            </p>
+        </div>
+    </div>
+    <div class="monitor-controls">
+        <button type="button" class="btn btn--sm btn--ok" data-demo-action>
+            <i class="bi bi-arrow-repeat" aria-hidden="true"></i> Varrer parque
+        </button>
+        <button type="button" class="btn btn--sm btn--light-outline" data-demo-action>
+            <i class="bi bi-clock-history" aria-hidden="true"></i> Histórico
+        </button>
+        <button type="button" class="btn btn--sm btn--ok-outline" data-demo-action>
+            <i class="bi bi-file-earmark-excel" aria-hidden="true"></i> Excel
+        </button>
+    </div>
+</header>
+
+<div class="exec-panel">
+    <div class="chip-list">
+        <span class="chip-list__label">Executável:</span>
+        {% for e in v.executaveis %}
+        <span class="chip {{ 'chip--active' if loop.first }}">
+            {{ e.nome }} <span class="chip__count">{{ e.contagem }}</span>
+        </span>
+        {% endfor %}
+    </div>
+    <p class="exec-panel__ref">
+        Versão de referência do parque: <span class="badge badge--dark">{{ v.versao_referencia }}</span>
+    </p>
+</div>
+
+<section class="stat-grid">
+    {% for c in v.cards_grandes %}
+    <div class="stat stat--left">
+        <p class="stat__label">{{ c.label }}</p>
+        <p class="stat__value stat__value--{{ c.variant }}">{{ c.valor }}</p>
+        {% if c.progresso is defined %}
+        <span class="progress"><span class="progress__bar" style="width: {{ c.progresso }}%"></span></span>
+        {% endif %}
+        <p class="stat__sub">{{ c.sub | safe }}</p>
+    </div>
+    {% endfor %}
+</section>
+
+<section class="ministat-grid">
+    {% for c in v.cards_pequenos %}
+    <div class="ministat">
+        <div class="ministat__top">
+            <span class="ministat__label">{{ c.label }}</span>
+            <span class="ministat__value">{{ c.valor }}</span>
+        </div>
+        <p class="ministat__sub">{{ c.sub | safe }}</p>
+    </div>
+    {% endfor %}
+</section>
+
+<div class="grid-2">
+    <section class="panel">
+        <div class="panel__head"><i class="bi bi-bar-chart" aria-hidden="true"></i> Distribuição por versão</div>
+        <div class="panel__body">
+            <div class="chart-wrap"><div class="chart-inner"><canvas id="distChart"></canvas></div></div>
+        </div>
+    </section>
+    <section class="panel panel--dark">
+        <div class="panel__head"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Tempo desde a última troca</div>
+        <div class="panel__body">
+            <div class="chart-wrap"><div class="chart-inner"><canvas id="trocaChart"></canvas></div></div>
+        </div>
+    </section>
+</div>
+
+<script id="versionamento-data" type="application/json">{{ {
+    "distribuicao": v.distribuicao, "tempo_troca": v.tempo_troca
+} | tojson }}</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script src="{{ url_for('static', filename='js/versionamento.js') }}" defer></script>
+{% endblock %}

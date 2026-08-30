@@ -1,0 +1,43 @@
+{% extends "shell.html" %}
+
+{% block title %}Relatórios · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head">
+    <i class="bi bi-file-earmark-bar-graph" aria-hidden="true"></i>
+    <h1>Relatórios</h1>
+</header>
+
+<div class="stack-narrow">
+    <section class="panel">
+        <div class="panel__head"><i class="bi bi-calendar3" aria-hidden="true"></i> Movimentação Mensal</div>
+        <div class="panel__body">
+            <p class="muted">Relatório de usuários criados e desativados no mês.</p>
+            <form data-demo-form>
+                <div class="field">
+                    <label for="mes">Selecione o Mês</label>
+                    <input class="control" type="month" id="mes" name="mes" value="2026-08">
+                </div>
+                <button type="submit" class="btn btn--ok" data-demo-action>
+                    <i class="bi bi-file-earmark-excel" aria-hidden="true"></i> Gerar Excel
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel__head panel__head--info"><i class="bi bi-graph-up" aria-hidden="true"></i> Estatísticas</div>
+        <div class="panel__body">
+            <ul class="stat-list">
+                {% for e in rel.estatisticas %}
+                <li><strong>{{ e.label }}:</strong> <span class="stat-list__value">{{ e.valor }}</span></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

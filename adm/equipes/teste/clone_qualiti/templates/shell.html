@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body_class %}app-body{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    {% block head_extra %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<div class="app" id="app">
+    {% include "partials/_sidebar.html" %}
+
+    <button class="sidebar-toggle" type="button" data-nav-toggle
+            aria-label="Abrir menu" aria-controls="sidebar">
+        <i class="bi bi-list" aria-hidden="true"></i>
+    </button>
+    <div class="scrim" data-nav-close hidden></div>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+</div>
+{% endblock %}

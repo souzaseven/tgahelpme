@@ -1,0 +1,57 @@
+{% extends "shell.html" %}
+
+{% block title %}Serviços Windows · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head page-head--between">
+    <div class="page-head__title">
+        <i class="bi bi-gear-wide-connected" aria-hidden="true"></i>
+        <h1>Gerenciamento de Serviços Windows</h1>
+    </div>
+    <button type="button" class="btn btn--primary btn--sm" data-demo-action>
+        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> Atualizar Status
+    </button>
+</header>
+
+<div class="table-card">
+    <div class="table-scroll">
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th>Serviço</th>
+                    <th>Nome do Serviço</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in servicos %}
+                <tr>
+                    <td class="strong">{{ s.titulo }}</td>
+                    <td><span class="mono">{{ s.servico }}</span></td>
+                    <td>
+                        <span class="badge badge--run">
+                            <i class="bi bi-play-circle-fill" aria-hidden="true"></i> {{ s.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn--sm btn--danger-outline" data-demo-action>
+                            <i class="bi bi-stop-circle" aria-hidden="true"></i> Parar
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="notice notice--info">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+    <strong>Informação:</strong> {{ nota }}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

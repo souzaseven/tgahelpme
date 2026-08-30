@@ -1,0 +1,67 @@
+{% extends "shell.html" %}
+
+{% block title %}Dashboard · Quallit Manager{% endblock %}
+{% block description %}Visão geral: clientes, usuários AD, backups e atividades recentes.{% endblock %}
+
+{% block content %}
+<header class="page-head">
+    <i class="bi bi-speedometer2" aria-hidden="true"></i>
+    <h1>Dashboard</h1>
+</header>
+
+<section class="kpi-grid">
+    {% for k in data.kpis %}
+    <article class="kpi kpi--{{ k.variant }}">
+        <div class="kpi__body">
+            <p class="kpi__label">{{ k.label }}</p>
+            <p class="kpi__value">{{ k.value }}</p>
+            {% if k.delta %}<span class="kpi__delta">{{ k.delta }}</span>{% endif %}
+            <i class="bi bi-{{ k.icon }} kpi__icon" aria-hidden="true"></i>
+        </div>
+        <a class="kpi__footer" href="{{ url_for('secao', slug=k.slug) }}">Ver detalhes &rarr;</a>
+    </article>
+    {% endfor %}
+</section>
+
+<section class="panel">
+    <div class="panel__head">
+        <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+        Usuários Novos vs Desativados (Últimos 24 Meses)
+    </div>
+    <div class="panel__body">
+        <div class="chart-wrap">
+            <div class="chart-inner">
+                <canvas id="usersChart" role="img"
+                        aria-label="Gráfico de barras de usuários novos e desativados por mês nos últimos 24 meses"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel__head">
+        <i class="bi bi-clock-history" aria-hidden="true"></i>
+        Últimas Atividades
+    </div>
+    <div class="panel__body">
+        <div class="activity">
+            {% for a in data.activities %}
+            <div class="activity__item">
+                <div class="activity__time">{{ a.time }}</div>
+                <p class="activity__title">
+                    <strong>{{ a.actor }}</strong> - {{ a.action }} - {{ a.target }}
+                </p>
+                <p class="activity__desc">{{ a.desc | contadores }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script id="chart-data" type="application/json">{{ data.chart | tojson }}</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "shell.html" %}
+
+{% block title %}Clientes · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head">
+    <i class="bi bi-people" aria-hidden="true"></i>
+    <h1>Clientes</h1>
+</header>
+
+<div class="toolbar">
+    <label class="search">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <span class="sr-only">Buscar cliente</span>
+        <input type="search" placeholder="Buscar cliente..."
+               data-filter-input data-filter-target="tabela-clientes" autocomplete="off">
+    </label>
+</div>
+
+<div class="table-card">
+    <div class="table-scroll">
+        <table class="grid" id="tabela-clientes">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Contato</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in clientes %}
+                <tr>
+                    <td class="{{ 'strong' if not c.codigo }}">{{ c.codigo or c.nome }}</td>
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.cnpj or "-" }}</td>
+                    <td>{{ c.contato or "-" }}</td>
+                    <td>{{ c.email or "-" }}</td>
+                    <td>{{ c.telefone or "-" }}</td>
+                    <td>
+                        <span class="badge {{ 'badge--ok' if c.status == 'Ativo' else 'badge--off' }}">
+                            {{ c.status }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p class="table-empty" hidden>Nenhum cliente encontrado.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

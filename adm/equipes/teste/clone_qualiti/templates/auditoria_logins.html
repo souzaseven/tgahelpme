@@ -1,0 +1,85 @@
+{% extends "shell.html" %}
+
+{% block title %}Auditoria de Logins · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head page-head--between">
+    <div class="page-head__title">
+        <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+        <div>
+            <h1>Auditoria de Logins no AD</h1>
+            <p class="page-head__sub"><i class="bi bi-clock" aria-hidden="true"></i> Atualizado em: {{ aud.atualizado_em }}</p>
+        </div>
+    </div>
+    <div class="monitor-controls">
+        <button type="button" class="btn btn--sm btn--ok" data-monitor-refresh>
+            <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn--sm btn--danger" data-demo-action>
+            <i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Exportar PDF
+        </button>
+        <a class="btn btn--sm btn--light-outline" href="{{ url_for('dashboard') }}">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar
+        </a>
+    </div>
+</header>
+
+<div class="filterbar">
+    <div class="segmented" role="group" aria-label="Período">
+        <span class="segmented__label">Período:</span>
+        {% for p in ["30 dias", "45 dias", "60 dias", "90 dias", "6 meses", "1 ano", "Todos"] %}
+        <button type="button" class="segmented__btn {{ 'is-active' if loop.first }}" data-demo-action>{{ p }}</button>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn--sm btn--danger-outline" data-demo-action>
+        <i class="bi bi-hourglass-bottom" aria-hidden="true"></i> Sem login +30 dias
+    </button>
+    <button type="button" class="btn btn--sm btn--warn-outline" data-demo-action>
+        <i class="bi bi-person-slash" aria-hidden="true"></i> Nunca logaram
+    </button>
+    <label class="search search--sm">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <span class="sr-only">Pesquisar</span>
+        <input type="search" placeholder="Pesquisar usuário, nome ou e-mail..."
+               data-filter-input data-filter-target="tabela-auditoria" autocomplete="off">
+    </label>
+</div>
+
+<section class="panel">
+    <div class="panel__head panel__head--between">
+        <span><i class="bi bi-people" aria-hidden="true"></i> {{ aud.periodo_label }}</span>
+        <span class="badge badge--soft">{{ aud.total }} usuário(s)</span>
+    </div>
+    <div class="panel__body panel__body--flush">
+        <div class="table-scroll">
+            <table class="grid" id="tabela-auditoria">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Último Login</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for l in aud.logins %}
+                    <tr>
+                        <td class="strong">{{ l.usuario }}</td>
+                        <td>{{ l.nome }}</td>
+                        <td>{{ l.email or "-" }}</td>
+                        <td class="nowrap">{{ l.data }} <span class="hora">{{ l.hora }}</span></td>
+                        <td><span class="badge {{ 'badge--ok' if l.status == 'Ativo' else 'badge--off' }}">{{ l.status }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p class="table-empty" hidden>Nenhum usuário encontrado.</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "shell.html" %}
+
+{% block title %}Limpeza de Perfil · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head">
+    <i class="bi bi-eraser" aria-hidden="true"></i>
+    <h1>Limpeza de Perfil de Usuário</h1>
+</header>
+
+<div class="split">
+    <form class="form-card" data-demo-form>
+        <div class="field">
+            <label for="ad-username">Username do AD</label>
+            <input class="control" type="text" id="ad-username" name="username"
+                   value="{{ info.exemplo_username }}" autocomplete="off">
+            <p class="muted-note">{{ info.ajuda }}</p>
+        </div>
+        <button type="submit" class="btn btn--danger" data-demo-action>
+            <i class="bi bi-eraser" aria-hidden="true"></i> Limpar Perfil em Todos os Servidores
+        </button>
+    </form>
+
+    <div class="notice notice--warn">
+        <p class="notice__title"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Atenção</p>
+        <ul>
+            {% for aviso in info.avisos %}
+            <li>{{ aviso | safe }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

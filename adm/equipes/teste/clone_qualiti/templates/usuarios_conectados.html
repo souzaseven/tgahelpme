@@ -1,0 +1,106 @@
+{% extends "shell.html" %}
+
+{% block title %}Monitor de Sessões TSPlus · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head page-head--between">
+    <div class="page-head__title">
+        <i class="bi bi-display" aria-hidden="true"></i>
+        <h1>Monitor de Sessões TSPlus</h1>
+    </div>
+    <div class="monitor-controls">
+        <span class="muted-note">Atualizado: {{ atualizado_em }}</span>
+        <button type="button" class="btn btn--sm btn--light-outline" data-monitor-refresh>
+            <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> Atualizar
+        </button>
+        <button type="button" class="btn btn--sm btn--light-outline" data-demo-action>
+            <i class="bi bi-arrows-expand" aria-hidden="true"></i> Expandir Todos
+        </button>
+        <label class="search search--sm">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <span class="sr-only">Buscar usuário</span>
+            <input type="search" placeholder="Buscar usuário..."
+                   data-filter-input data-filter-target="tabela-farm" autocomplete="off">
+        </label>
+        <label class="switch">
+            <input type="checkbox" data-monitor-auto>
+            <span>Auto (30s)</span>
+        </label>
+    </div>
+</header>
+
+<section class="stat-grid">
+    <div class="stat">
+        <p class="stat__label">Servidores Online</p>
+        <p class="stat__value stat__value--ok">{{ sessoes.resumo.servidores_online }}</p>
+    </div>
+    <div class="stat">
+        <p class="stat__label">Total de Sessões</p>
+        <p class="stat__value stat__value--ok">{{ sessoes.resumo.total_sessoes }}</p>
+    </div>
+    <div class="stat">
+        <p class="stat__label">Média por Servidor</p>
+        <p class="stat__value stat__value--info">{{ sessoes.resumo.media_por_servidor }}</p>
+    </div>
+    <div class="stat">
+        <p class="stat__label">Servidores Offline</p>
+        <p class="stat__value stat__value--warn">{{ sessoes.resumo.servidores_offline }}</p>
+    </div>
+</section>
+
+<section class="panel panel--dark">
+    <div class="panel__head"><i class="bi bi-hdd-stack" aria-hidden="true"></i> Servidores do Farm</div>
+    <div class="panel__body panel__body--flush">
+        <div class="table-scroll">
+            <table class="grid" id="tabela-farm">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Servidor</th>
+                        <th>Hostname</th>
+                        <th>IP</th>
+                        <th>Farm ID</th>
+                        <th>Sessões</th>
+                        <th>Detalhes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in sessoes.servidores %}
+                    <tr>
+                        <td><span class="badge badge--ok"><i class="bi bi-circle-fill dot" aria-hidden="true"></i> {{ s.status }}</span></td>
+                        <td class="strong">{{ s.nome }}</td>
+                        <td>{{ s.hostname }}</td>
+                        <td><span class="mono">{{ s.ip }}</span></td>
+                        <td><span class="badge badge--muted">{{ s.farm }}</span></td>
+                        <td><span class="badge badge--count">{{ s.sessoes }}</span></td>
+                        <td>
+                            <button type="button" class="btn btn--sm btn--info-outline" data-demo-action>
+                                <i class="bi bi-eye" aria-hidden="true"></i> Ver
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="panel panel--dark">
+    <div class="panel__head"><i class="bi bi-bar-chart" aria-hidden="true"></i> Distribuição de Sessões</div>
+    <div class="panel__body">
+        {% for s in sessoes.servidores %}
+        <div class="dist__row">
+            <span class="dist__name">{{ s.nome }}</span>
+            <span class="dist__track">
+                <span class="dist__fill" style="width: {{ (s.sessoes / maximo * 100) | round(1) }}%">{{ s.sessoes }}</span>
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}

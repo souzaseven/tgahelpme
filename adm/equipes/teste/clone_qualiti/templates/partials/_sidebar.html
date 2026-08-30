@@ -1,0 +1,35 @@
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+        <span class="sidebar__brand-title">Quallit</span>
+        <span class="sidebar__brand-sub">Quallit Manager</span>
+    </div>
+
+    <div class="sidebar__user">
+        <i class="bi bi-person-circle" aria-hidden="true"></i>
+        <div>
+            <div class="sidebar__user-name">{{ current_user }}</div>
+            <div class="sidebar__user-role">{{ current_role }}</div>
+        </div>
+    </div>
+
+    <a class="btn btn--light sidebar__cta" href="{{ url_for('secao', slug='resetar-senhas') }}">
+        <i class="bi bi-key" aria-hidden="true"></i> Resetar Senhas
+    </a>
+
+    <nav class="sidebar__nav" aria-label="Menu principal">
+        {% for item in menu %}
+            <a class="sidebar__link {{ 'is-active' if active == item.slug }}"
+               {{ 'aria-current="page"' if active == item.slug }}
+               href="{{ url_for('dashboard') if item.slug == 'dashboard'
+                        else url_for('secao', slug=item.slug) }}">
+                <i class="bi bi-{{ item.icon }}" aria-hidden="true"></i> {{ item.label }}
+            </a>
+        {% endfor %}
+
+        <form class="sidebar__logout" method="POST" action="{{ url_for('logout') }}">
+            <button class="sidebar__link" type="submit">
+                <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Sair
+            </button>
+        </form>
+    </nav>
+</aside>

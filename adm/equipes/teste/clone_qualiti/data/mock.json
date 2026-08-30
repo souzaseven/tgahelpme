@@ -1,0 +1,219 @@
+{
+  "_nota": "DADOS DE DEMONSTRAÇÃO — TODOS FICTÍCIOS. Estrutura, colunas e volume reproduzem os screenshots da referência, mas nenhum registro é real: nomes de clientes, CNPJs, e-mails, usuários AD, IPs (10.0.0.x) e hostnames foram inventados. Números dos KPIs/gráficos reproduzem os prints. Ações destrutivas não fazem nada.",
+
+  "kpis": [
+    { "slug": "clientes",            "label": "Clientes Ativos",             "value": "482",  "icon": "people",          "variant": "primary" },
+    { "slug": "usuarios-ad",         "label": "Usuários AD Ativos",          "value": "1127", "icon": "person-vcard",    "variant": "success", "delta": "+33 este mês" },
+    { "slug": "cloudbackup",         "label": "CloudBackup Ativos",          "value": "30",   "icon": "cloud-arrow-up",  "variant": "info" },
+    { "slug": "acesso-servidor-tga", "label": "Servidores Força de Vendas",  "value": "31",   "icon": "hdd-stack",       "variant": "warning" },
+    { "slug": "datacenter-qloudme",  "label": "Datacenter Qloudme",          "value": "13",   "icon": "server",          "variant": "danger" }
+  ],
+
+  "chart": {
+    "labels": ["Sep/2024","Oct/2024","Nov/2024","Dec/2024","Jan/2025","Feb/2025","Mar/2025","Apr/2025","May/2025","Jun/2025","Jul/2025","Aug/2025","Sep/2025","Oct/2025","Nov/2025","Dec/2025","Jan/2026","Feb/2026","Mar/2026","Apr/2026","May/2026","Jun/2026","Jul/2026","Aug/2026"],
+    "novos":       [12, 32, 20, 12, 44, 10, 46, 24, 14, 16, 22, 34, 62, 44, 34, 22, 52, 216, 64, 44, 36, 46, 32, 40],
+    "desativados": [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,   6, 186, 32, 12, 10, 22, 16]
+  },
+
+  "activities": [
+    { "time": "29/08/2026 12:03", "actor": "Anderson.souza", "action": "scan",     "target": "versao_app",  "desc": "Scan: 4022 arquivo(s), 0 novo(s), 0 alterado(s), 0 erro(s)" },
+    { "time": "29/08/2026 11:58", "actor": "Anderson.souza", "action": "login",    "target": "user",        "desc": "Login com 2FA realizado com sucesso" },
+    { "time": "29/08/2026 10:20", "actor": "Joao.Pereira",   "action": "scan",     "target": "versao_app",  "desc": "Scan: 4022 arquivo(s), 0 novo(s), 0 alterado(s), 0 erro(s)" },
+    { "time": "29/08/2026 10:11", "actor": "Joao.Pereira",   "action": "scan",     "target": "versao_app",  "desc": "Scan: 4022 arquivo(s), 0 novo(s), 0 alterado(s), 0 erro(s)" },
+    { "time": "29/08/2026 09:54", "actor": "Joao.Pereira",   "action": "login",    "target": "user",        "desc": "Login com 2FA realizado com sucesso" },
+    { "time": "29/08/2026 01:45", "actor": "Anderson.souza", "action": "scan",     "target": "versao_app",  "desc": "Scan: 4022 arquivo(s), 0 novo(s), 0 alterado(s), 0 erro(s)" },
+    { "time": "29/08/2026 01:42", "actor": "Anderson.souza", "action": "conectar", "target": "servidor_dc", "desc": "Acesso RDP Datacenter via Guacamole: BANCO-PRINCIPAL (10.0.0.25) - Usuário: Anderson.souza" },
+    { "time": "29/08/2026 01:36", "actor": "Anderson.souza", "action": "conectar", "target": "servidor_dc", "desc": "Acesso RDP Datacenter via Guacamole: BANCO-PRINCIPAL (10.0.0.25) - Usuário: Anderson.souza" },
+    { "time": "29/08/2026 01:21", "actor": "Joao.Pereira",   "action": "scan",     "target": "versao_app",  "desc": "Scan: 4023 arquivo(s), 4023 novo(s), 0 alterado(s), 0 erro(s)" },
+    { "time": "29/08/2026 01:09", "actor": "Joao.Pereira",   "action": "login",    "target": "user",        "desc": "Login com 2FA realizado com sucesso" }
+  ],
+
+  "clientes": [
+    { "codigo": "C13458", "nome": "AUTO CENTER SIGMA",             "cnpj": "",                   "contato": "",       "email": "suporte@exemplo.com.br",        "telefone": "",                "status": "Ativo" },
+    { "codigo": "C14903", "nome": "2R AUTO PECAS DEMO",            "cnpj": "",                   "contato": "",       "email": "suporte@exemplo.com.br",        "telefone": "",                "status": "Ativo" },
+    { "codigo": "",       "nome": "CONFECCOES MODELO LTDA",        "cnpj": "11.222.333/0001-44", "contato": "Marina", "email": "contato@confmodelo.example",     "telefone": "(66) 99900-0000", "status": "Ativo" },
+    { "codigo": "C10420", "nome": "ABRAMAR COMERCIO DEMO",         "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C13119", "nome": "AC DRILL FICTICIO",             "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C13184", "nome": "ACOUGUE CENTRAL DEMO",          "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C13822", "nome": "AF EMPREENDIMENTOS DEMO",       "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C12055", "nome": "AG PECAS EXEMPLO",              "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C12704", "nome": "AGCAR AUTO CENTER DEMO",        "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C14718", "nome": "AGRIJATO TORNEARIA DEMO",       "cnpj": "",                   "contato": "",       "email": "suporte@exemplo.com.br",        "telefone": "",                "status": "Ativo" },
+    { "codigo": "",       "nome": "AGRO FILTROS EXEMPLO",          "cnpj": "55.666.777/0001-88", "contato": "",       "email": "financeiro@agrofiltros.example", "telefone": "66 90000-0000",  "status": "Ativo" },
+    { "codigo": "C14074", "nome": "AGRO RAPIDO DEMO",              "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C14322", "nome": "AGRO VERDE PECAS AGRICOLAS DEMO","cnpj": "",                  "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C15137", "nome": "AGRODELAS EXEMPLO",             "cnpj": "",                   "contato": "",       "email": "suporte@exemplo.com.br",        "telefone": "",                "status": "Ativo" },
+    { "codigo": "C15234", "nome": "AGROINDUSTRIAL KEKAMBAS DEMO",  "cnpj": "",                   "contato": "",       "email": "suporte@exemplo.com.br",        "telefone": "",                "status": "Ativo" },
+    { "codigo": "C12785", "nome": "AGROMAQ DEMO",                  "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C10553", "nome": "AGROPET EXEMPLO",               "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C12473", "nome": "AGROVERDE SERVICE DEMO",        "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" },
+    { "codigo": "C15980", "nome": "ALPHA DISTRIBUIDORA DEMO",      "cnpj": "22.333.444/0001-55", "contato": "Paulo",  "email": "ti@alphadist.example",           "telefone": "(66) 3000-0000", "status": "Inativo" },
+    { "codigo": "C16021", "nome": "BETA MERCADO EXEMPLO",          "cnpj": "",                   "contato": "",       "email": "",                              "telefone": "",                "status": "Ativo" }
+  ],
+
+  "usuarios_ad": [
+    { "username": "C14438.USER10", "nome": "ELETRO DEMO 10",        "cliente": "ELETRO DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "27/08/2026", "desativacao": null },
+    { "username": "C14438.USER9",  "nome": "ELETRO DEMO 09",        "cliente": "ELETRO DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "27/08/2026", "desativacao": null },
+    { "username": "C14438.USER8",  "nome": "ELETRO DEMO 08",        "cliente": "ELETRO DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "27/08/2026", "desativacao": null },
+    { "username": "C15208.USER2",  "nome": "ENERGIA SOLAR DEMO 02", "cliente": "ENERGIA SOLAR DEMO", "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "26/08/2026", "desativacao": null },
+    { "username": "C15208.USER1",  "nome": "ENERGIA SOLAR DEMO 01", "cliente": "ENERGIA SOLAR DEMO", "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "26/08/2026", "desativacao": null },
+    { "username": "C08365.USER4",  "nome": "SUCOS DEMO 04",         "cliente": "SUCOS DEMO",         "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C08365.USER3",  "nome": "SUCOS DEMO 03",         "cliente": "SUCOS DEMO",         "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C08365.USER2",  "nome": "SUCOS DEMO 02",         "cliente": "SUCOS DEMO",         "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C08365.USER1",  "nome": "SUCOS DEMO 01",         "cliente": "SUCOS DEMO",         "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C15007.USER2",  "nome": "METALURGICA DEMO 02",   "cliente": "METALURGICA DEMO",   "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C15007.USER1",  "nome": "METALURGICA DEMO 01",   "cliente": "METALURGICA DEMO",   "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "25/08/2026", "desativacao": null },
+    { "username": "C15184.USER4",  "nome": "BOMBAS DEMO 04",        "cliente": "BOMBAS DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Desativado", "criacao": "24/08/2026", "desativacao": { "data": "26/08/2026", "por": "joao.pereira" } },
+    { "username": "C15184.USER3",  "nome": "BOMBAS DEMO 03",        "cliente": "BOMBAS DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Desativado", "criacao": "24/08/2026", "desativacao": { "data": "26/08/2026", "por": "joao.pereira" } },
+    { "username": "C15184.USER2",  "nome": "BOMBAS DEMO 02",        "cliente": "BOMBAS DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Desativado", "criacao": "24/08/2026", "desativacao": { "data": "26/08/2026", "por": "joao.pereira" } },
+    { "username": "C15184.USER1",  "nome": "BOMBAS DEMO 01",        "cliente": "BOMBAS DEMO",        "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Desativado", "criacao": "24/08/2026", "desativacao": { "data": "26/08/2026", "por": "joao.pereira" } },
+    { "username": "C12990.USER1",  "nome": "PADARIA DEMO 01",       "cliente": "PADARIA DEMO",      "email": "suporte@exemplo.com.br", "ou": "OU=Usuarios Clientes", "status": "Ativo",      "criacao": "22/08/2026", "desativacao": null }
+  ],
+
+  "servicos_windows": {
+    "nota": "Esta página gerencia os serviços Windows do TGA Sistemas rodando no servidor 10.0.0.25. Usuários com role \"Admin\" e \"Gerente\" podem parar e iniciar serviços.",
+    "servicos": [
+      { "titulo": "TGA - Server API WEB",        "servico": "srvServerWebAPI",    "status": "Rodando" },
+      { "titulo": "TGA - Server Cloud",          "servico": "srvTGAInteradorImg", "status": "Rodando" },
+      { "titulo": "TGA - Server Integrador PDV", "servico": "srvServerModule",    "status": "Rodando" },
+      { "titulo": "TGA - Server WhatsApp",       "servico": "TgaService",         "status": "Rodando" }
+    ]
+  },
+
+  "limpeza_perfil": {
+    "exemplo_username": "C10966.USER5",
+    "ajuda": "Limpa o perfil do usuário em todos os servidores TSPlus (srvtsplus01 a srvtsplus09).",
+    "avisos": [
+      "O usuário <strong>não pode estar logado</strong> em nenhum servidor.",
+      "Apaga o perfil local (pasta + chaves de registro) em todos os servidores.",
+      "Útil quando o perfil está corrompido ou consumindo espaço.",
+      "O usuário fará logon limpo no próximo acesso."
+    ]
+  },
+
+  "sessoes": {
+    "resumo": { "servidores_online": "9 / 9", "total_sessoes": 264, "media_por_servidor": "29.3", "servidores_offline": 0 },
+    "servidores": [
+      { "status": "Online", "nome": "TSPLUS08", "hostname": "SRVTSPLUS08", "ip": "10.0.0.21", "farm": "F8", "sessoes": 30 },
+      { "status": "Online", "nome": "TSPLUS04", "hostname": "SRVTSPLUS04", "ip": "10.0.0.29", "farm": "F4", "sessoes": 28 },
+      { "status": "Online", "nome": "TSPLUS09", "hostname": "SRVTSPLUS09", "ip": "10.0.0.8",  "farm": "F9", "sessoes": 30 },
+      { "status": "Online", "nome": "TSPLUS01", "hostname": "SRVTSPLUS01", "ip": "10.0.0.24", "farm": "F1", "sessoes": 30 },
+      { "status": "Online", "nome": "TSPLUS05", "hostname": "SRVTSPLUS05", "ip": "10.0.0.22", "farm": "F5", "sessoes": 29 },
+      { "status": "Online", "nome": "TSPLUS02", "hostname": "SRVTSPLUS02", "ip": "10.0.0.12", "farm": "F2", "sessoes": 29 },
+      { "status": "Online", "nome": "TSPLUS06", "hostname": "SRVTSPLUS06", "ip": "10.0.0.17", "farm": "F6", "sessoes": 29 },
+      { "status": "Online", "nome": "TSPLUS03", "hostname": "SRVTSPLUS03", "ip": "10.0.0.28", "farm": "F3", "sessoes": 28 },
+      { "status": "Online", "nome": "TSPLUS07", "hostname": "SRVTSPLUS07", "ip": "10.0.0.9",  "farm": "F7", "sessoes": 31 }
+    ]
+  },
+
+  "rdp": [
+    { "nome": "SRVGABI01",        "ip": "10.0.0.131", "porta": 3389, "descricao": "CLIENTE DEMO PRINCIPAL",          "testavel": false },
+    { "nome": "SRVFV01_TGA",      "ip": "10.0.0.98",  "porta": 3389, "descricao": "TGA SISTEMAS - PORTA: 8090",       "testavel": true },
+    { "nome": "SRVFV02_C13164",   "ip": "10.0.0.99",  "porta": 3389, "descricao": "CLIENTE DEMO 02 - PORTA: 8091",    "testavel": true },
+    { "nome": "SRVFV03_C13199",   "ip": "10.0.0.100", "porta": 3389, "descricao": "CLIENTE DEMO 03 - PORTA: 8092",    "testavel": true },
+    { "nome": "SRVFV04_C13214",   "ip": "10.0.0.101", "porta": 3389, "descricao": "CLIENTE DEMO 04 - PORTA: 8093",    "testavel": true },
+    { "nome": "SRVFV05_C14882",   "ip": "10.0.0.102", "porta": 3389, "descricao": "CLIENTE DEMO 05 - PORTA: 8094",    "testavel": true },
+    { "nome": "SRVFV06_C10486",   "ip": "10.0.0.103", "porta": 3389, "descricao": "CLIENTE DEMO 06 - PORTA: 8095",    "testavel": true },
+    { "nome": "SRVFV07_C15010",   "ip": "10.0.0.104", "porta": 3389, "descricao": "CLIENTE DEMO 07 - PORTA: 8096",    "testavel": true },
+    { "nome": "SRVFV08_C13718",   "ip": "10.0.0.105", "porta": 3389, "descricao": "CLIENTE DEMO 08 - PORTA: 8097",    "testavel": true },
+    { "nome": "SRVFV09_C13822",   "ip": "10.0.0.106", "porta": 3389, "descricao": "CLIENTE DEMO 09 - PORTA: 8098",    "testavel": true },
+    { "nome": "SRVFV10_C11445",   "ip": "10.0.0.107", "porta": 3389, "descricao": "CLIENTE DEMO 10 - PORTA: 8099",    "testavel": true },
+    { "nome": "SRVFV11_C13952",   "ip": "10.0.0.108", "porta": 3389, "descricao": "CLIENTE DEMO 11 - PORTA: 8100",    "testavel": true },
+    { "nome": "SRVFV12_C13953",   "ip": "10.0.0.109", "porta": 3389, "descricao": "CLIENTE DEMO 12 - PORTA: 8101",    "testavel": true },
+    { "nome": "SRVFV13_C13981",   "ip": "10.0.0.110", "porta": 3389, "descricao": "CLIENTE DEMO 13 - PORTA: 8102",    "testavel": true },
+    { "nome": "SRVFV14_C14064",   "ip": "10.0.0.111", "porta": 3389, "descricao": "CLIENTE DEMO 14 - PORTA: 8103",    "testavel": true }
+  ],
+
+  "datacenter": {
+    "nota": "As credenciais dos servidores estão criptografadas no banco de dados. Ao clicar em \"Conectar\", uma sessão RDP será aberta via Apache Guacamole diretamente no navegador. Todos os acessos são registrados em log de auditoria.",
+    "servidores": [
+      { "nome": "BANCO-PRINCIPAL",           "ip": "10.0.0.25", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM1-DEMO",                "ip": "10.0.0.24", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM2-DEMO",                "ip": "10.0.0.12", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM3-DEMO",                "ip": "10.0.0.28", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM4-DEMO",                "ip": "10.0.0.29", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM5-DEMO",                "ip": "10.0.0.22", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM6-DEMO",                "ip": "10.0.0.17", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM7-DEMO",                "ip": "10.0.0.9",  "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM8-DEMO",                "ip": "10.0.0.21", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "FARM9-DEMO",                "ip": "10.0.0.8",  "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "REVENDA-DEMO",              "ip": "10.0.0.26", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "GATEWAY-TSPLUS",            "ip": "10.0.0.23", "porta": 3389, "so": "Windows Server 2022",    "descricao": "" },
+      { "nome": "SRV-DEMO (EMPRESA DEMO)",   "ip": "10.0.0.34", "porta": 3389, "so": "Windows Server 2012 R2", "descricao": "SERVIDOR DE BANCO DE DADOS E RDP SEPARADO" }
+    ]
+  },
+
+  "versionamento": {
+    "ultima_varredura": "29/08/2026 12:03",
+    "por": "Anderson.souza",
+    "aviso": "auditoria de objeto desligada",
+    "versao_referencia": "51.52.0.0",
+    "executaveis": [
+      { "nome": "unins000.exe", "contagem": 322 }, { "nome": "TGAbackup.exe", "contagem": 322 },
+      { "nome": "SuporteTGA.exe", "contagem": 322 }, { "nome": "SuporteAssis_Old.exe", "contagem": 322 },
+      { "nome": "SuporteAssis.exe", "contagem": 322 }, { "nome": "RunOnStartup.exe", "contagem": 322 },
+      { "nome": "Financeiro.exe", "contagem": 322 }, { "nome": "Estoque.exe", "contagem": 322 },
+      { "nome": "Atualiza.exe", "contagem": 322 }, { "nome": "MenuPrincipal.exe", "contagem": 315 },
+      { "nome": "TGAUpdate.exe", "contagem": 314 }, { "nome": "Contabil.exe", "contagem": 149 },
+      { "nome": "Hotel.exe", "contagem": 9 }, { "nome": "2603Hotel.exe", "contagem": 2 },
+      { "nome": "2603Folha.exe", "contagem": 2 }, { "nome": "2603Contabil.exe", "contagem": 2 },
+      { "nome": "1Hotel.exe", "contagem": 2 }, { "nome": "_.exe", "contagem": 1 },
+      { "nome": "Financeiro2603.exe", "contagem": 1 }, { "nome": "Financeiro2601.exe", "contagem": 1 },
+      { "nome": "Estoque2603.exe", "contagem": 1 }, { "nome": "Estoque25_04.exe", "contagem": 1 },
+      { "nome": "CamposRBField.exe", "contagem": 1 }, { "nome": "1Estoque.exe", "contagem": 1 }
+    ],
+    "cards_grandes": [
+      { "label": "Conformidade",       "valor": "100.0%", "variant": "primary", "sub": "322 de 322 na versão 51.52.0.0", "progresso": 100 },
+      { "label": "Desatualizados",     "valor": "0",      "variant": "warning", "sub": "sendo <strong>0</strong> com atraso crítico" },
+      { "label": "Atualizações (30 dias)", "valor": "0",  "variant": "info",    "sub": "trocas de executável detectadas" },
+      { "label": "Autoria identificada",   "valor": "0.0%","variant": "muted",  "sub": "plataforma ou auditoria — o resto é dono NTFS (aproximado)" }
+    ],
+    "cards_pequenos": [
+      { "label": "Sem o executável",      "valor": "0",   "sub": "pastas de cliente sem <code>unins000.exe</code> ou sem a subpasta Tga" },
+      { "label": "Cadastrados sem pasta", "valor": "133", "sub": "clientes ativos no cadastro que não aparecem no fileserver" },
+      { "label": "À frente do parque",    "valor": "0",   "sub": "versão maior que a referência (piloto/teste)" },
+      { "label": "Sem número de versão",  "valor": "0",   "sub": "executável sem recurso de versão no binário" }
+    ],
+    "distribuicao": { "labels": ["51.52.0.0"], "valores": [322] },
+    "tempo_troca": {
+      "labels": ["Mais de 90 dias", "31 a 90 dias", "8 a 30 dias", "Até 7 dias"],
+      "valores": [225, 62, 32, 3],
+      "cores": ["#f4c020", "#29c0e0", "#1f9d6b", "#e0416b"]
+    }
+  },
+
+  "relatorios": {
+    "estatisticas": [
+      { "label": "Total de Clientes Ativos",     "valor": "482" },
+      { "label": "Total de Usuários AD Ativos",   "valor": "1127" },
+      { "label": "Total de Servidores FV Ativos", "valor": "1" },
+      { "label": "Total de CloudBackup Ativos",   "valor": "30" }
+    ]
+  },
+
+  "auditoria_logins": {
+    "atualizado_em": "29/08/2026 11:01:50",
+    "total": 903,
+    "periodo_label": "Usuários que fizeram login nos últimos 30 dias",
+    "logins": [
+      { "usuario": "C14877.USER2", "nome": "C14877.USER2",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:59:57", "status": "Ativo" },
+      { "usuario": "C11155.USER5", "nome": "C11155.USER5",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:59:56", "status": "Ativo" },
+      { "usuario": "C12511.USER3", "nome": "C12511.USER3",                    "email": "",                       "data": "2026-08-29", "hora": "13:59:46", "status": "Ativo" },
+      { "usuario": "C10136.USER1", "nome": "C10136.USER1",                    "email": "",                       "data": "2026-08-29", "hora": "13:59:27", "status": "Ativo" },
+      { "usuario": "C11155.USER7", "nome": "C11155.USER7",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:59:20", "status": "Ativo" },
+      { "usuario": "C12042.USER2", "nome": "C12042.USER2",                    "email": "",                       "data": "2026-08-29", "hora": "13:59:15", "status": "Ativo" },
+      { "usuario": "C12511.USER1", "nome": "C12511.USER1",                    "email": "",                       "data": "2026-08-29", "hora": "13:59:03", "status": "Ativo" },
+      { "usuario": "C11155.USER6", "nome": "C11155.USER6",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:58:43", "status": "Ativo" },
+      { "usuario": "C11155.USER8", "nome": "C11155.USER8",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:58:41", "status": "Ativo" },
+      { "usuario": "C11155.USER1", "nome": "C11155.USER1",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:58:33", "status": "Ativo" },
+      { "usuario": "C14292.USER2", "nome": "C14292.USER2 CLIENTE DEMO A",     "email": "",                       "data": "2026-08-29", "hora": "13:57:47", "status": "Ativo" },
+      { "usuario": "C07638.USER3", "nome": "C07638.USER3 CLIENTE DEMO B",     "email": "",                       "data": "2026-08-29", "hora": "13:57:46", "status": "Ativo" },
+      { "usuario": "C13366.USER4", "nome": "C13366.USER4 CLIENTE DEMO C",     "email": "",                       "data": "2026-08-29", "hora": "13:56:48", "status": "Ativo" },
+      { "usuario": "C14554.USER2", "nome": "C14554.USER2 CLIENTE DEMO D",     "email": "",                       "data": "2026-08-29", "hora": "13:54:05", "status": "Ativo" },
+      { "usuario": "C14323.USER6", "nome": "C14323.USER6 CLIENTE DEMO E",     "email": "",                       "data": "2026-08-29", "hora": "13:53:37", "status": "Ativo" },
+      { "usuario": "C04467.USER4", "nome": "C04467.USER4 CLIENTE DEMO F",     "email": "",                       "data": "2026-08-29", "hora": "13:53:18", "status": "Ativo" },
+      { "usuario": "C14841.USER2", "nome": "C14841.USER2",                    "email": "suporte@exemplo.com.br", "data": "2026-08-29", "hora": "13:53:15", "status": "Ativo" },
+      { "usuario": "usuario.demo", "nome": "Usuário Demo",                    "email": "",                       "data": "2026-08-29", "hora": "13:53:05", "status": "Ativo" }
+    ]
+  }
+}

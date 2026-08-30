@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Entrar · Painel de Gestão{% endblock %}
+{% block description %}Faça login para acessar o painel de gestão.{% endblock %}
+{% block body_class %}page-login{% endblock %}
+
+{% block body %}
+<main class="login-shell">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}"
+                 alt="Painel de Gestão" width="250" height="62">
+            <p>Sistema de gestão administrativa</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash">
+                    {% for category, message in messages %}
+                        <div class="alert alert--{{ 'error' if category in ['error', 'danger'] else 'info' }}"
+                             role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form class="login-form" method="POST"
+              action="{{ url_for('login', next=next_url) }}">
+            <div class="field">
+                <label for="username">Usuário</label>
+                <input class="control" type="text" id="username" name="username"
+                       autocomplete="username" autocapitalize="none"
+                       spellcheck="false" required autofocus>
+            </div>
+
+            <div class="field">
+                <label for="password">Senha</label>
+                <div class="password">
+                    <input class="control" type="password" id="password" name="password"
+                           autocomplete="current-password" required>
+                    <button class="password__toggle" type="button"
+                            data-toggle-password aria-controls="password" aria-pressed="false">
+                        <span data-toggle-label>Mostrar</span>
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn--primary btn--block" type="submit" data-submit>
+                <span class="spinner" aria-hidden="true" hidden></span>
+                <span data-submit-label>Entrar</span>
+            </button>
+        </form>
+    </div>
+</main>
+{% endblock %}

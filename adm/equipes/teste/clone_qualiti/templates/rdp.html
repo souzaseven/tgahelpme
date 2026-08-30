@@ -1,0 +1,57 @@
+{% extends "shell.html" %}
+
+{% block title %}Acesso Servidor TGA · Quallit Manager{% endblock %}
+
+{% block content %}
+<header class="page-head page-head--between">
+    <div class="page-head__title">
+        <i class="bi bi-hdd-network" aria-hidden="true"></i>
+        <h1>Acesso Remoto (RDP)</h1>
+    </div>
+    <button type="button" class="btn btn--primary btn--sm" data-demo-action>
+        <i class="bi bi-wifi" aria-hidden="true"></i> Testar Todos
+    </button>
+</header>
+
+<div class="table-card">
+    <div class="table-scroll">
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th>Servidor</th>
+                    <th>Endereço</th>
+                    <th>Porta</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in servidores %}
+                <tr>
+                    <td class="strong"><i class="bi bi-pc-display-horizontal" aria-hidden="true"></i> {{ s.nome }}</td>
+                    <td><span class="mono">{{ s.ip }}</span></td>
+                    <td>{{ s.porta }}</td>
+                    <td>{{ s.descricao }}</td>
+                    <td class="nowrap actions">
+                        <button type="button" class="btn btn--sm btn--primary" data-demo-action>
+                            <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> Conectar
+                        </button>
+                        {% if s.testavel %}
+                        <button type="button" class="btn btn--sm btn--info-solid" data-demo-action>
+                            <i class="bi bi-wifi" aria-hidden="true"></i> Testar
+                        </button>
+                        {% endif %}
+                        <button type="button" class="btn btn--sm btn--warn-outline btn--icon" data-demo-action
+                                title="Editar"><i class="bi bi-pencil" aria-hidden="true"></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/tables.js') }}" defer></script>
+{% endblock %}
