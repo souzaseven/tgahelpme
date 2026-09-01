@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Painel de informacoes de rede, IP e sistema." />
+  <meta name="color-scheme" content="dark" />
+  <title>Meu IP — Painel de rede e sistema</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__titulo">
+      <h1>Meu IP</h1>
+      <p>Informações de rede, navegador e máquina</p>
+    </div>
+    <div class="topo__acoes">
+      <span id="statusRede" class="pill pill--neutro" title="Status de conexão">
+        <span class="pill__ponto"></span><span id="statusRedeTexto">verificando…</span>
+      </span>
+      <button id="btnAtualizar" class="botao" type="button">Atualizar</button>
+    </div>
+  </header>
+
+  <div id="banner-ip" class="banner" hidden></div>
+
+  <main class="grade" id="grade">
+    <section class="card" id="card-publico">
+      <header class="card__cabecalho">
+        <h2>Rede — IP público</h2>
+        <span class="etiqueta etiqueta--api">API pública</span>
+      </header>
+      <dl class="lista" id="lista-publico">
+        <div class="lista__vazio">Carregando…</div>
+      </dl>
+      <div id="mapa" class="mapa" hidden></div>
+    </section>
+
+    <section class="card" id="card-seguranca">
+      <header class="card__cabecalho">
+        <h2>Segurança da conexão</h2>
+        <span class="etiqueta etiqueta--api">API pública</span>
+      </header>
+      <dl class="lista" id="lista-seguranca">
+        <div class="lista__vazio">Carregando…</div>
+      </dl>
+      <p class="card__nota">
+        Sinais heurísticos de <code>ipapi.is</code>, <code>dns.google</code> e
+        <code>cloudflare.com/cdn-cgi/trace</code>. Um "sim" não é prova
+        definitiva de VPN/proxy.
+      </p>
+    </section>
+
+    <section class="card" id="card-navegador">
+      <header class="card__cabecalho">
+        <h2>Navegador e dispositivo</h2>
+        <span class="etiqueta etiqueta--navegador">Navegador</span>
+      </header>
+      <dl class="lista" id="lista-navegador">
+        <div class="lista__vazio">Carregando…</div>
+      </dl>
+    </section>
+
+    <section class="card" id="card-local">
+      <header class="card__cabecalho">
+        <h2>IP local (WebRTC)</h2>
+        <span class="etiqueta etiqueta--navegador">Navegador</span>
+      </header>
+      <dl class="lista" id="lista-webrtc">
+        <div class="lista__vazio">Carregando…</div>
+      </dl>
+      <p class="card__nota">
+        Navegadores modernos ocultam o IP da rede local atrás de um nome
+        <code>.local</code> (mDNS). O valor real só aparece pelo backend Python.
+      </p>
+    </section>
+
+    <section class="card" id="card-latencia">
+      <header class="card__cabecalho">
+        <h2>Latência e velocidade</h2>
+        <span class="etiqueta etiqueta--navegador">Navegador</span>
+      </header>
+      <div id="tabela-latencia">
+        <div class="lista__vazio">Medindo…</div>
+      </div>
+      <div class="latencia__acoes">
+        <button id="btnVelocidade" class="botao botao--secundario" type="button">
+          Testar velocidade de download
+        </button>
+        <span id="resultado-velocidade" class="latencia__resultado"></span>
+      </div>
+      <p class="card__nota">
+        RTT medido com <code>fetch</code> a endpoints públicos. O teste de
+        download baixa alguns MB de <code>speed.cloudflare.com</code> — é uma
+        estimativa, não substitui um medidor dedicado.
+      </p>
+    </section>
+
+    <section class="card card--largo" id="card-sistema">
+      <header class="card__cabecalho">
+        <h2>Máquina local — backend Python</h2>
+        <span class="etiqueta etiqueta--backend" id="etiqueta-backend">aguardando</span>
+      </header>
+      <div id="sistema-conteudo">
+        <div class="lista__vazio">Procurando backend em <code>/api/system</code>…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>
+      Cada valor traz a sua origem:
+      <span class="etiqueta etiqueta--api">API pública</span>
+      <span class="etiqueta etiqueta--navegador">Navegador</span>
+      <span class="etiqueta etiqueta--backend">Backend local</span>
+      — nada aqui é inventado. Sem backend, o navegador não expõe nome de
+      máquina, usuário do Windows nem interfaces por questão de segurança.
+    </p>
+  </footer>
+
+  <script src="static/js/app.js" defer></script>
+</body>
+</html>
