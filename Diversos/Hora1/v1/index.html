@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Ícone e Meta -->
+    <link rel="icon" href="https://raw.githubusercontent.com/souzaseven/Site2/Desafios/icon%20eu.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#007bff">
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+    <title>Hora Certa</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Ads e Analytics -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E7ZNTJSRYR');
+    </script>
+</head>
+<body>
+
+    <!-- Botão para alternância de tema -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Modo Escuro</button>
+
+    <!-- Painel principal -->
+    <div class="container">
+        <div class="clock-main">
+            <div class="lbl-time font-digit" id="current-time">--:--:--</div>
+            <div class="lbl-date" id="current-date">Carregando data...</div>
+            <div id="location" class="location">Carregando localização...</div>
+            <div id="weather" class="weather" style="display: none;">Carregando temperatura...</div>
+        </div>
+    </div>
+
+    <!-- Contador de visitas -->
+<div style="display: flex; justify-content: center; margin: 10px 0;">
+  <img alt="visitas" src="https://hits.sh/tgameajuda.com/diversos/hora1.html.svg?color=007ced&label=visitas&labelColor=FFFFFF&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fsouzaseven%2Ftgahelpme%2FDesafios%2Ficon%2520bot%2520tga.ico"/>
+</div>
+
+    <!-- Scripts -->
+    <script src="./script.js"></script>
+</body>
+</html>

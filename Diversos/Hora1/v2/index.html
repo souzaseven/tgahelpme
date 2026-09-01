@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Política de segurança de conteúdo.
+         Permissiva o bastante para o Google AdSense/Analytics; revise ao
+         adicionar novos formatos de anúncio. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagmanager.com https://www.google-analytics.com https://*.googlesyndication.com https://*.google.com https://adservice.google.com https://*.googleadservices.com https://*.doubleclick.net; connect-src 'self' https://api.ipgeolocation.io https://api.openweathermap.org https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; frame-src https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com">
+
+    <title>Hora Certa</title>
+    <meta name="description" content="Relógio online com a hora certa, data por extenso, progresso do dia, sua localização e o clima atual — em um design tipográfico minimalista.">
+    <link rel="canonical" href="https://tgameajuda.com/diversos/hora1.html">
+    <meta name="theme-color" content="#131210">
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Ícones e manifesto (PWA) -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hora Certa">
+    <meta property="og:description" content="Relógio online com hora certa, data, progresso do dia, localização e clima atual.">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://tgameajuda.com/diversos/hora1.html">
+    <meta property="og:image" content="https://tgameajuda.com/diversos/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hora Certa">
+    <meta name="twitter:description" content="Relógio online com hora certa, data, progresso do dia, localização e clima atual.">
+    <meta name="twitter:image" content="https://tgameajuda.com/diversos/assets/og-image.png">
+
+    <!-- Verificação do AdSense (não executa nada) -->
+    <meta name="google-adsense-account" content="ca-pub-6176119186804571">
+
+    <!-- Aplica o tema salvo ANTES de renderizar (evita o flash de tema errado) -->
+    <script>
+        (function () {
+            var theme;
+            try {
+                theme = localStorage.getItem('theme');
+                if (theme !== 'light' && theme !== 'dark') {
+                    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+            } catch (e) {
+                theme = 'dark';
+            }
+            document.documentElement.dataset.theme = theme;
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', theme === 'dark' ? '#131210' : '#f7f4ee');
+        })();
+    </script>
+
+    <!-- Tipografia (carregada sem bloquear a renderização) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script type="module" src="assets/js/main.js"></script>
+
+    <!-- Dados estruturados -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Hora Certa",
+        "url": "https://tgameajuda.com/diversos/hora1.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "pt-BR",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+    }
+    </script>
+</head>
+<body>
+    <div class="page">
+
+        <header class="masthead">
+            <h1 class="masthead__brand">Hora Certa</h1>
+            <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Alternar entre tema claro e escuro">
+                <span class="theme-toggle__label">Escuro</span>
+            </button>
+        </header>
+
+        <main class="clock">
+            <p class="greeting" id="greeting">Olá</p>
+
+            <div class="time" id="time">
+                <span class="time__hm">--:--</span><span class="time__sec">--</span>
+            </div>
+
+            <p class="date" id="date">Carregando data…</p>
+            <p class="place" id="place">Localizando…</p>
+            <p class="status" id="status" role="status" aria-live="polite" hidden></p>
+
+            <section class="progress">
+                <div class="progress__track" id="progressTrack" role="progressbar"
+                     aria-label="Progresso do dia" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress__fill" id="progressFill"></div>
+                </div>
+                <div class="progress__meta">
+                    <span>00:00</span>
+                    <span class="progress__now" id="progressLabel">—</span>
+                    <span>24:00</span>
+                </div>
+            </section>
+
+            <dl class="details">
+                <div class="details__row"><dt>Condição</dt><dd id="d-cond">—</dd></div>
+                <div class="details__row"><dt>Sensação</dt><dd id="d-feels">—</dd></div>
+                <div class="details__row"><dt>Mín / Máx</dt><dd id="d-minmax">—</dd></div>
+                <div class="details__row"><dt>Nascer do sol</dt><dd id="d-sunrise">—</dd></div>
+                <div class="details__row"><dt>Pôr do sol</dt><dd id="d-sunset">—</dd></div>
+                <div class="details__row"><dt>Fuso horário</dt><dd id="d-tz">—</dd></div>
+            </dl>
+        </main>
+
+        <footer class="colophon">
+            <details class="settings">
+                <summary>Ajustes</summary>
+                <div class="settings__group">
+                    <label class="settings__opt">
+                        <input type="checkbox" id="opt-hour12"> Formato 12&nbsp;h
+                    </label>
+                    <label class="settings__opt">
+                        <input type="checkbox" id="opt-seconds"> Mostrar segundos
+                    </label>
+                </div>
+            </details>
+
+            <nav class="colophon__links">
+                <a href="privacidade.html">Privacidade</a>
+            </nav>
+
+            <img class="colophon__hits" loading="lazy" width="120" height="26" alt="Contador de visitas"
+                 referrerpolicy="no-referrer" onerror="this.style.display='none'"
+                 src="https://hits.sh/tgameajuda.com/diversos/hora1.html.svg?color=888888&label=visitas&labelColor=FFFFFF">
+        </footer>
+
+    </div>
+</body>
+</html>

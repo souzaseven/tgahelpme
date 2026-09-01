@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f7f4ee"/>
+  <text x="96" y="120" font-family="'IBM Plex Mono', monospace" font-size="26"
+        letter-spacing="6" fill="#615d55">HORA CERTA</text>
+  <text x="90" y="380" font-family="'IBM Plex Mono', monospace" font-size="260"
+        font-weight="500" letter-spacing="-10" fill="#1b1a17">14:32<tspan fill="#b5451b" font-size="120" dy="-100">07</tspan></text>
+  <text x="96" y="470" font-family="'Fraunces', Georgia, serif" font-size="44"
+        fill="#1b1a17">sábado, 31 de agosto</text>
+  <text x="96" y="540" font-family="'IBM Plex Mono', monospace" font-size="24"
+        letter-spacing="4" fill="#615d55">DATA · PROGRESSO DO DIA · LOCALIZAÇÃO · CLIMA</text>
+  <rect x="96" y="574" width="1008" height="3" fill="#d8d1c3"/>
+  <rect x="96" y="574" width="612" height="3" fill="#1b1a17"/>
+</svg>

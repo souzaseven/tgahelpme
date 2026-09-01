@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade — Hora Certa</title>
+    <meta name="description" content="Como o site Hora Certa trata dados de visitantes.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#131210">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+    <script>
+        (function () {
+            var theme;
+            try {
+                theme = localStorage.getItem('theme');
+                if (theme !== 'light' && theme !== 'dark') {
+                    theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+            } catch (e) {
+                theme = 'dark';
+            }
+            document.documentElement.dataset.theme = theme;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .prose {
+            flex: 1;
+            max-width: 40rem;
+            padding: clamp(2.5rem, 9vw, 5rem) 0;
+        }
+
+        .prose h1 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            margin: 0 0 0.5rem;
+        }
+
+        .prose h2 {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin: 2.25rem 0 0.75rem;
+        }
+
+        .prose p,
+        .prose li {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .prose .updated {
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="masthead">
+            <a class="masthead__brand" href="index.html">Hora Certa</a>
+        </header>
+
+        <main class="prose">
+            <h1>Política de Privacidade</h1>
+            <p class="updated">Última atualização: 31 de agosto de 2026</p>
+
+            <h2>O que coletamos</h2>
+            <p>
+                O site em si não mantém cadastro nem envia dados pessoais para servidores
+                próprios. Algumas preferências (tema, formato de hora, consentimento) ficam
+                apenas no seu navegador, via <code>localStorage</code>.
+            </p>
+
+            <h2>Localização e clima</h2>
+            <p>
+                Para mostrar sua cidade e o clima, o site consulta os serviços
+                <strong>ipgeolocation.io</strong> (localização aproximada por IP) e
+                <strong>OpenWeatherMap</strong> (previsão do tempo). Se você autorizar a
+                geolocalização precisa do dispositivo, as coordenadas são usadas somente para
+                essa consulta e não são armazenadas em servidor.
+            </p>
+
+            <h2>Cookies de anúncios e métricas</h2>
+            <p>
+                Com o seu consentimento, carregamos o <strong>Google AdSense</strong> (anúncios)
+                e o <strong>Google Analytics</strong> (métricas de uso, com IP anonimizado).
+                Esses serviços podem usar cookies. Você pode recusar no aviso exibido na
+                primeira visita; para rever a escolha, limpe os dados do site no navegador.
+            </p>
+            <p>
+                Saiba mais em
+                <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">
+                    Como o Google usa dados</a>.
+            </p>
+
+            <h2>Fontes tipográficas</h2>
+            <p>
+                As fontes são servidas pelo Google Fonts, que recebe o endereço IP na
+                requisição dos arquivos.
+            </p>
+
+            <h2>Seus direitos (LGPD)</h2>
+            <p>
+                Você pode solicitar informações sobre o tratamento de dados pelos serviços de
+                terceiros citados diretamente a eles. Dúvidas sobre este site podem ser
+                enviadas pelo canal de contato do domínio.
+            </p>
+
+            <p style="margin-top:2.5rem">
+                <a href="index.html">← Voltar ao relógio</a>
+            </p>
+        </main>
+
+        <footer class="colophon">
+            <span>Hora Certa</span>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+name = "hora-proxy"
+main = "hora-proxy.js"
+compatibility_date = "2024-11-01"
+
+# Segredos (nunca commite as chaves — defina com o wrangler):
+#   npx wrangler secret put OPENWEATHER_KEY
+#   npx wrangler secret put IPGEO_KEY
