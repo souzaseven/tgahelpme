@@ -10,10 +10,19 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent
+# Quando rodando como .exe empacotado (PyInstaller), __file__ aponta para a
+# pasta temporária onde o bootloader extrai os arquivos a cada execução
+# (ex.: ...\Temp\_MEIxxxxx) — essa pasta some quando o programa fecha. Sem
+# isto, settings.json e os logs pareciam "esquecer tudo" toda vez que o .exe
+# era fechado e reaberto. Usamos a pasta onde o .exe de verdade está.
+if getattr(sys, "frozen", False):
+    BASE_DIR = Path(sys.executable).resolve().parent
+else:
+    BASE_DIR = Path(__file__).resolve().parent
 CONFIG_DIR = BASE_DIR / "config"
 CONFIG_FILE = CONFIG_DIR / "settings.json"
 LOGS_DIR = BASE_DIR / "logs"
@@ -36,6 +45,16 @@ class Settings:
     margem_seguranca_espaco: float = 1.3
     # Usuário padrão sugerido no campo de conexão (não é segredo).
     usuario_padrao: str = "SYSDBA"
+    # Perfil salvo pelo botão "Salvar como padrão" — nunca inclui senha.
+    page_size_padrao: str = "16384"
+    charset_padrao: str = "(padrão do backup)"
+    validacao_completa_padrao: bool = False
+    tocar_som_padrao: bool = True
+    notificacao_windows_padrao: bool = True
+    # Visual da área de acompanhamento em tempo real: terminal preto/verde
+    # ("hacker") em vez do padrão claro. Puramente estético — não afeta a
+    # restauração; guardado para lembrar a preferência entre execuções.
+    tema_hacker: bool = False
 
     def to_dict(self) -> dict:
         return asdict(self)

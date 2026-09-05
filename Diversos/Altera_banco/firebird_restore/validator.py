@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import gzip
 import os
+import re
 import shutil
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -158,6 +159,43 @@ def checar_indicios_de_backup_valido(caminho_str: str) -> ResultadoValidacao:
         )
 
     return ResultadoValidacao(True, "Nenhum indício de arquivo inválido encontrado (checagem preliminar).")
+
+
+# O gbak grava, em texto plano dentro do cabeçalho binário do .fbk, o caminho
+# completo do banco de dados original usado no backup (ex.: "C:\TGA\DADOS\
+# CLIENTE.FDB" ou "S:\tga\C08365\dados\C08365\TGA.FDB"). Isso é mais confiável
+# para sugerir o nome do destino do que o nome do próprio arquivo de backup,
+# que costuma ser genérico (ex.: "backup_20260904_105746.fbk.gz").
+_PADRAO_CAMINHO_BANCO_NO_CABECALHO = re.compile(
+    r"([A-Za-z]:\\[^\x00-\x1f\"<>|]{1,240}?\.fdb|\\\\[^\x00-\x1f\"<>|]{1,240}?\.fdb)",
+    re.IGNORECASE,
+)
+
+
+def extrair_nome_banco_original(caminho_arquivo: str, comprimido: bool, bytes_a_ler: int = 8192) -> str | None:
+    """Lê o início do backup (já descompactado, se for o caso) e tenta extrair
+    o nome do banco de dados original a partir do caminho gravado pelo gbak
+    no cabeçalho. Retorna apenas o nome do arquivo (ex.: "TGA.FDB"), ou None
+    se não encontrar nenhum caminho reconhecível — nesse caso quem chamar deve
+    cair de volta para o nome do próprio arquivo de backup."""
+    try:
+        if comprimido:
+            with gzip.open(caminho_arquivo, "rb") as f:
+                dados = f.read(bytes_a_ler)
+        else:
+            with open(caminho_arquivo, "rb") as f:
+                dados = f.read(bytes_a_ler)
+    except (OSError, gzip.BadGzipFile):
+        return None
+
+    texto = dados.decode("latin-1", errors="ignore")
+    match = _PADRAO_CAMINHO_BANCO_NO_CABECALHO.search(texto)
+    if not match:
+        return None
+
+    caminho_original = match.group(1)
+    nome = caminho_original.replace("/", "\\").split("\\")[-1].strip()
+    return nome or None
 
 
 def validar_destino(caminho_str: str) -> ResultadoValidacao:

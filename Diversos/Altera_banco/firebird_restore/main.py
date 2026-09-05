@@ -18,6 +18,10 @@ from ui.main_window import rodar
 
 def main() -> None:
     try:
+        logger.limpar_logs_antigos()
+    except Exception:
+        pass  # limpeza de log é conveniência, nunca deve impedir o programa de abrir
+    try:
         rodar()
     except Exception as exc:  # último recurso: nunca fechar sem explicar o que houve
         logger.erro(f"Erro fatal não tratado: {exc}")

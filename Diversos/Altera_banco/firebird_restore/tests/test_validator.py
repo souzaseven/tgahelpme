@@ -154,6 +154,45 @@ class TestValidarDestino(unittest.TestCase):
         self.assertTrue(caminho.parent.is_dir())
 
 
+class TestExtrairNomeBancoOriginal(unittest.TestCase):
+    """A rotina de backup atual gera nomes genéricos como
+    'backup_20260904_105746.fbk.gz' — sem o nome do cliente/banco. O gbak,
+    porém, grava o caminho completo do banco original em texto plano no
+    cabeçalho do arquivo, então extraímos dali em vez de usar o nome do
+    arquivo de backup."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="fbtest_"))
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    @staticmethod
+    def _cabecalho_falso(caminho_banco: str) -> bytes:
+        # Reproduz o formato observado em um backup real do gbak: alguns
+        # bytes binários de controle seguidos do caminho do banco em texto.
+        return b"\x00\x02\x04\x0b\x00\x00\x00\x04" + caminho_banco.encode("latin-1") + b"\x01\x18resto"
+
+    def test_extrai_nome_de_backup_puro(self):
+        caminho = self.tmp / "backup_20260904_105746.fbk"
+        caminho.write_bytes(self._cabecalho_falso(r"S:\tga\C08365\dados\C08365\TGA.FDB"))
+        nome = validator.extrair_nome_banco_original(str(caminho), comprimido=False)
+        self.assertEqual(nome, "TGA.FDB")
+
+    def test_extrai_nome_de_backup_comprimido(self):
+        caminho = self.tmp / "backup_20260904_105746.fbk.gz"
+        with gzip.open(caminho, "wb") as f:
+            f.write(self._cabecalho_falso(r"C:\TGA\DADOS\CLIENTE.FDB"))
+        nome = validator.extrair_nome_banco_original(str(caminho), comprimido=True)
+        self.assertEqual(nome, "CLIENTE.FDB")
+
+    def test_retorna_none_quando_nao_ha_caminho_reconhecivel(self):
+        caminho = self.tmp / "backup_sem_pista.fbk"
+        caminho.write_bytes(b"\x00\x02conteudo binario qualquer sem caminho nenhum" * 3)
+        nome = validator.extrair_nome_banco_original(str(caminho), comprimido=False)
+        self.assertIsNone(nome)
+
+
 class TestSugestaoDeNomeParalelo(unittest.TestCase):
     def test_sugestao_contem_marcador_restaurado_e_timestamp(self):
         sugestao = validator.sugerir_nome_restauracao_paralela(r"C:\TGA\DADOS\CLIENTE.FDB")

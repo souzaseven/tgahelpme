@@ -1,0 +1,1980 @@
+2026-09-05 00:08:14 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:08:14 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CANCELADO.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:08:14 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_e0lf4umb\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CANCELADO.FDB
+2026-09-05 00:08:15 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\firebird_restore_e0lf4umb\TESTE_BACKUP.FBK
+2026-09-05 00:08:15 [WARNING] Restauração cancelada pelo usuário.
+2026-09-05 00:08:32 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:08:32 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CHARSET2.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:08:32 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -fix_fss_data WIN1252 -fix_fss_metadata WIN1252 -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_mkuhirls\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CHARSET2.FDB
+2026-09-05 00:08:32 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\firebird_restore_mkuhirls\TESTE_BACKUP.FBK
+2026-09-05 00:08:32 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:08:32 [INFO] gbak:		backup file is compressed
+2026-09-05 00:08:32 [INFO] gbak:backup version is 11
+2026-09-05 00:08:32 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CHARSET2.FDB, p...
+2026-09-05 00:08:32 [INFO] gbak:started transaction
+2026-09-05 00:08:32 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:08:32 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:08:32 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:08:32 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:08:32 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:08:32 [INFO] gbak:committing metadata
+2026-09-05 00:08:32 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:08:32 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:08:32 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:08:32 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:08:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:08:32 [INFO] gbak:committing metadata
+2026-09-05 00:08:32 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-05 00:08:32 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-05 00:08:32 [INFO] gbak:   1 records restored
+2026-09-05 00:08:32 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-05 00:08:32 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-05 00:08:32 [INFO] gbak:   1 records restored
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:08:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:08:32 [INFO] gbak:creating indexes
+2026-09-05 00:08:32 [INFO] gbak:committing metadata
+2026-09-05 00:08:32 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-05 00:08:32 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-05 00:08:32 [INFO] gbak:adjusting views dbkey length
+2026-09-05 00:08:32 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 00:08:32 [INFO] gbak:adding missing privileges
+2026-09-05 00:08:32 [INFO] gbak:adjusting system generators
+2026-09-05 00:08:32 [INFO] gbak:finishing, closing, and going home
+2026-09-05 00:08:32 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 00:08:33 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CHARSET2.FDB (duração 1s)
+2026-09-05 00:12:30 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:12:31 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CANCEL_UI.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:12:31 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -p 16384 -fix_fss_data WIN1252 -fix_fss_metadata WIN1252 -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_4h9qqjha\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_CANCEL_UI.FDB
+2026-09-05 00:12:31 [WARNING] Restauração cancelada pelo usuário.
+2026-09-05 00:13:00 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:13:01 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:13:01 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -p 16384 -fix_fss_data WIN1252 -fix_fss_metadata WIN1252 -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_y9ei_l20\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB
+2026-09-05 00:13:02 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\firebird_restore_y9ei_l20\TESTE_BACKUP.FBK
+2026-09-05 00:13:02 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:13:02 [INFO] gbak:		backup file is compressed
+2026-09-05 00:13:02 [INFO] gbak:backup version is 11
+2026-09-05 00:13:03 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB, page...
+2026-09-05 00:13:03 [INFO] gbak:started transaction
+2026-09-05 00:13:03 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:13:03 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:13:03 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:13:03 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:13:03 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:13:03 [INFO] gbak:committing metadata
+2026-09-05 00:13:03 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:13:03 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:13:03 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:13:03 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:13:04 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:13:04 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:13:04 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:13:04 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:13:04 [INFO] gbak:committing metadata
+2026-09-05 00:13:28 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:13:30 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:13:30 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -p 16384 -fix_fss_data WIN1252 -fix_fss_metadata WIN1252 -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_3jp18fxt\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB
+2026-09-05 00:13:30 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\firebird_restore_3jp18fxt\TESTE_BACKUP.FBK
+2026-09-05 00:13:30 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:13:30 [INFO] gbak:		backup file is compressed
+2026-09-05 00:13:30 [INFO] gbak:backup version is 11
+2026-09-05 00:13:30 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB, page...
+2026-09-05 00:13:30 [INFO] gbak:started transaction
+2026-09-05 00:13:30 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:13:30 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:13:30 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:13:30 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:13:30 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:13:31 [INFO] gbak:committing metadata
+2026-09-05 00:13:31 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:13:31 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:13:31 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:13:31 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:13:31 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:13:32 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:13:32 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:13:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:13:32 [INFO] gbak:committing metadata
+2026-09-05 00:13:32 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-05 00:13:32 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-05 00:13:32 [INFO] gbak:   1 records restored
+2026-09-05 00:13:32 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-05 00:13:32 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-05 00:13:32 [INFO] gbak:   1 records restored
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:13:33 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:13:34 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:13:34 [INFO] gbak:creating indexes
+2026-09-05 00:13:34 [INFO] gbak:committing metadata
+2026-09-05 00:13:34 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-05 00:13:34 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-05 00:13:34 [INFO] gbak:adjusting views dbkey length
+2026-09-05 00:13:34 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 00:13:34 [INFO] gbak:adding missing privileges
+2026-09-05 00:13:34 [INFO] gbak:adjusting system generators
+2026-09-05 00:13:34 [INFO] gbak:finishing, closing, and going home
+2026-09-05 00:13:34 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 00:13:35 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_OK_UI.FDB (duração 6s)
+2026-09-05 00:21:14 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:21:16 [INFO] 4 tabela(s) encontrada(s) no backup — progresso será por tabela.
+2026-09-05 00:21:16 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:21:16 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB
+2026-09-05 00:21:16 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK
+2026-09-05 00:21:17 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:21:17 [INFO] gbak:		backup file is compressed
+2026-09-05 00:21:17 [INFO] gbak:backup version is 11
+2026-09-05 00:21:17 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABEL...
+2026-09-05 00:21:17 [INFO] gbak:started transaction
+2026-09-05 00:21:17 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:21:17 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:21:17 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:21:17 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:21:17 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:21:17 [INFO] gbak:committing metadata
+2026-09-05 00:21:17 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:21:17 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:21:17 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:21:17 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:21:17 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:21:17 [INFO] gbak:committing metadata
+2026-09-05 00:21:17 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-05 00:21:17 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-05 00:21:17 [INFO] gbak:   1 records restored
+2026-09-05 00:21:17 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-05 00:21:17 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-05 00:21:17 [INFO] gbak:   1 records restored
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:21:17 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:21:17 [INFO] gbak:creating indexes
+2026-09-05 00:21:17 [INFO] gbak:committing metadata
+2026-09-05 00:21:17 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-05 00:21:17 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-05 00:21:17 [INFO] gbak:adjusting views dbkey length
+2026-09-05 00:21:17 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 00:21:17 [INFO] gbak:adding missing privileges
+2026-09-05 00:21:17 [INFO] gbak:adjusting system generators
+2026-09-05 00:21:17 [INFO] gbak:finishing, closing, and going home
+2026-09-05 00:21:17 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 00:21:18 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB (duração 3s)
+2026-09-05 00:22:00 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:22:02 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:22:02 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB
+2026-09-05 00:22:02 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK
+2026-09-05 00:22:03 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:22:03 [INFO] gbak:		backup file is compressed
+2026-09-05 00:22:03 [INFO] gbak:backup version is 11
+2026-09-05 00:22:03 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABEL...
+2026-09-05 00:22:03 [INFO] gbak:started transaction
+2026-09-05 00:22:03 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:22:03 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:22:03 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:22:03 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:22:03 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:22:03 [INFO] gbak:committing metadata
+2026-09-05 00:22:03 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:22:03 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:22:03 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:22:03 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:22:03 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:22:03 [INFO] gbak:committing metadata
+2026-09-05 00:22:03 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-05 00:22:03 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-05 00:22:03 [INFO] gbak:   1 records restored
+2026-09-05 00:22:03 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-05 00:22:03 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-05 00:22:03 [INFO] gbak:   1 records restored
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:03 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:03 [INFO] gbak:creating indexes
+2026-09-05 00:22:03 [INFO] gbak:committing metadata
+2026-09-05 00:22:03 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-05 00:22:03 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-05 00:22:03 [INFO] gbak:adjusting views dbkey length
+2026-09-05 00:22:03 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 00:22:03 [INFO] gbak:adding missing privileges
+2026-09-05 00:22:03 [INFO] gbak:adjusting system generators
+2026-09-05 00:22:03 [INFO] gbak:finishing, closing, and going home
+2026-09-05 00:22:03 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 00:22:04 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB (duração 3s)
+2026-09-05 00:22:29 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 00:22:31 [INFO] 2 tabela(s) encontrada(s) no backup — progresso será por tabela.
+2026-09-05 00:22:31 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 00:22:31 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB
+2026-09-05 00:22:32 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK
+2026-09-05 00:22:32 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 00:22:32 [INFO] gbak:		backup file is compressed
+2026-09-05 00:22:32 [INFO] gbak:backup version is 11
+2026-09-05 00:22:32 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABEL...
+2026-09-05 00:22:32 [INFO] gbak:started transaction
+2026-09-05 00:22:32 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-05 00:22:32 [INFO] gbak:restoring domain PLG$ID
+2026-09-05 00:22:32 [INFO] gbak:restoring domain RDB$1
+2026-09-05 00:22:32 [INFO] gbak:restoring domain RDB$2
+2026-09-05 00:22:32 [INFO] gbak:restoring domain RDB$3
+2026-09-05 00:22:32 [INFO] gbak:committing metadata
+2026-09-05 00:22:32 [INFO] gbak:restoring table PLG$USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:22:32 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$UID
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$GID
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-05 00:22:32 [INFO] gbak:restoring table PLG$SRP
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:22:32 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$SALT
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$LAST
+2026-09-05 00:22:32 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-05 00:22:32 [INFO] gbak:committing metadata
+2026-09-05 00:22:32 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-05 00:22:32 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-05 00:22:32 [INFO] gbak:   1 records restored
+2026-09-05 00:22:32 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-05 00:22:32 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-05 00:22:32 [INFO] gbak:   1 records restored
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:32 [INFO] gbak:    restoring privilege for user 1
+2026-09-05 00:22:32 [INFO] gbak:creating indexes
+2026-09-05 00:22:32 [INFO] gbak:committing metadata
+2026-09-05 00:22:32 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-05 00:22:32 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-05 00:22:32 [INFO] gbak:adjusting views dbkey length
+2026-09-05 00:22:32 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 00:22:32 [INFO] gbak:adding missing privileges
+2026-09-05 00:22:32 [INFO] gbak:adjusting system generators
+2026-09-05 00:22:32 [INFO] gbak:finishing, closing, and going home
+2026-09-05 00:22:32 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 00:22:33 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_PROGRESSO_TABELA.FDB (duração 3s)
+2026-09-05 11:50:14 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 11:54:18 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 11:54:31 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:07:54 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:20:05 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:22:00 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:22:01 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 12:22:01 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\RESTAURADO_TESTE.FDB
+2026-09-05 12:22:01 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\origem_teste.fbk
+2026-09-05 12:22:01 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 12:22:01 [INFO] gbak:		backup file is compressed
+2026-09-05 12:22:01 [INFO] gbak:backup version is 11
+2026-09-05 12:22:01 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 12:22:01 [INFO] gbak:started transaction
+2026-09-05 12:22:01 [INFO] gbak:restoring domain RDB$1
+2026-09-05 12:22:01 [INFO] gbak:restoring domain RDB$2
+2026-09-05 12:22:01 [INFO] gbak:committing metadata
+2026-09-05 12:22:01 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 12:22:01 [INFO] gbak:    restoring column ID
+2026-09-05 12:22:01 [INFO] gbak:    restoring column NOME
+2026-09-05 12:22:01 [INFO] gbak:committing metadata
+2026-09-05 12:22:01 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 12:22:01 [INFO] gbak:   2 records restored
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:01 [INFO] gbak:creating indexes
+2026-09-05 12:22:01 [INFO] gbak:committing metadata
+2026-09-05 12:22:01 [INFO] gbak:adjusting views dbkey length
+2026-09-05 12:22:01 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 12:22:01 [INFO] gbak:adding missing privileges
+2026-09-05 12:22:01 [INFO] gbak:adjusting system generators
+2026-09-05 12:22:01 [INFO] gbak:finishing, closing, and going home
+2026-09-05 12:22:01 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 12:22:02 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_y9rpfm4y\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 12:22:58 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:22:58 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 12:22:58 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\RESTAURADO_TESTE.FDB
+2026-09-05 12:22:58 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\origem_teste.fbk
+2026-09-05 12:22:58 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 12:22:58 [INFO] gbak:		backup file is compressed
+2026-09-05 12:22:58 [INFO] gbak:backup version is 11
+2026-09-05 12:22:58 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 12:22:58 [INFO] gbak:started transaction
+2026-09-05 12:22:58 [INFO] gbak:restoring domain RDB$1
+2026-09-05 12:22:58 [INFO] gbak:restoring domain RDB$2
+2026-09-05 12:22:58 [INFO] gbak:committing metadata
+2026-09-05 12:22:58 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 12:22:58 [INFO] gbak:    restoring column ID
+2026-09-05 12:22:58 [INFO] gbak:    restoring column NOME
+2026-09-05 12:22:58 [INFO] gbak:committing metadata
+2026-09-05 12:22:58 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 12:22:58 [INFO] gbak:   2 records restored
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:22:58 [INFO] gbak:creating indexes
+2026-09-05 12:22:58 [INFO] gbak:committing metadata
+2026-09-05 12:22:58 [INFO] gbak:adjusting views dbkey length
+2026-09-05 12:22:58 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 12:22:58 [INFO] gbak:adding missing privileges
+2026-09-05 12:22:58 [INFO] gbak:adjusting system generators
+2026-09-05 12:22:58 [INFO] gbak:finishing, closing, and going home
+2026-09-05 12:22:58 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 12:22:59 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_1cw125l5\RESTAURADO_TESTE.FDB (duração 0s)
+2026-09-05 12:26:48 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:26:58 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:26:58 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 12:26:58 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\RESTAURADO_TESTE.FDB
+2026-09-05 12:26:58 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\origem_teste.fbk
+2026-09-05 12:26:58 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 12:26:58 [INFO] gbak:		backup file is compressed
+2026-09-05 12:26:58 [INFO] gbak:backup version is 11
+2026-09-05 12:26:58 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 12:26:58 [INFO] gbak:started transaction
+2026-09-05 12:26:58 [INFO] gbak:restoring domain RDB$1
+2026-09-05 12:26:58 [INFO] gbak:restoring domain RDB$2
+2026-09-05 12:26:58 [INFO] gbak:committing metadata
+2026-09-05 12:26:58 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 12:26:58 [INFO] gbak:    restoring column ID
+2026-09-05 12:26:58 [INFO] gbak:    restoring column NOME
+2026-09-05 12:26:58 [INFO] gbak:committing metadata
+2026-09-05 12:26:58 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 12:26:58 [INFO] gbak:   2 records restored
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:26:58 [INFO] gbak:creating indexes
+2026-09-05 12:26:58 [INFO] gbak:committing metadata
+2026-09-05 12:26:58 [INFO] gbak:adjusting views dbkey length
+2026-09-05 12:26:58 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 12:26:58 [INFO] gbak:adding missing privileges
+2026-09-05 12:26:58 [INFO] gbak:adjusting system generators
+2026-09-05 12:26:58 [INFO] gbak:finishing, closing, and going home
+2026-09-05 12:26:58 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 12:26:59 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_fbxg9qa2\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 12:29:09 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 12:29:09 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 12:29:09 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\RESTAURADO_TESTE.FDB
+2026-09-05 12:29:10 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\origem_teste.fbk
+2026-09-05 12:29:10 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 12:29:10 [INFO] gbak:		backup file is compressed
+2026-09-05 12:29:10 [INFO] gbak:backup version is 11
+2026-09-05 12:29:10 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 12:29:10 [INFO] gbak:started transaction
+2026-09-05 12:29:10 [INFO] gbak:restoring domain RDB$1
+2026-09-05 12:29:10 [INFO] gbak:restoring domain RDB$2
+2026-09-05 12:29:10 [INFO] gbak:committing metadata
+2026-09-05 12:29:10 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 12:29:10 [INFO] gbak:    restoring column ID
+2026-09-05 12:29:10 [INFO] gbak:    restoring column NOME
+2026-09-05 12:29:10 [INFO] gbak:committing metadata
+2026-09-05 12:29:10 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 12:29:10 [INFO] gbak:   2 records restored
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 12:29:10 [INFO] gbak:creating indexes
+2026-09-05 12:29:10 [INFO] gbak:committing metadata
+2026-09-05 12:29:10 [INFO] gbak:adjusting views dbkey length
+2026-09-05 12:29:10 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 12:29:10 [INFO] gbak:adding missing privileges
+2026-09-05 12:29:10 [INFO] gbak:adjusting system generators
+2026-09-05 12:29:10 [INFO] gbak:finishing, closing, and going home
+2026-09-05 12:29:10 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 12:29:10 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_vido3bnu\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 13:15:57 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:15:57 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 13:15:57 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\RESTAURADO_TESTE.FDB
+2026-09-05 13:15:57 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\origem_teste.fbk
+2026-09-05 13:15:57 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 13:15:57 [INFO] gbak:		backup file is compressed
+2026-09-05 13:15:57 [INFO] gbak:backup version is 11
+2026-09-05 13:15:57 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 13:15:57 [INFO] gbak:started transaction
+2026-09-05 13:15:57 [INFO] gbak:restoring domain RDB$1
+2026-09-05 13:15:57 [INFO] gbak:restoring domain RDB$2
+2026-09-05 13:15:57 [INFO] gbak:committing metadata
+2026-09-05 13:15:57 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 13:15:57 [INFO] gbak:    restoring column ID
+2026-09-05 13:15:57 [INFO] gbak:    restoring column NOME
+2026-09-05 13:15:57 [INFO] gbak:committing metadata
+2026-09-05 13:15:57 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 13:15:57 [INFO] gbak:   2 records restored
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:15:57 [INFO] gbak:creating indexes
+2026-09-05 13:15:57 [INFO] gbak:committing metadata
+2026-09-05 13:15:57 [INFO] gbak:adjusting views dbkey length
+2026-09-05 13:15:57 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 13:15:57 [INFO] gbak:adding missing privileges
+2026-09-05 13:15:57 [INFO] gbak:adjusting system generators
+2026-09-05 13:15:57 [INFO] gbak:finishing, closing, and going home
+2026-09-05 13:15:57 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 13:15:58 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qa4z5qrz\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 13:31:57 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:31:57 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0l7zpe5q\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:31:57 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0l7zpe5q\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:31:57 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0l7zpe5q\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\teste_recuperacao_x7cjynyy\saida_recuperacao.fbk -user SYSDBA -password ******
+2026-09-05 13:31:58 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0l7zpe5q\copia_para_reparo.fdb for backup
+2026-09-05 13:31:58 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\teste_recuperacao_x7cjynyy\saida_recuperacao.fbk
+2026-09-05 13:31:58 [INFO] gbak:starting transaction
+2026-09-05 13:31:58 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0l7zpe5q\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:31:58 [INFO] gbak:writing domains
+2026-09-05 13:31:58 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:31:58 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:31:58 [INFO] gbak:writing shadow files
+2026-09-05 13:31:58 [INFO] gbak:writing character sets
+2026-09-05 13:31:58 [INFO] gbak:writing collations
+2026-09-05 13:31:58 [INFO] gbak:writing tables
+2026-09-05 13:31:58 [INFO] gbak:    writing table T
+2026-09-05 13:31:58 [INFO] gbak:         writing column NOME
+2026-09-05 13:31:58 [INFO] gbak:         writing column ID
+2026-09-05 13:31:58 [INFO] gbak:writing types
+2026-09-05 13:31:58 [INFO] gbak:writing filters
+2026-09-05 13:31:58 [INFO] gbak:writing id generators
+2026-09-05 13:31:58 [INFO] gbak:writing exceptions
+2026-09-05 13:31:58 [INFO] gbak:writing functions
+2026-09-05 13:31:58 [INFO] gbak:writing stored procedures
+2026-09-05 13:31:58 [INFO] gbak:writing packages
+2026-09-05 13:31:58 [INFO] gbak:    writing data for table T
+2026-09-05 13:31:58 [INFO] gbak:2 records written
+2026-09-05 13:31:58 [INFO] gbak:writing triggers
+2026-09-05 13:31:58 [INFO] gbak:writing trigger messages
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:31:58 [INFO] gbak:writing security classes
+2026-09-05 13:31:58 [INFO] gbak:writing table constraints
+2026-09-05 13:31:58 [INFO] gbak:writing referential constraints
+2026-09-05 13:31:58 [INFO] gbak:writing check constraints
+2026-09-05 13:31:58 [INFO] gbak:writing SQL roles
+2026-09-05 13:31:58 [INFO] gbak:writing names mapping
+2026-09-05 13:31:58 [INFO] gbak:writing publications
+2026-09-05 13:31:58 [INFO] gbak:closing file, committing, and finishing. 1024 bytes written
+2026-09-05 13:31:58 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\teste_recuperacao_x7cjynyy\saida_recuperacao.fbk (0 registro(s) em 0 tabela(s)).
+2026-09-05 13:32:14 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:33:06 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:33:06 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_7bvj9__p\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:33:06 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_7bvj9__p\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:33:06 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_7bvj9__p\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\teste_recuperacao2_o9ya08mp\saida_recuperacao.fbk -user SYSDBA -password ******
+2026-09-05 13:33:07 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_7bvj9__p\copia_para_reparo.fdb for backup
+2026-09-05 13:33:07 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\teste_recuperacao2_o9ya08mp\saida_recuperacao.fbk
+2026-09-05 13:33:07 [INFO] gbak:starting transaction
+2026-09-05 13:33:07 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_7bvj9__p\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:33:07 [INFO] gbak:writing domains
+2026-09-05 13:33:07 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:33:07 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:33:07 [INFO] gbak:writing shadow files
+2026-09-05 13:33:07 [INFO] gbak:writing character sets
+2026-09-05 13:33:07 [INFO] gbak:writing collations
+2026-09-05 13:33:07 [INFO] gbak:writing tables
+2026-09-05 13:33:07 [INFO] gbak:    writing table T
+2026-09-05 13:33:07 [INFO] gbak:         writing column NOME
+2026-09-05 13:33:07 [INFO] gbak:         writing column ID
+2026-09-05 13:33:07 [INFO] gbak:writing types
+2026-09-05 13:33:07 [INFO] gbak:writing filters
+2026-09-05 13:33:07 [INFO] gbak:writing id generators
+2026-09-05 13:33:07 [INFO] gbak:writing exceptions
+2026-09-05 13:33:07 [INFO] gbak:writing functions
+2026-09-05 13:33:07 [INFO] gbak:writing stored procedures
+2026-09-05 13:33:07 [INFO] gbak:writing packages
+2026-09-05 13:33:07 [INFO] gbak:    writing data for table T
+2026-09-05 13:33:07 [INFO] gbak:2 records written
+2026-09-05 13:33:07 [INFO] gbak:writing triggers
+2026-09-05 13:33:07 [INFO] gbak:writing trigger messages
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:33:07 [INFO] gbak:writing security classes
+2026-09-05 13:33:07 [INFO] gbak:writing table constraints
+2026-09-05 13:33:07 [INFO] gbak:writing referential constraints
+2026-09-05 13:33:07 [INFO] gbak:writing check constraints
+2026-09-05 13:33:07 [INFO] gbak:writing SQL roles
+2026-09-05 13:33:07 [INFO] gbak:writing names mapping
+2026-09-05 13:33:07 [INFO] gbak:writing publications
+2026-09-05 13:33:07 [INFO] gbak:closing file, committing, and finishing. 1024 bytes written
+2026-09-05 13:33:07 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\teste_recuperacao2_o9ya08mp\saida_recuperacao.fbk (2 registro(s) em 1 tabela(s)).
+2026-09-05 13:34:10 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:34:11 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 13:34:11 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\RESTAURADO_TESTE.FDB
+2026-09-05 13:34:11 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\origem_teste.fbk
+2026-09-05 13:34:11 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 13:34:11 [INFO] gbak:		backup file is compressed
+2026-09-05 13:34:11 [INFO] gbak:backup version is 11
+2026-09-05 13:34:11 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 13:34:11 [INFO] gbak:started transaction
+2026-09-05 13:34:11 [INFO] gbak:restoring domain RDB$1
+2026-09-05 13:34:11 [INFO] gbak:restoring domain RDB$2
+2026-09-05 13:34:11 [INFO] gbak:committing metadata
+2026-09-05 13:34:11 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 13:34:11 [INFO] gbak:    restoring column ID
+2026-09-05 13:34:11 [INFO] gbak:    restoring column NOME
+2026-09-05 13:34:11 [INFO] gbak:committing metadata
+2026-09-05 13:34:11 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 13:34:11 [INFO] gbak:   2 records restored
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:34:11 [INFO] gbak:creating indexes
+2026-09-05 13:34:11 [INFO] gbak:committing metadata
+2026-09-05 13:34:11 [INFO] gbak:adjusting views dbkey length
+2026-09-05 13:34:11 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 13:34:11 [INFO] gbak:adding missing privileges
+2026-09-05 13:34:11 [INFO] gbak:adjusting system generators
+2026-09-05 13:34:11 [INFO] gbak:finishing, closing, and going home
+2026-09-05 13:34:11 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 13:34:11 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_qi6rlwjz\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 13:34:11 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:34:11 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_decsg9fy\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:34:12 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_decsg9fy\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:34:12 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_decsg9fy\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_341drxal\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 13:34:12 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_decsg9fy\copia_para_reparo.fdb for backup
+2026-09-05 13:34:12 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_341drxal\recuperado.fbk
+2026-09-05 13:34:12 [INFO] gbak:starting transaction
+2026-09-05 13:34:12 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_decsg9fy\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:34:12 [INFO] gbak:writing domains
+2026-09-05 13:34:12 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:34:12 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:34:12 [INFO] gbak:writing shadow files
+2026-09-05 13:34:12 [INFO] gbak:writing character sets
+2026-09-05 13:34:12 [INFO] gbak:writing collations
+2026-09-05 13:34:12 [INFO] gbak:writing tables
+2026-09-05 13:34:12 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 13:34:12 [INFO] gbak:         writing column ID
+2026-09-05 13:34:12 [INFO] gbak:         writing column NOME
+2026-09-05 13:34:12 [INFO] gbak:writing types
+2026-09-05 13:34:12 [INFO] gbak:writing filters
+2026-09-05 13:34:12 [INFO] gbak:writing id generators
+2026-09-05 13:34:12 [INFO] gbak:writing exceptions
+2026-09-05 13:34:12 [INFO] gbak:writing functions
+2026-09-05 13:34:12 [INFO] gbak:writing stored procedures
+2026-09-05 13:34:12 [INFO] gbak:writing packages
+2026-09-05 13:34:12 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 13:34:12 [INFO] gbak:3 records written
+2026-09-05 13:34:12 [INFO] gbak:writing triggers
+2026-09-05 13:34:12 [INFO] gbak:writing trigger messages
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:12 [INFO] gbak:writing security classes
+2026-09-05 13:34:12 [INFO] gbak:writing table constraints
+2026-09-05 13:34:12 [INFO] gbak:writing referential constraints
+2026-09-05 13:34:12 [INFO] gbak:writing check constraints
+2026-09-05 13:34:12 [INFO] gbak:writing SQL roles
+2026-09-05 13:34:12 [INFO] gbak:writing names mapping
+2026-09-05 13:34:12 [INFO] gbak:writing publications
+2026-09-05 13:34:12 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 13:34:12 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_341drxal\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 13:34:21 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:34:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zjfj2o7p\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:34:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zjfj2o7p\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:34:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zjfj2o7p\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_2_4sgyio\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 13:34:21 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zjfj2o7p\copia_para_reparo.fdb for backup
+2026-09-05 13:34:21 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_2_4sgyio\recuperado.fbk
+2026-09-05 13:34:21 [INFO] gbak:starting transaction
+2026-09-05 13:34:21 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zjfj2o7p\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:34:21 [INFO] gbak:writing domains
+2026-09-05 13:34:21 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:34:21 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:34:21 [INFO] gbak:writing shadow files
+2026-09-05 13:34:21 [INFO] gbak:writing character sets
+2026-09-05 13:34:21 [INFO] gbak:writing collations
+2026-09-05 13:34:21 [INFO] gbak:writing tables
+2026-09-05 13:34:21 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 13:34:21 [INFO] gbak:         writing column ID
+2026-09-05 13:34:21 [INFO] gbak:         writing column NOME
+2026-09-05 13:34:21 [INFO] gbak:writing types
+2026-09-05 13:34:21 [INFO] gbak:writing filters
+2026-09-05 13:34:21 [INFO] gbak:writing id generators
+2026-09-05 13:34:21 [INFO] gbak:writing exceptions
+2026-09-05 13:34:21 [INFO] gbak:writing functions
+2026-09-05 13:34:21 [INFO] gbak:writing stored procedures
+2026-09-05 13:34:21 [INFO] gbak:writing packages
+2026-09-05 13:34:21 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 13:34:21 [INFO] gbak:3 records written
+2026-09-05 13:34:21 [INFO] gbak:writing triggers
+2026-09-05 13:34:21 [INFO] gbak:writing trigger messages
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:34:21 [INFO] gbak:writing security classes
+2026-09-05 13:34:21 [INFO] gbak:writing table constraints
+2026-09-05 13:34:21 [INFO] gbak:writing referential constraints
+2026-09-05 13:34:21 [INFO] gbak:writing check constraints
+2026-09-05 13:34:21 [INFO] gbak:writing SQL roles
+2026-09-05 13:34:21 [INFO] gbak:writing names mapping
+2026-09-05 13:34:21 [INFO] gbak:writing publications
+2026-09-05 13:34:21 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 13:34:21 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_2_4sgyio\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 13:37:57 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:37:58 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:38:13 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:38:14 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:38:56 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:38:57 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:38:58 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_255t8isv\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:38:58 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_255t8isv\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:38:58 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_255t8isv\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\teste_ui_recup2_iu1fkyni\saida_ui.fbk -user SYSDBA -password ******
+2026-09-05 13:38:58 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_255t8isv\copia_para_reparo.fdb for backup
+2026-09-05 13:38:58 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\teste_ui_recup2_iu1fkyni\saida_ui.fbk
+2026-09-05 13:38:58 [INFO] gbak:starting transaction
+2026-09-05 13:38:58 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_255t8isv\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:38:58 [INFO] gbak:writing domains
+2026-09-05 13:38:58 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:38:58 [INFO] gbak:writing shadow files
+2026-09-05 13:38:58 [INFO] gbak:writing character sets
+2026-09-05 13:38:58 [INFO] gbak:writing collations
+2026-09-05 13:38:58 [INFO] gbak:writing tables
+2026-09-05 13:38:58 [INFO] gbak:    writing table T
+2026-09-05 13:38:58 [INFO] gbak:         writing column ID
+2026-09-05 13:38:58 [INFO] gbak:writing types
+2026-09-05 13:38:58 [INFO] gbak:writing filters
+2026-09-05 13:38:58 [INFO] gbak:writing id generators
+2026-09-05 13:38:58 [INFO] gbak:writing exceptions
+2026-09-05 13:38:58 [INFO] gbak:writing functions
+2026-09-05 13:38:58 [INFO] gbak:writing stored procedures
+2026-09-05 13:38:58 [INFO] gbak:writing packages
+2026-09-05 13:38:58 [INFO] gbak:    writing data for table T
+2026-09-05 13:38:58 [INFO] gbak:1 records written
+2026-09-05 13:38:58 [INFO] gbak:writing triggers
+2026-09-05 13:38:58 [INFO] gbak:writing trigger messages
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:38:58 [INFO] gbak:writing security classes
+2026-09-05 13:38:58 [INFO] gbak:writing table constraints
+2026-09-05 13:38:58 [INFO] gbak:writing referential constraints
+2026-09-05 13:38:58 [INFO] gbak:writing check constraints
+2026-09-05 13:38:58 [INFO] gbak:writing SQL roles
+2026-09-05 13:38:58 [INFO] gbak:writing names mapping
+2026-09-05 13:38:58 [INFO] gbak:writing publications
+2026-09-05 13:38:58 [INFO] gbak:closing file, committing, and finishing. 1024 bytes written
+2026-09-05 13:38:58 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\teste_ui_recup2_iu1fkyni\saida_ui.fbk (1 registro(s) em 1 tabela(s)).
+2026-09-05 13:39:09 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:39:09 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 13:39:09 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\RESTAURADO_TESTE.FDB
+2026-09-05 13:39:09 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\origem_teste.fbk
+2026-09-05 13:39:09 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 13:39:09 [INFO] gbak:		backup file is compressed
+2026-09-05 13:39:09 [INFO] gbak:backup version is 11
+2026-09-05 13:39:09 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 13:39:09 [INFO] gbak:started transaction
+2026-09-05 13:39:09 [INFO] gbak:restoring domain RDB$1
+2026-09-05 13:39:09 [INFO] gbak:restoring domain RDB$2
+2026-09-05 13:39:09 [INFO] gbak:committing metadata
+2026-09-05 13:39:09 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 13:39:09 [INFO] gbak:    restoring column ID
+2026-09-05 13:39:09 [INFO] gbak:    restoring column NOME
+2026-09-05 13:39:09 [INFO] gbak:committing metadata
+2026-09-05 13:39:09 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 13:39:09 [INFO] gbak:   2 records restored
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:39:09 [INFO] gbak:creating indexes
+2026-09-05 13:39:09 [INFO] gbak:committing metadata
+2026-09-05 13:39:09 [INFO] gbak:adjusting views dbkey length
+2026-09-05 13:39:09 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 13:39:09 [INFO] gbak:adding missing privileges
+2026-09-05 13:39:09 [INFO] gbak:adjusting system generators
+2026-09-05 13:39:09 [INFO] gbak:finishing, closing, and going home
+2026-09-05 13:39:09 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 13:39:09 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_x3f5n1ym\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 13:39:09 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:39:10 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1495s8b3\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:39:10 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1495s8b3\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:39:10 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1495s8b3\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_ujoeagji\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 13:39:10 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1495s8b3\copia_para_reparo.fdb for backup
+2026-09-05 13:39:10 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_ujoeagji\recuperado.fbk
+2026-09-05 13:39:10 [INFO] gbak:starting transaction
+2026-09-05 13:39:10 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1495s8b3\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:39:10 [INFO] gbak:writing domains
+2026-09-05 13:39:10 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:39:10 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:39:10 [INFO] gbak:writing shadow files
+2026-09-05 13:39:10 [INFO] gbak:writing character sets
+2026-09-05 13:39:10 [INFO] gbak:writing collations
+2026-09-05 13:39:10 [INFO] gbak:writing tables
+2026-09-05 13:39:10 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 13:39:10 [INFO] gbak:         writing column ID
+2026-09-05 13:39:10 [INFO] gbak:         writing column NOME
+2026-09-05 13:39:10 [INFO] gbak:writing types
+2026-09-05 13:39:10 [INFO] gbak:writing filters
+2026-09-05 13:39:10 [INFO] gbak:writing id generators
+2026-09-05 13:39:10 [INFO] gbak:writing exceptions
+2026-09-05 13:39:10 [INFO] gbak:writing functions
+2026-09-05 13:39:10 [INFO] gbak:writing stored procedures
+2026-09-05 13:39:10 [INFO] gbak:writing packages
+2026-09-05 13:39:10 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 13:39:10 [INFO] gbak:3 records written
+2026-09-05 13:39:10 [INFO] gbak:writing triggers
+2026-09-05 13:39:10 [INFO] gbak:writing trigger messages
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:39:10 [INFO] gbak:writing security classes
+2026-09-05 13:39:10 [INFO] gbak:writing table constraints
+2026-09-05 13:39:10 [INFO] gbak:writing referential constraints
+2026-09-05 13:39:10 [INFO] gbak:writing check constraints
+2026-09-05 13:39:10 [INFO] gbak:writing SQL roles
+2026-09-05 13:39:10 [INFO] gbak:writing names mapping
+2026-09-05 13:39:10 [INFO] gbak:writing publications
+2026-09-05 13:39:10 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 13:39:10 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_ujoeagji\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 13:51:45 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:56:10 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:56:27 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:56:34 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:56:35 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 13:56:35 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\RESTAURADO_TESTE.FDB
+2026-09-05 13:56:35 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\origem_teste.fbk
+2026-09-05 13:56:35 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 13:56:35 [INFO] gbak:		backup file is compressed
+2026-09-05 13:56:35 [INFO] gbak:backup version is 11
+2026-09-05 13:56:35 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 13:56:35 [INFO] gbak:started transaction
+2026-09-05 13:56:35 [INFO] gbak:restoring domain RDB$1
+2026-09-05 13:56:35 [INFO] gbak:restoring domain RDB$2
+2026-09-05 13:56:35 [INFO] gbak:committing metadata
+2026-09-05 13:56:35 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 13:56:35 [INFO] gbak:    restoring column ID
+2026-09-05 13:56:35 [INFO] gbak:    restoring column NOME
+2026-09-05 13:56:35 [INFO] gbak:committing metadata
+2026-09-05 13:56:35 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 13:56:35 [INFO] gbak:   2 records restored
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:56:35 [INFO] gbak:creating indexes
+2026-09-05 13:56:35 [INFO] gbak:committing metadata
+2026-09-05 13:56:35 [INFO] gbak:adjusting views dbkey length
+2026-09-05 13:56:35 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 13:56:35 [INFO] gbak:adding missing privileges
+2026-09-05 13:56:35 [INFO] gbak:adjusting system generators
+2026-09-05 13:56:35 [INFO] gbak:finishing, closing, and going home
+2026-09-05 13:56:35 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 13:56:35 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_z436mzhi\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 13:56:35 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:56:36 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_19f057g1\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:56:36 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_19f057g1\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:56:36 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_19f057g1\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_faj6adn7\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 13:56:36 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_19f057g1\copia_para_reparo.fdb for backup
+2026-09-05 13:56:36 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_faj6adn7\recuperado.fbk
+2026-09-05 13:56:36 [INFO] gbak:starting transaction
+2026-09-05 13:56:36 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_19f057g1\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:56:36 [INFO] gbak:writing domains
+2026-09-05 13:56:36 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:56:36 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:56:36 [INFO] gbak:writing shadow files
+2026-09-05 13:56:36 [INFO] gbak:writing character sets
+2026-09-05 13:56:36 [INFO] gbak:writing collations
+2026-09-05 13:56:36 [INFO] gbak:writing tables
+2026-09-05 13:56:36 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 13:56:36 [INFO] gbak:         writing column ID
+2026-09-05 13:56:36 [INFO] gbak:         writing column NOME
+2026-09-05 13:56:36 [INFO] gbak:writing types
+2026-09-05 13:56:36 [INFO] gbak:writing filters
+2026-09-05 13:56:36 [INFO] gbak:writing id generators
+2026-09-05 13:56:36 [INFO] gbak:writing exceptions
+2026-09-05 13:56:36 [INFO] gbak:writing functions
+2026-09-05 13:56:36 [INFO] gbak:writing stored procedures
+2026-09-05 13:56:36 [INFO] gbak:writing packages
+2026-09-05 13:56:36 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 13:56:36 [INFO] gbak:3 records written
+2026-09-05 13:56:36 [INFO] gbak:writing triggers
+2026-09-05 13:56:36 [INFO] gbak:writing trigger messages
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:56:36 [INFO] gbak:writing security classes
+2026-09-05 13:56:36 [INFO] gbak:writing table constraints
+2026-09-05 13:56:36 [INFO] gbak:writing referential constraints
+2026-09-05 13:56:36 [INFO] gbak:writing check constraints
+2026-09-05 13:56:36 [INFO] gbak:writing SQL roles
+2026-09-05 13:56:36 [INFO] gbak:writing names mapping
+2026-09-05 13:56:36 [INFO] gbak:writing publications
+2026-09-05 13:56:36 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 13:56:36 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_faj6adn7\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 13:56:51 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:57:20 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:57:20 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 13:57:20 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\RESTAURADO_TESTE.FDB
+2026-09-05 13:57:20 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\origem_teste.fbk
+2026-09-05 13:57:20 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 13:57:20 [INFO] gbak:		backup file is compressed
+2026-09-05 13:57:20 [INFO] gbak:backup version is 11
+2026-09-05 13:57:21 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 13:57:21 [INFO] gbak:started transaction
+2026-09-05 13:57:21 [INFO] gbak:restoring domain RDB$1
+2026-09-05 13:57:21 [INFO] gbak:restoring domain RDB$2
+2026-09-05 13:57:21 [INFO] gbak:committing metadata
+2026-09-05 13:57:21 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 13:57:21 [INFO] gbak:    restoring column ID
+2026-09-05 13:57:21 [INFO] gbak:    restoring column NOME
+2026-09-05 13:57:21 [INFO] gbak:committing metadata
+2026-09-05 13:57:21 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 13:57:21 [INFO] gbak:   2 records restored
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:creating indexes
+2026-09-05 13:57:21 [INFO] gbak:committing metadata
+2026-09-05 13:57:21 [INFO] gbak:adjusting views dbkey length
+2026-09-05 13:57:21 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 13:57:21 [INFO] gbak:adding missing privileges
+2026-09-05 13:57:21 [INFO] gbak:adjusting system generators
+2026-09-05 13:57:21 [INFO] gbak:finishing, closing, and going home
+2026-09-05 13:57:21 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 13:57:21 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_h5r6sl0r\RESTAURADO_TESTE.FDB (duração 0s)
+2026-09-05 13:57:21 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 13:57:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zdj00r6j\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:57:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zdj00r6j\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 13:57:21 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zdj00r6j\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_0bj7pex_\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 13:57:21 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zdj00r6j\copia_para_reparo.fdb for backup
+2026-09-05 13:57:21 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_0bj7pex_\recuperado.fbk
+2026-09-05 13:57:21 [INFO] gbak:starting transaction
+2026-09-05 13:57:21 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_zdj00r6j\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 13:57:21 [INFO] gbak:writing domains
+2026-09-05 13:57:21 [INFO] gbak:    writing domain RDB$1
+2026-09-05 13:57:21 [INFO] gbak:    writing domain RDB$2
+2026-09-05 13:57:21 [INFO] gbak:writing shadow files
+2026-09-05 13:57:21 [INFO] gbak:writing character sets
+2026-09-05 13:57:21 [INFO] gbak:writing collations
+2026-09-05 13:57:21 [INFO] gbak:writing tables
+2026-09-05 13:57:21 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 13:57:21 [INFO] gbak:         writing column ID
+2026-09-05 13:57:21 [INFO] gbak:         writing column NOME
+2026-09-05 13:57:21 [INFO] gbak:writing types
+2026-09-05 13:57:21 [INFO] gbak:writing filters
+2026-09-05 13:57:21 [INFO] gbak:writing id generators
+2026-09-05 13:57:21 [INFO] gbak:writing exceptions
+2026-09-05 13:57:21 [INFO] gbak:writing functions
+2026-09-05 13:57:21 [INFO] gbak:writing stored procedures
+2026-09-05 13:57:21 [INFO] gbak:writing packages
+2026-09-05 13:57:21 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 13:57:21 [INFO] gbak:3 records written
+2026-09-05 13:57:21 [INFO] gbak:writing triggers
+2026-09-05 13:57:21 [INFO] gbak:writing trigger messages
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 13:57:21 [INFO] gbak:writing security classes
+2026-09-05 13:57:21 [INFO] gbak:writing table constraints
+2026-09-05 13:57:21 [INFO] gbak:writing referential constraints
+2026-09-05 13:57:21 [INFO] gbak:writing check constraints
+2026-09-05 13:57:21 [INFO] gbak:writing SQL roles
+2026-09-05 13:57:21 [INFO] gbak:writing names mapping
+2026-09-05 13:57:21 [INFO] gbak:writing publications
+2026-09-05 13:57:21 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 13:57:21 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_0bj7pex_\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:03:33 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:03:33 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_albtx8gk\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:03:33 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_albtx8gk\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:03:33 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_albtx8gk\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_01igtoen\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 14:03:33 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_albtx8gk\copia_para_reparo.fdb for backup
+2026-09-05 14:03:33 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_01igtoen\recuperado.fbk
+2026-09-05 14:03:33 [INFO] gbak:starting transaction
+2026-09-05 14:03:33 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_albtx8gk\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:03:33 [INFO] gbak:writing domains
+2026-09-05 14:03:33 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:03:33 [INFO] gbak:    writing domain RDB$2
+2026-09-05 14:03:33 [INFO] gbak:writing shadow files
+2026-09-05 14:03:33 [INFO] gbak:writing character sets
+2026-09-05 14:03:33 [INFO] gbak:writing collations
+2026-09-05 14:03:33 [INFO] gbak:writing tables
+2026-09-05 14:03:33 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 14:03:33 [INFO] gbak:         writing column ID
+2026-09-05 14:03:33 [INFO] gbak:         writing column NOME
+2026-09-05 14:03:33 [INFO] gbak:writing types
+2026-09-05 14:03:33 [INFO] gbak:writing filters
+2026-09-05 14:03:33 [INFO] gbak:writing id generators
+2026-09-05 14:03:33 [INFO] gbak:writing exceptions
+2026-09-05 14:03:33 [INFO] gbak:writing functions
+2026-09-05 14:03:33 [INFO] gbak:writing stored procedures
+2026-09-05 14:03:33 [INFO] gbak:writing packages
+2026-09-05 14:03:33 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 14:03:33 [INFO] gbak:3 records written
+2026-09-05 14:03:33 [INFO] gbak:writing triggers
+2026-09-05 14:03:33 [INFO] gbak:writing trigger messages
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:03:33 [INFO] gbak:writing security classes
+2026-09-05 14:03:33 [INFO] gbak:writing table constraints
+2026-09-05 14:03:33 [INFO] gbak:writing referential constraints
+2026-09-05 14:03:33 [INFO] gbak:writing check constraints
+2026-09-05 14:03:33 [INFO] gbak:writing SQL roles
+2026-09-05 14:03:33 [INFO] gbak:writing names mapping
+2026-09-05 14:03:33 [INFO] gbak:writing publications
+2026-09-05 14:03:33 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 14:03:33 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_01igtoen\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:04:15 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:04:16 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_ntui3iga\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:04:16 [WARNING] Cancelado pelo teste.
+2026-09-05 14:04:16 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_82b3v_m5\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:04:16 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_82b3v_m5\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:04:16 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_82b3v_m5\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_1y5f_5xj\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 14:04:16 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_82b3v_m5\copia_para_reparo.fdb for backup
+2026-09-05 14:04:16 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_1y5f_5xj\recuperado.fbk
+2026-09-05 14:04:16 [INFO] gbak:starting transaction
+2026-09-05 14:04:16 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_82b3v_m5\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:04:16 [INFO] gbak:writing domains
+2026-09-05 14:04:16 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:04:16 [INFO] gbak:    writing domain RDB$2
+2026-09-05 14:04:16 [INFO] gbak:writing shadow files
+2026-09-05 14:04:16 [INFO] gbak:writing character sets
+2026-09-05 14:04:16 [INFO] gbak:writing collations
+2026-09-05 14:04:16 [INFO] gbak:writing tables
+2026-09-05 14:04:16 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 14:04:16 [INFO] gbak:         writing column ID
+2026-09-05 14:04:16 [INFO] gbak:         writing column NOME
+2026-09-05 14:04:16 [INFO] gbak:writing types
+2026-09-05 14:04:16 [INFO] gbak:writing filters
+2026-09-05 14:04:16 [INFO] gbak:writing id generators
+2026-09-05 14:04:16 [INFO] gbak:writing exceptions
+2026-09-05 14:04:16 [INFO] gbak:writing functions
+2026-09-05 14:04:16 [INFO] gbak:writing stored procedures
+2026-09-05 14:04:16 [INFO] gbak:writing packages
+2026-09-05 14:04:16 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 14:04:16 [INFO] gbak:3 records written
+2026-09-05 14:04:16 [INFO] gbak:writing triggers
+2026-09-05 14:04:16 [INFO] gbak:writing trigger messages
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:04:16 [INFO] gbak:writing security classes
+2026-09-05 14:04:16 [INFO] gbak:writing table constraints
+2026-09-05 14:04:16 [INFO] gbak:writing referential constraints
+2026-09-05 14:04:16 [INFO] gbak:writing check constraints
+2026-09-05 14:04:16 [INFO] gbak:writing SQL roles
+2026-09-05 14:04:16 [INFO] gbak:writing names mapping
+2026-09-05 14:04:16 [INFO] gbak:writing publications
+2026-09-05 14:04:16 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 14:04:16 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_1y5f_5xj\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:06:01 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:02 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:02 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1ig58w2z\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:06:03 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1ig58w2z\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:06:03 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1ig58w2z\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\teste_cancel_ui_r5qatn0k\saida.fbk -user SYSDBA -password ******
+2026-09-05 14:06:03 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1ig58w2z\copia_para_reparo.fdb for backup
+2026-09-05 14:06:03 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\teste_cancel_ui_r5qatn0k\saida.fbk
+2026-09-05 14:06:03 [INFO] gbak:starting transaction
+2026-09-05 14:06:03 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_1ig58w2z\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:06:03 [INFO] gbak:writing domains
+2026-09-05 14:06:03 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:06:03 [INFO] gbak:writing shadow files
+2026-09-05 14:06:03 [INFO] gbak:writing character sets
+2026-09-05 14:06:03 [INFO] gbak:writing collations
+2026-09-05 14:06:03 [INFO] gbak:writing tables
+2026-09-05 14:06:03 [INFO] gbak:    writing table T
+2026-09-05 14:06:03 [INFO] gbak:         writing column ID
+2026-09-05 14:06:03 [INFO] gbak:writing types
+2026-09-05 14:06:03 [INFO] gbak:writing filters
+2026-09-05 14:06:03 [INFO] gbak:writing id generators
+2026-09-05 14:06:03 [INFO] gbak:writing exceptions
+2026-09-05 14:06:03 [INFO] gbak:writing functions
+2026-09-05 14:06:03 [INFO] gbak:writing stored procedures
+2026-09-05 14:06:03 [INFO] gbak:writing packages
+2026-09-05 14:06:03 [INFO] gbak:    writing data for table T
+2026-09-05 14:06:03 [INFO] gbak:1 records written
+2026-09-05 14:06:03 [INFO] gbak:writing triggers
+2026-09-05 14:06:03 [INFO] gbak:writing trigger messages
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:03 [INFO] gbak:writing security classes
+2026-09-05 14:06:03 [INFO] gbak:writing table constraints
+2026-09-05 14:06:03 [INFO] gbak:writing referential constraints
+2026-09-05 14:06:03 [INFO] gbak:writing check constraints
+2026-09-05 14:06:03 [INFO] gbak:writing SQL roles
+2026-09-05 14:06:03 [INFO] gbak:writing names mapping
+2026-09-05 14:06:03 [INFO] gbak:writing publications
+2026-09-05 14:06:03 [INFO] gbak:closing file, committing, and finishing. 1024 bytes written
+2026-09-05 14:06:03 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\teste_cancel_ui_r5qatn0k\saida.fbk (1 registro(s) em 1 tabela(s)).
+2026-09-05 14:06:25 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:25 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:25 [WARNING] Recuperação cancelada pelo usuário.
+2026-09-05 14:06:39 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:40 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:40 [WARNING] Recuperação cancelada (janela fechada pelo usuário).
+2026-09-05 14:06:50 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:50 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:06:50 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\RESTAURADO_TESTE.FDB
+2026-09-05 14:06:50 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\origem_teste.fbk
+2026-09-05 14:06:50 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:06:50 [INFO] gbak:		backup file is compressed
+2026-09-05 14:06:50 [INFO] gbak:backup version is 11
+2026-09-05 14:06:50 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 14:06:50 [INFO] gbak:started transaction
+2026-09-05 14:06:50 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:06:50 [INFO] gbak:restoring domain RDB$2
+2026-09-05 14:06:50 [INFO] gbak:committing metadata
+2026-09-05 14:06:50 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 14:06:50 [INFO] gbak:    restoring column ID
+2026-09-05 14:06:50 [INFO] gbak:    restoring column NOME
+2026-09-05 14:06:50 [INFO] gbak:committing metadata
+2026-09-05 14:06:50 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 14:06:50 [INFO] gbak:   2 records restored
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:06:50 [INFO] gbak:creating indexes
+2026-09-05 14:06:50 [INFO] gbak:committing metadata
+2026-09-05 14:06:50 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:06:50 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:06:50 [INFO] gbak:adding missing privileges
+2026-09-05 14:06:50 [INFO] gbak:adjusting system generators
+2026-09-05 14:06:50 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:06:50 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:06:51 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_3futja0f\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 14:06:51 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:06:51 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_majhokjo\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:06:51 [WARNING] Cancelado pelo teste.
+2026-09-05 14:06:51 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0eiljiww\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:06:51 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0eiljiww\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:06:51 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0eiljiww\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_at31jia_\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 14:06:51 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0eiljiww\copia_para_reparo.fdb for backup
+2026-09-05 14:06:51 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_at31jia_\recuperado.fbk
+2026-09-05 14:06:51 [INFO] gbak:starting transaction
+2026-09-05 14:06:51 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_0eiljiww\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:06:51 [INFO] gbak:writing domains
+2026-09-05 14:06:51 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:06:51 [INFO] gbak:    writing domain RDB$2
+2026-09-05 14:06:51 [INFO] gbak:writing shadow files
+2026-09-05 14:06:51 [INFO] gbak:writing character sets
+2026-09-05 14:06:51 [INFO] gbak:writing collations
+2026-09-05 14:06:51 [INFO] gbak:writing tables
+2026-09-05 14:06:51 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 14:06:51 [INFO] gbak:         writing column ID
+2026-09-05 14:06:51 [INFO] gbak:         writing column NOME
+2026-09-05 14:06:51 [INFO] gbak:writing types
+2026-09-05 14:06:51 [INFO] gbak:writing filters
+2026-09-05 14:06:51 [INFO] gbak:writing id generators
+2026-09-05 14:06:51 [INFO] gbak:writing exceptions
+2026-09-05 14:06:51 [INFO] gbak:writing functions
+2026-09-05 14:06:51 [INFO] gbak:writing stored procedures
+2026-09-05 14:06:51 [INFO] gbak:writing packages
+2026-09-05 14:06:51 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 14:06:51 [INFO] gbak:3 records written
+2026-09-05 14:06:51 [INFO] gbak:writing triggers
+2026-09-05 14:06:51 [INFO] gbak:writing trigger messages
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:06:51 [INFO] gbak:writing security classes
+2026-09-05 14:06:51 [INFO] gbak:writing table constraints
+2026-09-05 14:06:51 [INFO] gbak:writing referential constraints
+2026-09-05 14:06:51 [INFO] gbak:writing check constraints
+2026-09-05 14:06:51 [INFO] gbak:writing SQL roles
+2026-09-05 14:06:51 [INFO] gbak:writing names mapping
+2026-09-05 14:06:51 [INFO] gbak:writing publications
+2026-09-05 14:06:51 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 14:06:51 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_at31jia_\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:10:40 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:10:40 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:10:57 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:10:59 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:10:59 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup1.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO1_RESTAURADO_20260905_141059.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:10:59 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup1.fbk C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO1_RESTAURADO_20260905_141059.FDB
+2026-09-05 14:10:59 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup1.fbk
+2026-09-05 14:10:59 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:10:59 [INFO] gbak:		backup file is compressed
+2026-09-05 14:10:59 [INFO] gbak:backup version is 11
+2026-09-05 14:10:59 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO1_RESTAURADO_20260905_141059.FDB, page_size 8192 bytes
+2026-09-05 14:10:59 [INFO] gbak:started transaction
+2026-09-05 14:10:59 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:10:59 [INFO] gbak:committing metadata
+2026-09-05 14:10:59 [INFO] gbak:restoring table T
+2026-09-05 14:10:59 [INFO] gbak:    restoring column ID
+2026-09-05 14:10:59 [INFO] gbak:committing metadata
+2026-09-05 14:10:59 [INFO] gbak:restoring data for table T
+2026-09-05 14:10:59 [INFO] gbak:   1 records restored
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:10:59 [INFO] gbak:creating indexes
+2026-09-05 14:10:59 [INFO] gbak:committing metadata
+2026-09-05 14:10:59 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:10:59 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:10:59 [INFO] gbak:adding missing privileges
+2026-09-05 14:10:59 [INFO] gbak:adjusting system generators
+2026-09-05 14:10:59 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:10:59 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:00 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO1_RESTAURADO_20260905_141059.FDB (duração 1s)
+2026-09-05 14:11:00 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup2.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO2_RESTAURADO_20260905_141059.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:11:00 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup2.fbk C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO2_RESTAURADO_20260905_141059.FDB
+2026-09-05 14:11:00 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup2.fbk
+2026-09-05 14:11:00 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:11:00 [INFO] gbak:		backup file is compressed
+2026-09-05 14:11:00 [INFO] gbak:backup version is 11
+2026-09-05 14:11:00 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO2_RESTAURADO_20260905_141059.FDB, page_size 8192 bytes
+2026-09-05 14:11:00 [INFO] gbak:started transaction
+2026-09-05 14:11:00 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:11:00 [INFO] gbak:committing metadata
+2026-09-05 14:11:00 [INFO] gbak:restoring table T
+2026-09-05 14:11:00 [INFO] gbak:    restoring column ID
+2026-09-05 14:11:00 [INFO] gbak:committing metadata
+2026-09-05 14:11:00 [INFO] gbak:restoring data for table T
+2026-09-05 14:11:00 [INFO] gbak:   1 records restored
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:00 [INFO] gbak:creating indexes
+2026-09-05 14:11:00 [INFO] gbak:committing metadata
+2026-09-05 14:11:00 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:11:00 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:11:00 [INFO] gbak:adding missing privileges
+2026-09-05 14:11:00 [INFO] gbak:adjusting system generators
+2026-09-05 14:11:00 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:11:00 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:01 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO2_RESTAURADO_20260905_141059.FDB (duração 1s)
+2026-09-05 14:11:01 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup3.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO3_RESTAURADO_20260905_141059.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:11:01 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup3.fbk C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO3_RESTAURADO_20260905_141059.FDB
+2026-09-05 14:11:01 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\backup3.fbk
+2026-09-05 14:11:01 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:11:01 [INFO] gbak:		backup file is compressed
+2026-09-05 14:11:01 [INFO] gbak:backup version is 11
+2026-09-05 14:11:01 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO3_RESTAURADO_20260905_141059.FDB, page_size 8192 bytes
+2026-09-05 14:11:01 [INFO] gbak:started transaction
+2026-09-05 14:11:01 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:11:01 [INFO] gbak:committing metadata
+2026-09-05 14:11:01 [INFO] gbak:restoring table T
+2026-09-05 14:11:01 [INFO] gbak:    restoring column ID
+2026-09-05 14:11:01 [INFO] gbak:committing metadata
+2026-09-05 14:11:01 [INFO] gbak:restoring data for table T
+2026-09-05 14:11:01 [INFO] gbak:   1 records restored
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:01 [INFO] gbak:creating indexes
+2026-09-05 14:11:01 [INFO] gbak:committing metadata
+2026-09-05 14:11:01 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:11:01 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:11:01 [INFO] gbak:adding missing privileges
+2026-09-05 14:11:01 [INFO] gbak:adjusting system generators
+2026-09-05 14:11:01 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:11:01 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:02 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila_r1pnlajl\BANCO3_RESTAURADO_20260905_141059.FDB (duração 1s)
+2026-09-05 14:11:20 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:11:22 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:11:22 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup1.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO1_RESTAURADO_20260905_141121.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:11:22 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup1.fbk C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO1_RESTAURADO_20260905_141121.FDB
+2026-09-05 14:11:22 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup1.fbk
+2026-09-05 14:11:22 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:11:22 [INFO] gbak:		backup file is compressed
+2026-09-05 14:11:22 [INFO] gbak:backup version is 11
+2026-09-05 14:11:22 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO1_RESTAURADO_20260905_141121.FDB, page_size 8192 bytes
+2026-09-05 14:11:22 [INFO] gbak:started transaction
+2026-09-05 14:11:22 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:11:22 [INFO] gbak:committing metadata
+2026-09-05 14:11:22 [INFO] gbak:restoring table T
+2026-09-05 14:11:22 [INFO] gbak:    restoring column ID
+2026-09-05 14:11:22 [INFO] gbak:committing metadata
+2026-09-05 14:11:22 [INFO] gbak:restoring data for table T
+2026-09-05 14:11:22 [INFO] gbak:   1 records restored
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:22 [INFO] gbak:creating indexes
+2026-09-05 14:11:22 [INFO] gbak:committing metadata
+2026-09-05 14:11:22 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:11:22 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:11:22 [INFO] gbak:adding missing privileges
+2026-09-05 14:11:22 [INFO] gbak:adjusting system generators
+2026-09-05 14:11:22 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:11:22 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:23 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO1_RESTAURADO_20260905_141121.FDB (duração 1s)
+2026-09-05 14:11:23 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup2.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO2_RESTAURADO_20260905_141121.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:11:23 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup2.fbk C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO2_RESTAURADO_20260905_141121.FDB
+2026-09-05 14:11:23 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup2.fbk
+2026-09-05 14:11:23 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:11:23 [INFO] gbak:		backup file is compressed
+2026-09-05 14:11:23 [INFO] gbak:backup version is 11
+2026-09-05 14:11:23 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO2_RESTAURADO_20260905_141121.FDB, page_size 8192 bytes
+2026-09-05 14:11:23 [INFO] gbak:started transaction
+2026-09-05 14:11:23 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:11:23 [INFO] gbak:committing metadata
+2026-09-05 14:11:23 [INFO] gbak:restoring table T
+2026-09-05 14:11:23 [INFO] gbak:    restoring column ID
+2026-09-05 14:11:23 [INFO] gbak:committing metadata
+2026-09-05 14:11:23 [INFO] gbak:restoring data for table T
+2026-09-05 14:11:23 [INFO] gbak:   1 records restored
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:23 [INFO] gbak:creating indexes
+2026-09-05 14:11:23 [INFO] gbak:committing metadata
+2026-09-05 14:11:23 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:11:23 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:11:23 [INFO] gbak:adding missing privileges
+2026-09-05 14:11:23 [INFO] gbak:adjusting system generators
+2026-09-05 14:11:23 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:11:23 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:23 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO2_RESTAURADO_20260905_141121.FDB (duração 1s)
+2026-09-05 14:11:24 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup3.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO3_RESTAURADO_20260905_141121.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:11:24 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup3.fbk C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO3_RESTAURADO_20260905_141121.FDB
+2026-09-05 14:11:24 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\backup3.fbk
+2026-09-05 14:11:24 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:11:24 [INFO] gbak:		backup file is compressed
+2026-09-05 14:11:24 [INFO] gbak:backup version is 11
+2026-09-05 14:11:24 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO3_RESTAURADO_20260905_141121.FDB, page_size 8192 bytes
+2026-09-05 14:11:24 [INFO] gbak:started transaction
+2026-09-05 14:11:24 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:11:24 [INFO] gbak:committing metadata
+2026-09-05 14:11:24 [INFO] gbak:restoring table T
+2026-09-05 14:11:24 [INFO] gbak:    restoring column ID
+2026-09-05 14:11:24 [INFO] gbak:committing metadata
+2026-09-05 14:11:24 [INFO] gbak:restoring data for table T
+2026-09-05 14:11:24 [INFO] gbak:   1 records restored
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:11:24 [INFO] gbak:creating indexes
+2026-09-05 14:11:24 [INFO] gbak:committing metadata
+2026-09-05 14:11:24 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:11:24 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:11:24 [INFO] gbak:adding missing privileges
+2026-09-05 14:11:24 [INFO] gbak:adjusting system generators
+2026-09-05 14:11:24 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:11:24 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:11:24 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\teste_fila2_38vwi0n9\BANCO3_RESTAURADO_20260905_141121.FDB (duração 1s)
+2026-09-05 14:11:45 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:11:51 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:11:51 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila_cancel_lvph6u_b\backup1.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila_cancel_lvph6u_b\BANCO1_RESTAURADO_20260905_141151.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:12:25 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:12:26 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:12:26 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\teste_fila_fechar_cdisvxj2\backup.fbk destino=C:\Users\souza\AppData\Local\Temp\teste_fila_fechar_cdisvxj2\BANCO_RESTAURADO_20260905_141226.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:13:04 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:13:04 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:13:04 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\RESTAURADO_TESTE.FDB
+2026-09-05 14:13:04 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\origem_teste.fbk
+2026-09-05 14:13:04 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:13:04 [INFO] gbak:		backup file is compressed
+2026-09-05 14:13:04 [INFO] gbak:backup version is 11
+2026-09-05 14:13:04 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 14:13:04 [INFO] gbak:started transaction
+2026-09-05 14:13:04 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:13:04 [INFO] gbak:restoring domain RDB$2
+2026-09-05 14:13:04 [INFO] gbak:committing metadata
+2026-09-05 14:13:04 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 14:13:04 [INFO] gbak:    restoring column ID
+2026-09-05 14:13:04 [INFO] gbak:    restoring column NOME
+2026-09-05 14:13:04 [INFO] gbak:committing metadata
+2026-09-05 14:13:04 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 14:13:04 [INFO] gbak:   2 records restored
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:13:04 [INFO] gbak:creating indexes
+2026-09-05 14:13:04 [INFO] gbak:committing metadata
+2026-09-05 14:13:04 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:13:04 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:13:04 [INFO] gbak:adding missing privileges
+2026-09-05 14:13:04 [INFO] gbak:adjusting system generators
+2026-09-05 14:13:04 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:13:04 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:13:05 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_0irdsoue\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 14:13:05 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:13:05 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_8mer9pgf\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:13:05 [WARNING] Cancelado pelo teste.
+2026-09-05 14:13:05 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_bthc8478\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:13:05 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_bthc8478\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:13:05 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_bthc8478\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_3xquo7r9\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 14:13:05 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_bthc8478\copia_para_reparo.fdb for backup
+2026-09-05 14:13:05 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_3xquo7r9\recuperado.fbk
+2026-09-05 14:13:05 [INFO] gbak:starting transaction
+2026-09-05 14:13:05 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_bthc8478\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:13:05 [INFO] gbak:writing domains
+2026-09-05 14:13:05 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:13:05 [INFO] gbak:    writing domain RDB$2
+2026-09-05 14:13:05 [INFO] gbak:writing shadow files
+2026-09-05 14:13:05 [INFO] gbak:writing character sets
+2026-09-05 14:13:05 [INFO] gbak:writing collations
+2026-09-05 14:13:05 [INFO] gbak:writing tables
+2026-09-05 14:13:05 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 14:13:05 [INFO] gbak:         writing column ID
+2026-09-05 14:13:05 [INFO] gbak:         writing column NOME
+2026-09-05 14:13:05 [INFO] gbak:writing types
+2026-09-05 14:13:05 [INFO] gbak:writing filters
+2026-09-05 14:13:05 [INFO] gbak:writing id generators
+2026-09-05 14:13:05 [INFO] gbak:writing exceptions
+2026-09-05 14:13:05 [INFO] gbak:writing functions
+2026-09-05 14:13:05 [INFO] gbak:writing stored procedures
+2026-09-05 14:13:05 [INFO] gbak:writing packages
+2026-09-05 14:13:05 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 14:13:05 [INFO] gbak:3 records written
+2026-09-05 14:13:05 [INFO] gbak:writing triggers
+2026-09-05 14:13:05 [INFO] gbak:writing trigger messages
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:13:05 [INFO] gbak:writing security classes
+2026-09-05 14:13:05 [INFO] gbak:writing table constraints
+2026-09-05 14:13:05 [INFO] gbak:writing referential constraints
+2026-09-05 14:13:05 [INFO] gbak:writing check constraints
+2026-09-05 14:13:05 [INFO] gbak:writing SQL roles
+2026-09-05 14:13:05 [INFO] gbak:writing names mapping
+2026-09-05 14:13:05 [INFO] gbak:writing publications
+2026-09-05 14:13:05 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 14:13:05 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_3xquo7r9\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:14:18 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:14:18 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\origem_teste.fbk destino=C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\RESTAURADO_TESTE.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-05 14:14:18 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\origem_teste.fbk C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\RESTAURADO_TESTE.FDB
+2026-09-05 14:14:18 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\origem_teste.fbk
+2026-09-05 14:14:18 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-05 14:14:18 [INFO] gbak:		backup file is compressed
+2026-09-05 14:14:18 [INFO] gbak:backup version is 11
+2026-09-05 14:14:18 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\RESTAURADO_TESTE.FDB, page_size 8192 bytes
+2026-09-05 14:14:18 [INFO] gbak:started transaction
+2026-09-05 14:14:18 [INFO] gbak:restoring domain RDB$1
+2026-09-05 14:14:18 [INFO] gbak:restoring domain RDB$2
+2026-09-05 14:14:18 [INFO] gbak:committing metadata
+2026-09-05 14:14:18 [INFO] gbak:restoring table TESTE_INTEGRACAO
+2026-09-05 14:14:18 [INFO] gbak:    restoring column ID
+2026-09-05 14:14:18 [INFO] gbak:    restoring column NOME
+2026-09-05 14:14:18 [INFO] gbak:committing metadata
+2026-09-05 14:14:18 [INFO] gbak:restoring data for table TESTE_INTEGRACAO
+2026-09-05 14:14:18 [INFO] gbak:   2 records restored
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-05 14:14:18 [INFO] gbak:creating indexes
+2026-09-05 14:14:18 [INFO] gbak:committing metadata
+2026-09-05 14:14:18 [INFO] gbak:adjusting views dbkey length
+2026-09-05 14:14:18 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-05 14:14:18 [INFO] gbak:adding missing privileges
+2026-09-05 14:14:18 [INFO] gbak:adjusting system generators
+2026-09-05 14:14:18 [INFO] gbak:finishing, closing, and going home
+2026-09-05 14:14:18 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-05 14:14:19 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\fbtest_integracao_6gzxf804\RESTAURADO_TESTE.FDB (duração 1s)
+2026-09-05 14:14:19 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-05 14:14:19 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_dxdiljka\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:14:20 [WARNING] Cancelado pelo teste.
+2026-09-05 14:14:20 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -mend -full C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_c9abzdpo\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:14:20 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gfix.exe -sweep C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_c9abzdpo\copia_para_reparo.fdb -user SYSDBA -password ******
+2026-09-05 14:14:20 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -b -v -g -l -ignore C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_c9abzdpo\copia_para_reparo.fdb C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_l3et9430\recuperado.fbk -user SYSDBA -password ******
+2026-09-05 14:14:20 [INFO] gbak:readied database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_c9abzdpo\copia_para_reparo.fdb for backup
+2026-09-05 14:14:20 [INFO] gbak:creating file C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_l3et9430\recuperado.fbk
+2026-09-05 14:14:20 [INFO] gbak:starting transaction
+2026-09-05 14:14:20 [INFO] gbak:database C:\Users\souza\AppData\Local\Temp\firebird_recuperacao_c9abzdpo\copia_para_reparo.fdb has a page size of 8192 bytes.
+2026-09-05 14:14:20 [INFO] gbak:writing domains
+2026-09-05 14:14:20 [INFO] gbak:    writing domain RDB$1
+2026-09-05 14:14:20 [INFO] gbak:    writing domain RDB$2
+2026-09-05 14:14:20 [INFO] gbak:writing shadow files
+2026-09-05 14:14:20 [INFO] gbak:writing character sets
+2026-09-05 14:14:20 [INFO] gbak:writing collations
+2026-09-05 14:14:20 [INFO] gbak:writing tables
+2026-09-05 14:14:20 [INFO] gbak:    writing table TESTE_RECUPERACAO
+2026-09-05 14:14:20 [INFO] gbak:         writing column ID
+2026-09-05 14:14:20 [INFO] gbak:         writing column NOME
+2026-09-05 14:14:20 [INFO] gbak:writing types
+2026-09-05 14:14:20 [INFO] gbak:writing filters
+2026-09-05 14:14:20 [INFO] gbak:writing id generators
+2026-09-05 14:14:20 [INFO] gbak:writing exceptions
+2026-09-05 14:14:20 [INFO] gbak:writing functions
+2026-09-05 14:14:20 [INFO] gbak:writing stored procedures
+2026-09-05 14:14:20 [INFO] gbak:writing packages
+2026-09-05 14:14:20 [INFO] gbak:    writing data for table TESTE_RECUPERACAO
+2026-09-05 14:14:20 [INFO] gbak:3 records written
+2026-09-05 14:14:20 [INFO] gbak:writing triggers
+2026-09-05 14:14:20 [INFO] gbak:writing trigger messages
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:    writing privilege for user SYSDBA
+2026-09-05 14:14:20 [INFO] gbak:writing security classes
+2026-09-05 14:14:20 [INFO] gbak:writing table constraints
+2026-09-05 14:14:20 [INFO] gbak:writing referential constraints
+2026-09-05 14:14:20 [INFO] gbak:writing check constraints
+2026-09-05 14:14:20 [INFO] gbak:writing SQL roles
+2026-09-05 14:14:20 [INFO] gbak:writing names mapping
+2026-09-05 14:14:20 [INFO] gbak:writing publications
+2026-09-05 14:14:20 [INFO] gbak:closing file, committing, and finishing. 1536 bytes written
+2026-09-05 14:14:20 [INFO] Recuperação concluída: backup gerado em C:\Users\souza\AppData\Local\Temp\fbtest_integracao_recup_l3et9430\recuperado.fbk (3 registro(s) em 1 tabela(s)).
+2026-09-05 14:14:31 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)

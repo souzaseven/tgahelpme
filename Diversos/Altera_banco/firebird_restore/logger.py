@@ -62,6 +62,17 @@ def registrar_listener(callback: Callable[[str, str], None]) -> None:
     _LISTENERS.append(callback)
 
 
+def remover_listener(callback: Callable[[str, str], None]) -> None:
+    """Contraparte de registrar_listener — usado por janelas que podem ser
+    abertas e fechadas várias vezes (ex.: JanelaRecuperacao), para não
+    acumular um callback morto a cada abertura. A janela principal, que só é
+    criada uma vez, nunca precisa chamar isto."""
+    try:
+        _LISTENERS.remove(callback)
+    except ValueError:
+        pass
+
+
 def _emitir(nivel: str, mensagem: str) -> None:
     for callback in list(_LISTENERS):
         try:
@@ -92,3 +103,26 @@ def erro(mensagem: str, segredos: list[str] | None = None) -> None:
 
 def caminho_log_atual() -> Path:
     return LOGS_DIR / f"restore_{datetime.now():%Y%m%d}.log"
+
+
+def limpar_logs_antigos(dias: int = 90) -> int:
+    """Apaga arquivos de log (restore_AAAAMMDD.log) mais antigos que `dias`.
+    Sem isso, uma máquina que fica meses restaurando backups acumula um
+    arquivo por dia para sempre. Chamado uma vez na inicialização da
+    interface; nunca levanta exceção — um log que não pôde ser apagado
+    (em uso, sem permissão) simplesmente fica para a próxima tentativa.
+    Retorna quantos arquivos foram removidos, só para fins de log/depuração."""
+    limite = datetime.now().timestamp() - dias * 86400
+    removidos = 0
+    try:
+        candidatos = LOGS_DIR.glob("restore_*.log")
+    except OSError:
+        return 0
+    for arquivo in candidatos:
+        try:
+            if arquivo.stat().st_mtime < limite:
+                arquivo.unlink()
+                removidos += 1
+        except OSError:
+            continue
+    return removidos

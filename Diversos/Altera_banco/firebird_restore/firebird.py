@@ -33,6 +33,7 @@ class InstalacaoFirebird:
     gbak_path: Path
     gfix_path: Path | None
     isql_path: Path | None
+    gstat_path: Path | None
     versao_texto: str
     versao_tupla: tuple[int, ...]
     origem: str  # "pasta_padrao" | "registro" | "path"
@@ -40,6 +41,15 @@ class InstalacaoFirebird:
     @property
     def rotulo(self) -> str:
         return f"Firebird {'.'.join(map(str, self.versao_tupla)) or '?'} - {self.pasta}"
+
+    @property
+    def versao_detalhada(self) -> str:
+        """Versão completa de build, ex.: '5.0.3.1683', extraída de
+        'gbak:gbak version WI-V5.0.3.1683 Firebird 5.0'. Usada nos relatórios
+        para identificar exatamente qual build foi usada, além da versão
+        principal (major.minor) já mostrada em `rotulo`."""
+        m = re.search(r"V(\d+(?:\.\d+){2,3})", self.versao_texto)
+        return m.group(1) if m else self.versao_texto
 
 
 def _extrair_versao(saida: str) -> tuple[str, tuple[int, ...]]:
@@ -86,11 +96,13 @@ def _montar_instalacao(gbak_path: Path, origem: str) -> InstalacaoFirebird | Non
     pasta = gbak_path.parent
     gfix = pasta / "gfix.exe"
     isql = pasta / "isql.exe"
+    gstat = pasta / "gstat.exe"
     return InstalacaoFirebird(
         pasta=pasta,
         gbak_path=gbak_path,
         gfix_path=gfix if gfix.is_file() else None,
         isql_path=isql if isql.is_file() else None,
+        gstat_path=gstat if gstat.is_file() else None,
         versao_texto=texto,
         versao_tupla=tupla,
         origem=origem,
@@ -121,7 +133,11 @@ def _buscar_no_registro() -> list[InstalacaoFirebird]:
         return encontradas
 
     for caminho_chave, _ in CHAVES_REGISTRO:
-        for hive in (winreg.HKEY_LOCAL_MACHINE,):
+        # A instalação padrão do Firebird (executada como administrador)
+        # grava em HKEY_LOCAL_MACHINE, mas algumas instalações "para o
+        # usuário atual" (raras, mas existem) gravam em HKEY_CURRENT_USER —
+        # sem isso, essas ficavam invisíveis para a detecção automática.
+        for hive in (winreg.HKEY_LOCAL_MACHINE, winreg.HKEY_CURRENT_USER):
             try:
                 with winreg.OpenKey(hive, caminho_chave) as chave:
                     i = 0
