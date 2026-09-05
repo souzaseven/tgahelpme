@@ -1,0 +1,135 @@
+2026-09-04 21:35:06 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-04 21:35:44 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-04 21:35:44 [INFO] Restauração iniciada: backup=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_BACKUP.FBK.gz destino=C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_RESTAURADO.FDB firebird=gbak:gbak version WI-V5.0.3.1683 Firebird 5.0
+2026-09-04 21:35:44 [INFO] Executando: C:\Program Files\Firebird\Firebird_5_0\gbak.exe -c -v -user SYSDBA -password ****** C:\Users\souza\AppData\Local\Temp\firebird_restore_wo9wab9e\TESTE_BACKUP.FBK C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_RESTAURADO.FDB
+2026-09-04 21:35:44 [INFO] gbak:opened file C:\Users\souza\AppData\Local\Temp\firebird_restore_wo9wab9e\TESTE_BACKUP.FBK
+2026-09-04 21:35:45 [INFO] gbak:transportable backup -- data in XDR format
+2026-09-04 21:35:45 [INFO] gbak:		backup file is compressed
+2026-09-04 21:35:45 [INFO] gbak:backup version is 11
+2026-09-04 21:35:45 [INFO] gbak:created database C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_RESTAURADO.FDB,...
+2026-09-04 21:35:45 [INFO] gbak:started transaction
+2026-09-04 21:35:45 [INFO] gbak:restoring domain PLG$PASSWD
+2026-09-04 21:35:45 [INFO] gbak:restoring domain PLG$ID
+2026-09-04 21:35:45 [INFO] gbak:restoring domain RDB$1
+2026-09-04 21:35:45 [INFO] gbak:restoring domain RDB$2
+2026-09-04 21:35:45 [INFO] gbak:restoring domain RDB$3
+2026-09-04 21:35:45 [INFO] gbak:committing metadata
+2026-09-04 21:35:45 [INFO] gbak:restoring table PLG$USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$UID
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$GID
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-04 21:35:45 [INFO] gbak:restoring table PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    table PLG$VIEW_USERS is a view
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$UID
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$GID
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$GROUP_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$PASSWD
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$FIRST_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$MIDDLE_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$LAST_NAME
+2026-09-04 21:35:45 [INFO] gbak:restoring table PLG$SRP
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$SALT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$LAST
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-04 21:35:45 [INFO] gbak:restoring table PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    table PLG$SRP_VIEW is a view
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$COMMENT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$ATTRIBUTES
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$USER_NAME
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$VERIFIER
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$SALT
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$FIRST
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$MIDDLE
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$LAST
+2026-09-04 21:35:45 [INFO] gbak:    restoring column PLG$ACTIVE
+2026-09-04 21:35:45 [INFO] gbak:committing metadata
+2026-09-04 21:35:45 [INFO] gbak:    restoring index RDB$PRIMARY2
+2026-09-04 21:35:45 [INFO] gbak:restoring data for table PLG$SRP
+2026-09-04 21:35:45 [INFO] gbak:   1 records restored
+2026-09-04 21:35:45 [INFO] gbak:    restoring index RDB$PRIMARY1
+2026-09-04 21:35:45 [INFO] gbak:restoring data for table PLG$USERS
+2026-09-04 21:35:45 [INFO] gbak:   1 records restored
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$VIEW_USERS
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user SYSDBA
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PLG$SRP_VIEW
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user PUBLIC
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user 1
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user 1
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user 1
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user 1
+2026-09-04 21:35:45 [INFO] gbak:    restoring privilege for user 1
+2026-09-04 21:35:45 [INFO] gbak:creating indexes
+2026-09-04 21:35:45 [INFO] gbak:committing metadata
+2026-09-04 21:35:45 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY2
+2026-09-04 21:35:45 [INFO] gbak:    activating and creating deferred index RDB$PRIMARY1
+2026-09-04 21:35:45 [INFO] gbak:adjusting views dbkey length
+2026-09-04 21:35:45 [INFO] gbak:updating ownership of packages, procedures and tables
+2026-09-04 21:35:45 [INFO] gbak:adding missing privileges
+2026-09-04 21:35:45 [INFO] gbak:adjusting system generators
+2026-09-04 21:35:45 [INFO] gbak:finishing, closing, and going home
+2026-09-04 21:35:45 [INFO] gbak:adjusting the ONLINE and FORCED WRITES flags
+2026-09-04 21:35:45 [INFO] Restauração concluída com sucesso: C:\Users\souza\AppData\Local\Temp\claude\c--Users-souza-OneDrive--rea-de-Trabalho-Portif-lio-Pessoal-Git-Hub-Projetos-Trabalho-Tutoriais-diversos-Altera-banco\7c97df90-9a36-41cc-902a-44ae2a111a96\scratchpad\testdb\TESTE_RESTAURADO.FDB
+2026-09-04 21:39:17 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-04 21:39:29 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)
+2026-09-04 21:39:49 [INFO] Firebird detectado: gbak:gbak version WI-V5.0.3.1683 Firebird 5.0 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta_padrao)

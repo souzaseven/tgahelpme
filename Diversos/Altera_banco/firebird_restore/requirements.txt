@@ -1,0 +1,6 @@
+# O Restaurador Firebird usa apenas a biblioteca padrão do Python
+# (tkinter, subprocess, gzip, shutil, sqlite3-like...). Nenhuma dependência
+# externa é necessária para rodar `python main.py`.
+#
+# Quando a Fase 12 (empacotamento) começar, adicionar aqui:
+# pyinstaller>=6.0

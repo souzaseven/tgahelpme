@@ -1,0 +1,8 @@
+{
+  "pasta_padrao_backups": "",
+  "pasta_padrao_destino": "",
+  "firebird_path_preferencial": "",
+  "fator_estimativa_fdb_por_fbk": 4.0,
+  "margem_seguranca_espaco": 1.3,
+  "usuario_padrao": "SYSDBA"
+}
