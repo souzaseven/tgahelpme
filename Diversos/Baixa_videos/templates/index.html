@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Baixe vídeos e áudios de conteúdos públicos do Instagram, TikTok, Facebook e YouTube." />
+  <meta name="color-scheme" content="dark light" />
+  <title>Downloader de Vídeos e Áudios</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%AC%87%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="hero">
+      <div class="hero__top">
+        <div class="hero__logo" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v13" /><path d="m7 12 5 5 5-5" /><path d="M5 21h14" />
+          </svg>
+        </div>
+        <h1 class="hero__title">Downloader de Vídeos e Áudios</h1>
+      </div>
+      <p class="hero__subtitle">Instagram, TikTok, Facebook e YouTube — cole o link, analise e escolha o formato.</p>
+    </header>
+
+    <form id="analyze-form" class="panel form" novalidate>
+      <div class="field">
+        <label class="field__label" for="url-input">Link do vídeo</label>
+        <div class="field__control">
+          <svg class="field__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+          <input
+            id="url-input"
+            class="field__input"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Link do Instagram ou do TikTok"
+            required
+          />
+          <button type="button" id="clear-btn" class="field__clear" aria-label="Limpar" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <button id="analyze-btn" class="btn btn--primary btn--block" type="submit">
+        <span class="btn__label">Analisar</span>
+      </button>
+
+      <div id="form-error" class="alert" role="alert" hidden>
+        <svg class="alert__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" /><path d="M12 8v5" /><path d="M12 16h.01" />
+        </svg>
+        <span id="form-error-text"></span>
+        <button type="button" id="retry-btn" class="alert__retry" hidden>Tentar novamente</button>
+      </div>
+    </form>
+
+    <section id="status" class="status" hidden aria-live="polite">
+      <div class="status__row">
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="status-text">Obtendo informações...</span>
+      </div>
+      <div id="progress" class="progress" hidden>
+        <div id="progress-bar" class="progress__bar"></div>
+      </div>
+    </section>
+
+    <section id="result" class="panel result" hidden aria-live="polite">
+      <div class="preview">
+        <div class="preview__frame">
+          <img id="result-thumb" class="preview__img" alt="Prévia do conteúdo" />
+          <span id="result-duration" class="preview__duration" hidden></span>
+        </div>
+        <div class="preview__body">
+          <span class="tag">
+            <span class="tag__dot"></span><span id="result-platform">Instagram</span>
+          </span>
+          <h2 id="result-title" class="preview__title"></h2>
+          <div id="result-meta" class="preview__meta"></div>
+        </div>
+      </div>
+
+      <div class="download">
+        <div class="download__row" id="quality-row">
+          <span class="download__label">Qualidade do vídeo</span>
+          <div id="quality-chips" class="segmented" role="group" aria-label="Qualidade do vídeo"></div>
+        </div>
+
+        <div class="download__actions">
+          <button id="download-video" class="btn btn--primary" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            <span>Baixar vídeo</span>
+          </button>
+          <button id="download-audio" class="btn btn--ghost" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            <span id="download-audio-label">Baixar áudio</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+      <span>Use apenas com conteúdo público, próprio ou que você tenha autorização para baixar.</span>
+    </footer>
+  </main>
+
+  <script src="/static/js/app.js" defer></script>
+</body>
+</html>
