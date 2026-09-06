@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest>=8.2
+pyflakes>=3.2
+
+# Opcional — verificação visual/responsiva da interface:
+#   pip install playwright && python -m playwright install chromium
