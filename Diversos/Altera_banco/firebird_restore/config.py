@@ -48,13 +48,13 @@ class Settings:
     # Perfil salvo pelo botão "Salvar como padrão" — nunca inclui senha.
     page_size_padrao: str = "16384"
     charset_padrao: str = "(padrão do backup)"
-    validacao_completa_padrao: bool = False
+    validacao_completa_padrao: bool = True
     tocar_som_padrao: bool = True
     notificacao_windows_padrao: bool = True
     # Visual da área de acompanhamento em tempo real: terminal preto/verde
     # ("hacker") em vez do padrão claro. Puramente estético — não afeta a
     # restauração; guardado para lembrar a preferência entre execuções.
-    tema_hacker: bool = False
+    tema_hacker: bool = True
 
     def to_dict(self) -> dict:
         return asdict(self)

@@ -27,6 +27,12 @@ copiar esse arquivo para a outra máquina e dar duplo clique; não precisa de
 Python nem de nenhum outro arquivo junto. A máquina de destino só precisa ter
 o Firebird instalado (a ferramenta detecta automaticamente).
 
+A pasta `compartilhar/` já traz esse `.exe` pronto, mais um `LEIA-ME.txt`
+curto explicando isso para quem for usar — é só copiar essa pasta inteira
+(ou só o `.exe` de dentro dela) para a outra máquina. Ela é atualizada
+manualmente a cada novo build; se você recompilar sem pedir para atualizá-la
+também, ela pode ficar com uma versão mais antiga do que `dist/`.
+
 O `.exe` grava `config/settings.json` e `logs/` **na mesma pasta onde ele
 está**, não em uma pasta temporária — por isso preferências e logs
 sobrevivem entre execuções mesmo rodando só o `.exe` sem o resto do projeto.
@@ -88,18 +94,23 @@ vai alertar como "editor desconhecido" no primeiro uso em uma máquina nova —
     backup (`gbak -m`, rápido) para uma barra "tabela X de Y"; se isso falhar,
     cai para uma estimativa por crescimento do arquivo `.fdb` de destino.
     Fica sempre claro que é uma aproximação.
-12. **Painel de detalhes com três atalhos**: "⚠ Ver somente os erros" (janela
-    à parte, só com as linhas de nível ERRO já registradas), "💾 Salvar como
-    .txt" (grava o acompanhamento inteiro em arquivo) e "👾 Modo hacker" (visual
-    alternativo — terminal preto/verde — puramente estético, com a escolha
-    lembrada entre execuções).
+12. **Painel de detalhes lado a lado com o de erros** — o log completo e um
+    painel "⚠ Erros" (só as linhas de nível ERRO) ficam sempre visíveis um ao
+    lado do outro, ambos atualizados em tempo real — não precisa abrir nada
+    à parte para ver os erros. Também tem "💾 Salvar como .txt" (grava o
+    acompanhamento inteiro em arquivo) e "👾 Modo hacker" (visual alternativo
+    — terminal preto/verde — puramente estético, ativado por padrão numa
+    instalação nova, com a escolha lembrada entre execuções, aplicado às
+    duas áreas).
 13. **Resumo completo ao final** — banco original (extraído do backup) e
     banco novo, Firebird usado, versão do formato do backup, ODS version e
     Page Size do banco restaurado, dialeto, tamanhos, horário de início/fim,
-    duração total, contagem de erros do gbak (item 7) e (se a opção
-    "Validação completa" for marcada) contagem de erros/avisos de uma passada
+    duração total, contagem de erros do gbak (item 7) e (opção "Validação
+    completa", marcada por padrão) contagem de erros/avisos de uma passada
     `gfix -v -full`. Botão "📂 Abrir pasta" leva direto ao Explorer com o
-    `.fdb` recém-criado já selecionado.
+    `.fdb` recém-criado já selecionado. Cada campo tem uma dica explicativa
+    ao passar o mouse (o que é ODS version, dialeto, page size etc. — útil
+    para quem não é DBA).
 14. **Contagem de registros restaurados e tabelas com problema** — a partir
     da própria saída do `gbak` (sempre disponível), o resumo mostra quantos
     registros foram restaurados e em quantas tabelas. Se a "Validação
@@ -112,62 +123,79 @@ vai alertar como "editor desconhecido" no primeiro uso em uma máquina nova —
     índices do zero — isso muda o tamanho físico, mas não indica perda).
 16. **Dica em cada campo/botão da tela** — basta passar o mouse sobre
     qualquer campo, botão ou opção para ver uma explicação do que ele faz.
-17. **Múltiplas versões do Firebird lado a lado (2.5 a 5.0)** — a detecção
+17. **Tela dividida em abas "Restaurar" / "Configurações"** — a aba
+    Restaurar fica só com Backup e Destino (o que muda a cada uso); Firebird,
+    Page Size, Charset, usuário/senha, opções e a comparação de tamanho
+    ficam em Configurações (o que normalmente se ajusta uma vez e usa sempre
+    igual). Reduz bastante a quantidade de campos visíveis de cada vez.
+18. **Múltiplas versões do Firebird lado a lado (2.5 a 5.0)** — a detecção
     não é específica de uma versão: qualquer `gbak.exe`/`gfix.exe`/`gstat.exe`
     encontrado (Program Files, Registro, PATH) vira uma opção selecionável.
-18. **Page Size configurável** — a rotina de manutenção usada até hoje
+19. **Page Size configurável** — a rotina de manutenção usada até hoje
     (`ANTIGO/BKP_Fb_5.0 3/BKP-RESTORE 5.0.BAT`) sempre restaura forçando
     `-p 16384`, independente do page size original do backup — isso é a causa
     mais provável de o banco restaurado ficar maior/menor que o original.
     Virou um campo configurável na tela (sugestão padrão: 16384, igual à
     rotina antiga), com opção de usar o page size original do backup.
-19. **Cronômetro de tempo restante confiável** — usa uma média móvel da
+20. **Cronômetro de tempo restante confiável** — usa uma média móvel da
     velocidade de progresso e nunca exibe um tempo maior que o do tick
     anterior. Restaurar mais de uma vez na mesma sessão não deixa cronômetros
     de execuções antigas rodando em paralelo (cada novo início cancela
     explicitamente o anterior — sem isso, ticks concorrentes faziam o valor
-    exibido "pular para cima" às vezes).
-20. **Card de status de integridade sempre visível no resumo** — fixo no
+    exibido "pular para cima" às vezes). Quando o progresso fica parado por
+    um tempo (comum no modo "por tabela": uma tabela grande sozinha pode
+    ficar minutos sem nenhum incremento), a última estimativa continua
+    aparecendo — decaindo com o relógio real — em vez de voltar a mostrar
+    "calculando..." só porque a velocidade momentaneamente caiu a zero.
+    Lógica extraída como função pura (`calcular_tempo_restante_atualizado`)
+    e coberta por testes dedicados.
+21. **Card de status de integridade sempre visível no resumo** — fixo no
     topo da janela de resumo (não dentro da área rolável): erro do gbak
     (item 7) tem prioridade; senão, resultado da validação completa se ela
     foi executada; senão, confirmação de que o gbak não reportou nada.
-21. **Versão do sistema TGA** — quando o banco restaurado tem a tabela
+22. **Versão do sistema TGA** — quando o banco restaurado tem a tabela
     `GDIVERSOS`, consulta `VERSAO_BASE`, `DATA_ATUALIZACAO`, `VERSAO_MOBILE` e
-    `TGA_START`, filtrando por `WHERE TGA_START IS NULL` (o registro vigente,
-    não um registro histórico de migração); cai automaticamente para uma
-    consulta sem esse filtro em bancos mais antigos que não têm a coluna.
-    Diferente da ODS version (que é da estrutura do Firebird, não do
-    aplicativo). Silenciosamente omitido em bancos que não são do TGA.
-22. **Buscar/filtrar** dentro de qualquer área de log (painel principal,
-    "Ver somente os erros", histórico da sessão) — uma barra de busca destaca
+    `TGA_START` em cascata: começa pedindo tudo com `WHERE TGA_START IS
+    NULL` (o registro vigente, não um histórico de migração) e vai
+    recuando — sem esse filtro, sem a coluna `TGA_START`, até o par mais
+    básico `VERSAO_BASE`/`DATA_ATUALIZACAO` (presente desde as versões mais
+    antigas do TGA) — parando na primeira tentativa que trouxer algo. Sem
+    essa cascata completa, um banco ao qual faltasse só uma das colunas mais
+    novas já ficava sem nenhuma versão exibida, mesmo tendo os campos
+    básicos. Diferente da ODS version (que é da estrutura do Firebird, não
+    do aplicativo). Silenciosamente omitido em bancos que não são do TGA;
+    qualquer outro motivo de não encontrar fica registrado como aviso no
+    log, para dar uma pista do porquê em vez de desaparecer sem explicação.
+23. **Buscar/filtrar** dentro de qualquer área de log (painel principal,
+    histórico da sessão) — uma barra de busca destaca
     (em amarelo) as ocorrências do termo digitado, navegáveis com Enter ou
     ◀ ▶.
-23. **Histórico da sessão** — botão "📋 Histórico desta sessão" mostra um
+24. **Histórico da sessão** — botão "📋 Histórico desta sessão" mostra um
     relatório consolidado de todas as restaurações feitas desde que o
     programa foi aberto, agrupado por arquivo de backup de origem (útil
     quando o mesmo backup é restaurado mais de uma vez, ex.: um conflito de
     nome levou a criar um segundo banco com sufixo `_RESTAURADO`), incluindo
     erros do gbak (item 7) entre os avisos. Também pode ser salvo como .txt.
-24. **Cancelar restauração em andamento** — botão "❌ Cancelar restauração"
+25. **Cancelar restauração em andamento** — botão "❌ Cancelar restauração"
     mata o processo do `gbak` com segurança (mesmo se ele estiver "quieto",
     sem imprimir novas linhas) e remove o arquivo de destino parcial, para
     nunca deixar um `.fdb` incompleto passando por válido. Pede confirmação
     antes de agir.
-25. **Avisos de conclusão configuráveis** — som nativo do Windows
+26. **Avisos de conclusão configuráveis** — som nativo do Windows
     (`winsound`, checkbox "🔊 Tocar som ao concluir", marcado por padrão) e/ou
     notificação toast do Windows (`notificacoes.py`, via PowerShell + WinRT,
     sem dependência externa; checkbox "🔔 Notificação do Windows ao concluir",
     também marcado por padrão) — útil para bancos grandes que demoram
     minutos, inclusive com a janela minimizada.
-26. **Versão visível** — aparece no título da janela e no rodapé
+27. **Versão visível** — aparece no título da janela e no rodapé
     (`Restaurador Firebird vX.Y.Z`, definida em `version.py`), para facilitar
     dizer "qual versão eu tenho" ao reportar um problema.
-27. **Charset customizado (avançado)** — campo com `-fix_fss_data` /
+28. **Charset customizado (avançado)** — campo com `-fix_fss_data` /
     `-fix_fss_metadata` do gbak, que corrige dados/metadados gravados com
     charset malformado (comum em bases antigas migradas do InterBase, ou
     quando o backup tem charset `NONE`). Sem isso, colunas com acentuação
     podem falhar com "cannot transliterate" no meio da restauração.
-28. **Recuperar banco corrompido** (`recuperacao.py` + botão
+29. **Recuperar banco corrompido** (`recuperacao.py` + botão
     "🩹 Recuperar banco corrompido") — para quando o problema é no **banco
     original** (`.fdb`), não no backup: roda `gfix -mend -full` (marca
     estruturas corrompidas para serem puladas), `gfix -sweep` (limpeza) e
@@ -181,7 +209,7 @@ vai alertar como "editor desconhecido" no primeiro uso em uma máquina nova —
     descartados do resultado, não recuperados — quando isso não é
     suficiente, a orientação é buscar suporte especializado em recuperação
     de banco de dados.
-29. **Restaurar em lote** (`ui/janela_fila_restauracao.py` + botão
+30. **Restaurar em lote** (`ui/janela_fila_restauracao.py` + botão
     "📚 Restaurar em lote") — adicione vários backups de uma vez (seleção
     múltipla de arquivos) e restaure todos em sequência, com a mesma
     configuração (Firebird, usuário, senha, page size, charset, validação
@@ -257,7 +285,7 @@ cd firebird_restore
 python -m unittest discover -s tests -v
 ```
 
-68 testes cobrindo: arquivo inexistente, arquivo vazio, extensão inválida,
+84 testes cobrindo: arquivo inexistente, arquivo vazio, extensão inválida,
 caminho com espaços/acentos, `.fbk.gz` válido e corrompido, conteúdo que não é
 um backup real (texto, PNG), destino já existente (não deve autorizar
 sobrescrita), sugestão de nome paralelo, estimativa de espaço em disco,
@@ -265,9 +293,16 @@ tradução de mensagens de erro do gbak, a classificação de erro fatal vs.
 erro de índice não-fatal (`classificar_resultado_gbak`) — incluindo o caso de
 um backup corrompido/truncado que já criou um `.fdb` parcial antes de abortar,
 que precisa continuar sendo tratado como falha total, não como "sucesso com
-avisos" —, o parsing da saída do `gbak -b` usado por `recuperacao.py`, e a
-sugestão automática de destino da fila de restauração em lote (incluindo o
-caso de conflito de nome, sem diálogo interativo).
+avisos", e o caso de uma tabela/coluna com nome parecido com um termo de erro
+(ex.: uma tabela chamada `LOGIN`) não disparar falso positivo —, o parsing da
+saída do `gbak -b` usado por `recuperacao.py`, a sugestão automática de
+destino da fila de restauração em lote (incluindo o caso de conflito de
+nome, sem diálogo interativo), e o cálculo do "tempo restante" do
+cronômetro (`calcular_tempo_restante_atualizado`) — incluindo o caso de o
+progresso ficar parado por vários ticks sem voltar a mostrar
+"calculando...", e a consulta da versão do sistema TGA (`obter_versao_sistema_tga`)
+— incluindo os dois motivos de fallback (coluna `TGA_START` inexistente, e
+existente mas sem nenhuma linha nula).
 
 `tests/test_integration_gbak.py` e `tests/test_integration_recuperacao.py`
 fazem o mesmo tipo de teste, mas de ponta a ponta e de verdade: criam um

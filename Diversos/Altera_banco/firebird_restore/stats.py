@@ -206,6 +206,24 @@ class InfoSistemaTGA:
 _CAMPOS_GDIVERSOS = ("VERSAO_BASE", "DATA_ATUALIZACAO", "VERSAO_MOBILE", "TGA_START")
 
 
+def _consultar_gdiversos_uma_vez(
+    comando: list[str], campos: tuple, usar_filtro_tga_start: bool, timeout: int
+) -> tuple[dict, str, Optional[subprocess.CompletedProcess]]:
+    """Uma tentativa de SELECT FIRST 1 <campos> FROM GDIVERSOS [WHERE TGA_START
+    IS NULL]. Retorna (valores extraídos, saída bruta, processo — None se nem
+    chegou a rodar por erro de SO/timeout)."""
+    filtro = " WHERE TGA_START IS NULL" if usar_filtro_tga_start else ""
+    script = f"SET LIST ON;\nSELECT FIRST 1 {', '.join(campos)} FROM GDIVERSOS{filtro};\n"
+    try:
+        resultado = subprocess.run(
+            comando, input=script, capture_output=True, text=True, timeout=timeout, creationflags=_CREATION_FLAGS
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {}, str(exc), None
+    saida = (resultado.stdout or "") + (resultado.stderr or "")
+    return _extrair_campos_gdiversos(saida), saida, resultado
+
+
 def obter_versao_sistema_tga(
     isql_path: Optional[Path], caminho_fdb: str, usuario: str, senha: str, timeout: int = 15
 ) -> InfoSistemaTGA:
@@ -219,51 +237,36 @@ def obter_versao_sistema_tga(
         comando += ["-password", senha]
     comando += [str(caminho_fdb)]
 
+    # Tenta em cascata, do conjunto mais completo (bancos TGA recentes) até o
+    # par mais básico (VERSAO_BASE/DATA_ATUALIZACAO, presente desde sempre no
+    # GDIVERSOS) — cada nível cobre uma "era" diferente do schema da tabela.
     # GDIVERSOS pode acumular mais de um registro (histórico de migrações de
-    # versão); TGA_START IS NULL identifica o registro vigente (não é um
-    # registro "em migração"/histórico). Se nenhuma linha atender a esse
-    # filtro — por exemplo em bancos mais antigos, sem essa coluna preenchida
-    # — cai para o registro mais simples (FIRST 1, sem filtro) como fallback.
-    script = (
-        "SET LIST ON;\n"
-        f"SELECT FIRST 1 {', '.join(_CAMPOS_GDIVERSOS)} FROM GDIVERSOS WHERE TGA_START IS NULL;\n"
+    # versão); TGA_START IS NULL identifica o registro vigente, por isso é a
+    # primeira tentativa. Sem esta cascata completa, um banco onde faltasse
+    # só UMA das colunas mais novas (ex.: tem VERSAO_MOBILE mas não
+    # TGA_START, ou nenhuma das duas) ficava sem nenhuma versão exibida,
+    # mesmo sendo um banco TGA legítimo com os campos básicos presentes.
+    tentativas = (
+        (_CAMPOS_GDIVERSOS, True),
+        (_CAMPOS_GDIVERSOS, False),
+        (tuple(c for c in _CAMPOS_GDIVERSOS if c != "TGA_START"), False),
+        (("VERSAO_BASE", "DATA_ATUALIZACAO"), False),
     )
 
-    try:
-        resultado = subprocess.run(
-            comando, input=script, capture_output=True, text=True, timeout=timeout, creationflags=_CREATION_FLAGS
-        )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        return InfoSistemaTGA(False, erro=str(exc))
+    valores: dict = {}
+    resultado: Optional[subprocess.CompletedProcess] = None
+    for campos, usar_filtro in tentativas:
+        valores, saida, resultado = _consultar_gdiversos_uma_vez(comando, campos, usar_filtro, timeout)
+        if resultado is None:
+            return InfoSistemaTGA(False, erro=saida)  # exceção de SO/timeout; `saida` traz str(exc)
+        if "Table unknown" in saida or ("GDIVERSOS" in saida and "not found" in saida.lower()):
+            # Não é um banco do sistema TGA — não é um erro, apenas não aplicável.
+            # Nenhuma tentativa seguinte mudaria isso, então já retorna aqui.
+            return InfoSistemaTGA(False, erro="Este banco não possui a tabela GDIVERSOS (não é um banco TGA).")
+        if valores:
+            break
 
-    saida = (resultado.stdout or "") + (resultado.stderr or "")
-
-    if "Table unknown" in saida or "GDIVERSOS" in saida and "not found" in saida.lower():
-        # Não é um banco do sistema TGA — não é um erro, apenas não aplicável.
-        return InfoSistemaTGA(False, erro="Este banco não possui a tabela GDIVERSOS (não é um banco TGA).")
-
-    valores = _extrair_campos_gdiversos(saida)
-
-    # Coluna TGA_START pode não existir em bancos de versões mais antigas do
-    # TGA — nesse caso o isql acusa erro na própria coluna do WHERE/SELECT;
-    # refaz a consulta sem filtrar por ela, e sem pedi-la no SELECT.
-    if not valores and ("Column unknown" in saida or "TGA_START" in saida.upper()):
-        campos_sem_tga_start = tuple(c for c in _CAMPOS_GDIVERSOS if c != "TGA_START")
-        script_fallback = (
-            "SET LIST ON;\n"
-            f"SELECT FIRST 1 {', '.join(campos_sem_tga_start)} FROM GDIVERSOS;\n"
-        )
-        try:
-            resultado = subprocess.run(
-                comando, input=script_fallback, capture_output=True, text=True,
-                timeout=timeout, creationflags=_CREATION_FLAGS,
-            )
-        except (OSError, subprocess.TimeoutExpired) as exc:
-            return InfoSistemaTGA(False, erro=str(exc))
-        saida = (resultado.stdout or "") + (resultado.stderr or "")
-        valores = _extrair_campos_gdiversos(saida)
-
-    if resultado.returncode != 0 and not valores:
+    if resultado is not None and resultado.returncode != 0 and not valores:
         return InfoSistemaTGA(False, erro="Não foi possível consultar a versão do sistema TGA.")
 
     if not valores:

@@ -205,8 +205,21 @@ def classificar_resultado_gbak(
     Extraída como função pura (sem I/O) para poder ser testada de forma
     isolada e exaustiva, sem precisar rodar o gbak de verdade nem mockar
     subprocess — ver tests/test_restore.py."""
+    # _PADROES_ERRO_CONHECIDOS foi desenhado para TRADUZIR uma mensagem que já
+    # se sabe ser de erro — alguns padrões são genéricos de propósito (ex.:
+    # "login" sozinho, sem exigir "ERROR:" na frente) porque, nesse uso
+    # original, só rodam depois que a falha já foi confirmada por outro
+    # meio. Rodá-los contra a saída INTEIRA para DETECTAR erro (em vez de só
+    # traduzir) é perigoso: uma tabela/coluna chamada "LOGIN" faz uma linha
+    # inteiramente normal ("restoring table LOGIN") disparar falso positivo.
+    # Por isso a busca aqui é restrita às linhas que o próprio gbak já
+    # marcou como erro (contêm "error"/"cannot"/"failed") — o gbak sempre
+    # prefixa erros reais dessa forma, então isso não perde detecção real.
+    linhas_com_indicio_de_erro = "\n".join(
+        linha for linha in saida_tecnica.splitlines() if _PADRAO_LINHA_ERRO_GBAK.search(linha)
+    )
     erro_fatal_conhecido = any(
-        re.search(padrao, saida_tecnica, re.IGNORECASE) for padrao, _ in _PADROES_ERRO_CONHECIDOS
+        re.search(padrao, linhas_com_indicio_de_erro, re.IGNORECASE) for padrao, _ in _PADROES_ERRO_CONHECIDOS
     )
     if erro_fatal_conhecido or (codigo_retorno != 0 and not banco_foi_criado):
         return ClassificacaoResultadoGbak(eh_falha_fatal=True)
@@ -702,8 +715,16 @@ def executar_restauracao(
     info_header = stats.obter_info_header(instalacao.gstat_path, str(destino), usuario, senha)
 
     # Versão do sistema TGA (tabela GDIVERSOS) — não é um erro se o banco não
-    # tiver essa tabela, só significa que não é um banco do sistema TGA.
+    # tiver essa tabela, só significa que não é um banco do sistema TGA. Se
+    # não encontrar por qualquer OUTRO motivo (consulta falhou, erro de
+    # conexão...), fica logado como aviso — sem isso, o campo simplesmente
+    # não aparecia no resumo sem nenhuma pista do porquê.
     info_tga = stats.obter_versao_sistema_tga(instalacao.isql_path, str(destino), usuario, senha)
+    if not info_tga.encontrado and info_tga.erro and "não possui a tabela GDIVERSOS" not in info_tga.erro:
+        # Só loga quando o motivo é diferente de "isto não é um banco TGA"
+        # (esse caso é normal e não deve soar como alarme para todo banco
+        # que não é do sistema TGA — a maioria das restaurações).
+        logger.aviso(f"Versão do sistema TGA não identificada: {info_tga.erro}")
 
     validacao_integridade = None
     if validar_integridade_completa:
