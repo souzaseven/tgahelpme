@@ -1,0 +1,14 @@
+# Migrador Firebird — dependências de runtime
+#
+# A interface usa PySide6. O núcleo (pasta core/) e os testes de regras puras
+# não dependem de PySide6 nem de nenhuma outra biblioteca externa: usam só a
+# biblioteca padrão do Python e os utilitários de linha de comando do Firebird
+# (gbak, gfix, gstat, isql), detectados em runtime.
+#
+# O wheel abi3 do PySide6 6.11 funciona no Python 3.14 (testado nesta máquina).
+# Se em outra máquina o pip não achar wheel para a versão do Python instalada,
+# crie um venv com py -3.12 ou py -3.13 (veja o README).
+PySide6>=6.8
+
+# Para empacotar em .exe único depois (fora do MVP):
+# pyinstaller>=6.0

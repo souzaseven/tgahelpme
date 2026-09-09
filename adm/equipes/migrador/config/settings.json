@@ -1,0 +1,13 @@
+{
+  "pasta_padrao_origem": "C:\\Users\\souza\\Downloads",
+  "pasta_padrao_destino": "",
+  "gbak_origem_preferencial": "",
+  "gbak_destino_preferencial": "",
+  "usuario_padrao": "SYSDBA",
+  "page_size_padrao": "(preservar do backup)",
+  "validacao_completa_padrao": true,
+  "trabalhar_sobre_copia_padrao": false,
+  "margem_seguranca_espaco": 1.3,
+  "fator_fbk_por_fdb": 0.4,
+  "fator_fdb_restaurado_por_fdb": 2.0
+}

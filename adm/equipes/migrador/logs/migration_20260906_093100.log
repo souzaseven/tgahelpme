@@ -1,0 +1,7 @@
+2026-09-06 09:31:00 [INFO] Migrador Firebird v0.1.0 iniciado. Logs antigos removidos: 0.
+2026-09-06 09:31:00 [INFO] Firebird detectado: 5.0.3.1683 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta)
+2026-09-06 09:31:24 [INFO] Firebird detectado: 5.0.3.1683 em C:\Program Files\Firebird\Firebird_5_0\gbak.exe (origem: pasta)
+2026-09-06 09:31:27 [INFO] Análise: C:\Program Files\Firebird\Firebird_5_0\gstat.exe -h C:\Users\souza\Downloads\BACKUP25.FDB -user SYSDBA -password ********
+2026-09-06 09:31:27 [INFO] Análise: C:\Program Files\Firebird\Firebird_5_0\isql.exe -q -ch NONE -i C:\Users\souza\AppData\Local\Temp\mig_analise_3idle90l.sql -user SYSDBA -password ******** C:\Users\souza\Downloads\BACKUP25.FDB
+2026-09-06 09:32:43 [INFO] Análise: C:\Program Files\Firebird\Firebird_5_0\gstat.exe -h C:\Users\souza\Downloads\BACKUP25.FDB -user SYSDBA -password ********
+2026-09-06 09:32:44 [INFO] Análise: C:\Program Files\Firebird\Firebird_5_0\isql.exe -q -ch NONE -i C:\Users\souza\AppData\Local\Temp\mig_analise__hyvcf9p.sql -user SYSDBA -password ******** C:\Users\souza\Downloads\BACKUP25.FDB
