@@ -1,0 +1,172 @@
+<?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(0);
+
+/* Verificação de acesso do site (arquivo na raiz de tgameajuda.com) */
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
+include_once $_SERVER['DOCUMENT_ROOT'] . '/verifica_acesso.php';
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Painel de Plantão – Fim de Semana</title>
+
+  <!-- FONTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="https://tgameajuda.com/img/principal/bot-tga.webp" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2XFNTVZ');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8542251167876044"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7ZNTJSRYR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E7ZNTJSRYR');
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8EC5C2WTG"></script>
+  <script>
+    gtag('config', 'G-S8EC5C2WTG');
+  </script>
+</head>
+
+<body>
+  <!-- GTM (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2XFNTVZ"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <div class="app">
+
+    <!-- TOPO -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">📅</div>
+        <div class="titles">
+          <h1>Painel de Plantão</h1>
+          <p>Consulta de plantões de fim de semana (somente visualização)</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- INFO -->
+    <section class="info">
+      <div class="info-card">
+        <h3>Horários deste canal</h3>
+        <ul>
+          <li><strong>Sábado:</strong> 13:00h às 18:00h</li>
+          <li><strong>Domingo:</strong> 07:30h às 11:30h</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Informações</h3>
+        <ul>
+          <li>Este painel é apenas para <strong>consulta</strong>.</li>
+          <li>Alterações são realizadas internamente pela equipe responsável.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="grid-3">
+      <div class="card">
+        <div class="card-head">
+          <h2>Semana passada</h2>
+        </div>
+        <div class="card-body" id="cardPrev"></div>
+      </div>
+
+      <div class="card highlight">
+        <div class="card-head">
+          <h2>Fim de semana atual</h2>
+        </div>
+        <div class="card-body" id="cardCurrent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Próximo fim de semana</h2>
+        </div>
+        <div class="card-body" id="cardNext"></div>
+      </div>
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Histórico por período</h2>
+      </div>
+
+      <div class="card-body">
+        <div class="filters">
+          <div class="field">
+            <label>Data início</label>
+            <input type="date" id="fStart">
+          </div>
+
+          <div class="field">
+            <label>Data fim</label>
+            <input type="date" id="fEnd">
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Sábado</th>
+                <th>Domingo</th>
+                <th>Suporte</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyPeriod">
+              <tr><td colspan="4">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Plantão • Consulta pública • v2026.02.01</span>
+    </footer>
+
+  </div>
+
+  <!-- JS SOMENTE VISUAL -->
+  <script src="publico.js"></script>
+
+</body>
+</html>
