@@ -1,0 +1,226 @@
+    <script>
+    function updateMetrics() {
+        fetch('/api/metrics').then(r => r.json()).then(metrics => {
+            document.getElementById('card-clicks').innerText = metrics.clicks;
+            document.getElementById('card-keystrokes').innerText = metrics.keystrokes;
+            document.getElementById('card-words').innerText = metrics.words;
+            document.getElementById('card-apps').innerText = Object.keys(metrics.app_times).length;
+            // Atualiza tabela de apps
+            let tbody = document.getElementById('table-apps-body');
+            if (tbody) {
+                tbody.innerHTML = '';
+                for (const [app, seconds] of Object.entries(metrics.app_times)) {
+                    let tr = document.createElement('tr');
+                    let td1 = document.createElement('td');
+                    td1.innerText = app;
+                    let td2 = document.createElement('td');
+                    td2.innerText = Math.floor(seconds/60);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tbody.appendChild(tr);
+                }
+            }
+        });
+    }
+    setInterval(updateMetrics, 2000);
+    window.onload = updateMetrics;
+    </script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gerenciamento do Projeto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="mb-4 text-center">Dashboard de Gerenciamento</h1>
+        <div class="row mb-4 g-4">
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-info">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-mouse"></i>
+                        </div>
+                        <h5 class="card-title">Cliques do Mouse</h5>
+                        <p class="card-text display-6 fw-bold" id="card-clicks">{{ metrics.clicks }}</p>
+                        <small class="text-light">Total de cliques</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-dark">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-keyboard"></i>
+                        </div>
+                        <h5 class="card-title">Teclas Digitadas</h5>
+                        <p class="card-text display-6 fw-bold" id="card-keystrokes">{{ metrics.keystrokes }}</p>
+                        <small class="text-light">Total de teclas</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-secondary">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-fonts"></i>
+                        </div>
+                        <h5 class="card-title">Palavras Digitadas</h5>
+                        <p class="card-text display-6 fw-bold" id="card-words">{{ metrics.words }}</p>
+                        <small class="text-light">Estimativa</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-light">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem; color:#0d6efd;">
+                            <i class="bi bi-window"></i>
+                        </div>
+                        <h5 class="card-title text-dark">Apps Monitorados</h5>
+                        <p class="card-text display-6 fw-bold text-dark" id="card-apps">{{ metrics.app_times|length }}</p>
+                        <small class="text-muted">Total de apps</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <i class="bi bi-clock-history"></i> Tempo por Aplicativo
+                                </div>
+                                <div class="card-body">
+                                    {% if metrics.app_times and metrics.app_times|length > 0 %}
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Aplicativo</th>
+                                                <th>Tempo Utilizado (minutos)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table-apps-body">
+                                            {% for app, seconds in metrics.app_times.items() %}
+                                            <tr>
+                                                <td>{{ app }}</td>
+                                                <td>{{ (seconds // 60)|int }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    {% else %}
+                                    <span class="text-muted">Nenhum dado de uso de aplicativos registrado.</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-primary">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <h5 class="card-title">Agentes Ativos</h5>
+                        <p class="card-text display-6 fw-bold">{{ resumo.agentes_ativos }}</p>
+                        <small class="text-light">Monitorando em tempo real</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-warning">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h5 class="card-title">Uploads Pendentes</h5>
+                        <p class="card-text display-6 fw-bold">{{ resumo.uploads_pendentes }}</p>
+                        <small class="text-dark">Aguardando envio</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-success">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-camera"></i>
+                        </div>
+                        <h5 class="card-title">Screenshots</h5>
+                        <p class="card-text display-6 fw-bold">{{ resumo.screenshots }}</p>
+                        <small class="text-light">Capturas recentes</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow h-100 border-0 text-bg-secondary">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <div class="mb-2" style="font-size:2.5rem;">
+                            <i class="bi bi-journal-text"></i>
+                        </div>
+                        <h5 class="card-title">Logs Monitoramento</h5>
+                        <p class="card-text display-6 fw-bold">{{ resumo.logs_monitoramento }}</p>
+                        <small class="text-light">Eventos registrados</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <i class="bi bi-images"></i> Últimas Screenshots
+                    </div>
+                    <div class="card-body">
+                        {% if screenshots and screenshots|length > 0 %}
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Arquivo</th>
+                                    <th>Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for img in screenshots[:5] %}
+                                <tr>
+                                    <td>{{ img }}</td>
+                                    <td><a href="/static/screenshots/{{ img }}" target="_blank" class="btn btn-outline-primary btn-sm">Abrir</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <span class="text-muted">Nenhuma screenshot encontrada.</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <i class="bi bi-journal-text"></i> Logs Recentes
+                    </div>
+                    <div class="card-body">
+                        {% if logs and logs|length > 0 %}
+                        <ul class="list-group list-group-flush">
+                            {% for log in logs[:5] %}
+                            <li class="list-group-item">{{ log }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <span class="text-muted">Nenhum log encontrado.</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4 text-center">Dashboard dinâmico integrado ao agente. Para mais detalhes, acesse as tabelas acima ou clique nos arquivos.</div>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+</html>

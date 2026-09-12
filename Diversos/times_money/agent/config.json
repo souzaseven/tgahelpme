@@ -1,0 +1,4 @@
+{
+  "api_url": "http://localhost:8000/api/events",
+  "token": "SEU_TOKEN_AQUI"
+}
